@@ -1,10 +1,33 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
 import React from 'react';
+import Home from './pages/home';
+import AllItems from './pages/allItems';
+import Item from './pages/item';
+import Settings from './pages/settings';
+
+
 /**
-   * Basic structure for the application. Routes for the normal home view with all stations and
-   * journeys and a route for the single station view with data for station and map.
+   * Basic structure for the application.
+   * Routes as following:
+   * /home > normal home page
+   * /all > list of all items
+   * /item > stats for single item
+   * /settings > user settings
+   * 
    */
-function App() {
-  return <div> Hello World </div>;
-}
+const App = () => (
+  <Router>
+    <Routes>
+      <Route exact path="/" element=<Home /> />
+      <Route exact path="/all" element=<AllItems /> />
+      <Route exact path="/item" element=<Item /> />
+      <Route exact path="/settings" element=<Settings /> />
+    </Routes>
+  </Router>
+);
 
 export default App;
