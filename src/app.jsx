@@ -8,6 +8,7 @@ import Home from './pages/home';
 import AllItems from './pages/allItems';
 import Item from './pages/item';
 import Settings from './pages/settings';
+import Login from './pages/login'
 
 
 /**
@@ -22,7 +23,8 @@ import Settings from './pages/settings';
 const App = () => (
   <Router>
     <Routes>
-      <Route exact path="/" element=<Home /> />
+      <Route exact path="/" element=<Login /> />
+      <Route exact path="/home" element=<Home /> />
       <Route exact path="/all" element=<AllItems /> />
       <Route exact path="/item" element=<Item /> />
       <Route exact path="/settings" element=<Settings /> />
