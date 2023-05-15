@@ -1,0 +1,47 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 400px;
+  width: 320px;
+  background: #CBDAF0;
+}
+.loginForm__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  border: solid 1px blue;
+  font-size: 28px;
+}
+.loginForm__inputs {
+  border: 1px solid red;
+  height: 180px;
+  width: 100%;
+}
+.loginForm__inputs__form {
+  display: flex;
+  flex-direction: column;
+}
+.loginForm__createAccount {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  border: 1px solid green;
+}
+.loginForm__createAccount__button {
+  color: blue;
+}
+
+.login-grid {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}/*# sourceMappingURL=main.css.map */

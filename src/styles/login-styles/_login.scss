@@ -1,0 +1,12 @@
+@import './loginForm.scss';
+.login-grid {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
