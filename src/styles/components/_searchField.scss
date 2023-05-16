@@ -1,0 +1,35 @@
+.searchField {
+    display: flex;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    &__container {
+        display: flex;
+        position: relative;
+        height: 100%;
+        &__label {
+            display: flex;
+            position: absolute;
+            left: 12px;
+            top: 10px;
+        }
+        &__input {
+            height: 40px;
+            width: 100%;
+            border-radius: 5px;
+            border: 0px solid;
+            &::placeholder {
+                opacity: 0;
+            }
+            &:focus {
+                outline: none;
+                & ~ label {
+                    transform: translateY(-20px);
+                }
+            }
+        }
+    }
+}

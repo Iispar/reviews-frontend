@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import React from 'react';
-import SearchInput from '../../components/SearchInput';
+import SearchInput from '../../components/SearchField';
 
 const LoginForm = () => {
   const changeView = () => {
@@ -13,7 +13,7 @@ const LoginForm = () => {
       <div className="loginForm__header"> Login </div>
       <div className="loginForm__inputs">
         <form className="loginForm__inputs__form">
-          <SearchInput title="username" />
+          <SearchInput title="username" width="300px" />
           <SearchInput title="password" />
           <button type="button" className="loginForm__inputs__form__forgotPassword"> Forgot password? </button>
           <button type="submit"> login </button>

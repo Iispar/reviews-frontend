@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import SearchInput from '../../components/SearchInput';
+import SearchInput from '../../components/SearchField';
 
 const CreateAccountForm = () => {
   const changeView = () => {
