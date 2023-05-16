@@ -1,10 +1,15 @@
+import $ from 'jquery';
 import React from 'react';
 import SearchInput from '../../components/SearchInput';
 
-// eslint-disable-next-line arrow-body-style
 const LoginForm = () => {
+  const changeView = () => {
+    $('#loginForm').css('display', 'none');
+    $('#createAccountForm').css('display', 'flex');
+  };
+
   return (
-    <div className="loginForm">
+    <div className="loginForm" id="loginForm">
       <div className="loginForm__header"> Login </div>
       <div className="loginForm__inputs">
         <form className="loginForm__inputs__form">
@@ -16,7 +21,7 @@ const LoginForm = () => {
       </div>
       <div className="loginForm__createAccount">
         Don&apos;t have an account?
-        <span className="loginForm__createAccount__button"> Create new </span>
+        <span className="loginForm__createAccount__button" role="button" tabIndex={0} onClick={() => changeView()} onKeyDown={() => changeView()}> Create new </span>
       </div>
     </div>
   );
