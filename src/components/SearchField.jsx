@@ -17,6 +17,7 @@ const SearchField = (props) => {
     <div className={name} id={id}>
       <div className={`${name}__container`} style={{ width }}>
         <input className={`${name}__container__input`} id={`${id}__container__input`} type="text" placeholder={title} autoComplete="off" />
+        <div className={`${name}__container__cutout`} htmlFor={`${id}__container__input`} />
         <label className={`${name}__container__label`} id={`${id}__container__label`} htmlFor={`${id}__container__input`}>
           {title}
         </label>
