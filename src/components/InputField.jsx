@@ -6,8 +6,7 @@ import propTypes from 'prop-types';
  * @param {} props
  * @returns
  */
-
-const SearchField = (props) => {
+const InputField = (props) => {
   const { title } = props;
   const { id } = props;
   const { name } = props;
@@ -16,7 +15,7 @@ const SearchField = (props) => {
   return (
     <div className={name} id={id}>
       <div className={`${name}__container`} style={{ width }}>
-        <input className={`${name}__container__input`} id={`${id}__container__input`} type="text" placeholder={title} autoComplete="off" />
+        <input className={`${name}__container__input`} id={`${id}__container__input`} required type="text" placeholder={title} autoComplete="off" />
         <div className={`${name}__container__cutout`} htmlFor={`${id}__container__input`} />
         <label className={`${name}__container__label`} id={`${id}__container__label`} htmlFor={`${id}__container__input`}>
           {title}
@@ -26,18 +25,18 @@ const SearchField = (props) => {
   );
 };
 
-SearchField.propTypes = {
+InputField.propTypes = {
   title: propTypes.string,
   id: propTypes.string,
   name: propTypes.string,
   width: propTypes.string,
 };
 
-SearchField.defaultProps = {
+InputField.defaultProps = {
   title: null,
   id: 'searchField',
   name: 'searchField',
   width: '220px',
 };
 
-export default SearchField;
+export default InputField;
