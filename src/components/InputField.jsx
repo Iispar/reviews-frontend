@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { getFontSize } from './helpers';
 
 /**
  * Styling and functionality for the search fields in the application.
@@ -11,12 +12,13 @@ const InputField = (props) => {
   const { id } = props;
   const { name } = props;
   const { width } = props;
+  const cutoutWidth = getFontSize(title);
 
   return (
     <div className={name} id={id}>
       <div className={`${name}__container`} style={{ width }}>
         <input className={`${name}__container__input`} id={`${id}__container__input`} required type="text" placeholder={title} autoComplete="off" />
-        <div className={`${name}__container__cutout`} htmlFor={`${id}__container__input`} />
+        <div className={`${name}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
         <label className={`${name}__container__label`} id={`${id}__container__label`} htmlFor={`${id}__container__input`}>
           {title}
         </label>
