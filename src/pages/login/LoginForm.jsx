@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import React from 'react';
+import { useState, React } from 'react';
 import InputField from '../../components/InputField';
 
 /**
@@ -7,6 +7,7 @@ import InputField from '../../components/InputField';
  * @returns login and sign in view.
  */
 const LoginForm = () => {
+  const [contactVisible, setcontactVisible] = useState(true);
   /**
    * changes view between login form and create account form.
    *
@@ -14,6 +15,26 @@ const LoginForm = () => {
   const changeView = () => {
     $('#login').css('display', 'none');
     $('#createNew').css('display', 'flex');
+  };
+
+  /**
+   * sents a reset password message.
+   */
+  const getPassword = () => {
+    console.log('sent');
+  };
+
+  /**
+   * Switches between visible and closed with the contact form
+   */
+  const switchContact = () => {
+    if (contactVisible) {
+      $('#login__loginForm__inputs__passwordInfo__contact').css('display', 'none');
+      setcontactVisible(false);
+    } else {
+      $('#login__loginForm__inputs__passwordInfo__contact').css('display', 'flex');
+      setcontactVisible(true);
+    }
   };
 
   return (
@@ -25,8 +46,16 @@ const LoginForm = () => {
             <InputField title="username" width="280px" />
             <InputField title="password" width="280px" />
           </form>
-          <button type="button" className="login__loginForm__inputs__forgotPassword"> Forgot password? </button>
-          <button type="submit" className="login__loginForm__inputs__login" form="loginForm__inputs__form"> login </button>
+          <div className="login__loginForm__inputs__passwordInfo">
+            <button type="button" className="login__loginForm__inputs__passwordInfo__forgotPassword" onClick={() => switchContact()}> Forgot password? </button>
+            <div className="login__loginForm__inputs__passwordInfo__contact" id="login__loginForm__inputs__passwordInfo__contact">
+              <form className="login__loginForm__inputs__passwordInfo__contact__email" id="login__loginForm__inputs__passwordInfo__contact__email" onSubmit={() => getPassword()}>
+                <InputField title="enter your email" width="220px" />
+                <button type="submit" className="login__loginForm__inputs__passwordInfo__contact__email__resetBtn"> get new password </button>
+              </form>
+            </div>
+          </div>
+          <button type="submit" className="login__loginForm__inputs__loginBtn" form="loginForm__inputs__form"> login </button>
         </div>
       </div>
       <div className="login__createAccount">
