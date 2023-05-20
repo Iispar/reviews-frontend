@@ -8,8 +8,8 @@ import Home from './pages/home';
 import AllItems from './pages/allItems';
 import Item from './pages/item';
 import Settings from './pages/settings';
-import Login from './pages/login'
-
+import Login from './pages/login';
+import './styles/main.scss';
 
 /**
    * Basic structure for the application.
@@ -18,7 +18,7 @@ import Login from './pages/login'
    * /all > list of all items
    * /item > stats for single item
    * /settings > user settings
-   * 
+   *
    */
 const App = () => (
   <Router>
