@@ -33,9 +33,9 @@ const Home = () => {
         <div className="home__grid__homeChange">
           <HomeStats />
         </div>
-      </div>
-      <div className="home__footer">
-        <Footer />
+        <div className="home__grid__footer">
+          <Footer />
+        </div>
       </div>
     </div>
   );
