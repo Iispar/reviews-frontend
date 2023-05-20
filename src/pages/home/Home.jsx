@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, React } from 'react';
 import Header from '../../components/Header';
 import LatestReviews from './LatestReviews';
 import MostPopular from './MostPopular';
@@ -6,8 +6,9 @@ import HomeChart from './HomeChart';
 import HomeStats from './HomeStats';
 import Footer from '../../components/Footer';
 
-// eslint-disable-next-line arrow-body-style
 const Home = () => {
+  // eslint-disable-next-line no-unused-vars
+  const [user, setUser] = useState('Name');
   return (
     <div className="home">
       <div className="home__header">
@@ -15,7 +16,10 @@ const Home = () => {
       </div>
       <div className="home__grid">
         <div className="home__grid__title">
-          <div> Title </div>
+          <div className="home__grid__title__text">
+            Welcome back&nbsp;
+            {user}
+          </div>
         </div>
         <div className="home__grid__latestReviews">
           <LatestReviews />
