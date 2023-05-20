@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import { useState, React } from 'react';
+import { useNavigate } from 'react-router-dom';
 import InputField from '../../components/InputField';
 
 /**
@@ -8,6 +9,7 @@ import InputField from '../../components/InputField';
  */
 const LoginForm = () => {
   const [contactVisible, setcontactVisible] = useState(true);
+  const navigate = useNavigate();
   /**
    * changes view between login form and create account form.
    *
@@ -37,6 +39,13 @@ const LoginForm = () => {
     }
   };
 
+  /**
+   * Handles the login and moves to home page.
+   */
+  const login = () => {
+    navigate('/home');
+  };
+
   return (
     <div className="login" id="login">
       <div className="login__loginForm">
@@ -55,7 +64,7 @@ const LoginForm = () => {
               </form>
             </div>
           </div>
-          <button type="submit" className="login__loginForm__inputs__loginBtn" form="loginForm__inputs__form"> login </button>
+          <button type="submit" className="login__loginForm__inputs__loginBtn" form="loginForm__inputs__form" onClick={() => login()}> login </button>
         </div>
       </div>
       <div className="login__createAccount">
