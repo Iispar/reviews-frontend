@@ -1,7 +1,7 @@
-const useFetch = (username, password) => {
+const useLogin = (username, password) => {
   console.log(`Login with username: ${username}, password: ${password}`);
 
   return true;
 };
 
-export default useFetch;
+export default useLogin;
