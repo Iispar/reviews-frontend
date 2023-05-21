@@ -45,6 +45,25 @@ const CreateAccountForm = () => {
   };
 
   /**
+   * sets the error message on or off depending on the on boolean.
+   * @param {string} id
+   * @param {boolean} on
+   */
+  const errorMessage = (id, on) => {
+    if (on) {
+      $(`#${id}__container__error`).css('display', 'flex');
+      $(`#${id}__container__label`).css('display', 'none');
+      $(`#${id}__container__cutout`).css('display', 'none');
+      $(`#${id}__container__input`).css('border', '1.5px solid $red');
+    } else {
+      $(`#${id}__container__error`).css('display', 'none');
+      $(`#${id}__container__label`).css('display', 'flex');
+      $(`#${id}__container__cutout`).css('display', 'flex');
+      $(`#${id}__container__input`).css('border', '1.5px solid $orange');
+    }
+  };
+
+  /**
    * Loads listeners to input fields when the app loads fully.
    */
   $(document).ready(() => {
@@ -54,8 +73,8 @@ const CreateAccountForm = () => {
     $('#createEmail').on('change', (val) => {
       const string = val.target.value;
       const regex = /^\w*@\w*\..\w*/;
-      if (regex.test(string)) console.log('true');
-      else console.log('needs to be format email@something.com');
+      if (regex.test(string)) errorMessage('createEmail', false);
+      else errorMessage('createEmail', true);
     });
 
     /**
@@ -64,8 +83,10 @@ const CreateAccountForm = () => {
     $('#createPassword').on('change', (val) => {
       const input = val.target.value;
       setPassword(input);
-      if (input !== confirmPassword) console.log('passwords don\'t match');
-      else console.log('passwords match');
+      if (input !== confirmPassword) errorMessage('createConfirmPassword', true);
+      else {
+        errorMessage('createConfirmPassword', false);
+      }
     });
 
     /**
@@ -74,8 +95,10 @@ const CreateAccountForm = () => {
     $('#createConfirmPassword').on('change', (val) => {
       const input = val.target.value;
       setConfirmPassword(input);
-      if (input !== password) console.log('passwords don\'t match');
-      else console.log('passwords match');
+      if (input !== password) errorMessage('createConfirmPassword', true);
+      else {
+        errorMessage('createConfirmPassword', false);
+      }
     });
   });
 
@@ -87,9 +110,9 @@ const CreateAccountForm = () => {
           <form className="createNew__createAccountForm__inputs__form" id="createNew__createAccountForm__inputs__form" onSubmit={(e) => createAccount(e)}>
             <InputField id="createUsername" title="username" width="280px" />
             <InputField id="createName" title="first name" width="280px" />
-            <InputField id="createEmail" title="email" width="280px" />
-            <InputField id="createPassword" type="password" title="password" width="280px" />
-            <InputField id="createConfirmPassword" type="password" title="confirm password" width="280px" />
+            <InputField id="createEmail" title="email" width="280px" error="doesn't match example@email.com" />
+            <InputField id="createPassword" type="password" title="password" width="280px" error="passwords don't match" />
+            <InputField id="createConfirmPassword" type="password" title="confirm password" width="280px" error="passwords don't match" />
           </form>
           <button className="createNew__createAccountForm__inputs__submit" type="submit" form="createNew__createAccountForm__inputs__form"> submit </button>
         </div>

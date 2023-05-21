@@ -14,9 +14,8 @@
             position: absolute;
             height: 4px;
             width: 60px;
-            top: 0px;
+            top: -1px;
             left: 16px;
-            background: transparent;
             pointer-events:none;
             transition: transform 0.3s;
         }
@@ -54,6 +53,22 @@
                     background: $white;
                 }
             }
+        }
+        &__error {
+            display: none;
+            justify-content: center;
+            padding-right: 4px;
+            position: absolute;
+            white-space: nowrap;
+            height: 12px;
+            top: -9px;
+            left: 20px;
+            pointer-events:none;
+            background: $white;
+            font-size: 12px;
+            pointer-events:none;
+            font-family: mainFont;
+            color: red;
         }
     }
 }
