@@ -1,8 +1,11 @@
 import { useState, React } from 'react';
 import $ from 'jquery';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [navState, setNavState] = useState(false);
+  const navigate = useNavigate();
+
   /**
    * Toggles the nav bar on and off when the hamburger menu is clicked.
    */
@@ -26,9 +29,15 @@ const Header = () => {
       </div>
       <div className="navBar" id="navBar">
         <ul className="navBar__list">
-          <li className="navBar__home"> home </li>
-          <li className="navBar__allItems"> all items </li>
-          <li className="navBar__settings"> settings </li>
+          <li className="navBar__home">
+            <button className="navBar__home__btn" type="button" onClick={() => navigate('/home')}> home </button>
+          </li>
+          <li className="navBar__allItems">
+            <button className="navBar__allItems__btn" type="button" onClick={() => navigate('/all')}> all items </button>
+          </li>
+          <li className="navBar__settings">
+            <button className="navBar__settings__btn" type="button" onClick={() => navigate('/settings')}> settings </button>
+          </li>
         </ul>
       </div>
     </>
