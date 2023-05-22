@@ -3,10 +3,9 @@
     display: flex;
     background: $darkBlue;
     height: 50px;
-    width: 100vw;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 30px;
+    padding-left: 20px;
     &__hamburger {
         position: relative;
         width: 26px;
