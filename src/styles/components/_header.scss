@@ -1,0 +1,103 @@
+@import '../colorsAndFonts';
+.header {
+    display: flex;
+    background: $darkBlue;
+    height: 50px;
+    width: 100vw;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 30px;
+    &__hamburger {
+        position: relative;
+        width: 26px;
+        height: 3px;
+        border-radius: 2px;
+        background: $white;
+        &::before {
+            content: '';
+            width: 26px;
+            height: 3px;
+            border-radius: 2px;
+            background: $white;
+            position: absolute;
+            top: 8px;
+            left: 0px;
+            transition: all 300ms;
+        }
+        &::after {
+            content: '';
+            width: 26px;
+            height: 3px;
+            border-radius: 2px;
+            background: $white;
+            position: absolute;
+            bottom: 8px;
+            left: 0px;
+            transition: all 300ms;
+        }
+
+        &__btn {
+            background: transparent;
+            border: 0px;
+            position: absolute;
+            top: -10px;
+            bottom: -10px;
+            left: -1px;
+            right: 1px;
+            pointer-events: pointer;
+        }
+    }
+}
+
+
+.navBar {
+    display: flex;
+    background: $navBarBlue;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    bottom: 0;
+    width: 160px;
+    transition: all 300ms;
+    transform-origin: left;
+    transform: scaleX(0);
+    &__list {
+        padding-top: 20px;
+    }
+}
+
+.clicked {
+    background: none;
+    &::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+    &::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes growRight {
+    0% {
+        width: 0px;
+    }
+    90% {
+        width: 140px;
+    }
+    100% {
+        width: 160px;
+    }
+}
+
+@keyframes closeLeft {
+    0% {
+        width: 160px;
+    }
+    90% {
+        width: 20px;
+    }
+    100% {
+        width: 0px;
+    }
+}
