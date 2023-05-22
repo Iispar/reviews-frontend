@@ -1,4 +1,5 @@
 @import '../colorsAndFonts.scss';
+@import './_latestReviews';
 .home {
     position: absolute;
     top: 0;
@@ -15,6 +16,7 @@
         width: 100vw;
         grid-template-columns: auto 700px 320px auto;
         grid-template-rows: auto 60px 50px 500px 200px;
+        gap: 20px;
         overflow: scroll;
         &__title {
             grid-row: 3/3;
@@ -27,13 +29,12 @@
             &__text {
                 font-family: 'mainFont';
                 font-size: 36px;
-                line-height: 26px;
+                line-height: 28px;
             }
         }
         &__latestReviews {
             grid-row: 4/4;
             grid-column: 2/2;
-            background: green;
         }
         &__mostPopular {
             grid-row: 4/4;

@@ -19,6 +19,7 @@ const Home = () => {
           <div className="home__grid__title__text">
             Welcome back&nbsp;
             {user}
+            !
           </div>
         </div>
         <div className="home__grid__latestReviews">
