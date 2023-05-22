@@ -21,26 +21,20 @@ const Header = () => {
     }
   };
   return (
-    <>
+    <div>
       <div className="header">
         <div className="header__hamburger" id="header__hamburger">
           <button className="header__hamburger__btn" type="button" onClick={() => toggleNavBar()}> </button>
         </div>
       </div>
       <div className="navBar" id="navBar">
-        <ul className="navBar__list">
-          <li className="navBar__home">
-            <button className="navBar__home__btn" type="button" onClick={() => navigate('/home')}> home </button>
-          </li>
-          <li className="navBar__allItems">
-            <button className="navBar__allItems__btn" type="button" onClick={() => navigate('/all')}> all items </button>
-          </li>
-          <li className="navBar__settings">
-            <button className="navBar__settings__btn" type="button" onClick={() => navigate('/settings')}> settings </button>
-          </li>
-        </ul>
+        <nav className="navBar__list">
+          <button className="navBar__list__home" type="button" onClick={() => navigate('/home')}> home </button>
+          <button className="navBar__list__allItems" type="button" onClick={() => navigate('/all')}> all items </button>
+          <button className="navBar__list__settings" type="button" onClick={() => navigate('/settings')}> settings </button>
+        </nav>
       </div>
-    </>
+    </div>
   );
 };
 
