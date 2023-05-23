@@ -1,5 +1,6 @@
 import React from 'react';
 import ReviewsList from '../../components/ReviewsList';
+import Pagination from '../../components/Pagination';
 import dummyReviews from '../../data/dummyReviews.json';
 
 /**
@@ -17,7 +18,7 @@ const LatestReviews = () => {
         <ReviewsList reviews={reviews} />
       </div>
       <div className="latestReviews__pagination">
-        pagination
+        <Pagination />
       </div>
     </div>
   );
