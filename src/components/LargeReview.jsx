@@ -11,9 +11,12 @@ const LargeReview = (props) => {
   const { body } = props;
   return (
     <div className="largeReview">
-      {body}
-      ,
-      {rating}
+      <div className="largeReview__body">
+        {body}
+      </div>
+      <div className="largeReview__rating">
+        {rating}
+      </div>
     </div>
   );
 };
