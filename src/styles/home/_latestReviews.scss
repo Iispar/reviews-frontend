@@ -1,3 +1,4 @@
+@import '../colorsAndFonts.scss';
 .latestReviews {
     height: 100%;
     display: flex;
@@ -5,12 +6,20 @@
     gap: 10px;
     border: 1px solid black;
     &__header {
-        height: 60px;
-        background: green;
+        display: flex;
+        height: 40px;
+        border: 1px solid green;
+        &__text {
+            display: flex;
+            font-size: 28px;
+            font-family: 'mainFont';
+            height: 100%;
+            line-height: 54px;
+            padding-left: 4px;
+        }
     }
     &__reviews {
         height: 100%;
-        background: green;
     }
     &__pagination {
         height: 40px;
