@@ -18,17 +18,24 @@ const LargeReview = (props) => {
   /**
    * Opens and closes the view of the comment depending on its current state.
    */
-  const expand = () => {
+  const toggle = () => {
+    // close btn is pressed
     if (open) {
       $(`#largeReview__info__${id}`).removeClass('visible');
-      $(`#largeReview__info__body__expandBtn__${id}`).css('display', 'flex');
+      $(`#largeReview__info__rating__expandBtn__${id}`).css('display', 'flex');
       $(`#largeReview__info__closeBtn__${id}`).css('display', 'none');
       $(`#largeReview__info__body__header__${id}`).css('display', 'none');
       $(`#largeReview__info__body__${id}`).removeClass('showAll');
       setOpen(false);
+      // open btn is pressed. First close all tabs, the open correct one.
     } else {
+      $('.largeReview__info').removeClass('visible');
+      $('.largeReview__info__rating__expandBtn').css('display', 'flex');
+      $('.largeReview__info__closeBtn').css('display', 'none');
+      $('.largeReview__info__body__header').css('display', 'none');
+      $('.largeReview__info__body').removeClass('showAll');
       $(`#largeReview__info__${id}`).addClass('visible');
-      $(`#largeReview__info__body__expandBtn__${id}`).css('display', 'none');
+      $(`#largeReview__info__rating__expandBtn__${id}`).css('display', 'none');
       $(`#largeReview__info__closeBtn__${id}`).css('display', 'flex');
       $(`#largeReview__info__body__header__${id}`).css('display', 'flex');
       $(`#largeReview__info__body__${id}`).addClass('showAll');
@@ -45,12 +52,12 @@ const LargeReview = (props) => {
             <span className="largeReview__info__body__date">{date}</span>
           </div>
           <span className="largeReview__info__body__comment">{body}</span>
-          <button className="largeReview__info__body__expandBtn" id={`largeReview__info__body__expandBtn__${id}`} type="button" onClick={() => expand()}> </button>
         </div>
         <div className="largeReview__info__rating">
           <span className="largeReview__info__rating__value">{rating}</span>
+          <button className="largeReview__info__rating__expandBtn" id={`largeReview__info__rating__expandBtn__${id}`} type="button" onClick={() => toggle('open')}> </button>
         </div>
-        <button className="largeReview__info__closeBtn" id={`largeReview__info__closeBtn__${id}`} type="button" onClick={() => expand()}> </button>
+        <button className="largeReview__info__closeBtn" id={`largeReview__info__closeBtn__${id}`} type="button" onClick={() => toggle()}> </button>
       </div>
     </div>
   );

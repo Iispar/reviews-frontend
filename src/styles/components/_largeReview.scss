@@ -1,12 +1,13 @@
 .largeReview {
     display: flex;
-    height: 50px;
+    height: 60px;
     overflow: hidden;
     border-bottom: 1px solid $lightGrey;
     font-family: 'mainFont';
     font-size: 16px;
     padding: 14px;
     overflow: visible;
+    padding-top: 0px;
     &__info {
         display: flex;
         transition: all 0.3s;
@@ -16,6 +17,8 @@
             position: relative;
             width: 80%;
             padding-right: 40px;
+            padding-top: 6px;
+            padding-bottom: 6px;
             overflow: hidden;
             align-items: center;
             text-overflow: ellipsis;
@@ -23,19 +26,6 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
-            &__expandBtn {
-                background: url('../../data/arrowDown.svg');
-                background-size: 100%;
-                background-repeat: no-repeat;
-                background-position: center;
-                position: absolute;
-                border: none;
-                right: 30px;
-                bottom: 4px;
-                height: 20px;
-                width: 20px;
-                filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
-            }
             &__header {
                 display: none;
                 justify-content: space-between;
@@ -73,6 +63,19 @@
             justify-content: center;
             align-items: center;
             padding: 10px;
+            &__expandBtn {
+                background: url('../../data/arrowDown.svg');
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                position: absolute;
+                border: none;
+                right: 4px;
+                top: 0px;
+                height: 20px;
+                width: 20px;
+                filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
+            }
         }
     }
 }
@@ -83,7 +86,7 @@
     background: white;
     z-index: 1;
     padding: 20px;
-    height: 140px;
+    height: 120px;
     border-radius: 5px;
     box-shadow: 0px 0px 2px 2px $shadow;
 }
@@ -91,10 +94,11 @@
 .showAll {
     display: -webkit-box;
     width: 80%;
-    height: 140px;
+    height: 120px;
     padding-right: 40px;
     overflow: scroll;
     align-items: center;
+    padding-top: 0;
     -webkit-line-clamp: all;
     -webkit-box-orient: vertical;
 }
