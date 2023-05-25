@@ -12,6 +12,8 @@ const LargeReview = (props) => {
   const { rating } = props;
   const { body } = props;
   const { id } = props;
+  const { title } = props;
+  const { date } = props;
 
   /**
    * Opens and closes the view of the comment depending on its current state.
@@ -21,11 +23,15 @@ const LargeReview = (props) => {
       $(`#largeReview__info__${id}`).removeClass('visible');
       $(`#largeReview__info__body__expandBtn__${id}`).css('display', 'flex');
       $(`#largeReview__info__closeBtn__${id}`).css('display', 'none');
+      $(`#largeReview__info__body__header__${id}`).css('display', 'none');
+      $(`#largeReview__info__body__${id}`).removeClass('showAll');
       setOpen(false);
     } else {
       $(`#largeReview__info__${id}`).addClass('visible');
       $(`#largeReview__info__body__expandBtn__${id}`).css('display', 'none');
       $(`#largeReview__info__closeBtn__${id}`).css('display', 'flex');
+      $(`#largeReview__info__body__header__${id}`).css('display', 'flex');
+      $(`#largeReview__info__body__${id}`).addClass('showAll');
       setOpen(true);
     }
   };
@@ -33,12 +39,16 @@ const LargeReview = (props) => {
   return (
     <div className="largeReview" id="largeReview">
       <div className="largeReview__info" id={`largeReview__info__${id}`}>
-        <div className="largeReview__info__body">
-          {body}
+        <div className="largeReview__info__body" id={`largeReview__info__body__${id}`}>
+          <div className="largeReview__info__body__header" id={`largeReview__info__body__header__${id}`}>
+            <span className="largeReview__info__body__title">{title}</span>
+            <span className="largeReview__info__body__date">{date}</span>
+          </div>
+          <span className="largeReview__info__body__comment">{body}</span>
           <button className="largeReview__info__body__expandBtn" id={`largeReview__info__body__expandBtn__${id}`} type="button" onClick={() => expand()}> </button>
         </div>
         <div className="largeReview__info__rating">
-          {rating}
+          <span className="largeReview__info__rating__value">{rating}</span>
         </div>
         <button className="largeReview__info__closeBtn" id={`largeReview__info__closeBtn__${id}`} type="button" onClick={() => expand()}> </button>
       </div>
@@ -50,12 +60,16 @@ LargeReview.propTypes = {
   body: propTypes.string,
   rating: propTypes.number,
   id: propTypes.string,
+  title: propTypes.string,
+  date: propTypes.string,
 };
 
 LargeReview.defaultProps = {
   body: null,
   rating: null,
   id: null,
+  title: null,
+  date: null,
 };
 
 export default LargeReview;

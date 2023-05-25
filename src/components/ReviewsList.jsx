@@ -13,7 +13,14 @@ const ReviewsList = (props) => {
   for (let i = 0; i < reviews.length; i += 1) {
     const review = reviews[i];
     list.push(
-      <LargeReview key={review.key} body={review.body} rating={review.rating} id={review.id}>
+      <LargeReview
+        key={review.key}
+        body={review.body}
+        rating={review.rating}
+        id={review.id}
+        title={review.title}
+        date={review.date}
+      >
         {reviews[i]}
       </LargeReview>,
     );

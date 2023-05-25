@@ -16,7 +16,7 @@
             position: relative;
             width: 80%;
             padding-right: 40px;
-            overflow: hidden !important;
+            overflow: hidden;
             align-items: center;
             text-overflow: ellipsis;
             -webkit-line-clamp: 2;
@@ -36,6 +36,21 @@
                 width: 20px;
                 filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
             }
+            &__header {
+                display: none;
+                justify-content: space-between;
+            }
+            &__title {
+                display: flex;
+                font-size: 20px;
+            }
+            &__date {
+                display: flex;
+                padding-top: 6px;
+            }
+            &__comment {
+                height: 100%;
+            }
         }
         &__closeBtn {
             position: absolute;
@@ -52,6 +67,7 @@
         }
         &__rating {
             display: flex;
+            flex-direction: column;
             width: 10%;
             border-left: 2px solid $lightGrey;
             justify-content: center;
@@ -64,16 +80,21 @@
 .visible {
     display: flex;
     justify-content: center;
-    height: 200px;
     background: white;
     z-index: 1;
     padding: 20px;
+    height: 140px;
     border-radius: 5px;
     box-shadow: 0px 0px 2px 2px $shadow;
-    &__button {
-        display: flex;
-    }
-    &__closeBtn {
-        display: none;
-    }
+}
+
+.showAll {
+    display: -webkit-box;
+    width: 80%;
+    height: 140px;
+    padding-right: 40px;
+    overflow: scroll;
+    align-items: center;
+    -webkit-line-clamp: all;
+    -webkit-box-orient: vertical;
 }
