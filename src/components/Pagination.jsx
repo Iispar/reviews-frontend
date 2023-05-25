@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * Creates pagination buttons
+ * @returns pagination buttons
+ */
 // eslint-disable-next-line arrow-body-style
 const Pagination = () => {
   return (
