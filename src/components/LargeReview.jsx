@@ -21,6 +21,8 @@ const LargeReview = (props) => {
   const toggle = () => {
     // close btn is pressed
     if (open) {
+      // scroll to top when we close the div so it doesn't show midlle of the ext.
+      $(`#largeReview__info__body__${id}`).animate({ scrollTop: $(window).scrollTop(0) });
       $(`#largeReview__info__${id}`).removeClass('visible');
       $(`#largeReview__info__rating__expandBtn__${id}`).css('display', 'flex');
       $(`#largeReview__info__closeBtn__${id}`).css('display', 'none');
