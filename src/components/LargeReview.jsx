@@ -23,30 +23,30 @@ const LargeReview = (props) => {
     if (open) {
       // scroll to top when we close the div so it doesn't show midlle of the ext.
       $(`#largeReview__info__body__${id}`).animate({ scrollTop: $(window).scrollTop(0) });
-      $(`#largeReview__info__${id}`).removeClass('visible');
       $(`#largeReview__info__rating__expandBtn__${id}`).css('display', 'flex');
       $(`#largeReview__info__closeBtn__${id}`).css('display', 'none');
       $(`#largeReview__info__body__header__${id}`).css('display', 'none');
       $(`#largeReview__info__body__${id}`).removeClass('showAll');
+      $(`#largeReview__${id}`).css('flex-grow', 0);
       setOpen(false);
       // open btn is pressed. First close all tabs, the open correct one.
     } else {
-      $('.largeReview__info').removeClass('visible');
+      $('.largeReview').css('flex-grow', 0);
       $('.largeReview__info__rating__expandBtn').css('display', 'flex');
       $('.largeReview__info__closeBtn').css('display', 'none');
       $('.largeReview__info__body__header').css('display', 'none');
       $('.largeReview__info__body').removeClass('showAll');
-      $(`#largeReview__info__${id}`).addClass('visible');
       $(`#largeReview__info__rating__expandBtn__${id}`).css('display', 'none');
       $(`#largeReview__info__closeBtn__${id}`).css('display', 'flex');
       $(`#largeReview__info__body__header__${id}`).css('display', 'flex');
       $(`#largeReview__info__body__${id}`).addClass('showAll');
+      $(`#largeReview__${id}`).css('flex-grow', '1');
       setOpen(true);
     }
   };
 
   return (
-    <div className="largeReview" id="largeReview">
+    <div className="largeReview" id={`largeReview__${id}`}>
       <div className="largeReview__info" id={`largeReview__info__${id}`}>
         <div className="largeReview__info__body" id={`largeReview__info__body__${id}`}>
           <div className="largeReview__info__body__header" id={`largeReview__info__body__header__${id}`}>

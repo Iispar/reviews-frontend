@@ -16,7 +16,7 @@
         display: grid;
         height: 100%;
         grid-template-columns: auto 700px 320px auto;
-        grid-template-rows: 50px 10px 50px 250px 125px 125px 200px auto 40px;
+        grid-template-rows: 50px 10px 50px 250px 125px 100px 200px auto 40px;
         gap: 20px;
         overflow: scroll;
         &__header {

@@ -3,7 +3,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     box-shadow: 0px 0px 40px 2px $shadow;
     border-radius: 5px;
     &__header {
@@ -24,6 +23,6 @@
         
     }
     &__pagination {
-        height: 100px;
+        height: 80px;
     }
 }
