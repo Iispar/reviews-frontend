@@ -1,5 +1,6 @@
 @import '../colorsAndFonts.scss';
-@import './_latestReviews';
+@import './latestReviews.scss';
+@import './mostPopular.scss';
 .home {
     position: absolute;
     top: 0;
@@ -41,7 +42,6 @@
         &__mostPopular {
             grid-row: 3/3;
             grid-column: 3/3;
-            background: pink;
         }
         &__homeChart {
             grid-row: 4/4;
