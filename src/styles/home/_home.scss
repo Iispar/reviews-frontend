@@ -16,7 +16,7 @@
         display: grid;
         height: 100%;
         grid-template-columns: auto 700px 320px auto;
-        grid-template-rows: 50px 10px 50px 500px 200px auto 40px;
+        grid-template-rows: 50px 10px 50px 250px 125px 125px 200px auto 40px;
         gap: 20px;
         overflow: scroll;
         &__header {
@@ -39,26 +39,26 @@
             }
         }
         &__latestReviews {
-            grid-row: 4/4;
+            grid-row: 4/7;
             grid-column: 2/2;
         }
         &__mostPopular {
-            grid-row: 4/4;
+            grid-row: 4/6;
             grid-column: 3/3;
         }
         &__homeChart {
-            grid-row: 5/5;
+            grid-row: 7/7;
             grid-column: 2/2;
             background: yellow;
         }
         &__homeChange {
-            grid-row: 5/5;
+            grid-row: 6/8;
             grid-column: 3/3;
             background: orange;
         }
         &__footer {
             background: green;
-            grid-row: 7/7;
+            grid-row: 9/9;
             grid-column: 1/5;
             height: 60px;
             width: 100vw;

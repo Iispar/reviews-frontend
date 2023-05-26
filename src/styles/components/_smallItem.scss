@@ -1,0 +1,27 @@
+.smallItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 5px;
+    width: 90%;
+    height: 40px;
+    &__rank {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 50px;
+        background: red;
+    }
+    &__name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        background: red;
+    }
+}
