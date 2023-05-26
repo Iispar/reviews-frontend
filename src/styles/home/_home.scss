@@ -1,6 +1,7 @@
 @import '../colorsAndFonts.scss';
 @import './latestReviews.scss';
 @import './mostPopular.scss';
+
 .home {
     position: absolute;
     top: 0;
@@ -11,18 +12,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    &__header {
-        width: 100vw;
-    }
     &__grid {
         display: grid;
         height: 100%;
         grid-template-columns: auto 700px 320px auto;
-        grid-template-rows: 10px 50px 500px 200px auto 40px;
+        grid-template-rows: 50px 10px 50px 500px 200px auto 40px;
         gap: 20px;
         overflow: scroll;
+        &__header {
+            grid-row: 1/1;
+            grid-column: 1/5;
+            width: 100vw;
+        }
         &__title {
-            grid-row: 2/2;
+            grid-row: 3/3;
             grid-column: 2/4;
             padding-left: 2px;
             display: flex;
@@ -36,29 +39,35 @@
             }
         }
         &__latestReviews {
-            grid-row: 3/3;
+            grid-row: 4/4;
             grid-column: 2/2;
         }
         &__mostPopular {
-            grid-row: 3/3;
+            grid-row: 4/4;
             grid-column: 3/3;
         }
         &__homeChart {
-            grid-row: 4/4;
+            grid-row: 5/5;
             grid-column: 2/2;
             background: yellow;
         }
         &__homeChange {
-            grid-row: 4/4;
+            grid-row: 5/5;
             grid-column: 3/3;
             background: orange;
         }
         &__footer {
             background: green;
-            grid-row: 6/6;
+            grid-row: 7/7;
             grid-column: 1/5;
             height: 60px;
             width: 100vw;
         }
     }
+}
+
+
+.disableScroll {
+    height: 100vh;
+    overflow: hidden;
 }
