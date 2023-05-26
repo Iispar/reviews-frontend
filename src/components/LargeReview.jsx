@@ -1,4 +1,4 @@
-import { useState, React } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
 
@@ -8,7 +8,6 @@ import $ from 'jquery';
  * @returns singular large review
  */
 const LargeReview = (props) => {
-  const [open, setOpen] = useState(false);
   const { rating } = props;
   const { body } = props;
   const { id } = props;
@@ -17,31 +16,30 @@ const LargeReview = (props) => {
 
   /**
    * Opens and closes the view of the comment depending on its current state.
+   * We need to use props close because if we use for example useState it gets
+   * confused with the different states of the comments. Ie open one and close
+   * it by opening a other one. Then we have a comment with the state open
+   * even tough it is closed, because we can't change the state from the other
+   * component. This is wy we just use open which we tell if the action is
+   * the open action or not. And open will open the selected one as with every
+   * press we have to close all the other ones that might be open...
    */
-  const toggle = () => {
-    // close btn is pressed
+  const toggle = (open) => {
+    // scroll to top when we close the div so it doesn't show midlle of the ext.
+    $('.largeReview__info__body').animate({ scrollTop: $(window).scrollTop(0) });
+    // close all
+    $('.largeReview').css('flex-grow', 0);
+    $('.largeReview__info__rating__expandBtn').css('display', 'flex');
+    $('.largeReview__info__closeBtn').css('display', 'none');
+    $('.largeReview__info__body__header').css('display', 'none');
+    $('.largeReview__info__body').removeClass('showAll');
+    // open btn is pressed. First open correct one.
     if (open) {
-      // scroll to top when we close the div so it doesn't show midlle of the ext.
-      $(`#largeReview__info__body__${id}`).animate({ scrollTop: $(window).scrollTop(0) });
-      $(`#largeReview__info__rating__expandBtn__${id}`).css('display', 'flex');
-      $(`#largeReview__info__closeBtn__${id}`).css('display', 'none');
-      $(`#largeReview__info__body__header__${id}`).css('display', 'none');
-      $(`#largeReview__info__body__${id}`).removeClass('showAll');
-      $(`#largeReview__${id}`).css('flex-grow', 0);
-      setOpen(false);
-      // open btn is pressed. First close all tabs, the open correct one.
-    } else {
-      $('.largeReview').css('flex-grow', 0);
-      $('.largeReview__info__rating__expandBtn').css('display', 'flex');
-      $('.largeReview__info__closeBtn').css('display', 'none');
-      $('.largeReview__info__body__header').css('display', 'none');
-      $('.largeReview__info__body').removeClass('showAll');
       $(`#largeReview__info__rating__expandBtn__${id}`).css('display', 'none');
       $(`#largeReview__info__closeBtn__${id}`).css('display', 'flex');
       $(`#largeReview__info__body__header__${id}`).css('display', 'flex');
       $(`#largeReview__info__body__${id}`).addClass('showAll');
       $(`#largeReview__${id}`).css('flex-grow', '1');
-      setOpen(true);
     }
   };
 
@@ -57,7 +55,7 @@ const LargeReview = (props) => {
         </div>
         <div className="largeReview__info__rating">
           <span className="largeReview__info__rating__value">{rating}</span>
-          <button className="largeReview__info__rating__expandBtn" id={`largeReview__info__rating__expandBtn__${id}`} type="button" onClick={() => toggle('open')}> </button>
+          <button className="largeReview__info__rating__expandBtn" id={`largeReview__info__rating__expandBtn__${id}`} type="button" onClick={() => toggle(true)}> </button>
         </div>
         <button className="largeReview__info__closeBtn" id={`largeReview__info__closeBtn__${id}`} type="button" onClick={() => toggle()}> </button>
       </div>
