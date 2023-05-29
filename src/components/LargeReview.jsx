@@ -55,6 +55,7 @@ const LargeReview = (props) => {
         </div>
         <div className="largeReview__info__rating">
           <span className="largeReview__info__rating__value">{rating}</span>
+          <span className="largeReview__info__rating__icon" />
           <button className="largeReview__info__rating__expandBtn" id={`largeReview__info__rating__expandBtn__${id}`} type="button" onClick={() => toggle(true)}> </button>
         </div>
         <button className="largeReview__info__closeBtn" id={`largeReview__info__closeBtn__${id}`} type="button" onClick={() => toggle()}> </button>
