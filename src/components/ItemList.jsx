@@ -13,7 +13,7 @@ const ItemList = (props) => {
     productList.push(
       <SmallItem
         item={items[i].item}
-        position={i}
+        rating={items[i].rating}
         key={items[i].key}
       />,
     );

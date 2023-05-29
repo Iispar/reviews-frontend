@@ -7,23 +7,26 @@ import propTypes from 'prop-types';
  */
 const SmallItem = (props) => {
   const { item } = props;
-  const { position } = props;
+  const { rating } = props;
   return (
     <div className="smallItem">
-      <span className="smallItem__rank">{position}</span>
       <span className="smallItem__name">{item}</span>
+      <div className="smallItem__rating">
+        <span className="smallItem__rating__value">{rating}</span>
+        <span className="smallItem__rating__icon" />
+      </div>
     </div>
   );
 };
 
 SmallItem.propTypes = {
   item: propTypes.string,
-  position: propTypes.number,
+  rating: propTypes.number,
 };
 
 SmallItem.defaultProps = {
   item: null,
-  position: null,
+  rating: null,
 };
 
 export default SmallItem;

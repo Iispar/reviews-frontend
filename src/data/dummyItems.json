@@ -2,23 +2,28 @@
 "items": [
         {
             "item": "item 1",
-            "key": "123"
+            "key": "123",
+            "rating": "4.9"
         },
         {
             "item": "item 2",
-            "key": "111"
+            "key": "111",
+            "rating": "4.7"
         },
         {
             "item": "item 3",
-            "key": "222"
+            "key": "222",
+            "rating": "4.5"
         },
         {
             "item": "item 4",
-            "key": "333"
+            "key": "333",
+            "rating": "4.2"
         },
         {
             "item": "item 5",
-            "key": "321"
+            "key": "321",
+            "rating": "4.1"
         }
     ]
 }
