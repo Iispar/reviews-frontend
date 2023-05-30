@@ -66,7 +66,7 @@ const CreateAccountForm = () => {
   /**
    * Loads listeners to input fields when the app loads fully.
    */
-  $(document).on('ready', () => {
+  $(document).ready(() => {
     /**
      * Checks the email is the correct format
      */
