@@ -74,7 +74,7 @@ const LoginForm = () => {
       </div>
       <div className="login__createAccount">
         Don&apos;t have an account?&nbsp;
-        <span className="login__createAccount__button" role="button" tabIndex={0} onClick={() => changeView()} onKeyDown={() => changeView()}> Create new </span>
+        <span className="login__createAccount__button" id="login__createAccount__button" role="button" tabIndex={0} onClick={() => changeView()} onKeyDown={() => changeView()}> Create new </span>
       </div>
     </div>
   );
