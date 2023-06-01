@@ -69,7 +69,7 @@ const LoginForm = () => {
               </form>
             </div>
           </div>
-          <button type="submit" className="login__loginForm__inputs__loginBtn" form="loginForm__inputs__form"> login </button>
+          <button type="submit" className="login__loginForm__inputs__loginBtn" id="login__loginForm__inputs__loginBtn" name="loginBtn" form="loginForm__inputs__form"> login </button>
         </div>
       </div>
       <div className="login__createAccount">
