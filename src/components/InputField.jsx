@@ -21,7 +21,7 @@ const InputField = (props) => {
   return (
     <div className={name} id={id}>
       <div className={`${name}__container`} style={{ width }}>
-        <input className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} />
+        <input data-testid={id} className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} />
         <div className={`${name}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
         <div className={`${name}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>
           {error}

@@ -105,7 +105,7 @@ const CreateAccountForm = () => {
   return (
     <div className="createNew" id="createNew">
       <div className="createNew__createAccountForm">
-        <div className="createNew__createAccountForm__header"> Create account </div>
+        <div className="createNew__createAccountForm__header" id="createNew__createAccountForm__header"> Create account </div>
         <div className="createNew__createAccountForm__inputs">
           <form className="createNew__createAccountForm__inputs__form" id="createNew__createAccountForm__inputs__form" onSubmit={(e) => createAccount(e)}>
             <InputField id="createUsername" title="username" width="280px" />
@@ -114,12 +114,12 @@ const CreateAccountForm = () => {
             <InputField id="createPassword" type="password" title="password" width="280px" error="passwords don't match" />
             <InputField id="createConfirmPassword" type="password" title="confirm password" width="280px" error="passwords don't match" />
           </form>
-          <button className="createNew__createAccountForm__inputs__submit" type="submit" form="createNew__createAccountForm__inputs__form"> submit </button>
+          <button className="createNew__createAccountForm__inputs__submit" id="createNew__createAccountForm__inputs__submit" type="submit" form="createNew__createAccountForm__inputs__form"> submit </button>
         </div>
       </div>
       <div className="createNew__login">
         Already have an account?&nbsp;
-        <span className="createNew__login__button" role="button" tabIndex={0} onClick={() => changeView()} onKeyDown={() => changeView()}> Login </span>
+        <span className="createNew__login__button" id="createNew__login__button" role="button" tabIndex={0} onClick={() => changeView()} onKeyDown={() => changeView()}> Login </span>
       </div>
     </div>
   );

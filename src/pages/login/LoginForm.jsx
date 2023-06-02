@@ -54,7 +54,7 @@ const LoginForm = () => {
   return (
     <div className="login" id="login">
       <div className="login__loginForm">
-        <div className="login__loginForm__header"> Login </div>
+        <div className="login__loginForm__header" id="login__loginForm__header"> Login </div>
         <div className="login__loginForm__inputs">
           <form className="login__loginForm__inputs__form" id="loginForm__inputs__form" onSubmit={(e) => login(e)}>
             <InputField id="loginUsername" title="username" width="280px" />
@@ -65,7 +65,7 @@ const LoginForm = () => {
             <div className="login__loginForm__inputs__passwordInfo__contact" id="login__loginForm__inputs__passwordInfo__contact">
               <form className="login__loginForm__inputs__passwordInfo__contact__email" id="login__loginForm__inputs__passwordInfo__contact__email" onSubmit={() => getPassword()}>
                 <InputField title="enter your email" width="220px" />
-                <button type="submit" className="login__loginForm__inputs__passwordInfo__contact__email__resetBtn"> get new password </button>
+                <button type="submit" className="login__loginForm__inputs__passwordInfo__contact__email__resetBtn" id="login__loginForm__inputs__passwordInfo__contact__email__resetBtn"> get new password </button>
               </form>
             </div>
           </div>
