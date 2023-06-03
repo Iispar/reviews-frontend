@@ -10,11 +10,11 @@ const Home = () => {
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState('Name');
   return (
-    <div className="home">
-      <div className="home__header">
-        <Header />
-      </div>
-      <div className="home__grid">
+    <div className="home" id="home">
+      <div className="home__grid" id="home__grid">
+        <div className="home__grid__header">
+          <Header />
+        </div>
         <div className="home__grid__title">
           <div className="home__grid__title__text">
             Welcome back&nbsp;

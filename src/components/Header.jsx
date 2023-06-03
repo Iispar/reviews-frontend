@@ -14,9 +14,11 @@ const Header = () => {
       $('#navBar').css('transform', 'scaleX(0)');
       setNavState(false);
       $('#header__hamburger').removeClass('clicked');
+      $('#home__grid').removeClass('disableScroll');
     } else {
       $('#navBar').css('transform', 'scaleX(1)');
       $('#header__hamburger').addClass('clicked');
+      $('#home__grid').addClass('disableScroll');
       setNavState(true);
     }
   };
@@ -24,7 +26,7 @@ const Header = () => {
     <div>
       <div className="header">
         <div className="header__hamburger" id="header__hamburger">
-          <button className="header__hamburger__btn" type="button" onClick={() => toggleNavBar()}> </button>
+          <button className="header__hamburger__btn" id="header__hamburger__btn" type="button" onClick={() => toggleNavBar()}> </button>
         </div>
       </div>
       <div className="navBar" id="navBar">

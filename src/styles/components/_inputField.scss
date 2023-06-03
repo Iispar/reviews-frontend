@@ -34,10 +34,9 @@
             height: 40px;
             width: 100%;
             border-radius: 5px;
-            border: 0px solid;
             background: $white;
             border: 1px solid $grey;
-            font-family: mainFont;
+            font-family: 'mainFont';
             &::placeholder {
                 opacity: 0;
                 pointer-events:none;
@@ -57,12 +56,13 @@
         &__error {
             display: none;
             justify-content: center;
+            align-items: center;
             padding-right: 4px;
             position: absolute;
             white-space: nowrap;
             height: 12px;
-            top: -9px;
-            left: 20px;
+            top: -7px;
+            left: 14px;
             pointer-events:none;
             background: $white;
             font-size: 12px;

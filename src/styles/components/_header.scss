@@ -6,12 +6,14 @@
     justify-content: flex-start;
     align-items: center;
     padding-left: 20px;
+    width: 100vw;
     &__hamburger {
         position: relative;
         width: 26px;
         height: 3px;
         border-radius: 2px;
         background: $white;
+        z-index: 1;
         &::before {
             content: '';
             width: 26px;
@@ -53,13 +55,14 @@
     display: flex;
     background: $navBarBlue;
     position: absolute;
-    top: 40px;
+    top: 0px;
     left: 0;
     bottom: 0;
     width: 160px;
     transition: all 300ms;
     transform-origin: left;
     transform: scaleX(0);
+    padding-top: 50px;
     &__list {
         display: flex;
         flex-direction: column;
