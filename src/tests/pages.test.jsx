@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Login from '../pages/login/Login';
 import LoginForm from '../pages/login/LoginForm';
+import CreateAccountForm from '../pages/login/CreateAccountForm';
 
 const mockedUsedNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
@@ -57,6 +58,7 @@ describe('pages render correctly', () => {
       await user.click(loginBtn);
       expect(mockLogin).toBeCalledTimes(1);
     });
+
     test('create account form renders with components', async () => {
       const pageContainer = render(<Login visible />).container;
       // const user = userEvent.setup();
@@ -81,6 +83,37 @@ describe('pages render correctly', () => {
       expect(createConfirmPassword).toBeTruthy();
       expect(header).toBeTruthy();
       expect(createBtn).toBeTruthy();
+    });
+
+    /**
+     * Renders the create account page and fills the input values, checks they work. Then
+     * clicks the createe button and checks that the button calls a mock
+     */
+    test('create form buttons call', async () => {
+      const mockCreate = jest.fn((e) => e.preventDefault());
+      const createContainer = render(<CreateAccountForm onSubmit={mockCreate} />).container;
+
+      const username = createContainer.querySelector('#createUsername__container__input');
+      const nameField = createContainer.querySelector('#createName__container__input');
+      const createEmail = createContainer.querySelector('#createEmail__container__input');
+      const createPassword = createContainer.querySelector('#createPassword__container__input');
+      const createConfirmPassword = createContainer.querySelector('#createConfirmPassword__container__input');
+
+      await userEvent.type(username, 'x');
+      await userEvent.type(nameField, 'y');
+      await userEvent.type(createEmail, 'x');
+      await userEvent.type(createPassword, 'y');
+      await userEvent.type(createConfirmPassword, 'x');
+
+      expect(username).toHaveValue('x');
+      expect(nameField).toHaveValue('y');
+      expect(createEmail).toHaveValue('x');
+      expect(createPassword).toHaveValue('y');
+      expect(createConfirmPassword).toHaveValue('x');
+
+      const loginBtn = createContainer.querySelector('#createNew__createAccountForm__inputs__submit');
+      await user.click(loginBtn);
+      expect(mockCreate).toBeCalledTimes(1);
     });
   });
 });
