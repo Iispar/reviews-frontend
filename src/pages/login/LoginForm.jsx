@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import $ from 'jquery';
 import { useState, React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InputField from '../../components/InputField';
+import useLogin from './useLogin';
 
 /**
  * creates the sign in form.
@@ -17,6 +19,7 @@ const LoginForm = () => {
   const changeView = () => {
     $('#login').css('display', 'none');
     $('#createNew').css('display', 'flex');
+    $('#loginForm__inputs__form').trigger('reset');
   };
 
   /**
@@ -42,8 +45,10 @@ const LoginForm = () => {
   /**
    * Handles the login and moves to home page.
    */
-  const login = () => {
-    navigate('/home');
+  const login = (e) => {
+    e.preventDefault();
+    const values = e.target;
+    if (useLogin(values[0].value, values[1].value)) navigate('/home');
   };
 
   return (
@@ -51,9 +56,9 @@ const LoginForm = () => {
       <div className="login__loginForm">
         <div className="login__loginForm__header"> Login </div>
         <div className="login__loginForm__inputs">
-          <form className="login__loginForm__inputs__form" id="loginForm__inputs__form">
-            <InputField title="username" width="280px" />
-            <InputField title="password" width="280px" />
+          <form className="login__loginForm__inputs__form" id="loginForm__inputs__form" onSubmit={(e) => login(e)}>
+            <InputField id="loginUsername" title="username" width="280px" />
+            <InputField id="loginPassword" type="password" title="password" width="280px" />
           </form>
           <div className="login__loginForm__inputs__passwordInfo">
             <button type="button" className="login__loginForm__inputs__passwordInfo__forgotPassword" onClick={() => switchContact()}> Forgot password? </button>
@@ -64,7 +69,7 @@ const LoginForm = () => {
               </form>
             </div>
           </div>
-          <button type="submit" className="login__loginForm__inputs__loginBtn" form="loginForm__inputs__form" onClick={() => login()}> login </button>
+          <button type="submit" className="login__loginForm__inputs__loginBtn" form="loginForm__inputs__form"> login </button>
         </div>
       </div>
       <div className="login__createAccount">

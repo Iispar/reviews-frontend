@@ -1,0 +1,23 @@
+.largeReview {
+    display: flex;
+    height: 50px;
+    overflow: hidden;
+    border-bottom: 1px solid $lightGrey;
+    font-family: 'mainFont';
+    font-size: 16px;
+    padding: 14px;
+    &__body {
+        display: flex;
+        width: 90%;
+        padding-right: 40px;
+        overflow: hidden;
+        align-items: center;
+    }
+    &__rating {
+        display: flex;
+        width: 10%;
+        border-left: 2px solid $lightGrey;
+        justify-content: center;
+        align-items: center;
+    }
+}
