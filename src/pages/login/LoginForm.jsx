@@ -51,7 +51,7 @@ const LoginForm = (props) => {
             <InputField id="loginPassword" type="password" title="password" width="280px" />
           </form>
           <div className="login__loginForm__inputs__passwordInfo">
-            <button type="button" className="login__loginForm__inputs__passwordInfo__forgotPassword" onClick={() => switchContact()}> Forgot password? </button>
+            <button type="button" className="login__loginForm__inputs__passwordInfo__forgotPassword" id="login__loginForm__inputs__passwordInfo__forgotPassword" onClick={() => switchContact()}> Forgot password? </button>
             <div className="login__loginForm__inputs__passwordInfo__contact" id="login__loginForm__inputs__passwordInfo__contact">
               <form className="login__loginForm__inputs__passwordInfo__contact__email" id="login__loginForm__inputs__passwordInfo__contact__email" onSubmit={(e) => getPassword(e)}>
                 <InputField title="enter your email" width="220px" />

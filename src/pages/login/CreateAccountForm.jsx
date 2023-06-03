@@ -20,15 +20,6 @@ const CreateAccountForm = (props) => {
     $('#createNew__createAccountForm__inputs__form').trigger('reset');
   };
 
-  // /**
-  //  * Informs the user of a succesful login. Also resets the form and moves to login page.
-  //  */
-  // const succesfulCreation = () => {
-  //   $('#createNew__createAccountForm__inputs__form').trigger('reset');
-  //   console.log('succesful creation');
-  //   changeView();
-  // };
-
   /**
    * sets the error message on or off depending on the on boolean.
    * @param {string} id

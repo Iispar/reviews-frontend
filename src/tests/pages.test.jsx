@@ -49,14 +49,27 @@ describe('pages render correctly', () => {
 
       const username = loginContainer.querySelector('#loginUsername__container__input');
       const password = loginContainer.querySelector('#loginPassword__container__input');
-      await userEvent.type(username, 'x');
-      await userEvent.type(password, 'y');
-      expect(username).toHaveValue('x');
-      expect(password).toHaveValue('y');
+      await userEvent.type(username, 'testUser');
+      await userEvent.type(password, 'testPass');
+      expect(username).toHaveValue('testUser');
+      expect(password).toHaveValue('testPass');
 
       const loginBtn = loginContainer.querySelector('#login__loginForm__inputs__loginBtn');
       await user.click(loginBtn);
+      // TODO: confirm input fields go to call?
+      // console.log(mockLogin.mock.calls[0][0].target.child[0].value);
       expect(mockLogin).toBeCalledTimes(1);
+    });
+
+    test('login forgot password opens form', async () => {
+      const loginContainer = render(<LoginForm />).container;
+      const div = loginContainer.querySelector('#login__loginForm__inputs__passwordInfo__contact');
+      const forgotBtn = loginContainer.querySelector('#login__loginForm__inputs__passwordInfo__forgotPassword');
+      expect(div).toHaveStyle('display: block');
+
+      await user.click(forgotBtn);
+
+      expect(div).toHaveStyle('display: flex');
     });
 
     test('create account form renders with components', async () => {
@@ -99,17 +112,17 @@ describe('pages render correctly', () => {
       const createPassword = createContainer.querySelector('#createPassword__container__input');
       const createConfirmPassword = createContainer.querySelector('#createConfirmPassword__container__input');
 
-      await userEvent.type(username, 'x');
-      await userEvent.type(nameField, 'y');
-      await userEvent.type(createEmail, 'x');
-      await userEvent.type(createPassword, 'y');
-      await userEvent.type(createConfirmPassword, 'x');
+      await userEvent.type(username, 'testUser');
+      await userEvent.type(nameField, 'testName');
+      await userEvent.type(createEmail, 'testEmail');
+      await userEvent.type(createPassword, 'testPass');
+      await userEvent.type(createConfirmPassword, 'testPass');
 
-      expect(username).toHaveValue('x');
-      expect(nameField).toHaveValue('y');
-      expect(createEmail).toHaveValue('x');
-      expect(createPassword).toHaveValue('y');
-      expect(createConfirmPassword).toHaveValue('x');
+      expect(username).toHaveValue('testUser');
+      expect(nameField).toHaveValue('testName');
+      expect(createEmail).toHaveValue('testEmail');
+      expect(createPassword).toHaveValue('testPass');
+      expect(createConfirmPassword).toHaveValue('testPass');
 
       const loginBtn = createContainer.querySelector('#createNew__createAccountForm__inputs__submit');
       await user.click(loginBtn);
