@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { useTextWidth } from '@tag0/use-text-width';
+import $ from 'jquery';
 
 /**
  * Styling and functionality for the search fields in the application.
@@ -18,10 +19,14 @@ const InputField = (props) => {
   const cutoutWidth = useTextWidth({ text: title, font: '16px hind' });
   const errorWidth = useTextWidth({ text: error, font: '15px hind' });
 
+  $(document).ready(() => {
+    // console.log($(`#${id}__title`).width());
+  });
+
   return (
     <div className={name} id={id}>
       <div className={`${name}__container`} style={{ width }}>
-        <input data-testid={id} className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} />
+        <input className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} />
         <div className={`${name}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
         <div className={`${name}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>
           {error}

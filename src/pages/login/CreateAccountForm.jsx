@@ -1,15 +1,16 @@
 import { useState, React } from 'react';
 import $ from 'jquery';
+import propTypes from 'prop-types';
 import InputField from '../../components/InputField';
-import useCreateAccount from './useCreateAccount';
 
 /**
  * creates the create accoun form.
  * @returns create account form
  */
-const CreateAccountForm = () => {
+const CreateAccountForm = (props) => {
   const [password, setPassword] = useState('null');
   const [confirmPassword, setConfirmPassword] = useState('null');
+  const { onSubmit } = props;
   /**
    * changes view between create account and login view.
    */
@@ -19,30 +20,14 @@ const CreateAccountForm = () => {
     $('#createNew__createAccountForm__inputs__form').trigger('reset');
   };
 
-  /**
-   * Informs the user of a succesful login. Also resets the form and moves to login page.
-   */
-  const succesfulCreation = () => {
-    $('#createNew__createAccountForm__inputs__form').trigger('reset');
-    console.log('succesful creation');
-    changeView();
-  };
-
-  /**
-   * creates a new account.
-   * @param username, password, email, name
-   */
-  const createAccount = (e) => {
-    e.preventDefault();
-    const values = e.target;
-    if (useCreateAccount(
-      values[0].value,
-      values[1].value,
-      values[2].value,
-      values[3].value,
-      values[4].value,
-    )) succesfulCreation();
-  };
+  // /**
+  //  * Informs the user of a succesful login. Also resets the form and moves to login page.
+  //  */
+  // const succesfulCreation = () => {
+  //   $('#createNew__createAccountForm__inputs__form').trigger('reset');
+  //   console.log('succesful creation');
+  //   changeView();
+  // };
 
   /**
    * sets the error message on or off depending on the on boolean.
@@ -107,7 +92,7 @@ const CreateAccountForm = () => {
       <div className="createNew__createAccountForm">
         <div className="createNew__createAccountForm__header" id="createNew__createAccountForm__header"> Create account </div>
         <div className="createNew__createAccountForm__inputs">
-          <form className="createNew__createAccountForm__inputs__form" id="createNew__createAccountForm__inputs__form" onSubmit={(e) => createAccount(e)}>
+          <form className="createNew__createAccountForm__inputs__form" id="createNew__createAccountForm__inputs__form" onSubmit={(e) => onSubmit(e)}>
             <InputField id="createUsername" title="username" width="280px" />
             <InputField id="createName" title="first name" width="280px" />
             <InputField id="createEmail" title="email" width="280px" error="doesn't match example@email.com" />
@@ -119,10 +104,18 @@ const CreateAccountForm = () => {
       </div>
       <div className="createNew__login">
         Already have an account?&nbsp;
-        <span className="createNew__login__button" id="createNew__login__button" role="button" tabIndex={0} onClick={() => changeView()} onKeyDown={() => changeView()}> Login </span>
+        <button className="createNew__login__button" id="createNew__login__button" type="button" tabIndex={0} onClick={() => changeView()} onKeyDown={() => changeView()}> Login </button>
       </div>
     </div>
   );
+};
+
+CreateAccountForm.propTypes = {
+  onSubmit: propTypes.func,
+};
+
+CreateAccountForm.defaultProps = {
+  onSubmit: null,
 };
 
 export default CreateAccountForm;
