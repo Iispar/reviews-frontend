@@ -149,8 +149,13 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   cursor: default;
 }
 .login__createAccount__button {
+  font-family: mainFont;
+  font-size: 16px;
   color: #2156c0;
   cursor: pointer;
+  border: 0;
+  background: transparent;
+  padding: 0;
 }
 
 @font-face {
@@ -246,6 +251,11 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 .createNew__login__button {
   color: #2156c0;
   cursor: pointer;
+  font-family: mainFont;
+  font-size: 16px;
+  border: 0;
+  background: transparent;
+  padding: 0;
 }
 
 .login-grid {
@@ -323,6 +333,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 }
 .searchField__container__error {
   display: none;
+  visibility: hidden;
   justify-content: center;
   align-items: center;
   padding-right: 4px;
