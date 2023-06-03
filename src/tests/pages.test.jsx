@@ -2,15 +2,10 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { BrowserRouter } from 'react-router-dom';
 import Login from '../pages/login/Login';
 import LoginForm from '../pages/login/LoginForm';
 import CreateAccountForm from '../pages/login/CreateAccountForm';
-
-const mockedUsedNavigate = jest.fn();
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
-}));
 
 describe('pages render correctly', () => {
   let user;
@@ -23,7 +18,11 @@ describe('pages render correctly', () => {
      * Renders the login page and checks that every component exists there.
      */
     test('login form renders with components', () => {
-      const pageContainer = render(<Login visible />).container;
+      const pageContainer = render(
+        <BrowserRouter>
+          <Login visible />
+        </BrowserRouter>,
+      ).container;
       const header = pageContainer.querySelector('#login__loginForm__header');
       const usernameField = pageContainer.querySelector('#loginUsername');
       const passwordField = pageContainer.querySelector('#loginPassword');
@@ -73,7 +72,11 @@ describe('pages render correctly', () => {
     });
 
     test('create account form renders with components', async () => {
-      const pageContainer = render(<Login visible />).container;
+      const pageContainer = render(
+        <BrowserRouter>
+          <Login visible />
+        </BrowserRouter>,
+      ).container;
       // const user = userEvent.setup();
       // const createAccountBtn = container.querySelector('#login__createAccount__button');
 
