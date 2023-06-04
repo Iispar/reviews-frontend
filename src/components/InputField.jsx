@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { useTextWidth } from '@tag0/use-text-width';
 import $ from 'jquery';
+import { useTextWidth } from './helpers';
 
 /**
  * Styling and functionality for the search fields in the application.
@@ -16,8 +16,8 @@ const InputField = (props) => {
   const { type } = props;
   const { error } = props;
   // hook to calculate the width of the text
-  const cutoutWidth = useTextWidth({ text: title, font: '16px hind' });
-  const errorWidth = useTextWidth({ text: error, font: '15px hind' });
+  const cutoutWidth = useTextWidth(title, '16px hind');
+  const errorWidth = useTextWidth(error, '15px hind');
 
   $(document).ready(() => {
     // console.log($(`#${id}__title`).width());
