@@ -25,7 +25,7 @@ const LoginForm = (props) => {
    */
   const getPassword = (e) => {
     e.preventDefault();
-    console.log('sent');
+    // console.log('sent');
   };
 
   /**
