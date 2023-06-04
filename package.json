@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@tag0/use-text-width": "^1.2.0",
     "get-text-width": "^1.0.3",
     "jest": "^27.5.1",
     "jquery": "^3.7.0",
