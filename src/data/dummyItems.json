@@ -6,12 +6,12 @@
             "rating": "4.9"
         },
         {
-            "item": "item 2",
+            "item": "item 2 with a longer name",
             "key": "111",
             "rating": "4.7"
         },
         {
-            "item": "item 3",
+            "item": "item 3 with an even longer name that could be this",
             "key": "222",
             "rating": "4.5"
         },

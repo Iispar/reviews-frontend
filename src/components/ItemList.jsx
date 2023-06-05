@@ -15,6 +15,7 @@ const ItemList = (props) => {
         item={items[i].item}
         rating={items[i].rating}
         key={items[i].key}
+        id={items[i].key}
       />,
     );
   }
