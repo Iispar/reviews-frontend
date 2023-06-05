@@ -333,7 +333,6 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 }
 .searchField__container__error {
   display: none;
-  visibility: hidden;
   justify-content: center;
   align-items: center;
   padding-right: 4px;
@@ -506,14 +505,20 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   border-bottom: 1px solid #c2c2c2;
   font-family: "mainFont";
   font-size: 16px;
-  padding-top: 0px;
-  padding: 10px;
   transition: all 0.3s;
+  padding-bottom: 12px;
+  margin-right: 20px;
+  margin-left: 20px;
+  justify-content: center;
+  max-height: 150px;
 }
 .largeReview__info {
   display: flex;
   position: relative;
   width: 100%;
+  max-height: 140px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .largeReview__info__body {
   display: -webkit-box;
@@ -534,12 +539,13 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 .largeReview__info__body__header {
   display: none;
   justify-content: space-between;
+  padding-bottom: 10px;
 }
-.largeReview__info__body__title {
+.largeReview__info__body__header__title {
   display: flex;
   font-size: 20px;
 }
-.largeReview__info__body__date {
+.largeReview__info__body__header__date {
   display: flex;
   padding-top: 6px;
 }
@@ -599,8 +605,8 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 
 .showAll {
   display: block;
-  height: 140px;
-  padding-top: 0;
+  height: 120px;
+  padding-top: 0px;
   overflow: scroll;
   -webkit-line-clamp: none;
   -webkit-box-orient: vertical;
@@ -608,13 +614,15 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 
 .reviewsList {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 400px;
   width: 100%;
+  padding: 10px;
   padding-bottom: 0px;
   justify-content: space-around;
   flex-flow: column wrap;
   align-items: stretch;
+  flex-wrap: nowrap;
 }
 
 .pagination {
@@ -673,7 +681,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 .smallItem__name {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: center;
   height: 100%;
   width: 100%;
   font-size: 20px;

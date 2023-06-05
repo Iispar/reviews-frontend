@@ -1,10 +1,12 @@
 .reviewsList {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 400px;
     width: 100%;
+    padding: 10px;
     padding-bottom: 0px;
     justify-content: space-around;
     flex-flow: column wrap;
     align-items: stretch;
+    flex-wrap: nowrap;
 }
