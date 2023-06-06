@@ -1,3 +1,4 @@
+@import './fileInput';
 .allItems {
     position: absolute;
     top: 0;
@@ -26,7 +27,6 @@
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
-            background: red;
             &__text {
                 font-family: 'mainFont';
                 font-size: 36px;
@@ -41,7 +41,8 @@
         &__fileInput {
             grid-row: 4/4;
             grid-column: 3/3;
-            background: orange;
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
         &__footer {
             grid-row: 6/6;

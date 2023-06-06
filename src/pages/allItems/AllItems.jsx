@@ -13,7 +13,7 @@ const AllItems = () => {
           <Header />
         </div>
         <div className="allItems__grid__title">
-          all items
+          <span className="allItems__grid__title__text"> All your items </span>
         </div>
         <div className="allItems__grid__items">
           <ItemList />

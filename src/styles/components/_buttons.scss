@@ -5,9 +5,14 @@ btn {
     height: 36px;
     border-radius: 20px;
     border: 0px;
-    background: $orange;
+    border: 1px solid $orange;
+    background: $white;
     font-size: 16px;
     font-family: mainFont;
+    &:hover {
+        box-shadow: 0 0 2px 1px $orange;
+        border: 0px;
+    }
 }
 
 pagination-btn {

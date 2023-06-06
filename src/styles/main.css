@@ -3,16 +3,21 @@
   letter-spacing: 2px;
   src: url("../data/mulish.ttf");
 }
-btn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .login__loginForm__inputs__loginBtn {
+btn, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .login__loginForm__inputs__loginBtn {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 36px;
   border-radius: 20px;
   border: 0px;
-  background: #EF8354;
+  border: 1px solid #EF8354;
+  background: #FFFFFF;
   font-size: 16px;
   font-family: mainFont;
+}
+btn:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .login__loginForm__inputs__loginBtn:hover {
+  box-shadow: 0 0 2px 1px #EF8354;
+  border: 0px;
 }
 
 pagination-btn, .pagination__next, .pagination__prev {
@@ -163,16 +168,21 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   letter-spacing: 2px;
   src: url("../data/mulish.ttf");
 }
-btn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn {
+btn, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 36px;
   border-radius: 20px;
   border: 0px;
-  background: #EF8354;
+  border: 1px solid #EF8354;
+  background: #FFFFFF;
   font-size: 16px;
   font-family: mainFont;
+}
+btn:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover {
+  box-shadow: 0 0 2px 1px #EF8354;
+  border: 0px;
 }
 
 pagination-btn, .pagination__next, .pagination__prev {
@@ -273,7 +283,6 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 .searchField {
   display: flex;
   position: relative;
-  height: 50px;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -305,12 +314,15 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   color: #545454;
 }
 .searchField__container__input {
-  height: 40px;
+  height: 100%;
   width: 100%;
   border-radius: 5px;
   background: #FFFFFF;
   border: 1px solid #545454;
   font-family: "mainFont";
+  font-size: 16px;
+  padding: 4px;
+  box-sizing: border-box;
 }
 .searchField__container__input::-moz-placeholder {
   opacity: 0;
@@ -349,16 +361,21 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   color: red;
 }
 
-btn, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .createNew__createAccountForm__inputs__submit {
+btn, .fileInput__form__submitBtn, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .createNew__createAccountForm__inputs__submit {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 36px;
   border-radius: 20px;
   border: 0px;
-  background: #EF8354;
+  border: 1px solid #EF8354;
+  background: #FFFFFF;
   font-size: 16px;
   font-family: mainFont;
+}
+btn:hover, .fileInput__form__submitBtn:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .createNew__createAccountForm__inputs__submit:hover {
+  box-shadow: 0 0 2px 1px #EF8354;
+  border: 0px;
 }
 
 pagination-btn, .pagination__next, .pagination__prev {
@@ -707,6 +724,86 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   gap: 16px;
 }
 
+.largeField {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.largeField__container {
+  display: flex;
+  position: relative;
+  height: 100%;
+}
+.largeField__container__cutout {
+  display: flex;
+  position: absolute;
+  height: 4px;
+  width: 60px;
+  top: -1px;
+  left: 16px;
+  pointer-events: none;
+  transition: transform 0.3s;
+}
+.largeField__container__label {
+  display: flex;
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  font-size: 16px;
+  pointer-events: none;
+  transition: all 0.3s;
+  font-family: mainFont;
+  color: #545454;
+}
+.largeField__container__input {
+  border-radius: 5px;
+  background: #FFFFFF;
+  border: 1px solid #545454;
+  font-family: "mainFont";
+  font-size: 16px;
+  resize: none;
+  padding: 6px;
+  box-sizing: border-box;
+}
+.largeField__container__input::-moz-placeholder {
+  opacity: 0;
+  pointer-events: none;
+}
+.largeField__container__input::placeholder {
+  opacity: 0;
+  pointer-events: none;
+}
+.largeField__container__input:focus {
+  outline: none;
+  border: 1.5px solid #EF8354;
+}
+.largeField__container__input:focus ~ label {
+  transform: translate(10px, -18px);
+  font-size: 12px;
+}
+.largeField__container__input:focus ~ div {
+  background: #FFFFFF;
+}
+.largeField__container__error {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding-right: 4px;
+  position: absolute;
+  white-space: nowrap;
+  height: 12px;
+  top: -7px;
+  left: 14px;
+  pointer-events: none;
+  background: #FFFFFF;
+  font-size: 12px;
+  pointer-events: none;
+  font-family: mainFont;
+  color: red;
+}
+
 @font-face {
   font-family: "mainFont";
   letter-spacing: 2px;
@@ -843,6 +940,52 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   overflow: hidden;
 }
 
+.fileInput {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #CBDAF0;
+  border-radius: 10px;
+}
+.fileInput__title {
+  display: flex;
+  height: 50px;
+  font-family: "mainFont";
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.fileInput__form {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
+}
+.fileInput__form__fileLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
+  height: 180px;
+  width: 280px;
+  border-radius: 5px;
+  border: 1px solid #545454;
+}
+.fileInput__form__fileLabel__text {
+  font-family: "mainFont";
+  font-size: 20px;
+}
+.fileInput__form__submitBtn {
+  width: 100px;
+  height: 34px;
+}
+
+input[type=file] {
+  display: none;
+}
+
 .allItems {
   position: absolute;
   top: 0;
@@ -873,7 +1016,6 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  background: red;
 }
 .allItems__grid__title__text {
   font-family: "mainFont";
@@ -888,7 +1030,8 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 .allItems__grid__fileInput {
   grid-row: 4/4;
   grid-column: 3/3;
-  background: orange;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .allItems__grid__footer {
   grid-row: 6/6;
