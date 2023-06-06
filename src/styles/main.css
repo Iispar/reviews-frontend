@@ -604,6 +604,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 }
 
 .showAll {
+  transition: all 1s;
   display: block;
   height: 120px;
   padding-top: 0px;

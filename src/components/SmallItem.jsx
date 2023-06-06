@@ -13,12 +13,16 @@ const SmallItem = (props) => {
   const { rating } = props;
   const { id } = props;
 
+  /**
+   * Wait for page to render to set listeners,
+  */
   $(document).ready(() => {
+    // if name is over 22 digits long add the scroll feature on hover
     if (item.length > 22) {
-      console.log(id);
       $(`#smallItem__name__text__${id}`).addClass('hover');
     }
 
+    // navigate to items page when clicked.
     $(`#smallItem__${id}`).on('click', () => {
       navigate(`/item/${id}`);
     });

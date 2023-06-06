@@ -37,10 +37,10 @@ const LargeReview = (props) => {
     // open btn is pressed. First open correct one.
     if (open) {
       $('.largeReview').css('padding-bottom', '4px');
+      $(`#largeReview__info__body__${id}`).addClass('showAll');
       $(`#largeReview__info__rating__expandBtn__${id}`).css('display', 'none');
       $(`#largeReview__info__closeBtn__${id}`).css('display', 'flex');
       $(`#largeReview__info__body__header__${id}`).css('display', 'flex');
-      $(`#largeReview__info__body__${id}`).addClass('showAll');
       $(`#largeReview__${id}`).css('flex-grow', '2');
     }
   };
