@@ -389,7 +389,6 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   justify-content: flex-start;
   align-items: center;
   padding-left: 20px;
-  width: 100vw;
 }
 .header__hamburger {
   position: relative;
@@ -521,6 +520,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   padding-bottom: 10px;
 }
 .largeReview__info__body {
+  transition: all 0.2s;
   display: -webkit-box;
   position: relative;
   width: 80%;
@@ -604,7 +604,6 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 }
 
 .showAll {
-  transition: all 1s;
   display: block;
   height: 120px;
   padding-top: 0px;
@@ -736,7 +735,8 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   justify-content: flex-end;
   width: 180px;
   height: 36px;
-  padding-left: 4px;
+  padding-left: 10px;
+  padding-top: 6px;
   display: flex;
   font-size: 26px;
   font-family: "mainFont";
@@ -841,4 +841,57 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 .disableScroll {
   height: 100vh;
   overflow: hidden;
+}
+
+.allItems {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.allItems__grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: auto 700px 320px auto;
+  grid-template-rows: 50px 10px 50px 500px auto 40px;
+  gap: 20px;
+}
+.allItems__grid__header {
+  grid-row: 1/1;
+  grid-column: 1/5;
+  width: 100vw;
+}
+.allItems__grid__title {
+  grid-row: 3/3;
+  grid-column: 2/4;
+  padding-left: 2px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  background: red;
+}
+.allItems__grid__title__text {
+  font-family: "mainFont";
+  font-size: 36px;
+  height: 100%;
+}
+.allItems__grid__items {
+  grid-row: 4/4;
+  grid-column: 2/2;
+  background: blue;
+}
+.allItems__grid__fileInput {
+  grid-row: 4/4;
+  grid-column: 3/3;
+  background: orange;
+}
+.allItems__grid__footer {
+  grid-row: 6/6;
+  grid-column: 1/5;
+  background: green;
 }/*# sourceMappingURL=main.css.map */
