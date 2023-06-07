@@ -1,9 +1,10 @@
-.itemList {
+.items {
     box-shadow: 0 0 40px 1px $shadow;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    height: 100%;
+    gap: 0px;
     &__header {
         display: flex;
         justify-content: flex-end;
@@ -12,5 +13,14 @@
         width: 100%;
         padding-right: 14px;
         box-sizing: border-box;
+    }
+    &__list {
+        height: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+    }
+    &__pagination {
+        height: 60px;
     }
 }

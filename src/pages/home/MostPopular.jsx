@@ -15,7 +15,7 @@ const MostPopular = () => {
         <span className="mostPopular__header__text">popular items</span>
       </div>
       <div className="mostPopular__list">
-        <ItemList items={items} View={SmallItem} />
+        <ItemList items={items} View={SmallItem} count={5} />
       </div>
     </div>
   );

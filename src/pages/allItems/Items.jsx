@@ -8,14 +8,14 @@ import dummyItems from '../../data/dummyItems.json';
 const Items = () => {
   const { items } = dummyItems;
   return (
-    <div className="itemList">
-      <div className="itemList__header">
+    <div className="items">
+      <div className="items__header">
         <span> sort </span>
       </div>
-      <div className="itemList__list">
-        <ItemList items={items} View={LargeItem} />
+      <div className="items__list">
+        <ItemList items={items} View={LargeItem} count={6} />
       </div>
-      <div className="itemList__pagination">
+      <div className="items__pagination">
         <Pagination />
       </div>
     </div>
