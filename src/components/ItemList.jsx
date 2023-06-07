@@ -1,6 +1,5 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import SmallItem from './SmallItem';
 
 /**
  * Creates a list of smallItems. Used in home at most popular.
@@ -8,10 +7,11 @@ import SmallItem from './SmallItem';
  */
 const ItemList = (props) => {
   const { items } = props;
+  const { View } = props;
   const productList = [];
   for (let i = 0; i < items.length; i += 1) {
     productList.push(
-      <SmallItem
+      <View
         item={items[i].item}
         rating={items[i].rating}
         key={items[i].key}
@@ -26,10 +26,12 @@ const ItemList = (props) => {
 
 ItemList.propTypes = {
   items: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
+  View: propTypes.string,
 };
 
 ItemList.defaultProps = {
   items: null,
+  View: null,
 };
 
 export default ItemList;

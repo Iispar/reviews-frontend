@@ -1,4 +1,5 @@
-@import './fileInput';
+@import './fileInput.scss';
+@import './itemList.scss';
 .allItems {
     position: absolute;
     top: 0;
@@ -36,7 +37,6 @@
         &__items {
             grid-row: 4/4;
             grid-column: 2/2;
-            background: blue;
         }
         &__fileInput {
             grid-row: 4/4;

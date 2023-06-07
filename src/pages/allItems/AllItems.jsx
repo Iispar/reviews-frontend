@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import ItemList from './ItemList';
+import Items from './Items';
 import FileInput from './FileInput';
 
 /**
@@ -26,7 +26,7 @@ const AllItems = () => {
           <span className="allItems__grid__title__text"> All your items </span>
         </div>
         <div className="allItems__grid__items">
-          <ItemList />
+          <Items />
         </div>
         <div className="allItems__grid__fileInput">
           <FileInput onSubmit={handleCreation} />

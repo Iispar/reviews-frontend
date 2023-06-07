@@ -1,0 +1,16 @@
+.itemList {
+    box-shadow: 0 0 40px 1px $shadow;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &__header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 30px;
+        width: 100%;
+        padding-right: 14px;
+        box-sizing: border-box;
+    }
+}
