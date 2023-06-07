@@ -4,8 +4,18 @@ import Footer from '../../components/Footer';
 import ItemList from './ItemList';
 import FileInput from './FileInput';
 
+/**
+ * Renders the all items page.
+ * @returns all items page
+ */
 // eslint-disable-next-line arrow-body-style
 const AllItems = () => {
+  const handleCreation = (e) => {
+    e.preventDefault();
+    const values = e.target;
+    console.log(`created with ${values[0].value}, ${values[1].value}, ${values[2].value}`);
+  };
+
   return (
     <div className="allItems">
       <div className="allItems__grid">
@@ -19,7 +29,7 @@ const AllItems = () => {
           <ItemList />
         </div>
         <div className="allItems__grid__fileInput">
-          <FileInput />
+          <FileInput onSubmit={handleCreation} />
         </div>
         <div className="allItems__grid__footer">
           <Footer />

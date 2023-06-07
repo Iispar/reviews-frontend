@@ -297,7 +297,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   position: absolute;
   height: 4px;
   width: 60px;
-  top: -1px;
+  top: 0px;
   left: 16px;
   pointer-events: none;
   transition: transform 0.3s;
@@ -741,7 +741,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   position: absolute;
   height: 4px;
   width: 60px;
-  top: -1px;
+  top: 0px;
   left: 16px;
   pointer-events: none;
   transition: transform 0.3s;
@@ -775,15 +775,15 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   opacity: 0;
   pointer-events: none;
 }
-.largeField__container__input:focus {
+.largeField__container__input:focus, .largeField__container__input:valid {
   outline: none;
   border: 1.5px solid #EF8354;
 }
-.largeField__container__input:focus ~ label {
+.largeField__container__input:focus ~ label, .largeField__container__input:valid ~ label {
   transform: translate(10px, -18px);
   font-size: 12px;
 }
-.largeField__container__input:focus ~ div {
+.largeField__container__input:focus ~ div, .largeField__container__input:valid ~ div {
   background: #FFFFFF;
 }
 .largeField__container__error {
@@ -944,8 +944,8 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: #CBDAF0;
   border-radius: 10px;
+  box-shadow: 0px 0px 40px 2px #b5b5b5;
 }
 .fileInput__title {
   display: flex;
@@ -968,7 +968,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   justify-content: center;
   align-items: center;
   background: #FFFFFF;
-  height: 180px;
+  height: 220px;
   width: 280px;
   border-radius: 5px;
   border: 1px solid #545454;
@@ -976,6 +976,25 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
 .fileInput__form__fileLabel__text {
   font-family: "mainFont";
   font-size: 20px;
+}
+.fileInput__form__fileLabel__succesful {
+  display: none;
+  background: green;
+  height: 20px;
+  width: 20px;
+}
+.fileInput__form__fileLabel__error {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100px;
+}
+.fileInput__form__fileLabel__error__logo {
+  background: red;
+  height: 30px;
+  width: 30px;
 }
 .fileInput__form__submitBtn {
   width: 100px;

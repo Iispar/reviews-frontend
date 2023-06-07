@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { useTextWidth } from './helpers';
 
 /**
- * Styling and functionality for the search fields in the application.
+ * Styling and functionality for the large search fields in the application.
  * @param {} props
  * @returns
  */
@@ -21,7 +21,7 @@ const LargeInputField = (props) => {
   return (
     <div className={name} id={id}>
       <div className={`${name}__container`} style={{ width, height }}>
-        <textArea className={`${name}__container__input`} id={`${id}__container__input`} placeholder={title} style={{ height, width }} />
+        <textarea className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} style={{ height, width }} />
         <div className={`${name}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
         <div className={`${name}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>
           {error}
