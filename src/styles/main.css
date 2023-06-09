@@ -1093,30 +1093,51 @@ input[type=file] {
   align-items: center;
   height: 60px;
   width: 100%;
-  padding-top: 12px;
   padding-right: 12px;
   padding-left: 12px;
   box-sizing: border-box;
 }
+.items__header__search {
+  padding-top: 12px;
+}
 .items__header__sort {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  align-self: flex-start;
+  justify-content: center;
+  gap: 4px;
   width: 60px;
-  height: 30px;
-  background: red;
+  height: 20px;
+  border-radius: 10px;
+  border: 1px solid #545454;
+  transition: all 0.3s;
+  transform-origin: 0%;
 }
 .items__header__sort__text {
+  display: flex;
   font-family: "mainFont";
-  font-size: 20px;
-  padding: 0px;
-  line-height: 14px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+.items__header__sort__sorts {
+  display: none;
+  justify-content: space-between;
+  width: 100%;
+  font-family: "mainFont";
+  font-size: 14px;
+}
+.items__header__sort__sorts__reviews {
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+}
+.items__header__sort__sorts span {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+.items__header__sort__sorts span:hover {
+  background: rgb(228, 228, 228);
 }
 .items__header__sort__arrow {
-  background: blue;
-  height: 18px;
-  width: 18px;
+  border: 1px solid blue;
+  width: 14px;
 }
 .items__list {
   height: 100%;
@@ -1126,6 +1147,13 @@ input[type=file] {
 }
 .items__pagination {
   height: 60px;
+}
+
+.expand {
+  display: flex;
+  justify-content: space-between;
+  width: 160px;
+  padding-right: 8px;
 }
 
 .allItems {
