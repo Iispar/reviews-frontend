@@ -29,7 +29,7 @@ const Items = () => {
     <div className="items">
       <div className="items__header">
         <div className="items__header__search">
-          <SearchField />
+          <SearchField placeholder="Search" />
         </div>
         <div className="items__header__sort" id="items__header__sort">
           <div className="items__header__sort__text" id="items__header__sort__text"> sort </div>

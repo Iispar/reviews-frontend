@@ -13,5 +13,8 @@
             border: 1px solid $orange;
             box-shadow: 0 0 2px 1px $orange;
         }
+        &::placeholder {
+            padding-left: 4px;
+        }
     }
 }

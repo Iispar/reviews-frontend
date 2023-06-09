@@ -877,6 +877,12 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   border: 1px solid #EF8354;
   box-shadow: 0 0 2px 1px #EF8354;
 }
+.searchField__input::-moz-placeholder {
+  padding-left: 4px;
+}
+.searchField__input::placeholder {
+  padding-left: 4px;
+}
 
 @font-face {
   font-family: "mainFont";
