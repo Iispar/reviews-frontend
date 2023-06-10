@@ -16,11 +16,13 @@ const Items = () => {
       $('#items__header__sort').removeClass('expand');
       $('#items__header__sort__text').css('display', 'flex');
       $('#items__header__sort__sorts').css('display', 'none');
+      $('#items__header__sort__arrow').css('transform', 'rotate(270deg)');
       setOpen(false);
     } else {
       $('#items__header__sort').addClass('expand');
       $('#items__header__sort__text').css('display', 'none');
       $('#items__header__sort__sorts').css('display', 'flex');
+      $('#items__header__sort__arrow').css('transform', 'rotate(90deg)');
       setOpen(true);
     }
   };
@@ -43,7 +45,7 @@ const Items = () => {
               <span> rating d</span>
             </div>
           </div>
-          <button className="items__header__sort__arrow" type="button" onClick={() => dropDown()}> </button>
+          <button className="items__header__sort__arrow" id="items__header__sort__arrow" type="button" onClick={() => dropDown()}> </button>
         </div>
       </div>
       <div className="items__list">
