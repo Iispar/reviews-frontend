@@ -34,9 +34,14 @@ const Items = () => {
         <div className="items__header__sort" id="items__header__sort">
           <div className="items__header__sort__text" id="items__header__sort__text"> sort </div>
           <div className="items__header__sort__sorts" id="items__header__sort__sorts">
-            <span className="items__header__sort__sorts__reviews"> reviews </span>
-            <span> rating </span>
-            <span> age? </span>
+            <div className="items__header__sort__sorts__reviews">
+              <span className="items__header__sort__sorts__reviews__asc"> reviews u </span>
+              <span className="items__header__sort__sorts__reviews__desc"> reviews d </span>
+            </div>
+            <div className="items__header__sort__sorts__ratings">
+              <span className="items__header__sort__sorts__ratings__asc"> rating u </span>
+              <span> rating d</span>
+            </div>
           </div>
           <button className="items__header__sort__arrow" type="button" onClick={() => dropDown()}> </button>
         </div>

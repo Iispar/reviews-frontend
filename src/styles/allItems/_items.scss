@@ -21,7 +21,7 @@
             display: flex;
             justify-content: center;
             gap: 4px;
-            width: 60px;
+            width: 50px;
             height: 20px;
             border-radius: 10px;
             border: 1px solid $grey;
@@ -35,25 +35,35 @@
             }
             &__sorts {
                 display: none;
-                justify-content: space-between;
-                width: 100%;
-                font-family: 'mainFont';
-                font-size: 14px;
-                &__reviews {
+                &__reviews, &__ratings {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    & span {
+                        height: 100%;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        white-space: nowrap;
+                    }
+                    & span:hover {
+                        background: rgb(228, 228, 228);
+                    }
+                }
+                &__reviews__asc {
                     border-top-left-radius: 9px;
+                }
+                &__reviews__desc {
                     border-bottom-left-radius: 9px;
-                }
-                & span {
-                    padding-right: 4px;
-                    padding-left: 4px;
-                }
-                & span:hover {
-                    background: rgb(228, 228, 228);
                 }
             }
             &__arrow {
-                border: 1px solid blue;
+                background: none;
+                border: none;
                 width: 14px;
+                &::before {
+                    background: red;
+                    border-bottom: 1px solid red;
+                }
             }
         }
     }
@@ -70,7 +80,9 @@
 
 .expand {
     display: flex;
-    justify-content: space-between;
-    width: 160px;
-    padding-right: 8px;
+    width: 130px;
+    height: 32px;
+    margin-top: 12px;
+    font-family: 'mainFont';
+    font-size: 12px;
 }

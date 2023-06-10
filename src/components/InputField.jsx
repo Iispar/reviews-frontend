@@ -20,8 +20,8 @@ const InputField = (props) => {
   const errorWidth = useTextWidth(error, '15px hind');
   const labelHeight = `${height.replace('px', '') / 4}px`;
   return (
-    <div className={name} id={id}>
-      <div className={`${name}__container`} style={{ width, height }}>
+    <div className={name} id={id} style={{ width, height }}>
+      <div className={`${name}__container`}>
         <input className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} />
         <div className={`${name}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
         <div className={`${name}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>
