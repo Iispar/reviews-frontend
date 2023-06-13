@@ -11,20 +11,62 @@ const Items = () => {
   const { items } = dummyItems;
   const [open, setOpen] = useState(false);
 
+  /**
+   * Animates and opens the dropdown menu for the sort.
+   */
   const dropDown = () => {
     if (open) {
-      $('#items__header__sort').removeClass('expand');
-      $('#items__header__sort__text').css('display', 'flex');
-      $('#items__header__sort__sorts').css('display', 'none');
-      $('#items__header__sort__arrow').css('transform', 'rotate(270deg)');
+      $('#items__header__sort').animate({
+        width: '44px',
+        height: '20px',
+        'margin-top': '0px',
+      }, 200);
+      $('#items__header__sort__reviews__desc').css('display', 'none');
+      $('#items__header__sort__reviews__asc').css('display', 'none');
+      $('#items__header__sort__ratings__desc').css('display', 'none');
+      $('#items__header__sort__ratings__asc').css('display', 'none');
+      $('#items__header__sort__btn').css('display', 'flex');
+      $('#items__header__sort__arrow').css('transform', 'rotate(0deg)');
       setOpen(false);
     } else {
-      $('#items__header__sort').addClass('expand');
-      $('#items__header__sort__text').css('display', 'none');
-      $('#items__header__sort__sorts').css('display', 'flex');
-      $('#items__header__sort__arrow').css('transform', 'rotate(90deg)');
+      $('#items__header__sort').animate({
+        width: '120px',
+        height: '32px',
+        'margin-top': '12px',
+        'padding-left': '0px',
+      }, 200);
+      $('#items__header__sort__reviews__desc').css('display', 'flex');
+      $('#items__header__sort__reviews__asc').css('display', 'flex');
+      $('#items__header__sort__ratings__desc').css('display', 'flex');
+      $('#items__header__sort__ratings__asc').css('display', 'flex');
+      $('#items__header__sort__btn').css('display', 'none');
+      $('#items__header__sort__arrow').css('transform', 'rotate(180deg)');
       setOpen(true);
     }
+  };
+
+  const changeFilter = (sort) => {
+    const type = sort.split('__')[3];
+    let width;
+    if (type === 'reviews') width = '70px';
+    else width = '60px';
+    $('#items__header__sort').animate({
+      width,
+      height: '20px',
+      'margin-top': '0px',
+    }, 200);
+
+    $('#items__header__sort__reviews__desc').css('display', 'none');
+    $('#items__header__sort__reviews__asc').css('display', 'none');
+    $('#items__header__sort__ratings__desc').css('display', 'none');
+    $('#items__header__sort__ratings__asc').css('display', 'none');
+    // why doesn't addClass work?=
+    $(`#${sort}`).css({
+      display: 'flex',
+      'padding-top': '2px',
+    });
+    $('#items__header__sort__arrow').css('transform', 'rotate(0deg)');
+    setOpen(false);
   };
 
   return (
@@ -34,16 +76,29 @@ const Items = () => {
           <SearchField placeholder="Search" />
         </div>
         <div className="items__header__sort" id="items__header__sort">
-          <div className="items__header__sort__text" id="items__header__sort__text"> sort </div>
-          <div className="items__header__sort__sorts" id="items__header__sort__sorts">
-            <div className="items__header__sort__sorts__reviews">
-              <span className="items__header__sort__sorts__reviews__asc"> reviews u </span>
-              <span className="items__header__sort__sorts__reviews__desc"> reviews d </span>
-            </div>
-            <div className="items__header__sort__sorts__ratings">
-              <span className="items__header__sort__sorts__ratings__asc"> rating u </span>
-              <span> rating d</span>
-            </div>
+          <button className="items__header__sort__btn" id="items__header__sort__btn" type="button" onClick={() => dropDown()}>
+            sort
+            <div className="items__header__sort__btn__arrow" id="items__header__sort__btn__arrow" />
+          </button>
+          <div className="items__header__sort__reviews">
+            <button className="items__header__sort__reviews__asc" id="items__header__sort__reviews__asc" type="button" onClick={() => changeFilter('items__header__sort__reviews__asc')}>
+              reviews
+              <div className="items__header__sort__reviews__ascArrow" />
+            </button>
+            <button className="items__header__sort__reviews__desc" id="items__header__sort__reviews__desc" type="button" onClick={() => changeFilter('items__header__sort__reviews__desc')}>
+              reviews
+              <div className="items__header__sort__reviews__descArrow" />
+            </button>
+          </div>
+          <div className="items__header__sort__ratings">
+            <button className="items__header__sort__ratings__asc" id="items__header__sort__ratings__asc" type="button" onClick={() => changeFilter('items__header__sort__ratings__asc')}>
+              rating
+              <div className="items__header__sort__ratings__ascArrow" />
+            </button>
+            <button className="items__header__sort__ratings__desc" id="items__header__sort__ratings__desc" type="button" onClick={() => changeFilter('items__header__sort__ratings__desc')}>
+              rating
+              <div className="items__header__sort__ratings__descArrow" />
+            </button>
           </div>
           <button className="items__header__sort__arrow" id="items__header__sort__arrow" type="button" onClick={() => dropDown()}> </button>
         </div>
