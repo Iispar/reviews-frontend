@@ -1143,9 +1143,6 @@ input[type=file] {
   box-sizing: border-box;
   padding-left: 6px;
 }
-.items__header__sort__reviews button:hover, .items__header__sort__ratings button:hover {
-  background-color: #f5f5f5;
-}
 .items__header__sort__reviews__ascArrow, .items__header__sort__ratings__ascArrow {
   position: relative;
   border: none;

@@ -11,10 +11,25 @@ const Items = () => {
   const { items } = dummyItems;
   const [open, setOpen] = useState(false);
 
+  const hover = (id, color) => {
+    $(id).hover(
+      () => {
+        $(id).css('background-color', color);
+      },
+      () => {
+        $(id).css('background-color', 'transparent');
+      },
+    );
+  };
+
   /**
    * Animates and opens the dropdown menu for the sort.
    */
   const dropDown = () => {
+    hover('#items__header__sort__reviews__desc', '#f5f5f5');
+    hover('#items__header__sort__reviews__asc', '#f5f5f5');
+    hover('#items__header__sort__ratings__desc', '#f5f5f5');
+    hover('#items__header__sort__ratings__asc', '#f5f5f5');
     if (open) {
       $('#items__header__sort').animate({
         width: '44px',
@@ -65,6 +80,7 @@ const Items = () => {
       display: 'flex',
       'padding-top': '2px',
     });
+    hover(`#${sort}`, 'transparent');
     $('#items__header__sort__arrow').css('transform', 'rotate(0deg)');
     setOpen(false);
   };
