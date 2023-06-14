@@ -84,11 +84,11 @@ const CreateAccountForm = (props) => {
         <div className="createNew__createAccountForm__header" id="createNew__createAccountForm__header"> Create account </div>
         <div className="createNew__createAccountForm__inputs">
           <form className="createNew__createAccountForm__inputs__form" id="createNew__createAccountForm__inputs__form" onSubmit={(e) => onSubmit(e)}>
-            <InputField id="createUsername" title="username" width="280px" />
-            <InputField id="createName" title="first name" width="280px" />
-            <InputField id="createEmail" title="email" width="280px" error="doesn't match example@email.com" />
-            <InputField id="createPassword" type="password" title="password" width="280px" error="passwords don't match" />
-            <InputField id="createConfirmPassword" type="password" title="confirm password" width="280px" error="passwords don't match" />
+            <InputField id="createUsername" title="username" width="240px" height="40px" />
+            <InputField id="createName" title="first name" width="240px" height="40px" />
+            <InputField id="createEmail" title="email" width="240px" height="40px" error="doesn't match example@email.com" />
+            <InputField id="createPassword" type="password" title="password" width="240px" height="40px" error="passwords don't match" />
+            <InputField id="createConfirmPassword" type="password" title="confirm password" width="240px" height="40px" error="passwords don't match" />
           </form>
           <button className="createNew__createAccountForm__inputs__submit" id="createNew__createAccountForm__inputs__submit" type="submit" form="createNew__createAccountForm__inputs__form"> submit </button>
         </div>

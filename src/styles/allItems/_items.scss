@@ -1,0 +1,152 @@
+.items {
+    box-shadow: 0 0 40px 1px $shadow;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0px;
+    &__header {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        height: 60px;
+        width: 100%;
+        padding-right: 12px;
+        padding-left: 12px;
+        box-sizing: border-box;
+        &__search {
+            padding-top: 12px;
+        }
+        &__sort {
+            display: flex;
+            width: 44px;
+            height: 20px;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $grey;
+            border-radius: 10px;
+            &__btn {
+                border: none;
+                background: transparent;
+                justify-content: flex-end;
+                padding-right: 4px;
+            }
+            &__reviews, &__ratings {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+                width: 100%;
+                box-sizing: border-box;
+                & button {
+                    display: none;
+                    border: none;
+                    justify-content: center;
+                    height: 100%;
+                    background: transparent;
+                    font-family: 'mainFont';
+                    font-size: 10px;
+                    box-sizing: border-box;
+                    padding-left: 6px;
+                }
+                &__ascArrow {
+                    position: relative;
+                    border: none;
+                    box-sizing: border-box;
+                    height: 100%;
+                    width: 10px;
+                    &::before {
+                        content: ' ';
+                        display: flex;
+                        height: 100%;
+                        width: 8px;
+                        background-image: url('../../data/arrow.svg');
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-color: transparent;
+                        padding-left: 6px;
+                        padding-top: 1px;
+                        position: absolute;
+                        width: 10px;
+                        height: 10px;
+                        top: 2px;
+                        left: 0px;
+                        transform: rotate(270deg);
+                    }
+                }
+                &__descArrow {
+                    position: relative;
+                    border: none;
+                    box-sizing: border-box;
+                    height: 100%;
+                    width: 10px;
+                    &::before {
+                        content: ' ';
+                        display: flex;
+                        height: 100%;
+                        width: 8px;
+                        background-image: url('../../data/arrow.svg');
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-color: transparent;
+                        padding-left: 4px;
+                        padding-top: 1px;
+                        position: absolute;
+                        width: 10px;
+                        height: 10px;
+                        top: 2px;
+                        left: 0px;
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+            &__reviews__asc {
+                border-top-left-radius: 9px;
+            }
+            &__reviews__desc {
+                border-bottom-left-radius: 9px;
+            }
+            &__arrow {
+                position: relative;
+                background: transparent;
+                border: none;
+                &::before {
+                    content: ' ';
+                    background-image: url('../../data/arrowDown.svg');
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-color: transparent;
+                    z-index: -1;
+                    width: 20px;
+                    height: 12px;
+                    position: absolute;
+                    top: -5px;
+                    left: -4px;
+                    transition: all 0.3s;
+                    transform: rotate(270deg);
+                    filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
+                }
+            }
+        }
+    }
+    &__list {
+        height: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+    }
+    &__pagination {
+        height: 60px;
+    }
+}
+
+.selected {
+    display: 'flex';
+    padding-top: '2px';
+    :hover {
+        background: transparent;
+    }
+}

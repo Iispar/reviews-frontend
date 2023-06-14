@@ -47,14 +47,14 @@ const LoginForm = (props) => {
         <div className="login__loginForm__header" id="login__loginForm__header"> Login </div>
         <div className="login__loginForm__inputs">
           <form className="login__loginForm__inputs__form" id="loginForm__inputs__form" onSubmit={(e) => onSubmit(e)}>
-            <InputField id="loginUsername" title="username" width="280px" />
-            <InputField id="loginPassword" type="password" title="password" width="280px" />
+            <InputField id="loginUsername" title="username" width="240px" height="40px" />
+            <InputField id="loginPassword" type="password" title="password" width="240px" height="40px" />
           </form>
           <div className="login__loginForm__inputs__passwordInfo">
             <button type="button" className="login__loginForm__inputs__passwordInfo__forgotPassword" id="login__loginForm__inputs__passwordInfo__forgotPassword" onClick={() => switchContact()}> Forgot password? </button>
             <div className="login__loginForm__inputs__passwordInfo__contact" id="login__loginForm__inputs__passwordInfo__contact">
               <form className="login__loginForm__inputs__passwordInfo__contact__email" id="login__loginForm__inputs__passwordInfo__contact__email" onSubmit={(e) => getPassword(e)}>
-                <InputField title="enter your email" width="220px" />
+                <InputField title="enter your email" width="220px" height="40px" />
                 <button type="submit" className="login__loginForm__inputs__passwordInfo__contact__email__resetBtn" id="login__loginForm__inputs__passwordInfo__contact__email__resetBtn"> get new password </button>
               </form>
             </div>

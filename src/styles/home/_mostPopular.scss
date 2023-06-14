@@ -6,6 +6,8 @@
     background: $lightBlue;
     border-radius: 5px;
     gap: 30px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
     &__header {
         display: flex;
         justify-content: center;

@@ -3,15 +3,22 @@
     border-bottom: 1px solid $lightGrey;
     font-family: 'mainFont';
     font-size: 16px;
-    padding-top: 0px;
-    padding: 10px;
+    // padding-top: 0px;
     transition: all 0.3s;
-
+    padding-bottom: 12px;
+    margin-right: 20px;
+    margin-left: 20px;
+    justify-content: center;
+    max-height: 150px;
     &__info {
         display: flex;
         position: relative;
         width: 100%;
+        max-height: 140px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         &__body {
+            transition: all 0.2s;
             display: -webkit-box;
             position: relative;
             width: 80%;
@@ -29,14 +36,15 @@
             &__header {
                 display: none;
                 justify-content: space-between;
-            }
-            &__title {
-                display: flex;
-                font-size: 20px;
-            }
-            &__date {
-                display: flex;
-                padding-top: 6px;
+                padding-bottom: 10px;
+                &__title {
+                    display: flex;
+                    font-size: 20px;
+                }
+                &__date {
+                    display: flex;
+                    padding-top: 6px;
+                }
             }
             &__comment {
                 height: 100%;
@@ -97,8 +105,8 @@
 
 .showAll {
     display: block;
-    height: 140px;
-    padding-top: 0;
+    height: 120px;
+    padding-top: 0px;
     overflow: scroll;
     -webkit-line-clamp: none;
     -webkit-box-orient: vertical;

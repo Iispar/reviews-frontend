@@ -6,6 +6,12 @@ import $ from 'jquery';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import InputField from '../components/InputField';
+import LargeInputField from '../components/LargeInputField';
+import LargeItem from '../components/LargeItem';
+import LargeReview from '../components/LargeReview';
+import Pagination from '../components/Pagination';
+import SearchField from '../components/SearchField';
+import SmallItem from '../components/SmallItem';
 
 const mockedUsedNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
@@ -59,6 +65,65 @@ describe('components render and work', () => {
 
       const error = container.querySelector('#test__container__error');
       expect(error).toBeTruthy();
+    });
+    test('largeInputField renders', () => {
+      const largeInputContainer = render(<LargeInputField title="test" />).container;
+      const container = largeInputContainer.querySelector('#largeField');
+      const textArea = largeInputContainer.querySelector('#largeField__container__input');
+      const error = largeInputContainer.querySelector('#largeField__container__error');
+      const label = largeInputContainer.querySelector('#largeField__container__label');
+
+      expect(container).toBeTruthy();
+      expect(textArea).toBeTruthy();
+      expect(error).toBeTruthy();
+      expect(label).toBeTruthy();
+    });
+    test('largeItem renders', () => {
+      const largeItemContainer = render(<LargeItem reviews="200" rating="2.2" item="testItem" />).container;
+      const name = largeItemContainer.querySelector('#largeItem__nameReviews__name');
+      const reviewsCount = largeItemContainer.querySelector('#largeItem__nameReviews__reviews__count');
+      const rating = largeItemContainer.querySelector('#largeItem__rating__rate');
+
+      expect(name).toBeTruthy();
+      expect(reviewsCount).toBeTruthy();
+      expect(rating).toBeTruthy();
+    });
+
+    test('largeReview renders', () => {
+      const largeItemContainer = render(<LargeReview rating="2.2" body="testBody" date="testDate" title="testTitle" />).container;
+      const title = largeItemContainer.querySelector('#largeReview__info__body__header__title');
+      const date = largeItemContainer.querySelector('#largeReview__info__body__header__date');
+      const body = largeItemContainer.querySelector('#largeReview__info__body__comment');
+      const rating = largeItemContainer.querySelector('#largeReview__info__rating__value');
+      const expandBtn = largeItemContainer.querySelector('#largeReview__info__rating__expandBtn__id');
+
+      expect(title).toBeTruthy();
+      expect(date).toBeTruthy();
+      expect(body).toBeTruthy();
+      expect(expandBtn).toBeTruthy();
+      expect(rating).toBeTruthy();
+    });
+    test('pagination renders', () => {
+      const pagiantionContainer = render(<Pagination />).container;
+      const prev = pagiantionContainer.querySelector('#pagination__prev');
+      const next = pagiantionContainer.querySelector('#pagination__next');
+
+      expect(prev).toBeTruthy();
+      expect(next).toBeTruthy();
+    });
+    test('searchField renders', () => {
+      const searchFieldContainer = render(<SearchField />).container;
+
+      const input = searchFieldContainer.querySelector('#searchField__input');
+      expect(input).toBeTruthy();
+    });
+    test('smallItem renders', () => {
+      const smallItemContainer = render(<SmallItem rating="2.2" item="testItem" />).container;
+      const name = smallItemContainer.querySelector('#smallItem__name__text__id');
+      const rating = smallItemContainer.querySelector('#smallItem__rating__value__id');
+
+      expect(name).toBeTruthy();
+      expect(rating).toBeTruthy();
     });
   });
 });
