@@ -22,11 +22,11 @@ const LargeItem = (props) => {
   return (
     <div className="largeItem" id={`largeItem__${id}`}>
       <div className="largeItem__nameReviews">
-        <span className="largeItem__nameReviews__name">
+        <span className="largeItem__nameReviews__name" id="largeItem__nameReviews__name">
           {item}
         </span>
         <div className="largeItem__nameReviews__reviews">
-          <span className="largeItem__nameReviews__reviews__count">
+          <span className="largeItem__nameReviews__reviews__count" id="largeItem__nameReviews__reviews__count">
             {reviews}
           </span>
           <span className="largeItem__nameReviews__reviews__label">
@@ -35,7 +35,7 @@ const LargeItem = (props) => {
         </div>
       </div>
       <div className="largeItem__rating">
-        <span className="largeItem__rating__rate">
+        <span className="largeItem__rating__rate" id="largeItem__rating__rate">
           {rating}
         </span>
         <div className="largeItem__rating__star" />
@@ -46,7 +46,7 @@ const LargeItem = (props) => {
 
 LargeItem.propTypes = {
   item: propTypes.string,
-  rating: propTypes.number,
+  rating: propTypes.string,
   id: propTypes.string,
   reviews: propTypes.string,
 };
@@ -54,7 +54,7 @@ LargeItem.propTypes = {
 LargeItem.defaultProps = {
   item: null,
   rating: null,
-  id: null,
+  id: 'default',
   reviews: null,
 };
 

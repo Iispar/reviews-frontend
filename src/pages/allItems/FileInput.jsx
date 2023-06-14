@@ -33,10 +33,10 @@ const FileInput = (props) => {
 
   return (
     <div className="fileInput">
-      <div className="fileInput__title"> Add new item </div>
-      <form className="fileInput__form" onSubmit={(e) => onSubmit(e)}>
-        <InputField title="product name" width="280px" height="40px" />
-        <LargeInputField title="Product description" />
+      <div className="fileInput__title" id="fileInput__title"> Add new item </div>
+      <form className="fileInput__form" id="fileInput__form" onSubmit={(e) => onSubmit(e)}>
+        <InputField id="fileName" title="product name" width="280px" height="40px" />
+        <LargeInputField id="fileDesc" title="Product description" />
         <label htmlFor="fileInput__form__file" className="fileInput__form__fileLabel" id="fileInput__form__fileLabel">
           <span className="fileInput__form__fileLabel__text" id="fileInput__form__fileLabel__text"> file </span>
           <div className="fileInput__form__fileLabel__succesful" id="fileInput__form__fileLabel__succesful" />
@@ -46,7 +46,7 @@ const FileInput = (props) => {
           </div>
           <input className="fileInput__form__file" id="fileInput__form__file" type="file" required />
         </label>
-        <button className="fileInput__form__submitBtn" type="submit"> submit </button>
+        <button className="fileInput__form__submitBtn" id="fileInput__form__submitBtn" type="submit"> submit </button>
       </form>
     </div>
   );

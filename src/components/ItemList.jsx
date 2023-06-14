@@ -33,13 +33,13 @@ const ItemList = (props) => {
     }
   }
   return (
-    <div className="itemList">{productList}</div>
+    <div className="itemList" id="itemList">{productList}</div>
   );
 };
 
 ItemList.propTypes = {
   items: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
-  View: propTypes.string,
+  View: propTypes.func,
   count: propTypes.number,
 };
 

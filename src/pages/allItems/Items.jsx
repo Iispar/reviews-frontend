@@ -129,7 +129,7 @@ const Items = () => {
           <button className="items__header__sort__arrow" id="items__header__sort__arrow" type="button" onClick={() => dropDown()}> </button>
         </div>
       </div>
-      <div className="items__list">
+      <div className="items__list" id="items__list">
         <ItemList items={items} View={LargeItem} count={6} />
       </div>
       <div className="items__pagination">

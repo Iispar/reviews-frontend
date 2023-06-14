@@ -50,13 +50,13 @@ const LargeReview = (props) => {
       <div className="largeReview__info" id={`largeReview__info__${id}`}>
         <div className="largeReview__info__body" id={`largeReview__info__body__${id}`}>
           <div className="largeReview__info__body__header" id={`largeReview__info__body__header__${id}`}>
-            <span className="largeReview__info__body__header__title">{title}</span>
-            <span className="largeReview__info__body__header__date">{date}</span>
+            <span className="largeReview__info__body__header__title" id="largeReview__info__body__header__title">{title}</span>
+            <span className="largeReview__info__body__header__date" id="largeReview__info__body__header__date">{date}</span>
           </div>
-          <span className="largeReview__info__body__comment">{body}</span>
+          <span className="largeReview__info__body__comment" id="largeReview__info__body__comment">{body}</span>
         </div>
         <div className="largeReview__info__rating">
-          <span className="largeReview__info__rating__value">{rating}</span>
+          <span className="largeReview__info__rating__value" id="largeReview__info__rating__value">{rating}</span>
           <span className="largeReview__info__rating__icon" />
           <button className="largeReview__info__rating__expandBtn" id={`largeReview__info__rating__expandBtn__${id}`} type="button" onClick={() => toggle(true)}> </button>
         </div>
@@ -68,7 +68,7 @@ const LargeReview = (props) => {
 
 LargeReview.propTypes = {
   body: propTypes.string,
-  rating: propTypes.number,
+  rating: propTypes.string,
   id: propTypes.string,
   title: propTypes.string,
   date: propTypes.string,
@@ -77,7 +77,7 @@ LargeReview.propTypes = {
 LargeReview.defaultProps = {
   body: null,
   rating: null,
-  id: null,
+  id: 'id',
   title: null,
   date: null,
 };

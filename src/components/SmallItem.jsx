@@ -34,7 +34,7 @@ const SmallItem = (props) => {
         <span className="smallItem__name__text" id={`smallItem__name__text__${id}`}>{item}</span>
       </div>
       <div className="smallItem__rating">
-        <span className="smallItem__rating__value">{rating}</span>
+        <span className="smallItem__rating__value" id={`smallItem__rating__value__${id}`}>{rating}</span>
         <span className="smallItem__rating__icon" />
       </div>
     </div>
@@ -43,14 +43,14 @@ const SmallItem = (props) => {
 
 SmallItem.propTypes = {
   item: propTypes.string,
-  rating: propTypes.number,
+  rating: propTypes.string,
   id: propTypes.string,
 };
 
 SmallItem.defaultProps = {
   item: null,
   rating: null,
-  id: null,
+  id: 'id',
 };
 
 export default SmallItem;
