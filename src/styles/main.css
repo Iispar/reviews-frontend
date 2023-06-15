@@ -989,8 +989,20 @@ input[type=search]::-webkit-search-cancel-button {
 .homeStats__ratings {
   width: 100%;
   height: 200px;
-  background: red;
+  box-shadow: 0 0 2px 1px #b5b5b5;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "mainFont";
+}
+.homeStats__ratings__chart {
+  height: 140px;
+  width: 240px;
+}
+.homeStats__ratings__label {
+  font-size: 16px;
 }
 .homeStats__allTime {
   width: 100%;
@@ -1000,7 +1012,7 @@ input[type=search]::-webkit-search-cancel-button {
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 2px 1px #b5b5b5;
-  padding: 2px;
+  padding: 4px;
 }
 .homeStats__allTime__stats {
   display: flex;

@@ -1,10 +1,17 @@
 import React from 'react';
+import BarChart from '../../components/BarChart';
+import dummy from '../../data/dummyReviewDis.json';
 
 // eslint-disable-next-line arrow-body-style
 const HomeStats = () => {
   return (
     <div className="homeStats">
-      <div className="homeStats__ratings" />
+      <div className="homeStats__ratings">
+        <div className="homeStats__ratings__chart">
+          <BarChart data={dummy.data} />
+        </div>
+        <div className="homeStats__ratings__label"> distribution of ratings </div>
+      </div>
       <div className="homeStats__allTime">
         <div className="homeStats__allTime__stats">
           <div className="homeStats__allTime__stats__items">

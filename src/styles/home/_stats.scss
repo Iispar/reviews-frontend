@@ -6,8 +6,20 @@
     &__ratings {
         width: 100%;
         height: 200px;
-        background: red;
+        box-shadow: 0 0 2px 1px $shadow;
         border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'mainFont';
+        &__chart {
+            height: 140px;
+            width: 240px;
+        }
+        &__label {
+            font-size: 16px;
+        }
     }
     &__allTime {
         width: 100%;
@@ -17,7 +29,7 @@
         display: flex;
         flex-direction: column;
         box-shadow: 0 0 2px 1px $shadow;
-        padding: 2px;
+        padding: 4px;
         &__stats {
             display: flex;
             height: 100%;
