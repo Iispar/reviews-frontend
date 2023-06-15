@@ -1,6 +1,7 @@
 @import '../colorsAndFonts.scss';
 @import './latestReviews.scss';
 @import './mostPopular.scss';
+@import './stats.scss';
 
 .home {
     position: absolute;
@@ -53,7 +54,6 @@
         &__homeChange {
             grid-row: 6/8;
             grid-column: 3/3;
-            background: orange;
         }
         &__footer {
             background: green;
