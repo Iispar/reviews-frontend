@@ -1,23 +1,28 @@
 {
     "data": [
         {
-            "name": "1",
+            "stars": "1",
+            "title": "1 stars",
             "count": 20
         },
         {
-            "name": "2",
+            "stars": "2",
+            "title": "2 stars",
             "count": 30
         },
         {
-            "name": "3",
+            "stars": "3",
+            "title": "3 stars",
             "count": 45
         },
         {
-            "name": "4",
+            "stars": "4",
+            "title": "4 start",
             "count": 38
         },
         {
-            "name": "5",
+            "stars": "5",
+            "title": "5 start",
             "count": 22
         }
     ]

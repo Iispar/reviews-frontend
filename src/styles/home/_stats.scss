@@ -14,8 +14,9 @@
         flex-direction: column;
         font-family: 'mainFont';
         &__chart {
-            height: 140px;
+            height: 160px;
             width: 240px;
+            padding: 0;
         }
         &__label {
             font-size: 16px;
