@@ -57,7 +57,7 @@
             right: 4px;
             top: 4px;
             display: none;
-            background: url('../../data/closeIcon.svg');
+            background: url('../../data/icons/closeIcon.svg');
             background-size: 100%;
             background-repeat: no-repeat;
             height: 20px;
@@ -74,7 +74,7 @@
             align-items: center;
             padding: 10px;
             &__expandBtn {
-                background: url('../../data/arrowDown.svg');
+                background: url('../../data/icons/arrowDown.svg');
                 background-size: 100%;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -92,7 +92,7 @@
                 align-items: center;
                 width: 25px;
                 height: 26px;
-                background-image: url('../../data/starIcon.svg');
+                background-image: url('../../data/icons/starIcon.svg');
                 background-size: 100%;
                 background-repeat: no-repeat;
                 background-position: center;

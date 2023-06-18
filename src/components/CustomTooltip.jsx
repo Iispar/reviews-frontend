@@ -10,7 +10,7 @@ const CustomTooltip = (props) => {
     return (
       <div className="customTooltip">
         <span className="customTooltip__count">{`${count} ratings`}</span>
-        <span className="customTooltip__title">{`of ${title}`}</span>
+        <span className="customTooltip__title">{`with ${title}`}</span>
       </div>
     );
   }

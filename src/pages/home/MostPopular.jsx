@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemList from '../../components/ItemList';
-import dummyItems from '../../data/dummyItems.json';
+import dummyItems from '../../data/dummyData/dummyItems.json';
 import SmallItem from '../../components/SmallItem';
 
 /**

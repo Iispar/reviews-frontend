@@ -1,7 +1,7 @@
 import React from 'react';
 import ReviewsList from '../../components/ReviewsList';
 import Pagination from '../../components/Pagination';
-import dummyReviews from '../../data/dummyReviews.json';
+import dummyReviews from '../../data/dummyData/dummyReviews.json';
 
 /**
  * Creates the latest review view for the home page.

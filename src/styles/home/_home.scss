@@ -1,7 +1,8 @@
 @import '../colorsAndFonts.scss';
 @import './latestReviews.scss';
 @import './mostPopular.scss';
-@import './stats.scss';
+@import './homeStats.scss';
+@import './homeChart.scss';
 
 .home {
     position: absolute;
@@ -49,7 +50,6 @@
         &__homeChart {
             grid-row: 7/7;
             grid-column: 2/2;
-            background: yellow;
         }
         &__homeChange {
             grid-row: 6/8;

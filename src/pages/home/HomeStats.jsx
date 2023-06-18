@@ -1,6 +1,6 @@
 import React from 'react';
 import BarChart from '../../components/BarChart';
-import dummy from '../../data/dummyReviewDis.json';
+import dummy from '../../data/dummyData/dummyReviewDis.json';
 
 // eslint-disable-next-line arrow-body-style
 const HomeStats = () => {

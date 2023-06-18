@@ -3,7 +3,7 @@ import $ from 'jquery';
 import Pagination from '../../components/Pagination';
 import ItemList from '../../components/ItemList';
 import LargeItem from '../../components/LargeItem';
-import dummyItems from '../../data/dummyItems.json';
+import dummyItems from '../../data/dummyData/dummyItems.json';
 import SearchField from '../../components/SearchField';
 
 const Items = () => {
