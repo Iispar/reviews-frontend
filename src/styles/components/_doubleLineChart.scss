@@ -1,0 +1,21 @@
+.lineChart {
+    &__chart {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+    &__selector {
+        display: flex;
+        justify-content: flex-end;
+        width: 140px;
+        height: 20px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        font-size: 14px;
+        font-family: 'mainFont';
+    }
+}

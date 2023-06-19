@@ -4,8 +4,13 @@ import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
 import propTypes from 'prop-types';
-import CustomTooltip from './CustomTooltip';
+import BarTooltip from './BarTooltip';
 
+/**
+ * Renders a bar chart.
+ * @param {} props
+ * @returns a bar chart
+ */
 const Chart = (props) => {
   const { data } = props;
   const [focusBar, setFocusBar] = useState(null);
@@ -29,7 +34,7 @@ const Chart = (props) => {
         data={data}
         onMouseMove={(state) => { hover(state); }}
       >
-        <Tooltip cursor={false} content={<CustomTooltip />} />
+        <Tooltip cursor={false} content={<BarTooltip />} />
         <XAxis dataKey="stars" />
         <Bar dataKey="count">
           {data.map((entry, index) => (

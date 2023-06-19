@@ -1,30 +1,35 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const CustomTooltip = (props) => {
+/**
+ * Tooltip for the bar chart.
+ * @param {*} props
+ * @returns tooltip for barchart
+ */
+const BarTooltip = (props) => {
   const { payload } = props;
   const { active } = props;
   if (active && payload && payload.length) {
     const { title } = payload[0].payload;
     const { count } = payload[0].payload;
     return (
-      <div className="customTooltip">
-        <span className="customTooltip__count">{`${count} ratings`}</span>
-        <span className="customTooltip__title">{`with ${title}`}</span>
+      <div className="barTooltip">
+        <span className="barTooltip__count">{`${count} ratings`}</span>
+        <span className="barTooltip__title">{`with ${title}`}</span>
       </div>
     );
   }
   return null;
 };
 
-CustomTooltip.propTypes = {
+BarTooltip.propTypes = {
   payload: propTypes.string,
   active: propTypes.string,
 };
 
-CustomTooltip.defaultProps = {
+BarTooltip.defaultProps = {
   payload: null,
   active: null,
 };
 
-export default CustomTooltip;
+export default BarTooltip;

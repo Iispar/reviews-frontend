@@ -2,6 +2,10 @@ import React from 'react';
 import BarChart from '../../components/BarChart';
 import dummy from '../../data/dummyData/dummyReviewDis.json';
 
+/**
+ * Renders the home stats components
+ * @returns Home stats
+ */
 // eslint-disable-next-line arrow-body-style
 const HomeStats = () => {
   return (

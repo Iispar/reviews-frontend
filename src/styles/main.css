@@ -910,7 +910,7 @@ input[type=search]::-webkit-search-cancel-button {
   filter: invert(37%) sepia(0%) saturate(1675%) hue-rotate(148deg) brightness(83%) contrast(88%);
 }
 
-.customTooltip {
+.barTooltip {
   background: #FFFFFF;
   width: 100px;
   height: 50px;
@@ -922,6 +922,55 @@ input[type=search]::-webkit-search-cancel-button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.lineTooltip {
+  background: #FFFFFF;
+  width: 140px;
+  height: 80px;
+  border: 2px solid #CBDAF0;
+  border-radius: 10px;
+  padding: 0;
+  padding-left: 6px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  font-family: "mainFont";
+  font-size: 18px;
+}
+.lineTooltip__countReviews {
+  font-size: 14px;
+}
+.lineTooltip__countReviews__count {
+  color: #8884d8;
+}
+.lineTooltip__countRating {
+  font-size: 14px;
+}
+.lineTooltip__countRating__count {
+  color: #EF8354;
+}
+
+.lineChart__chart {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+.lineChart__selector {
+  display: flex;
+  justify-content: flex-end;
+  width: 140px;
+  height: 20px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 14px;
+  font-family: "mainFont";
 }
 
 @font-face {
@@ -1067,12 +1116,17 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 .homeChart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   width: 100%;
   background: #FFFFFF;
   border: 2px solid #CBDAF0;
   border-radius: 10px;
   padding: 5px;
+  box-sizing: border-box;
 }
 
 .home {

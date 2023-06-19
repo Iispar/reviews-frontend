@@ -1,34 +1,53 @@
 {
     "data": [
         {
+            "name": "start",
+            "year": 2022,
+            "reviews": 0,
+            "rating": 0,
+            "key": "111"
+        },
+        {
             "month": "january",
             "year": 2022,
             "reviews": 42,
-            "rating": 3.2
+            "rating": 3.2,
+            "key": "222"
         },
         {
             "month": "february",
             "year": 2022,
             "reviews": 51,
-            "rating": 3.6
+            "rating": 3.6,
+            "key": "333"
         },
         {
             "month": "march",
             "year": 2022,
             "reviews": 34,
-            "rating": 4.2
+            "rating": 4.2,
+            "key": "444"
         },
         {
             "month": "april",
             "year": 2022,
             "reviews": 46,
-            "rating": 3.4
+            "rating": 3.4,
+            "key": "555"
         },
         {
             "month": "may",
             "year": 2022,
             "reviews": 50,
-            "rating": 3.8
+            "rating": 3.8,
+            "key": "666"
+        },
+        {
+            "name": "end",
+            "year": 2022,
+            "reviews": 55,
+            "rating": 4,
+            "key": "666"
         }
     ]
 }
