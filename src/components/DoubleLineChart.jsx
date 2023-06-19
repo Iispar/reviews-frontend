@@ -29,7 +29,7 @@ const DoubleLineChart = (props) => {
             left: 0,
           }}
         >
-          <CartesianGrid horizontal={false} verticalPoints={[130, 280, 430, 580]} />
+          <CartesianGrid horizontal={false} verticalPoints={[130, 275, 420, 565]} />
           <XAxis dataKey="month" height={1} fontFamily="mainFont" tickSize axisLine={false} dy={-24} />
           <YAxis yAxisId="left" width={-80} tick={false} domain={[0, max]} />
           <YAxis yAxisId="right" tick={false} orientation="right" domain={[1, 6]} width={-80} />
@@ -40,9 +40,9 @@ const DoubleLineChart = (props) => {
         </LineChart>
       </ResponsiveContainer>
       <div className="lineChart__selector">
-        <button type="button"> year </button>
-        <button type="button"> month </button>
-        <button type="button"> week </button>
+        <button className="lineChart__selector__year" type="button"> year </button>
+        <button className="lineChart__selector__month" type="button"> month </button>
+        <button className="lineChart__selector__week" type="button"> week </button>
       </div>
     </div>
   );

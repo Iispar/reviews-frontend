@@ -964,13 +964,58 @@ input[type=search]::-webkit-search-cancel-button {
 .lineChart__selector {
   display: flex;
   justify-content: flex-end;
+  gap: 0px;
   width: 140px;
   height: 20px;
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: 2px;
+  top: 2px;
   font-size: 14px;
   font-family: "mainFont";
+}
+.lineChart__selector button {
+  border: 0;
+  background: transparent;
+  padding: 3px;
+}
+.lineChart__selector__year:hover {
+  position: relative;
+}
+.lineChart__selector__year:hover:before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 2px;
+  height: 2px;
+  width: 28px;
+  border-radius: 2px;
+  background: #EF8354;
+}
+.lineChart__selector__month:hover {
+  position: relative;
+}
+.lineChart__selector__month:hover:before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 2px;
+  height: 2px;
+  width: 38px;
+  border-radius: 2px;
+  background: #EF8354;
+}
+.lineChart__selector__week:hover {
+  position: relative;
+}
+.lineChart__selector__week:hover:before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 2px;
+  height: 2px;
+  width: 34px;
+  border-radius: 2px;
+  background: #EF8354;
 }
 
 @font-face {
