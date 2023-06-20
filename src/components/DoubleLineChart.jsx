@@ -29,7 +29,6 @@ const DoubleLineChart = (props) => {
           width={0}
           height={0}
           data={data}
-          key={data.key}
           margin={{
             top: 0,
             bottom: -44,

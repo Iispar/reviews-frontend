@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import Home from '../pages/home/Home';
 
+global.ResizeObserver = require('resize-observer-polyfill');
+
 describe('home site works fully', () => {
   test('page renders with components', () => {
     const pageContainer = render(
@@ -17,7 +19,7 @@ describe('home site works fully', () => {
     const items = pageContainer.querySelector('#home__grid__mostPopular');
     const chart = pageContainer.querySelector('#home__grid__homeChart');
     const stats = pageContainer.querySelector('#home__grid__homeChange');
-    const footer = pageContainer.querySelector('#allItems__grid__footer');
+    const footer = pageContainer.querySelector('#home__grid__footer');
 
     expect(header).toBeTruthy();
     expect(title).toBeTruthy();
