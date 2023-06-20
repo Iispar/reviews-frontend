@@ -19,7 +19,7 @@
         height: 20px;
         position: absolute;
         right: 4px;
-        top: 2px;
+        top: 0px;
         font-size: 14px;
         font-family: 'mainFont';
         & button {
@@ -27,50 +27,15 @@
             background: transparent;
             padding: 3px;
         }
-        &__year {
-            &:hover {
-                position: relative;
-                &:before {
-                    content: '';
-                    position: absolute;
-                    bottom: 0px;
-                    left: 2px;
-                    height: 2px;
-                    width: 28px;
-                    border-radius: 2px;
-                    background: $orange;
-                }
-            }
-        }
-        &__month {
-            &:hover {
-                position: relative;
-                &:before {
-                    content: '';
-                    position: absolute;
-                    bottom: 0px;
-                    left: 2px;
-                    height: 2px;
-                    width: 38px;
-                    border-radius: 2px;
-                    background: $orange;
-                }
-            }
-        }
-        &__week {
-            &:hover {
-                position: relative;
-                &:before {
-                    content: '';
-                    position: absolute;
-                    bottom: 0px;
-                    left: 2px;
-                    height: 2px;
-                    width: 34px;
-                    border-radius: 2px;
-                    background: $orange;
-                }
-            }
+        &__active {
+            height: 2px;
+            width: 38px;
+            position: absolute;
+            background: $orange;
+            bottom: 0px;
+            left: 63px;
+            border-radius: 2px;
+            transition: all 0.3s ease-out;
         }
     }
 }

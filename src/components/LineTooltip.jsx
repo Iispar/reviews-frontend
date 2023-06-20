@@ -9,13 +9,13 @@ import propTypes from 'prop-types';
 const LineTooltip = (props) => {
   const { payload } = props;
   const { active } = props;
-  if (active && payload && payload.length) {
-    const { month } = payload[0].payload;
+  if (active && payload && payload.length && payload[0].payload.time !== undefined) {
+    const { time } = payload[0].payload;
     const { reviews } = payload[0].payload;
     const { rating } = payload[0].payload;
     return (
       <div className="lineTooltip">
-        <span className="lineTooltip__title">{`${month}`}</span>
+        <span className="lineTooltip__title">{`${time}`}</span>
         <div className="lineTooltip__countReviews">
           <span className="lineTooltip__countReviews__count">
             {reviews}

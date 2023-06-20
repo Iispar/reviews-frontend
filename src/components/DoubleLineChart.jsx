@@ -17,6 +17,7 @@ const DoubleLineChart = (props) => {
   const reviews = data.map((object) => object.reviews);
   const max = Math.max(...reviews) + 10;
   const verticalPoints = getVerticalPoints(reviews.length - 2);
+  const yWidth = reviews.length === 5 ? -120 : -80;
 
   return (
     <div className="lineChart">
@@ -27,18 +28,18 @@ const DoubleLineChart = (props) => {
           data={data}
           margin={{
             top: 0,
-            bottom: -38,
+            bottom: -44,
             right: 0,
             left: 0,
           }}
         >
           <CartesianGrid horizontal={false} verticalPoints={verticalPoints} />
-          <XAxis dataKey="month" height={1} fontFamily="mainFont" tickSize axisLine={false} dy={-24} />
-          <YAxis yAxisId="left" width={-80} tick={false} domain={[0, max]} />
-          <YAxis yAxisId="right" tick={false} orientation="right" domain={[1, 6]} width={-80} />
+          <XAxis dataKey="time" height={1} fontFamily="mainFont" tickSize axisLine={false} dy={-24} />
+          <YAxis yAxisId="left" width={yWidth} tick={false} domain={[0, max]} />
+          <YAxis yAxisId="right" tick={false} orientation="right" domain={[1, 6]} width={yWidth} />
           <Tooltip cursor={false} content={<LineChartTooltip />} />
           <Legend layout="vertical" wrapperStyle={{ top: 0, left: 5, fontFamily: 'mainFont' }} />
-          <Line yAxisId="left" type="monotone" dataKey="reviews" stroke="#8884d8" />
+          <Line yAxisId="left" type="monotone" dataKey="reviews" stroke="#4F5D75" />
           <Line yAxisId="right" type="monotone" dataKey="rating" stroke="#EF8354" />
         </LineChart>
       </ResponsiveContainer>
