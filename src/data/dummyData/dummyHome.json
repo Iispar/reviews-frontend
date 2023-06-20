@@ -1,5 +1,5 @@
 {
-    "data": [
+    "month": [
         {
             "name": "start",
             "year": 2022,
@@ -37,6 +37,94 @@
         },
         {
             "month": "may",
+            "year": 2022,
+            "reviews": 50,
+            "rating": 3.8,
+            "key": "666"
+        },
+        {
+            "name": "end",
+            "year": 2022,
+            "reviews": 55,
+            "rating": 4,
+            "key": "666"
+        }
+    ],
+    "year": [
+        {
+            "name": "start",
+            "year": 2022,
+            "reviews": 0,
+            "rating": 0,
+            "key": "111"
+        },
+        {
+            "month": "2021",
+            "year": 2022,
+            "reviews": 42,
+            "rating": 3.2,
+            "key": "222"
+        },
+        {
+            "month": "2022",
+            "year": 2022,
+            "reviews": 51,
+            "rating": 3.6,
+            "key": "333"
+        },
+        {
+            "month": "2023",
+            "year": 2022,
+            "reviews": 51,
+            "rating": 3.6,
+            "key": "333"
+        },
+        {
+            "month": "end",
+            "year": 2022,
+            "reviews": 51,
+            "rating": 3.6,
+            "key": "333"
+        }
+    ],
+    "week": [
+        {
+            "name": "start",
+            "year": 2022,
+            "reviews": 0,
+            "rating": 0,
+            "key": "111"
+        },
+        {
+            "month": "monday",
+            "year": 2022,
+            "reviews": 42,
+            "rating": 3.2,
+            "key": "222"
+        },
+        {
+            "month": "tuesday",
+            "year": 2022,
+            "reviews": 51,
+            "rating": 3.6,
+            "key": "333"
+        },
+        {
+            "month": "wednesday",
+            "year": 2022,
+            "reviews": 34,
+            "rating": 4.2,
+            "key": "444"
+        },
+        {
+            "month": "thursday",
+            "year": 2022,
+            "reviews": 46,
+            "rating": 3.4,
+            "key": "555"
+        },
+        {
+            "month": "friday",
             "year": 2022,
             "reviews": 50,
             "rating": 3.8,

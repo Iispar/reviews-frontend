@@ -5,6 +5,7 @@ import {
 } from 'recharts';
 import propTypes from 'prop-types';
 import LineChartTooltip from './LineTooltip';
+import { getVerticalPoints } from './helpers';
 
 /**
  * Renders a line chart with two lines
@@ -15,6 +16,8 @@ const DoubleLineChart = (props) => {
   const { data } = props;
   const reviews = data.map((object) => object.reviews);
   const max = Math.max(...reviews) + 10;
+  const verticalPoints = getVerticalPoints(reviews.length - 2);
+
   return (
     <div className="lineChart">
       <ResponsiveContainer width="100%" height="100%" className="lineChart__chart">
@@ -29,7 +32,7 @@ const DoubleLineChart = (props) => {
             left: 0,
           }}
         >
-          <CartesianGrid horizontal={false} verticalPoints={[130, 275, 420, 565]} />
+          <CartesianGrid horizontal={false} verticalPoints={verticalPoints} />
           <XAxis dataKey="month" height={1} fontFamily="mainFont" tickSize axisLine={false} dy={-24} />
           <YAxis yAxisId="left" width={-80} tick={false} domain={[0, max]} />
           <YAxis yAxisId="right" tick={false} orientation="right" domain={[1, 6]} width={-80} />
@@ -39,11 +42,6 @@ const DoubleLineChart = (props) => {
           <Line yAxisId="right" type="monotone" dataKey="rating" stroke="#EF8354" />
         </LineChart>
       </ResponsiveContainer>
-      <div className="lineChart__selector">
-        <button className="lineChart__selector__year" type="button"> year </button>
-        <button className="lineChart__selector__month" type="button"> month </button>
-        <button className="lineChart__selector__week" type="button"> week </button>
-      </div>
     </div>
   );
 };
