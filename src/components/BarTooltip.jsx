@@ -23,8 +23,8 @@ const BarTooltip = (props) => {
 };
 
 BarTooltip.propTypes = {
-  payload: propTypes.string,
-  active: propTypes.string,
+  payload: propTypes.arrayOf(propTypes.objectOf(propTypes.object)),
+  active: propTypes.bool,
 };
 
 BarTooltip.defaultProps = {

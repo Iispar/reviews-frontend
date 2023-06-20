@@ -10,6 +10,11 @@ import DoubleLineChart from '../../components/DoubleLineChart';
 // eslint-disable-next-line arrow-body-style
 const HomeChart = () => {
   const [view, setView] = useState(dummy.month);
+  /**
+   * Changes the view and sets the css for the active bar.
+   * @param {*} selection
+   * @param {*} selectionText
+   */
   const changeView = (selection, selectionText) => {
     setView(selection);
     if (selectionText === 'year') {

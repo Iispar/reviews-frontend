@@ -3,27 +3,32 @@
         {
             "stars": "1",
             "title": "1 stars",
-            "count": 20
+            "count": 20,
+            "key": "1"
         },
         {
             "stars": "2",
             "title": "2 stars",
-            "count": 30
+            "count": 30,
+            "key": "1"
         },
         {
             "stars": "3",
             "title": "3 stars",
-            "count": 45
+            "count": 45,
+            "key": "1"
         },
         {
             "stars": "4",
             "title": "4 start",
-            "count": 38
+            "count": 38,
+            "key": "1"
         },
         {
             "stars": "5",
             "title": "5 start",
-            "count": 22
+            "count": 22,
+            "key": "1"
         }
     ]
 }

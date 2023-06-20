@@ -14,9 +14,12 @@ import { getVerticalPoints } from './helpers';
  */
 const DoubleLineChart = (props) => {
   const { data } = props;
+  // calculate max value for reviews count to get max of chart
   const reviews = data.map((object) => object.reviews);
   const max = Math.max(...reviews) + 10;
+  // calculate vertical points for the background grid
   const verticalPoints = getVerticalPoints(reviews.length - 2);
+  // if there are three dots the width is larger...
   const yWidth = reviews.length === 5 ? -120 : -80;
 
   return (
@@ -26,6 +29,7 @@ const DoubleLineChart = (props) => {
           width={0}
           height={0}
           data={data}
+          key={data.key}
           margin={{
             top: 0,
             bottom: -44,

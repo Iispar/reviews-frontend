@@ -38,7 +38,7 @@ const Chart = (props) => {
         <XAxis dataKey="stars" />
         <Bar dataKey="count">
           {data.map((entry, index) => (
-            <Cell cursor="pointer" fill={focusBar === index ? color[index + 5] : color[index]} />
+            <Cell cursor="pointer" key={entry.key} fill={focusBar === index ? color[index + 5] : color[index]} />
           ))}
         </Bar>
       </BarChart>

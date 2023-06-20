@@ -12,26 +12,26 @@ const Home = () => {
   return (
     <div className="home" id="home">
       <div className="home__grid" id="home__grid">
-        <div className="home__grid__header">
+        <div className="home__grid__header" id="home__grid__header">
           <Header />
         </div>
         <div className="home__grid__title">
-          <div className="home__grid__title__text">
+          <div className="home__grid__title__text" id="home__grid__title__text">
             Welcome back&nbsp;
             {user}
             !
           </div>
         </div>
-        <div className="home__grid__latestReviews">
+        <div className="home__grid__latestReviews" id="home__grid__latestReviews">
           <LatestReviews />
         </div>
-        <div className="home__grid__mostPopular">
+        <div className="home__grid__mostPopular" id="home__grid__mostPopular">
           <MostPopular />
         </div>
-        <div className="home__grid__homeChart">
+        <div className="home__grid__homeChart" id="home__grid__homeChart">
           <HomeChart />
         </div>
-        <div className="home__grid__homeChange">
+        <div className="home__grid__homeChange" id="home__grid__homeChange">
           <HomeStats />
         </div>
         <div className="home__grid__footer">
