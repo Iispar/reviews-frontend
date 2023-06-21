@@ -1289,15 +1289,16 @@ input[type=file] {
 .items__header {
   display: flex;
   gap: 10px;
-  align-items: center;
-  height: 60px;
+  align-items: flex-start;
+  height: 70px;
   width: 100%;
   padding-right: 12px;
   padding-left: 12px;
+  padding-top: 12px;
   box-sizing: border-box;
 }
 .items__header__search {
-  padding-top: 12px;
+  padding-top: 0px;
 }
 .items__header__sort {
   display: flex;
@@ -1305,7 +1306,7 @@ input[type=file] {
   height: 20px;
   justify-content: center;
   align-items: center;
-  border: 1px solid #545454;
+  border: 1px solid #EF8354;
   border-radius: 10px;
 }
 .items__header__sort__btn {
@@ -1402,7 +1403,7 @@ input[type=file] {
   left: -4px;
   transition: all 0.3s;
   transform: rotate(270deg);
-  filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
+  filter: invert(33%) sepia(35%) saturate(359%) hue-rotate(179deg) brightness(96%) contrast(89%);
 }
 .items__list {
   height: 100%;
@@ -1474,4 +1475,71 @@ input[type=file] {
   grid-row: 6/6;
   grid-column: 1/5;
   background: green;
+}
+
+.item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+.item__grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: auto 700px 320px auto;
+  grid-template-rows: 50px 10px 80px 200px 25px 100px 40px 100px auto 40px;
+  gap: 20px;
+  overflow: scroll;
+}
+.item__grid__header {
+  grid-row: 1/1;
+  grid-column: 1/5;
+  width: 100vw;
+}
+.item__grid__title {
+  grid-row: 3/3;
+  grid-column: 2/4;
+  padding-left: 2px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  background: red;
+}
+.item__grid__title__text {
+  font-family: "mainFont";
+  font-size: 36px;
+  height: 100%;
+}
+.item__grid__reviews {
+  grid-row: 4/7;
+  grid-column: 2/2;
+  background: orange;
+}
+.item__grid__words {
+  grid-row: 4/8;
+  grid-column: 3/3;
+  background: green;
+}
+.item__grid__chart {
+  grid-row: 7/9;
+  grid-column: 2/2;
+  background: pink;
+}
+.item__grid__new {
+  grid-row: 8/8;
+  grid-column: 3/3;
+  background: blue;
+}
+.item__grid__footer {
+  background: green;
+  grid-row: 10/10;
+  grid-column: 1/5;
+  height: 60px;
+  width: 100vw;
 }/*# sourceMappingURL=main.css.map */

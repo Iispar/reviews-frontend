@@ -40,7 +40,6 @@ const Items = () => {
       $('#items__header__sort').animate({
         width: '44px',
         height: '20px',
-        'margin-top': '0px',
       }, 200);
       $('#items__header__sort__reviews__desc').css('display', 'none');
       $('#items__header__sort__reviews__asc').css('display', 'none');
@@ -53,7 +52,6 @@ const Items = () => {
       $('#items__header__sort').animate({
         width: '160px',
         height: '40px',
-        'margin-top': '12px',
       }, 200);
       $('#items__header__sort__reviews__desc').css('display', 'flex');
       $('#items__header__sort__reviews__asc').css('display', 'flex');

@@ -8,14 +8,15 @@
     &__header {
         display: flex;
         gap: 10px;
-        align-items: center;
-        height: 60px;
+        align-items: flex-start;
+        height: 70px;
         width: 100%;
         padding-right: 12px;
         padding-left: 12px;
+        padding-top: 12px;
         box-sizing: border-box;
         &__search {
-            padding-top: 12px;
+            padding-top: 0px;
         }
         &__sort {
             display: flex;
@@ -23,7 +24,7 @@
             height: 20px;
             justify-content: center;
             align-items: center;
-            border: 1px solid $grey;
+            border: 1px solid $orange;
             border-radius: 10px;
             &__btn {
                 border: none;
@@ -118,8 +119,7 @@
                     left: -4px;
                     transition: all 0.3s;
                     transform: rotate(270deg);
-                    filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
-                }
+                    filter: invert(33%) sepia(35%) saturate(359%) hue-rotate(179deg) brightness(96%) contrast(89%);                }
             }
         }
     }
