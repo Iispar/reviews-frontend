@@ -14,8 +14,8 @@ const BarTooltip = (props) => {
     const { count } = payload[0].payload;
     return (
       <div className="barTooltip">
-        <span className="barTooltip__count">{`${count} ratings`}</span>
-        <span className="barTooltip__title">{`with ${title}`}</span>
+        <span className="barTooltip__count" id="barTooltip__count">{`${count} ratings`}</span>
+        <span className="barTooltip__title" id="barTooltip__title">{`with ${title}`}</span>
       </div>
     );
   }

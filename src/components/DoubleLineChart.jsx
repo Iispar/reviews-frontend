@@ -23,7 +23,7 @@ const DoubleLineChart = (props) => {
   const yWidth = reviews.length === 5 ? -120 : -80;
 
   return (
-    <div className="lineChart">
+    <div className="lineChart" id="lineChart">
       <ResponsiveContainer width="100%" height="100%" className="lineChart__chart">
         <LineChart
           width={0}

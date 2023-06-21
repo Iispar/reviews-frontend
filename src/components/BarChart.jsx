@@ -29,7 +29,7 @@ const Chart = (props) => {
   };
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="100%" id="resContainer">
       <BarChart
         data={data}
         onMouseMove={(state) => { hover(state); }}
@@ -38,7 +38,7 @@ const Chart = (props) => {
         <XAxis dataKey="stars" />
         <Bar dataKey="count">
           {data.map((entry, index) => (
-            <Cell cursor="pointer" key={entry.key} fill={focusBar === index ? color[index + 5] : color[index]} />
+            <Cell id="cell" cursor="pointer" key={entry.key} fill={focusBar === index ? color[index + 5] : color[index]} />
           ))}
         </Bar>
       </BarChart>

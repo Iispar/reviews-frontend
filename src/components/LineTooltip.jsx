@@ -15,18 +15,18 @@ const LineTooltip = (props) => {
     const { rating } = payload[0].payload;
     return (
       <div className="lineTooltip">
-        <span className="lineTooltip__title">{`${time}`}</span>
-        <div className="lineTooltip__countReviews">
-          <span className="lineTooltip__countReviews__count">
+        <span className="lineTooltip__title" id="lineTooltip__title">{`${time}`}</span>
+        <div className="lineTooltip__countReviews" id="lineTooltip__countReviews">
+          <span className="lineTooltip__countReviews__count" id="lineTooltip__countReviews__count">
             {reviews}
           </span>
           {' '}
           reviews with
         </div>
-        <div className="lineTooltip__countRating">
+        <div className="lineTooltip__countRating" id="lineTooltip__countRating">
           average rating
           {' '}
-          <span className="lineTooltip__countRating__count">
+          <span className="lineTooltip__countRating__count" id="lineTooltip__countRating__count">
             {rating}
           </span>
         </div>
