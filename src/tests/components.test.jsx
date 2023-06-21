@@ -12,12 +12,20 @@ import LargeReview from '../components/LargeReview';
 import Pagination from '../components/Pagination';
 import SearchField from '../components/SearchField';
 import SmallItem from '../components/SmallItem';
+import BarChart from '../components/BarChart';
+import DoubleLineChart from '../components/DoubleLineChart';
+import BarTooltip from '../components/BarTooltip';
+import LineTooltip from '../components/LineTooltip';
+import dummyDis from '../data/dummyData/dummyReviewDis.json';
+import dummyLine from '../data/dummyData/dummyHome.json';
 
 const mockedUsedNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: () => mockedUsedNavigate,
 }));
+
+global.ResizeObserver = require('resize-observer-polyfill');
 
 describe('components render and work', () => {
   let user;
@@ -124,6 +132,36 @@ describe('components render and work', () => {
 
       expect(name).toBeTruthy();
       expect(rating).toBeTruthy();
+    });
+    test('BarChart renders', async () => {
+      const barChartContainer = render(<BarChart data={dummyDis.data} />).container;
+      const resContainer = barChartContainer.querySelector('#resContainer');
+      expect(resContainer).toBeTruthy();
+    });
+    test('double line renders', async () => {
+      const barChartContainer = render(<DoubleLineChart data={dummyLine.month} />).container;
+      const resContainer = barChartContainer.querySelector('#lineChart');
+      expect(resContainer).toBeTruthy();
+    });
+    test('tooltips render', async () => {
+      const barTooltip = render(<BarTooltip active payload={[{ payload: { title: 'test', count: '20' } }]} />).container;
+      const lineTooltip = render(<LineTooltip active payload={[{ payload: { time: 'january', reviews: '20', rating: '2' } }]} />).container;
+
+      const barRatings = barTooltip.querySelector('#barTooltip__count');
+      const barTitle = barTooltip.querySelector('#barTooltip__title');
+      const lineTitle = lineTooltip.querySelector('#lineTooltip__title');
+      const lineReviews = lineTooltip.querySelector('#lineTooltip__countReviews');
+      const lineReviewText = lineTooltip.querySelector('#lineTooltip__countReviews__count');
+      const lineRating = lineTooltip.querySelector('#lineTooltip__countRating');
+      const lineRatingText = lineTooltip.querySelector('#lineTooltip__countRating__count');
+
+      expect(barRatings).toBeTruthy();
+      expect(barTitle).toBeTruthy();
+      expect(lineTitle).toBeTruthy();
+      expect(lineReviews).toBeTruthy();
+      expect(lineReviewText).toBeTruthy();
+      expect(lineRating).toBeTruthy();
+      expect(lineRatingText).toBeTruthy();
     });
   });
 });

@@ -7,7 +7,7 @@ const SearchField = (props) => {
   const { id } = props;
   return (
     <div className="searchField">
-      <input className={`${id}__input`} id={`${id}__input`} placeholder={placeholder} />
+      <input className={`${id}__input`} id={`${id}__input`} placeholder={placeholder} type="search" />
     </div>
   );
 };
