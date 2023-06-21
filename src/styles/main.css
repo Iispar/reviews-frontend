@@ -281,6 +281,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   right: 0;
   top: 0;
   bottom: 0;
+  cursor: default;
 }
 
 .searchField {
@@ -1155,6 +1156,7 @@ input[type=search]::-webkit-search-cancel-button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: default;
 }
 .home__grid {
   display: grid;
@@ -1316,45 +1318,41 @@ input[type=file] {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
+  align-items: center;
   width: 100%;
-  box-sizing: border-box;
+  height: 100%;
 }
 .items__header__sort__reviews button, .items__header__sort__ratings button {
+  width: 100%;
+  height: 100%;
   display: none;
   border: none;
-  justify-content: center;
-  height: 100%;
   background: transparent;
-  font-family: "mainFont";
-  font-size: 10px;
-  box-sizing: border-box;
+  justify-content: center;
+  padding: 0;
   padding-left: 6px;
+  font-family: "mainFont";
+  font-size: 14px;
+  box-sizing: border-box;
 }
 .items__header__sort__reviews__ascArrow, .items__header__sort__ratings__ascArrow {
   position: relative;
-  border: none;
   box-sizing: border-box;
   height: 100%;
-  width: 10px;
+  width: 14px;
 }
 .items__header__sort__reviews__ascArrow::before, .items__header__sort__ratings__ascArrow::before {
   content: " ";
   display: flex;
-  height: 100%;
-  width: 8px;
+  width: 14px;
   background-image: url("../../data/icons/arrow.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
-  padding-left: 6px;
-  padding-top: 1px;
+  height: 14px;
   position: absolute;
-  width: 10px;
-  height: 10px;
-  top: 2px;
-  left: 0px;
+  top: 3px;
   transform: rotate(270deg);
 }
 .items__header__sort__reviews__descArrow, .items__header__sort__ratings__descArrow {
@@ -1362,25 +1360,20 @@ input[type=file] {
   border: none;
   box-sizing: border-box;
   height: 100%;
-  width: 10px;
+  width: 14px;
 }
 .items__header__sort__reviews__descArrow::before, .items__header__sort__ratings__descArrow::before {
   content: " ";
   display: flex;
-  height: 100%;
-  width: 8px;
+  width: 14px;
   background-image: url("../../data/icons/arrow.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
-  padding-left: 4px;
-  padding-top: 1px;
   position: absolute;
-  width: 10px;
-  height: 10px;
-  top: 2px;
-  left: 0px;
+  height: 14px;
+  top: 3px;
   transform: rotate(90deg);
 }
 .items__header__sort__reviews__asc {
@@ -1424,6 +1417,7 @@ input[type=file] {
 .selected {
   display: "flex";
   padding-top: "2px";
+  background-color: red;
 }
 .selected :hover {
   background: transparent;
@@ -1439,6 +1433,7 @@ input[type=file] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: default;
 }
 .allItems__grid {
   display: grid;
