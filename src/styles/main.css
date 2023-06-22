@@ -3,7 +3,7 @@
   letter-spacing: 2px;
   src: url("../data/fonts/mulish.ttf");
 }
-btn, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .login__loginForm__inputs__loginBtn {
+btn, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .login__loginForm__inputs__loginBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ btn, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit,
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .login__loginForm__inputs__loginBtn:hover {
+btn:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .login__loginForm__inputs__loginBtn:hover {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -170,7 +170,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   letter-spacing: 2px;
   src: url("../data/fonts/mulish.ttf");
 }
-btn, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn {
+btn, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -182,7 +182,7 @@ btn, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit,
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover {
+btn:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -363,7 +363,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   color: rgb(255, 0, 0);
 }
 
-btn, .fileInput__form__submitBtn, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .createNew__createAccountForm__inputs__submit {
+btn, .newReview__button, .fileInput__form__submitBtn, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .createNew__createAccountForm__inputs__submit {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -375,7 +375,7 @@ btn, .fileInput__form__submitBtn, .login__loginForm__inputs__loginBtn, .login__l
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .fileInput__form__submitBtn:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .createNew__createAccountForm__inputs__submit:hover {
+btn:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .createNew__createAccountForm__inputs__submit:hover {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -1553,6 +1553,48 @@ input[type=file] {
   height: 80px;
 }
 
+.newReview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+.newReview__button {
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+.words {
+  background: red;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: "mainFont";
+  font-size: 16px;
+}
+.words__title {
+  background: blue;
+  height: 60px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.words__positive {
+  background: blue;
+  height: 270px;
+}
+.words__negative {
+  background: blue;
+  height: 270px;
+}
+
 .item {
   position: absolute;
   top: 0;
@@ -1569,7 +1611,7 @@ input[type=file] {
   display: grid;
   height: 100%;
   grid-template-columns: auto 700px 320px auto;
-  grid-template-rows: 50px 10px 90px 340px 25px 100px 40px 100px auto 40px;
+  grid-template-rows: 50px 10px 90px 340px 25px 100px 100px 50px auto 40px;
   gap: 20px;
   overflow: scroll;
 }
@@ -1589,7 +1631,6 @@ input[type=file] {
 .item__grid__words {
   grid-row: 4/8;
   grid-column: 3/3;
-  background: green;
 }
 .item__grid__chart {
   grid-row: 7/9;
@@ -1599,7 +1640,6 @@ input[type=file] {
 .item__grid__new {
   grid-row: 8/8;
   grid-column: 3/3;
-  background: blue;
 }
 .item__grid__footer {
   background: green;

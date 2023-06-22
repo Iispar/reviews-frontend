@@ -1,0 +1,14 @@
+.newReview {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    &__button {
+        @extend btn;
+        width: 200px;
+        height: 50px;
+        border-radius: 25px;
+    }
+}

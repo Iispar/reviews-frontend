@@ -1,5 +1,7 @@
 @import './title.scss';
 @import './reviews.scss';
+@import './newReview';
+@import './words';
 
 .item {
     position: absolute;
@@ -16,7 +18,7 @@
         display: grid;
         height: 100%;
         grid-template-columns: auto 700px 320px auto;
-        grid-template-rows: 50px 10px 90px 340px 25px 100px 40px 100px auto 40px;
+        grid-template-rows: 50px 10px 90px 340px 25px 100px 100px 50px auto 40px;
         gap: 20px;
         overflow: scroll;
         &__header {
@@ -35,7 +37,6 @@
         &__words {
             grid-row: 4/8;
             grid-column: 3/3;
-            background: green;
         }
         &__chart {
             grid-row: 7/9;
@@ -45,7 +46,6 @@
         &__new {
             grid-row: 8/8;
             grid-column: 3/3;
-            background: blue;
         }
         &__footer {
             background: green;

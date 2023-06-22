@@ -3,9 +3,15 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Reviews from './Reviews';
 import Title from './Title';
+import NewReview from './NewReview';
+import Words from './Words';
 
 // eslint-disable-next-line arrow-body-style
 const Item = () => {
+  const newReview = () => {
+    console.log('call');
+  };
+
   return (
     <div className="item">
       <div className="item__grid">
@@ -19,13 +25,13 @@ const Item = () => {
           <Reviews />
         </div>
         <div className="item__grid__words">
-          common words
+          <Words />
         </div>
         <div className="item__grid__chart">
           chart
         </div>
         <div className="item__grid__new">
-          add reviews
+          <NewReview onClick={newReview} />
         </div>
         <div className="item__grid__footer">
           <Footer />
