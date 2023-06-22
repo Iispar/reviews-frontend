@@ -1,3 +1,24 @@
+@mixin arrow($rotate) {
+    position: relative;
+    box-sizing: border-box;
+    height: 100%;
+    width: 14px;
+    &::before {
+        content: ' ';
+        display: flex;
+        width: 14px;
+        background-image: url('../../data/icons/arrow.svg');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        height: 14px;
+        position: absolute;
+        top: 3px;
+        transform: $rotate;
+    }
+}
+
 .items {
     box-shadow: 0 0 40px 1px $shadow;
     border-radius: 10px;
@@ -53,45 +74,10 @@
                     box-sizing: border-box;
                 }
                 &__ascArrow {
-                    position: relative;
-                    box-sizing: border-box;
-                    height: 100%;
-                    width: 14px;
-                    &::before {
-                        content: ' ';
-                        display: flex;
-                        width: 14px;
-                        background-image: url('../../data/icons/arrow.svg');
-                        background-size: 100%;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-color: transparent;
-                        height: 14px;
-                        position: absolute;
-                        top: 3px;
-                        transform: rotate(270deg);
-                    }
+                    @include arrow(rotate(270deg));
                 }
                 &__descArrow {
-                    position: relative;
-                    border: none;
-                    box-sizing: border-box;
-                    height: 100%;
-                    width: 14px;
-                    &::before {
-                        content: ' ';
-                        display: flex;
-                        width: 14px;
-                        background-image: url('../../data/icons/arrow.svg');
-                        background-size: 100%;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-color: transparent;
-                        position: absolute;
-                        height: 14px;
-                        top: 3px;
-                        transform: rotate(90deg);
-                    }
+                    @include arrow(rotate(90deg));
                 }
             }
             &__reviews__asc {
