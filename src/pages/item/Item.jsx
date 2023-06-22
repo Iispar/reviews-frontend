@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Reviews from './Reviews';
 import Title from './Title';
 
 // eslint-disable-next-line arrow-body-style
@@ -15,7 +16,7 @@ const Item = () => {
           <Title />
         </div>
         <div className="item__grid__reviews">
-          reviews
+          <Reviews />
         </div>
         <div className="item__grid__words">
           common words
