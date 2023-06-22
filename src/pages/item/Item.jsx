@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Title from './Title';
 
 // eslint-disable-next-line arrow-body-style
 const Item = () => {
@@ -11,7 +12,7 @@ const Item = () => {
           <Header />
         </div>
         <div className="item__grid__title">
-          title
+          <Title />
         </div>
         <div className="item__grid__reviews">
           reviews

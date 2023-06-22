@@ -1,0 +1,43 @@
+@mixin dataWidget($width) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $width;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px $shadow;
+}
+
+.itemTitle {
+    height: 100%;
+    padding-left: 2px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'mainFont';
+    font-size: 16px;
+    padding: 0;
+    &__info {
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-left: 4px;
+        padding-bottom: 8px;
+        box-sizing: border-box;
+        &__name {
+            font-size: 36px;
+        }
+    }
+    &__data {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 10px;
+        &__reviews, &__positive, &__negative {
+            @include dataWidget(90px)
+        }
+        &__rating {
+            @include dataWidget(120px)
+        }
+    }
+}
