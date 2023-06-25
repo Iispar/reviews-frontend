@@ -3,6 +3,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Items from './Items';
 import FileInput from './FileInput';
+import dummyItems from '../../data/dummyData/dummyItems.json';
 
 /**
  * Renders the all items page.
@@ -26,7 +27,7 @@ const AllItems = () => {
           <span className="allItems__grid__title__text"> All your items </span>
         </div>
         <div className="allItems__grid__items" id="allItems__grid__items">
-          <Items />
+          <Items items={dummyItems.items} />
         </div>
         <div className="allItems__grid__fileInput" id="allItems__grid__fileInput">
           <FileInput onSubmit={handleCreation} />

@@ -5,6 +5,8 @@ import MostPopular from './MostPopular';
 import HomeChart from './HomeChart';
 import HomeStats from './HomeStats';
 import Footer from '../../components/Footer';
+import dummyReviews from '../../data/dummyData/dummyReviews.json';
+import dummyItems from '../../data/dummyData/dummyItems.json';
 
 const Home = () => {
   // eslint-disable-next-line no-unused-vars
@@ -23,10 +25,10 @@ const Home = () => {
           </div>
         </div>
         <div className="home__grid__latestReviews" id="home__grid__latestReviews">
-          <LatestReviews />
+          <LatestReviews reviews={dummyReviews.reviews} />
         </div>
         <div className="home__grid__mostPopular" id="home__grid__mostPopular">
-          <MostPopular />
+          <MostPopular items={dummyItems.items} />
         </div>
         <div className="home__grid__homeChart" id="home__grid__homeChart">
           <HomeChart />

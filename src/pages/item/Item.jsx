@@ -6,6 +6,8 @@ import Title from './Title';
 import NewReview from './NewReview';
 import Words from './Words';
 import ItemChart from './ItemChart';
+import dummyReviews from '../../data/dummyData/dummyReviews.json';
+import dummyWords from '../../data/dummyData/dummyWords.json';
 
 // eslint-disable-next-line arrow-body-style
 const Item = () => {
@@ -20,13 +22,21 @@ const Item = () => {
           <Header />
         </div>
         <div className="item__grid__title">
-          <Title />
+          <Title
+            name="item name"
+            desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industrys standard dummy text ever since the 1500s"
+            reviewsCount="102"
+            ratingValue="4.2"
+            posReviews="72"
+            negReviews="30"
+          />
         </div>
         <div className="item__grid__reviews">
-          <Reviews />
+          <Reviews reviews={dummyReviews.reviews} />
         </div>
         <div className="item__grid__words">
-          <Words />
+          <Words words={dummyWords.words} />
         </div>
         <div className="item__grid__chart">
           <ItemChart />

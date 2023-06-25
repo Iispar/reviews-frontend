@@ -1,14 +1,14 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import ReviewsList from '../../components/ReviewsList';
 import Pagination from '../../components/Pagination';
-import dummyReviews from '../../data/dummyData/dummyReviews.json';
 
 /**
  * Creates the latest review view for the item page.
  * @returns view for latest reviews
  */
-const Reviews = () => {
-  const { reviews } = dummyReviews;
+const Reviews = (props) => {
+  const { reviews } = props;
   return (
     <div className="reviews">
       <div className="reviews__header">
@@ -22,6 +22,14 @@ const Reviews = () => {
       </div>
     </div>
   );
+};
+
+Reviews.propTypes = {
+  reviews: propTypes.string,
+};
+
+Reviews.defaultProps = {
+  reviews: null,
 };
 
 export default Reviews;

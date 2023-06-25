@@ -1,13 +1,13 @@
 import { React, useState } from 'react';
 import $ from 'jquery';
+import propTypes from 'prop-types';
 import Pagination from '../../components/Pagination';
 import ItemList from '../../components/ItemList';
 import LargeItem from '../../components/LargeItem';
-import dummyItems from '../../data/dummyData/dummyItems.json';
 import SearchField from '../../components/SearchField';
 
-const Items = () => {
-  const { items } = dummyItems;
+const Items = (props) => {
+  const { items } = props;
   const [open, setOpen] = useState(false);
 
   /**
@@ -133,6 +133,14 @@ const Items = () => {
       </div>
     </div>
   );
+};
+
+Items.propTypes = {
+  items: propTypes.string,
+};
+
+Items.defaultProps = {
+  items: null,
 };
 
 export default Items;

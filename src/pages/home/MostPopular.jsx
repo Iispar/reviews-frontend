@@ -1,14 +1,14 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import ItemList from '../../components/ItemList';
-import dummyItems from '../../data/dummyData/dummyItems.json';
 import SmallItem from '../../components/SmallItem';
 
 /**
  * Creates the most popular content on the home ecreen
  * @returns most popular list
  */
-const MostPopular = () => {
-  const { items } = dummyItems;
+const MostPopular = (props) => {
+  const { items } = props;
   return (
     <div className="mostPopular">
       <div className="mostPopular__header">
@@ -19,6 +19,14 @@ const MostPopular = () => {
       </div>
     </div>
   );
+};
+
+MostPopular.propTypes = {
+  items: propTypes.string,
+};
+
+MostPopular.defaultProps = {
+  items: null,
 };
 
 export default MostPopular;

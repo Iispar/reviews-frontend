@@ -7,7 +7,6 @@ import DoubleLineChart from '../../components/DoubleLineChart';
  * Renders the chart for the home page.
  * @returns the home chart
  */
-// eslint-disable-next-line arrow-body-style
 const HomeChart = () => {
   const [view, setView] = useState(dummy.month);
   /**
