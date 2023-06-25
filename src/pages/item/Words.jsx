@@ -1,5 +1,11 @@
 import React from 'react';
+import TopWords from '../../components/TopWords';
+import dummy from '../../data/dummyData/dummyWords.json';
 
+/**
+ * Renders the top words content on item page.
+ * @returns top words.
+ */
 // eslint-disable-next-line arrow-body-style
 const Words = () => {
   return (
@@ -8,10 +14,10 @@ const Words = () => {
         most common words
       </div>
       <div className="words__positive">
-        pos
+        <TopWords words={dummy.words} title="with positive reviews" />
       </div>
       <div className="words__negative">
-        neg
+        <TopWords words={dummy.words} title="with negative reviews" />
       </div>
     </div>
   );
