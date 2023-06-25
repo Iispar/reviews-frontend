@@ -5,6 +5,7 @@ import Reviews from './Reviews';
 import Title from './Title';
 import NewReview from './NewReview';
 import Words from './Words';
+import ItemChart from './ItemChart';
 
 // eslint-disable-next-line arrow-body-style
 const Item = () => {
@@ -28,7 +29,7 @@ const Item = () => {
           <Words />
         </div>
         <div className="item__grid__chart">
-          chart
+          <ItemChart />
         </div>
         <div className="item__grid__new">
           <NewReview onClick={newReview} />

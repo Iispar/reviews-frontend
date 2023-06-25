@@ -1644,6 +1644,47 @@ input[type=file] {
   height: 270px;
 }
 
+.itemChart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: #FFFFFF;
+  border: 2px solid #CBDAF0;
+  border-radius: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.itemChart__selector {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0px;
+  width: 140px;
+  height: 20px;
+  position: absolute;
+  right: 4px;
+  top: 0px;
+  font-size: 14px;
+  font-family: "mainFont";
+}
+.itemChart__selector button {
+  border: 0;
+  background: transparent;
+  padding: 3px;
+}
+.itemChart__selector__active {
+  height: 2px;
+  width: 38px;
+  position: absolute;
+  background: #EF8354;
+  bottom: 0px;
+  left: 63px;
+  border-radius: 2px;
+  transition: all 0.3s ease-out;
+}
+
 .item {
   position: absolute;
   top: 0;
@@ -1684,7 +1725,6 @@ input[type=file] {
 .item__grid__chart {
   grid-row: 7/9;
   grid-column: 2/2;
-  background: pink;
 }
 .item__grid__new {
   grid-row: 8/8;

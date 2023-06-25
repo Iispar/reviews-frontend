@@ -2,6 +2,7 @@
 @import './reviews.scss';
 @import './newReview';
 @import './words';
+@import './itemChart';
 
 .item {
     position: absolute;
@@ -41,7 +42,6 @@
         &__chart {
             grid-row: 7/9;
             grid-column: 2/2;
-            background: pink;
         }
         &__new {
             grid-row: 8/8;
