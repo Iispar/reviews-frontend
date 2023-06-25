@@ -13,7 +13,7 @@ const TopWords = (props) => {
   const createList = (wordList) => {
     const list = [];
     for (let i = 0; i < wordList.length; i += 1) {
-      list.push(<WordListItem name={wordList[i].name} index={i} />);
+      list.push(<WordListItem name={wordList[i].name} index={i} key={wordList[i].key} />);
     }
     return list;
   };
@@ -30,7 +30,7 @@ const TopWords = (props) => {
 };
 
 TopWords.propTypes = {
-  words: propTypes.string,
+  words: propTypes.arrayOf(propTypes.objectOf(propTypes.string)),
   title: propTypes.string,
 };
 

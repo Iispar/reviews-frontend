@@ -136,7 +136,7 @@ const Items = (props) => {
 };
 
 Items.propTypes = {
-  items: propTypes.string,
+  items: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
 };
 
 Items.defaultProps = {

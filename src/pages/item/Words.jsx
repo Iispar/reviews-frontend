@@ -24,7 +24,7 @@ const Words = (props) => {
 };
 
 Words.propTypes = {
-  words: propTypes.string,
+  words: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
 };
 
 Words.defaultProps = {

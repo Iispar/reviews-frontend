@@ -22,7 +22,7 @@ const MostPopular = (props) => {
 };
 
 MostPopular.propTypes = {
-  items: propTypes.string,
+  items: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
 };
 
 MostPopular.defaultProps = {

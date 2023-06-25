@@ -25,7 +25,7 @@ const LatestReviews = (props) => {
 };
 
 LatestReviews.propTypes = {
-  reviews: propTypes.string,
+  reviews: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
 };
 
 LatestReviews.defaultProps = {

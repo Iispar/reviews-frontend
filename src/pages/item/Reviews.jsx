@@ -25,7 +25,7 @@ const Reviews = (props) => {
 };
 
 Reviews.propTypes = {
-  reviews: propTypes.string,
+  reviews: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
 };
 
 Reviews.defaultProps = {

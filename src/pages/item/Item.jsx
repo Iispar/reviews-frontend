@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Reviews from './Reviews';
 import Title from './Title';
 import NewReview from './NewReview';
 import Words from './Words';
 import ItemChart from './ItemChart';
+import Reviews from './Reviews';
 import dummyReviews from '../../data/dummyData/dummyReviews.json';
 import dummyWords from '../../data/dummyData/dummyWords.json';
 

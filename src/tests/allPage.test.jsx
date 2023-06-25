@@ -6,6 +6,7 @@ import userEvent from '@testing-library/user-event';
 import AllItems from '../pages/allItems/AllItems';
 import FileInput from '../pages/allItems/FileInput';
 import Items from '../pages/allItems/Items';
+import dummyItems from '../data/dummyData/dummyItems.json';
 
 describe('all items site works fully', () => {
   let user;
@@ -87,7 +88,7 @@ describe('all items site works fully', () => {
   test('items render correctly', async () => {
     const pageContainer = render(
       <BrowserRouter>
-        <Items visible />
+        <Items items={dummyItems.items} visible />
       </BrowserRouter>,
     ).container;
 
