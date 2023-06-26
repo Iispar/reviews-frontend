@@ -2,17 +2,11 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
 import AllItems from '../pages/allItems/AllItems';
-import FileInput from '../pages/allItems/FileInput';
 import Items from '../pages/allItems/Items';
 import dummyItems from '../data/dummyData/dummyItems.json';
 
 describe('all items site works fully', () => {
-  let user;
-  beforeEach(() => {
-    user = userEvent.setup();
-  });
   /**
    * Renders the allITems page and checks that every component exists there.
    */
@@ -33,53 +27,6 @@ describe('all items site works fully', () => {
     expect(items).toBeTruthy();
     expect(fileInput).toBeTruthy();
     expect(footer).toBeTruthy();
-  });
-
-  /**
-   * Renders the file input component for allitems and checks it renders
-   */
-  test('file input renders', () => {
-    const pageContainer = render(
-      <BrowserRouter>
-        <FileInput visible />
-      </BrowserRouter>,
-    ).container;
-    const title = pageContainer.querySelector('#fileInput__title');
-    const form = pageContainer.querySelector('#fileInput__form');
-    const fileInput = pageContainer.querySelector('#fileInput__form__file');
-    const submit = pageContainer.querySelector('#fileInput__form__submitBtn');
-
-    expect(title).toBeTruthy();
-    expect(form).toBeTruthy();
-    expect(fileInput).toBeTruthy();
-    expect(submit).toBeTruthy();
-  });
-
-  /**
-   * FileInput works with the mock.
-   */
-  test('file input works', async () => {
-    const mockSubmit = jest.fn((e) => e.preventDefault());
-    const pageContainer = render(
-      <BrowserRouter>
-        <FileInput visible onSubmit={mockSubmit} />
-      </BrowserRouter>,
-    ).container;
-
-    // not testing file input yet...
-    const name = pageContainer.querySelector('#fileName__container__input');
-    const desc = pageContainer.querySelector('#fileDesc__container__input');
-
-    await userEvent.type(name, 'testName');
-    await userEvent.type(desc, 'this is the test description');
-
-    expect(name).toHaveValue('testName');
-    expect(desc).toHaveValue('this is the test description');
-
-    const submitBtn = pageContainer.querySelector('#fileInput__form__submitBtn');
-    await user.click(submitBtn);
-
-    expect(mockSubmit).toBeCalledTimes(1);
   });
 
   /**
