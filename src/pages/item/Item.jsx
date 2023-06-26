@@ -25,9 +25,9 @@ const Item = () => {
           <Title
             name="item name"
             desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industrys standard dummy text ever since the 1500s"
+            Lorem Ipsum has been the industrys standard dummy text ever since"
             reviewsCount="102"
-            ratingValue="4.2"
+            ratingValue="4.3"
             posReviews="72"
             negReviews="30"
           />

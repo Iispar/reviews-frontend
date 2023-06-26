@@ -2,10 +2,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: $width;
     height: 60px;
     border-radius: 10px;
     box-shadow: 0 0 10px 2px $shadow;
+    line-height: 16px;
+}
+
+.star {
+    background-image: url('../../data/icons/starIcon.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
+    &__cutout {
+        background: $white;
+        position: absolute;
+        width: 24px;
+        height: 24px;
+    }
 }
 
 .itemTitle {
@@ -24,6 +41,7 @@
         padding-left: 4px;
         padding-bottom: 8px;
         box-sizing: border-box;
+        overflow: hidden;
         &__name {
             font-size: 36px;
         }
@@ -34,10 +52,22 @@
         align-items: flex-end;
         gap: 10px;
         &__reviews, &__positive, &__negative {
-            @include dataWidget(90px)
+            @include dataWidget(90px);
+            &__value {
+                font-size: 20px;
+            }
         }
         &__rating {
-            @include dataWidget(120px)
+            @include dataWidget(150px);
+            &__stars {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                gap: 2px;
+            }
         }
     }
 }
