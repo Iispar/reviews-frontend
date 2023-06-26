@@ -2,14 +2,14 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 /**
- * renders the new review component in single item.
+ * renders the new review button in single item.
  * @returns
  */
 // eslint-disable-next-line arrow-body-style
 const NewReview = (props) => {
   const { onClick } = props;
   return (
-    <div className="newReview">
+    <div className="newReview" id="newReview">
       <button className="newReview__button" type="button" onClick={() => onClick()}> new review </button>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Title from './Title';
@@ -6,13 +7,20 @@ import NewReview from './NewReview';
 import Words from './Words';
 import ItemChart from './ItemChart';
 import Reviews from './Reviews';
+import NewReviewForm from './NewReviewForm';
 import dummyReviews from '../../data/dummyData/dummyReviews.json';
 import dummyWords from '../../data/dummyData/dummyWords.json';
 
 // eslint-disable-next-line arrow-body-style
 const Item = () => {
   const newReview = () => {
-    console.log('call');
+    $('#words').css('display', 'none');
+    $('#newReview').css('display', 'none');
+    $('#newReviewForm').css('display', 'flex');
+  };
+
+  const submitReview = () => {
+    console.log('submit');
   };
 
   return (
@@ -37,12 +45,11 @@ const Item = () => {
         </div>
         <div className="item__grid__words">
           <Words words={dummyWords.words} />
+          <NewReviewForm onSubmit={submitReview} />
+          <NewReview onClick={newReview} />
         </div>
         <div className="item__grid__chart">
           <ItemChart />
-        </div>
-        <div className="item__grid__new">
-          <NewReview onClick={newReview} />
         </div>
         <div className="item__grid__footer">
           <Footer />

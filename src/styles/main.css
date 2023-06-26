@@ -3,7 +3,7 @@
   letter-spacing: 2px;
   src: url("../data/fonts/mulish.ttf");
 }
-btn, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .login__loginForm__inputs__loginBtn {
+btn, .newReviewForm__button, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .login__loginForm__inputs__loginBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ btn, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountF
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .login__loginForm__inputs__loginBtn:hover {
+btn:hover, .newReviewForm__button:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .login__loginForm__inputs__loginBtn:hover {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -170,7 +170,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   letter-spacing: 2px;
   src: url("../data/fonts/mulish.ttf");
 }
-btn, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn {
+btn, .newReviewForm__button, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -182,7 +182,7 @@ btn, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountF
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover {
+btn:hover, .newReviewForm__button:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -363,7 +363,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   color: rgb(255, 0, 0);
 }
 
-btn, .newReview__button, .fileInput__form__submitBtn, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .createNew__createAccountForm__inputs__submit {
+btn, .newReviewForm__button, .newReview__button, .fileInput__form__submitBtn, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .createNew__createAccountForm__inputs__submit {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -375,7 +375,7 @@ btn, .newReview__button, .fileInput__form__submitBtn, .login__loginForm__inputs_
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .createNew__createAccountForm__inputs__submit:hover {
+btn:hover, .newReviewForm__button:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .createNew__createAccountForm__inputs__submit:hover {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -1013,6 +1013,53 @@ input[type=search]::-webkit-search-cancel-button {
   align-items: center;
 }
 
+.jsonFileInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.jsonFileInput__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  width: 280px;
+  border-radius: 5px;
+  border: 1px solid #545454;
+  box-sizing: border-box;
+}
+.jsonFileInput__label__text {
+  font-family: "mainFont";
+  font-size: 20px;
+}
+.jsonFileInput__label__succesful {
+  display: none;
+  background: green;
+  height: 20px;
+  width: 20px;
+}
+.jsonFileInput__label__error {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100px;
+}
+.jsonFileInput__label__error__logo {
+  background: red;
+  height: 30px;
+  width: 30px;
+}
+.jsonFileInput__form {
+  width: 100%;
+  height: 100%;
+}
+
+input[type=file] {
+  display: none;
+}
+
 @font-face {
   font-family: "mainFont";
   letter-spacing: 2px;
@@ -1266,6 +1313,8 @@ input[type=search]::-webkit-search-cancel-button {
 .fileInput {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   border-radius: 10px;
   box-shadow: 0px 0px 40px 2px #b5b5b5;
@@ -1281,51 +1330,14 @@ input[type=search]::-webkit-search-cancel-button {
 }
 .fileInput__form {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-  height: 100%;
-}
-.fileInput__form__fileLabel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #FFFFFF;
-  height: 220px;
-  width: 280px;
-  border-radius: 5px;
-  border: 1px solid #545454;
-}
-.fileInput__form__fileLabel__text {
-  font-family: "mainFont";
-  font-size: 20px;
-}
-.fileInput__form__fileLabel__succesful {
-  display: none;
-  background: green;
-  height: 20px;
-  width: 20px;
-}
-.fileInput__form__fileLabel__error {
-  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60px;
-  width: 100px;
-}
-.fileInput__form__fileLabel__error__logo {
-  background: red;
-  height: 30px;
-  width: 30px;
+  gap: 10px;
 }
 .fileInput__form__submitBtn {
   width: 100px;
   height: 34px;
-}
-
-input[type=file] {
-  display: none;
 }
 
 .items {
@@ -1642,8 +1654,35 @@ input[type=file] {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  flex-direction: column;
+}
+.newReview__form {
+  display: none;
 }
 .newReview__button {
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+.newReviewForm {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+}
+.newReviewForm__form {
+  background: #FFFFFF;
+  box-shadow: 0 0 10px 2px #b5b5b5;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100%;
+  justify-content: space-around;
+}
+.newReviewForm__button {
   width: 200px;
   height: 50px;
   border-radius: 25px;
@@ -1751,16 +1790,15 @@ input[type=file] {
   grid-column: 2/2;
 }
 .item__grid__words {
-  grid-row: 4/8;
+  display: flex;
+  grid-row: 4/9;
   grid-column: 3/3;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .item__grid__chart {
   grid-row: 7/9;
   grid-column: 2/2;
-}
-.item__grid__new {
-  grid-row: 8/8;
-  grid-column: 3/3;
 }
 .item__grid__footer {
   background: green;

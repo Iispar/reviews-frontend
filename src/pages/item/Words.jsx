@@ -9,7 +9,7 @@ import TopWords from '../../components/TopWords';
 const Words = (props) => {
   const { words } = props;
   return (
-    <div className="words">
+    <div className="words" id="words">
       <div className="words__title">
         most common words
       </div>
