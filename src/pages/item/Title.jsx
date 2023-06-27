@@ -1,7 +1,11 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-// eslint-disable-next-line arrow-body-style
+/**
+ * Renders the title element for single item
+ * @param {*} props
+ * @returns title for single item
+ */
 const Title = (props) => {
   const { name } = props;
   const { desc } = props;
@@ -10,6 +14,11 @@ const Title = (props) => {
   const { posReviews } = props;
   const { negReviews } = props;
 
+  /**
+   * Formats the star rating to actual stars.
+   * @param {*} reviews
+   * @returns star design
+   */
   const ratingToStars = (reviews) => {
     const split = reviews.split('.');
     const stars = parseInt(split[0], 10);

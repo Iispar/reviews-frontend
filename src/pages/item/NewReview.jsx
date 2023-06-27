@@ -5,7 +5,6 @@ import propTypes from 'prop-types';
  * renders the new review button in single item.
  * @returns
  */
-// eslint-disable-next-line arrow-body-style
 const NewReview = (props) => {
   const { onClick } = props;
   return (

@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 /**
  * renders a input field for a json file.
- * @returns
+ * @returns input for json
  */
 const JsonInputField = (props) => {
   const { id } = props;

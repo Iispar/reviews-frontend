@@ -11,7 +11,10 @@ import NewReviewForm from './NewReviewForm';
 import dummyReviews from '../../data/dummyData/dummyReviews.json';
 import dummyWords from '../../data/dummyData/dummyWords.json';
 
-// eslint-disable-next-line arrow-body-style
+/**
+ * Renders the single Item page.
+ * @returns single item page
+ */
 const Item = () => {
   const newReview = () => {
     $('#words').css('display', 'none');

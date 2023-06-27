@@ -7,7 +7,6 @@ import JsonFileInput from '../../components/JsonFileInput';
  * renders the the new review for for single item.
  * @returns
  */
-// eslint-disable-next-line arrow-body-style
 const NewReviewForm = (props) => {
   const { onSubmit } = props;
   const { onClick } = props;

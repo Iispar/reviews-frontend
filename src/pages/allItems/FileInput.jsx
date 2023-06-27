@@ -8,7 +8,6 @@ import JsonFileInput from '../../components/JsonFileInput';
  * Renders the file input component.
  * @returns file input compoenent
  */
-// eslint-disable-next-line arrow-body-style
 const FileInput = (props) => {
   const { onSubmit } = props;
 

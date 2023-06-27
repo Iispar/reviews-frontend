@@ -9,7 +9,6 @@ import dummyItems from '../../data/dummyData/dummyItems.json';
  * Renders the all items page.
  * @returns all items page
  */
-// eslint-disable-next-line arrow-body-style
 const AllItems = () => {
   const handleCreation = (e) => {
     e.preventDefault();
