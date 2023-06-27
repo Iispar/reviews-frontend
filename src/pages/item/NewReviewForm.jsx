@@ -19,7 +19,7 @@ const NewReviewForm = (props) => {
         <span className="newReviewForm__form__file"> or add a file </span>
         <JsonFileInput id="newReviewForm__form__fileInput" height="200px" />
       </form>
-      <div className="newReviewForm__buttons">
+      <div className="newReviewForm__buttons" id="newReviewForm__buttons">
         <button className="newReviewForm__buttons__create" id="newReviewForm__buttons__create" form="newReviewForm__form" type="submit"> add </button>
         <button className="newReviewForm__buttons__close" id="newReviewForm__buttons__close" type="button" onClick={() => onClick()}> close </button>
       </div>

@@ -37,10 +37,10 @@ const Item = () => {
   return (
     <div className="item">
       <div className="item__grid">
-        <div className="item__grid__header">
+        <div className="item__grid__header" id="item__grid__header">
           <Header />
         </div>
-        <div className="item__grid__title">
+        <div className="item__grid__title" id="item__grid__title">
           <Title
             name="item name"
             desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -51,18 +51,18 @@ const Item = () => {
             negReviews="30"
           />
         </div>
-        <div className="item__grid__reviews">
+        <div className="item__grid__reviews" id="item__grid__reviews">
           <Reviews reviews={dummyReviews.reviews} />
         </div>
-        <div className="item__grid__words">
+        <div className="item__grid__words" id="item__grid__words">
           <Words words={dummyWords.words} />
           <NewReviewForm onSubmit={submitReview} onClick={closeNew} />
           <NewReview onClick={newReview} />
         </div>
-        <div className="item__grid__chart">
+        <div className="item__grid__chart" id="item__grid__chart">
           <ItemChart />
         </div>
-        <div className="item__grid__footer">
+        <div className="item__grid__footer" id="item__grid__footer">
           <Footer />
         </div>
       </div>

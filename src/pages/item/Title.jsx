@@ -49,33 +49,33 @@ const Title = (props) => {
   return (
     <div className="itemTitle">
       <div className="itemTitle__info">
-        <div className="itemTitle__info__name">
+        <div className="itemTitle__info__name" id="itemTitle__info__name">
           {name}
         </div>
-        <div className="itemTitle__info__desc">
+        <div className="itemTitle__info__desc" id="itemTitle__info__desc">
           {desc}
         </div>
       </div>
       <div className="itemTitle__data">
-        <div className="itemTitle__data__reviews">
+        <div className="itemTitle__data__reviews" id="itemTitle__data__reviews">
           <span className="itemTitle__data__reviews__value">
             {reviewsCount}
           </span>
           reviews
         </div>
-        <div className="itemTitle__data__rating">
+        <div className="itemTitle__data__rating" id="itemTitle__data__rating">
           <span className="itemTitle__data__rating__value">
             {ratingToStars(ratingValue)}
           </span>
           rating
         </div>
-        <div className="itemTitle__data__positive">
+        <div className="itemTitle__data__positive" id="itemTitle__data__positive">
           <span className="itemTitle__data__positive__value">
             {posReviews}
           </span>
           positive
         </div>
-        <div className="itemTitle__data__negative">
+        <div className="itemTitle__data__negative" id="itemTitle__data__negative">
           <span className="itemTitle__data__negative__value">
             {negReviews}
           </span>
