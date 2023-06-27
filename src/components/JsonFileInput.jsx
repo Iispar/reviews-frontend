@@ -11,6 +11,8 @@ const JsonInputField = (props) => {
   const { height } = props;
   // eslint-disable-next-line no-unused-vars
   const { name } = props;
+
+  // eventlistener to check the file type when a file is inputted.
   $(document).ready(() => {
     $(`#${id}__form`).on('change', () => {
       const fileName = $(`#${id}__form`).prop('files')[0].name;

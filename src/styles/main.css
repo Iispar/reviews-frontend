@@ -3,7 +3,7 @@
   letter-spacing: 2px;
   src: url("../data/fonts/mulish.ttf");
 }
-btn, .newReviewForm__button, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .login__loginForm__inputs__loginBtn {
+btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .login__loginForm__inputs__loginBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ btn, .newReviewForm__button, .newReview__button, .fileInput__form__submitBtn, .c
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .newReviewForm__button:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .login__loginForm__inputs__loginBtn:hover {
+btn:hover, .newReviewForm__buttons__create:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .login__loginForm__inputs__loginBtn:hover {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -34,6 +34,23 @@ pagination-btn, .pagination__next, .pagination__prev {
 }
 pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
+}
+
+close-btn, .newReviewForm__buttons__close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  border-radius: 20px;
+  border: 0px;
+  border: 1px solid #4F5D75;
+  background: #FFFFFF;
+  font-size: 16px;
+  font-family: mainFont;
+}
+close-btn:hover, .newReviewForm__buttons__close:hover {
+  box-shadow: 0 0 2px 1px red;
+  border: 0px;
 }
 
 .login {
@@ -170,7 +187,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   letter-spacing: 2px;
   src: url("../data/fonts/mulish.ttf");
 }
-btn, .newReviewForm__button, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn {
+btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -182,7 +199,7 @@ btn, .newReviewForm__button, .newReview__button, .fileInput__form__submitBtn, .c
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .newReviewForm__button:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover {
+btn:hover, .newReviewForm__buttons__create:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -201,6 +218,23 @@ pagination-btn, .pagination__next, .pagination__prev {
 }
 pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
+}
+
+close-btn, .newReviewForm__buttons__close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  border-radius: 20px;
+  border: 0px;
+  border: 1px solid #4F5D75;
+  background: #FFFFFF;
+  font-size: 16px;
+  font-family: mainFont;
+}
+close-btn:hover, .newReviewForm__buttons__close:hover {
+  box-shadow: 0 0 2px 1px red;
+  border: 0px;
 }
 
 .createNew {
@@ -363,7 +397,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   color: rgb(255, 0, 0);
 }
 
-btn, .newReviewForm__button, .newReview__button, .fileInput__form__submitBtn, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .createNew__createAccountForm__inputs__submit {
+btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__submitBtn, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .createNew__createAccountForm__inputs__submit {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -375,7 +409,7 @@ btn, .newReviewForm__button, .newReview__button, .fileInput__form__submitBtn, .l
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .newReviewForm__button:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .createNew__createAccountForm__inputs__submit:hover {
+btn:hover, .newReviewForm__buttons__create:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .createNew__createAccountForm__inputs__submit:hover {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -394,6 +428,23 @@ pagination-btn, .pagination__next, .pagination__prev {
 }
 pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
+}
+
+close-btn, .newReviewForm__buttons__close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  border-radius: 20px;
+  border: 0px;
+  border: 1px solid #4F5D75;
+  background: #FFFFFF;
+  font-size: 16px;
+  font-family: mainFont;
+}
+close-btn:hover, .newReviewForm__buttons__close:hover {
+  box-shadow: 0 0 2px 1px red;
+  border: 0px;
 }
 
 @font-face {
@@ -1651,7 +1702,7 @@ input[type=file] {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   box-sizing: border-box;
   flex-direction: column;
@@ -1670,20 +1721,63 @@ input[type=file] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   height: 100%;
+  font-family: "mainFont";
+  font-size: 16px;
+  gap: 10px;
 }
 .newReviewForm__form {
+  display: flex;
+  flex-direction: column;
   background: #FFFFFF;
   box-shadow: 0 0 10px 2px #b5b5b5;
   border-radius: 10px;
   padding: 10px;
   box-sizing: border-box;
   height: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
 }
-.newReviewForm__button {
+.newReviewForm__form__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  font-size: 20px;
+}
+.newReviewForm__form__file {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.newReviewForm__form__file:before {
+  content: "";
+  height: 2px;
+  width: 30%;
+  background: #c2c2c2;
+  margin-right: 10px;
+  margin-top: 2px;
+  border-radius: 2px;
+}
+.newReviewForm__form__file:after {
+  content: "";
+  height: 2px;
+  width: 30%;
+  background: #c2c2c2;
+  margin-left: 10px;
+  margin-top: 2px;
+  border-radius: 2px;
+}
+.newReviewForm__buttons {
+  display: flex;
+  gap: 10px;
+}
+.newReviewForm__buttons__create {
   width: 200px;
+  height: 50px;
+  border-radius: 25px;
+}
+.newReviewForm__buttons__close {
+  width: 80px;
   height: 50px;
   border-radius: 25px;
 }

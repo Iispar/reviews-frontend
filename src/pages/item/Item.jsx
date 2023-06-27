@@ -19,8 +19,16 @@ const Item = () => {
     $('#newReviewForm').css('display', 'flex');
   };
 
-  const submitReview = () => {
-    console.log('submit');
+  const closeNew = () => {
+    $('#words').css('display', 'flex');
+    $('#newReview').css('display', 'flex');
+    $('#newReviewForm').css('display', 'none');
+  };
+
+  const submitReview = (e) => {
+    e.preventDefault();
+    const values = e.target;
+    console.log(values);
   };
 
   return (
@@ -45,7 +53,7 @@ const Item = () => {
         </div>
         <div className="item__grid__words">
           <Words words={dummyWords.words} />
-          <NewReviewForm onSubmit={submitReview} />
+          <NewReviewForm onSubmit={submitReview} onClick={closeNew} />
           <NewReview onClick={newReview} />
         </div>
         <div className="item__grid__chart">
