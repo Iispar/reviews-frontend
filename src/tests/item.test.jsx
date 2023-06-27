@@ -2,6 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
 import Item from '../pages/item/Item';
 import Title from '../pages/item/Title';
 import Words from '../pages/item/Words';
@@ -13,6 +14,10 @@ import ItemChart from '../pages/item/ItemChart';
 global.ResizeObserver = require('resize-observer-polyfill');
 
 describe('item site works fully', () => {
+  let user;
+  beforeEach(() => {
+    user = userEvent.setup();
+  });
   test('page renders with components', () => {
     const itemContainer = render(
       <BrowserRouter>
@@ -62,8 +67,11 @@ describe('item site works fully', () => {
     expect(pos).toBeTruthy();
     expect(neg).toBeTruthy();
   });
-  test('form render with components and works', () => {
-    const reviewForm = render(<NewReviewForm />).container;
+  test('form render with components and works', async () => {
+    const mockSubmit = jest.fn();
+    const reviewForm = render(
+      <NewReviewForm onSubmit={mockSubmit} onClick={mockSubmit} />,
+    ).container;
 
     const form = reviewForm.querySelector('#newReviewForm__form');
     const buttons = reviewForm.querySelector('#newReviewForm__buttons');
@@ -71,17 +79,24 @@ describe('item site works fully', () => {
     expect(form).toBeTruthy();
     expect(buttons).toBeTruthy();
 
-    // mocks !
+    const submit = reviewForm.querySelector('#newReviewForm__buttons__create');
+    const close = reviewForm.querySelector('#newReviewForm__buttons__close');
+    await userEvent.click(submit);
+    await userEvent.click(close);
+
+    expect(mockSubmit).toBeCalledTimes(2);
   });
 
-  test('new review btn render with components and words', () => {
-    const newContainer = render(<NewReview />).container;
+  test('new review btn render with components and words', async () => {
+    const mockClick = jest.fn();
+    const newContainer = render(<NewReview onClick={mockClick} />).container;
 
-    const btn = newContainer.querySelector('#newReview');
+    const btn = newContainer.querySelector('#newReview__button');
 
     expect(btn).toBeTruthy();
 
-    // mocks !
+    await userEvent.click(btn);
+    expect(mockClick).toBeCalledTimes(1);
   });
 
   test('chart renders', () => {
@@ -92,7 +107,5 @@ describe('item site works fully', () => {
 
     expect(chart).toBeTruthy();
     expect(selector).toBeTruthy();
-
-    // mocks !
   });
 });

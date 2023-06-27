@@ -9,7 +9,7 @@ const NewReview = (props) => {
   const { onClick } = props;
   return (
     <div className="newReview" id="newReview">
-      <button className="newReview__button" type="button" onClick={() => onClick()}> new review </button>
+      <button className="newReview__button" id="newReview__button" type="button" onClick={() => onClick()}> new review </button>
     </div>
   );
 };
