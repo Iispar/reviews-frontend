@@ -35,9 +35,9 @@ const ItemChart = () => {
     }
   };
   return (
-    <div className="itemChart">
+    <div className="itemChart" id="itemChart">
       <DoubleLineChart data={view} />
-      <div className="itemChart__selector">
+      <div className="itemChart__selector" id="itemChart__selector">
         <button className="itemChart__selector__year" type="button" onClick={() => changeView(dummy.year, 'year')}> year </button>
         <button className="itemChart__selector__month" type="button" onClick={() => changeView(dummy.month, 'month')}> month </button>
         <button className="itemChart__selector__week" type="button" onClick={() => changeView(dummy.week, 'week')}> week </button>

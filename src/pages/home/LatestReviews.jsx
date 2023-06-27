@@ -11,13 +11,13 @@ const LatestReviews = (props) => {
   const { reviews } = props;
   return (
     <div className="latestReviews">
-      <div className="latestReviews__header">
+      <div className="latestReviews__header" id="latestReviews__header">
         <div className="latestReviews__header__text"> Latest reviews </div>
       </div>
-      <div className="latestReviews__reviews">
+      <div className="latestReviews__reviews" id="latestReviews__reviews">
         <ReviewsList reviews={reviews} />
       </div>
-      <div className="latestReviews__pagination">
+      <div className="latestReviews__pagination" id="latestReviews__pagination">
         <Pagination />
       </div>
     </div>

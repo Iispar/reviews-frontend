@@ -8,6 +8,7 @@ import Words from '../pages/item/Words';
 import NewReviewForm from '../pages/item/NewReviewForm';
 import NewReview from '../pages/item/NewReview';
 import dummyWords from '../data/dummyData/dummyWords.json';
+import ItemChart from '../pages/item/ItemChart';
 
 global.ResizeObserver = require('resize-observer-polyfill');
 
@@ -79,6 +80,18 @@ describe('item site works fully', () => {
     const btn = newContainer.querySelector('#newReview');
 
     expect(btn).toBeTruthy();
+
+    // mocks !
+  });
+
+  test('chart renders', () => {
+    const newContainer = render(<ItemChart />).container;
+
+    const chart = newContainer.querySelector('#itemChart');
+    const selector = newContainer.querySelector('#itemChart__selector');
+
+    expect(chart).toBeTruthy();
+    expect(selector).toBeTruthy();
 
     // mocks !
   });

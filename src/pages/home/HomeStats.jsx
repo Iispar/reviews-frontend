@@ -11,12 +11,12 @@ const HomeStats = () => {
   return (
     <div className="homeStats">
       <div className="homeStats__ratings">
-        <div className="homeStats__ratings__chart">
+        <div className="homeStats__ratings__chart" id="homeStats__ratings__chart">
           <BarChart data={dummy.data} />
         </div>
         <div className="homeStats__ratings__label"> distribution of ratings </div>
       </div>
-      <div className="homeStats__allTime">
+      <div className="homeStats__allTime" id="homeStats__allTime">
         <div className="homeStats__allTime__stats">
           <div className="homeStats__allTime__stats__items">
             <span className="homeStats__allTime__stats__items__value"> 21 </span>
@@ -31,7 +31,7 @@ const HomeStats = () => {
             <span className="homeStats__allTime__stats__ratings__label"> avg rating </span>
           </div>
         </div>
-        <div className="homeStats__allTime__title"> all time</div>
+        <div className="homeStats__allTime__title" id="homeStats__allTime__title"> all time</div>
       </div>
     </div>
   );
