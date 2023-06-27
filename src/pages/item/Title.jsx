@@ -18,15 +18,16 @@ const Title = (props) => {
     const width = 2.4 * (11 - parseInt(split[1], 10));
     // if only zero point some stars we need to draw this alone because the loop wont work...
     if (stars === 0) {
-      list.push(<div className="star" />);
-      list.push(<div className="star__cutout" style={{ left: `${left}px`, width: `${width}px` }} />);
+      list.push(<div className="star" key="singularStar" />);
+      list.push(<div className="star__cutout" key="singularCutout" style={{ left: `${left}px`, width: `${width}px` }} />);
     }
 
     for (let i = 0; i < stars; i += 1) {
-      list.push(<div className="star" />);
+      // rename the keys to something better than the index.
+      list.push(<div className="star" key={i} />);
       if (i === stars - 1 && parseInt(split[1], 10) !== 0) {
-        list.push(<div className="star" />);
-        list.push(<div className="star__cutout" style={{ left: `${left}px`, width: `${width}px` }} />);
+        list.push(<div className="star" key="final" />);
+        list.push(<div className="star__cutout" key="cutout" style={{ left: `${left}px`, width: `${width}px` }} />);
       }
     }
     return (
