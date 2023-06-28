@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import $ from 'jquery';
+import UserInfo from './UserInfo';
 
 const Selections = () => {
   const [open, setOpen] = useState(false);
@@ -27,13 +28,7 @@ const Selections = () => {
         </button>
       </div>
       <div className="selections__form" id="selections__form">
-        <div className="selections__form__title">
-          name
-          <button className="selections__form__title__closeBtn" type="button" onClick={() => openForm('none')}> close </button>
-        </div>
-        <div className="selections__form__content">
-          form
-        </div>
+        <UserInfo currUsername="user" openForm={openForm} currName="matti meikäläinen" />
       </div>
     </div>
   );
