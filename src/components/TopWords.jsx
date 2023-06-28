@@ -19,10 +19,10 @@ const TopWords = (props) => {
   };
   return (
     <div className="wordList">
-      <div className="wordList__title">
+      <div className="wordList__title" id="wordList__title">
         {title}
       </div>
-      <div className="wordList__list">
+      <div className="wordList__list" id="wordList__list">
         {createList(words)}
       </div>
     </div>

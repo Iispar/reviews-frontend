@@ -18,6 +18,9 @@ import BarTooltip from '../components/BarTooltip';
 import LineTooltip from '../components/LineTooltip';
 import dummyDis from '../data/dummyData/dummyReviewDis.json';
 import dummyLine from '../data/dummyData/dummyHome.json';
+import TopWords from '../components/TopWords';
+import WordListItem from '../components/WordListItem';
+import JsonInputField from '../components/JsonFileInput';
 
 const mockedUsedNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
@@ -162,6 +165,39 @@ describe('components render and work', () => {
       expect(lineReviewText).toBeTruthy();
       expect(lineRating).toBeTruthy();
       expect(lineRatingText).toBeTruthy();
+    });
+    test('Top words render', () => {
+      const topWords = render(<TopWords title="top words" words={[{ name: 'test', key: '1' }, { name: 'test2', key: '2' }]} />).container;
+
+      const title = topWords.querySelector('#wordList__title');
+      const list = topWords.querySelector('#wordList__list');
+
+      expect(title).toBeTruthy();
+      expect(list).toBeTruthy();
+    });
+    test('single word render', () => {
+      const singleWord = render(<WordListItem name="test" index="2" />).container;
+
+      const index = singleWord.querySelector('#wordListItem__index');
+      const name = singleWord.querySelector('#wordListItem__name');
+
+      expect(index).toBeTruthy();
+      expect(name).toBeTruthy();
+    });
+    test('json input field renders', () => {
+      const jsonInput = render(<JsonInputField id="testId" />).container;
+
+      const label = jsonInput.querySelector('#testId__label');
+      const succesful = jsonInput.querySelector('#testId__label__succesful');
+      const error = jsonInput.querySelector('#testId__label__error');
+      const errorText = jsonInput.querySelector('#testId__label__error__text');
+      const form = jsonInput.querySelector('#testId__form');
+
+      expect(label).toBeTruthy();
+      expect(succesful).toBeTruthy();
+      expect(error).toBeTruthy();
+      expect(errorText).toBeTruthy();
+      expect(form).toBeTruthy();
     });
   });
 });

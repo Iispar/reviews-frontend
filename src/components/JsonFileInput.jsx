@@ -39,7 +39,7 @@ const JsonInputField = (props) => {
         <div className="jsonFileInput__label__succesful" id={`${id}__label__succesful`} />
         <div className="jsonFileInput__label__error" id={`${id}__label__error`}>
           <div className="jsonFileInput__label__error__logo" />
-          <span className="jsonFileInput__label__error__text"> not a json file </span>
+          <span className="jsonFileInput__label__error__text" id={`${id}__label__error__text`}> not a json file </span>
         </div>
         <input className="jsonFileInput__form" id={`${id}__form`} type="file" required />
       </label>

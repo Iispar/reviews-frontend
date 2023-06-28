@@ -11,11 +11,11 @@ const WordListItem = (props) => {
   const { index } = props;
   return (
     <div className="wordListItem">
-      <div className="wordListItem__index">
+      <div className="wordListItem__index" id="wordListItem__index">
         {index + 1}
         .
       </div>
-      <div className="wordListItem__name">
+      <div className="wordListItem__name" id="wordListItem__name">
         {name}
       </div>
     </div>
