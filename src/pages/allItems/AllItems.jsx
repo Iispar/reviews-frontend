@@ -12,8 +12,8 @@ import dummyItems from '../../data/dummyData/dummyItems.json';
 const AllItems = () => {
   const handleCreation = (e) => {
     e.preventDefault();
-    const values = e.target;
-    console.log(`created with ${values[0].value}, ${values[1].value}, ${values[2].value}`);
+    // const values = e.target;
+    // console.log(`created with ${values[0].value}, ${values[1].value}, ${values[2].value}`);
   };
 
   return (

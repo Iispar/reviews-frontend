@@ -30,8 +30,8 @@ const Item = () => {
 
   const submitReview = (e) => {
     e.preventDefault();
-    const values = e.target;
-    console.log(values);
+    // const values = e.target;
+    // console.log(values);
   };
 
   return (
