@@ -53,6 +53,21 @@ close-btn:hover, .newReviewForm__buttons__close:hover {
   border: 0px;
 }
 
+settings-btn, .selections__buttons__delAccount, .selections__buttons__newUser, .selections__buttons__newPass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 180px;
+  border: 0px;
+  background: #FFFFFF;
+  font-size: 16px;
+  font-family: mainFont;
+}
+settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons__newUser:hover, .selections__buttons__newPass:hover {
+  color: #EF8354;
+}
+
 .login {
   display: flex;
   flex-direction: column;
@@ -235,6 +250,21 @@ close-btn, .newReviewForm__buttons__close {
 close-btn:hover, .newReviewForm__buttons__close:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
+}
+
+settings-btn, .selections__buttons__delAccount, .selections__buttons__newUser, .selections__buttons__newPass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 180px;
+  border: 0px;
+  background: #FFFFFF;
+  font-size: 16px;
+  font-family: mainFont;
+}
+settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons__newUser:hover, .selections__buttons__newPass:hover {
+  color: #EF8354;
 }
 
 .createNew {
@@ -445,6 +475,21 @@ close-btn, .newReviewForm__buttons__close {
 close-btn:hover, .newReviewForm__buttons__close:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
+}
+
+settings-btn, .selections__buttons__delAccount, .selections__buttons__newUser, .selections__buttons__newPass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 180px;
+  border: 0px;
+  background: #FFFFFF;
+  font-size: 16px;
+  font-family: mainFont;
+}
+settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons__newUser:hover, .selections__buttons__newPass:hover {
+  color: #EF8354;
 }
 
 @font-face {
@@ -1898,6 +1943,91 @@ input[type=file] {
   background: green;
   grid-row: 10/10;
   grid-column: 1/5;
+  height: 60px;
+  width: 100vw;
+}
+
+.selections {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "mainFont";
+  font-size: 16px;
+  box-sizing: border-box;
+  height: 100%;
+  gap: 10px;
+  border: 1px solid #c2c2c2;
+}
+.selections__buttons {
+  display: flex;
+  flex-direction: column;
+}
+.selections__buttons__delAccount {
+  color: red;
+}
+.selections__form {
+  display: none;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-left: 1px solid #4F5D75;
+  flex-direction: column;
+}
+.selections__form__title {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  font-size: 20px;
+}
+.selections__form__title__closeBtn {
+  height: 20px;
+}
+.selections__form__content {
+  display: flex;
+}
+
+.settings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+.settings__grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: auto 500px auto;
+  grid-template-rows: 50px 10px 50px 400px auto 60px;
+  gap: 20px;
+}
+.settings__grid__header {
+  grid-row: 1/1;
+  grid-column: 1/4;
+  width: 100vw;
+}
+.settings__grid__title {
+  grid-row: 3/3;
+  grid-column: 2/2;
+  font-family: "mainFont";
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.settings__grid__selections {
+  grid-row: 4/4;
+  grid-column: 2/2;
+}
+.settings__grid__footer {
+  background: green;
+  grid-row: 6/6;
+  grid-column: 1/4;
   height: 60px;
   width: 100vw;
 }/*# sourceMappingURL=main.css.map */

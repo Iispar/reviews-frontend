@@ -47,3 +47,18 @@ close-btn {
         border: 0px;
     }
 }
+
+settings-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    width: 180px;
+    border: 0px;
+    background: $white;
+    font-size: 16px;
+    font-family: mainFont;
+    &:hover {
+        color: $orange;
+    }
+}
