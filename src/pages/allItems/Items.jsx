@@ -1,13 +1,13 @@
 import { React, useState } from 'react';
 import $ from 'jquery';
+import propTypes from 'prop-types';
 import Pagination from '../../components/Pagination';
 import ItemList from '../../components/ItemList';
 import LargeItem from '../../components/LargeItem';
-import dummyItems from '../../data/dummyData/dummyItems.json';
 import SearchField from '../../components/SearchField';
 
-const Items = () => {
-  const { items } = dummyItems;
+const Items = (props) => {
+  const { items } = props;
   const [open, setOpen] = useState(false);
 
   /**
@@ -18,10 +18,10 @@ const Items = () => {
   const hover = (id, color) => {
     $(id).hover(
       () => {
-        $(id).css('background-color', color);
+        $(id).css('background', color);
       },
       () => {
-        $(id).css('background-color', 'transparent');
+        $(id).css('background', 'transparent');
       },
     );
   };
@@ -40,7 +40,6 @@ const Items = () => {
       $('#items__header__sort').animate({
         width: '44px',
         height: '20px',
-        'margin-top': '0px',
       }, 200);
       $('#items__header__sort__reviews__desc').css('display', 'none');
       $('#items__header__sort__reviews__asc').css('display', 'none');
@@ -51,10 +50,8 @@ const Items = () => {
       setOpen(false);
     } else {
       $('#items__header__sort').animate({
-        width: '120px',
-        height: '32px',
-        'margin-top': '12px',
-        'padding-left': '0px',
+        width: '160px',
+        height: '40px',
       }, 200);
       $('#items__header__sort__reviews__desc').css('display', 'flex');
       $('#items__header__sort__reviews__asc').css('display', 'flex');
@@ -73,8 +70,8 @@ const Items = () => {
   const changeFilter = (sort) => {
     const type = sort.split('__')[3];
     let width;
-    if (type === 'reviews') width = '70px';
-    else width = '60px';
+    if (type === 'reviews') width = '80px';
+    else width = '70px';
     $('#items__header__sort').animate({
       width,
       height: '20px',
@@ -88,7 +85,6 @@ const Items = () => {
     // why doesn't addClass work?=
     $(`#${sort}`).css({
       display: 'flex',
-      'padding-top': '2px',
     });
     hover(`#${sort}`, 'transparent');
     $('#items__header__sort__arrow').css('transform', 'rotate(0deg)');
@@ -137,6 +133,14 @@ const Items = () => {
       </div>
     </div>
   );
+};
+
+Items.propTypes = {
+  items: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
+};
+
+Items.defaultProps = {
+  items: null,
 };
 
 export default Items;

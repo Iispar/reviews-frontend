@@ -7,7 +7,6 @@ import DoubleLineChart from '../../components/DoubleLineChart';
  * Renders the chart for the home page.
  * @returns the home chart
  */
-// eslint-disable-next-line arrow-body-style
 const HomeChart = () => {
   const [view, setView] = useState(dummy.month);
   /**
@@ -36,9 +35,9 @@ const HomeChart = () => {
   };
 
   return (
-    <div className="homeChart">
+    <div className="homeChart" id="homeChart">
       <DoubleLineChart data={view} />
-      <div className="homeChart__selector">
+      <div className="homeChart__selector" id="homeChart__selector">
         <button className="homeChart__selector__year" type="button" onClick={() => changeView(dummy.year, 'year')}> year </button>
         <button className="homeChart__selector__month" type="button" onClick={() => changeView(dummy.month, 'month')}> month </button>
         <button className="homeChart__selector__week" type="button" onClick={() => changeView(dummy.week, 'week')}> week </button>

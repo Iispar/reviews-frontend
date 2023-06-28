@@ -1,3 +1,24 @@
+@mixin arrow($rotate) {
+    position: relative;
+    box-sizing: border-box;
+    height: 100%;
+    width: 14px;
+    &::before {
+        content: ' ';
+        display: flex;
+        width: 14px;
+        background-image: url('../../data/icons/arrow.svg');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        height: 14px;
+        position: absolute;
+        top: 3px;
+        transform: $rotate;
+    }
+}
+
 .items {
     box-shadow: 0 0 40px 1px $shadow;
     border-radius: 10px;
@@ -8,14 +29,15 @@
     &__header {
         display: flex;
         gap: 10px;
-        align-items: center;
-        height: 60px;
+        align-items: flex-start;
+        height: 70px;
         width: 100%;
         padding-right: 12px;
         padding-left: 12px;
+        padding-top: 12px;
         box-sizing: border-box;
         &__search {
-            padding-top: 12px;
+            padding-top: 0px;
         }
         &__sort {
             display: flex;
@@ -23,7 +45,7 @@
             height: 20px;
             justify-content: center;
             align-items: center;
-            border: 1px solid $grey;
+            border: 1px solid $orange;
             border-radius: 10px;
             &__btn {
                 border: none;
@@ -35,71 +57,27 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                height: 100%;
+                align-items: center;
                 width: 100%;
-                box-sizing: border-box;
+                height: 100%;
                 & button {
+                    width: 100%;
+                    height: 100%;
                     display: none;
                     border: none;
-                    justify-content: center;
-                    height: 100%;
                     background: transparent;
-                    font-family: 'mainFont';
-                    font-size: 10px;
-                    box-sizing: border-box;
+                    justify-content: center;
+                    padding: 0;
                     padding-left: 6px;
+                    font-family: 'mainFont';
+                    font-size: 14px;
+                    box-sizing: border-box;
                 }
                 &__ascArrow {
-                    position: relative;
-                    border: none;
-                    box-sizing: border-box;
-                    height: 100%;
-                    width: 10px;
-                    &::before {
-                        content: ' ';
-                        display: flex;
-                        height: 100%;
-                        width: 8px;
-                        background-image: url('../../data/icons/arrow.svg');
-                        background-size: 100%;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-color: transparent;
-                        padding-left: 6px;
-                        padding-top: 1px;
-                        position: absolute;
-                        width: 10px;
-                        height: 10px;
-                        top: 2px;
-                        left: 0px;
-                        transform: rotate(270deg);
-                    }
+                    @include arrow(rotate(270deg));
                 }
                 &__descArrow {
-                    position: relative;
-                    border: none;
-                    box-sizing: border-box;
-                    height: 100%;
-                    width: 10px;
-                    &::before {
-                        content: ' ';
-                        display: flex;
-                        height: 100%;
-                        width: 8px;
-                        background-image: url('../../data/icons/arrow.svg');
-                        background-size: 100%;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-color: transparent;
-                        padding-left: 4px;
-                        padding-top: 1px;
-                        position: absolute;
-                        width: 10px;
-                        height: 10px;
-                        top: 2px;
-                        left: 0px;
-                        transform: rotate(90deg);
-                    }
+                    @include arrow(rotate(90deg));
                 }
             }
             &__reviews__asc {
@@ -127,8 +105,7 @@
                     left: -4px;
                     transition: all 0.3s;
                     transform: rotate(270deg);
-                    filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
-                }
+                    filter: invert(33%) sepia(35%) saturate(359%) hue-rotate(179deg) brightness(96%) contrast(89%);                }
             }
         }
     }
@@ -146,6 +123,7 @@
 .selected {
     display: 'flex';
     padding-top: '2px';
+    background-color: red;
     :hover {
         background: transparent;
     }

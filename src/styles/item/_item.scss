@@ -1,6 +1,10 @@
-@import './fileInput.scss';
-@import './items.scss';
-.allItems {
+@import './title.scss';
+@import './reviews.scss';
+@import './newReview';
+@import './words';
+@import './itemChart';
+
+.item {
     position: absolute;
     top: 0;
     left: 0;
@@ -15,8 +19,9 @@
         display: grid;
         height: 100%;
         grid-template-columns: auto 700px 320px auto;
-        grid-template-rows: 50px 10px 50px 500px auto 40px;
+        grid-template-rows: 50px 10px 90px 340px 25px 100px 100px 50px auto 40px;
         gap: 20px;
+        overflow: scroll;
         &__header {
             grid-row: 1/1;
             grid-column: 1/5;
@@ -25,30 +30,28 @@
         &__title {
             grid-row: 3/3;
             grid-column: 2/4;
-            padding-left: 2px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-            &__text {
-                font-family: 'mainFont';
-                font-size: 36px;
-                height: 100%;
-            }
         }
-        &__items {
-            grid-row: 4/4;
+        &__reviews {
+            grid-row: 4/7;
             grid-column: 2/2;
         }
-        &__fileInput {
-            grid-row: 4/4;
+        &__words {
+            display: flex;
+            grid-row: 4/9;
             grid-column: 3/3;
-            padding-top: 20px;
-            padding-bottom: 20px;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        &__chart {
+            grid-row: 7/9;
+            grid-column: 2/2;
         }
         &__footer {
-            grid-row: 6/6;
-            grid-column: 1/5;
             background: green;
+            grid-row: 10/10;
+            grid-column: 1/5;
+            height: 60px;
+            width: 100vw;
         }
     }
 }

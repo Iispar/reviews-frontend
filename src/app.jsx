@@ -26,7 +26,7 @@ const App = () => (
       <Route exact path="/" element=<Login /> />
       <Route exact path="/home" element=<Home /> />
       <Route exact path="/all" element=<AllItems /> />
-      <Route exact path="/item" element=<Item /> />
+      <Route exact path="/item/:id" element=<Item /> />
       <Route exact path="/settings" element=<Settings /> />
     </Routes>
   </Router>

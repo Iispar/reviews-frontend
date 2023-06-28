@@ -1,0 +1,26 @@
+.words {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    font-family: 'mainFont';
+    font-size: 16px;
+    &__title {
+        background: $white;
+        height: 60px;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 2px $shadow;
+    }
+    &__positive {
+        height: 270px;
+    }
+    &__negative {
+        height: 270px;
+    }
+}
