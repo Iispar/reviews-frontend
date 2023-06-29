@@ -3,6 +3,10 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Selections from './Selections';
 
+/**
+ * Renders the settings page.
+ * @returns settings
+ */
 // eslint-disable-next-line arrow-body-style
 const Settings = () => {
   return (

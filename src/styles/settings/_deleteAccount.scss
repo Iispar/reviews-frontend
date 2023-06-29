@@ -1,0 +1,60 @@
+.deleteAccount {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+    &__header {
+        height: 54px;
+        display: grid;
+        grid-template-columns: 60px auto;
+        gap: 10px;
+        align-content: center;
+        align-items: center;
+        &__text {
+            grid-column: 2;
+            font-size: 24px;
+        }
+    }
+    &__form {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 60px 200px auto;
+        gap: 10px;
+        align-content: flex-start;
+        align-items: center;
+        &__inputs {
+            display: flex;
+            flex-direction: column;
+            grid-column: 2;
+            gap: 10px;
+            &__confirmation {
+                font-size: 10px;
+                line-height: 1;
+                &__warning {
+                    font-weight: 900;
+                }
+            }
+            &__password {
+                height: 24px;
+                width: 100%;
+                border: 1px solid $lightGrey;
+                border-radius: 2px;
+                box-sizing: border-box;
+                &:focus {
+                    outline: none;
+                    border: 1px solid $orange;
+                }
+                &::placeholder {
+                    color: $black;
+                }
+            }
+            &__deleteButton {
+                @extend close-btn;
+                border-radius: 2px;
+                height: 20px;
+                font-size: 12px;
+                border-color: red;
+            }
+        }
+    }
+}

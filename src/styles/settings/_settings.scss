@@ -1,5 +1,6 @@
 @import './_selections.scss';
 @import './_userInfo.scss';
+@import './_deleteAccount.scss';
 
 .settings {
     position: absolute;
@@ -16,7 +17,7 @@
         display: grid;
         height: 100%;
         grid-template-columns: auto 600px auto;
-        grid-template-rows: 50px 10px 50px 400px auto 60px;
+        grid-template-rows: 50px 10px 50px 300px auto 60px;
         gap: 20px;
         &__header {
             grid-row: 1/1;

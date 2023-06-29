@@ -36,7 +36,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
 }
 
-close-btn, .newReviewForm__buttons__close {
+close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +48,7 @@ close-btn, .newReviewForm__buttons__close {
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .newReviewForm__buttons__close:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
 }
@@ -235,7 +235,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
 }
 
-close-btn, .newReviewForm__buttons__close {
+close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -247,7 +247,7 @@ close-btn, .newReviewForm__buttons__close {
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .newReviewForm__buttons__close:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
 }
@@ -460,7 +460,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
 }
 
-close-btn, .newReviewForm__buttons__close {
+close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -472,7 +472,7 @@ close-btn, .newReviewForm__buttons__close {
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .newReviewForm__buttons__close:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
 }
@@ -2038,24 +2038,24 @@ input[type=file] {
   padding-top: 10px;
   gap: 10px;
 }
-.userInfo__values__username, .userInfo__values__name, .userInfo__values__password {
+.userInfo__values__username, .userInfo__values__name {
   margin-left: 6px;
   display: grid;
   grid-template-columns: 100px 160px;
   gap: 6px;
 }
-.userInfo__values__username__text, .userInfo__values__name__text, .userInfo__values__password__text {
+.userInfo__values__username__text, .userInfo__values__name__text {
   grid-column: 1;
   justify-self: flex-end;
   height: 20px;
   font-weight: 600;
   text-align: right;
 }
-.userInfo__values__username__container, .userInfo__values__name__container, .userInfo__values__password__container {
+.userInfo__values__username__input, .userInfo__values__name__input {
   width: 180px;
   position: relative;
 }
-.userInfo__values__username__container__input, .userInfo__values__name__container__input, .userInfo__values__password__container__input {
+.userInfo__values__username__input__field, .userInfo__values__name__input__field {
   grid-column: 2;
   height: 24px;
   width: 100%;
@@ -2063,17 +2063,17 @@ input[type=file] {
   border-radius: 5px;
   box-sizing: border-box;
 }
-.userInfo__values__username__container__input:focus, .userInfo__values__name__container__input:focus, .userInfo__values__password__container__input:focus {
+.userInfo__values__username__input__field:focus, .userInfo__values__name__input__field:focus {
   outline: none;
   border: 1px solid #EF8354;
 }
-.userInfo__values__username__container__input::-moz-placeholder, .userInfo__values__name__container__input::-moz-placeholder, .userInfo__values__password__container__input::-moz-placeholder {
+.userInfo__values__username__input__field::-moz-placeholder, .userInfo__values__name__input__field::-moz-placeholder {
   color: #000000;
 }
-.userInfo__values__username__container__input::placeholder, .userInfo__values__name__container__input::placeholder, .userInfo__values__password__container__input::placeholder {
+.userInfo__values__username__input__field::placeholder, .userInfo__values__name__input__field::placeholder {
   color: #000000;
 }
-.userInfo__values__username__container__change, .userInfo__values__name__container__change, .userInfo__values__password__container__change {
+.userInfo__values__username__input__change, .userInfo__values__name__input__change {
   display: none;
   position: absolute;
   top: 4px;
@@ -2082,6 +2082,119 @@ input[type=file] {
   color: #0ba100;
   border: none;
   background: none;
+}
+.userInfo__values__password {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.userInfo__values__password__passContainer, .userInfo__values__password__confirmContainer {
+  margin-left: 6px;
+  display: grid;
+  grid-template-columns: 100px 160px;
+  gap: 6px;
+}
+.userInfo__values__password__passContainer__passText, .userInfo__values__password__passContainer__confirmText, .userInfo__values__password__confirmContainer__passText, .userInfo__values__password__confirmContainer__confirmText {
+  grid-column: 1;
+  justify-self: flex-end;
+  height: 20px;
+  font-weight: 600;
+  text-align: right;
+}
+.userInfo__values__password__passContainer__input, .userInfo__values__password__confirmContainer__input {
+  width: 180px;
+  position: relative;
+}
+.userInfo__values__password__passContainer__input__field, .userInfo__values__password__confirmContainer__input__field {
+  grid-column: 2;
+  height: 24px;
+  width: 100%;
+  border: 1px solid #c2c2c2;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.userInfo__values__password__passContainer__input__field:focus, .userInfo__values__password__confirmContainer__input__field:focus {
+  outline: none;
+  border: 1px solid #EF8354;
+}
+.userInfo__values__password__passContainer__input__field::-moz-placeholder, .userInfo__values__password__confirmContainer__input__field::-moz-placeholder {
+  color: #000000;
+}
+.userInfo__values__password__passContainer__input__field::placeholder, .userInfo__values__password__confirmContainer__input__field::placeholder {
+  color: #000000;
+}
+.userInfo__values__password__passContainer__input__change, .userInfo__values__password__confirmContainer__input__change {
+  display: none;
+  position: absolute;
+  top: 4px;
+  right: 0px;
+  font-size: 12px;
+  color: #0ba100;
+  border: none;
+  background: none;
+}
+
+.deleteAccount {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+}
+.deleteAccount__header {
+  height: 54px;
+  display: grid;
+  grid-template-columns: 60px auto;
+  gap: 10px;
+  align-content: center;
+  align-items: center;
+}
+.deleteAccount__header__text {
+  grid-column: 2;
+  font-size: 24px;
+}
+.deleteAccount__form {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 60px 200px auto;
+  gap: 10px;
+  align-content: flex-start;
+  align-items: center;
+}
+.deleteAccount__form__inputs {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  gap: 10px;
+}
+.deleteAccount__form__inputs__confirmation {
+  font-size: 10px;
+  line-height: 1;
+}
+.deleteAccount__form__inputs__confirmation__warning {
+  font-weight: 900;
+}
+.deleteAccount__form__inputs__password {
+  height: 24px;
+  width: 100%;
+  border: 1px solid #c2c2c2;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+.deleteAccount__form__inputs__password:focus {
+  outline: none;
+  border: 1px solid #EF8354;
+}
+.deleteAccount__form__inputs__password::-moz-placeholder {
+  color: #000000;
+}
+.deleteAccount__form__inputs__password::placeholder {
+  color: #000000;
+}
+.deleteAccount__form__inputs__deleteButton {
+  border-radius: 2px;
+  height: 20px;
+  font-size: 12px;
+  border-color: red;
 }
 
 .settings {
@@ -2100,7 +2213,7 @@ input[type=file] {
   display: grid;
   height: 100%;
   grid-template-columns: auto 600px auto;
-  grid-template-rows: 50px 10px 50px 400px auto 60px;
+  grid-template-rows: 50px 10px 50px 300px auto 60px;
   gap: 20px;
 }
 .settings__grid__header {
