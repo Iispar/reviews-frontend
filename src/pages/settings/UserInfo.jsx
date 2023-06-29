@@ -45,7 +45,7 @@ const userInfo = (props) => {
           </span>
           <button className="userInfo__header__title__change" id="userInfo__header__title__change" type="button"> Change profile picture </button>
         </div>
-        <button className="userInfo__header__closeButton" id="userInfo__header__closeButton" type="submit" onClick={() => openForm('none')}> close </button>
+        <button className="userInfo__header__closeButton" id="userInfo__header__closeButton" type="submit" onClick={() => openForm('none')}>  </button>
       </div>
       <div className="userInfo__values">
         <div className="userInfo__values__name" id="userInfo__values__name">

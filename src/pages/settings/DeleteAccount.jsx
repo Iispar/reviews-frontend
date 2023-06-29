@@ -13,7 +13,7 @@ const DeleteAccount = (props) => {
     <div className="deleteAccount" id="deleteAccount">
       <div className="deleteAccount__header" id="deleteAccount__header">
         <div className="deleteAccount__header__text"> delete account </div>
-        <button className="userInfo__header__closeButton" id="userInfo__header__closeButton" type="submit" onClick={() => openForm('none')}> close </button>
+        <button className="userInfo__header__closeButton" id="userInfo__header__closeButton" type="submit" onClick={() => openForm('none')}> </button>
       </div>
       <div className="deleteAccount__form" id="deleteAccount__form">
         <form className="deleteAccount__form__inputs" onSubmit={(e) => onSubmit(e)}>

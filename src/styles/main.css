@@ -68,6 +68,16 @@ settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons
   color: #EF8354;
 }
 
+settings-closeBtn, .userInfo__header__closeButton {
+  height: 20px;
+  width: 20px;
+  border: none;
+  background-image: url("../../data/icons/closeIcon.svg");
+  background-size: 100%;
+  background-color: transparent;
+  filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
+}
+
 .login {
   display: flex;
   flex-direction: column;
@@ -265,6 +275,16 @@ settings-btn, .selections__buttons__delAccount, .selections__buttons__newUser, .
 }
 settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons__newUser:hover, .selections__buttons__newPass:hover {
   color: #EF8354;
+}
+
+settings-closeBtn, .userInfo__header__closeButton {
+  height: 20px;
+  width: 20px;
+  border: none;
+  background-image: url("../../data/icons/closeIcon.svg");
+  background-size: 100%;
+  background-color: transparent;
+  filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
 }
 
 .createNew {
@@ -490,6 +510,16 @@ settings-btn, .selections__buttons__delAccount, .selections__buttons__newUser, .
 }
 settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons__newUser:hover, .selections__buttons__newPass:hover {
   color: #EF8354;
+}
+
+settings-closeBtn, .userInfo__header__closeButton {
+  height: 20px;
+  width: 20px;
+  border: none;
+  background-image: url("../../data/icons/closeIcon.svg");
+  background-size: 100%;
+  background-color: transparent;
+  filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
 }
 
 @font-face {

@@ -36,6 +36,7 @@
             }
         }
         &__closeButton {
+            @extend settings-closeBtn;
             grid-column: 3;
             justify-self: flex-end;
             align-self: flex-start;

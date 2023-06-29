@@ -62,3 +62,12 @@ settings-btn {
         color: $orange;
     }
 }
+settings-closeBtn {
+    height: 20px;
+    width: 20px;
+    border: none;
+    background-image: url('../../data/icons/closeIcon.svg');
+    background-size: 100%;
+    background-color: transparent;
+    filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
+}
