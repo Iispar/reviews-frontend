@@ -11,11 +11,11 @@ const DeleteAccount = (props) => {
   const { openForm } = props;
   return (
     <div className="deleteAccount" id="deleteAccount">
-      <div className="deleteAccount__header">
+      <div className="deleteAccount__header" id="deleteAccount__header">
         <div className="deleteAccount__header__text"> delete account </div>
-        <button className="userInfo__header__closeButton" type="submit" onClick={() => openForm('none')}> close </button>
+        <button className="userInfo__header__closeButton" id="userInfo__header__closeButton" type="submit" onClick={() => openForm('none')}> close </button>
       </div>
-      <div className="deleteAccount__form">
+      <div className="deleteAccount__form" id="deleteAccount__form">
         <form className="deleteAccount__form__inputs" onSubmit={(e) => onSubmit(e)}>
           <div className="deleteAccount__form__inputs__confirmation">
             This action
@@ -23,7 +23,7 @@ const DeleteAccount = (props) => {
             be undone. Please confirm with your password.
           </div>
           <input className="deleteAccount__form__inputs__password" type="password" />
-          <button className="deleteAccount__form__inputs__deleteButton" type="submit"> I understand. Delete account.</button>
+          <button className="deleteAccount__form__inputs__deleteButton" id="deleteAccount__form__inputs__deleteButton" type="submit"> I understand. Delete account.</button>
         </form>
       </div>
     </div>

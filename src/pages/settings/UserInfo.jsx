@@ -40,15 +40,15 @@ const userInfo = (props) => {
       <div className="userInfo__header">
         <div className="userInfo__header__icon" />
         <div className="userInfo__header__title">
-          <span className="userInfo__header__title__username">
+          <span className="userInfo__header__title__username" id="userInfo__header__title__username">
             {currUsername}
           </span>
-          <button className="userInfo__header__title__change" type="button"> Change profile picture </button>
+          <button className="userInfo__header__title__change" id="userInfo__header__title__change" type="button"> Change profile picture </button>
         </div>
-        <button className="userInfo__header__closeButton" type="submit" onClick={() => openForm('none')}> close </button>
+        <button className="userInfo__header__closeButton" id="userInfo__header__closeButton" type="submit" onClick={() => openForm('none')}> close </button>
       </div>
       <div className="userInfo__values">
-        <div className="userInfo__values__name">
+        <div className="userInfo__values__name" id="userInfo__values__name">
           <div className="userInfo__values__name__text">
             name &nbsp;
           </div>
@@ -57,7 +57,7 @@ const userInfo = (props) => {
             <button className="userInfo__values__name__input__change" id="userInfo__values__name__input__change" type="submit"> change </button>
           </form>
         </div>
-        <div className="userInfo__values__username">
+        <div className="userInfo__values__username" id="userInfo__values__username">
           <span className="userInfo__values__username__text">
             username &nbsp;
           </span>
@@ -66,7 +66,7 @@ const userInfo = (props) => {
             <button className="userInfo__values__username__input__change" id="userInfo__values__username__input__change" type="submit"> change </button>
           </form>
         </div>
-        <form className="userInfo__values__password" onSubmit={(e) => updatePassword(e)}>
+        <form className="userInfo__values__password" id="userInfo__values__password" onSubmit={(e) => updatePassword(e)}>
           <div className="userInfo__values__password__passContainer">
             <div className="userInfo__values__password__passContainer__passText">
               password &nbsp;

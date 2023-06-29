@@ -12,16 +12,16 @@ const Settings = () => {
   return (
     <div className="settings">
       <div className="settings__grid">
-        <div className="settings__grid__header">
+        <div className="settings__grid__header" id="settings__grid__header">
           <Header />
         </div>
-        <div className="settings__grid__title">
+        <div className="settings__grid__title" id="settings__grid__title">
           Settings
         </div>
-        <div className="settings__grid__selections">
+        <div className="settings__grid__selections" id="settings__grid__selections">
           <Selections />
         </div>
-        <div className="settings__grid__footer">
+        <div className="settings__grid__footer" id="settings__grid__footer">
           <Footer />
         </div>
       </div>
