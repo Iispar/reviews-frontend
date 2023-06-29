@@ -36,7 +36,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
 }
 
-close-btn, .newReviewForm__buttons__close {
+close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,9 +48,34 @@ close-btn, .newReviewForm__buttons__close {
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .newReviewForm__buttons__close:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
+}
+
+settings-btn, .selections__buttons__delAccount, .selections__buttons__newUser, .selections__buttons__newPass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 180px;
+  border: 0px;
+  background: #FFFFFF;
+  font-size: 16px;
+  font-family: mainFont;
+}
+settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons__newUser:hover, .selections__buttons__newPass:hover {
+  color: #EF8354;
+}
+
+settings-closeBtn, .userInfo__header__closeButton {
+  height: 20px;
+  width: 20px;
+  border: none;
+  background-image: url("../../data/icons/closeIcon.svg");
+  background-size: 100%;
+  background-color: transparent;
+  filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
 }
 
 .login {
@@ -220,7 +245,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
 }
 
-close-btn, .newReviewForm__buttons__close {
+close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -232,9 +257,34 @@ close-btn, .newReviewForm__buttons__close {
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .newReviewForm__buttons__close:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
+}
+
+settings-btn, .selections__buttons__delAccount, .selections__buttons__newUser, .selections__buttons__newPass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 180px;
+  border: 0px;
+  background: #FFFFFF;
+  font-size: 16px;
+  font-family: mainFont;
+}
+settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons__newUser:hover, .selections__buttons__newPass:hover {
+  color: #EF8354;
+}
+
+settings-closeBtn, .userInfo__header__closeButton {
+  height: 20px;
+  width: 20px;
+  border: none;
+  background-image: url("../../data/icons/closeIcon.svg");
+  background-size: 100%;
+  background-color: transparent;
+  filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
 }
 
 .createNew {
@@ -430,7 +480,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
 }
 
-close-btn, .newReviewForm__buttons__close {
+close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -442,9 +492,34 @@ close-btn, .newReviewForm__buttons__close {
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .newReviewForm__buttons__close:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
+}
+
+settings-btn, .selections__buttons__delAccount, .selections__buttons__newUser, .selections__buttons__newPass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 180px;
+  border: 0px;
+  background: #FFFFFF;
+  font-size: 16px;
+  font-family: mainFont;
+}
+settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons__newUser:hover, .selections__buttons__newPass:hover {
+  color: #EF8354;
+}
+
+settings-closeBtn, .userInfo__header__closeButton {
+  height: 20px;
+  width: 20px;
+  border: none;
+  background-image: url("../../data/icons/closeIcon.svg");
+  background-size: 100%;
+  background-color: transparent;
+  filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
 }
 
 @font-face {
@@ -1898,6 +1973,301 @@ input[type=file] {
   background: green;
   grid-row: 10/10;
   grid-column: 1/5;
+  height: 60px;
+  width: 100vw;
+}
+
+.selections {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "mainFont";
+  font-size: 16px;
+  box-sizing: border-box;
+  height: 100%;
+  gap: 10px;
+  border: 1px solid #c2c2c2;
+}
+.selections__buttons {
+  display: flex;
+  flex-direction: column;
+}
+.selections__buttons__delAccount {
+  color: red;
+}
+.selections__form {
+  display: none;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  padding-top: 6px;
+  box-sizing: border-box;
+  border-left: 1px solid #4F5D75;
+  flex-direction: column;
+}
+.selections__form__title {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  font-size: 20px;
+}
+.selections__form__title__closeBtn {
+  height: 20px;
+}
+.selections__form__content {
+  display: flex;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.userInfo__header {
+  height: 50px;
+  display: grid;
+  grid-template-columns: 100px auto 40px;
+  gap: 10px;
+  align-content: center;
+  align-items: center;
+}
+.userInfo__header__icon {
+  grid-column: 1;
+  justify-self: flex-end;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  border: 1px solid red;
+}
+.userInfo__header__title {
+  font-size: 24px;
+  justify-self: flex-start;
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  line-height: 1;
+  padding-bottom: 4px;
+}
+.userInfo__header__title__change {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #2156c0;
+  font-size: 10px;
+  cursor: pointer;
+}
+.userInfo__header__closeButton {
+  grid-column: 3;
+  justify-self: flex-end;
+  align-self: flex-start;
+}
+.userInfo__values {
+  display: grid;
+  flex-direction: column;
+  padding-top: 10px;
+  gap: 10px;
+}
+.userInfo__values__username, .userInfo__values__name {
+  margin-left: 6px;
+  display: grid;
+  grid-template-columns: 100px 160px;
+  gap: 6px;
+}
+.userInfo__values__username__text, .userInfo__values__name__text {
+  grid-column: 1;
+  justify-self: flex-end;
+  height: 20px;
+  font-weight: 600;
+  text-align: right;
+}
+.userInfo__values__username__input, .userInfo__values__name__input {
+  width: 180px;
+  position: relative;
+}
+.userInfo__values__username__input__field, .userInfo__values__name__input__field {
+  grid-column: 2;
+  height: 24px;
+  width: 100%;
+  border: 1px solid #c2c2c2;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.userInfo__values__username__input__field:focus, .userInfo__values__name__input__field:focus {
+  outline: none;
+  border: 1px solid #EF8354;
+}
+.userInfo__values__username__input__field::-moz-placeholder, .userInfo__values__name__input__field::-moz-placeholder {
+  color: #000000;
+}
+.userInfo__values__username__input__field::placeholder, .userInfo__values__name__input__field::placeholder {
+  color: #000000;
+}
+.userInfo__values__username__input__change, .userInfo__values__name__input__change {
+  display: none;
+  position: absolute;
+  top: 4px;
+  right: 0px;
+  font-size: 12px;
+  color: #0ba100;
+  border: none;
+  background: none;
+}
+.userInfo__values__password {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.userInfo__values__password__passContainer, .userInfo__values__password__confirmContainer {
+  margin-left: 6px;
+  display: grid;
+  grid-template-columns: 100px 160px;
+  gap: 6px;
+}
+.userInfo__values__password__passContainer__passText, .userInfo__values__password__passContainer__confirmText, .userInfo__values__password__confirmContainer__passText, .userInfo__values__password__confirmContainer__confirmText {
+  grid-column: 1;
+  justify-self: flex-end;
+  height: 20px;
+  font-weight: 600;
+  text-align: right;
+}
+.userInfo__values__password__passContainer__input, .userInfo__values__password__confirmContainer__input {
+  width: 180px;
+  position: relative;
+}
+.userInfo__values__password__passContainer__input__field, .userInfo__values__password__confirmContainer__input__field {
+  grid-column: 2;
+  height: 24px;
+  width: 100%;
+  border: 1px solid #c2c2c2;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.userInfo__values__password__passContainer__input__field:focus, .userInfo__values__password__confirmContainer__input__field:focus {
+  outline: none;
+  border: 1px solid #EF8354;
+}
+.userInfo__values__password__passContainer__input__field::-moz-placeholder, .userInfo__values__password__confirmContainer__input__field::-moz-placeholder {
+  color: #000000;
+}
+.userInfo__values__password__passContainer__input__field::placeholder, .userInfo__values__password__confirmContainer__input__field::placeholder {
+  color: #000000;
+}
+.userInfo__values__password__passContainer__input__change, .userInfo__values__password__confirmContainer__input__change {
+  display: none;
+  position: absolute;
+  top: 4px;
+  right: 0px;
+  font-size: 12px;
+  color: #0ba100;
+  border: none;
+  background: none;
+}
+
+.deleteAccount {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+}
+.deleteAccount__header {
+  height: 54px;
+  display: grid;
+  grid-template-columns: 60px auto;
+  gap: 10px;
+  align-content: center;
+  align-items: center;
+}
+.deleteAccount__header__text {
+  grid-column: 2;
+  font-size: 24px;
+}
+.deleteAccount__form {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 60px 200px auto;
+  gap: 10px;
+  align-content: flex-start;
+  align-items: center;
+}
+.deleteAccount__form__inputs {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  gap: 10px;
+}
+.deleteAccount__form__inputs__confirmation {
+  font-size: 10px;
+  line-height: 1;
+}
+.deleteAccount__form__inputs__confirmation__warning {
+  font-weight: 900;
+}
+.deleteAccount__form__inputs__password {
+  height: 24px;
+  width: 100%;
+  border: 1px solid #c2c2c2;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+.deleteAccount__form__inputs__password:focus {
+  outline: none;
+  border: 1px solid #EF8354;
+}
+.deleteAccount__form__inputs__password::-moz-placeholder {
+  color: #000000;
+}
+.deleteAccount__form__inputs__password::placeholder {
+  color: #000000;
+}
+.deleteAccount__form__inputs__deleteButton {
+  border-radius: 2px;
+  height: 20px;
+  font-size: 12px;
+  border-color: red;
+}
+
+.settings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+.settings__grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: auto 600px auto;
+  grid-template-rows: 50px 10px 50px 300px auto 60px;
+  gap: 20px;
+}
+.settings__grid__header {
+  grid-row: 1/1;
+  grid-column: 1/4;
+  width: 100vw;
+}
+.settings__grid__title {
+  grid-row: 3/3;
+  grid-column: 2/2;
+  font-family: "mainFont";
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.settings__grid__selections {
+  grid-row: 4/4;
+  grid-column: 2/2;
+}
+.settings__grid__footer {
+  background: green;
+  grid-row: 6/6;
+  grid-column: 1/4;
   height: 60px;
   width: 100vw;
 }/*# sourceMappingURL=main.css.map */

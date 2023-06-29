@@ -14,10 +14,6 @@ import ItemChart from '../pages/item/ItemChart';
 global.ResizeObserver = require('resize-observer-polyfill');
 
 describe('item site works fully', () => {
-  let user;
-  beforeEach(() => {
-    user = userEvent.setup();
-  });
   test('page renders with components', () => {
     const itemContainer = render(
       <BrowserRouter>
