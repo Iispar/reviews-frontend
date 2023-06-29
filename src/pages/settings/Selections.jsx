@@ -35,7 +35,7 @@ const Selections = () => {
    */
   const deleteAccount = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
+    // console.log(e.target[0].value);
   };
 
   /**
@@ -44,7 +44,7 @@ const Selections = () => {
    */
   const updateName = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
+    // console.log(e.target[0].value);
   };
 
   /**
@@ -53,7 +53,7 @@ const Selections = () => {
    */
   const updateUsername = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
+    // console.log(e.target[0].value);
   };
 
   /**
@@ -62,7 +62,7 @@ const Selections = () => {
    */
   const updatePassword = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
+    // console.log(e.target[0].value);
   };
 
   return (
