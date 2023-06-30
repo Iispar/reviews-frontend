@@ -3,19 +3,28 @@ import propTypes from 'prop-types';
 
 /**
  * Renders a single top words list item.
- * @param {*} props
+ * @param {string} name
+ *        name of the word.
+ * @param {string} index
+ *        Index of the word.
+ * @param {string} id
+ *        Custom id if wanted. Default wordListItem.
+ * @param {string} className
+ *        Custom id if wanted. Default wordListItem.
  * @returns sinlge top word item.
  */
 const WordListItem = (props) => {
   const { name } = props;
   const { index } = props;
+  const { className } = props;
+  const { id } = props;
   return (
-    <div className="wordListItem">
-      <div className="wordListItem__index" id="wordListItem__index">
+    <div className={className}>
+      <div className={`${className}__index`} id={`${id}__index`}>
         {index + 1}
         .
       </div>
-      <div className="wordListItem__name" id="wordListItem__name">
+      <div className={`${className}__name`} id={`${id}__name`}>
         {name}
       </div>
     </div>
@@ -25,11 +34,15 @@ const WordListItem = (props) => {
 WordListItem.propTypes = {
   name: propTypes.string,
   index: propTypes.number,
+  className: propTypes.string,
+  id: 'wordListItem',
 };
 
 WordListItem.defaultProps = {
   name: null,
   index: null,
+  className: 'wordListItem',
+  id: 'wordListItem',
 };
 
 export default WordListItem;

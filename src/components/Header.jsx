@@ -2,6 +2,10 @@ import { useState, React } from 'react';
 import $ from 'jquery';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * Renders the header. Includes only a hamburger menu and a nav bar.
+ * @returns header
+ */
 const Header = () => {
   const [navState, setNavState] = useState(false);
   const navigate = useNavigate();

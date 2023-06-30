@@ -3,9 +3,22 @@ import propTypes from 'prop-types';
 import { useTextWidth } from './helpers';
 
 /**
- * Styling and functionality for the search fields in the application.
- * @param {} props
- * @returns
+ * Styling and functionality for the input fields in the application.
+ * @param {String} title
+ *        Title of the input field.
+ * @param {String} id
+ *        Id of the input field if wanted. Default searchField.
+ * @param {String} name
+ *        Classname if wanted. Default searchField.
+ * @param {String} width
+ *        Width for the input field. Default 220px.
+ * @param {String} height
+ *        Heigth of the input field. Default 40px.
+ * @param {String} type
+ *        Type of the input field. Default text.
+ * @param {String} error
+ *        The error message for the input field.
+ * @returns custom input field.
  */
 const InputField = (props) => {
   const { title } = props;

@@ -3,42 +3,56 @@ import propTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import $ from 'jquery';
 
-// eslint-disable-next-line arrow-body-style
+/**
+ * Renders a item in the large format.
+ * @props {string} id
+ *        Custom id if wanted. Default is default.
+ *  * @props {string} className
+ *        Custom className if wanted. Default is largeField.
+ * @props {string} item
+ *        Name of the item.
+ * @props {string} reviews
+ *        Count of the reviews.
+ * @props {string} rating
+ *        Value of the rating.
+ * @returns large item
+ */
 const LargeItem = (props) => {
   const navigate = useNavigate();
   const { id } = props;
   const { item } = props;
   const { reviews } = props;
   const { rating } = props;
+  const { className } = props;
 
   // wait for the page to load before setting listeners
   $(document).ready(() => {
     // navigate to items page when clicked.
-    $(`#largeItem__${id}`).on('click', () => {
+    $(`#${className}__${id}`).on('click', () => {
       navigate(`/item/${id}`);
     });
   });
 
   return (
-    <div className="largeItem" id={`largeItem__${id}`}>
-      <div className="largeItem__nameReviews">
-        <span className="largeItem__nameReviews__name" id="largeItem__nameReviews__name">
+    <div className={className} id={`#${className}__${id}`}>
+      <div className={`${className}__nameReviews`}>
+        <span className={`${className}__nameReviews__name`} id={`${className}__nameReviews__name`}>
           {item}
         </span>
-        <div className="largeItem__nameReviews__reviews">
-          <span className="largeItem__nameReviews__reviews__count" id="largeItem__nameReviews__reviews__count">
+        <div className={`${className}__nameReviews__reviews`}>
+          <span className={`${className}__nameReviews__reviews__count`} id={`${className}__nameReviews__reviews__count`}>
             {reviews}
           </span>
-          <span className="largeItem__nameReviews__reviews__label">
+          <span className={`${className}__nameReviews__reviews__label`}>
             reviews
           </span>
         </div>
       </div>
-      <div className="largeItem__rating">
-        <span className="largeItem__rating__rate" id="largeItem__rating__rate">
+      <div className={`${className}__rating`}>
+        <span className={`${className}__rating__rate`} id={`${className}__rating__rate`}>
           {rating}
         </span>
-        <div className="largeItem__rating__star" />
+        <div className={`${className}__rating__star`} />
       </div>
     </div>
   );
@@ -46,6 +60,7 @@ const LargeItem = (props) => {
 
 LargeItem.propTypes = {
   item: propTypes.string,
+  className: propTypes.string,
   rating: propTypes.string,
   id: propTypes.string,
   reviews: propTypes.string,
@@ -53,6 +68,7 @@ LargeItem.propTypes = {
 
 LargeItem.defaultProps = {
   item: null,
+  className: 'largeItem',
   rating: null,
   id: 'default',
   reviews: null,

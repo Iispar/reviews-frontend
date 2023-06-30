@@ -9,7 +9,11 @@ import { getVerticalPoints } from './helpers';
 
 /**
  * Renders a line chart with two lines
- * @param {*} props
+ * As this is used in this app only for reviews and ratings the right domain is 1-6 on setting
+ * and left is until max reviews.
+ * uses the recharts library.
+ * @param {json} data
+ *        data with reviews and ratings as keys. These are the keys used for the lines...
  * @returns line chart
  */
 const DoubleLineChart = (props) => {
@@ -51,9 +55,7 @@ const DoubleLineChart = (props) => {
 };
 
 DoubleLineChart.propTypes = {
-  // fix proptype
-  // eslint-disable-next-line react/forbid-prop-types
-  data: propTypes.arrayOf(propTypes.object),
+  data: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
 };
 
 DoubleLineChart.defaultProps = {

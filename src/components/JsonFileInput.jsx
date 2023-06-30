@@ -4,13 +4,18 @@ import $ from 'jquery';
 
 /**
  * renders a input field for a json file.
+ * @param {string} id
+ *        Custom id if wanted. Default jsonInputField.
+ * @param {string} height
+ *        Custom height if wanted. Default 200px.
+ * @param {string} name
+ *        Custom name if wanted. Default jsonInputField.
  * @returns input for json
  */
 const JsonInputField = (props) => {
   const { id } = props;
   const { height } = props;
-  // eslint-disable-next-line no-unused-vars
-  const { name } = props;
+  const { className } = props;
 
   // eventlistener to check the file type when a file is inputted.
   $(document).ready(() => {
@@ -33,15 +38,15 @@ const JsonInputField = (props) => {
   });
 
   return (
-    <div className="jsonFileInput" id={id}>
-      <label htmlFor={`${id}__form`} className="jsonFileInput__label" id={`${id}__label`} style={{ height }}>
-        <span className="jsonFileInput__label__text" id={`${id}__label__text`}> file </span>
-        <div className="jsonFileInput__label__succesful" id={`${id}__label__succesful`} />
-        <div className="jsonFileInput__label__error" id={`${id}__label__error`}>
-          <div className="jsonFileInput__label__error__logo" />
-          <span className="jsonFileInput__label__error__text" id={`${id}__label__error__text`}> not a json file </span>
+    <div className={className} id={id}>
+      <label htmlFor={`${id}__form`} className={`${className}__label`} id={`${id}__label`} style={{ height }}>
+        <span className={`${className}__label__text`} id={`${id}__label__text`}> file </span>
+        <div className={`${className}__label__succesful`} id={`${id}__label__succesful`} />
+        <div className={`${className}__label__error`} id={`${id}__label__error`}>
+          <div className={`${className}__label__error__logo`} />
+          <span className={`${className}__label__error__text`} id={`${id}__label__error__text`}> not a json file </span>
         </div>
-        <input className="jsonFileInput__form" id={`${id}__form`} type="file" required />
+        <input className={`${className}__label`} id={`${id}__form`} type="file" required />
       </label>
     </div>
   );
@@ -49,13 +54,13 @@ const JsonInputField = (props) => {
 
 JsonInputField.propTypes = {
   id: propTypes.string,
-  name: propTypes.string,
+  className: propTypes.string,
   height: propTypes.string,
 };
 
 JsonInputField.defaultProps = {
   id: 'jsonFileInput',
-  name: 'jsonFileInput',
+  className: 'jsonFileInput',
   height: '200px',
 };
 
