@@ -34,7 +34,7 @@ const LargeItem = (props) => {
   });
 
   return (
-    <div className={className} id={`#${className}__${id}`}>
+    <div className={className} id={`${className}__${id}`}>
       <div className={`${className}__nameReviews`}>
         <span className={`${className}__nameReviews__name`} id={`${className}__nameReviews__name`}>
           {item}

@@ -48,7 +48,7 @@ const LineTooltip = (props) => {
 };
 
 LineTooltip.propTypes = {
-  payload: propTypes.arrayOf(propTypes.objectOf(propTypes.object)),
+  payload: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   active: propTypes.bool,
   className: propTypes.string,
   id: propTypes.string,
@@ -58,7 +58,7 @@ LineTooltip.defaultProps = {
   payload: null,
   active: null,
   className: 'lineTooltip',
-  id: propTypes.string,
+  id: 'lineTooltip',
 };
 
 export default LineTooltip;

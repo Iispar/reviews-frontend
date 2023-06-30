@@ -35,7 +35,7 @@ WordListItem.propTypes = {
   name: propTypes.string,
   index: propTypes.number,
   className: propTypes.string,
-  id: 'wordListItem',
+  id: propTypes.string,
 };
 
 WordListItem.defaultProps = {

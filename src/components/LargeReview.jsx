@@ -93,7 +93,7 @@ LargeReview.defaultProps = {
   id: 'default',
   title: null,
   date: null,
-  className: LargeReview,
+  className: 'largeReview',
 };
 
 export default LargeReview;
