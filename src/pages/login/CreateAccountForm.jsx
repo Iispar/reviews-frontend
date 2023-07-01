@@ -1,4 +1,4 @@
-import { useState, React } from 'react';
+import { useState, React, useEffect } from 'react';
 import $ from 'jquery';
 import propTypes from 'prop-types';
 import InputField from '../../components/InputField';
@@ -21,9 +21,11 @@ const CreateAccountForm = (props) => {
   };
 
   /**
-   * sets the error message on or off depending on the on boolean.
-   * @param {string} id
+   * Displays the error message to a component.
+   * @param {String} id
+   *        id of the component to display error message to
    * @param {boolean} on
+   *        if the error message should be on or off.
    */
   const errorMessage = (id, on) => {
     if (on) {
@@ -39,26 +41,24 @@ const CreateAccountForm = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (password !== confirmPassword) errorMessage('createConfirmPassword', true);
+    else {
+      errorMessage('createConfirmPassword', false);
+    }
+  }, [password, confirmPassword]);
+
   /**
    * Loads listeners to input fields when the app loads fully.
+   * CAN THIS BE DONE IN INPUTFIELD!!!!!!! TODO:
    */
   $(document).ready(() => {
     /**
-     * Checks the email is the correct format
-     */
-    $('#createEmail').on('change', (val) => {
-      const string = val.target.value;
-      const regex = /^\w*@\w*\..\w*/;
-      if (regex.test(string)) errorMessage('createEmail', false);
-      else errorMessage('createEmail', true);
-    });
-
-    /**
      * Checks the passwords match
      */
-    $('#createPassword').on('change', (val) => {
+    $('#createPassword').on('input', async (val) => {
       const input = val.target.value;
-      setPassword(input);
+      await setPassword(input);
       if (input !== confirmPassword) errorMessage('createConfirmPassword', true);
       else {
         errorMessage('createConfirmPassword', false);
@@ -68,9 +68,9 @@ const CreateAccountForm = (props) => {
     /**
      * Checks the passwords match.
      */
-    $('#createConfirmPassword').on('change', (val) => {
+    $('#createConfirmPassword').on('input', async (val) => {
       const input = val.target.value;
-      setConfirmPassword(input);
+      await setConfirmPassword(input);
       if (input !== password) errorMessage('createConfirmPassword', true);
       else {
         errorMessage('createConfirmPassword', false);
@@ -86,7 +86,7 @@ const CreateAccountForm = (props) => {
           <form className="createNew__createAccountForm__inputs__form" id="createNew__createAccountForm__inputs__form" onSubmit={(e) => onSubmit(e)}>
             <InputField id="createUsername" title="username" width="240px" height="40px" />
             <InputField id="createName" title="first name" width="240px" height="40px" />
-            <InputField id="createEmail" title="email" width="240px" height="40px" error="doesn't match example@email.com" />
+            <InputField id="createEmail" title="email" width="240px" height="40px" error="doesn't match example@email.com" regex={/^\w*@\w*\..\w*/} />
             <InputField id="createPassword" type="password" title="password" width="240px" height="40px" error="passwords don't match" />
             <InputField id="createConfirmPassword" type="password" title="confirm password" width="240px" height="40px" error="passwords don't match" />
           </form>

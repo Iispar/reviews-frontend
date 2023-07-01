@@ -360,6 +360,7 @@ settings-closeBtn, .userInfo__header__closeButton {
   top: 0;
   bottom: 0;
   cursor: default;
+  font-family: "mainFont";
 }
 
 .searchField {

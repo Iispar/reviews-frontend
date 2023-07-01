@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
+import $ from 'jquery';
 import { useTextWidth } from './helpers';
 
 /**
@@ -21,14 +22,45 @@ const InputField = (props) => {
   const { height } = props;
   const { type } = props;
   const { error } = props;
+  const { regex } = props;
+  const [value, setValue] = useState(null);
   // hook to calculate the width of the text
   const cutoutWidth = useTextWidth(title, '16px hind');
   const errorWidth = useTextWidth(error, '15px hind');
   const labelHeight = `${height.replace('px', '') / 4}px`;
+
+  /**
+   * Displays the error message.
+   * @param {boolean} on
+   *        is the error message should be displayed or not.
+   */
+  const errorMessage = (on) => {
+    if (on) {
+      $(`#${id}__container__error`).css('display', 'flex');
+      $(`#${id}__container__label`).css('display', 'none');
+      $(`#${id}__container__cutout`).css('display', 'none');
+      $(`#${id}__container__input`).css('border', '1.5px solid $red');
+    } else {
+      $(`#${id}__container__error`).css('display', 'none');
+      $(`#${id}__container__label`).css('display', 'flex');
+      $(`#${id}__container__cutout`).css('display', 'flex');
+      $(`#${id}__container__input`).css('border', '1.5px solid $orange');
+    }
+  };
+
+  /**
+   * UseEffect hook to check the input that it matches to the regex
+   */
+  useEffect(() => {
+    if (value === null || regex == null) return;
+    if (regex.test(value)) errorMessage(false);
+    else errorMessage(true);
+  }, [value]);
+
   return (
     <div className={name} id={id} style={{ width, height }}>
       <div className={`${name}__container`}>
-        <input className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} />
+        <input className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} onChange={(e) => setValue(e.target.value)} />
         <div className={`${name}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
         <div className={`${name}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>
           {error}
@@ -49,6 +81,7 @@ InputField.propTypes = {
   type: propTypes.string,
   error: propTypes.string,
   height: propTypes.string,
+  regex: propTypes.instanceOf(RegExp),
 };
 
 InputField.defaultProps = {
@@ -59,6 +92,7 @@ InputField.defaultProps = {
   type: 'text',
   error: 'wrong input',
   height: '40px',
+  regex: null,
 };
 
 export default InputField;
