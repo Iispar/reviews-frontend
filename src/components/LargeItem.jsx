@@ -7,7 +7,7 @@ import $ from 'jquery';
  * Renders a item in the large format.
  * @props {string} id
  *        Custom id if wanted. Default is default.
- *  * @props {string} className
+ * @props {string} className
  *        Custom className if wanted. Default is largeField.
  * @props {string} item
  *        Name of the item.

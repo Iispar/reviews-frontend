@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
+  BarChart, Bar, Cell, XAxis, Tooltip, ResponsiveContainer,
 } from 'recharts';
 import propTypes from 'prop-types';
 import BarTooltip from './BarTooltip';

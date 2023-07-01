@@ -44,7 +44,7 @@ const SmallItem = (props) => {
       </div>
       <div className={`${className}__rating`}>
         <span className={`${className}__rating__value`} id={`smallItem__rating__value__${id}`}>{rating}</span>
-        <span className={`${className}__rating__icon`} />
+        <div className={`${className}__rating__icon`} />
       </div>
     </div>
   );

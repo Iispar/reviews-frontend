@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
 
@@ -16,26 +16,31 @@ const JsonInputField = (props) => {
   const { id } = props;
   const { height } = props;
   const { className } = props;
+  const [file, setFile] = useState(null);
 
-  // eventlistener to check the file type when a file is inputted.
-  $(document).ready(() => {
-    $(`#${id}__form`).on('change', () => {
-      const fileName = $(`#${id}__form`).prop('files')[0].name;
-      const regex = /\.[0-9a-z]+$/i;
-      const format = fileName.match(regex)[0];
-      if (format === '.json') {
-        $(`#${id}__label`).css('border-color', '#EF8354');
-        $(`#${id}__label__succesful`).css('display', 'flex');
-        $(`#${id}__label__text`).css('display', 'none');
-        $(`#${id}__label__error`).css('display', 'none');
-      } else {
-        $(`#${id}__label`).css('border-color', 'red');
-        $(`#${id}__label__error`).css('display', 'flex');
-        $(`#${id}__label__succesful`).css('display', 'none');
-        $(`#${id}__label__text`).css('display', 'none');
-      }
-    });
-  });
+  /**
+   * When a file is inputted I set it to the file useState which triggers the useEffect
+   * to check that the file is the correct format and display corresponding styling.
+   */
+  useEffect(() => {
+    // if no file.
+    if (file == null) return;
+    // get format with regex
+    const regex = /\.[0-9a-z]+$/i;
+    const format = file.match(regex)[0];
+
+    if (format === '.json') {
+      $(`#${id}__label`).css('border-color', '#EF8354');
+      $(`#${id}__label__succesful`).css('display', 'flex');
+      $(`#${id}__label__text`).css('display', 'none');
+      $(`#${id}__label__error`).css('display', 'none');
+    } else {
+      $(`#${id}__label`).css('border-color', 'red');
+      $(`#${id}__label__error`).css('display', 'flex');
+      $(`#${id}__label__succesful`).css('display', 'none');
+      $(`#${id}__label__text`).css('display', 'none');
+    }
+  }, [file]);
 
   return (
     <div className={className} id={id}>
@@ -46,7 +51,7 @@ const JsonInputField = (props) => {
           <div className={`${className}__label__error__logo`} />
           <span className={`${className}__label__error__text`} id={`${id}__label__error__text`}> not a json file </span>
         </div>
-        <input className={`${className}__label`} id={`${id}__form`} type="file" required />
+        <input className={`${className}__label`} id={`${id}__form`} type="file" required onChange={(e) => setFile(e.target.value)} />
       </label>
     </div>
   );

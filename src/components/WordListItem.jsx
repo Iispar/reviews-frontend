@@ -11,7 +11,7 @@ import propTypes from 'prop-types';
  *        Custom id if wanted. Default wordListItem.
  * @param {string} className
  *        Custom id if wanted. Default wordListItem.
- * @returns sinlge top word item.
+ * @returns single top word item.
  */
 const WordListItem = (props) => {
   const { name } = props;

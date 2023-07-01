@@ -9,7 +9,7 @@ import propTypes from 'prop-types';
  *        The Component used for the list either SmallItem or LargeItem.
  * @param {Integer} count
  *        Number of reviews in items json.
- * @returns list of smallItems
+ * @returns list of SmallItems or LargeItems
  */
 const ItemList = (props) => {
   const { items } = props;
@@ -17,8 +17,12 @@ const ItemList = (props) => {
   const { count } = props;
   const { className } = props;
   const { id } = props;
+
   const productList = [];
   for (let i = 0; i < count; i += 1) {
+    // with the if else I can use this compoment to create all lists of items. It is a bit clumsy
+    // because the different components need different values so.
+    // TODO: make better.
     if (View === 'Smallitem') {
       productList.push(
         <View
@@ -41,7 +45,9 @@ const ItemList = (props) => {
     }
   }
   return (
-    <div className={className} id={id}>{productList}</div>
+    <div className={className} id={id}>
+      {productList}
+    </div>
   );
 };
 

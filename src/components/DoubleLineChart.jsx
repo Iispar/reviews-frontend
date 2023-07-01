@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
@@ -14,20 +13,26 @@ import { getVerticalPoints } from './helpers';
  * uses the recharts library.
  * @param {json} data
  *        data with reviews and ratings as keys. These are the keys used for the lines...
+ * @param {String} className
+ *        Custom className if wanted. Default lineChart.
+ * @param {String} id
+ *        Custom id if wanted. Default lineChart.
  * @returns line chart
  */
 const DoubleLineChart = (props) => {
   const { data } = props;
+  const { className } = props;
+  const { id } = props;
   // calculate max value for reviews count to get max of chart
   const reviews = data.map((object) => object.reviews);
   const max = Math.max(...reviews) + 10;
   // calculate vertical points for the background grid
   const verticalPoints = getVerticalPoints(reviews.length - 2);
-  // if there are three dots the width is larger...
+  // set width regarding if there is 3 or 5 values.
   const yWidth = reviews.length === 5 ? -120 : -80;
 
   return (
-    <div className="lineChart" id="lineChart">
+    <div className={className} id={id}>
       <ResponsiveContainer width="100%" height="100%" className="lineChart__chart">
         <LineChart
           width={0}
@@ -56,10 +61,14 @@ const DoubleLineChart = (props) => {
 
 DoubleLineChart.propTypes = {
   data: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
+  className: propTypes.string,
+  id: propTypes.string,
 };
 
 DoubleLineChart.defaultProps = {
   data: null,
+  className: 'lineChart',
+  id: 'lineChart',
 
 };
 

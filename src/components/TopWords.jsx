@@ -19,20 +19,23 @@ const TopWords = (props) => {
   const { title } = props;
   const { className } = props;
   const { id } = props;
-  const createList = (wordList) => {
-    const list = [];
-    for (let i = 0; i < wordList.length; i += 1) {
-      list.push(<WordListItem name={wordList[i].name} index={i} key={wordList[i].key} />);
-    }
-    return list;
-  };
+  const list = [];
+  for (let i = 0; i < words.length; i += 1) {
+    list.push(
+      <WordListItem
+        name={words[i].name}
+        index={i}
+        key={words[i].key}
+      />,
+    );
+  }
   return (
     <div className={className}>
       <div className={`${className}__title`} id={`${id}__title`}>
         {title}
       </div>
       <div className={`${className}__list`} id={`${id}__list`}>
-        {createList(words)}
+        {list}
       </div>
     </div>
   );
