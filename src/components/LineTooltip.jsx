@@ -5,14 +5,10 @@ import propTypes from 'prop-types';
  * Tooltip for the line chart with two values.
  * Displays the values as reviews as ratings. This is currently fixed because it is the
  * only one needed for the app.
- * @param {json} payload
- *        Contains the time, reviews count and rating value.
- * @param {boolean} active
- *        if active
- * @param {string} className
- *        Custom className if wanted. Default lineTooltip.
- * @param {string} id
- *        Custom id if wanted. Default lineTooltip.
+ * @property {json} payload - Contains the time, reviews count and rating value.
+ * @property {boolean} active - if active
+ * @property {string} className - Custom className if wanted. Default lineTooltip.
+ * @property {string} id - Custom id if wanted. Default lineTooltip.
  * @returns line chart tooltip
  */
 const LineTooltip = (props) => {

@@ -3,14 +3,10 @@ import propTypes from 'prop-types';
 
 /**
  * Renders a single top words list item.
- * @param {string} name
- *        name of the word.
- * @param {string} index
- *        Index of the word.
- * @param {string} id
- *        Custom id if wanted. Default wordListItem.
- * @param {string} className
- *        Custom id if wanted. Default wordListItem.
+ * @property {string} name - name of the word.
+ * @property {string} index - Index of the word.
+ * @property {string} id - Custom id if wanted. Default wordListItem.
+ * @property {string} className - Custom id if wanted. Default wordListItem.
  * @returns single top word item.
  */
 const WordListItem = (props) => {

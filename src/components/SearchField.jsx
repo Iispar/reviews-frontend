@@ -3,9 +3,9 @@ import propTypes from 'prop-types';
 
 /**
  * renders a search field for the application.
- * @param {string} placeholder
- * @param {string} className
- * @param {string} id
+ * @property {string} placeholder - the placeholder for field.
+ * @property {string} className - custom className if wanted. Default searchFIeld.
+ * @property {string} id - custom id if wanted. Default searchFIeld.
  * @returns a search field
  */
 const SearchField = (props) => {

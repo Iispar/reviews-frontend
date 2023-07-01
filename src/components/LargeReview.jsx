@@ -4,18 +4,12 @@ import $ from 'jquery';
 
 /**
  * renders a singular large review.
- * @param {String} rating
- *        The rating value of review.
- * @param {String} body
- *        The body of the review
- * @param {String} id
- *        Custom id if wanted. Default default
- * @param {String} title
- *        Title of the review.
- * @param {String} date
- *        Date of the review.
- * @param {String} classname
- *        Custom className if wanted. Default largeReview.
+ * @property {String} rating - The rating value of review.
+ * @property {String} body - The body of the review
+ * @property {String} id - Custom id if wanted. Default default
+ * @property {String} title - Title of the review.
+ * @property {String} date - Date of the review.
+ * @property {String} classname - Custom className if wanted. Default largeReview.
  * @returns singular large review
  */
 const LargeReview = (props) => {
@@ -35,6 +29,7 @@ const LargeReview = (props) => {
    * component. This is wy I just use open which I tell if the action is
    * the open action or not. And open will open the selected one as with every
    * press I have to close all the other ones that might be open...
+   * @param {boolean} open if the view is open or not.
    */
   const toggle = (open) => {
     // scroll to top when I close the div so it doesn't show middle of the ext.

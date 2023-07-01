@@ -11,12 +11,9 @@ import { getVerticalPoints } from './helpers';
  * As this is used in this app only for reviews and ratings the right domain is 1-6 on setting
  * and left is until max reviews.
  * uses the recharts library.
- * @param {json} data
- *        data with reviews and ratings as keys. These are the keys used for the lines...
- * @param {String} className
- *        Custom className if wanted. Default lineChart.
- * @param {String} id
- *        Custom id if wanted. Default lineChart.
+ * @property {json} data - Data with reviews and ratings as keys. Used for the lines.
+ * @property {String} className - Custom className if wanted. Default lineChart.
+ * @property {String} id - Custom id if wanted. Default lineChart.
  * @returns line chart
  */
 const DoubleLineChart = (props) => {

@@ -4,12 +4,9 @@ import $ from 'jquery';
 
 /**
  * renders a input field for a json file.
- * @param {string} id
- *        Custom id if wanted. Default jsonInputField.
- * @param {string} height
- *        Custom height if wanted. Default 200px.
- * @param {string} name
- *        Custom name if wanted. Default jsonInputField.
+ * @property {string} id - Custom id if wanted. Default jsonInputField.
+ * @property {string} height - Custom height if wanted. Default 200px.
+ * @property {string} name - Custom name if wanted. Default jsonInputField.
  * @returns input for json
  */
 const JsonInputField = (props) => {

@@ -5,14 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 /**
  * Displays a singular item as small.
- * @param {string} item
- *        Name of the item.
- * @param {rating} rating
- *        Rating value of the item.
- * @param {id} id
- *        Custom id if wanted. Default is default.
- * @param {className} className
- *        Custom className if wanted. Default is smallitem.
+ * @property {string} item - Name of the item.
+ * @property {rating} rating - Rating value of the item.
+ * @property {id} id - Custom id if wanted. Default is default.
+ * @property {className} className - Custom className if wanted. Default is smallitem.
  * @returns item in small format.
  */
 const SmallItem = (props) => {

@@ -3,14 +3,10 @@ import propTypes from 'prop-types';
 
 /**
  * Renders the tooltip (hover) for the bar chart.
- * @param {json} payload
- *        includes the title and count.
- * @param {boolean} active
- *        boolean if active.
- * @param {String} className
- *        Custom classname if wanted. Default barToolTip.
- * @param {String} id
- *        Custom id if wanted. Default barToolTip
+ * @property {json} payload - includes the title and count.
+ * @property {boolean} active - boolean if active.
+ * @property {String} className - Custom classname if wanted. Default barToolTip.
+ * @property {String} id - Custom id if wanted. Default barToolTip
  * @returns tooltip for barchart
  */
 const BarTooltip = (props) => {

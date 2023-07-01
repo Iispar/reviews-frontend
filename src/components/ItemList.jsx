@@ -3,12 +3,10 @@ import propTypes from 'prop-types';
 
 /**
  * Creates a list of either SmallItem or LargeItem.
- * @param {json} items
- *        json of the items includes item name, rating, reviews (if large) and key.
- * @param {String} View
- *        The Component used for the list either SmallItem or LargeItem.
- * @param {Integer} count
- *        Number of reviews in items json.
+ * @property {json} items - json of the items includes
+ * item name, rating, reviews (if large) and key.
+ * @property {String} View - The Component used for the list either SmallItem or LargeItem.
+ * @property {Integer} count - Number of reviews in items json.
  * @returns list of SmallItems or LargeItems
  */
 const ItemList = (props) => {

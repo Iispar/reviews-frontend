@@ -5,16 +5,11 @@ import $ from 'jquery';
 
 /**
  * Renders a item in the large format.
- * @props {string} id
- *        Custom id if wanted. Default is default.
- * @props {string} className
- *        Custom className if wanted. Default is largeField.
- * @props {string} item
- *        Name of the item.
- * @props {string} reviews
- *        Count of the reviews.
- * @props {string} rating
- *        Value of the rating.
+ * @property {string} id - Custom id if wanted. Default is default.
+ * @property {string} className - Custom className if wanted. Default is largeField.
+ * @property {string} item - Name of the item.
+ * @property {string} reviews - Count of the reviews.
+ * @property {string} rating - Value of the rating.
  * @returns large item
  */
 const LargeItem = (props) => {

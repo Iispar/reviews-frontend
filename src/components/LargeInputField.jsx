@@ -4,18 +4,12 @@ import { useTextWidth } from './helpers';
 
 /**
  * Styling and functionality for the large search fields in the application.
- * @param {string} title
- *        Title for the input field.
- * @param {string} id
- *        Custom id if needed. Default largeField.
- * @param {string} className
- *        Custom className id needed. Default largeField.
- * @param {string} width
- *        Width for the input field. Default 280px.
- * @param {string} height
- *        Height for the input field. Default 80px.
- * @param {string} error
- *        Error message for the input field.
+ * @property {string} title - Title for the input field.
+ * @property {string} id - Custom id if needed. Default largeField.
+ * @property {string} className - Custom className id needed. Default largeField.
+ * @property {string} width - Width for the input field. Default 280px.
+ * @property {string} height - Height for the input field. Default 80px.
+ * @property {string} error - Error message for the input field.
  * @returns
  */
 const LargeInputField = (props) => {

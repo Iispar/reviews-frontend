@@ -4,10 +4,9 @@ import LargeReview from './LargeReview';
 
 /**
  * component to render a list of reviews in the large format.
- * @param {json} reviews
- *        Reviews in json format. Includes the reviews key, body, rating, id, title and date.
- * @param {string} className
- *        Custom className if wanted. Default ReviewsList.
+ * @property {json} reviews - Reviews in json format.
+ * Includes the reviews key, body, rating, id, title and date.
+ * @property {string} className - Custom className if wanted. Default ReviewsList.
  * @returns list of reviews
  */
 const ReviewsList = (props) => {

@@ -4,14 +4,10 @@ import WordListItem from './WordListItem';
 
 /**
  * Renders a list of words as a top list.
- * @param {json} words
- *        Json of words. Includes the words name and key.
- * @param {string} className
- *        Custom className id wanted. Default is wordList.
- * @param {string} title
- *        Title of the list.
- * @param {string} id
- *        Custom className id wanted. Default is wordList.
+ * @property {json} words - Json of words. Includes the words name and key.
+ * @property {string} className - Custom className id wanted. Default is wordList.
+ * @property {string} title - Title of the list.
+ * @property {string} id - Custom className id wanted. Default is wordList.
  * @returns list of words
  */
 const TopWords = (props) => {

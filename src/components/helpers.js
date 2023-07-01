@@ -1,7 +1,7 @@
 /**
  * calculates the width of a text in pixels
- * @param {string} text
- * @param {string} font
+ * @param {string} text - the text to be calculated
+ * @param {string} font - the font used
  * @returns width in pixels
  */
 
@@ -15,6 +15,7 @@ export const useTextWidth = (text, font) => {
 
 /**
  * Calculates the vertical lines for the double line chart.
+ * @param {Integer} len - the length of the vertical points list.
  */
 export const getVerticalPoints = (len) => {
   const list = [];

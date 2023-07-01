@@ -12,8 +12,7 @@ import BarTooltip from './BarTooltip';
  * Uses the recharts library.
  *
  * !! the colors at the moment only match to this five bar chart !!
- * @param {json} data
- *        Includes the data in json.
+ * @property {json} data - Includes the data in json.
  * @returns a bar chart
  */
 const Chart = (props) => {
@@ -23,7 +22,7 @@ const Chart = (props) => {
 
   /**
    * Sets the hovered bar as current focus state. If none is hovered it is set to null.
-   * @param {String} state
+   * @param {String} state - The state of the current tooltip.
    */
   const hover = (state) => {
     if (state.isTooltipActive) {
