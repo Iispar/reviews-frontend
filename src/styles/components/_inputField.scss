@@ -26,7 +26,6 @@
             font-size: 16px;
             pointer-events:none;
             transition: all 0.3s;
-            font-family: mainFont;
             color: $grey;
         }
         &__input {
@@ -34,7 +33,6 @@
             border-radius: 5px;
             background: $white;
             border: 1px solid $grey;
-            font-family: 'mainFont';
             font-size: 16px;
             padding: 4px;
             &::placeholder {
@@ -67,7 +65,6 @@
             background: $white;
             font-size: 12px;
             pointer-events:none;
-            font-family: mainFont;
             color: $red;
         }
     }

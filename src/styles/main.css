@@ -102,7 +102,6 @@ settings-closeBtn, .userInfo__header__closeButton {
   height: 60px;
   padding-top: 10px;
   font-size: 28px;
-  font-family: mainFont;
   text-transform: uppercase;
 }
 .login__loginForm__inputs {
@@ -193,12 +192,10 @@ settings-closeBtn, .userInfo__header__closeButton {
   width: 100%;
   justify-content: center;
   align-items: center;
-  font-family: mainFont;
   font-size: 16px;
   cursor: default;
 }
 .login__createAccount__button {
-  font-family: mainFont;
   font-size: 16px;
   color: #2156c0;
   cursor: pointer;
@@ -312,7 +309,6 @@ settings-closeBtn, .userInfo__header__closeButton {
   height: 60px;
   padding-top: 10px;
   font-size: 28px;
-  font-family: mainFont;
   text-transform: uppercase;
 }
 .createNew__createAccountForm__inputs {
@@ -341,14 +337,12 @@ settings-closeBtn, .userInfo__header__closeButton {
   width: 100%;
   justify-content: center;
   align-items: center;
-  font-family: mainFont;
   font-size: 16px;
   cursor: default;
 }
 .createNew__login__button {
   color: #2156c0;
   cursor: pointer;
-  font-family: mainFont;
   font-size: 16px;
   border: 0;
   background: transparent;
@@ -398,7 +392,6 @@ settings-closeBtn, .userInfo__header__closeButton {
   font-size: 16px;
   pointer-events: none;
   transition: all 0.3s;
-  font-family: mainFont;
   color: #545454;
 }
 .searchField__container__input {
@@ -406,7 +399,6 @@ settings-closeBtn, .userInfo__header__closeButton {
   border-radius: 5px;
   background: #FFFFFF;
   border: 1px solid #545454;
-  font-family: "mainFont";
   font-size: 16px;
   padding: 4px;
 }
@@ -443,8 +435,7 @@ settings-closeBtn, .userInfo__header__closeButton {
   background: #FFFFFF;
   font-size: 12px;
   pointer-events: none;
-  font-family: mainFont;
-  color: rgb(255, 0, 0);
+  color: #ff0000;
 }
 
 btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__submitBtn, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .createNew__createAccountForm__inputs__submit {
@@ -603,7 +594,6 @@ settings-closeBtn, .userInfo__header__closeButton {
   width: 100%;
   height: 40px;
   padding: 2px;
-  font-family: "mainFont";
   font-size: 16px;
 }
 .navBar__list button:hover {
@@ -647,7 +637,6 @@ settings-closeBtn, .userInfo__header__closeButton {
 .largeReview {
   display: flex;
   border-bottom: 1px solid #c2c2c2;
-  font-family: "mainFont";
   font-size: 16px;
   transition: all 0.3s;
   padding-bottom: 12px;
@@ -763,11 +752,14 @@ settings-closeBtn, .userInfo__header__closeButton {
   height: 400px;
   width: 100%;
   padding: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
   padding-bottom: 0px;
   justify-content: space-around;
   flex-flow: column wrap;
   align-items: stretch;
   flex-wrap: nowrap;
+  box-sizing: border-box;
 }
 
 .pagination {
@@ -792,7 +784,6 @@ settings-closeBtn, .userInfo__header__closeButton {
   width: 90%;
   height: 46px;
   background: #FFFFFF;
-  font-family: "mainFont";
   cursor: pointer;
 }
 .smallItem__rating {
@@ -882,14 +873,12 @@ settings-closeBtn, .userInfo__header__closeButton {
   font-size: 16px;
   pointer-events: none;
   transition: all 0.3s;
-  font-family: mainFont;
   color: #545454;
 }
 .largeField__container__input {
   border-radius: 5px;
   background: #FFFFFF;
   border: 1px solid #545454;
-  font-family: "mainFont";
   font-size: 16px;
   resize: none;
   padding: 6px;
@@ -928,8 +917,7 @@ settings-closeBtn, .userInfo__header__closeButton {
   background: #FFFFFF;
   font-size: 12px;
   pointer-events: none;
-  font-family: mainFont;
-  color: rgb(255, 0, 0);
+  color: #ff0000;
 }
 
 .largeItem {
@@ -940,7 +928,6 @@ settings-closeBtn, .userInfo__header__closeButton {
   height: 40px;
   padding: 10px;
   border-bottom: 1px solid #c2c2c2;
-  font-family: "mainFont";
   font-size: 16px;
   padding-bottom: 12px;
   cursor: pointer;
@@ -998,7 +985,6 @@ settings-closeBtn, .userInfo__header__closeButton {
   height: 100%;
   border-radius: 5px;
   border: 1px solid #545454;
-  font-family: "mainFont";
   font-size: 16px;
 }
 .searchField__input:focus {
@@ -1038,17 +1024,17 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 .barTooltip {
-  background: #FFFFFF;
-  width: 100px;
-  height: 50px;
-  border: 2px solid #CBDAF0;
-  border-radius: 10px;
-  padding: 4px;
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  border: 2px solid #CBDAF0;
+  padding: 4px;
+  box-sizing: border-box;
 }
 
 .lineTooltip {
@@ -1064,7 +1050,6 @@ input[type=search]::-webkit-search-cancel-button {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  font-family: "mainFont";
   font-size: 18px;
 }
 .lineTooltip__countReviews {
@@ -1155,12 +1140,11 @@ input[type=search]::-webkit-search-cancel-button {
   box-sizing: border-box;
 }
 .jsonFileInput__label__text {
-  font-family: "mainFont";
   font-size: 20px;
 }
 .jsonFileInput__label__succesful {
   display: none;
-  background: green;
+  background: #16ca4c;
   height: 20px;
   width: 20px;
 }
@@ -1173,7 +1157,7 @@ input[type=search]::-webkit-search-cancel-button {
   width: 100px;
 }
 .jsonFileInput__label__error__logo {
-  background: red;
+  background: #ff0000;
   height: 30px;
   width: 30px;
 }
@@ -1218,7 +1202,6 @@ input[type=file] {
   padding-top: 6px;
   display: flex;
   font-size: 26px;
-  font-family: "mainFont";
 }
 .latestReviews__reviews {
   height: 100%;
@@ -1247,7 +1230,6 @@ input[type=file] {
 .mostPopular__header__text {
   display: flex;
   font-size: 26px;
-  font-family: "mainFont";
   height: 100%;
   padding-left: 14px;
 }
@@ -1271,7 +1253,6 @@ input[type=file] {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: "mainFont";
 }
 .homeStats__ratings__chart {
   height: 160px;
@@ -1306,7 +1287,6 @@ input[type=file] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "mainFont";
   line-height: 1;
 }
 .homeStats__allTime__stats div__value {
@@ -1324,7 +1304,6 @@ input[type=file] {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "mainFont";
   font-size: 16px;
 }
 
@@ -1351,7 +1330,6 @@ input[type=file] {
   right: 4px;
   top: 0px;
   font-size: 14px;
-  font-family: "mainFont";
 }
 .homeChart__selector button {
   border: 0;
@@ -1380,6 +1358,7 @@ input[type=file] {
   justify-content: center;
   align-items: center;
   cursor: default;
+  font-family: "mainFont";
 }
 .home__grid {
   display: grid;
@@ -1403,7 +1382,6 @@ input[type=file] {
   justify-content: flex-start;
 }
 .home__grid__title__text {
-  font-family: "mainFont";
   font-size: 36px;
   height: 100%;
 }
@@ -1448,7 +1426,6 @@ input[type=file] {
 .fileInput__title {
   display: flex;
   height: 50px;
-  font-family: "mainFont";
   font-size: 20px;
   align-items: center;
   justify-content: center;
@@ -1520,7 +1497,6 @@ input[type=file] {
   justify-content: center;
   padding: 0;
   padding-left: 6px;
-  font-family: "mainFont";
   font-size: 14px;
   box-sizing: border-box;
 }
@@ -1605,7 +1581,7 @@ input[type=file] {
 .selected {
   display: "flex";
   padding-top: "2px";
-  background-color: red;
+  background-color: #ff0000;
 }
 .selected :hover {
   background: transparent;
@@ -1622,6 +1598,7 @@ input[type=file] {
   justify-content: center;
   align-items: center;
   cursor: default;
+  font-family: "mainFont";
 }
 .allItems__grid {
   display: grid;
@@ -1644,7 +1621,6 @@ input[type=file] {
   justify-content: flex-start;
 }
 .allItems__grid__title__text {
-  font-family: "mainFont";
   font-size: 36px;
   height: 100%;
 }
@@ -1684,7 +1660,6 @@ input[type=file] {
   padding-left: 2px;
   display: flex;
   justify-content: space-between;
-  font-family: "mainFont";
   font-size: 16px;
   padding: 0;
 }
@@ -1764,7 +1739,6 @@ input[type=file] {
   padding-left: 14px;
   display: flex;
   font-size: 26px;
-  font-family: "mainFont";
 }
 .reviews__reviews {
   height: 100%;
@@ -1797,7 +1771,6 @@ input[type=file] {
   justify-content: center;
   align-items: center;
   height: 100%;
-  font-family: "mainFont";
   font-size: 16px;
   gap: 10px;
 }
@@ -1864,7 +1837,6 @@ input[type=file] {
   flex-direction: column;
   justify-content: space-between;
   gap: 10px;
-  font-family: "mainFont";
   font-size: 16px;
 }
 .words__title {
@@ -1907,7 +1879,6 @@ input[type=file] {
   right: 4px;
   top: 0px;
   font-size: 14px;
-  font-family: "mainFont";
 }
 .itemChart__selector button {
   border: 0;
@@ -1936,6 +1907,7 @@ input[type=file] {
   justify-content: center;
   align-items: center;
   cursor: default;
+  font-family: "mainFont";
 }
 .item__grid {
   display: grid;
@@ -1981,7 +1953,6 @@ input[type=file] {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-family: "mainFont";
   font-size: 16px;
   box-sizing: border-box;
   height: 100%;
@@ -1993,7 +1964,7 @@ input[type=file] {
   flex-direction: column;
 }
 .selections__buttons__delAccount {
-  color: red;
+  color: #ff0000;
 }
 .selections__form {
   display: none;
@@ -2037,7 +2008,7 @@ input[type=file] {
   height: 30px;
   width: 30px;
   border-radius: 15px;
-  border: 1px solid red;
+  border: 1px solid #ff0000;
 }
 .userInfo__header__title {
   font-size: 24px;
@@ -2224,7 +2195,7 @@ input[type=file] {
   border-radius: 2px;
   height: 20px;
   font-size: 12px;
-  border-color: red;
+  border-color: #ff0000;
 }
 
 .settings {
@@ -2254,7 +2225,6 @@ input[type=file] {
 .settings__grid__title {
   grid-row: 3/3;
   grid-column: 2/2;
-  font-family: "mainFont";
   font-size: 36px;
   display: flex;
   justify-content: center;
