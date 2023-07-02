@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import propTypes from 'prop-types';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Title from './Title';
@@ -13,9 +14,14 @@ import dummyWords from '../../data/dummyData/dummyWords.json';
 
 /**
  * Renders the single Item page.
+ * @property {String} className - Custom className if wanted. Default item.
+ * @property {String} id - Custom id if wanted. Default item.
  * @returns single item page
  */
-const Item = () => {
+const Item = (props) => {
+  const { className } = props;
+  const { id } = props;
+
   const newReview = () => {
     $('#words').css('display', 'none');
     $('#newReview').css('display', 'none');
@@ -30,17 +36,17 @@ const Item = () => {
 
   const submitReview = (e) => {
     e.preventDefault();
-    // const values = e.target;
-    // console.log(values);
+    // if (UseNewReview(e.target[0].value)) console.log('success');
+    // else console.log('failure');
   };
 
   return (
-    <div className="item">
-      <div className="item__grid">
-        <div className="item__grid__header" id="item__grid__header">
+    <div className={className} id={id}>
+      <div className={`${className}__grid`}>
+        <div className={`${className}__grid__header`} id={`${className}__grid__header`}>
           <Header />
         </div>
-        <div className="item__grid__title" id="item__grid__title">
+        <div className={`${className}__grid__title`} id={`${className}__grid__title`}>
           <Title
             name="item name"
             desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -51,23 +57,33 @@ const Item = () => {
             negReviews="30"
           />
         </div>
-        <div className="item__grid__reviews" id="item__grid__reviews">
+        <div className={`${className}__grid__reviews`} id={`${className}__grid__reviews`}>
           <Reviews reviews={dummyReviews.reviews} />
         </div>
-        <div className="item__grid__words" id="item__grid__words">
+        <div className={`${className}__grid__words`} id={`${className}__grid__words`}>
           <Words words={dummyWords.words} />
           <NewReviewForm onSubmit={submitReview} onClick={closeNew} />
           <NewReview onClick={newReview} />
         </div>
-        <div className="item__grid__chart" id="item__grid__chart">
+        <div className={`${className}__grid__chart`} id={`${className}__grid__chart`}>
           <ItemChart />
         </div>
-        <div className="item__grid__footer" id="item__grid__footer">
+        <div className={`${className}__grid__footer`} id={`${className}__grid__footer`}>
           <Footer />
         </div>
       </div>
     </div>
   );
+};
+
+Item.propTypes = {
+  className: propTypes.string,
+  id: propTypes.string,
+};
+
+Item.defaultProps = {
+  className: 'item',
+  id: 'item',
 };
 
 export default Item;

@@ -42,6 +42,7 @@
             color: $green;
             border: none;
             background: none;
+            cursor: pointer;
         }
         &__delete {
             @extend close-btn;

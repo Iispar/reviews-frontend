@@ -1220,6 +1220,7 @@ input[type=file] {
   color: #0ba100;
   border: none;
   background: none;
+  cursor: pointer;
 }
 .settingsInput__form__delete {
   border-radius: 2px;
