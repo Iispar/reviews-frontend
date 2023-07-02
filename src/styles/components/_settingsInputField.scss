@@ -1,0 +1,56 @@
+.settingsInput {
+    margin-left: 6px;
+    display: grid;
+    grid-template-columns: 100px 160px;
+    gap: 6px;
+    &__title {
+    grid-column: 1;
+    justify-self: flex-end;
+    height: 20px;
+    font-weight: 600;
+    text-align: right;
+    }
+    &__form {
+        width: 180px;
+        position: relative;
+        &__warning {
+            display: none;
+            font-size: 12px;
+            padding-bottom: 10px;
+        }
+        &__input {
+            grid-column: 2;
+            height: 24px;
+            width: 100%;
+            border: 1px solid $lightGrey;
+            border-radius: 5px;
+            box-sizing: border-box;
+            &:focus {
+                outline: none;
+                border: 1px solid $orange;
+            }
+            &::placeholder {
+                color: $black;
+            }
+        }
+        &__change {
+            display: none;
+            position: absolute;
+            bottom: 4px;
+            right: 0px;
+            font-size: 12px;
+            color: $green;
+            border: none;
+            background: none;
+        }
+        &__delete {
+            @extend close-btn;
+            border-radius: 2px;
+            height: 20px;
+            font-size: 12px;
+            border-color: red;
+            margin-top: 10px;
+            width: 100%;
+        }
+    }
+}

@@ -36,7 +36,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
 }
 
-close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close {
+close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close, .settingsInput__form__delete {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +48,7 @@ close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover, .settingsInput__form__delete:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
 }
@@ -68,7 +68,7 @@ settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons
   color: #EF8354;
 }
 
-settings-closeBtn, .userInfo__header__closeButton {
+settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__closeButton {
   height: 20px;
   width: 20px;
   border: none;
@@ -242,7 +242,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
 }
 
-close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close {
+close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close, .settingsInput__form__delete {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -254,7 +254,7 @@ close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover, .settingsInput__form__delete:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
 }
@@ -274,7 +274,7 @@ settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons
   color: #EF8354;
 }
 
-settings-closeBtn, .userInfo__header__closeButton {
+settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__closeButton {
   height: 20px;
   width: 20px;
   border: none;
@@ -472,7 +472,7 @@ pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
   box-shadow: 0px 0px 2px 1px #EF8354;
 }
 
-close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close {
+close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close, .settingsInput__form__delete {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -484,7 +484,7 @@ close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover, .settingsInput__form__delete:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
 }
@@ -504,7 +504,7 @@ settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons
   color: #EF8354;
 }
 
-settings-closeBtn, .userInfo__header__closeButton {
+settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__closeButton {
   height: 20px;
   width: 20px;
   border: none;
@@ -1169,6 +1169,65 @@ input[type=search]::-webkit-search-cancel-button {
 
 input[type=file] {
   display: none;
+}
+
+.settingsInput {
+  margin-left: 6px;
+  display: grid;
+  grid-template-columns: 100px 160px;
+  gap: 6px;
+}
+.settingsInput__title {
+  grid-column: 1;
+  justify-self: flex-end;
+  height: 20px;
+  font-weight: 600;
+  text-align: right;
+}
+.settingsInput__form {
+  width: 180px;
+  position: relative;
+}
+.settingsInput__form__warning {
+  display: none;
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+.settingsInput__form__input {
+  grid-column: 2;
+  height: 24px;
+  width: 100%;
+  border: 1px solid #c2c2c2;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.settingsInput__form__input:focus {
+  outline: none;
+  border: 1px solid #EF8354;
+}
+.settingsInput__form__input::-moz-placeholder {
+  color: #000000;
+}
+.settingsInput__form__input::placeholder {
+  color: #000000;
+}
+.settingsInput__form__change {
+  display: none;
+  position: absolute;
+  bottom: 4px;
+  right: 0px;
+  font-size: 12px;
+  color: #0ba100;
+  border: none;
+  background: none;
+}
+.settingsInput__form__delete {
+  border-radius: 2px;
+  height: 20px;
+  font-size: 12px;
+  border-color: red;
+  margin-top: 10px;
+  width: 100%;
 }
 
 @font-face {
@@ -2040,51 +2099,6 @@ input[type=file] {
   padding-top: 10px;
   gap: 10px;
 }
-.userInfo__values__username, .userInfo__values__name {
-  margin-left: 6px;
-  display: grid;
-  grid-template-columns: 100px 160px;
-  gap: 6px;
-}
-.userInfo__values__username__text, .userInfo__values__name__text {
-  grid-column: 1;
-  justify-self: flex-end;
-  height: 20px;
-  font-weight: 600;
-  text-align: right;
-}
-.userInfo__values__username__input, .userInfo__values__name__input {
-  width: 180px;
-  position: relative;
-}
-.userInfo__values__username__input__field, .userInfo__values__name__input__field {
-  grid-column: 2;
-  height: 24px;
-  width: 100%;
-  border: 1px solid #c2c2c2;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-.userInfo__values__username__input__field:focus, .userInfo__values__name__input__field:focus {
-  outline: none;
-  border: 1px solid #EF8354;
-}
-.userInfo__values__username__input__field::-moz-placeholder, .userInfo__values__name__input__field::-moz-placeholder {
-  color: #000000;
-}
-.userInfo__values__username__input__field::placeholder, .userInfo__values__name__input__field::placeholder {
-  color: #000000;
-}
-.userInfo__values__username__input__change, .userInfo__values__name__input__change {
-  display: none;
-  position: absolute;
-  top: 4px;
-  right: 0px;
-  font-size: 12px;
-  color: #0ba100;
-  border: none;
-  background: none;
-}
 .userInfo__values__password {
   display: flex;
   flex-direction: column;
@@ -2154,6 +2168,11 @@ input[type=file] {
   grid-column: 2;
   font-size: 24px;
 }
+.deleteAccount__header__closeButton {
+  grid-column: 3;
+  justify-self: flex-end;
+  align-self: flex-start;
+}
 .deleteAccount__form {
   height: 100%;
   display: grid;
@@ -2210,6 +2229,7 @@ input[type=file] {
   justify-content: center;
   align-items: center;
   cursor: default;
+  font-family: "mainFont";
 }
 .settings__grid {
   display: grid;

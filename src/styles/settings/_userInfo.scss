@@ -47,48 +47,6 @@
         flex-direction: column;
         padding-top: 10px;
         gap: 10px;
-        &__username, &__name {
-            margin-left: 6px;
-            display: grid;
-            grid-template-columns: 100px 160px;
-            gap: 6px;
-            &__text {
-            grid-column: 1;
-            justify-self: flex-end;
-            height: 20px;
-            font-weight: 600;
-            text-align: right;
-            }
-            &__input {
-                width: 180px;
-                position: relative;
-                &__field {
-                    grid-column: 2;
-                    height: 24px;
-                    width: 100%;
-                    border: 1px solid $lightGrey;
-                    border-radius: 5px;
-                    box-sizing: border-box;
-                    &:focus {
-                        outline: none;
-                        border: 1px solid $orange;
-                    }
-                    &::placeholder {
-                        color: $black;
-                    }
-                }
-                &__change {
-                    display: none;
-                    position: absolute;
-                    top: 4px;
-                    right: 0px;
-                    font-size: 12px;
-                    color: $green;
-                    border: none;
-                    background: none;
-                }
-            }
-        }
         &__password {
             display: flex;
             flex-direction: column;
