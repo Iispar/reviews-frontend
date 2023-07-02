@@ -1,17 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import propTypes from 'prop-types';
 import LoginForm from './LoginForm';
 import CreateAccountForm from './CreateAccountForm';
 import { UseLogin, UseCreateAccount } from './loginHooks';
 
 /**
- * combines the login and create account pages.
- * @returns login page
+ * The login page that combines the login and create account pages.
+ * @property {String} className - Custom ClassName if wanted. Default loginGrid.
+ * @property {String id - Custom id if wanted. Default loginGrid.
+ * @return login page.
  */
-const Login = () => {
+const Login = (props) => {
+  const { className } = props;
+  const { id } = props;
   const navigate = useNavigate();
+
   /**
    * Handles the login and moves to home page.
+   * @param {*} e
+   *        The event that the login is called with.
    */
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,7 +29,8 @@ const Login = () => {
 
   /**
    * creates a new account.
-   * @param username, password, email, name
+   * @param {*} e
+   *        The event that the login is called with.
    */
   const handleCreation = async (e) => {
     e.preventDefault();
@@ -34,12 +43,35 @@ const Login = () => {
       values[4].value,
     )) window.location.reload();
   };
+
+  /**
+   * formats the email request and calls the new pass hook.
+   * @param {*} e
+   *        The event called with the form submit.
+   */
+  const handlePassword = (e) => {
+    e.preventDefault();
+    // const values = e.target;
+    // if (UseNewPassword(values[0].value)) console.log('success');
+    // else console.log('failure');
+  };
+
   return (
-    <div className="login-grid">
-      <LoginForm onSubmit={handleLogin} />
+    <div className={className} id={id}>
+      <LoginForm onSubmit={handleLogin} newPass={handlePassword} />
       <CreateAccountForm onSubmit={handleCreation} />
     </div>
   );
+};
+
+Login.propTypes = {
+  className: propTypes.string,
+  id: propTypes.string,
+};
+
+Login.defaultProps = {
+  className: 'loginGrid',
+  id: 'loginGrid',
 };
 
 export default Login;

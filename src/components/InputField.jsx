@@ -12,6 +12,7 @@ import { useTextWidth } from './helpers';
  * @property {String} height - Heigth of the input field. Default 40px.
  * @property {String} type - Type of the input field. Default text.
  * @property {String} error - The error message for the input field.
+ * @property {regex} regex - The regex that the input if being compared to for error message.
  * @returns custom input field.
  */
 const InputField = (props) => {
