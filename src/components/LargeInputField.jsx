@@ -4,13 +4,18 @@ import { useTextWidth } from './helpers';
 
 /**
  * Styling and functionality for the large search fields in the application.
- * @param {} props
+ * @property {string} title - Title for the input field.
+ * @property {string} id - Custom id if needed. Default largeField.
+ * @property {string} className - Custom className id needed. Default largeField.
+ * @property {string} width - Width for the input field. Default 280px.
+ * @property {string} height - Height for the input field. Default 80px.
+ * @property {string} error - Error message for the input field.
  * @returns
  */
 const LargeInputField = (props) => {
   const { title } = props;
   const { id } = props;
-  const { name } = props;
+  const { className } = props;
   const { width } = props;
   const { height } = props;
   const { error } = props;
@@ -19,14 +24,14 @@ const LargeInputField = (props) => {
   const errorWidth = useTextWidth(error, '15px hind');
 
   return (
-    <div className={name} id={id}>
-      <div className={`${name}__container`} style={{ width, height }}>
-        <textarea className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} style={{ height, width }} />
-        <div className={`${name}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
-        <div className={`${name}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>
+    <div className={className} id={id}>
+      <div className={`${className}__container`} style={{ width, height }}>
+        <textarea className={`${className}__container__input`} id={`${id}__container__input`} required placeholder={title} style={{ height, width }} />
+        <div className={`${className}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
+        <div className={`${className}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>
           {error}
         </div>
-        <label className={`${name}__container__label`} id={`${id}__container__label`} htmlFor={`${id}__container__input`}>
+        <label className={`${className}__container__label`} id={`${id}__container__label`} htmlFor={`${id}__container__input`}>
           <span id={`${id}__title`}>{title}</span>
         </label>
       </div>
@@ -37,7 +42,7 @@ const LargeInputField = (props) => {
 LargeInputField.propTypes = {
   title: propTypes.string,
   id: propTypes.string,
-  name: propTypes.string,
+  className: propTypes.string,
   width: propTypes.string,
   error: propTypes.string,
   height: propTypes.string,
@@ -46,7 +51,7 @@ LargeInputField.propTypes = {
 LargeInputField.defaultProps = {
   title: null,
   id: 'largeField',
-  name: 'largeField',
+  className: 'largeField',
   width: '280px',
   error: 'wrong input',
   height: '80px',

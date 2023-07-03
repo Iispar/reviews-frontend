@@ -4,9 +4,12 @@
     height: 400px;
     width: 100%;
     padding: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
     padding-bottom: 0px;
     justify-content: space-around;
     flex-flow: column wrap;
     align-items: stretch;
     flex-wrap: nowrap;
+    box-sizing: border-box;
 }

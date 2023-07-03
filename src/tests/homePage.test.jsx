@@ -13,6 +13,10 @@ import HomeChart from '../pages/home/HomeChart';
 global.ResizeObserver = require('resize-observer-polyfill');
 
 describe('home site works fully', () => {
+  beforeEach(() => {
+    jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100);
+    jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100);
+  });
   test('page renders with components', () => {
     const pageContainer = render(
       <BrowserRouter>

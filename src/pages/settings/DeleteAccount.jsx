@@ -1,30 +1,29 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import SettingsInputField from '../../components/SettingsInputField';
 
 /**
  * Renders the delete account form
- * @param {*} props
+ * @property {String} className - Custom className if wanted. Default deleteAccount.
+ * @property {String} id - Custom id if wanted. Default deleteAccount.
+ * @property {func} onSubmit - the onSubmit function for the delete account submit.
+ * @property {func} openForm - the function to use when open form is clicked.
  * @returns delete account form.
  */
 const DeleteAccount = (props) => {
   const { onSubmit } = props;
   const { openForm } = props;
+  const { className } = props;
+  const { id } = props;
+
   return (
-    <div className="deleteAccount" id="deleteAccount">
-      <div className="deleteAccount__header" id="deleteAccount__header">
-        <div className="deleteAccount__header__text"> delete account </div>
-        <button className="userInfo__header__closeButton" id="userInfo__header__closeButton" type="submit" onClick={() => openForm('none')}> </button>
+    <div className={className} id={id}>
+      <div className={`${className}__header`} id={`${className}__header`}>
+        <div className={`${className}__header__text`}> delete account </div>
+        <button className={`${className}__header__closeButton`} id={`${className}__header__closeButton`} type="submit" onClick={() => openForm('none')}> </button>
       </div>
-      <div className="deleteAccount__form" id="deleteAccount__form">
-        <form className="deleteAccount__form__inputs" onSubmit={(e) => onSubmit(e)}>
-          <div className="deleteAccount__form__inputs__confirmation">
-            This action
-            <span className="deleteAccount__form__inputs__confirmation__warning"> cannot </span>
-            be undone. Please confirm with your password.
-          </div>
-          <input className="deleteAccount__form__inputs__password" type="password" />
-          <button className="deleteAccount__form__inputs__deleteButton" id="deleteAccount__form__inputs__deleteButton" type="submit"> I understand. Delete account.</button>
-        </form>
+      <div className={`${className}__form`} id={`${className}__form`}>
+        <SettingsInputField type="password" onSubmit={onSubmit} id="deletePassword" warningText="cannot be undone please confirm with your password" button="delete" submitText="I understand. Delete account" />
       </div>
     </div>
   );
@@ -33,11 +32,15 @@ const DeleteAccount = (props) => {
 DeleteAccount.propTypes = {
   onSubmit: propTypes.func,
   openForm: propTypes.func,
+  className: propTypes.string,
+  id: propTypes.string,
 };
 
 DeleteAccount.defaultProps = {
   onSubmit: null,
   openForm: null,
+  className: 'deleteAccount',
+  id: 'deleteAccount',
 };
 
 export default DeleteAccount;

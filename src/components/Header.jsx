@@ -2,6 +2,10 @@ import { useState, React } from 'react';
 import $ from 'jquery';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * Renders the header. Includes only a hamburger menu and a nav bar.
+ * @returns header
+ */
 const Header = () => {
   const [navState, setNavState] = useState(false);
   const navigate = useNavigate();
@@ -12,13 +16,15 @@ const Header = () => {
   const toggleNavBar = () => {
     if (navState) {
       $('#navBar').css('transform', 'scaleX(0)');
-      setNavState(false);
       $('#header__hamburger').removeClass('clicked');
       $('#home__grid').removeClass('disableScroll');
+
+      setNavState(false);
     } else {
       $('#navBar').css('transform', 'scaleX(1)');
       $('#header__hamburger').addClass('clicked');
       $('#home__grid').addClass('disableScroll');
+
       setNavState(true);
     }
   };
@@ -26,7 +32,7 @@ const Header = () => {
     <div>
       <div className="header">
         <div className="header__hamburger" id="header__hamburger">
-          <button className="header__hamburger__btn" id="header__hamburger__btn" type="button" onClick={() => toggleNavBar()}> </button>
+          <button className="header__hamburger__btn" id="header__hamburger__btn" type="button" onClick={() => toggleNavBar()} aria-label="hamburger" />
         </div>
       </div>
       <div className="navBar" id="navBar">

@@ -3,7 +3,14 @@ import propTypes from 'prop-types';
 
 /**
  * Renders the title element for single item
- * @param {*} props
+ * @property {String} name - Name of the item.
+ * @property {String} desc - Description of the item.
+ * @property {String} reviewsCount - Number of reviews for the item.
+ * @property {String} ratingValue - Rating of the item.
+ * @property {String} posReviews - Number of positive reviews for the item.
+ * @property {String} negReviews - Number of negative reviews for the item.
+ * @property {String} className - Custom className if wanted. Default is itemTitle.
+ * @property {String} id - Custom id if wanted. Default is itemTitle.
  * @returns title for single item
  */
 const Title = (props) => {
@@ -13,11 +20,14 @@ const Title = (props) => {
   const { ratingValue } = props;
   const { posReviews } = props;
   const { negReviews } = props;
+  const { className } = props;
+  const { id } = props;
 
   /**
    * Formats the star rating to actual stars.
-   * @param {*} reviews
-   * @returns star design
+   * @param {String} reviews
+   *        the star rating as a string.
+   * @returns stars for the reviews title component
    */
   const ratingToStars = (reviews) => {
     const split = reviews.split('.');
@@ -40,43 +50,43 @@ const Title = (props) => {
       }
     }
     return (
-      <div className="itemTitle__data__rating__stars">
+      <div className={`${className}__data__rating__stars`}>
         {list}
       </div>
     );
   };
 
   return (
-    <div className="itemTitle">
-      <div className="itemTitle__info">
-        <div className="itemTitle__info__name" id="itemTitle__info__name">
+    <div className={`${className}`} id={`${id}`}>
+      <div className={`${className}__info`}>
+        <div className={`${className}__info__name`} id={`${className}__info__name`}>
           {name}
         </div>
-        <div className="itemTitle__info__desc" id="itemTitle__info__desc">
+        <div className={`${className}__info__desc`} id={`${className}__info__desc`}>
           {desc}
         </div>
       </div>
-      <div className="itemTitle__data">
-        <div className="itemTitle__data__reviews" id="itemTitle__data__reviews">
-          <span className="itemTitle__data__reviews__value">
+      <div className={`${className}__data`}>
+        <div className={`${className}__data__reviews`} id={`${className}__data__reviews`}>
+          <span className={`${className}__data__reviews__value`}>
             {reviewsCount}
           </span>
           reviews
         </div>
-        <div className="itemTitle__data__rating" id="itemTitle__data__rating">
-          <span className="itemTitle__data__rating__value">
+        <div className={`${className}__data__rating`} id={`${className}__data__rating`}>
+          <span className={`${className}__data__rating__value`}>
             {ratingToStars(ratingValue)}
           </span>
           rating
         </div>
-        <div className="itemTitle__data__positive" id="itemTitle__data__positive">
-          <span className="itemTitle__data__positive__value">
+        <div className={`${className}__data__positive`} id={`${className}__data__positive`}>
+          <span className={`${className}__data__positive__value`}>
             {posReviews}
           </span>
           positive
         </div>
-        <div className="itemTitle__data__negative" id="itemTitle__data__negative">
-          <span className="itemTitle__data__negative__value">
+        <div className={`${className}__data__negative`} id={`${className}__data__negative`}>
+          <span className={`${className}__data__negative__value`}>
             {negReviews}
           </span>
           negative
@@ -93,6 +103,8 @@ Title.propTypes = {
   ratingValue: propTypes.string,
   posReviews: propTypes.string,
   negReviews: propTypes.string,
+  className: propTypes.string,
+  id: propTypes.string,
 };
 
 Title.defaultProps = {
@@ -102,6 +114,8 @@ Title.defaultProps = {
   ratingValue: null,
   posReviews: null,
   negReviews: null,
+  className: 'itemTitle',
+  id: 'itemTitle',
 };
 
 export default Title;

@@ -8,6 +8,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px 2px $shadow;
     line-height: 16px;
+    background: $white;
 }
 
 .star {
@@ -30,7 +31,6 @@
     padding-left: 2px;
     display: flex;
     justify-content: space-between;
-    font-family: 'mainFont';
     font-size: 16px;
     padding: 0;
     &__info {

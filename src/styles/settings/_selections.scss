@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    font-family: 'mainFont';
     font-size: 16px;
     box-sizing: border-box;
     height: 100%;
@@ -19,7 +18,7 @@
         }
         &__delAccount {
             @extend settings-btn;
-            color: red;
+            color: $red;
         }
     }
     &__form {

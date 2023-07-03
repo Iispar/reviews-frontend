@@ -15,6 +15,8 @@
     justify-content: center;
     align-items: center;
     cursor: default;
+    font-family: 'mainFont';
+    background: $backgroundWhite;
     &__grid {
         display: grid;
         height: 100%;
@@ -47,10 +49,8 @@
             grid-column: 2/2;
         }
         &__footer {
-            background: green;
             grid-row: 10/10;
             grid-column: 1/5;
-            height: 60px;
             width: 100vw;
         }
     }

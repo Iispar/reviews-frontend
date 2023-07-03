@@ -1,32 +1,47 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Selections from './Selections';
 
 /**
  * Renders the settings page.
+ * @property {String} className - Custom className if wanted. Default settings.
+ * @property {String} id - Custom id if wanted. Default settings.
  * @returns settings
  */
-// eslint-disable-next-line arrow-body-style
-const Settings = () => {
+const Settings = (props) => {
+  const { className } = props;
+  const { id } = props;
+
   return (
-    <div className="settings">
-      <div className="settings__grid">
-        <div className="settings__grid__header" id="settings__grid__header">
+    <div className={className}>
+      <div className={`${className}__grid`}>
+        <div className={`${className}__grid__header`} id={`${id}__grid__header`}>
           <Header />
         </div>
-        <div className="settings__grid__title" id="settings__grid__title">
+        <div className={`${className}__grid__title`} id={`${id}__grid__title`}>
           Settings
         </div>
-        <div className="settings__grid__selections" id="settings__grid__selections">
+        <div className={`${className}__grid__selections`} id={`${id}__grid__selections`}>
           <Selections />
         </div>
-        <div className="settings__grid__footer" id="settings__grid__footer">
+        <div className={`${className}__grid__footer`} id={`${id}__grid__footer`}>
           <Footer />
         </div>
       </div>
     </div>
   );
+};
+
+Settings.propTypes = {
+  className: propTypes.string,
+  id: propTypes.string,
+};
+
+Settings.defaultProps = {
+  className: 'settings',
+  id: 'settings',
 };
 
 export default Settings;
