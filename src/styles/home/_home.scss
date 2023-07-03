@@ -16,6 +16,7 @@
     align-items: center;
     cursor: default;
     font-family: 'mainFont';
+    background: $backgroundWhite;
     &__grid {
         display: grid;
         height: 100%;
@@ -57,10 +58,8 @@
             grid-column: 3/3;
         }
         &__footer {
-            background: green;
             grid-row: 9/9;
             grid-column: 1/5;
-            height: 60px;
             width: 100vw;
         }
     }

@@ -22,7 +22,7 @@ const LoginForm = (props) => {
    */
   const changeView = () => {
     $(`#${id}`).css('display', 'none');
-    $(`#${id}`).css('display', 'flex');
+    $('#createNew').css('display', 'flex');
     // reset the forms so they become empty.
     $(`#${id}__inputs__form`).trigger('reset');
   };

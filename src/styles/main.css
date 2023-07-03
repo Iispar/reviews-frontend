@@ -361,6 +361,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   bottom: 0;
   cursor: default;
   font-family: "mainFont";
+  background-color: #F5F5F5;
 }
 
 .searchField {
@@ -1231,6 +1232,48 @@ input[type=file] {
   width: 100%;
 }
 
+.footer {
+  height: 200px;
+  background: #4F5D75;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #e3e3e3;
+}
+.footer__about {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  padding-left: 20px;
+  width: 400px;
+  gap: 12px;
+}
+.footer__about__title {
+  width: 210px;
+  font-size: 24px;
+  border-bottom: 2px solid #c2c2c2;
+  justify-content: center;
+}
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  padding-right: 20px;
+  width: 300px;
+  gap: 12px;
+}
+.footer__contact__title {
+  width: 90px;
+  font-size: 24px;
+  border-bottom: 2px solid #c2c2c2;
+  justify-content: center;
+}
+.footer__contact__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 @font-face {
   font-family: "mainFont";
   letter-spacing: 2px;
@@ -1420,6 +1463,7 @@ input[type=file] {
   align-items: center;
   cursor: default;
   font-family: "mainFont";
+  background: #F5F5F5;
 }
 .home__grid {
   display: grid;
@@ -1463,10 +1507,8 @@ input[type=file] {
   grid-column: 3/3;
 }
 .home__grid__footer {
-  background: green;
   grid-row: 9/9;
   grid-column: 1/5;
-  height: 60px;
   width: 100vw;
 }
 
@@ -1580,6 +1622,7 @@ input[type=file] {
   position: absolute;
   top: 3px;
   transform: rotate(270deg);
+  background: #F5F5F5;
 }
 .items__header__sort__reviews__descArrow, .items__header__sort__ratings__descArrow {
   position: relative;
@@ -1600,6 +1643,7 @@ input[type=file] {
   position: absolute;
   top: 3px;
   transform: rotate(90deg);
+  background: #F5F5F5;
 }
 .items__header__sort__reviews__asc {
   border-top-left-radius: 9px;
@@ -1698,7 +1742,7 @@ input[type=file] {
 .allItems__grid__footer {
   grid-row: 6/6;
   grid-column: 1/5;
-  background: green;
+  width: 100vw;
 }
 
 .star {
@@ -1753,6 +1797,7 @@ input[type=file] {
   border-radius: 10px;
   box-shadow: 0 0 10px 2px #b5b5b5;
   line-height: 16px;
+  background: #FFFFFF;
 }
 .itemTitle__data__reviews__value, .itemTitle__data__positive__value, .itemTitle__data__negative__value {
   font-size: 20px;
@@ -1767,6 +1812,7 @@ input[type=file] {
   border-radius: 10px;
   box-shadow: 0 0 10px 2px #b5b5b5;
   line-height: 16px;
+  background: #FFFFFF;
 }
 .itemTitle__data__rating__stars {
   position: relative;
@@ -1969,6 +2015,7 @@ input[type=file] {
   align-items: center;
   cursor: default;
   font-family: "mainFont";
+  background: #F5F5F5;
 }
 .item__grid {
   display: grid;
@@ -2003,10 +2050,8 @@ input[type=file] {
   grid-column: 2/2;
 }
 .item__grid__footer {
-  background: green;
   grid-row: 10/10;
   grid-column: 1/5;
-  height: 60px;
   width: 100vw;
 }
 
@@ -2231,6 +2276,7 @@ input[type=file] {
   align-items: center;
   cursor: default;
   font-family: "mainFont";
+  background: #F5F5F5;
 }
 .settings__grid {
   display: grid;
@@ -2257,9 +2303,7 @@ input[type=file] {
   grid-column: 2/2;
 }
 .settings__grid__footer {
-  background: green;
   grid-row: 6/6;
   grid-column: 1/4;
-  height: 60px;
   width: 100vw;
 }/*# sourceMappingURL=main.css.map */
