@@ -4,7 +4,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="footer__about">
+      <div className="footer__about" id="footer__about">
         <div className="footer__about__title"> about this website </div>
         <div className="footer__about__body">
           this application is my personal project. It mocks a online shops site for sellers.
@@ -12,7 +12,7 @@ const Footer = () => {
           please refer it if you would like to know more.
         </div>
       </div>
-      <div className="footer__contact">
+      <div className="footer__contact" id="footer__contact">
         <div className="footer__contact__title"> contact </div>
         <div className="footer__contact__contacts">
           <span className="footer__contact__contacts__email"> iiro.s.partanen@gmail.com </span>

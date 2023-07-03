@@ -28,7 +28,7 @@ NewReview.propTypes = {
 NewReview.defaultProps = {
   onClick: null,
   className: 'newReview',
-  id: propTypes.string,
+  id: 'newReview',
 };
 
 export default NewReview;

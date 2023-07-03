@@ -21,6 +21,7 @@ import dummyLine from '../data/dummyData/dummyHome.json';
 import TopWords from '../components/TopWords';
 import WordListItem from '../components/WordListItem';
 import JsonInputField from '../components/JsonFileInput';
+import SettingsInputField from '../components/SettingsInputField';
 
 const mockedUsedNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
@@ -34,6 +35,8 @@ describe('components render and work', () => {
   let user;
   beforeEach(() => {
     user = userEvent.setup();
+    jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100);
+    jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100);
   });
   describe('helpers work as intended', () => {
   });
@@ -101,7 +104,7 @@ describe('components render and work', () => {
     });
 
     test('largeReview renders', () => {
-      const largeItemContainer = render(<LargeReview rating="2.2" body="testBody" date="testDate" title="testTitle" />).container;
+      const largeItemContainer = render(<LargeReview rating="2.2" body="testBody" date="testDate" title="testTitle" id="id" />).container;
       const title = largeItemContainer.querySelector('#largeReview__info__body__header__title');
       const date = largeItemContainer.querySelector('#largeReview__info__body__header__date');
       const body = largeItemContainer.querySelector('#largeReview__info__body__comment');
@@ -129,24 +132,24 @@ describe('components render and work', () => {
       expect(input).toBeTruthy();
     });
     test('smallItem renders', () => {
-      const smallItemContainer = render(<SmallItem rating="2.2" item="testItem" />).container;
+      const smallItemContainer = render(<SmallItem rating="2.2" item="testItem" id="id" />).container;
       const name = smallItemContainer.querySelector('#smallItem__name__text__id');
       const rating = smallItemContainer.querySelector('#smallItem__rating__value__id');
 
       expect(name).toBeTruthy();
       expect(rating).toBeTruthy();
     });
-    test('BarChart renders', async () => {
+    test('BarChart renders', () => {
       const barChartContainer = render(<BarChart data={dummyDis.data} />).container;
       const resContainer = barChartContainer.querySelector('#resContainer');
       expect(resContainer).toBeTruthy();
     });
-    test('double line renders', async () => {
+    test('double line renders', () => {
       const barChartContainer = render(<DoubleLineChart data={dummyLine.month} />).container;
       const resContainer = barChartContainer.querySelector('#lineChart');
       expect(resContainer).toBeTruthy();
     });
-    test('tooltips render', async () => {
+    test('tooltips render', () => {
       const barTooltip = render(<BarTooltip active payload={[{ payload: { title: 'test', count: '20' } }]} />).container;
       const lineTooltip = render(<LineTooltip active payload={[{ payload: { time: 'january', reviews: '20', rating: '2' } }]} />).container;
 
@@ -176,7 +179,7 @@ describe('components render and work', () => {
       expect(list).toBeTruthy();
     });
     test('single word render', () => {
-      const singleWord = render(<WordListItem name="test" index="2" />).container;
+      const singleWord = render(<WordListItem name="test" index={2} />).container;
 
       const index = singleWord.querySelector('#wordListItem__index');
       const name = singleWord.querySelector('#wordListItem__name');
@@ -198,6 +201,34 @@ describe('components render and work', () => {
       expect(error).toBeTruthy();
       expect(errorText).toBeTruthy();
       expect(form).toBeTruthy();
+    });
+    test('footer renders', () => {
+      const footer = render(<Footer />).container;
+      const about = footer.querySelector('#footer__about');
+      const contact = footer.querySelector('#footer__contact');
+
+      expect(about).toBeTruthy();
+      expect(contact).toBeTruthy();
+    });
+    test('settingsInputField renders and works', async () => {
+      const mockClick = jest.fn((e) => e.preventDefault());
+      const settingsInputField = render(<SettingsInputField onSubmit={mockClick} button="change" title="testTitle" warningText="test warning" submitText="submitTest" />).container;
+
+      const component = settingsInputField.querySelector('#settingsInput');
+      const title = settingsInputField.querySelector('#settingsInput__title');
+      const warning = settingsInputField.querySelector('#settingsInput__form__warning');
+      const input = settingsInputField.querySelector('#settingsInput__form__input');
+      const submitBtn = settingsInputField.querySelector('#settingsInput__form__change');
+
+      expect(component).toBeTruthy();
+      expect(title).toBeTruthy();
+      expect(warning).toBeTruthy();
+      expect(input).toBeTruthy();
+      expect(submitBtn).toBeTruthy();
+
+      await user.click(submitBtn);
+
+      expect(mockClick).toHaveBeenCalledTimes(1);
     });
   });
 });

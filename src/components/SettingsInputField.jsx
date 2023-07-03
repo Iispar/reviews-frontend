@@ -38,7 +38,7 @@ const SettingsInputField = (props) => {
 
   return (
     <div className={className} id={id}>
-      <div className={`${className}__title`}>
+      <div className={`${className}__title`} id={`${className}__title`}>
         {title}
         &nbsp;
       </div>

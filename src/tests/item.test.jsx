@@ -14,6 +14,10 @@ import ItemChart from '../pages/item/ItemChart';
 global.ResizeObserver = require('resize-observer-polyfill');
 
 describe('item site works fully', () => {
+  beforeEach(() => {
+    jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100);
+    jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100);
+  });
   test('page renders with components', () => {
     const itemContainer = render(
       <BrowserRouter>
@@ -64,9 +68,10 @@ describe('item site works fully', () => {
     expect(neg).toBeTruthy();
   });
   test('form render with components and works', async () => {
-    const mockSubmit = jest.fn();
+    const mockSubmit = jest.fn((e) => e.preventDefault());
+    const mockClick = jest.fn();
     const reviewForm = render(
-      <NewReviewForm onSubmit={mockSubmit} onClick={mockSubmit} />,
+      <NewReviewForm onSubmit={mockSubmit} onClick={mockClick} />,
     ).container;
 
     const form = reviewForm.querySelector('#newReviewForm__form');
@@ -80,15 +85,15 @@ describe('item site works fully', () => {
     await userEvent.click(submit);
     await userEvent.click(close);
 
-    expect(mockSubmit).toBeCalledTimes(2);
+    expect(mockClick).toBeCalledTimes(1);
+    expect(mockSubmit).toBeCalledTimes(1);
   });
 
   test('new review btn render with components and words', async () => {
     const mockClick = jest.fn();
-    const newContainer = render(<NewReview onClick={mockClick} />).container;
+    const newContainer = render(<NewReview onClick={mockClick} onSubmit={mockClick} />).container;
 
     const btn = newContainer.querySelector('#newReview__button');
-
     expect(btn).toBeTruthy();
 
     await userEvent.click(btn);

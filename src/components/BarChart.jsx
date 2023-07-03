@@ -34,7 +34,7 @@ const Chart = (props) => {
 
   return (
     <ResponsiveContainer width="100%" height="100%" id="resContainer">
-      <BarChart data={data} onMouseMove={(state) => { hover(state); }}>
+      <BarChart data={data} onMouseMove={(state) => { hover(state); }} minWidth="0">
         <Tooltip cursor={false} content={<BarTooltip />} />
         <XAxis dataKey="stars" />
         <Bar dataKey="count">

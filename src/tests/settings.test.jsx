@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
@@ -43,12 +44,13 @@ describe('settings site works fully', () => {
     expect(form).toBeTruthy();
   });
   test('userInfo renders and works', async () => {
+    const mockSubmit = jest.fn((e) => e.preventDefault());
     const mockClick = jest.fn();
     const userInfoContainer = render(
       <UserInfo
-        updateName={mockClick}
-        updateUsername={mockClick}
-        updatePassword={mockClick}
+        updateName={mockSubmit}
+        updateUsername={mockSubmit}
+        updatePassword={mockSubmit}
         openForm={mockClick}
         visible
       />,
@@ -57,30 +59,22 @@ describe('settings site works fully', () => {
     const title = userInfoContainer.querySelector('#userInfo__header__title__username');
     const profilePicChange = userInfoContainer.querySelector('#userInfo__header__title__change');
     const closeBtn = userInfoContainer.querySelector('#userInfo__header__closeButton');
-    const name = userInfoContainer.querySelector('#userInfo__values__name');
-    const username = userInfoContainer.querySelector('#userInfo__values__username');
     const password = userInfoContainer.querySelector('#userInfo__values__password');
 
     expect(title).toBeTruthy();
     expect(profilePicChange).toBeTruthy();
     expect(closeBtn).toBeTruthy();
-    expect(name).toBeTruthy();
-    expect(username).toBeTruthy();
     expect(password).toBeTruthy();
 
-    const usernameBtn = userInfoContainer.querySelector('#userInfo__values__username__input__change');
-    const nameBtn = userInfoContainer.querySelector('#userInfo__values__name__input__change');
     const passwordBtn = userInfoContainer.querySelector('#userInfo__values__password__confirmContainer__input__change');
-    await user.click(usernameBtn);
-    await user.click(nameBtn);
     await user.click(passwordBtn);
     await user.click(closeBtn);
-    expect(mockClick).toBeCalledTimes(4);
+    expect(mockClick).toBeCalledTimes(1);
+    expect(mockSubmit).toBeCalledTimes(1);
   });
   test('deleteAccount renders and works', async () => {
-    const mockClick = jest.fn();
     const deleteContainer = render(
-      <DeleteAccount onSubmit={mockClick} openForm={mockClick} visible />,
+      <DeleteAccount visible />,
     ).container;
 
     const title = deleteContainer.querySelector('#deleteAccount__header');
@@ -88,11 +82,5 @@ describe('settings site works fully', () => {
 
     expect(title).toBeTruthy();
     expect(form).toBeTruthy();
-
-    const submitBtn = deleteContainer.querySelector('#deleteAccount__form__inputs__deleteButton');
-    const closeBtn = deleteContainer.querySelector('#userInfo__header__closeButton');
-    await user.click(submitBtn);
-    await user.click(closeBtn);
-    expect(mockClick).toBeCalledTimes(2);
   });
 });

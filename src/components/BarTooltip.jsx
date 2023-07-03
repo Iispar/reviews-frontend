@@ -42,7 +42,7 @@ BarTooltip.defaultProps = {
   payload: null,
   active: null,
   className: 'barTooltip',
-  id: 'barToolrip',
+  id: 'barTooltip',
 };
 
 export default BarTooltip;
