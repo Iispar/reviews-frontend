@@ -20,15 +20,11 @@ describe('settings site works fully', () => {
         <Settings visible />
       </BrowserRouter>,
     ).container;
-    const header = pageContainer.querySelector('#settings__grid__header');
     const title = pageContainer.querySelector('#settings__grid__title');
     const selections = pageContainer.querySelector('#settings__grid__selections');
-    const footer = pageContainer.querySelector('#settings__grid__footer');
 
-    expect(header).toBeTruthy();
     expect(title).toBeTruthy();
     expect(selections).toBeTruthy();
-    expect(footer).toBeTruthy();
   });
   test('selections component renders correctly', () => {
     const selectionsContainer = render(

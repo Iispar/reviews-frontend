@@ -10,6 +10,7 @@ import Item from './pages/item';
 import Settings from './pages/settings';
 import Login from './pages/login';
 import './styles/main.scss';
+import LayoutsWithNav from './components/LayoutsWithNav';
 
 /**
    * Basic structure for the application.
@@ -23,11 +24,13 @@ import './styles/main.scss';
 const App = () => (
   <Router>
     <Routes>
-      <Route exact path="/" element=<Login /> />
-      <Route exact path="/home" element=<Home /> />
-      <Route exact path="/all" element=<AllItems /> />
-      <Route exact path="/item/:id" element=<Item /> />
-      <Route exact path="/settings" element=<Settings /> />
+      <Route path="/" element={<LayoutsWithNav />}>
+        <Route exact path="/home" element=<Home /> />
+        <Route exact path="/all" element=<AllItems /> />
+        <Route exact path="/item/:id" element=<Item /> />
+        <Route exact path="/settings" element=<Settings /> />
+      </Route>
+      <Route exact path="/login" element=<Login /> />
     </Routes>
   </Router>
 );

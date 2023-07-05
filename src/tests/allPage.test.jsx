@@ -16,17 +16,13 @@ describe('all items site works fully', () => {
         <AllItems visible />
       </BrowserRouter>,
     ).container;
-    const header = pageContainer.querySelector('#allItems__grid__header');
     const title = pageContainer.querySelector('#allItems__grid__title');
     const items = pageContainer.querySelector('#allItems__grid__items');
     const fileInput = pageContainer.querySelector('#allItems__grid__fileInput');
-    const footer = pageContainer.querySelector('#allItems__grid__footer');
 
-    expect(header).toBeTruthy();
     expect(title).toBeTruthy();
     expect(items).toBeTruthy();
     expect(fileInput).toBeTruthy();
-    expect(footer).toBeTruthy();
   });
 
   /**

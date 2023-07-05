@@ -1,8 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
 // import { useNewItem } from './allItemsHooks';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import Items from './Items';
 import FileInput from './FileInput';
 import dummyItems from '../../data/dummyData/dummyItems.json';
@@ -34,9 +32,6 @@ const AllItems = (props) => {
   return (
     <div className={className}>
       <div className={`${className}__grid`}>
-        <div className={`${className}__grid__header`} id={`${id}__grid__header`}>
-          <Header />
-        </div>
         <div className={`${className}__grid__title`} id={`${id}__grid__title`}>
           <span className={`${className}__grid__title__text`}> All your items </span>
         </div>
@@ -45,9 +40,6 @@ const AllItems = (props) => {
         </div>
         <div className={`${className}__grid__fileInput`} id={`${id}__grid__fileInput`}>
           <FileInput onSubmit={handleCreation} />
-        </div>
-        <div className={`${className}__grid__footer`} id={`${id}__grid__footer`}>
-          <Footer />
         </div>
       </div>
     </div>

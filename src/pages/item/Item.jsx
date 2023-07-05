@@ -1,8 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
 import propTypes from 'prop-types';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import Title from './Title';
 import NewReview from './NewReview';
 import Words from './Words';
@@ -43,9 +41,6 @@ const Item = (props) => {
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`}>
-        <div className={`${className}__grid__header`} id={`${className}__grid__header`}>
-          <Header />
-        </div>
         <div className={`${className}__grid__title`} id={`${className}__grid__title`}>
           <Title
             name="item name"
@@ -67,9 +62,6 @@ const Item = (props) => {
         </div>
         <div className={`${className}__grid__chart`} id={`${className}__grid__chart`}>
           <ItemChart />
-        </div>
-        <div className={`${className}__grid__footer`} id={`${className}__grid__footer`}>
-          <Footer />
         </div>
       </div>
     </div>

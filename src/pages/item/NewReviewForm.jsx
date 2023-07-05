@@ -22,6 +22,7 @@ const NewReviewForm = (props) => {
       <form className={`${className}__form`} id={`${className}__form`} onSubmit={(e) => onSubmit(e)} noValidate>
         <span className={`${className}__form__title`}> add a new comment </span>
         <LargeInputField title="comment body" height="300px" />
+        <input className={`${className}__form__date`} type="date" />
         <span className={`${className}__form__file`}> or add a file </span>
         <JsonFileInput id={`${className}__form__fileInput`} height="200px" />
       </form>

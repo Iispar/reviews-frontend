@@ -25,19 +25,15 @@ describe('item site works fully', () => {
       </BrowserRouter>,
     ).container;
 
-    const header = itemContainer.querySelector('#item__grid__header');
     const title = itemContainer.querySelector('#item__grid__title');
     const reviews = itemContainer.querySelector('#item__grid__reviews');
     const words = itemContainer.querySelector('#item__grid__words');
     const chart = itemContainer.querySelector('#item__grid__chart');
-    const footer = itemContainer.querySelector('#item__grid__footer');
 
-    expect(header).toBeTruthy();
     expect(title).toBeTruthy();
     expect(reviews).toBeTruthy();
     expect(words).toBeTruthy();
     expect(chart).toBeTruthy();
-    expect(footer).toBeTruthy();
   });
   test('title renders correctly with components', () => {
     const titleContainer = render(<Title name="test" desc="test desc" reviewsCount="20" ratingValue="4.2" posReviews="12" negReviews="8" />).container;
