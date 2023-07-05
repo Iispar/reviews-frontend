@@ -23,21 +23,17 @@ describe('home site works fully', () => {
         <Home visible />
       </BrowserRouter>,
     ).container;
-    const header = pageContainer.querySelector('#home__grid__header');
     const title = pageContainer.querySelector('#home__grid__title__text');
     const reviews = pageContainer.querySelector('#home__grid__latestReviews');
     const items = pageContainer.querySelector('#home__grid__mostPopular');
     const chart = pageContainer.querySelector('#home__grid__homeChart');
     const stats = pageContainer.querySelector('#home__grid__homeChange');
-    const footer = pageContainer.querySelector('#home__grid__footer');
 
-    expect(header).toBeTruthy();
     expect(title).toBeTruthy();
     expect(items).toBeTruthy();
     expect(reviews).toBeTruthy();
     expect(chart).toBeTruthy();
     expect(stats).toBeTruthy();
-    expect(footer).toBeTruthy();
   });
   test('most popular renders', () => {
     const mostPopularContainer = render(

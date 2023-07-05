@@ -1,11 +1,9 @@
 import { useState, React } from 'react';
 import propTypes from 'prop-types';
-import Header from '../../components/Header';
 import LatestReviews from './LatestReviews';
 import MostPopular from './MostPopular';
 import HomeChart from './HomeChart';
 import HomeStats from './HomeStats';
-import Footer from '../../components/Footer';
 import dummyReviews from '../../data/dummyData/dummyReviews.json';
 import dummyItems from '../../data/dummyData/dummyItems.json';
 
@@ -23,9 +21,6 @@ const Home = (props) => {
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`} id={`${className}__grid`}>
-        <div className={`${className}__grid__header`} id={`${className}__grid__header`}>
-          <Header />
-        </div>
         <div className={`${className}__grid__title`}>
           <div className={`${className}__grid__title__text`} id={`${className}__grid__title__text`}>
             Welcome back&nbsp;
@@ -44,9 +39,6 @@ const Home = (props) => {
         </div>
         <div className={`${className}__grid__homeChange`} id={`${id}__grid__homeChange`}>
           <HomeStats />
-        </div>
-        <div className={`${className}__grid__footer`} id={`${id}__grid__footer`}>
-          <Footer />
         </div>
       </div>
     </div>
