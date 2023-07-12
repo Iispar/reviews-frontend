@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import LargeInputField from '../../components/LargeInputField';
 import JsonFileInput from '../../components/JsonFileInput';
+import InputField from '../../components/InputField';
 
 /**
  * renders the the new review component for for single item.
@@ -22,7 +23,10 @@ const NewReviewForm = (props) => {
       <form className={`${className}__form`} id={`${className}__form`} onSubmit={(e) => onSubmit(e)} noValidate>
         <span className={`${className}__form__title`}> add a new comment </span>
         <LargeInputField title="comment body" height="300px" />
-        <input className={`${className}__form__date`} type="date" />
+        <div className={`${className}__form__du`}>
+          <input className={`${className}__form__du_date`} type="date" />
+          <InputField className={`${className}__form__du_user`} title="user id" />
+        </div>
         <span className={`${className}__form__file`}> or add a file </span>
         <JsonFileInput id={`${className}__form__fileInput`} height="200px" />
       </form>
