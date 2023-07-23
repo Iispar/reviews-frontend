@@ -97,7 +97,7 @@ const CreateAccountForm = (props) => {
           <form className={`${className}__createAccountForm__inputs__form`} id={`${className}__createAccountForm__inputs__form`} onSubmit={(e) => onSubmit(e)}>
             <InputField id="createUsername" title="username" width="240px" height="40px" />
             <InputField id="createName" title="first name" width="240px" height="40px" />
-            <InputField id="createEmail" title="email" width="240px" height="40px" error="doesn't match example@email.com" regex={/\w*@\w*\..\w*/} />
+            <InputField id="createEmail" title="email" width="240px" height="40px" />
             <InputField id="createPassword" type="password" title="password" width="240px" height="40px" error="passwords don't match" />
             <InputField id="createConfirmPassword" type="password" title="confirm password" width="240px" height="40px" error="passwords don't match" />
           </form>

@@ -25,7 +25,7 @@ const NewReviewForm = (props) => {
         <LargeInputField title="comment body" height="300px" />
         <div className={`${className}__form__du`}>
           <input className={`${className}__form__du_date`} type="date" />
-          <InputField className={`${className}__form__du_user`} title="user id" />
+          <InputField className={`${className}__form__du_user`} title="user id" width="160px" />
         </div>
         <span className={`${className}__form__file`}> or add a file </span>
         <JsonFileInput id={`${className}__form__fileInput`} height="200px" />
