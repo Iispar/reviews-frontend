@@ -25,7 +25,10 @@ const Login = (props) => {
     e.preventDefault();
     const values = e.target;
     const token = await UseLogin(values[0].value, values[1].value);
-    if (token) navigate('/home');
+    if (token) {
+      window.localStorage.setItem('token', JSON.stringify(token, token));
+      navigate('/home');
+    }
   };
 
   /**
