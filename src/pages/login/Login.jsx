@@ -24,7 +24,8 @@ const Login = (props) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     const values = e.target;
-    if (await UseLogin(values[0].value, values[1].value)) navigate('/home');
+    const token = await UseLogin(values[0].value, values[1].value);
+    if (token) navigate('/home');
   };
 
   /**

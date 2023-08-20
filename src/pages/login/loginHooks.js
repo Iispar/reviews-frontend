@@ -2,18 +2,24 @@
 /* eslint-disable max-len */
 /* eslint-disable arrow-body-style */
 
+import loginService from '../../services/loginService';
+
 /**
  * The login hook to be called when trying to login.
  * @param {String} username
  *        The username that tried to login.
  * @param {String} password
  *        The password that tried to login.
- * @returns true if successful, false otherwise.
+ * @returns token if successful, null otherwise.
  */
-export const UseLogin = (username, password) => {
-  // console.log(`Login with username: ${username}, password: ${password}`);
-
-  return true;
+export const UseLogin = async (username, password) => {
+  try {
+    return await loginService.login(username, password);
+  } catch (exception) {
+    // TODO: ERROR MESSAGE
+    console.log('wrong credentials');
+  }
+  return null;
 };
 
 /**
