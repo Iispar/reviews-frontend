@@ -16,6 +16,8 @@ const CreateAccountForm = (props) => {
   const { onSubmit } = props;
   const { className } = props;
   const { id } = props;
+  const regexp = /^(?=.*\w)(?=.*\d)(?=.*[@$!%*#?&])[\w@$!%*#?&]{8,}/;
+
   /**
    * changes view between create account and login view.
    */
@@ -70,8 +72,11 @@ const CreateAccountForm = (props) => {
     $('#createPassword').on('input', async (val) => {
       const input = val.target.value;
       await setPassword(input);
-      if (input !== confirmPassword) errorMessage('createConfirmPassword', true);
-      else {
+      if (input !== confirmPassword) {
+        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
+        errorMessage('createConfirmPassword', true);
+      } else {
+        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', false);
         errorMessage('createConfirmPassword', false);
       }
     });
@@ -82,8 +87,11 @@ const CreateAccountForm = (props) => {
     $('#createConfirmPassword').on('input', async (val) => {
       const input = val.target.value;
       await setConfirmPassword(input);
-      if (input !== password) errorMessage('createConfirmPassword', true);
-      else {
+      if (input !== password) {
+        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
+        errorMessage('createConfirmPassword', true);
+      } else {
+        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', false);
         errorMessage('createConfirmPassword', false);
       }
     });
@@ -98,8 +106,26 @@ const CreateAccountForm = (props) => {
             <InputField id="createUsername" title="username" width="240px" height="40px" />
             <InputField id="createName" title="first name" width="240px" height="40px" />
             <InputField id="createEmail" title="email" width="240px" height="40px" />
-            <InputField id="createPassword" type="password" title="password" width="240px" height="40px" error="passwords don't match" />
+            <div className={`${className}__createAccountForm__inputs__form__password`}>
+              <InputField className={className} id="createPassword" type="password" title="password" width="240px" height="40px" regex={regexp} error="doesn't include all required characters" />
+              <div className={`${className}__createAccountForm__inputs__form__password__message`} id={`${className}__createAccountForm__inputs__form__password__message`}>
+                Password must be minimum of 8 characters with:
+                <br />
+                - uppercase letter
+                <br />
+                - number
+                <br />
+                - special character
+              </div>
+            </div>
             <InputField id="createConfirmPassword" type="password" title="confirm password" width="240px" height="40px" error="passwords don't match" />
+            <label className={`${className}__createAccountForm__inputs__form__roleLabel`} htmlFor="createRole">
+              role:
+              <select id="createRole" name="createRole">
+                <option value="1"> Seller </option>
+                <option value="2"> Customer </option>
+              </select>
+            </label>
           </form>
           <button className={`${className}__createAccountForm__inputs__submit`} id={`${className}__createAccountForm__inputs__submit`} type="submit" form={`${className}__createAccountForm__inputs__form`}> submit </button>
         </div>

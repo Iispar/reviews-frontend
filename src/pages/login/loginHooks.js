@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 /* eslint-disable arrow-body-style */
 
-import loginService from '../../services/loginService';
+import authService from '../../services/authService';
 
 /**
  * The login hook to be called when trying to login.
@@ -14,7 +14,9 @@ import loginService from '../../services/loginService';
  */
 export const UseLogin = async (username, password) => {
   try {
-    return await loginService.login(username, password);
+    const token = await authService.login(username, password);
+    window.localStorage.setItem('token', JSON.stringify(token, token));
+    return token;
   } catch (exception) {
     // TODO: ERROR MESSAGE
     console.log('wrong credentials');
@@ -32,12 +34,20 @@ export const UseLogin = async (username, password) => {
  *        email that tries to create account.
  * @param {String} password
  *        password that tries to create account.
+ * @param {String} password
+ *        role that tries to create account.
  * @returns true if successful, false otherwise.
  */
-export const UseCreateAccount = (username, name, email, password) => {
-  // console.log(`New account with username: ${username}, name: ${name}, email: ${email}, password: ${password}`);
-
-  return true;
+export const UseCreateAccount = async (username, name, email, password, role) => {
+  try {
+    const token = await authService.createAccount(username, name, email, password, role);
+    window.localStorage.setItem('token', JSON.stringify(token, token));
+    return token;
+  } catch (exception) {
+    // TODO: ERROR MESSAGE
+    console.log('error while creating');
+  }
+  return null;
 };
 
 /**
