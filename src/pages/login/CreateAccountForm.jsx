@@ -72,12 +72,17 @@ const CreateAccountForm = (props) => {
     $('#createPassword').on('input', async (val) => {
       const input = val.target.value;
       await setPassword(input);
-      if (input !== confirmPassword) {
+      if (!regexp.test(input)) {
+        $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'block');
+        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
+      } else if (input !== confirmPassword) {
+        $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
         $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
         errorMessage('createConfirmPassword', true);
       } else {
-        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', false);
         errorMessage('createConfirmPassword', false);
+        $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
+        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', false);
       }
     });
 
@@ -90,7 +95,7 @@ const CreateAccountForm = (props) => {
       if (input !== password) {
         $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
         errorMessage('createConfirmPassword', true);
-      } else {
+      } else if (regexp.test(password)) {
         $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', false);
         errorMessage('createConfirmPassword', false);
       }

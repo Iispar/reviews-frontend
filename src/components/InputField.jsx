@@ -24,7 +24,6 @@ const InputField = (props) => {
   const { type } = props;
   const { error } = props;
   const { regex } = props;
-  const { className } = props;
   const [value, setValue] = useState(null);
   // hook to calculate the width of the text
   const cutoutWidth = useTextWidth(title, '16px hind');
@@ -58,12 +57,8 @@ const InputField = (props) => {
     if (value === null || regex == null) return;
     if (regex.test(value)) {
       errorMessage(false);
-      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
-      $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
     } else {
       errorMessage(true);
-      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'block');
-      $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
     }
   }, [value]);
 
@@ -92,7 +87,6 @@ InputField.propTypes = {
   error: propTypes.string,
   height: propTypes.string,
   regex: propTypes.instanceOf(RegExp),
-  className: propTypes.string,
 };
 
 InputField.defaultProps = {
@@ -104,7 +98,6 @@ InputField.defaultProps = {
   error: 'wrong input',
   height: '40px',
   regex: null,
-  className: 'createNew',
 };
 
 export default InputField;
