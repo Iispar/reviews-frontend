@@ -1,4 +1,4 @@
-import { useState, React } from 'react';
+import { useState, React, useEffect } from 'react';
 import propTypes from 'prop-types';
 import LatestReviews from './LatestReviews';
 import MostPopular from './MostPopular';
@@ -6,6 +6,7 @@ import HomeChart from './HomeChart';
 import HomeStats from './HomeStats';
 import dummyReviews from '../../data/dummyData/dummyReviews.json';
 import dummyItems from '../../data/dummyData/dummyItems.json';
+import homeService from '../../services/homeService';
 
 /**
  * Renders the home screen.
@@ -18,6 +19,13 @@ const Home = (props) => {
   const { id } = props;
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState('Name');
+
+  useEffect(() => {
+    const token = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
+    homeService.getHome(5, token)
+      .then((res) => console.log(res));
+  }, []);
+
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`} id={`${className}__grid`}>
