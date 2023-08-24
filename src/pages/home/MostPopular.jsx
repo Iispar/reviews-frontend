@@ -21,7 +21,7 @@ const MostPopular = (props) => {
         <span className={`${className}__header__text`}>popular items</span>
       </div>
       <div className={`${className}__list`} id={`${id}__list`}>
-        <ItemList items={items} View={SmallItem} count={5} />
+        <ItemList items={items} View={SmallItem} />
       </div>
     </div>
   );
@@ -34,7 +34,7 @@ MostPopular.propTypes = {
 };
 
 MostPopular.defaultProps = {
-  items: null,
+  items: [],
   className: 'mostPopular',
   id: 'mostPopular',
 };

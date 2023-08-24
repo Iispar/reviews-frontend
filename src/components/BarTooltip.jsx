@@ -15,7 +15,7 @@ const BarTooltip = (props) => {
   const { className } = props;
   const { id } = props;
   if (active && payload && payload.length) {
-    const { title } = payload[0].payload;
+    const { rating } = payload[0].payload;
     const { count } = payload[0].payload;
     return (
       <div className="barTooltip">
@@ -23,7 +23,7 @@ const BarTooltip = (props) => {
           {`${count} ratings`}
         </span>
         <span className={`${className}__title`} id={`${id}__title`}>
-          {`with ${title}`}
+          {`with ${rating} stars`}
         </span>
       </div>
     );
@@ -32,7 +32,7 @@ const BarTooltip = (props) => {
 };
 
 BarTooltip.propTypes = {
-  payload: propTypes.arrayOf(propTypes.objectOf(propTypes.object)),
+  payload: propTypes.arrayOf(propTypes.objectOf(propTypes.String)),
   active: propTypes.bool,
   className: propTypes.string,
   id: propTypes.string,

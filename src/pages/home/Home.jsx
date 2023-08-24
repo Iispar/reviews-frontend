@@ -4,8 +4,6 @@ import LatestReviews from './LatestReviews';
 import MostPopular from './MostPopular';
 import HomeChart from './HomeChart';
 import HomeStats from './HomeStats';
-import dummyReviews from '../../data/dummyData/dummyReviews.json';
-import dummyItems from '../../data/dummyData/dummyItems.json';
 import homeService from '../../services/homeService';
 
 /**
@@ -15,6 +13,14 @@ import homeService from '../../services/homeService';
  * @returns home screen
  */
 const Home = (props) => {
+  const [latestReviews, setLatestReviews] = useState(null);
+  const [topItems, setTopItems] = useState(null);
+  const [itemCount, setItemCount] = useState(null);
+  const [reviewCount, setReviewCount] = useState(null);
+  const [ratingAvg, setRatingAvg] = useState(null);
+  const [chart, setChart] = useState(null);
+  const [barChart, setBarChart] = useState(null);
+
   const { className } = props;
   const { id } = props;
   // eslint-disable-next-line no-unused-vars
@@ -23,7 +29,16 @@ const Home = (props) => {
   useEffect(() => {
     const token = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
     homeService.getHome(5, token)
-      .then((res) => console.log(res));
+      .then((res) => {
+        console.log(res);
+        setLatestReviews(res.latestReviews);
+        setTopItems(res.topItems);
+        setItemCount(res.itemsCount);
+        setReviewCount(res.reviewsCount);
+        setRatingAvg(res.ratingsAvg);
+        setChart(res.chart);
+        setBarChart(res.barChart.sort((a, b) => a.rating - b.rating));
+      });
   }, []);
 
   return (
@@ -37,16 +52,21 @@ const Home = (props) => {
           </div>
         </div>
         <div className={`${className}__grid__latestReviews`} id={`${id}__grid__latestReviews`}>
-          <LatestReviews reviews={dummyReviews.reviews} />
+          <LatestReviews reviews={latestReviews} />
         </div>
         <div className={`${className}__grid__mostPopular`} id={`${id}__grid__mostPopular`}>
-          <MostPopular items={dummyItems.items} />
+          <MostPopular items={topItems} />
         </div>
         <div className={`${className}__grid__homeChart`} id={`${id}__grid__homeChart`}>
-          <HomeChart />
+          <HomeChart curData={chart} />
         </div>
         <div className={`${className}__grid__homeChange`} id={`${id}__grid__homeChange`}>
-          <HomeStats />
+          <HomeStats
+            barChartData={barChart}
+            itemCount={itemCount}
+            reviewCount={reviewCount}
+            ratingAvg={ratingAvg}
+          />
         </div>
       </div>
     </div>

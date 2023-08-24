@@ -12,32 +12,35 @@ import propTypes from 'prop-types';
 const ItemList = (props) => {
   const { items } = props;
   const { View } = props;
-  const { count } = props;
   const { className } = props;
   const { id } = props;
 
+  if (items == null) {
+    return null;
+  }
+
   const productList = [];
-  for (let i = 0; i < count; i += 1) {
+  for (let i = 0; i < items.length; i += 1) {
     // with the if else I can use this compoment to create all lists of items. It is a bit clumsy
     // because the different components need different values so.
     // TODO: make better.
     if (View === 'Smallitem') {
       productList.push(
         <View
-          item={items[i].item}
+          item={items[i].title}
           rating={items[i].rating}
-          key={items[i].key}
-          id={items[i].key}
+          key={items[i].id}
+          id={items[i].id}
         />,
       );
     } else {
       productList.push(
         <View
-          item={items[i].item}
+          item={items[i].title}
           rating={items[i].rating}
           reviews={items[i].reviews}
-          key={items[i].key}
-          id={items[i].key}
+          key={items[i].id}
+          id={items[i].id}
         />,
       );
     }
@@ -52,15 +55,13 @@ const ItemList = (props) => {
 ItemList.propTypes = {
   items: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   View: propTypes.func,
-  count: propTypes.number,
   className: propTypes.string,
   id: propTypes.string,
 };
 
 ItemList.defaultProps = {
-  items: null,
+  items: [],
   View: null,
-  count: 5,
   className: 'itemList',
   id: 'itemList',
 };

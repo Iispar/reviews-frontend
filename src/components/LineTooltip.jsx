@@ -18,14 +18,14 @@ const LineTooltip = (props) => {
   const { id } = props;
   if (active && payload && payload.length && payload[0].payload.time !== undefined) {
     const { time } = payload[0].payload;
-    const { reviews } = payload[0].payload;
+    const { count } = payload[0].payload;
     const { rating } = payload[0].payload;
     return (
       <div className={className}>
         <span className={`${className}__title`} id={`${id}__title`}>{`${time}`}</span>
         <div className={`${className}__countReviews`} id={`${id}__countReviews`}>
           <span className={`${className}__countReviews__count`} id={`${id}__countReviews__count`}>
-            {reviews}
+            {count}
           </span>
           {' '}
           reviews with

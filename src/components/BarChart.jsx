@@ -20,6 +20,10 @@ const Chart = (props) => {
   const [focusBar, setFocusBar] = useState(null);
   const color = ['#D2222D', '#EE6F27', '#FFBF00', '#32A632', '#007000', '#A31A23', '#D16224', '#D49F00', '#278227', '#004A00'];
 
+  if (data == null) {
+    return null;
+  }
+
   /**
    * Sets the hovered bar as current focus state. If none is hovered it is set to null.
    * @param {String} state - The state of the current tooltip.
@@ -39,7 +43,7 @@ const Chart = (props) => {
         <XAxis dataKey="stars" />
         <Bar dataKey="count">
           {data.map((entry, index) => (
-            <Cell id="cell" cursor="pointer" key={entry.key} fill={focusBar === index ? color[index + 5] : color[index]} />
+            <Cell id="cell" cursor="pointer" key={entry} fill={focusBar === index ? color[index + 5] : color[index]} />
           ))}
         </Bar>
       </BarChart>

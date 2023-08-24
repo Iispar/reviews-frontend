@@ -13,6 +13,9 @@ const ReviewsList = (props) => {
   const { reviews } = props;
   const { className } = props;
   const list = [];
+  if (reviews == null) {
+    return null;
+  }
   for (let i = 0; i < reviews.length; i += 1) {
     const review = reviews[i];
     list.push(
@@ -41,7 +44,7 @@ ReviewsList.propTypes = {
 };
 
 ReviewsList.defaultProps = {
-  reviews: null,
+  reviews: [],
   className: 'reviewsList',
 };
 

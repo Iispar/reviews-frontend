@@ -37,7 +37,7 @@ LatestReviews.propTypes = {
 };
 
 LatestReviews.defaultProps = {
-  reviews: null,
+  reviews: [],
   className: 'latestReviews',
   id: 'latestReviews',
 };
