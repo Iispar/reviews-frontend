@@ -12,7 +12,6 @@ import Settings from './pages/settings';
 import Login from './pages/login';
 import './styles/main.scss';
 import LayoutsWithNav from './components/LayoutsWithNav';
-import GuardedRoute from './helpers/GuardedRoute';
 
 /**
    * Basic structure for the application.
@@ -22,17 +21,14 @@ import GuardedRoute from './helpers/GuardedRoute';
    * /item > stats for single item
    * /settings > user settings
    *
-   * GuardedRoute checks if user is logged in.
+   * GuardedRoute (in LayoutsWithNav) checks if user is logged in.
    * If not directs to login page otherwise to correct route.
    */
 const App = () => (
   <Router>
     <Routes>
       <Route element={(
-        <>
-          <LayoutsWithNav />
-          <GuardedRoute />
-        </>
+        <LayoutsWithNav />
         )}
       >
         <Route exact path="/home" element=<Home /> />
