@@ -75,8 +75,8 @@ const LargeReview = (props) => {
 
 LargeReview.propTypes = {
   body: propTypes.string,
-  rating: propTypes.string,
-  id: propTypes.string,
+  rating: propTypes.number,
+  id: propTypes.number,
   title: propTypes.string,
   date: propTypes.string,
   className: propTypes.string,

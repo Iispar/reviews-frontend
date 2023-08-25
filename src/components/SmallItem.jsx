@@ -48,8 +48,8 @@ const SmallItem = (props) => {
 
 SmallItem.propTypes = {
   item: propTypes.string,
-  rating: propTypes.string,
-  id: propTypes.string,
+  rating: propTypes.number,
+  id: propTypes.number,
   className: propTypes.string,
 };
 

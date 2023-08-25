@@ -30,7 +30,6 @@ const Home = (props) => {
     const token = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
     homeService.getHome(5, token)
       .then((res) => {
-        console.log(res);
         setLatestReviews(res.latestReviews);
         setTopItems(res.topItems);
         setItemCount(res.itemsCount);

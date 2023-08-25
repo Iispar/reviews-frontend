@@ -20,7 +20,7 @@ const ReviewsList = (props) => {
     const review = reviews[i];
     list.push(
       <LargeReview
-        key={review.key}
+        key={review.id}
         body={review.body}
         rating={review.rating}
         id={review.id}

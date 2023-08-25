@@ -60,7 +60,7 @@ const HomeChart = (props) => {
 HomeChart.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
-  curData: propTypes.string,
+  curData: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
 };
 
 HomeChart.defaultProps = {

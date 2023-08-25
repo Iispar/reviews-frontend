@@ -59,7 +59,7 @@ const HomeStats = (props) => {
 HomeStats.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
-  barChartData: propTypes.string,
+  barChartData: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   itemCount: propTypes.number,
   reviewCount: propTypes.number,
   ratingAvg: propTypes.number,
