@@ -4,7 +4,7 @@ import LatestReviews from './LatestReviews';
 import MostPopular from './MostPopular';
 import HomeChart from './HomeChart';
 import HomeStats from './HomeStats';
-import homeService from '../../services/homeService';
+import pagesService from '../../services/pagesService';
 
 /**
  * Renders the home screen.
@@ -20,6 +20,9 @@ const Home = (props) => {
   const [ratingAvg, setRatingAvg] = useState(null);
   const [chart, setChart] = useState(null);
   const [barChart, setBarChart] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [accountId, setAccountId] = useState(5);
+  const [token, setToken] = useState(null);
 
   const { className } = props;
   const { id } = props;
@@ -27,8 +30,10 @@ const Home = (props) => {
   const [user, setUser] = useState('Name');
 
   useEffect(() => {
-    const token = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
-    homeService.getHome(5, token)
+    const newToken = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
+    setToken(newToken);
+
+    pagesService.getHome(accountId, newToken)
       .then((res) => {
         setLatestReviews(res.latestReviews);
         setTopItems(res.topItems);
@@ -51,13 +56,18 @@ const Home = (props) => {
           </div>
         </div>
         <div className={`${className}__grid__latestReviews`} id={`${id}__grid__latestReviews`}>
-          <LatestReviews reviews={latestReviews} />
+          <LatestReviews
+            initReviews={latestReviews}
+            accountId={accountId}
+            token={token}
+            key={latestReviews}
+          />
         </div>
         <div className={`${className}__grid__mostPopular`} id={`${id}__grid__mostPopular`}>
           <MostPopular items={topItems} />
         </div>
         <div className={`${className}__grid__homeChart`} id={`${id}__grid__homeChart`}>
-          <HomeChart curData={chart} />
+          <HomeChart curData={chart} key={chart} />
         </div>
         <div className={`${className}__grid__homeChange`} id={`${id}__grid__homeChange`}>
           <HomeStats

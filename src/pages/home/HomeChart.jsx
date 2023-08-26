@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import $ from 'jquery';
 import propTypes from 'prop-types';
 import DoubleLineChart from '../../components/DoubleLineChart';
@@ -13,11 +13,7 @@ const HomeChart = (props) => {
   const { className } = props;
   const { curData } = props;
   const { id } = props;
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    setData(curData);
-  });
+  const [data, setData] = useState(curData);
 
   /**
    * Changes the view and sets the css for the active bar.
