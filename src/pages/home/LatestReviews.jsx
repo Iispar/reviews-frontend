@@ -10,7 +10,7 @@ import reviewsService from '../../services/reviewsService';
  * @property {JSON} reviews - Json object containing the displayed reviews.
  * @property {String} className - Custom className if wanted. Default latestReviews.
  * @property {String} id - Custom id if wanted. Default latestReviews.
- * @property {Integer} accountId - Id of account using latestReviews
+ * @property {string} accountId - Id of account using latestReviews
  * @property {String} token - Accounts token
  * @returns latest reviews component
  */
@@ -24,15 +24,21 @@ const LatestReviews = (props) => {
   const page = useRef(0);
   const [reviews, setReviews] = useState(initReviews);
 
+  /**
+   * Function to move to load the next page of reviews
+   */
   const nextPage = () => {
     $('#pagination__prev').prop('disabled', false);
-    reviewsService.getNewReviews(accountId, page.current + 1, token)
+    reviewsService.getReviews(accountId, page.current + 1, token)
       .then((res) => setReviews(res));
     page.current += 1;
   };
 
+  /**
+   * Function to move to load the previous page of reviews
+   */
   const prevPage = () => {
-    reviewsService.getNewReviews(accountId, page.current - 1, token)
+    reviewsService.getReviews(accountId, page.current - 1, token)
       .then((res) => setReviews(res));
     page.current -= 1;
     if (page.current === 0) {
@@ -59,7 +65,7 @@ LatestReviews.propTypes = {
   initReviews: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   className: propTypes.string,
   id: propTypes.string,
-  accountId: propTypes.number,
+  accountId: propTypes.string,
   token: propTypes.string,
 };
 

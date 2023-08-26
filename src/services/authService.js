@@ -17,7 +17,7 @@ const login = async (username, password) => {
   };
 
   const res = await axios.post(`${baseUrl}/login`, payload);
-  return res.data.token;
+  return res.data;
 };
 
 /**

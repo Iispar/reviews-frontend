@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:8080/api/review';
 
-const getNewReviews = async (accountId, page, token) => {
+const getReviews = async (accountId, page, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
@@ -10,4 +10,12 @@ const getNewReviews = async (accountId, page, token) => {
   return res.data;
 };
 
-export default { getNewReviews };
+const getChart = async (accountId, time, token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const res = await axios.get(`${baseUrl}/get/chart/account?accountId=${accountId}&time=${time}`, config);
+  return res.data;
+};
+
+export default { getReviews, getChart };

@@ -6,6 +6,7 @@ import authService from '../../services/authService';
 
 /**
  * The login hook to be called when trying to login.
+ * sets accountId and token to localStorage
  * @param {String} username
  *        The username that tried to login.
  * @param {String} password
@@ -14,9 +15,10 @@ import authService from '../../services/authService';
  */
 export const UseLogin = async (username, password) => {
   try {
-    const token = await authService.login(username, password);
-    window.localStorage.setItem('token', JSON.stringify(token, token));
-    return token;
+    const res = await authService.login(username, password);
+    window.localStorage.setItem('token', JSON.stringify(res.token));
+    window.localStorage.setItem('accountId', JSON.stringify(res.accountId));
+    return res.token;
   } catch (exception) {
     // TODO: ERROR MESSAGE
     console.log('wrong credentials');

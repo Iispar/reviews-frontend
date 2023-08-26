@@ -20,9 +20,16 @@ const LineTooltip = (props) => {
     const { time } = payload[0].payload;
     const { count } = payload[0].payload;
     const { rating } = payload[0].payload;
+    const { year } = payload[0].payload;
+
+    // check if time is month or week
+    const title = /^\d+$/.test(time) ? `week ${time} of ${year}` : `${time} of ${year}`;
+
     return (
       <div className={className}>
-        <span className={`${className}__title`} id={`${id}__title`}>{`${time}`}</span>
+        <span className={`${className}__title`} id={`${id}__title`}>
+          {title}
+        </span>
         <div className={`${className}__countReviews`} id={`${id}__countReviews`}>
           <span className={`${className}__countReviews__count`} id={`${id}__countReviews__count`}>
             {count}

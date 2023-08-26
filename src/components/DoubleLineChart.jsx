@@ -31,7 +31,11 @@ const DoubleLineChart = (props) => {
   // calculate vertical points for the background grid
   const verticalPoints = getVerticalPoints(reviews.length - 2);
   // set width regarding if there is 3 or 5 values.
-  const yWidth = reviews.length === 7 ? -80 : -60;
+  let yWidth = 0;
+  if (reviews.length === 5) yWidth = -130;
+  else if (reviews.length === 7) yWidth = -80;
+  else if (reviews.length === 9) yWidth = -60;
+  else if (reviews.length === 11) yWidth = -48;
 
   return (
     <div className={className} id={id}>
