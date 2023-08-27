@@ -10,4 +10,12 @@ const getHome = async (accountId, token) => {
   return res.data;
 };
 
-export default { getHome };
+const getItem = async (itemId, token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const res = await axios.get(`${baseUrl}/get/item?itemId=${itemId}`, config);
+  return res.data;
+};
+
+export default { getHome, getItem };

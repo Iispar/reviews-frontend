@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import $ from 'jquery';
 import propTypes from 'prop-types';
-import dummy from '../../data/dummyData/dummyHome.json';
 import DoubleLineChart from '../../components/DoubleLineChart';
 
 /**
@@ -10,8 +9,8 @@ import DoubleLineChart from '../../components/DoubleLineChart';
  * @property {String} id - Custom id if wanted. Default is itemChart.
  * @returns chart component for item.
  */
-const ItemChart = ({ className, id }) => {
-  const [view, setView] = useState(dummy.month);
+const ItemChart = ({ className, id, initData }) => {
+  const [data, setData] = useState(initData);
 
   /**
    * Changes the view and sets the css for the active bar.
@@ -21,7 +20,7 @@ const ItemChart = ({ className, id }) => {
    *        The selected button as text.
    */
   const changeView = (selection, selectionText) => {
-    setView(selection);
+    setData(selection);
     if (selectionText === 'year') {
       $(`#${id}__selector__active`).css({
         left: '30px',
@@ -41,11 +40,10 @@ const ItemChart = ({ className, id }) => {
   };
   return (
     <div className={className} id={id}>
-      <DoubleLineChart data={view} />
+      <DoubleLineChart data={data} />
       <div className={`${className}__selector`} id={`${id}__selector`}>
-        <button className={`${className}__selector__year`} type="button" onClick={() => changeView(dummy.year, 'year')}> year </button>
-        <button className={`${className}__selector__month`} type="button" onClick={() => changeView(dummy.month, 'month')}> month </button>
-        <button className={`${className}__selector__week`} type="button" onClick={() => changeView(dummy.week, 'week')}> week </button>
+        <button className={`${className}__selector__month`} type="button" onClick={() => changeView('month')}> month </button>
+        <button className={`${className}__selector__week`} type="button" onClick={() => changeView('week')}> week </button>
         <div className={`${className}__selector__active`} id={`${id}__selector__active`} />
       </div>
     </div>
@@ -55,11 +53,13 @@ const ItemChart = ({ className, id }) => {
 ItemChart.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
+  initData: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
 };
 
 ItemChart.defaultProps = {
   className: 'itemChart',
   id: 'itemChart',
+  initData: null,
 };
 
 export default ItemChart;

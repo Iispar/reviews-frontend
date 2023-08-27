@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import $ from 'jquery';
+import { useParams } from 'react-router-dom';
 import propTypes from 'prop-types';
 import Title from './Title';
 import NewReview from './NewReview';
@@ -7,8 +8,7 @@ import Words from './Words';
 import ItemChart from './ItemChart';
 import Reviews from './Reviews';
 import NewReviewForm from './NewReviewForm';
-import dummyReviews from '../../data/dummyData/dummyReviews.json';
-import dummyWords from '../../data/dummyData/dummyWords.json';
+import pagesService from '../../services/pagesService';
 
 /**
  * Renders the single Item page.
@@ -17,6 +17,31 @@ import dummyWords from '../../data/dummyData/dummyWords.json';
  * @returns single item page
  */
 const Item = ({ className, id }) => {
+  const { itemId } = useParams();
+  const [reviews, setReviews] = useState(null);
+  const [posWords, setPosWords] = useState(null);
+  const [negWords, setNegWords] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [token, setToken] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [accountId, setAccountId] = useState(null);
+  const [chart, setChart] = useState(null);
+  useEffect(() => {
+    const newToken = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
+    const curAccountId = window.localStorage.getItem('accountId').replace(/^"(.*)"$/, '$1');
+
+    setToken(newToken);
+    setAccountId(curAccountId);
+
+    pagesService.getItem(itemId, newToken)
+      .then((res) => {
+        console.log(res);
+        setReviews(res.latestReviews);
+        setPosWords(res.topPos.slice(0, 5));
+        setNegWords(res.topNeg.slice(0, 5));
+        setChart(res.chart);
+      });
+  }, []);
   const newReview = () => {
     $('#words').css('display', 'none');
     $('#newReview').css('display', 'none');
@@ -50,15 +75,15 @@ const Item = ({ className, id }) => {
           />
         </div>
         <div className={`${className}__grid__reviews`} id={`${className}__grid__reviews`}>
-          <Reviews reviews={dummyReviews.reviews} />
+          <Reviews reviews={reviews} />
         </div>
         <div className={`${className}__grid__words`} id={`${className}__grid__words`}>
-          <Words words={dummyWords.words} />
+          <Words posWords={posWords} negWords={negWords} />
           <NewReviewForm onSubmit={submitReview} onClick={closeNew} />
           <NewReview onClick={newReview} />
         </div>
         <div className={`${className}__grid__chart`} id={`${className}__grid__chart`}>
-          <ItemChart />
+          <ItemChart data={chart} key={chart} />
         </div>
       </div>
     </div>

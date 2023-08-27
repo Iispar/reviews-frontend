@@ -13,6 +13,7 @@ import WordListItem from './WordListItem';
 const TopWords = ({
   words, title, className, id,
 }) => {
+  if (words == null) return null;
   const list = [];
   for (let i = 0; i < words.length; i += 1) {
     list.push(
@@ -36,7 +37,7 @@ const TopWords = ({
 };
 
 TopWords.propTypes = {
-  words: propTypes.arrayOf(propTypes.objectOf(propTypes.string)),
+  words: propTypes.arrayOf(propTypes.string),
   title: propTypes.string,
   className: propTypes.string,
   id: propTypes.string,

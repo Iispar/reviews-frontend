@@ -33,7 +33,7 @@ const App = () => (
       >
         <Route exact path="/home" element=<Home /> />
         <Route exact path="/all" element=<AllItems /> />
-        <Route exact path="/item/:id" element=<Item /> />
+        <Route exact path="/item/:itemId" element=<Item /> />
         <Route exact path="/settings" element=<Settings /> />
       </Route>
       <Route exact path="/login" element=<Login /> />
