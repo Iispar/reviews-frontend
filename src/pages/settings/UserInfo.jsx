@@ -14,15 +14,9 @@ import SettingsInputField from '../../components/SettingsInputField';
  * @property {func} updatePassword - the function to update password.
  * @returns user info page.
  */
-const UserInfo = (props) => {
-  const { currUsername } = props;
-  const { openForm } = props;
-  const { currName } = props;
-  const { updateName } = props;
-  const { updateUsername } = props;
-  const { updatePassword } = props;
-  const { className } = props;
-  const { id } = props;
+const UserInfo = ({
+  currUsername, openForm, currName, updateName, updateUsername, updatePassword, className, id,
+}) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 

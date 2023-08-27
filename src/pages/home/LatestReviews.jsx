@@ -14,13 +14,9 @@ import reviewsService from '../../services/reviewsService';
  * @property {String} token - Accounts token
  * @returns latest reviews component
  */
-const LatestReviews = (props) => {
-  const { className } = props;
-  const { id } = props;
-  const { initReviews } = props;
-  const { accountId } = props;
-  const { token } = props;
-
+const LatestReviews = ({
+  className, id, initReviews, accountId, token,
+}) => {
   const page = useRef(0);
   const [reviews, setReviews] = useState(initReviews);
 

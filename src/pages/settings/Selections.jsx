@@ -10,10 +10,7 @@ import DeleteAccount from './DeleteAccount';
  * @property {String} if - Custom className if wanted. Default selections.
  * @returns selctions
  */
-const Selections = (props) => {
-  const { className } = props;
-  const { id } = props;
-
+const Selections = ({ className, id }) => {
   /**
    * Opens the form to see user info or delete account.
    * @param {String} selection

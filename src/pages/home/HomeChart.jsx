@@ -12,12 +12,9 @@ import reviewsService from '../../services/reviewsService';
  * @property {String} token - Token for account
  * @returns chart component
  */
-const HomeChart = (props) => {
-  const { className } = props;
-  const { curData } = props;
-  const { id } = props;
-  const { token } = props;
-  const { accountId } = props;
+const HomeChart = ({
+  className, curData, id, token, accountId,
+}) => {
   const [data, setData] = useState(curData);
 
   /**

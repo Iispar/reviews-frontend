@@ -11,12 +11,10 @@ import InputField from '../../components/InputField';
  * @property {func} newPass - function for the new password form submit.
  * @returns loginin view.
  */
-const LoginForm = (props) => {
+const LoginForm = ({
+  onSubmit, newPass, className, id,
+}) => {
   const [contactVisible, setcontactVisible] = useState(false);
-  const { onSubmit } = props;
-  const { newPass } = props;
-  const { className } = props;
-  const { id } = props;
   /**
    * changes view between login form and create account form.
    */

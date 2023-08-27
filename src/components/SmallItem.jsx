@@ -11,12 +11,10 @@ import { useNavigate } from 'react-router-dom';
  * @property {className} className - Custom className if wanted. Default is smallitem.
  * @returns item in small format.
  */
-const SmallItem = (props) => {
+const SmallItem = ({
+  item, rating, id, className,
+}) => {
   const navigate = useNavigate();
-  const { item } = props;
-  const { rating } = props;
-  const { id } = props;
-  const { className } = props;
 
   /**
    * Wait for page to render to set listeners,

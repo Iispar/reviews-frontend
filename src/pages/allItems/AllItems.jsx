@@ -11,9 +11,7 @@ import itemService from '../../services/itemService';
  * @property {String} id - Custom id if wanted. Default ${className}.
  * @returns all items page
  */
-const AllItems = (props) => {
-  const { className } = props;
-  const { id } = props;
+const AllItems = ({ className, id }) => {
   const [token, setToken] = useState(null);
   const [accountId, setAccountId] = useState(null);
   const [items, setItems] = useState(null);

@@ -16,10 +16,7 @@ import dummyWords from '../../data/dummyData/dummyWords.json';
  * @property {String} id - Custom id if wanted. Default item.
  * @returns single item page
  */
-const Item = (props) => {
-  const { className } = props;
-  const { id } = props;
-
+const Item = ({ className, id }) => {
   const newReview = () => {
     $('#words').css('display', 'none');
     $('#newReview').css('display', 'none');

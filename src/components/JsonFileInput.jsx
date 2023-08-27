@@ -9,10 +9,7 @@ import $ from 'jquery';
  * @property {string} name - Custom name if wanted. Default jsonInputField.
  * @returns input for json
  */
-const JsonInputField = (props) => {
-  const { id } = props;
-  const { height } = props;
-  const { className } = props;
+const JsonInputField = ({ id, height, className }) => {
   const [file, setFile] = useState(null);
 
   /**

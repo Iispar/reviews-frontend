@@ -10,25 +10,20 @@ import Pagination from '../../components/Pagination';
  * @property {String} id - Custom id if wanted. Default reviews.
  * @returns component for latest reviews
  */
-const Reviews = (props) => {
-  const { reviews } = props;
-  const { className } = props;
-  const { id } = props;
-  return (
-    <div className={className} id={id}>
-      <div className={`${className}__header`}>
-        <div className={`${className}__header__text`}> Reviews </div>
-      </div>
-      <div> sort and search </div>
-      <div className={`${className}__reviews`}>
-        <ReviewsList reviews={reviews} />
-      </div>
-      <div className={`${className}__pagination`}>
-        <Pagination />
-      </div>
+const Reviews = ({ reviews, className, id }) => (
+  <div className={className} id={id}>
+    <div className={`${className}__header`}>
+      <div className={`${className}__header__text`}> Reviews </div>
     </div>
-  );
-};
+    <div> sort and search </div>
+    <div className={`${className}__reviews`}>
+      <ReviewsList reviews={reviews} />
+    </div>
+    <div className={`${className}__pagination`}>
+      <Pagination />
+    </div>
+  </div>
+);
 
 Reviews.propTypes = {
   reviews: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),

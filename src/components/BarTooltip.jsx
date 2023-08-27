@@ -9,11 +9,9 @@ import propTypes from 'prop-types';
  * @property {String} id - Custom id if wanted. Default barToolTip
  * @returns tooltip for barchart
  */
-const BarTooltip = (props) => {
-  const { payload } = props;
-  const { active } = props;
-  const { className } = props;
-  const { id } = props;
+const BarTooltip = ({
+  payload, active, className, id,
+}) => {
   if (active && payload && payload.length) {
     const { rating } = payload[0].payload;
     const { count } = payload[0].payload;

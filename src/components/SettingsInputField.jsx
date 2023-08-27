@@ -15,16 +15,9 @@ import $ from 'jquery';
  * @property {String} type - type of the input field.
  * @returns input field for settings
  */
-const SettingsInputField = (props) => {
-  const { className } = props;
-  const { id } = props;
-  const { onSubmit } = props;
-  const { defaultValue } = props;
-  const { title } = props;
-  const { warningText } = props;
-  const { button } = props;
-  const { submitText } = props;
-  const { type } = props;
+const SettingsInputField = ({
+  className, id, onSubmit, defaultValue, title, warningText, button, submitText, type,
+}) => {
   const [value, setValue] = useState(defaultValue);
 
   $(document).ready(() => {

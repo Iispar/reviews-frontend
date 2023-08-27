@@ -9,12 +9,9 @@ import propTypes from 'prop-types';
  * @property {Integer} count - Number of reviews in items json.
  * @returns list of SmallItems or LargeItems
  */
-const ItemList = (props) => {
-  const { items } = props;
-  const { View } = props;
-  const { className } = props;
-  const { id } = props;
-
+const ItemList = ({
+  items, View, className, id,
+}) => {
   if (items == null) {
     return null;
   }

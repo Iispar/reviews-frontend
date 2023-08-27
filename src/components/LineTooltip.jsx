@@ -11,11 +11,9 @@ import propTypes from 'prop-types';
  * @property {string} id - Custom id if wanted. Default lineTooltip.
  * @returns line chart tooltip
  */
-const LineTooltip = (props) => {
-  const { payload } = props;
-  const { active } = props;
-  const { className } = props;
-  const { id } = props;
+const LineTooltip = ({
+  payload, active, className, id,
+}) => {
   if (active && payload && payload.length && payload[0].payload.time !== undefined) {
     const { time } = payload[0].payload;
     const { count } = payload[0].payload;

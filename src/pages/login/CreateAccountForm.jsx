@@ -10,12 +10,9 @@ import InputField from '../../components/InputField';
  * @property {func} onSubmit - The onSubmit function to be used in the form.
  * @returns create account form
  */
-const CreateAccountForm = (props) => {
+const CreateAccountForm = ({ className, id, onSubmit }) => {
   const [password, setPassword] = useState('null');
   const [confirmPassword, setConfirmPassword] = useState('null');
-  const { onSubmit } = props;
-  const { className } = props;
-  const { id } = props;
   const regexp = /^(?=.*\w)(?=.*\d)(?=.*[@$!%*#?&])[\w@$!%*#?&]{8,}/;
 
   /**

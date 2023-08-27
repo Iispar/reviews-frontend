@@ -8,17 +8,13 @@ import propTypes from 'prop-types';
  * @property {string} id - custom id if wanted. Default searchFIeld.
  * @returns a search field
  */
-const SearchField = (props) => {
-  const { placeholder } = props;
-  const { id } = props;
-  const { className } = props;
-  const { onChange } = props;
-  return (
-    <div className={className}>
-      <input className={`${className}__input`} id={`${id}__input`} placeholder={placeholder} type="search" onChange={(e) => onChange(e.target.value)} />
-    </div>
-  );
-};
+const SearchField = ({
+  placeholder, id, className, onChange,
+}) => (
+  <div className={className}>
+    <input className={`${className}__input`} id={`${id}__input`} placeholder={placeholder} type="search" onChange={(e) => onChange(e.target.value)} />
+  </div>
+);
 
 SearchField.propTypes = {
   placeholder: propTypes.string,

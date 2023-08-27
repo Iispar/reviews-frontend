@@ -10,9 +10,7 @@ import DoubleLineChart from '../../components/DoubleLineChart';
  * @property {String} id - Custom id if wanted. Default is itemChart.
  * @returns chart component for item.
  */
-const ItemChart = (props) => {
-  const { className } = props;
-  const { id } = props;
+const ItemChart = ({ className, id }) => {
   const [view, setView] = useState(dummy.month);
 
   /**

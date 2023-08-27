@@ -12,13 +12,9 @@ import { useTextWidth } from './helpers';
  * @property {string} error - Error message for the input field.
  * @returns
  */
-const LargeInputField = (props) => {
-  const { title } = props;
-  const { id } = props;
-  const { className } = props;
-  const { width } = props;
-  const { height } = props;
-  const { error } = props;
+const LargeInputField = ({
+  title, id, className, width, height, error,
+}) => {
   // hook to calculate the width of the text
   const cutoutWidth = useTextWidth(title, '16px hind');
   const errorWidth = useTextWidth(error, '15px hind');

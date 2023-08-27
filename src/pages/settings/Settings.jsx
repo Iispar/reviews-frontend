@@ -8,23 +8,18 @@ import Selections from './Selections';
  * @property {String} id - Custom id if wanted. Default settings.
  * @returns settings
  */
-const Settings = (props) => {
-  const { className } = props;
-  const { id } = props;
-
-  return (
-    <div className={className}>
-      <div className={`${className}__grid`}>
-        <div className={`${className}__grid__title`} id={`${id}__grid__title`}>
-          Settings
-        </div>
-        <div className={`${className}__grid__selections`} id={`${id}__grid__selections`}>
-          <Selections />
-        </div>
+const Settings = ({ className, id }) => (
+  <div className={className}>
+    <div className={`${className}__grid`}>
+      <div className={`${className}__grid__title`} id={`${id}__grid__title`}>
+        Settings
+      </div>
+      <div className={`${className}__grid__selections`} id={`${id}__grid__selections`}>
+        <Selections />
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 Settings.propTypes = {
   className: propTypes.string,

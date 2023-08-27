@@ -12,7 +12,7 @@ import pagesService from '../../services/pagesService';
  * @property {Strning} id - Custom id if wanted. Default home.
  * @returns home screen
  */
-const Home = (props) => {
+const Home = ({ className, id }) => {
   const [latestReviews, setLatestReviews] = useState(null);
   const [topItems, setTopItems] = useState(null);
   const [itemCount, setItemCount] = useState(null);
@@ -23,8 +23,6 @@ const Home = (props) => {
   const [accountId, setAccountId] = useState(null);
   const [token, setToken] = useState(null);
 
-  const { className } = props;
-  const { id } = props;
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState('Name');
 

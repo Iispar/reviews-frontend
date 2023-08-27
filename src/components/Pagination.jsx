@@ -6,12 +6,9 @@ import propTypes from 'prop-types';
  * Creates the pagination buttons
  * @returns pagination buttons
  */
-const Pagination = (props) => {
-  const { next } = props;
-  const { prev } = props;
-  const { className } = props;
-  const { id } = props;
-
+const Pagination = ({
+  next, prev, className, id,
+}) => {
   // disables the prev button at load
   useEffect(() => {
     $(`#${id}__prev`).prop('disabled', true);

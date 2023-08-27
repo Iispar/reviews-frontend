@@ -8,16 +8,11 @@ import propTypes from 'prop-types';
  * @property {String} id - Custom id if wanted. Defaul newReview.
  * @returns
  */
-const NewReview = (props) => {
-  const { onClick } = props;
-  const { className } = props;
-  const { id } = props;
-  return (
-    <div className={className} id={id}>
-      <button className={`${className}__button`} id={`${id}__button`} type="button" onClick={() => onClick()}> new review </button>
-    </div>
-  );
-};
+const NewReview = ({ onClick, className, id }) => (
+  <div className={className} id={id}>
+    <button className={`${className}__button`} id={`${id}__button`} type="button" onClick={() => onClick()}> new review </button>
+  </div>
+);
 
 NewReview.propTypes = {
   onClick: propTypes.func,

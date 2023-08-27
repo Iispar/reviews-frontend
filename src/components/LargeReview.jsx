@@ -12,15 +12,9 @@ import $ from 'jquery';
  * @property {String} classname - Custom className if wanted. Default largeReview.
  * @returns singular large review
  */
-const LargeReview = (props) => {
-  const { rating } = props;
-  const { body } = props;
-  const { id } = props;
-  const { title } = props;
-  const { date } = props;
-  const { className } = props;
-  const { item } = props;
-
+const LargeReview = ({
+  rating, body, id, title, date, className, item,
+}) => {
   /**
    * Opens and closes the view of the comment depending on its current state.
    * I need to use props close because if I use for example useState it gets

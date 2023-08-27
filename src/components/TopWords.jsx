@@ -10,11 +10,9 @@ import WordListItem from './WordListItem';
  * @property {string} id - Custom className id wanted. Default is wordList.
  * @returns list of words
  */
-const TopWords = (props) => {
-  const { words } = props;
-  const { title } = props;
-  const { className } = props;
-  const { id } = props;
+const TopWords = ({
+  words, title, className, id,
+}) => {
   const list = [];
   for (let i = 0; i < words.length; i += 1) {
     list.push(

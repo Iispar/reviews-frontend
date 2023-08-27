@@ -15,15 +15,9 @@ import { useTextWidth } from './helpers';
  * @property {regex} regex - The regex that the input if being compared to for error message.
  * @returns custom input field.
  */
-const InputField = (props) => {
-  const { title } = props;
-  const { id } = props;
-  const { name } = props;
-  const { width } = props;
-  const { height } = props;
-  const { type } = props;
-  const { error } = props;
-  const { regex } = props;
+const InputField = ({
+  title, id, name, width, height, type, error, regex,
+}) => {
   const [value, setValue] = useState(null);
   // hook to calculate the width of the text
   const cutoutWidth = useTextWidth(title, '16px hind');

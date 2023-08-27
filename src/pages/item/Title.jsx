@@ -13,16 +13,9 @@ import propTypes from 'prop-types';
  * @property {String} id - Custom id if wanted. Default is itemTitle.
  * @returns title for single item
  */
-const Title = (props) => {
-  const { name } = props;
-  const { desc } = props;
-  const { reviewsCount } = props;
-  const { ratingValue } = props;
-  const { posReviews } = props;
-  const { negReviews } = props;
-  const { className } = props;
-  const { id } = props;
-
+const Title = ({
+  name, desc, reviewsCount, ratingValue, posReviews, negReviews, className, id,
+}) => {
   /**
    * Formats the star rating to actual stars.
    * @param {String} reviews

@@ -15,8 +15,7 @@ import BarTooltip from './BarTooltip';
  * @property {json} data - Includes the data in json.
  * @returns a bar chart
  */
-const Chart = (props) => {
-  const { data } = props;
+const Chart = ({ data }) => {
   const [focusBar, setFocusBar] = useState(null);
   const color = ['#D2222D', '#EE6F27', '#FFBF00', '#32A632', '#007000', '#A31A23', '#D16224', '#D49F00', '#278227', '#004A00'];
 

@@ -12,31 +12,26 @@ import InputField from '../../components/InputField';
  * @property {String} id - Custom id if wanted. Default newReviewForm.
  * @returns new review form component.
  */
-const NewReviewForm = (props) => {
-  const { onSubmit } = props;
-  const { onClick } = props;
-  const { className } = props;
-  const { id } = props;
-
-  return (
-    <div className={className} id={id}>
-      <form className={`${className}__form`} id={`${className}__form`} onSubmit={(e) => onSubmit(e)} noValidate>
-        <span className={`${className}__form__title`}> add a new comment </span>
-        <LargeInputField title="comment body" height="300px" />
-        <div className={`${className}__form__du`}>
-          <input className={`${className}__form__du_date`} type="date" />
-          <InputField className={`${className}__form__du_user`} title="user id" width="160px" />
-        </div>
-        <span className={`${className}__form__file`}> or add a file </span>
-        <JsonFileInput id={`${className}__form__fileInput`} height="200px" />
-      </form>
-      <div className={`${className}__buttons`} id={`${className}__buttons`}>
-        <button className={`${className}__buttons__create`} id={`${className}__buttons__create`} form={`${className}__form`} type="submit"> add </button>
-        <button className={`${className}__buttons__close`} id={`${className}__buttons__close`} type="button" onClick={() => onClick()}> close </button>
+const NewReviewForm = ({
+  onSubmit, onClick, className, id,
+}) => (
+  <div className={className} id={id}>
+    <form className={`${className}__form`} id={`${className}__form`} onSubmit={(e) => onSubmit(e)} noValidate>
+      <span className={`${className}__form__title`}> add a new comment </span>
+      <LargeInputField title="comment body" height="300px" />
+      <div className={`${className}__form__du`}>
+        <input className={`${className}__form__du_date`} type="date" />
+        <InputField className={`${className}__form__du_user`} title="user id" width="160px" />
       </div>
+      <span className={`${className}__form__file`}> or add a file </span>
+      <JsonFileInput id={`${className}__form__fileInput`} height="200px" />
+    </form>
+    <div className={`${className}__buttons`} id={`${className}__buttons`}>
+      <button className={`${className}__buttons__create`} id={`${className}__buttons__create`} form={`${className}__form`} type="submit"> add </button>
+      <button className={`${className}__buttons__close`} id={`${className}__buttons__close`} type="button" onClick={() => onClick()}> close </button>
     </div>
-  );
-};
+  </div>
+);
 
 NewReviewForm.propTypes = {
   onSubmit: propTypes.func,

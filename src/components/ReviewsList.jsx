@@ -9,9 +9,7 @@ import LargeReview from './LargeReview';
  * @property {string} className - Custom className if wanted. Default ReviewsList.
  * @returns list of reviews
  */
-const ReviewsList = (props) => {
-  const { reviews } = props;
-  const { className } = props;
+const ReviewsList = ({ reviews, className }) => {
   const list = [];
   if (reviews == null) {
     return null;

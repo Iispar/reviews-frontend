@@ -16,11 +16,7 @@ import { getVerticalPoints } from './helpers';
  * @property {String} id - Custom id if wanted. Default lineChart.
  * @returns line chart
  */
-const DoubleLineChart = (props) => {
-  const { data } = props;
-  const { className } = props;
-  const { id } = props;
-
+const DoubleLineChart = ({ data, className, id }) => {
   if (data == null) {
     return null;
   }

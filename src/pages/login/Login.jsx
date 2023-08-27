@@ -11,9 +11,7 @@ import { UseLogin, UseCreateAccount } from './loginHooks';
  * @property {String id - Custom id if wanted. Default loginGrid.
  * @return login page.
  */
-const Login = (props) => {
-  const { className } = props;
-  const { id } = props;
+const Login = ({ className, id }) => {
   const navigate = useNavigate();
 
   /**
