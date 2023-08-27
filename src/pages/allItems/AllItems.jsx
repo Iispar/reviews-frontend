@@ -18,6 +18,7 @@ const AllItems = ({ className, id }) => {
   const [search, setSearch] = useState(null);
   const [sort, setSort] = useState('none');
   const [sortDir, setSortDir] = useState('none');
+  const [page] = useState(0);
 
   useEffect(() => {
     const newToken = window.localStorage.getItem('token');
@@ -46,12 +47,17 @@ const AllItems = ({ className, id }) => {
 
   const submit = (e) => {
     if (e) e.preventDefault();
-    console.log(search);
-    console.log(search, sort, sortDir);
+
+    itemService.getSearch(accountId, search, page, sort, sortDir, token)
+      .then((res) => setItems(res));
   };
 
   const searchSort = (selSort, selSortDir) => {
-    console.log(selSort, selSortDir);
+    setSort(selSort);
+    setSortDir(selSortDir);
+
+    itemService.getSort(accountId, page, selSort, selSortDir, token)
+      .then((res) => setItems(res));
   };
 
   return (
@@ -64,8 +70,6 @@ const AllItems = ({ className, id }) => {
           <Items
             items={items}
             setSearch={(e) => setSearch(e)}
-            setSort={(e) => setSort(e)}
-            setSortDir={(e) => setSortDir(e)}
             onSort={(selSort, selSortDir) => searchSort(selSort, selSortDir)}
             onSubmit={(e) => submit(e)}
           />

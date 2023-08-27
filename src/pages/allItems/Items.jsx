@@ -14,7 +14,7 @@ import SearchField from '../../components/SearchField';
  * @returns items component for ALlItems page
  */
 const Items = ({
-  items, className, id, onSubmit, onSort, setSearch, setSort, setSortDir,
+  items, className, id, onSubmit, onSort, setSearch,
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -39,8 +39,8 @@ const Items = ({
    */
   const dropDown = () => {
     // add hover back to all.
-    hover(`#${id}__header__sort__review__desc`, '#f5f5f5');
-    hover(`#${id}__header__sort__review__asc`, '#f5f5f5');
+    hover(`#${id}__header__sort__reviews__desc`, '#f5f5f5');
+    hover(`#${id}__header__sort__reviews__asc`, '#f5f5f5');
     hover(`#${id}__header__sort__rating__desc`, '#f5f5f5');
     hover(`#${id}__header__sort__rating__asc`, '#f5f5f5');
 
@@ -50,8 +50,8 @@ const Items = ({
         width: '44px',
         height: '20px',
       }, 200);
-      $(`#${id}__header__sort__review__desc`).css('display', 'none');
-      $(`#${id}__header__sort__review__asc`).css('display', 'none');
+      $(`#${id}__header__sort__reviews__desc`).css('display', 'none');
+      $(`#${id}__header__sort__reviews__asc`).css('display', 'none');
       $(`#${id}__header__sort__rating__desc`).css('display', 'none');
       $(`#${id}__header__sort__rating__asc`).css('display', 'none');
       $(`#${id}__header__sort__btn`).css('display', 'flex');
@@ -64,8 +64,8 @@ const Items = ({
         width: '160px',
         height: '40px',
       }, 200);
-      $(`#${id}__header__sort__review__desc`).css('display', 'flex');
-      $(`#${id}__header__sort__review__asc`).css('display', 'flex');
+      $(`#${id}__header__sort__reviews__desc`).css('display', 'flex');
+      $(`#${id}__header__sort__reviews__asc`).css('display', 'flex');
       $(`#${id}__header__sort__rating__desc`).css('display', 'flex');
       $(`#${id}__header__sort__rating__asc`).css('display', 'flex');
       $(`#${id}__header__sort__btn`).css('display', 'none');
@@ -81,9 +81,6 @@ const Items = ({
   const changeFilter = async (sort) => {
     const splitSort = sort.split('__')[3];
     const splitSortDir = sort.split('__')[4];
-
-    setSort(splitSort);
-    setSortDir(splitSortDir);
 
     onSort(splitSort, splitSortDir);
 
@@ -105,8 +102,8 @@ const Items = ({
     }, 200);
 
     // set all the reviews to invis
-    $(`#${id}__header__sort__review__desc`).css('display', 'none');
-    $(`#${id}__header__sort__review__asc`).css('display', 'none');
+    $(`#${id}__header__sort__reviews__desc`).css('display', 'none');
+    $(`#${id}__header__sort__reviews__asc`).css('display', 'none');
     $(`#${id}__header__sort__rating__desc`).css('display', 'none');
     $(`#${id}__header__sort__rating__asc`).css('display', 'none');
 
@@ -130,14 +127,14 @@ const Items = ({
             sort
             <div className={`${className}__header__sort__btn__arrow`} id={`${id}__header__sort__btn__arrow`} />
           </button>
-          <div className={`${className}__header__sort__review`}>
-            <button className={`${className}__header__sort__review__asc`} id={`${id}__header__sort__review__asc`} type="button" onClick={() => changeFilter(`${id}__header__sort__review__asc`)}>
+          <div className={`${className}__header__sort__reviews`}>
+            <button className={`${className}__header__sort__reviews__asc`} id={`${id}__header__sort__reviews__asc`} type="button" onClick={() => changeFilter(`${id}__header__sort__reviews__asc`)}>
               reviews
-              <div className={`${className}__header__sort__review__ascArrow`} />
+              <div className={`${className}__header__sort__reviews__ascArrow`} />
             </button>
-            <button className={`${className}__header__sort__review__desc`} id={`${id}__header__sort__review__desc`} type="button" onClick={() => changeFilter(`${id}__header__sort__review__desc`)}>
+            <button className={`${className}__header__sort__reviews__desc`} id={`${id}__header__sort__reviews__desc`} type="button" onClick={() => changeFilter(`${id}__header__sort__reviews__desc`)}>
               reviews
-              <div className={`${className}__header__sort__review__descArrow`} />
+              <div className={`${className}__header__sort__reviews__descArrow`} />
             </button>
           </div>
           <div className={`${className}__header__sort__rating`}>
@@ -169,8 +166,6 @@ Items.propTypes = {
   id: propTypes.string,
   setSearch: propTypes.func,
   onSubmit: propTypes.func,
-  setSort: propTypes.func,
-  setSortDir: propTypes.func,
   onSort: propTypes.func,
 };
 
@@ -180,8 +175,6 @@ Items.defaultProps = {
   id: 'items',
   setSearch: null,
   onSubmit: null,
-  setSort: null,
-  setSortDir: null,
   onSort: null,
 };
 

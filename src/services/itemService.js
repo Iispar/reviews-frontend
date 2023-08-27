@@ -10,12 +10,20 @@ const getAll = async (accountId, page, token) => {
   return res.data;
 };
 
-const getSearch = async (accountId, page, sort, sortDir, token) => {
+const getSearch = async (accountId, search, page, sort, sortDir, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  const res = await axios.get(`${baseUrl}/get/search?accountId=${accountId}&page=${page}&sort=${sort}&sortDir=${sortDir}`, config);
+  const res = await axios.get(`${baseUrl}/get/search?title=${search}&accountId=${accountId}&page=${page}&sort=${sort}&sortDir=${sortDir}`, config);
   return res.data;
 };
 
-export default { getAll, getSearch };
+const getSort = async (accountId, page, sort, sortDir, token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const res = await axios.get(`${baseUrl}/get?accountId=${accountId}&page=${page}&sort=${sort}&sortDir=${sortDir}`, config);
+  return res.data;
+};
+
+export default { getAll, getSearch, getSort };

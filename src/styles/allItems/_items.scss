@@ -53,7 +53,7 @@
                 justify-content: flex-end;
                 padding-right: 4px;
             }
-            &__review, &__rating {
+            &__reviews, &__rating {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -79,10 +79,10 @@
                     @include arrow(rotate(90deg));
                 }
             }
-            &__review__asc {
+            &__reviews__asc {
                 border-top-left-radius: 9px;
             }
-            &__review__desc {
+            &__reviews__desc {
                 border-bottom-left-radius: 9px;
             }
             &__arrow {
