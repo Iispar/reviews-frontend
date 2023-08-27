@@ -12,9 +12,10 @@ const SearchField = (props) => {
   const { placeholder } = props;
   const { id } = props;
   const { className } = props;
+  const { onChange } = props;
   return (
     <div className={className}>
-      <input className={`${className}__input`} id={`${id}__input`} placeholder={placeholder} type="search" />
+      <input className={`${className}__input`} id={`${id}__input`} placeholder={placeholder} type="search" onChange={(e) => onChange(e.target.value)} />
     </div>
   );
 };
@@ -23,12 +24,14 @@ SearchField.propTypes = {
   placeholder: propTypes.string,
   id: propTypes.string,
   className: propTypes.string,
+  onChange: propTypes.func,
 };
 
 SearchField.defaultProps = {
   placeholder: null,
   id: 'searchField',
   className: 'searchField',
+  onChange: null,
 };
 
 export default SearchField;

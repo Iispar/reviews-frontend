@@ -13,10 +13,9 @@ import SearchField from '../../components/SearchField';
  * @propert {String} id - custom id if wanted. Default items.
  * @returns items component for ALlItems page
  */
-const Items = (props) => {
-  const { items } = props;
-  const { className } = props;
-  const { id } = props;
+const Items = ({
+  items, className, id, onSubmit, onSort, setSearch, setSort, setSortDir,
+}) => {
   const [open, setOpen] = useState(false);
 
   /**
@@ -40,10 +39,10 @@ const Items = (props) => {
    */
   const dropDown = () => {
     // add hover back to all.
-    hover(`#${id}__header__sort__reviews__desc`, '#f5f5f5');
-    hover(`#${id}__header__sort__reviews__asc`, '#f5f5f5');
-    hover(`#${id}__header__sort__ratings__desc`, '#f5f5f5');
-    hover(`#${id}__header__sort__ratings__asc`, '#f5f5f5');
+    hover(`#${id}__header__sort__review__desc`, '#f5f5f5');
+    hover(`#${id}__header__sort__review__asc`, '#f5f5f5');
+    hover(`#${id}__header__sort__rating__desc`, '#f5f5f5');
+    hover(`#${id}__header__sort__rating__asc`, '#f5f5f5');
 
     // close dropdown
     if (open) {
@@ -51,10 +50,10 @@ const Items = (props) => {
         width: '44px',
         height: '20px',
       }, 200);
-      $(`#${id}__header__sort__reviews__desc`).css('display', 'none');
-      $(`#${id}__header__sort__reviews__asc`).css('display', 'none');
-      $(`#${id}__header__sort__ratings__desc`).css('display', 'none');
-      $(`#${id}__header__sort__ratings__asc`).css('display', 'none');
+      $(`#${id}__header__sort__review__desc`).css('display', 'none');
+      $(`#${id}__header__sort__review__asc`).css('display', 'none');
+      $(`#${id}__header__sort__rating__desc`).css('display', 'none');
+      $(`#${id}__header__sort__rating__asc`).css('display', 'none');
       $(`#${id}__header__sort__btn`).css('display', 'flex');
       $(`#${id}__header__sort__arrow`).css('transform', 'rotate(0deg)');
       setOpen(false);
@@ -65,10 +64,10 @@ const Items = (props) => {
         width: '160px',
         height: '40px',
       }, 200);
-      $(`#${id}__header__sort__reviews__desc`).css('display', 'flex');
-      $(`#${id}__header__sort__reviews__asc`).css('display', 'flex');
-      $(`#${id}__header__sort__ratings__desc`).css('display', 'flex');
-      $(`#${id}__header__sort__ratings__asc`).css('display', 'flex');
+      $(`#${id}__header__sort__review__desc`).css('display', 'flex');
+      $(`#${id}__header__sort__review__asc`).css('display', 'flex');
+      $(`#${id}__header__sort__rating__desc`).css('display', 'flex');
+      $(`#${id}__header__sort__rating__asc`).css('display', 'flex');
       $(`#${id}__header__sort__btn`).css('display', 'none');
       $(`#${id}__header__sort__arrow`).css('transform', 'rotate(180deg)');
       setOpen(true);
@@ -79,7 +78,15 @@ const Items = (props) => {
    * Changes the filter and sets it to displayed.
    * @param {String} sort - the selected filter id.
    */
-  const changeFilter = (sort) => {
+  const changeFilter = async (sort) => {
+    const splitSort = sort.split('__')[3];
+    const splitSortDir = sort.split('__')[4];
+
+    setSort(splitSort);
+    setSortDir(splitSortDir);
+
+    onSort(splitSort, splitSortDir);
+
     // we use jquery hover and not css, because we need to disable the hover when clicked.
     // this doesn't seem that good so will look into a better solution in the future.
 
@@ -98,10 +105,10 @@ const Items = (props) => {
     }, 200);
 
     // set all the reviews to invis
-    $(`#${id}__header__sort__reviews__desc`).css('display', 'none');
-    $(`#${id}__header__sort__reviews__asc`).css('display', 'none');
-    $(`#${id}__header__sort__ratings__desc`).css('display', 'none');
-    $(`#${id}__header__sort__ratings__asc`).css('display', 'none');
+    $(`#${id}__header__sort__review__desc`).css('display', 'none');
+    $(`#${id}__header__sort__review__asc`).css('display', 'none');
+    $(`#${id}__header__sort__rating__desc`).css('display', 'none');
+    $(`#${id}__header__sort__rating__asc`).css('display', 'none');
 
     // selected visible
     $(`#${sort}`).css({ display: 'flex' });
@@ -115,32 +122,32 @@ const Items = (props) => {
   return (
     <div className={className}>
       <div className={`${className}__header`}>
-        <div className={`${className}__header__search`}>
-          <SearchField placeholder="Search" />
-        </div>
+        <form className={`${className}__header__search`} onSubmit={(e) => onSubmit(e)}>
+          <SearchField placeholder="Search" onChange={setSearch} />
+        </form>
         <div className={`${className}__header__sort`} id={`${id}__header__sort`}>
           <button className={`${className}__header__sort__btn`} id={`${id}__header__sort__btn`} type="button" onClick={() => dropDown()}>
             sort
             <div className={`${className}__header__sort__btn__arrow`} id={`${id}__header__sort__btn__arrow`} />
           </button>
-          <div className={`${className}__header__sort__reviews`}>
-            <button className={`${className}__header__sort__reviews__asc`} id={`${id}__header__sort__reviews__asc`} type="button" onClick={() => changeFilter(`${id}__header__sort__reviews__asc`)}>
+          <div className={`${className}__header__sort__review`}>
+            <button className={`${className}__header__sort__review__asc`} id={`${id}__header__sort__review__asc`} type="button" onClick={() => changeFilter(`${id}__header__sort__review__asc`)}>
               reviews
-              <div className={`${className}__header__sort__reviews__ascArrow`} />
+              <div className={`${className}__header__sort__review__ascArrow`} />
             </button>
-            <button className={`${className}__header__sort__reviews__desc`} id={`${id}__header__sort__reviews__desc`} type="button" onClick={() => changeFilter(`${id}__header__sort__reviews__desc`)}>
+            <button className={`${className}__header__sort__review__desc`} id={`${id}__header__sort__review__desc`} type="button" onClick={() => changeFilter(`${id}__header__sort__review__desc`)}>
               reviews
-              <div className={`${className}__header__sort__reviews__descArrow`} />
+              <div className={`${className}__header__sort__review__descArrow`} />
             </button>
           </div>
-          <div className={`${className}__header__sort__ratings`}>
-            <button className={`${className}__header__sort__ratings__asc`} id={`${id}__header__sort__ratings__asc`} type="button" onClick={() => changeFilter(`${id}__header__sort__ratings__asc`)}>
+          <div className={`${className}__header__sort__rating`}>
+            <button className={`${className}__header__sort__rating__asc`} id={`${id}__header__sort__rating__asc`} type="button" onClick={() => changeFilter(`${id}__header__sort__rating__asc`)}>
               rating
-              <div className={`${className}__header__sort__ratings__ascArrow`} />
+              <div className={`${className}__header__sort__rating__ascArrow`} />
             </button>
-            <button className={`${className}__header__sort__ratings__desc`} id={`${id}__header__sort__ratings__desc`} type="button" onClick={() => changeFilter(`${id}__header__sort__ratings__desc`)}>
+            <button className={`${className}__header__sort__rating__desc`} id={`${id}__header__sort__rating__desc`} type="button" onClick={() => changeFilter(`${id}__header__sort__rating__desc`)}>
               rating
-              <div className={`${className}__header__sort__ratings__descArrow`} />
+              <div className={`${className}__header__sort__rating__descArrow`} />
             </button>
           </div>
           <button className={`${className}__header__sort__arrow`} id={`${id}__header__sort__arrow`} type="button" onClick={() => dropDown()}> </button>
@@ -160,12 +167,22 @@ Items.propTypes = {
   items: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   className: propTypes.string,
   id: propTypes.string,
+  setSearch: propTypes.func,
+  onSubmit: propTypes.func,
+  setSort: propTypes.func,
+  setSortDir: propTypes.func,
+  onSort: propTypes.func,
 };
 
 Items.defaultProps = {
   items: null,
   className: 'items',
   id: 'items',
+  setSearch: null,
+  onSubmit: null,
+  setSort: null,
+  setSortDir: null,
+  onSort: null,
 };
 
 export default Items;

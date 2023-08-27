@@ -26,6 +26,7 @@ const ReviewsList = (props) => {
         id={review.id}
         title={review.title}
         date={review.date}
+        item={review.item.id}
       >
         {reviews[i]}
       </LargeReview>,

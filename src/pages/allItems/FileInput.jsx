@@ -11,23 +11,17 @@ import JsonFileInput from '../../components/JsonFileInput';
  * @property {string} id - custom id if wanted. Default is fileInput.
  * @returns file input component
  */
-const FileInput = (props) => {
-  const { onSubmit } = props;
-  const { className } = props;
-  const { id } = props;
-
-  return (
-    <div className={className}>
-      <div className={`${className}__title`} id={`${id}__title`}> Add new item </div>
-      <form className={`${className}__form`} id={`${id}__form`} onSubmit={(e) => onSubmit(e)}>
-        <InputField id="fileName" title="product name" width="280px" height="40px" />
-        <LargeInputField id="fileDesc" title="Product description" />
-        <JsonFileInput id="jsonFileInput" height="200px" />
-        <button className={`${className}__form__submitBtn`} id={`${id}__form__submitBtn`} type="submit"> submit </button>
-      </form>
-    </div>
-  );
-};
+const FileInput = ({ onSubmit, className, id }) => (
+  <div className={className}>
+    <div className={`${className}__title`} id={`${id}__title`}> Add new item </div>
+    <form className={`${className}__form`} id={`${id}__form`} onSubmit={(e) => onSubmit(e)}>
+      <InputField id="fileName" title="product name" width="280px" height="40px" />
+      <LargeInputField id="fileDesc" title="Product description" />
+      <JsonFileInput id="jsonFileInput" height="200px" />
+      <button className={`${className}__form__submitBtn`} id={`${id}__form__submitBtn`} type="submit"> submit </button>
+    </form>
+  </div>
+);
 
 FileInput.propTypes = {
   onSubmit: propTypes.func,

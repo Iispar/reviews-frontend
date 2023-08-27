@@ -16,7 +16,6 @@
         position: absolute;
         top: 3px;
         transform: $rotate;
-        background: $backgroundWhite;
     }
 }
 
@@ -54,7 +53,7 @@
                 justify-content: flex-end;
                 padding-right: 4px;
             }
-            &__reviews, &__ratings {
+            &__review, &__rating {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -80,10 +79,10 @@
                     @include arrow(rotate(90deg));
                 }
             }
-            &__reviews__asc {
+            &__review__asc {
                 border-top-left-radius: 9px;
             }
-            &__reviews__desc {
+            &__review__desc {
                 border-bottom-left-radius: 9px;
             }
             &__arrow {

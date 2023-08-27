@@ -56,8 +56,8 @@ const LargeItem = (props) => {
 LargeItem.propTypes = {
   item: propTypes.string,
   className: propTypes.string,
-  rating: propTypes.string,
-  id: propTypes.string,
+  rating: propTypes.number,
+  id: propTypes.number,
   reviews: propTypes.string,
 };
 

@@ -19,6 +19,7 @@ const LargeReview = (props) => {
   const { title } = props;
   const { date } = props;
   const { className } = props;
+  const { item } = props;
 
   /**
    * Opens and closes the view of the comment depending on its current state.
@@ -37,18 +38,20 @@ const LargeReview = (props) => {
     // close all
     $(`.${className}`).css('flex-grow', 0);
     $(`.${className}`).css('padding-bottom', '12px');
-    $(`.${className}__info__rating__expandBtn`).css('display', 'flex');
+    $(`.${className}__info__stats__rating__expandBtn`).css('display', 'flex');
     $(`.${className}__info__closeBtn`).css('display', 'none');
     $(`.${className}__info__body__header`).css('display', 'none');
     $(`.${className}__info__body`).removeClass('showAll');
+    $(`.${className}__info__stats__item`).css('display', 'none');
     // open btn is pressed. First open correct one.
     if (open) {
       $(`.${className}`).css('padding-bottom', '4px');
       $(`#${className}__info__body__${id}`).addClass('showAll');
-      $(`#${className}__info__rating__expandBtn__${id}`).css('display', 'none');
+      $(`#${className}__info__stats__rating__expandBtn__${id}`).css('display', 'none');
       $(`#${className}__info__closeBtn__${id}`).css('display', 'flex');
       $(`#${className}__info__body__header__${id}`).css('display', 'flex');
       $(`#${className}__${id}`).css('flex-grow', '2');
+      $(`#${className}__info__stats__item__${id}`).css('display', 'flex');
     }
   };
 
@@ -63,10 +66,16 @@ const LargeReview = (props) => {
           </div>
           <span className={`${className}__info__body__comment`} id={`${className}__info__body__comment`}>{body}</span>
         </div>
-        <div className={`${className}__info__rating`}>
-          <button className={`${className}__info__rating__expandBtn`} id={`${className}__info__rating__expandBtn__${id}`} type="button" onClick={() => toggle(true)} aria-label="expandButton" />
-          <span className={`${className}__info__rating__value`} id={`${className}__info__rating__value`}>{rating}</span>
-          <div className={`${className}__info__rating__icon`} />
+        <div className={`${className}__info__stats`}>
+          <div className={`${className}__info__stats__rating`}>
+            <button className={`${className}__info__stats__rating__expandBtn`} id={`${className}__info__stats__rating__expandBtn__${id}`} type="button" onClick={() => toggle(true)} aria-label="expandButton" />
+            <span className={`${className}__info__stats__rating__value`} id={`${className}__info__stats__rating__value`}>{rating}</span>
+            <div className={`${className}__info__stats__rating__icon`} />
+          </div>
+          <div className={`${className}__info__stats__item`} id={`${className}__info__stats__item__${id}`}>
+            item:
+            {item}
+          </div>
         </div>
       </div>
     </div>
@@ -80,6 +89,7 @@ LargeReview.propTypes = {
   title: propTypes.string,
   date: propTypes.string,
   className: propTypes.string,
+  item: propTypes.number,
 };
 
 LargeReview.defaultProps = {
@@ -89,6 +99,7 @@ LargeReview.defaultProps = {
   title: null,
   date: null,
   className: 'largeReview',
+  item: null,
 };
 
 export default LargeReview;

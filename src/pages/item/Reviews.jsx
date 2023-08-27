@@ -19,6 +19,7 @@ const Reviews = (props) => {
       <div className={`${className}__header`}>
         <div className={`${className}__header__text`}> Reviews </div>
       </div>
+      <div> sort and search </div>
       <div className={`${className}__reviews`}>
         <ReviewsList reviews={reviews} />
       </div>
