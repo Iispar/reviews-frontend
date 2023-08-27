@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
-// import { useNewItem } from './allItemsHooks';
+import { useNewItem } from './allItemsHooks';
 import Items from './Items';
 import FileInput from './FileInput';
 import itemService from '../../services/itemService';
@@ -20,13 +20,16 @@ const AllItems = ({ className, id }) => {
   const [sortDir, setSortDir] = useState('none');
   const [page] = useState(0);
 
+  /**
+   * UseEffect loads the token and account id for the user and loads the data on page load.
+   */
   useEffect(() => {
-    const newToken = window.localStorage.getItem('token');
-    const curAccount = window.localStorage.getItem('accountId');
+    const newToken = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
+    const curAccountId = window.localStorage.getItem('accountId').replace(/^"(.*)"$/, '$1');
     setToken(newToken);
-    setAccountId(curAccount);
+    setAccountId(curAccountId);
 
-    itemService.getAll(curAccount, 0, newToken)
+    itemService.getAll(curAccountId, page, newToken)
       .then((res) => setItems(res));
   }, []);
 
@@ -38,20 +41,29 @@ const AllItems = ({ className, id }) => {
    */
   const handleCreation = (e) => {
     e.preventDefault();
-    // commented for eslint errors as the hook doesn't have fucntionality yet.
-    // const values = e.target;
-    // would try catch be better here?
-    // if (useNewItem(values[0].value, values[1].value, values[2].value)) console.log('success');
-    // else console.log('error');
+    const values = e.target;
+    if (useNewItem(accountId, values[0].value, values[1].value, token)) console.log('success');
+    else console.log('error');
   };
 
-  const submit = (e) => {
+  /**
+   * Searches with the value in the input field and selected sorts.
+   * @param {*} e
+   */
+  const searchInput = (e) => {
     if (e) e.preventDefault();
 
     itemService.getSearch(accountId, search, page, sort, sortDir, token)
       .then((res) => setItems(res));
   };
 
+  /**
+   * Searches with the selected sort.
+   * @param {String} selSort
+   *        Selected sort.
+   * @param {String} selSortDir
+   *        Selected sort direction
+   */
   const searchSort = (selSort, selSortDir) => {
     setSort(selSort);
     setSortDir(selSortDir);
@@ -71,7 +83,7 @@ const AllItems = ({ className, id }) => {
             items={items}
             setSearch={(e) => setSearch(e)}
             onSort={(selSort, selSortDir) => searchSort(selSort, selSortDir)}
-            onSubmit={(e) => submit(e)}
+            onSubmit={(e) => searchInput(e)}
           />
         </div>
         <div className={`${className}__grid__fileInput`} id={`${id}__grid__fileInput`}>

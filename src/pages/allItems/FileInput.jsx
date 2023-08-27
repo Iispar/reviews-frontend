@@ -1,8 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import InputField from '../../components/InputField';
-import LargeInputField from '../../components/LargeInputField';
-import JsonFileInput from '../../components/JsonFileInput';
 
 /**
  * Renders the file input component.
@@ -16,8 +14,13 @@ const FileInput = ({ onSubmit, className, id }) => (
     <div className={`${className}__title`} id={`${id}__title`}> Add new item </div>
     <form className={`${className}__form`} id={`${id}__form`} onSubmit={(e) => onSubmit(e)}>
       <InputField id="fileName" title="product name" width="280px" height="40px" />
-      <LargeInputField id="fileDesc" title="Product description" />
-      <JsonFileInput id="jsonFileInput" height="200px" />
+      <label className={`${className}__form__category__label`} htmlFor="createCategory">
+        role:
+        <select id="createCategory" name="createCategory">
+          <option value="1"> Sports </option>
+          <option value="2"> TODO </option>
+        </select>
+      </label>
       <button className={`${className}__form__submitBtn`} id={`${id}__form__submitBtn`} type="submit"> submit </button>
     </form>
   </div>

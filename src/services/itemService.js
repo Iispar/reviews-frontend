@@ -26,4 +26,21 @@ const getSort = async (accountId, page, sort, sortDir, token) => {
   return res.data;
 };
 
-export default { getAll, getSearch, getSort };
+const createNew = async (accountId, title, categoryId, token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const payload = [{
+    title,
+    account: { id: accountId },
+    category: { id: categoryId },
+    rating: null,
+    words: null,
+  }];
+  const res = await axios.post(`${baseUrl}/add`, payload, config);
+  return res.data;
+};
+
+export default {
+  getAll, getSearch, getSort, createNew,
+};

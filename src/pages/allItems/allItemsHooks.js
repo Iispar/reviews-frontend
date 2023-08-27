@@ -1,6 +1,5 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable no-unused-vars */
 /* eslint-disable import/prefer-default-export */
+import itemService from '../../services/itemService';
 /**
  * Creates a new item and posts it to the backend.
  * @param {String} name
@@ -11,7 +10,14 @@
  *        File containing all the items reviews
  * @returns true if successful, false if not.
  */
-export const useNewItem = (name, desc, file) => {
-  // console.log(`created with ${name}, ${desc}, ${file}`);
-  return true;
+export const useNewItem = (accountId, title, category, token) => {
+  try {
+    itemService.createNew(accountId, title, category, token)
+      .then();
+    console.log(`created with ${title}, ${category}`);
+    return true;
+  } catch (exception) {
+    console.log('error while creating item');
+  }
+  return false;
 };
