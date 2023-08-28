@@ -26,4 +26,24 @@ const getChartForItem = async (itemId, time, token) => {
   return res.data;
 };
 
-export default { getReviews, getChartForAccount, getChartForItem };
+const createNew = async (itemId, accountId, title, body, date, token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const payload = [{
+    item: { id: itemId },
+    account: { id: accountId },
+    title,
+    body,
+    date,
+    rating: 0,
+    likes: 0,
+    dislikes: 0,
+  }];
+  const res = await axios.post(`${baseUrl}/add`, payload, config);
+  return res.data;
+};
+
+export default {
+  getReviews, getChartForAccount, getChartForItem, createNew,
+};

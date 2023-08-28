@@ -18,11 +18,9 @@ const NewReviewForm = ({
   <div className={className} id={id}>
     <form className={`${className}__form`} id={`${className}__form`} onSubmit={(e) => onSubmit(e)} noValidate>
       <span className={`${className}__form__title`}> add a new comment </span>
+      <InputField className={`${className}__form__title`} title="title" width="160px" />
       <LargeInputField title="comment body" height="300px" />
-      <div className={`${className}__form__du`}>
-        <input className={`${className}__form__du_date`} type="date" />
-        <InputField className={`${className}__form__du_user`} title="user id" width="160px" />
-      </div>
+      <input className={`${className}__form__du_date`} type="date" />
       <span className={`${className}__form__file`}> or add a file </span>
       <JsonFileInput id={`${className}__form__fileInput`} height="200px" />
     </form>

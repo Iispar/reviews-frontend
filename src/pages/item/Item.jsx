@@ -9,6 +9,7 @@ import ItemChart from './ItemChart';
 import Reviews from './Reviews';
 import NewReviewForm from './NewReviewForm';
 import pagesService from '../../services/pagesService';
+import { UseNewReview } from './itemHooks';
 
 /**
  * Renders the single Item page.
@@ -65,8 +66,7 @@ const Item = ({ className, id }) => {
 
   const submitReview = (e) => {
     e.preventDefault();
-    // if (UseNewReview(e.target[0].value)) console.log('success');
-    // else console.log('failure');
+    UseNewReview(itemId, accountId, e.target[0].value, e.target[1].value, e.target[2].value, token);
   };
 
   return (

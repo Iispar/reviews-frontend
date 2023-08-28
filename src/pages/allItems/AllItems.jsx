@@ -42,8 +42,7 @@ const AllItems = ({ className, id }) => {
   const handleCreation = (e) => {
     e.preventDefault();
     const values = e.target;
-    if (useNewItem(accountId, values[0].value, values[1].value, token)) console.log('success');
-    else console.log('error');
+    useNewItem(accountId, values[0].value, values[1].value, token);
   };
 
   /**
