@@ -18,10 +18,10 @@ const LineTooltip = ({
     const { time } = payload[0].payload;
     const { count } = payload[0].payload;
     const { rating } = payload[0].payload;
-    const { year } = payload[0].payload;
+    const { timeYear } = payload[0].payload;
 
     // check if time is month or week
-    const title = /^\d+$/.test(time) ? `week ${time} of ${year}` : `${time} of ${year}`;
+    const title = /^\d+$/.test(time) ? `week ${time} of ${timeYear}` : `${time} of ${timeYear}`;
 
     return (
       <div className={className}>

@@ -18,7 +18,7 @@ const TopWords = ({
   for (let i = 0; i < words.length; i += 1) {
     list.push(
       <WordListItem
-        name={words[i].name}
+        name={words[i]}
         index={i}
         key={words[i].key}
       />,

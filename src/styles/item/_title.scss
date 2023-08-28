@@ -37,9 +37,8 @@
         width: 600px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-end;
         padding-left: 4px;
-        padding-bottom: 8px;
         box-sizing: border-box;
         overflow: hidden;
         &__name {

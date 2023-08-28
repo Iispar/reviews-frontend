@@ -10,7 +10,7 @@ const getReviews = async (accountId, page, token) => {
   return res.data;
 };
 
-const getChart = async (accountId, time, token) => {
+const getChartForAccount = async (accountId, time, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
@@ -18,4 +18,12 @@ const getChart = async (accountId, time, token) => {
   return res.data;
 };
 
-export default { getReviews, getChart };
+const getChartForItem = async (itemId, time, token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const res = await axios.get(`${baseUrl}/get/chart/item?itemId=${itemId}&time=${time}`, config);
+  return res.data;
+};
+
+export default { getReviews, getChartForAccount, getChartForItem };

@@ -18,9 +18,14 @@ import pagesService from '../../services/pagesService';
  */
 const Item = ({ className, id }) => {
   const { itemId } = useParams();
+  const [title, setTitle] = useState(null);
   const [reviews, setReviews] = useState(null);
+  const [rating, setRating] = useState(null);
   const [posWords, setPosWords] = useState(null);
   const [negWords, setNegWords] = useState(null);
+  const [posReviews, setPosReviews] = useState(null);
+  const [negReviews, setNegReviews] = useState(null);
+  const [reviewsCount, setReviewsCount] = useState(null);
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState(null);
   // eslint-disable-next-line no-unused-vars
@@ -35,11 +40,15 @@ const Item = ({ className, id }) => {
 
     pagesService.getItem(itemId, newToken)
       .then((res) => {
-        console.log(res);
         setReviews(res.latestReviews);
         setPosWords(res.topPos.slice(0, 5));
         setNegWords(res.topNeg.slice(0, 5));
         setChart(res.chart);
+        setTitle(res.title);
+        setRating(res.rating.toString());
+        setReviewsCount(res.reviews);
+        setPosReviews(res.positiveReviews);
+        setNegReviews(res.negativeReviews);
       });
   }, []);
   const newReview = () => {
@@ -65,13 +74,11 @@ const Item = ({ className, id }) => {
       <div className={`${className}__grid`}>
         <div className={`${className}__grid__title`} id={`${className}__grid__title`}>
           <Title
-            name="item name"
-            desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industrys standard dummy text ever since"
-            reviewsCount="102"
-            ratingValue="4.3"
-            posReviews="72"
-            negReviews="30"
+            name={title}
+            reviewsCount={reviewsCount}
+            ratingValue={rating}
+            posReviews={posReviews}
+            negReviews={negReviews}
           />
         </div>
         <div className={`${className}__grid__reviews`} id={`${className}__grid__reviews`}>
@@ -83,7 +90,7 @@ const Item = ({ className, id }) => {
           <NewReview onClick={newReview} />
         </div>
         <div className={`${className}__grid__chart`} id={`${className}__grid__chart`}>
-          <ItemChart data={chart} key={chart} />
+          <ItemChart curData={chart} key={chart} itemId={itemId} token={token} />
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ const HomeChart = ({
    * @param {String} selectionText - text of selection
    */
   const changeView = (selectionText) => {
-    reviewsService.getChart(accountId, selectionText, token)
+    reviewsService.getChartForAccount(accountId, selectionText, token)
       .then((res) => setData(res));
 
     if (selectionText === 'month') {

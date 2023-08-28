@@ -11,7 +11,7 @@ import { getVerticalPoints } from './helpers';
  * As this is used in this app only for reviews and ratings the right domain is 1-6 on setting
  * and left is until max reviews.
  * uses the recharts library.
- * @property {json} data - Data with reviews and ratings as keys. Used for the lines.
+ * @property {json} data - Data with count and ratings as keys. Used for the lines.
  * @property {String} className - Custom className if wanted. Default lineChart.
  * @property {String} id - Custom id if wanted. Default lineChart.
  * @returns line chart
@@ -49,11 +49,11 @@ const DoubleLineChart = ({ data, className, id }) => {
         >
           <CartesianGrid horizontal={false} verticalPoints={verticalPoints} />
           <XAxis dataKey="time" height={1} fontFamily="mainFont" tickSize axisLine={false} dy={-24} />
-          <YAxis yAxisId="left" width={yWidth} tick={false} domain={[0, max]} />
-          <YAxis yAxisId="right" tick={false} orientation="right" domain={[1, 7]} width={yWidth} />
+          <YAxis yAxisId="left" width={yWidth} tick={false} domain={[-4, max]} />
+          <YAxis yAxisId="right" tick={false} orientation="right" domain={[0, 7]} width={yWidth} />
           <Tooltip cursor={false} content={<LineChartTooltip />} />
           <Legend layout="vertical" wrapperStyle={{ top: 0, left: 5, fontFamily: 'mainFont' }} />
-          <Line yAxisId="left" type="monotone" dataKey="reviews" stroke="#4F5D75" />
+          <Line yAxisId="left" type="monotone" dataKey="count" stroke="#4F5D75" />
           <Line yAxisId="right" type="monotone" dataKey="rating" stroke="#EF8354" />
         </LineChart>
       </ResponsiveContainer>

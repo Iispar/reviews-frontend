@@ -14,8 +14,9 @@ import propTypes from 'prop-types';
  * @returns title for single item
  */
 const Title = ({
-  name, desc, reviewsCount, ratingValue, posReviews, negReviews, className, id,
+  name, reviewsCount, ratingValue, posReviews, negReviews, className, id,
 }) => {
+  if (name == null) return null;
   /**
    * Formats the star rating to actual stars.
    * @param {String} reviews
@@ -55,9 +56,6 @@ const Title = ({
         <div className={`${className}__info__name`} id={`${className}__info__name`}>
           {name}
         </div>
-        <div className={`${className}__info__desc`} id={`${className}__info__desc`}>
-          {desc}
-        </div>
       </div>
       <div className={`${className}__data`}>
         <div className={`${className}__data__reviews`} id={`${className}__data__reviews`}>
@@ -91,7 +89,6 @@ const Title = ({
 
 Title.propTypes = {
   name: propTypes.string,
-  desc: propTypes.string,
   reviewsCount: propTypes.string,
   ratingValue: propTypes.string,
   posReviews: propTypes.string,
@@ -102,7 +99,6 @@ Title.propTypes = {
 
 Title.defaultProps = {
   name: null,
-  desc: null,
   reviewsCount: null,
   ratingValue: null,
   posReviews: null,
