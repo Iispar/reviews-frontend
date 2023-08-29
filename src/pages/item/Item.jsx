@@ -33,6 +33,7 @@ const Item = ({ className, id }) => {
   const [accountId, setAccountId] = useState(null);
   const [chart, setChart] = useState(null);
   const [sort, setSort] = useState('none');
+  const [search, setSearch] = useState(null);
   const [sortDir, setSortDir] = useState('none');
   const page = useRef(0);
 
@@ -94,6 +95,11 @@ const Item = ({ className, id }) => {
     }
   };
 
+  const onSearch = (e) => {
+    e.preventDefault();
+    console.log(search, sort, sortDir);
+  };
+
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`}>
@@ -113,6 +119,8 @@ const Item = ({ className, id }) => {
             setSortDir={setSortDir}
             nextPage={() => nextPage()}
             prevPage={() => prevPage()}
+            onSubmit={(e) => onSearch(e)}
+            setSearch={setSearch}
           />
         </div>
         <div className={`${className}__grid__words`} id={`${className}__grid__words`}>

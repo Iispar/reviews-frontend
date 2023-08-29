@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import propTypes from 'prop-types';
 import ReviewsList from '../../components/ReviewsList';
 import Pagination from '../../components/Pagination';
+import SearchField from '../../components/SearchField';
 
 /**
  * Creates the latest review component for the item page.
@@ -12,11 +13,16 @@ import Pagination from '../../components/Pagination';
  * @returns component for latest reviews
  */
 const Reviews = ({
-  reviews, className, id, setSort, setSortDir, nextPage, prevPage,
+  reviews, className, id, setSort, setSortDir, nextPage, prevPage, onSubmit, setSearch,
 }) => (
   <div className={className} id={id}>
     <div className={`${className}__header`}>
       <div className={`${className}__header__text`}> Reviews </div>
+    </div>
+    <div className={`${className}__filters`}>
+      <form className={`${className}__filter__search`} onSubmit={(e) => onSubmit(e)}>
+        <SearchField placeholder="Search" onChange={setSearch} />
+      </form>
     </div>
     <div className={`${className}__reviews`}>
       <ReviewsList reviews={reviews} />
@@ -35,7 +41,8 @@ Reviews.propTypes = {
   setSortDir: propTypes.func,
   nextPage: propTypes.func,
   prevPage: propTypes.func,
-
+  onSubmit: propTypes.func,
+  setSearch: propTypes.func,
 };
 
 Reviews.defaultProps = {
@@ -46,6 +53,8 @@ Reviews.defaultProps = {
   setSortDir: 'none',
   nextPage: null,
   prevPage: null,
+  onSubmit: null,
+  setSearch: null,
 };
 
 export default Reviews;
