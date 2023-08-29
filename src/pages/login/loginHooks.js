@@ -21,7 +21,7 @@ export const UseLogin = async (username, password) => {
     return res.token;
   } catch (exception) {
     // TODO: ERROR MESSAGE
-    console.log('wrong credentials');
+    // console.log('wrong credentials');
   }
   return null;
 };
@@ -47,7 +47,7 @@ export const UseCreateAccount = async (username, name, email, password, role) =>
     return token;
   } catch (exception) {
     // TODO: ERROR MESSAGE
-    console.log('error while creating');
+    // console.log('error while creating');
   }
   return null;
 };

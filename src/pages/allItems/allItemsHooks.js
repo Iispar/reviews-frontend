@@ -14,10 +14,10 @@ export const useNewItem = (accountId, title, category, token) => {
   try {
     itemService.createNew(accountId, title, category, token)
       .then();
-    console.log(`created with ${title}, ${category}`);
+    // console.log(`created with ${title}, ${category}`);
     return true;
   } catch (exception) {
-    console.log('error while creating item');
+    // console.log('error while creating item');
   }
   return false;
 };

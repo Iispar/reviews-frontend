@@ -14,7 +14,7 @@ export const UseNewReview = (itemId, accountId, title, body, date, token) => {
       .then();
     return true;
   } catch (exceptiong) {
-    console.log('error');
+    // console.log('error');
   }
   return false;
 };
