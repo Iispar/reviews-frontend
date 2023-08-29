@@ -14,63 +14,40 @@ import reviewsService from '../../services/reviewsService';
  * @returns component for latest reviews
  */
 const Reviews = ({
-  itemId, initReviews, className, id, token,
-}) => {
-  const page = useRef(0);
-  const [reviews, setReviews] = useState(initReviews);
-  const [sort, setSort] = useState('none');
-  const [sortBy, setSortBy] = useState('none');
-  /**
-   * Function to move to load the next page of reviews
-   */
-  const nextPage = () => {
-    $('#pagination__prev').prop('disabled', false);
-    reviewsService.getReviewsForItem(itemId, page.current + 1, sort, sortBy, token)
-      .then((res) => setReviews(res));
-    page.current += 1;
-  };
-
-  /**
-   * Function to move to load the previous page of reviews
-   */
-  const prevPage = () => {
-    reviewsService.getReviewsForItem(itemId, page.current - 1, sort, sortBy, token)
-      .then((res) => setReviews(res));
-    page.current -= 1;
-    if (page.current === 0) {
-      $('#pagination__prev').prop('disabled', true);
-    }
-  };
-  return (
-    <div className={className} id={id}>
-      <div className={`${className}__header`}>
-        <div className={`${className}__header__text`}> Reviews </div>
-      </div>
-      <div> sort and search </div>
-      <div className={`${className}__reviews`}>
-        <ReviewsList reviews={reviews} />
-      </div>
-      <div className={`${className}__pagination`}>
-        <Pagination next={() => nextPage()} prev={() => prevPage()} />
-      </div>
+  reviews, className, id, setSort, setSortDir, nextPage, prevPage,
+}) => (
+  <div className={className} id={id}>
+    <div className={`${className}__header`}>
+      <div className={`${className}__header__text`}> Reviews </div>
     </div>
-  );
-};
+    <div className={`${className}__reviews`}>
+      <ReviewsList reviews={reviews} />
+    </div>
+    <div className={`${className}__pagination`}>
+      <Pagination next={() => nextPage()} prev={() => prevPage()} />
+    </div>
+  </div>
+);
 
 Reviews.propTypes = {
-  initReviews: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
+  reviews: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   className: propTypes.string,
   id: propTypes.string,
-  token: propTypes.string,
-  itemId: propTypes.string,
+  setSort: propTypes.func,
+  setSortDir: propTypes.func,
+  nextPage: propTypes.func,
+  prevPage: propTypes.func,
+
 };
 
 Reviews.defaultProps = {
-  initReviews: null,
+  reviews: null,
   className: 'reviews',
   id: 'reviews',
-  token: null,
-  itemId: null,
+  setSort: 'none',
+  setSortDir: 'none',
+  nextPage: null,
+  prevPage: null,
 };
 
 export default Reviews;

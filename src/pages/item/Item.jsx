@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState, useRef } from 'react';
 import $ from 'jquery';
 import { useParams } from 'react-router-dom';
 import propTypes from 'prop-types';
@@ -10,6 +11,7 @@ import Reviews from './Reviews';
 import NewReviewForm from './NewReviewForm';
 import pagesService from '../../services/pagesService';
 import { UseNewReview } from './itemHooks';
+import reviewsService from '../../services/reviewsService';
 
 /**
  * Renders the single Item page.
@@ -30,6 +32,10 @@ const Item = ({ className, id }) => {
   const [token, setToken] = useState(null);
   const [accountId, setAccountId] = useState(null);
   const [chart, setChart] = useState(null);
+  const [sort, setSort] = useState('none');
+  const [sortDir, setSortDir] = useState('none');
+  const page = useRef(0);
+
   useEffect(() => {
     const newToken = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
     const curAccountId = window.localStorage.getItem('accountId').replace(/^"(.*)"$/, '$1');
@@ -66,6 +72,28 @@ const Item = ({ className, id }) => {
     UseNewReview(itemId, accountId, e.target[0].value, e.target[1].value, e.target[2].value, token);
   };
 
+  /**
+   * Function to move to load the next page of reviews
+   */
+  const nextPage = () => {
+    $('#pagination__prev').prop('disabled', false);
+    reviewsService.getReviewsForItem(itemId, page.current + 1, sort, sortDir, token)
+      .then((res) => setReviews(res));
+    page.current += 1;
+  };
+
+  /**
+     * Function to move to load the previous page of reviews
+     */
+  const prevPage = () => {
+    reviewsService.getReviewsForItem(itemId, page.current - 1, sort, sortDir, token)
+      .then((res) => setReviews(res));
+    page.current -= 1;
+    if (page.current === 0) {
+      $('#pagination__prev').prop('disabled', true);
+    }
+  };
+
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`}>
@@ -79,7 +107,13 @@ const Item = ({ className, id }) => {
           />
         </div>
         <div className={`${className}__grid__reviews`} id={`${className}__grid__reviews`}>
-          <Reviews initReviews={reviews} key={reviews} token={token} itemId={itemId} />
+          <Reviews
+            reviews={reviews}
+            setSort={setSort}
+            setSortDir={setSortDir}
+            nextPage={() => nextPage()}
+            prevPage={() => prevPage()}
+          />
         </div>
         <div className={`${className}__grid__words`} id={`${className}__grid__words`}>
           <Words posWords={posWords} negWords={negWords} />
