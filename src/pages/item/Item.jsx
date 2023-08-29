@@ -12,6 +12,7 @@ import NewReviewForm from './NewReviewForm';
 import pagesService from '../../services/pagesService';
 import { UseNewReview } from './itemHooks';
 import reviewsService from '../../services/reviewsService';
+import ParseInputFile from '../../helpers/ParseInputFile';
 
 /**
  * Renders the single Item page.
@@ -69,8 +70,20 @@ const Item = ({ className, id }) => {
     $('#newReviewForm').css('display', 'none');
   };
 
-  const submitReview = (e) => {
-    UseNewReview(itemId, accountId, e.target[0].value, e.target[1].value, e.target[2].value, token);
+  const submitReview = async (e) => {
+    e.preventDefault();
+    let list;
+    if (e.target[3].files[0]) {
+      list = await ParseInputFile(e.target[3].files[0]);
+    } else {
+      list = [];
+      list.push({
+        title: e.target[0].value,
+        body: e.target[1].value,
+        date: e.target[2].value,
+      });
+    }
+    UseNewReview(itemId, accountId, list, token);
   };
 
   /**

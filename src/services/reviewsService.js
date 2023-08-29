@@ -42,20 +42,23 @@ const getChartForItem = async (itemId, time, token) => {
   return res.data;
 };
 
-const createNew = async (itemId, accountId, title, body, date, token) => {
+const createNew = async (itemId, accountId, reviews, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  const payload = [{
-    item: { id: itemId },
-    account: { id: accountId },
-    title,
-    body,
-    date,
-    rating: 0,
-    likes: 0,
-    dislikes: 0,
-  }];
+  const payload = [];
+  for (let i = 0; i < reviews.length; i += 1) {
+    payload.push({
+      item: { id: itemId },
+      account: { id: accountId },
+      title: reviews[i].title,
+      body: reviews[i].body,
+      date: reviews[i].date,
+      rating: 0,
+      likes: 0,
+      dislikes: 0,
+    });
+  }
   const res = await axios.post(`${baseUrl}/add`, payload, config);
   return res.data;
 };
