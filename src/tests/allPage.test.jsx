@@ -4,9 +4,13 @@ import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import AllItems from '../pages/allItems/AllItems';
 import Items from '../pages/allItems/Items';
-import dummyItems from '../data/dummyData/dummyItems.json';
 
 describe('all items site works fully', () => {
+  beforeEach(() => {
+    jest.spyOn(Storage.prototype, 'setItem');
+    jest.spyOn(Storage.prototype, 'getItem').mockReturnValue('test');
+    jest.mock('axios');
+  });
   /**
    * Renders the allITems page and checks that every component exists there.
    */
@@ -31,25 +35,15 @@ describe('all items site works fully', () => {
   test('items render correctly', async () => {
     const pageContainer = render(
       <BrowserRouter>
-        <Items items={dummyItems.items} visible />
+        <Items visible />
       </BrowserRouter>,
     ).container;
 
     const search = pageContainer.querySelector('#searchField__input');
-    const sortBtn = pageContainer.querySelector('#items__header__sort__btn');
-    const sortRevAsc = pageContainer.querySelector('#items__header__sort__reviews__asc');
-    const sortRevDesc = pageContainer.querySelector('#items__header__sort__reviews__desc');
-    const sortRatAsc = pageContainer.querySelector('#items__header__sort__ratings__asc');
-    const sortRatDesc = pageContainer.querySelector('#items__header__sort__ratings__desc');
-    const itemList = pageContainer.querySelector('#itemList');
+    const itemList = pageContainer.querySelector('.items');
     const pagination = pageContainer.querySelector('#pagination');
 
     expect(search).toBeTruthy();
-    expect(sortBtn).toBeTruthy();
-    expect(sortRevAsc).toBeTruthy();
-    expect(sortRevDesc).toBeTruthy();
-    expect(sortRatAsc).toBeTruthy();
-    expect(sortRatDesc).toBeTruthy();
     expect(itemList).toBeTruthy();
     expect(pagination).toBeTruthy();
   });

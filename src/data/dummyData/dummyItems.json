@@ -3,38 +3,38 @@
         {
             "item": "item 1",
             "key": "123",
-            "rating": "4.9",
-            "reviews": "201"
+            "rating": 4.9,
+            "reviews": 201
         },
         {
             "item": "item 2 with a longer name",
             "key": "111",
-            "rating": "4.7",
-            "reviews": "2311"
+            "rating": 4.7,
+            "reviews": 2311
         },
         {
             "item": "item 3 with an even longer name that could be this",
             "key": "222",
-            "rating": "4.5",
-            "reviews": "123"
+            "rating": 4.5,
+            "reviews": 123
         },
         {
             "item": "item 4",
             "key": "333",
-            "rating": "4.2",
-            "reviews": "9213"
+            "rating": 4.2,
+            "reviews": 9213
         },
         {
             "item": "item 5",
             "key": "321",
-            "rating": "4.1",
-            "reviews": "12"
+            "rating": 4.1,
+            "reviews": 12
         },
         {
             "item": "item 6",
             "key": "323",
-            "rating": "3.4",
-            "reviews": "112"
+            "rating": 3.4,
+            "reviews": 112
         }
     ]
 }

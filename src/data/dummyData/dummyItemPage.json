@@ -1,0 +1,449 @@
+{
+    "title": "Gerber 31-001098 Remix Tactical",
+    "reviews": 39,
+    "positiveReviews": 23,
+    "negativeReviews": 9,
+    "rating": 3.6410300731658936,
+    "latestReviews": [
+        {
+            "id": 128,
+            "date": "2015-03-10",
+            "body": "Nice knive",
+            "title": "Five Stars",
+            "likes": 0,
+            "dislikes": 0,
+            "rating": 4,
+            "account": {
+                "id": 5,
+                "name": "admin",
+                "username": "admin",
+                "password": "$2a$10$nUVvgTwR.l.a9E4GWEChXuj/mt23HWUDqeUdzW/Y6HMhwBuKYk21S",
+                "email": "admin",
+                "role": {
+                    "id": 1,
+                    "name": "seller"
+                },
+                "enabled": true,
+                "accountNonExpired": true,
+                "accountNonLocked": true,
+                "credentialsNonExpired": true,
+                "authorities": []
+            },
+            "item": {
+                "id": 2,
+                "title": "Gerber 31-001098 Remix Tactical",
+                "account": {
+                    "id": 5,
+                    "name": "admin",
+                    "username": "admin",
+                    "password": "$2a$10$nUVvgTwR.l.a9E4GWEChXuj/mt23HWUDqeUdzW/Y6HMhwBuKYk21S",
+                    "email": "admin",
+                    "role": {
+                        "id": 1,
+                        "name": "seller"
+                    },
+                    "enabled": true,
+                    "accountNonExpired": true,
+                    "accountNonLocked": true,
+                    "credentialsNonExpired": true,
+                    "authorities": []
+                },
+                "rating": 3.64103,
+                "category": {
+                    "@id": 1,
+                    "id": 1,
+                    "name": "sports"
+                },
+                "words": {
+                    "id": 6,
+                    "positive": [
+                        "knife",
+                        "nice",
+                        "good",
+                        "great",
+                        "love",
+                        "blade",
+                        "price",
+                        "open",
+                        "sharp",
+                        "makes"
+                    ],
+                    "negative": [
+                        "knife",
+                        "open",
+                        "knives",
+                        "closed",
+                        "blade",
+                        "pocket",
+                        "way",
+                        "clip",
+                        "terrible",
+                        "gerber"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 127,
+            "date": "2015-03-15",
+            "body": "I really like how thin this knife is, but it'sa little hard to open one handed. The leading edge of the blade seems poorly shaped, but that's just a cosmetic thing and didn't affect the use.",
+            "title": "I really like how thin this knife is",
+            "likes": 0,
+            "dislikes": 0,
+            "rating": 3,
+            "account": {
+                "id": 5,
+                "name": "admin",
+                "username": "admin",
+                "password": "$2a$10$nUVvgTwR.l.a9E4GWEChXuj/mt23HWUDqeUdzW/Y6HMhwBuKYk21S",
+                "email": "admin",
+                "role": {
+                    "id": 1,
+                    "name": "seller"
+                },
+                "enabled": true,
+                "accountNonExpired": true,
+                "accountNonLocked": true,
+                "credentialsNonExpired": true,
+                "authorities": []
+            },
+            "item": {
+                "id": 2,
+                "title": "Gerber 31-001098 Remix Tactical",
+                "account": {
+                    "id": 5,
+                    "name": "admin",
+                    "username": "admin",
+                    "password": "$2a$10$nUVvgTwR.l.a9E4GWEChXuj/mt23HWUDqeUdzW/Y6HMhwBuKYk21S",
+                    "email": "admin",
+                    "role": {
+                        "id": 1,
+                        "name": "seller"
+                    },
+                    "enabled": true,
+                    "accountNonExpired": true,
+                    "accountNonLocked": true,
+                    "credentialsNonExpired": true,
+                    "authorities": []
+                },
+                "rating": 3.64103,
+                "category": 1,
+                "words": {
+                    "id": 6,
+                    "positive": [
+                        "knife",
+                        "nice",
+                        "good",
+                        "great",
+                        "love",
+                        "blade",
+                        "price",
+                        "open",
+                        "sharp",
+                        "makes"
+                    ],
+                    "negative": [
+                        "knife",
+                        "open",
+                        "knives",
+                        "closed",
+                        "blade",
+                        "pocket",
+                        "way",
+                        "clip",
+                        "terrible",
+                        "gerber"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 126,
+            "date": "2015-03-19",
+            "body": "Hard to get open and closed.... Not sure if it is due to being brand new",
+            "title": "Three Stars",
+            "likes": 0,
+            "dislikes": 0,
+            "rating": 2,
+            "account": {
+                "id": 5,
+                "name": "admin",
+                "username": "admin",
+                "password": "$2a$10$nUVvgTwR.l.a9E4GWEChXuj/mt23HWUDqeUdzW/Y6HMhwBuKYk21S",
+                "email": "admin",
+                "role": {
+                    "id": 1,
+                    "name": "seller"
+                },
+                "enabled": true,
+                "accountNonExpired": true,
+                "accountNonLocked": true,
+                "credentialsNonExpired": true,
+                "authorities": []
+            },
+            "item": {
+                "id": 2,
+                "title": "Gerber 31-001098 Remix Tactical",
+                "account": {
+                    "id": 5,
+                    "name": "admin",
+                    "username": "admin",
+                    "password": "$2a$10$nUVvgTwR.l.a9E4GWEChXuj/mt23HWUDqeUdzW/Y6HMhwBuKYk21S",
+                    "email": "admin",
+                    "role": {
+                        "id": 1,
+                        "name": "seller"
+                    },
+                    "enabled": true,
+                    "accountNonExpired": true,
+                    "accountNonLocked": true,
+                    "credentialsNonExpired": true,
+                    "authorities": []
+                },
+                "rating": 3.64103,
+                "category": 1,
+                "words": {
+                    "id": 6,
+                    "positive": [
+                        "knife",
+                        "nice",
+                        "good",
+                        "great",
+                        "love",
+                        "blade",
+                        "price",
+                        "open",
+                        "sharp",
+                        "makes"
+                    ],
+                    "negative": [
+                        "knife",
+                        "open",
+                        "knives",
+                        "closed",
+                        "blade",
+                        "pocket",
+                        "way",
+                        "clip",
+                        "terrible",
+                        "gerber"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 125,
+            "date": "2015-03-20",
+            "body": "Gorgeous knife. I simply love it.",
+            "title": "I simply love it.",
+            "likes": 0,
+            "dislikes": 0,
+            "rating": 5,
+            "account": {
+                "id": 5,
+                "name": "admin",
+                "username": "admin",
+                "password": "$2a$10$nUVvgTwR.l.a9E4GWEChXuj/mt23HWUDqeUdzW/Y6HMhwBuKYk21S",
+                "email": "admin",
+                "role": {
+                    "id": 1,
+                    "name": "seller"
+                },
+                "enabled": true,
+                "accountNonExpired": true,
+                "accountNonLocked": true,
+                "credentialsNonExpired": true,
+                "authorities": []
+            },
+            "item": {
+                "id": 2,
+                "title": "Gerber 31-001098 Remix Tactical",
+                "account": {
+                    "id": 5,
+                    "name": "admin",
+                    "username": "admin",
+                    "password": "$2a$10$nUVvgTwR.l.a9E4GWEChXuj/mt23HWUDqeUdzW/Y6HMhwBuKYk21S",
+                    "email": "admin",
+                    "role": {
+                        "id": 1,
+                        "name": "seller"
+                    },
+                    "enabled": true,
+                    "accountNonExpired": true,
+                    "accountNonLocked": true,
+                    "credentialsNonExpired": true,
+                    "authorities": []
+                },
+                "rating": 3.64103,
+                "category": 1,
+                "words": {
+                    "id": 6,
+                    "positive": [
+                        "knife",
+                        "nice",
+                        "good",
+                        "great",
+                        "love",
+                        "blade",
+                        "price",
+                        "open",
+                        "sharp",
+                        "makes"
+                    ],
+                    "negative": [
+                        "knife",
+                        "open",
+                        "knives",
+                        "closed",
+                        "blade",
+                        "pocket",
+                        "way",
+                        "clip",
+                        "terrible",
+                        "gerber"
+                    ]
+                }
+            }
+        }
+    ],
+    "chart": [
+        {
+            "count": 4,
+            "time": "35",
+            "rating": 3.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 1,
+            "time": "34",
+            "rating": 3.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 1,
+            "time": "33",
+            "rating": 5.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 1,
+            "time": "32",
+            "rating": 2.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 1,
+            "time": "31",
+            "rating": 4.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 4,
+            "time": "29",
+            "rating": 2.5,
+            "timeYear": "2015"
+        },
+        {
+            "count": 7,
+            "time": "28",
+            "rating": 4.5714,
+            "timeYear": "2015"
+        },
+        {
+            "count": 3,
+            "time": "25",
+            "rating": 3.3333,
+            "timeYear": "2015"
+        },
+        {
+            "count": 1,
+            "time": "24",
+            "rating": 4.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 1,
+            "time": "23",
+            "rating": 3.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 3,
+            "time": "22",
+            "rating": 5.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 1,
+            "time": "21",
+            "rating": 2.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 1,
+            "time": "20",
+            "rating": 4.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 1,
+            "time": "18",
+            "rating": 5.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 1,
+            "time": "17",
+            "rating": 4.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 2,
+            "time": "15",
+            "rating": 2.5,
+            "timeYear": "2015"
+        },
+        {
+            "count": 2,
+            "time": "12",
+            "rating": 4.0,
+            "timeYear": "2015"
+        },
+        {
+            "count": 3,
+            "time": "11",
+            "rating": 3.3333,
+            "timeYear": "2015"
+        },
+        {
+            "count": 1,
+            "time": "10",
+            "rating": 4.0,
+            "timeYear": "2015"
+        }
+    ],
+    "topPos": [
+        "knife",
+        "nice",
+        "good",
+        "great",
+        "love",
+        "blade",
+        "price",
+        "open",
+        "sharp",
+        "makes"
+    ],
+    "topNeg": [
+        "knife",
+        "open",
+        "knives",
+        "closed",
+        "blade",
+        "pocket",
+        "way",
+        "clip",
+        "terrible",
+        "gerber"
+    ]
+}

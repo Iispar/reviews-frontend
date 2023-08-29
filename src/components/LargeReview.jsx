@@ -89,7 +89,7 @@ LargeReview.propTypes = {
 LargeReview.defaultProps = {
   body: null,
   rating: null,
-  id: 'default',
+  id: 1,
   title: null,
   date: null,
   className: 'largeReview',

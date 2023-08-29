@@ -17,7 +17,7 @@ const Pagination = ({
   return (
     <div className={className} id={id}>
       <button className={`${className}__prev`} id={`${id}__prev`} type="button" onClick={prev}> previous </button>
-      <button className={`${className}__prev`} id={`${id}__prev`} type="button" onClick={next}> next </button>
+      <button className={`${className}__next`} id={`${id}__next`} type="button" onClick={next}> next </button>
     </div>
   );
 };

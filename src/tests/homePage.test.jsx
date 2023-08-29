@@ -4,18 +4,21 @@ import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import Home from '../pages/home/Home';
 import MostPopular from '../pages/home/MostPopular';
-import dummyItems from '../data/dummyData/dummyItems.json';
 import LatestReviews from '../pages/home/LatestReviews';
-import dummyReviews from '../data/dummyData/dummyReviews.json';
 import HomeStats from '../pages/home/HomeStats';
 import HomeChart from '../pages/home/HomeChart';
 
 global.ResizeObserver = require('resize-observer-polyfill');
 
+jest.mock('axios');
+
 describe('home site works fully', () => {
   beforeEach(() => {
     jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100);
     jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100);
+    jest.spyOn(Storage.prototype, 'setItem');
+    jest.spyOn(Storage.prototype, 'getItem').mockReturnValue('test');
+    jest.mock('axios');
   });
   test('page renders with components', () => {
     const pageContainer = render(
@@ -38,7 +41,7 @@ describe('home site works fully', () => {
   test('most popular renders', () => {
     const mostPopularContainer = render(
       <BrowserRouter>
-        <MostPopular items={dummyItems.items} />
+        <MostPopular />
       </BrowserRouter>,
     ).container;
 
@@ -51,7 +54,7 @@ describe('home site works fully', () => {
   test('latest reviews renders', () => {
     const reviewsContainer = render(
       <BrowserRouter>
-        <LatestReviews reviews={dummyReviews.reviews} />
+        <LatestReviews />
       </BrowserRouter>,
     ).container;
 

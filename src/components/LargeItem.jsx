@@ -62,7 +62,7 @@ LargeItem.defaultProps = {
   item: null,
   className: 'largeItem',
   rating: null,
-  id: 'default',
+  id: 2,
   reviews: null,
 };
 

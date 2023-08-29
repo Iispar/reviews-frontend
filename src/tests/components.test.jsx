@@ -93,7 +93,7 @@ describe('components render and work', () => {
       expect(label).toBeTruthy();
     });
     test('largeItem renders', () => {
-      const largeItemContainer = render(<LargeItem reviews="200" rating="2.2" item="testItem" />).container;
+      const largeItemContainer = render(<LargeItem reviews="200" rating={2.2} item="testItem" />).container;
       const name = largeItemContainer.querySelector('#largeItem__nameReviews__name');
       const reviewsCount = largeItemContainer.querySelector('#largeItem__nameReviews__reviews__count');
       const rating = largeItemContainer.querySelector('#largeItem__rating__rate');
@@ -104,12 +104,12 @@ describe('components render and work', () => {
     });
 
     test('largeReview renders', () => {
-      const largeItemContainer = render(<LargeReview rating="2.2" body="testBody" date="testDate" title="testTitle" id="id" />).container;
+      const largeItemContainer = render(<LargeReview rating={2.2} body="testBody" date="testDate" title="testTitle" id={1} />).container;
       const title = largeItemContainer.querySelector('#largeReview__info__body__header__title');
       const date = largeItemContainer.querySelector('#largeReview__info__body__header__date');
       const body = largeItemContainer.querySelector('#largeReview__info__body__comment');
-      const rating = largeItemContainer.querySelector('#largeReview__info__rating__value');
-      const expandBtn = largeItemContainer.querySelector('#largeReview__info__rating__expandBtn__id');
+      const rating = largeItemContainer.querySelector('#largeReview__info__stats__rating__value');
+      const expandBtn = largeItemContainer.querySelector('#largeReview__info__stats__rating__expandBtn__1');
 
       expect(title).toBeTruthy();
       expect(date).toBeTruthy();
@@ -132,9 +132,9 @@ describe('components render and work', () => {
       expect(input).toBeTruthy();
     });
     test('smallItem renders', () => {
-      const smallItemContainer = render(<SmallItem rating="2.2" item="testItem" id="id" />).container;
-      const name = smallItemContainer.querySelector('#smallItem__name__text__id');
-      const rating = smallItemContainer.querySelector('#smallItem__rating__value__id');
+      const smallItemContainer = render(<SmallItem rating={2.2} item="testItem" id={1} />).container;
+      const name = smallItemContainer.querySelector('#smallItem__name__text__1');
+      const rating = smallItemContainer.querySelector('#smallItem__rating__value__1');
 
       expect(name).toBeTruthy();
       expect(rating).toBeTruthy();
@@ -170,7 +170,7 @@ describe('components render and work', () => {
       expect(lineRatingText).toBeTruthy();
     });
     test('Top words render', () => {
-      const topWords = render(<TopWords title="top words" words={[{ name: 'test', key: '1' }, { name: 'test2', key: '2' }]} />).container;
+      const topWords = render(<TopWords title="top words" words={['test', 'test 2']} />).container;
 
       const title = topWords.querySelector('#wordList__title');
       const list = topWords.querySelector('#wordList__list');

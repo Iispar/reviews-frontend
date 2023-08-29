@@ -156,6 +156,7 @@ const Item = ({ className, id }) => {
             ratingValue={rating}
             posReviews={posReviews}
             negReviews={negReviews}
+            testId="test"
           />
         </div>
         <div className={`${className}__grid__reviews`} id={`${className}__grid__reviews`}>
