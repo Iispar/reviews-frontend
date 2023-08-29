@@ -67,9 +67,13 @@ const AllItems = ({ className, id }) => {
   const searchSort = (selSort, selSortDir) => {
     setSort(selSort);
     setSortDir(selSortDir);
-
-    itemService.getSort(accountId, page.current, selSort, selSortDir, token)
-      .then((res) => setItems(res));
+    if (search == null) {
+      itemService.getSort(accountId, page.current, selSort, selSortDir, token)
+        .then((res) => setItems(res));
+    } else {
+      itemService.getSearch(accountId, search, page.current, selSort, selSortDir, token)
+        .then((res) => setItems(res));
+    }
   };
 
   /**

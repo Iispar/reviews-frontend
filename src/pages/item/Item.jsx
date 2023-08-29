@@ -100,6 +100,13 @@ const Item = ({ className, id }) => {
     console.log(search, sort, sortDir);
   };
 
+  const searchSort = (selSort, selSortDir) => {
+    setSort(selSort);
+    setSortDir(selSortDir);
+
+    console.log(search, selSort, selSortDir);
+  };
+
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`}>
@@ -115,7 +122,7 @@ const Item = ({ className, id }) => {
         <div className={`${className}__grid__reviews`} id={`${className}__grid__reviews`}>
           <Reviews
             reviews={reviews}
-            setSort={setSort}
+            setSort={(selSort, selSortDir) => searchSort(selSort, selSortDir)}
             setSortDir={setSortDir}
             nextPage={() => nextPage()}
             prevPage={() => prevPage()}

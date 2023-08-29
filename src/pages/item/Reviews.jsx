@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import ReviewsList from '../../components/ReviewsList';
 import Pagination from '../../components/Pagination';
 import SearchField from '../../components/SearchField';
+import DropDownSortMenu from '../../components/DropDownSortMenu';
 
 /**
  * Creates the latest review component for the item page.
@@ -23,6 +24,7 @@ const Reviews = ({
       <form className={`${className}__filter__search`} onSubmit={(e) => onSubmit(e)}>
         <SearchField placeholder="Search" onChange={setSearch} />
       </form>
+      <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} />
     </div>
     <div className={`${className}__reviews`}>
       <ReviewsList reviews={reviews} />
