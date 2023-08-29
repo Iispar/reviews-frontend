@@ -35,7 +35,6 @@ const Home = ({ className, id }) => {
 
     pagesService.getHome(curAccountId, newToken)
       .then((res) => {
-        console.log(res.chart);
         setUser(res.accountName);
         setLatestReviews(res.latestReviews);
         setTopItems(res.topItems);

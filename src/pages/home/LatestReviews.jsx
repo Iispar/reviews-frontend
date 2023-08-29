@@ -25,7 +25,7 @@ const LatestReviews = ({
    */
   const nextPage = () => {
     $('#pagination__prev').prop('disabled', false);
-    reviewsService.getReviews(accountId, page.current + 1, token)
+    reviewsService.getReviewsForAccount(accountId, page.current + 1, token)
       .then((res) => setReviews(res));
     page.current += 1;
   };
@@ -34,7 +34,7 @@ const LatestReviews = ({
    * Function to move to load the previous page of reviews
    */
   const prevPage = () => {
-    reviewsService.getReviews(accountId, page.current - 1, token)
+    reviewsService.getReviewsForAccount(accountId, page.current - 1, token)
       .then((res) => setReviews(res));
     page.current -= 1;
     if (page.current === 0) {

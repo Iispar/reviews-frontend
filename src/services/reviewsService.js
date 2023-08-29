@@ -2,11 +2,19 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:8080/api/review';
 
-const getReviews = async (accountId, page, token) => {
+const getReviewsForAccount = async (accountId, page, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
   const res = await axios.get(`${baseUrl}/get/account?accountId=${accountId}&page=${page}`, config);
+  return res.data;
+};
+
+const getReviewsForItem = async (itemId, page, sort, sortDir, token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const res = await axios.get(`${baseUrl}/get/item?itemId=${itemId}&page=${page}&sort=${sort}&sortDir=${sortDir}`, config);
   return res.data;
 };
 
@@ -45,5 +53,5 @@ const createNew = async (itemId, accountId, title, body, date, token) => {
 };
 
 export default {
-  getReviews, getChartForAccount, getChartForItem, createNew,
+  getReviewsForAccount, getChartForAccount, getChartForItem, createNew, getReviewsForItem,
 };

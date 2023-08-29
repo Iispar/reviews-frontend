@@ -27,9 +27,7 @@ const Item = ({ className, id }) => {
   const [posReviews, setPosReviews] = useState(null);
   const [negReviews, setNegReviews] = useState(null);
   const [reviewsCount, setReviewsCount] = useState(null);
-  // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState(null);
-  // eslint-disable-next-line no-unused-vars
   const [accountId, setAccountId] = useState(null);
   const [chart, setChart] = useState(null);
   useEffect(() => {
@@ -41,13 +39,13 @@ const Item = ({ className, id }) => {
 
     pagesService.getItem(itemId, newToken)
       .then((res) => {
-        setReviews(res.latestReviews);
+        setReviews(res.reviews);
         setPosWords(res.topPos.slice(0, 5));
         setNegWords(res.topNeg.slice(0, 5));
         setChart(res.chart);
         setTitle(res.title);
         setRating(res.rating.toString());
-        setReviewsCount(res.reviews);
+        setReviewsCount(res.reviewsCount);
         setPosReviews(res.positiveReviews);
         setNegReviews(res.negativeReviews);
       });
@@ -65,7 +63,6 @@ const Item = ({ className, id }) => {
   };
 
   const submitReview = (e) => {
-    e.preventDefault();
     UseNewReview(itemId, accountId, e.target[0].value, e.target[1].value, e.target[2].value, token);
   };
 
@@ -82,7 +79,7 @@ const Item = ({ className, id }) => {
           />
         </div>
         <div className={`${className}__grid__reviews`} id={`${className}__grid__reviews`}>
-          <Reviews reviews={reviews} />
+          <Reviews initReviews={reviews} key={reviews} token={token} itemId={itemId} />
         </div>
         <div className={`${className}__grid__words`} id={`${className}__grid__words`}>
           <Words posWords={posWords} negWords={negWords} />
