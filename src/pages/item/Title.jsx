@@ -89,10 +89,10 @@ const Title = ({
 
 Title.propTypes = {
   name: propTypes.string,
-  reviewsCount: propTypes.string,
+  reviewsCount: propTypes.number,
   ratingValue: propTypes.string,
-  posReviews: propTypes.string,
-  negReviews: propTypes.string,
+  posReviews: propTypes.number,
+  negReviews: propTypes.number,
   className: propTypes.string,
   id: propTypes.string,
 };

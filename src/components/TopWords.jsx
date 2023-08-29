@@ -20,7 +20,7 @@ const TopWords = ({
       <WordListItem
         name={words[i]}
         index={i}
-        key={words[i].key}
+        key={`${i}${words[i].key}`}
       />,
     );
   }
