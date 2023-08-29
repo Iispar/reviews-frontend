@@ -24,7 +24,7 @@ const Reviews = ({
       <form className={`${className}__filter__search`} onSubmit={(e) => onSubmit(e)}>
         <SearchField placeholder="Search" onChange={setSearch} />
       </form>
-      <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} />
+      <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} sortOne="date" />
     </div>
     <div className={`${className}__reviews`}>
       <ReviewsList reviews={reviews} />

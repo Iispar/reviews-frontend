@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import $ from 'jquery';
 
 const DropDownSortMenu = ({
-  className, id, setSort,
+  className, id, setSort, sortOne, sortTwo,
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -40,7 +40,7 @@ const DropDownSortMenu = ({
     const type = sort.split('__')[3];
     let width;
     // calculate width of the button based on the length of the sort text.
-    if (type === 'reviews') width = '80px';
+    if (type === sortOne) width = '80px';
     else width = '70px';
 
     // use jquery animate instead of css as it works better here.
@@ -50,11 +50,11 @@ const DropDownSortMenu = ({
       'margin-top': '0px',
     }, 200);
 
-    // set all the reviews to invis
-    $(`#${id}__reviews__desc`).css('display', 'none');
-    $(`#${id}__reviews__asc`).css('display', 'none');
-    $(`#${id}__rating__desc`).css('display', 'none');
-    $(`#${id}__rating__asc`).css('display', 'none');
+    // set all the ${sortOne} to invis
+    $(`#${id}__${sortOne}__desc`).css('display', 'none');
+    $(`#${id}__${sortOne}__asc`).css('display', 'none');
+    $(`#${id}__${sortTwo}__desc`).css('display', 'none');
+    $(`#${id}__${sortTwo}__asc`).css('display', 'none');
 
     // selected visible
     $(`#${sort}`).css({ display: 'flex' });
@@ -70,10 +70,10 @@ const DropDownSortMenu = ({
        */
   const dropDown = () => {
     // add hover back to all.
-    hover(`#${id}__reviews__desc`, '#f5f5f5');
-    hover(`#${id}__reviews__asc`, '#f5f5f5');
-    hover(`#${id}__rating__desc`, '#f5f5f5');
-    hover(`#${id}__rating__asc`, '#f5f5f5');
+    hover(`#${id}__${sortOne}__desc`, '#f5f5f5');
+    hover(`#${id}__${sortOne}__asc`, '#f5f5f5');
+    hover(`#${id}__${sortTwo}__desc`, '#f5f5f5');
+    hover(`#${id}__${sortTwo}__asc`, '#f5f5f5');
 
     // close dropdown
     if (open) {
@@ -81,10 +81,10 @@ const DropDownSortMenu = ({
         width: '44px',
         height: '20px',
       }, 200);
-      $(`#${id}__reviews__desc`).css('display', 'none');
-      $(`#${id}__reviews__asc`).css('display', 'none');
-      $(`#${id}__rating__desc`).css('display', 'none');
-      $(`#${id}__rating__asc`).css('display', 'none');
+      $(`#${id}__${sortOne}__desc`).css('display', 'none');
+      $(`#${id}__${sortOne}__asc`).css('display', 'none');
+      $(`#${id}__${sortTwo}__desc`).css('display', 'none');
+      $(`#${id}__${sortTwo}__asc`).css('display', 'none');
       $(`#${id}__btn`).css('display', 'flex');
       $(`#${id}__arrow`).css('transform', 'rotate(0deg)');
       setOpen(false);
@@ -95,10 +95,10 @@ const DropDownSortMenu = ({
         width: '160px',
         height: '40px',
       }, 200);
-      $(`#${id}__reviews__desc`).css('display', 'flex');
-      $(`#${id}__reviews__asc`).css('display', 'flex');
-      $(`#${id}__rating__desc`).css('display', 'flex');
-      $(`#${id}__rating__asc`).css('display', 'flex');
+      $(`#${id}__${sortOne}__desc`).css('display', 'flex');
+      $(`#${id}__${sortOne}__asc`).css('display', 'flex');
+      $(`#${id}__${sortTwo}__desc`).css('display', 'flex');
+      $(`#${id}__${sortTwo}__asc`).css('display', 'flex');
       $(`#${id}__btn`).css('display', 'none');
       $(`#${id}__arrow`).css('transform', 'rotate(180deg)');
       setOpen(true);
@@ -110,24 +110,24 @@ const DropDownSortMenu = ({
         sort
         <div className={`${className}__btn__arrow`} id={`${id}__btn__arrow`} />
       </button>
-      <div className={`${className}__reviews`}>
-        <button className={`${className}__reviews__asc`} id={`${id}__reviews__asc`} type="button" onClick={() => changeFilter(`${id}__reviews__asc`)}>
-          reviews
-          <div className={`${className}__reviews__ascArrow`} />
+      <div className={`${className}__${sortOne}`}>
+        <button className={`${className}__${sortOne}__asc`} id={`${id}__${sortOne}__asc`} type="button" onClick={() => changeFilter(`${id}__${sortOne}__asc`)}>
+          {sortOne}
+          <div className={`${className}__${sortOne}__ascArrow`} />
         </button>
-        <button className={`${className}__reviews__desc`} id={`${id}__reviews__desc`} type="button" onClick={() => changeFilter(`${id}__reviews__desc`)}>
-          reviews
-          <div className={`${className}__reviews__descArrow`} />
+        <button className={`${className}__${sortOne}__desc`} id={`${id}__${sortOne}__desc`} type="button" onClick={() => changeFilter(`${id}__${sortOne}__desc`)}>
+          {sortOne}
+          <div className={`${className}__${sortOne}__descArrow`} />
         </button>
       </div>
-      <div className={`${className}__rating`}>
-        <button className={`${className}__rating__asc`} id={`${id}__rating__asc`} type="button" onClick={() => changeFilter(`${id}__rating__asc`)}>
-          rating
-          <div className={`${className}__rating__ascArrow`} />
+      <div className={`${className}__${sortTwo}`}>
+        <button className={`${className}__${sortTwo}__asc`} id={`${id}__${sortTwo}__asc`} type="button" onClick={() => changeFilter(`${id}__${sortTwo}__asc`)}>
+          {sortTwo}
+          <div className={`${className}__${sortTwo}__ascArrow`} />
         </button>
-        <button className={`${className}__rating__desc`} id={`${id}__rating__desc`} type="button" onClick={() => changeFilter(`${id}__rating__desc`)}>
-          rating
-          <div className={`${className}__rating__descArrow`} />
+        <button className={`${className}__${sortTwo}__desc`} id={`${id}__${sortTwo}__desc`} type="button" onClick={() => changeFilter(`${id}__${sortTwo}__desc`)}>
+          {sortTwo}
+          <div className={`${className}__${sortTwo}__descArrow`} />
         </button>
       </div>
       <button className={`${className}__arrow`} id={`${id}__arrow`} type="button" onClick={() => dropDown()}> </button>
@@ -139,12 +139,16 @@ DropDownSortMenu.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
   setSort: propTypes.func,
+  sortOne: propTypes.string,
+  sortTwo: propTypes.string,
 };
 
 DropDownSortMenu.defaultProps = {
   className: 'dropDownSortMenu',
   id: 'dropDownSortMenu',
   setSort: null,
+  sortOne: 'reviews',
+  sortTwo: 'rating',
 };
 
 export default DropDownSortMenu;

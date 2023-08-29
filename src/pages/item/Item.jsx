@@ -77,9 +77,16 @@ const Item = ({ className, id }) => {
    * Function to move to load the next page of reviews
    */
   const nextPage = () => {
+    const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     $('#pagination__prev').prop('disabled', false);
-    reviewsService.getReviewsForItem(itemId, page.current + 1, sort, sortDir, token)
-      .then((res) => setReviews(res));
+    if (search != null) {
+      reviewsService
+        .getSearchReviewsForItem(itemId, search, page.current + 1, formattedSort, sortDir, token)
+        .then((res) => setReviews(res));
+    } else {
+      reviewsService.getReviewsForItem(itemId, page.current + 1, formattedSort, sortDir, token)
+        .then((res) => setReviews(res));
+    }
     page.current += 1;
   };
 
@@ -87,8 +94,15 @@ const Item = ({ className, id }) => {
      * Function to move to load the previous page of reviews
      */
   const prevPage = () => {
-    reviewsService.getReviewsForItem(itemId, page.current - 1, sort, sortDir, token)
-      .then((res) => setReviews(res));
+    const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
+    if (search != null) {
+      reviewsService
+        .getSearchReviewsForItem(itemId, search, page.current - 1, formattedSort, sortDir, token)
+        .then((res) => setReviews(res));
+    } else {
+      reviewsService.getReviewsForItem(itemId, page.current - 1, formattedSort, sortDir, token)
+        .then((res) => setReviews(res));
+    }
     page.current -= 1;
     if (page.current === 0) {
       $('#pagination__prev').prop('disabled', true);
@@ -96,15 +110,27 @@ const Item = ({ className, id }) => {
   };
 
   const onSearch = (e) => {
+    page.current = 0;
+    const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     e.preventDefault();
-    console.log(search, sort, sortDir);
+    reviewsService
+      .getSearchReviewsForItem(itemId, search, page.current, formattedSort, sortDir, token)
+      .then((res) => setReviews(res));
   };
 
   const searchSort = (selSort, selSortDir) => {
+    page.current = 0;
     setSort(selSort);
     setSortDir(selSortDir);
 
-    console.log(search, selSort, selSortDir);
+    if (search != null) {
+      reviewsService
+        .getSearchReviewsForItem(itemId, search, page.current, `review_${selSort}`, selSortDir, token)
+        .then((res) => setReviews(res));
+    } else {
+      reviewsService.getReviewsForItem(itemId, page.current, `review_${selSort}`, selSortDir, token)
+        .then((res) => setReviews(res));
+    }
   };
 
   return (

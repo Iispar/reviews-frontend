@@ -51,6 +51,7 @@ const AllItems = ({ className, id }) => {
    * @param {*} e
    */
   const searchInput = (e) => {
+    page.current = 0;
     if (e) e.preventDefault();
 
     itemService.getSearch(accountId, search, page.current, sort, sortDir, token)
@@ -65,6 +66,7 @@ const AllItems = ({ className, id }) => {
    *        Selected sort direction
    */
   const searchSort = (selSort, selSortDir) => {
+    page.current = 0;
     setSort(selSort);
     setSortDir(selSortDir);
     if (search == null) {
@@ -81,10 +83,13 @@ const AllItems = ({ className, id }) => {
    */
   const nextPage = () => {
     $('#pagination__prev').prop('disabled', false);
-    itemService.getAll(accountId, page.current + 1, token)
-      .then((res) => {
-        setItems(res);
-      });
+    if (search == null) {
+      itemService.getSort(accountId, page.current + 1, sort, sortDir, token)
+        .then((res) => setItems(res));
+    } else {
+      itemService.getSearch(accountId, search, page.current + 1, sort, sortDir, token)
+        .then((res) => setItems(res));
+    }
     page.current += 1;
   };
 
@@ -92,8 +97,13 @@ const AllItems = ({ className, id }) => {
        * Function to move to load the previous page of reviews
        */
   const prevPage = () => {
-    itemService.getAll(accountId, page.current - 1, token)
-      .then((res) => setItems(res));
+    if (search == null) {
+      itemService.getSort(accountId, page.current - 1, sort, sortDir, token)
+        .then((res) => setItems(res));
+    } else {
+      itemService.getSearch(accountId, search, page.current - 1, sort, sortDir, token)
+        .then((res) => setItems(res));
+    }
     page.current -= 1;
     if (page.current === 0) {
       $('#pagination__prev').prop('disabled', true);
