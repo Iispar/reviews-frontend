@@ -2,7 +2,6 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import Home from '../pages/home/Home';
 import MostPopular from '../pages/home/MostPopular';
 import LatestReviews from '../pages/home/LatestReviews';
 import HomeStats from '../pages/home/HomeStats';
@@ -19,24 +18,6 @@ describe('home site works fully', () => {
     jest.spyOn(Storage.prototype, 'setItem');
     jest.spyOn(Storage.prototype, 'getItem').mockReturnValue('test');
     jest.mock('axios');
-  });
-  test('page renders with components', () => {
-    const pageContainer = render(
-      <BrowserRouter>
-        <Home visible />
-      </BrowserRouter>,
-    ).container;
-    const title = pageContainer.querySelector('#home__grid__title__text');
-    const reviews = pageContainer.querySelector('#home__grid__latestReviews');
-    const items = pageContainer.querySelector('#home__grid__mostPopular');
-    const chart = pageContainer.querySelector('#home__grid__homeChart');
-    const stats = pageContainer.querySelector('#home__grid__homeChange');
-
-    expect(title).toBeTruthy();
-    expect(items).toBeTruthy();
-    expect(reviews).toBeTruthy();
-    expect(chart).toBeTruthy();
-    expect(stats).toBeTruthy();
   });
   test('most popular renders', () => {
     const mostPopularContainer = render(

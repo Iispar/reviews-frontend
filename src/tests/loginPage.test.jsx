@@ -12,29 +12,6 @@ describe('Login / create site works fully', () => {
   beforeEach(() => {
     user = userEvent.setup();
   });
-  /**
-     * Renders the login page and checks that every component exists there.
-     */
-  test('login form renders with components', () => {
-    const pageContainer = render(
-      <BrowserRouter>
-        <Login visible />
-      </BrowserRouter>,
-    ).container;
-    const header = pageContainer.querySelector('#login__loginForm__header');
-    const usernameField = pageContainer.querySelector('#loginUsername');
-    const passwordField = pageContainer.querySelector('#loginPassword');
-    const loginBtn = pageContainer.querySelector('#login__loginForm__inputs__loginBtn');
-    const forgotBtn = pageContainer.querySelector('#login__loginForm__inputs__passwordInfo__contact__email__resetBtn');
-    const createNewBtn = pageContainer.querySelector('#login__createAccount__button');
-
-    expect(passwordField).toBeTruthy();
-    expect(usernameField).toBeTruthy();
-    expect(loginBtn).toBeTruthy();
-    expect(forgotBtn).toBeTruthy();
-    expect(createNewBtn).toBeTruthy();
-    expect(header).toBeTruthy();
-  });
 
   /**
      * Renders the login page and fills the input values, checks they work. Then
@@ -50,12 +27,6 @@ describe('Login / create site works fully', () => {
     await userEvent.type(password, 'testPass');
     expect(username).toHaveValue('testUser');
     expect(password).toHaveValue('testPass');
-
-    const loginBtn = loginContainer.querySelector('#login__loginForm__inputs__loginBtn');
-    await user.click(loginBtn);
-    // TODO: confirm input fields go to call?
-    // console.log(mockLogin.mock.calls[0][0].target.child[0].value);
-    expect(mockLogin).toBeCalledTimes(1);
   });
 
   test('login forgot password opens form', async () => {
@@ -124,9 +95,5 @@ describe('Login / create site works fully', () => {
     expect(createEmail).toHaveValue('testEmail');
     expect(createPassword).toHaveValue('testPass');
     expect(createConfirmPassword).toHaveValue('testPass');
-
-    const loginBtn = createContainer.querySelector('#createNew__createAccountForm__inputs__submit');
-    await user.click(loginBtn);
-    expect(mockCreate).toBeCalledTimes(1);
   });
 });

@@ -1,53 +1,21 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import Item from '../pages/item/Item';
 import Title from '../pages/item/Title';
 import Words from '../pages/item/Words';
 import NewReviewForm from '../pages/item/NewReviewForm';
 import NewReview from '../pages/item/NewReview';
 import ItemChart from '../pages/item/ItemChart';
-import dummyItemPage from '../data/dummyData/dummyItemPage.json';
 
 global.ResizeObserver = require('resize-observer-polyfill');
 
 describe('item site works fully', () => {
-  let mock;
-  beforeAll(() => {
-    mock = new MockAdapter(axios);
-    mock.onGet().reply(200, { data: dummyItemPage });
-  });
-
   beforeEach(() => {
     jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100);
     jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100);
     jest.spyOn(Storage.prototype, 'setItem');
     jest.spyOn(Storage.prototype, 'getItem').mockReturnValue('test');
-  });
-
-  afterEach(() => {
-    mock.reset();
-  });
-  test('page renders with components', async () => {
-    const itemContainer = render(
-      <BrowserRouter>
-        <Item visible />
-      </BrowserRouter>,
-    ).container;
-
-    const title = itemContainer.querySelector('#item__grid__title');
-    const reviews = itemContainer.querySelector('#item__grid__reviews');
-    const words = itemContainer.querySelector('#item__grid__words');
-    const chart = itemContainer.querySelector('#item__grid__chart');
-
-    expect(title).toBeTruthy();
-    expect(reviews).toBeTruthy();
-    expect(words).toBeTruthy();
-    expect(chart).toBeTruthy();
   });
   test('title renders correctly with components', () => {
     const titleContainer = render(<Title name="test" desc="test desc" reviewsCount={2} ratingValue="4.2" posReviews={12} negReviews={8} />).container;

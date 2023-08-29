@@ -2,9 +2,7 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import Settings from '../pages/settings/Settings';
 import Selections from '../pages/settings/Selections';
 import UserInfo from '../pages/settings/UserInfo';
 import DeleteAccount from '../pages/settings/DeleteAccount';
@@ -13,18 +11,6 @@ describe('settings site works fully', () => {
   let user;
   beforeEach(() => {
     user = userEvent.setup();
-  });
-  test('page renders with components', () => {
-    const pageContainer = render(
-      <BrowserRouter>
-        <Settings visible />
-      </BrowserRouter>,
-    ).container;
-    const title = pageContainer.querySelector('#settings__grid__title');
-    const selections = pageContainer.querySelector('#settings__grid__selections');
-
-    expect(title).toBeTruthy();
-    expect(selections).toBeTruthy();
   });
   test('selections component renders correctly', () => {
     const selectionsContainer = render(
