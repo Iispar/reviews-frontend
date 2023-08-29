@@ -106,7 +106,7 @@ const AllItems = ({ className, id }) => {
           <Items
             items={items}
             setSearch={(e) => setSearch(e)}
-            onSort={(selSort, selSortDir) => searchSort(selSort, selSortDir)}
+            setSort={(selSort, selSortDir) => searchSort(selSort, selSortDir)}
             onSubmit={(e) => searchInput(e)}
             nextPage={() => nextPage()}
             prevPage={() => prevPage()}
