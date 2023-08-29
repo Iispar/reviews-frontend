@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import propTypes from 'prop-types';
+import $ from 'jquery';
 import { useNewItem } from './allItemsHooks';
 import Items from './Items';
 import FileInput from './FileInput';
@@ -18,7 +19,7 @@ const AllItems = ({ className, id }) => {
   const [search, setSearch] = useState(null);
   const [sort, setSort] = useState('none');
   const [sortDir, setSortDir] = useState('none');
-  const [page] = useState(0);
+  const page = useRef(0);
 
   /**
    * UseEffect loads the token and account id for the user and loads the data on page load.
@@ -29,7 +30,7 @@ const AllItems = ({ className, id }) => {
     setToken(newToken);
     setAccountId(curAccountId);
 
-    itemService.getAll(curAccountId, page, newToken)
+    itemService.getAll(curAccountId, page.current, newToken)
       .then((res) => setItems(res));
   }, []);
 
@@ -52,7 +53,7 @@ const AllItems = ({ className, id }) => {
   const searchInput = (e) => {
     if (e) e.preventDefault();
 
-    itemService.getSearch(accountId, search, page, sort, sortDir, token)
+    itemService.getSearch(accountId, search, page.current, sort, sortDir, token)
       .then((res) => setItems(res));
   };
 
@@ -67,8 +68,32 @@ const AllItems = ({ className, id }) => {
     setSort(selSort);
     setSortDir(selSortDir);
 
-    itemService.getSort(accountId, page, selSort, selSortDir, token)
+    itemService.getSort(accountId, page.current, selSort, selSortDir, token)
       .then((res) => setItems(res));
+  };
+
+  /**
+   * Function to move to load the next page of reviews
+   */
+  const nextPage = () => {
+    $('#pagination__prev').prop('disabled', false);
+    itemService.getAll(accountId, page.current + 1, token)
+      .then((res) => {
+        setItems(res);
+      });
+    page.current += 1;
+  };
+
+  /**
+       * Function to move to load the previous page of reviews
+       */
+  const prevPage = () => {
+    itemService.getAll(accountId, page.current - 1, token)
+      .then((res) => setItems(res));
+    page.current -= 1;
+    if (page.current === 0) {
+      $('#pagination__prev').prop('disabled', true);
+    }
   };
 
   return (
@@ -83,6 +108,8 @@ const AllItems = ({ className, id }) => {
             setSearch={(e) => setSearch(e)}
             onSort={(selSort, selSortDir) => searchSort(selSort, selSortDir)}
             onSubmit={(e) => searchInput(e)}
+            nextPage={() => nextPage()}
+            prevPage={() => prevPage()}
           />
         </div>
         <div className={`${className}__grid__fileInput`} id={`${id}__grid__fileInput`}>

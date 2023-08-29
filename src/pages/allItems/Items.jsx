@@ -14,7 +14,7 @@ import SearchField from '../../components/SearchField';
  * @returns items component for ALlItems page
  */
 const Items = ({
-  items, className, id, onSubmit, onSort, setSearch,
+  items, className, id, onSubmit, onSort, setSearch, nextPage, prevPage,
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -154,7 +154,7 @@ const Items = ({
         <ItemList items={items} View={LargeItem} count={6} />
       </div>
       <div className={`${className}__pagination`}>
-        <Pagination />
+        <Pagination next={() => nextPage()} prev={() => prevPage()} />
       </div>
     </div>
   );
@@ -167,6 +167,8 @@ Items.propTypes = {
   setSearch: propTypes.func,
   onSubmit: propTypes.func,
   onSort: propTypes.func,
+  nextPage: propTypes.func,
+  prevPage: propTypes.func,
 };
 
 Items.defaultProps = {
@@ -176,6 +178,8 @@ Items.defaultProps = {
   setSearch: null,
   onSubmit: null,
   onSort: null,
+  nextPage: null,
+  prevPage: null,
 };
 
 export default Items;

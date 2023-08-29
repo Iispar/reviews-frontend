@@ -1,10 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef, useState } from 'react';
 import propTypes from 'prop-types';
-import $ from 'jquery';
 import ReviewsList from '../../components/ReviewsList';
 import Pagination from '../../components/Pagination';
-import reviewsService from '../../services/reviewsService';
 
 /**
  * Creates the latest review component for the item page.
