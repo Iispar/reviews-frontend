@@ -15,7 +15,16 @@ import SettingsInputField from '../../components/SettingsInputField';
  * @returns user info page.
  */
 const UserInfo = ({
-  currUsername, openForm, currName, updateName, updateUsername, updatePassword, className, id,
+  currUsername,
+  openForm,
+  currName,
+  currEmail,
+  updateName,
+  updateUsername,
+  updatePassword,
+  className,
+  id,
+  updateEmail,
 }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -42,6 +51,7 @@ const UserInfo = ({
       <div className={`${className}__values`}>
         <SettingsInputField title="name" onSubmit={updateName} defaultValue={currName} id="settingsName" />
         <SettingsInputField title="username" onSubmit={updateUsername} defaultValue={currUsername} id="settingsUsername" />
+        <SettingsInputField title="email" onSubmit={updateEmail} defaultValue={currEmail} id="settingsEmail" />
         <form className={`${className}__values__password`} id={`${className}__values__password`} onSubmit={(e) => updatePassword(e)}>
           <div className={`${className}__values__password__passContainer`}>
             <div className={`${className}__values__password__passContainer__passText`}>
@@ -75,6 +85,8 @@ UserInfo.propTypes = {
   updateName: propTypes.func,
   updateUsername: propTypes.func,
   updatePassword: propTypes.func,
+  updateEmail: propTypes.func,
+  currEmail: propTypes.string,
 };
 
 UserInfo.defaultProps = {
@@ -86,6 +98,8 @@ UserInfo.defaultProps = {
   updateName: null,
   updateUsername: null,
   updatePassword: null,
+  updateEmail: null,
+  currEmail: null,
 };
 
 export default UserInfo;

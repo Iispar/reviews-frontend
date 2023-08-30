@@ -10,7 +10,18 @@ import DeleteAccount from './DeleteAccount';
  * @property {String} if - Custom className if wanted. Default selections.
  * @returns selctions
  */
-const Selections = ({ className, id }) => {
+const Selections = ({
+  className,
+  id,
+  updatePassword,
+  updateUsername,
+  updateName,
+  deleteAccount,
+  updateEmail,
+  username,
+  name,
+  email,
+}) => {
   /**
    * Opens the form to see user info or delete account.
    * @param {String} selection
@@ -37,48 +48,6 @@ const Selections = ({ className, id }) => {
     }
   };
 
-  // ALL updates and deletes have *preventDefault* for dev to not update the page...
-
-  /**
-   * Formats the event call and calls the delete account hook.
-   * @param {*} e - event called with.
-   */
-  const deleteAccount = (e) => {
-    e.preventDefault();
-    // if (UseDeleteAccount(e.target[0].value)) console.log('success');
-    // else console.log('failure');
-  };
-
-  /**
-   * Formats the event call and calls the update name hook.
-   * @param {*} e - event called with.
-   */
-  const updateName = (e) => {
-    e.preventDefault();
-    // if (UseNewName(e.target[0].value)) console.log('success');
-    // else console.log('failure');
-  };
-
-  /**
-   * Formats the event call and calls the update username hook.
-   * @param {*} e - event called with.
-   */
-  const updateUsername = (e) => {
-    e.preventDefault();
-    // if (UseNewUsername(e.target[0].value)) console.log('success');
-    // else console.log('failure');
-  };
-
-  /**
-   * Formats the event call and calls the update password hook.
-   * @param {*} e - event called with.
-   */
-  const updatePassword = (e) => {
-    e.preventDefault();
-    // if (UseNewPassword(e.target[0].value)) console.log('success');
-    // else console.log('failure');
-  };
-
   return (
     <div className={className}>
       <div className={`${className}__buttons`} id={`${id}__buttons`}>
@@ -90,7 +59,16 @@ const Selections = ({ className, id }) => {
         </button>
       </div>
       <div className={`${className}__form`} id={`${id}__form`}>
-        <UserInfo currUsername="user" openForm={openForm} updateUsername={updateUsername} updateName={updateName} updatePassword={updatePassword} currName="matti meikäläinen" />
+        <UserInfo
+          currUsername={username}
+          currEmail={email}
+          openForm={openForm}
+          updateUsername={(e) => updateUsername(e)}
+          updateName={(e) => updateName(e)}
+          updatePassword={(e) => updatePassword(e)}
+          updateEmail={(e) => updateEmail(e)}
+          currName={name}
+        />
         <DeleteAccount onSubmit={deleteAccount} openForm={openForm} />
       </div>
     </div>
@@ -100,11 +78,27 @@ const Selections = ({ className, id }) => {
 Selections.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
+  updatePassword: propTypes.func,
+  updateName: propTypes.func,
+  updateUsername: propTypes.func,
+  deleteAccount: propTypes.func,
+  updateEmail: propTypes.func,
+  username: propTypes.string,
+  name: propTypes.string,
+  email: propTypes.string,
 };
 
 Selections.defaultProps = {
   className: 'selections',
   id: 'selections',
+  updatePassword: null,
+  updateName: null,
+  updateUsername: null,
+  deleteAccount: null,
+  updateEmail: null,
+  username: null,
+  name: null,
+  email: null,
 };
 
 export default Selections;
