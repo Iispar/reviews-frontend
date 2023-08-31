@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import Selections from './Selections';
 import accountService from '../../services/accountService';
-import { UseNewName } from './settingsHooks';
+import { UseUpdateAccount } from './settingsHooks';
 
 /**
  * Renders the settings page.
@@ -26,9 +26,7 @@ const Settings = ({ className, id }) => {
   const [curName, setCurName] = useState(null);
   const [curUsername, setCurUsername] = useState(null);
   const [curEmail, setCurEmail] = useState(null);
-  const [curPassword, setCurPassword] = useState('none');
   const [curRole, setCurRole] = useState(null);
-
   const [newName, setNewName] = useState(null);
   const [newUsername, setNewUsername] = useState(null);
   const [newEmail, setNewEmail] = useState(null);
@@ -36,12 +34,12 @@ const Settings = ({ className, id }) => {
   const [newRole, setNewRole] = useState(null);
 
   useEffect(() => {
-    const curAccountId = window.localStorage.getItem('accountId');
-    const curToken = window.localStorage.getItem('token');
+    const newToken = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
+    const curAccountId = window.localStorage.getItem('accountId').replace(/^"(.*)"$/, '$1');
     setAccountId(curAccountId);
-    setToken(curToken);
+    setToken(newToken);
 
-    accountService.getAccount(curAccountId, curToken)
+    accountService.getAccount(curAccountId, newToken)
       .then((res) => {
         setCurName(res.name);
         setCurUsername(res.username);
@@ -71,12 +69,12 @@ const Settings = ({ className, id }) => {
      */
   const updateAccount = (e) => {
     e.preventDefault();
-    console.log(newName);
-    console.log(newUsername);
-    console.log(newPassword);
-    console.log(newEmail);
-    console.log(newRole);
-    // UseNewName(accountId, name, username, password, role, email, token);
+    UseUpdateAccount(accountId, newName, newUsername, newPassword, newRole, newEmail, token);
+    // if username is updated logout.
+    if (newUsername !== curUsername) {
+      window.localStorage.removeItem('token');
+      window.location.reload();
+    }
   };
 
   return (
