@@ -19,12 +19,13 @@ const UserInfo = ({
   openForm,
   currName,
   currEmail,
-  updateName,
-  updateUsername,
-  updatePassword,
+  setName,
+  setUsername,
+  setNewPassword,
+  updateAccount,
   className,
   id,
-  updateEmail,
+  setEmail,
 }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -32,8 +33,10 @@ const UserInfo = ({
   useEffect(() => {
     if (password !== '') $(`#${id}__values__password__confirmContainer`).css('display', 'grid');
     else $(`#${id}__values__password__confirmContainer`).css('display', 'none');
-    if (password === confirmPassword) $(`#${id}__values__password__confirmContainer__input__change`).css('display', 'flex');
-    else $(`#${id}__values__password__confirmContainer__input__change`).css('display', 'none');
+    if (password === confirmPassword) {
+      setNewPassword(password);
+      $(`#${id}__values__password__confirmContainer__input__change`).css('display', 'flex');
+    } else $(`#${id}__values__password__confirmContainer__input__change`).css('display', 'none');
   }, [password, confirmPassword]);
 
   return (
@@ -49,10 +52,10 @@ const UserInfo = ({
         <button className={`${className}__header__closeButton`} id={`${className}__header__closeButton`} type="submit" onClick={() => openForm('none')}>  </button>
       </div>
       <div className={`${className}__values`}>
-        <SettingsInputField title="name" onSubmit={updateName} defaultValue={currName} id="settingsName" />
-        <SettingsInputField title="username" onSubmit={updateUsername} defaultValue={currUsername} id="settingsUsername" />
-        <SettingsInputField title="email" onSubmit={updateEmail} defaultValue={currEmail} id="settingsEmail" />
-        <form className={`${className}__values__password`} id={`${className}__values__password`} onSubmit={(e) => updatePassword(e)}>
+        <SettingsInputField title="name" onChange={setName} onSubmit={(e) => updateAccount(e)} defaultValue={currName} id="settingsName" />
+        <SettingsInputField title="username" onChange={setUsername} onSubmit={(e) => updateAccount(e)} defaultValue={currUsername} id="settingsUsername" />
+        <SettingsInputField title="email" onChange={setEmail} onSubmit={(e) => updateAccount(e)} defaultValue={currEmail} id="settingsEmail" />
+        <form className={`${className}__values__password`} id={`${className}__values__password`} onSubmit={(e) => updateAccount(e)}>
           <div className={`${className}__values__password__passContainer`}>
             <div className={`${className}__values__password__passContainer__passText`}>
               password &nbsp;
@@ -82,11 +85,12 @@ UserInfo.propTypes = {
   currUsername: propTypes.string,
   openForm: propTypes.func,
   currName: propTypes.string,
-  updateName: propTypes.func,
-  updateUsername: propTypes.func,
-  updatePassword: propTypes.func,
-  updateEmail: propTypes.func,
+  setName: propTypes.func,
+  setUsername: propTypes.func,
+  setNewPassword: propTypes.func,
+  setEmail: propTypes.func,
   currEmail: propTypes.string,
+  updateAccount: propTypes.func,
 };
 
 UserInfo.defaultProps = {
@@ -95,11 +99,12 @@ UserInfo.defaultProps = {
   currUsername: null,
   openForm: null,
   currName: null,
-  updateName: null,
-  updateUsername: null,
-  updatePassword: null,
-  updateEmail: null,
+  setName: null,
+  setUsername: null,
+  setNewPassword: null,
+  setEmail: null,
   currEmail: null,
+  updateAccount: null,
 };
 
 export default UserInfo;

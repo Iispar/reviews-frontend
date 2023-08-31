@@ -13,11 +13,12 @@ import DeleteAccount from './DeleteAccount';
 const Selections = ({
   className,
   id,
-  updatePassword,
-  updateUsername,
-  updateName,
+  setPassword,
+  setUsername,
+  setName,
   deleteAccount,
-  updateEmail,
+  setEmail,
+  updateAccount,
   username,
   name,
   email,
@@ -63,10 +64,11 @@ const Selections = ({
           currUsername={username}
           currEmail={email}
           openForm={openForm}
-          updateUsername={(e) => updateUsername(e)}
-          updateName={(e) => updateName(e)}
-          updatePassword={(e) => updatePassword(e)}
-          updateEmail={(e) => updateEmail(e)}
+          setUsername={setUsername}
+          setName={setName}
+          setNewPassword={setPassword}
+          setEmail={setEmail}
+          updateAccount={(e) => updateAccount(e)}
           currName={name}
         />
         <DeleteAccount onSubmit={deleteAccount} openForm={openForm} />
@@ -78,11 +80,12 @@ const Selections = ({
 Selections.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
-  updatePassword: propTypes.func,
-  updateName: propTypes.func,
-  updateUsername: propTypes.func,
+  setPassword: propTypes.func,
+  setName: propTypes.func,
+  setUsername: propTypes.func,
   deleteAccount: propTypes.func,
-  updateEmail: propTypes.func,
+  setEmail: propTypes.func,
+  updateAccount: propTypes.func,
   username: propTypes.string,
   name: propTypes.string,
   email: propTypes.string,
@@ -91,11 +94,12 @@ Selections.propTypes = {
 Selections.defaultProps = {
   className: 'selections',
   id: 'selections',
-  updatePassword: null,
-  updateName: null,
-  updateUsername: null,
+  setPassword: null,
+  setName: null,
+  setUsername: null,
   deleteAccount: null,
-  updateEmail: null,
+  setEmail: null,
+  updateAccount: null,
   username: null,
   name: null,
   email: null,

@@ -16,7 +16,7 @@ import $ from 'jquery';
  * @returns input field for settings
  */
 const SettingsInputField = ({
-  className, id, onSubmit, defaultValue, title, warningText, button, submitText, type,
+  className, id, onSubmit, defaultValue, title, warningText, button, submitText, type, onChange,
 }) => {
   const [value, setValue] = useState(defaultValue);
 
@@ -29,6 +29,11 @@ const SettingsInputField = ({
     else $(`#${id}__form__${button}`).css('display', 'none');
   }, [value]);
 
+  const changeValue = (val) => {
+    setValue(val);
+    onChange(val);
+  };
+
   return (
     <div className={className} id={id}>
       <div className={`${className}__title`} id={`${className}__title`}>
@@ -39,7 +44,7 @@ const SettingsInputField = ({
         <div className={`${className}__form__warning`} id={`${id}__form__warning`}>
           {warningText}
         </div>
-        <input className={`${className}__form__input`} id={`${id}__form__input`} defaultValue={value} onChange={(current) => setValue(current.target.value)} type={type} />
+        <input className={`${className}__form__input`} id={`${id}__form__input`} defaultValue={value} onChange={(e) => changeValue(e.target.value)} type={type} />
         <button className={`${className}__form__${button}`} id={`${id}__form__${button}`} type="submit">
           {submitText}
         </button>
@@ -54,6 +59,7 @@ SettingsInputField.propTypes = {
   title: propTypes.string,
   defaultValue: propTypes.string,
   onSubmit: propTypes.func,
+  onChange: propTypes.func,
   warningText: propTypes.string,
   button: propTypes.string,
   submitText: propTypes.string,
@@ -65,6 +71,7 @@ SettingsInputField.defaultProps = {
   id: 'settingsInput',
   title: null,
   defaultValue: null,
+  onChange: null,
   onSubmit: null,
   warningText: null,
   button: 'change',

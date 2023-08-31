@@ -7,6 +7,15 @@ import { UseNewName } from './settingsHooks';
 
 /**
  * Renders the settings page.
+ *
+ * !!
+ * i use two sets of usestates. cur and new. Id i use only one and set the cur value as
+ * set state in the selection it will update the current value also and it will display
+ * the changes on screen right away and also all comparisitions to the init value will change
+ * as the init value will update with the set. This feels a bit stupid and overkill so (TODO: )
+ * Find a better way to do this.
+ * (TODO:)
+ * !!
  * @property {String} className - Custom className if wanted. Default settings.
  * @property {String} id - Custom id if wanted. Default settings.
  * @returns settings
@@ -14,11 +23,17 @@ import { UseNewName } from './settingsHooks';
 const Settings = ({ className, id }) => {
   const [accountId, setAccountId] = useState(null);
   const [token, setToken] = useState(null);
-  const [name, setName] = useState(null);
-  const [username, setUsername] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState('none');
-  const [role, setRole] = useState(null);
+  const [curName, setCurName] = useState(null);
+  const [curUsername, setCurUsername] = useState(null);
+  const [curEmail, setCurEmail] = useState(null);
+  const [curPassword, setCurPassword] = useState('none');
+  const [curRole, setCurRole] = useState(null);
+
+  const [newName, setNewName] = useState(null);
+  const [newUsername, setNewUsername] = useState(null);
+  const [newEmail, setNewEmail] = useState(null);
+  const [newPassword, setNewPassword] = useState('none');
+  const [newRole, setNewRole] = useState(null);
 
   useEffect(() => {
     const curAccountId = window.localStorage.getItem('accountId');
@@ -28,12 +43,17 @@ const Settings = ({ className, id }) => {
 
     accountService.getAccount(curAccountId, curToken)
       .then((res) => {
-        setName(res.name);
-        setUsername(res.username);
-        setEmail(res.email);
-        setRole(res.role.id);
+        setCurName(res.name);
+        setCurUsername(res.username);
+        setCurEmail(res.email);
+        setCurRole(res.role.id);
+
+        setNewName(res.name);
+        setNewUsername(res.username);
+        setNewEmail(res.email);
+        setNewRole(res.role.id);
       });
-  });
+  }, []);
   /**
    * Formats the event call and calls the delete account hook.
    * @param {*} e - event called with.
@@ -49,40 +69,16 @@ const Settings = ({ className, id }) => {
      * Formats the event call and calls the update name hook.
      * @param {*} e - event called with.
      */
-  const updateName = (e) => {
+  const updateAccount = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
-    UseNewName(accountId, e.target[0].value, username, password, role, email, token);
+    console.log(newName);
+    console.log(newUsername);
+    console.log(newPassword);
+    console.log(newEmail);
+    console.log(newRole);
+    // UseNewName(accountId, name, username, password, role, email, token);
   };
 
-  /**
-     * Formats the event call and calls the update username hook.
-     * @param {*} e - event called with.
-     */
-  const updateUsername = (e) => {
-    e.preventDefault();
-    console.log(e.target[0].value);
-    // if (UseNewUsername(e.target[0].value)) console.log('success');
-    // else console.log('failure');
-  };
-
-  /**
-     * Formats the event call and calls the update password hook.
-     * @param {*} e - event called with.
-     */
-  const updatePassword = (e) => {
-    e.preventDefault();
-    console.log(e.target[0].value);
-    // if (UseNewPassword(e.target[0].value)) console.log('success');
-    // else console.log('failure');
-  };
-
-  const updateEmail = (e) => {
-    e.preventDefault();
-    console.log(e.target[0].value);
-    // if (UseNewPassword(e.target[0].value)) console.log('success');
-    // else console.log('failure');
-  };
   return (
     <div className={className}>
       <div className={`${className}__grid`}>
@@ -91,15 +87,16 @@ const Settings = ({ className, id }) => {
         </div>
         <div className={`${className}__grid__selections`} id={`${id}__grid__selections`}>
           <Selections
-            updatePassword={(e) => updatePassword(e)}
-            updateUsername={(e) => updateUsername(e)}
-            updateName={(e) => updateName(e)}
+            setPassword={setNewPassword}
+            setUsername={setNewUsername}
+            setName={setNewName}
             deleteAccount={(e) => deleteAccount(e)}
-            updateEmail={(e) => updateEmail(e)}
-            username={username}
-            name={name}
-            email={email}
-            key={email}
+            setEmail={setNewEmail}
+            updateAccount={(e) => updateAccount(e)}
+            username={curUsername}
+            name={curName}
+            email={curEmail}
+            key={curEmail}
           />
         </div>
       </div>
