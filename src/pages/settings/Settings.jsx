@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import Selections from './Selections';
 import accountService from '../../services/accountService';
+import { UseNewName } from './settingsHooks';
 
 /**
  * Renders the settings page.
@@ -16,6 +17,8 @@ const Settings = ({ className, id }) => {
   const [name, setName] = useState(null);
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState('none');
+  const [role, setRole] = useState(null);
 
   useEffect(() => {
     const curAccountId = window.localStorage.getItem('accountId');
@@ -28,6 +31,7 @@ const Settings = ({ className, id }) => {
         setName(res.name);
         setUsername(res.username);
         setEmail(res.email);
+        setRole(res.role.id);
       });
   });
   /**
@@ -48,8 +52,7 @@ const Settings = ({ className, id }) => {
   const updateName = (e) => {
     e.preventDefault();
     console.log(e.target[0].value);
-    // if (UseNewName(e.target[0].value)) console.log('success');
-    // else console.log('failure');
+    UseNewName(accountId, e.target[0].value, username, password, role, email, token);
   };
 
   /**

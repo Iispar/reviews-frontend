@@ -1,8 +1,6 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
-// useUser
-// usePassword
-// useName
+import accountService from '../../services/accountService';
 
 /**
  * hook to delete an users account
@@ -20,7 +18,16 @@ export const UseDeleteAccount = (password) => {
  *        The new name for the user.
  * @returns true if successful, false otherwise.
  */
-export const UseNewName = (name) => {
+export const UseNewName = (accountId, name, username, password, role, email, token) => {
+  const account = {
+    name,
+    username,
+    password,
+    role: { id: role },
+    email,
+  };
+  accountService.updateAccount(accountId, account, token)
+    .then();
   return true;
 };
 

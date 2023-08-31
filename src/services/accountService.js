@@ -10,4 +10,12 @@ const getAccount = async (accountId, token) => {
   return res.data;
 };
 
-export default { getAccount };
+const updateAccount = async (accountId, payload, token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const res = await axios.put(`${baseUrl}/update?accountId=${accountId}`, payload, config);
+  return res.data;
+};
+
+export default { getAccount, updateAccount };
