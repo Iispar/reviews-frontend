@@ -41,8 +41,15 @@ export const UseLogin = async (username, password) => {
  * @returns true if successful, false otherwise.
  */
 export const UseCreateAccount = async (username, name, email, password, role) => {
+  const payload = {
+    username,
+    name,
+    email,
+    password,
+    role: { id: role },
+  };
   try {
-    const token = await authService.createAccount(username, name, email, password, role);
+    const token = await authService.createAccount(payload);
     window.localStorage.setItem('token', JSON.stringify(token, token));
     return token;
   } catch (exception) {

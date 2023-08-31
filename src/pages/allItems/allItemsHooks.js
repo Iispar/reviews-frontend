@@ -11,8 +11,15 @@ import itemService from '../../services/itemService';
  * @returns true if successful, false if not.
  */
 export const useNewItem = (accountId, title, category, token) => {
+  const payload = [{
+    title,
+    account: { id: accountId },
+    category: { id: category },
+    rating: null,
+    words: null,
+  }];
   try {
-    itemService.createNew(accountId, title, category, token)
+    itemService.createNew(payload, token)
       .then();
     // console.log(`created with ${title}, ${category}`);
     return true;

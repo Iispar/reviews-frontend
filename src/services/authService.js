@@ -34,15 +34,7 @@ const login = async (username, password) => {
  *        Role used for creation
  * @returns token
  */
-const createAccount = async (username, name, email, password, role) => {
-  const payload = {
-    username,
-    name,
-    email,
-    password,
-    role: { id: role },
-  };
-
+const createAccount = async (payload) => {
   const res = await axios.post(`${baseUrl}/add`, payload);
   return res.data.token;
 };
