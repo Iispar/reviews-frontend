@@ -2,7 +2,7 @@ import { useState, React } from 'react';
 import $ from 'jquery';
 
 /**
- * Renders the header. Includes only a hamburger menu and a nav bar.
+ * Renders the header. Includes a hamburger menu and a nav bar.
  * @returns header
  */
 const Header = () => {

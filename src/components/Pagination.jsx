@@ -3,7 +3,11 @@ import $ from 'jquery';
 import propTypes from 'prop-types';
 
 /**
- * Creates the pagination buttons
+ * Renders the pagination buttons
+ * @Property {String} className - Custom classname if wanted. Default is pagination.
+ * @Property {id} id - Custom id if wanted. Default is pagination.
+ * @Property {Function} next - Function to use when next button is clicked.
+ * @Property {Function} prev - Function to use when previous button is clicked.
  * @returns pagination buttons
  */
 const Pagination = ({

@@ -14,7 +14,7 @@
         background-color: transparent;
         height: 14px;
         position: absolute;
-        top: 3px;
+        top: 2px;
         transform: $rotate;
     }
 }
@@ -32,6 +32,7 @@
                 background: transparent;
                 justify-content: flex-end;
                 padding-right: 4px;
+                padding-bottom: 2px;
             }
             &__reviews, &__rating, &__date {
                 display: flex;
@@ -48,9 +49,17 @@
                     background: transparent;
                     justify-content: center;
                     padding: 0;
-                    padding-left: 6px;
+                    padding-top: 1px;
+                    padding-left: 8px;
                     font-size: 14px;
                     box-sizing: border-box;
+                    &:disabled {
+                        background: transparent;
+                        color: $black;
+                    }
+                    &:hover:enabled {
+                        background: $darkHover;
+                    }
                 }
                 &__ascArrow {
                     @include arrow(rotate(270deg));

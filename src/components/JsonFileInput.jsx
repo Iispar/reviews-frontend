@@ -17,7 +17,6 @@ const JsonInputField = ({ id, height, className }) => {
    * to check that the file is the correct format and display corresponding styling.
    */
   useEffect(() => {
-    // if no file.
     if (file == null) return;
     // get format with regex
     const regex = /\.[0-9a-z]+$/i;

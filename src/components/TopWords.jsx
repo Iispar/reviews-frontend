@@ -15,6 +15,7 @@ const TopWords = ({
 }) => {
   if (words == null) return null;
   const list = [];
+
   for (let i = 0; i < words.length; i += 1) {
     list.push(
       <WordListItem

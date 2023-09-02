@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
-import { useTextWidth } from './helpers';
+import { useTextWidth } from '../helpers/componentHelpers';
 
 /**
  * Styling and functionality for the input fields in the application.
@@ -19,6 +19,7 @@ const InputField = ({
   title, id, name, width, height, type, error, regex,
 }) => {
   const [value, setValue] = useState(null);
+
   // hook to calculate the width of the text
   const cutoutWidth = useTextWidth(title, '16px hind');
   const errorWidth = useTextWidth(error, '15px hind');

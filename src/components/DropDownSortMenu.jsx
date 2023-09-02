@@ -1,79 +1,63 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
+import { useTextWidth } from '../helpers/componentHelpers';
 
+/**
+ * Sort menu with two different sort with ascending and descending order.
+ * @property {String} className - Custom classname if wanted. Default is dropDownSortMenu.
+ * @property {String} id - Custom id if wanted. Default is dropDownSortMenu.
+ * @property {Function} setSort - The set function for to set sort when it is selected.
+ * @property {String} sortOne - First wanted sort.
+ * @property {String} sortTwo - Second wanted sort.
+ * @returns sort menu
+ */
 const DropDownSortMenu = ({
   className, id, setSort, sortOne, sortTwo,
 }) => {
   const [open, setOpen] = useState(false);
-
-  /**
-   * Sets the hover to a button.
-   * @param {string} component - id of the hovered item
-   * @param {string} color - color to change the hover to.
-   */
-  const hover = (component, color) => {
-    $(component).hover(
-      () => {
-        $(component).css('background', color);
-      },
-      () => {
-        $(component).css('background', 'transparent');
-      },
-    );
-  };
+  const [selected, setSelected] = useState(null);
 
   /**
    * Changes the filter and sets it to displayed.
-   * @param {String} sort - the selected filter id.
+   * @param {String} sort - the selected filter.
    */
   const changeFilter = async (sort) => {
     const splitSort = sort.split('__')[1];
     const splitSortDir = sort.split('__')[2];
-
     setSort(splitSort, splitSortDir);
 
-    // we use jquery hover and not css, because we need to disable the hover when clicked.
-    // this doesn't seem that good so will look into a better solution in the future.
-
-    // get the sort from the id.
-    const type = sort.split('__')[3];
-    let width;
     // calculate width of the button based on the length of the sort text.
-    if (type === sortOne) width = '80px';
-    else width = '70px';
+    const width = useTextWidth(splitSort) + 30;
 
     // use jquery animate instead of css as it works better here.
     $(`#${id}`).animate({
       width,
       height: '20px',
-      'margin-top': '0px',
     }, 200);
 
-    // set all the ${sortOne} to invis
+    // set all the sorts to invisible
     $(`#${id}__${sortOne}__desc`).css('display', 'none');
     $(`#${id}__${sortOne}__asc`).css('display', 'none');
     $(`#${id}__${sortTwo}__desc`).css('display', 'none');
     $(`#${id}__${sortTwo}__asc`).css('display', 'none');
 
-    // selected visible
+    // set the selected visible
     $(`#${sort}`).css({ display: 'flex' });
-    // disable hover from the button.
-    hover(`#${sort}`, 'transparent');
+    $(`#${sort}`).prop('disabled', true);
+    setSelected(sort);
 
+    // rotate the arrow back
     $(`#${id}__arrow`).css('transform', 'rotate(0deg)');
     setOpen(false);
   };
 
   /**
-       * Animates and opens the dropdown menu for the sort.
+       * Animates and opens or closes the dropdown menu for the sort.
        */
   const dropDown = () => {
-    // add hover back to all.
-    hover(`#${id}__${sortOne}__desc`, '#f5f5f5');
-    hover(`#${id}__${sortOne}__asc`, '#f5f5f5');
-    hover(`#${id}__${sortTwo}__desc`, '#f5f5f5');
-    hover(`#${id}__${sortTwo}__asc`, '#f5f5f5');
+    // enable the selected button
+    $(`#${selected}`).prop('disabled', false);
 
     // close dropdown
     if (open) {
@@ -108,7 +92,6 @@ const DropDownSortMenu = ({
     <div className={`${className}`} id={`${id}`}>
       <button className={`${className}__btn`} id={`${id}__btn`} type="button" onClick={() => dropDown()}>
         sort
-        <div className={`${className}__btn__arrow`} id={`${id}__btn__arrow`} />
       </button>
       <div className={`${className}__${sortOne}`}>
         <button className={`${className}__${sortOne}__asc`} id={`${id}__${sortOne}__asc`} type="button" onClick={() => changeFilter(`${id}__${sortOne}__asc`)}>

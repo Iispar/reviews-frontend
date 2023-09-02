@@ -5,7 +5,8 @@ import propTypes from 'prop-types';
  * renders a search field for the application.
  * @property {string} placeholder - the placeholder for field.
  * @property {string} className - custom className if wanted. Default searchFIeld.
- * @property {string} id - custom id if wanted. Default searchFIeld.
+ * @property {string} id - custom id if wanted. Default searchField.
+ * @property {function} onChange - The function used when the input field is used.
  * @returns a search field
  */
 const SearchField = ({

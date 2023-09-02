@@ -17,7 +17,7 @@ export const useTextWidth = (text, font) => {
  * Calculates the vertical lines for the double line chart.
  * @param {Integer} len - the length of the vertical points list.
  */
-export const getVerticalPoints = (len) => {
+export const useVerticalPoints = (len) => {
   const list = [];
   let curr = -4;
   for (let i = 0; i < len; i += 1) {

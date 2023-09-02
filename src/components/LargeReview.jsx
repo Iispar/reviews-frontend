@@ -10,6 +10,7 @@ import $ from 'jquery';
  * @property {String} title - Title of the review.
  * @property {String} date - Date of the review.
  * @property {String} classname - Custom className if wanted. Default largeReview.
+ * @property {String} item - id of the item the review is for.
  * @returns singular large review
  */
 const LargeReview = ({
@@ -67,7 +68,7 @@ const LargeReview = ({
             <div className={`${className}__info__stats__rating__icon`} />
           </div>
           <div className={`${className}__info__stats__item`} id={`${className}__info__stats__item__${id}`}>
-            item:
+            items id:
             {item}
           </div>
         </div>

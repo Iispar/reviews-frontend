@@ -6,13 +6,14 @@ import $ from 'jquery';
  * An input field for the settings page that is a form with a change button.
  * @property {String} className - Custom className if wanted. Default settingsInput.
  * @property {String} id - Custom id if wanted. Default settingsInput.
- * @property {func} onSubmit - the onSubmit function to be used when submitted.
+ * @property {function} onSubmit - the onSubmit function to be used when submitted.
  * @property {String} defaultValue - the default / current value for the input field.
  * @property {String} title - title for the input field.
  * @property {String} warningText - if wanted a warning text for the input field.
  * @property {String} button - what type of button the change button is. Either change or delete.
  * @property {String} submitText - text used in the submit button.
  * @property {String} type - type of the input field.
+ * @property {function} onChange - onchange function used for the input field.
  * @returns input field for settings
  */
 const SettingsInputField = ({
@@ -20,15 +21,27 @@ const SettingsInputField = ({
 }) => {
   const [value, setValue] = useState(defaultValue);
 
+  /**
+   * On load if there is a warningtext set the display for it to flex.
+   */
   $(document).ready(() => {
     if (warningText !== null) $(`#${id}__form__warning`).css('display', 'flex');
   });
 
+  /**
+   * useEffect for when value changes we show the change button
+   * if the value is different than original value.
+   */
   useEffect(() => {
     if (value !== defaultValue) $(`#${id}__form__${button}`).css('display', 'flex');
     else $(`#${id}__form__${button}`).css('display', 'none');
   }, [value]);
 
+  /**
+   * When value is changed we set it to the components state and also on the
+   * onChange that called this component.
+   * @param {String} val - Changed value
+   */
   const changeValue = (val) => {
     setValue(val);
     onChange(val);

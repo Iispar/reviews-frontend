@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { useTextWidth } from './helpers';
+import { useTextWidth } from '../helpers/componentHelpers';
 
 /**
  * Styling and functionality for the large search fields in the application.

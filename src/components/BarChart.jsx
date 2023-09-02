@@ -17,22 +17,17 @@ import BarTooltip from './BarTooltip';
  */
 const Chart = ({ data }) => {
   const [focusBar, setFocusBar] = useState(null);
+  // colors for the chart. Goes: first bar, its hover, second bar, its hover and so on.
   const color = ['#D2222D', '#EE6F27', '#FFBF00', '#32A632', '#007000', '#A31A23', '#D16224', '#D49F00', '#278227', '#004A00'];
-
-  if (data == null) {
-    return null;
-  }
+  if (data == null) return null;
 
   /**
    * Sets the hovered bar as current focus state. If none is hovered it is set to null.
    * @param {String} state - The state of the current tooltip.
    */
   const hover = (state) => {
-    if (state.isTooltipActive) {
-      setFocusBar(state.activeTooltipIndex);
-    } else {
-      setFocusBar(null);
-    }
+    if (state.isTooltipActive) setFocusBar(state.activeTooltipIndex);
+    else setFocusBar(null);
   };
 
   return (

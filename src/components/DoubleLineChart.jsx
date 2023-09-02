@@ -4,11 +4,11 @@ import {
 } from 'recharts';
 import propTypes from 'prop-types';
 import LineChartTooltip from './LineTooltip';
-import { getVerticalPoints } from './helpers';
+import { useVerticalPoints } from '../helpers/componentHelpers';
 
 /**
  * Renders a line chart with two lines
- * As this is used in this app only for reviews and ratings the right domain is 1-6 on setting
+ * As this is used in this app only for reviews and ratings the right domain is 1-6
  * and left is until max reviews.
  * uses the recharts library.
  * @property {json} data - Data with count and ratings as keys. Used for the lines.
@@ -17,21 +17,22 @@ import { getVerticalPoints } from './helpers';
  * @returns line chart
  */
 const DoubleLineChart = ({ data, className, id }) => {
-  if (data == null) {
-    return null;
-  }
+  if (data == null) return null;
 
-  // calculate max value for reviews count to get max of chart
+  // calculate max value for reviews count to get max height of charts count axis.
   const reviews = data.map((object) => object.count);
   const max = Math.max(...reviews) + 10;
   // calculate vertical points for the background grid
-  const verticalPoints = getVerticalPoints(reviews.length - 2);
-  // set width regarding if there is 3 or 5 values.
+  const verticalPoints = useVerticalPoints(reviews.length - 2);
+  // set width regarding if there is 3, 5, 7, 9 or 11 values.
   let yWidth = 0;
-  if (reviews.length === 5) yWidth = -130;
-  else if (reviews.length === 7) yWidth = -80;
-  else if (reviews.length === 9) yWidth = -60;
-  else if (reviews.length === 11) yWidth = -48;
+  switch (reviews.length) {
+    case (5): yWidth = -130; break;
+    case (7): yWidth = -80; break;
+    case (9): yWidth = -60; break;
+    case (11): yWidth = -48; break;
+    default: yWidth = 0;
+  }
 
   return (
     <div className={className} id={id}>

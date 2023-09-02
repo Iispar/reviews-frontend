@@ -6,15 +6,14 @@ import propTypes from 'prop-types';
  * @property {json} items - json of the items includes
  * item name, rating, reviews (if large) and key.
  * @property {String} View - The Component used for the list either SmallItem or LargeItem.
- * @property {Integer} count - Number of reviews in items json.
+ * @property {String} className - Custom classname if wanted. Default is itemList.
+ * @property {String} id - Custom id if wanted. Default is itemList.
  * @returns list of SmallItems or LargeItems
  */
 const ItemList = ({
   items, View, className, id,
 }) => {
-  if (items == null) {
-    return null;
-  }
+  if (items == null) return null;
 
   const productList = [];
   for (let i = 0; i < items.length; i += 1) {

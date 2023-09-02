@@ -5,15 +5,14 @@ import LargeReview from './LargeReview';
 /**
  * component to render a list of reviews in the large format.
  * @property {json} reviews - Reviews in json format.
- * Includes the reviews key, body, rating, id, title and date.
- * @property {string} className - Custom className if wanted. Default ReviewsList.
+ *                            Includes the reviews key, body, rating, id, title and date.
+ * @property {String} className - Custom className if wanted. Default ReviewsList.
  * @returns list of reviews
  */
 const ReviewsList = ({ reviews, className }) => {
+  if (reviews == null) return null;
   const list = [];
-  if (reviews == null) {
-    return null;
-  }
+
   for (let i = 0; i < reviews.length; i += 1) {
     const review = reviews[i];
     list.push(
