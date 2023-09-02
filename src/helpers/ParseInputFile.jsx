@@ -1,3 +1,9 @@
+/**
+ * Parses a JSON file.
+ * @param {json} file
+ *               The file to be parsed.
+ * @returns parsed file.
+ */
 async function ParseInputFile(file) {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();
