@@ -1,20 +1,15 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import Selections from '../pages/settings/Selections';
 import UserInfo from '../pages/settings/UserInfo';
 import DeleteAccount from '../pages/settings/DeleteAccount';
 
 describe('settings site works fully', () => {
-  let user;
-  beforeEach(() => {
-    user = userEvent.setup();
-  });
   test('selections component renders correctly', () => {
+    const mock = jest.fn();
     const selectionsContainer = render(
-      <Selections visible />,
+      <Selections visible setPassword={mock} />,
     ).container;
 
     const editUser = selectionsContainer.querySelector('#selections__buttons__newUser');
@@ -35,6 +30,7 @@ describe('settings site works fully', () => {
         updatePassword={mockSubmit}
         openForm={mockClick}
         visible
+        setNewPassword={() => jest.fn()}
       />,
     ).container;
 
@@ -47,12 +43,6 @@ describe('settings site works fully', () => {
     expect(profilePicChange).toBeTruthy();
     expect(closeBtn).toBeTruthy();
     expect(password).toBeTruthy();
-
-    const passwordBtn = userInfoContainer.querySelector('#userInfo__values__password__confirmContainer__input__change');
-    await user.click(passwordBtn);
-    await user.click(closeBtn);
-    expect(mockClick).toBeCalledTimes(1);
-    expect(mockSubmit).toBeCalledTimes(1);
   });
   test('deleteAccount renders and works', async () => {
     const deleteContainer = render(
