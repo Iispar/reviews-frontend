@@ -3,7 +3,7 @@ import axios from 'axios';
 const baseUrl = 'http://localhost:8080/api/account';
 
 /**
- * Calls the backend for login
+ * Calls the api for login
  * @param {String} username
  *        Username used for login
  * @param {String} password
@@ -21,15 +21,11 @@ const login = async (username, password) => {
 };
 
 /**
- * Creates a new account to the database with data.
+ * Calls the api to create a new account with data.
  * @param {String} username
  *        Username used for creation
- * @param {String} name
- *        Name used for creation
- * @param {String} email
- *        Email used for creation
- * @param {String} password
- *        Password used for creation
+ * @param {json} payload
+ *        Data used for the creation. Includes the to be created account.
  * @param {String} role
  *        Role used for creation
  * @returns token

@@ -2,6 +2,16 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:8080/api/item';
 
+/**
+ * Calls the api to get all items for user.
+ * @param {String} accountId
+ *                 Account id that is calling for items.
+ * @param {String} page
+ *                 Page of items we want.
+ * @param {String} token
+ *                 Token of the logged in account.
+ * @returns items for user
+ */
 const getAll = async (accountId, page, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
@@ -10,6 +20,22 @@ const getAll = async (accountId, page, token) => {
   return res.data;
 };
 
+/**
+ * Calls the api to get the search of the items.
+ * @param {String} accountId
+ *                 Account id that is calling for items.
+ * @param {String} search
+ *                 The used search.
+ * @param {String} page
+ *                 The wanted page for the results
+ * @param {String} sort
+ *                 The wanted sort for the results
+ * @param {String} sortDir
+ *                 The wanted sortDir for the results
+ * @param {String} token
+ *                 Token of the logged in account.
+ * @returns matching results
+ */
 const getSearch = async (accountId, search, page, sort, sortDir, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
@@ -18,6 +44,20 @@ const getSearch = async (accountId, search, page, sort, sortDir, token) => {
   return res.data;
 };
 
+/**
+ * Calls the api to get sorted results
+ * @param {String} accountId
+ *                 Account id that is calling for items.
+ * @param {String} page
+ *                 The wanted page for the results
+ * @param {String} sort
+ *                 The wanted sort for the results
+ * @param {String} sortDir
+ *                 The wanted sortDir for the results
+ * @param {String} token
+ *                 Token of the logged in account.
+ * @returns matching results
+ */
 const getSort = async (accountId, page, sort, sortDir, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
@@ -26,6 +66,14 @@ const getSort = async (accountId, page, sort, sortDir, token) => {
   return res.data;
 };
 
+/**
+ * Calls the api to create a new item.
+ * @param {json} payload
+ *            Payload that has the data to create a new item with.
+ * @param {String} token
+ *                 Token of the logged in account.
+ * @returns created item
+ */
 const createNew = async (payload, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
