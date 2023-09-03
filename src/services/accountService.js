@@ -36,4 +36,22 @@ const updateAccount = async (accountId, payload, token) => {
   return res.data;
 };
 
-export default { getAccount, updateAccount };
+/**
+ * Calls the api to delete account from the database.
+ * @param {Json} payload
+ *        The auth request to delete the account with.
+ * @param {String} token
+ *        The token of the logged in user.
+ * @returns true if succesful.
+ */
+const deleteAccount = async (payload, token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+    data: payload,
+  };
+  await axios.delete(`${baseUrl}/del`, config)
+    .then();
+  return true;
+};
+
+export default { getAccount, updateAccount, deleteAccount };

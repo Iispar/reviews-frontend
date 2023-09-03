@@ -4,12 +4,18 @@ import accountService from '../../services/accountService';
 
 /**
  * hook to delete an users account
+ * @param {String} username
+ *        the username of the user
  * @param {String} password
  *        the password of the user
  * @returns true if successful, false otherwise.
  */
-export const useDeleteAccount = (password) => {
-  return true;
+export const useDeleteAccount = (username, password, token) => {
+  const payload = {
+    username,
+    password,
+  };
+  accountService.deleteAccount(payload, token);
 };
 
 /**

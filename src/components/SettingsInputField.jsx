@@ -44,7 +44,7 @@ const SettingsInputField = ({
    */
   const changeValue = (val) => {
     setValue(val);
-    onChange(val);
+    if (onChange) onChange(val);
   };
 
   return (

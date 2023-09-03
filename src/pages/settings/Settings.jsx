@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import Selections from './Selections';
 import accountService from '../../services/accountService';
-import { useUpdateAccount } from './settingsHooks';
+import { useUpdateAccount, useDeleteAccount } from './settingsHooks';
 import { useGetLocalStorage } from '../../helpers/helperHooks';
 
 /**
@@ -59,9 +58,9 @@ const Settings = ({ className, id }) => {
    */
   const deleteAccount = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
-    // if (UseDeleteAccount(e.target[0].value)) console.log('success');
-    // else console.log('failure');
+    useDeleteAccount(curUsername, e.target[0].value, token);
+    window.localStorage.removeItem('token');
+    window.location.reload();
   };
 
   /**
