@@ -8,11 +8,10 @@ import InputField from '../../components/InputField';
  * @property {String} className - Custom className if wanted. Default loginForm.
  * @property {String} id - Custom id if wanted. Default loginForm.
  * @property {func} onSubmit - The onSubmit function to be used with the form.
- * @property {func} newPass - function for the new password form submit.
  * @returns loginin view.
  */
 const LoginForm = ({
-  onSubmit, newPass, className, id,
+  onSubmit, className, id,
 }) => {
   const [contactVisible, setcontactVisible] = useState(false);
   /**
@@ -50,10 +49,9 @@ const LoginForm = ({
           <div className={`${className}__loginForm__inputs__passwordInfo`}>
             <button type="button" className={`${className}__loginForm__inputs__passwordInfo__forgotPassword`} id={`${id}__loginForm__inputs__passwordInfo__forgotPassword`} onClick={() => switchContact()}> Forgot password? </button>
             <div className={`${className}__loginForm__inputs__passwordInfo__contact`} id={`${id}__loginForm__inputs__passwordInfo__contact`}>
-              <form className={`${className}__loginForm__inputs__passwordInfo__contact__email`} id={`${id}__loginForm__inputs__passwordInfo__contact__email`} onSubmit={(e) => newPass(e)}>
-                <InputField title="enter your email" width="220px" height="40px" />
-                <button type="submit" className={`${className}__loginForm__inputs__passwordInfo__contact__email__resetBtn`} id={`${className}__loginForm__inputs__passwordInfo__contact__email__resetBtn`}> get new password </button>
-              </form>
+              No availabe automatically yet...
+              Just contact me at my email if you want to reset your password.
+              Or just create a new account.
             </div>
           </div>
           <button type="submit" className={`${className}__loginForm__inputs__loginBtn`} id={`${id}__loginForm__inputs__loginBtn`} name={`${className}Btn`} form={`${className}Form__inputs__form`}> login </button>
@@ -71,14 +69,12 @@ LoginForm.propTypes = {
   onSubmit: propTypes.func,
   className: propTypes.string,
   id: propTypes.string,
-  newPass: propTypes.func,
 };
 
 LoginForm.defaultProps = {
   onSubmit: null,
   className: 'login',
   id: 'login',
-  newPass: null,
 };
 
 export default LoginForm;

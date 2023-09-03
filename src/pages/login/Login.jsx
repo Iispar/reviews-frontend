@@ -42,21 +42,9 @@ const Login = ({ className, id }) => {
     )) navigate('/home');
   };
 
-  /**
-   * formats the email request and calls the new pass hook.
-   * @param {*} e
-   *        The event called with the form submit.
-   */
-  const handlePassword = (e) => {
-    e.preventDefault();
-    // const values = e.target;
-    // if (UseNewPassword(values[0].value)) console.log('success');
-    // else console.log('failure');
-  };
-
   return (
     <div className={className} id={id}>
-      <LoginForm onSubmit={handleLogin} newPass={handlePassword} />
+      <LoginForm onSubmit={handleLogin} />
       <CreateAccountForm onSubmit={handleCreation} />
     </div>
   );
