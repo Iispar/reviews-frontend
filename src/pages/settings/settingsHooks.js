@@ -8,17 +8,29 @@ import accountService from '../../services/accountService';
  *        the password of the user
  * @returns true if successful, false otherwise.
  */
-export const UseDeleteAccount = (password) => {
+export const useDeleteAccount = (password) => {
   return true;
 };
 
 /**
  * hook to update name of user.
+ * @param {String} accountId
+ *        The id for the account.
  * @param {String} name
- *        The new name for the user.
+ *        The new name for the account.
+ * @param {String} username
+ *        The new username for the account
+ * @param {String} password
+ *        The new password for the account.
+ * @param {String} role
+ *        The new role for the account.
+ * @param {String} email
+ *        The new email for the account.
+ * @param {String} token
+ *        The token of the logged in account.
  * @returns true if successful, false otherwise.
  */
-export const UseUpdateAccount = (accountId, name, username, password, role, email, token) => {
+export const useUpdateAccount = (accountId, name, username, password, role, email, token) => {
   const formattedPass = password.length === 0 ? 'none' : password;
 
   const account = {
@@ -29,4 +41,5 @@ export const UseUpdateAccount = (accountId, name, username, password, role, emai
     email,
   };
   accountService.updateAccount(accountId, account, token);
+  return true;
 };

@@ -4,14 +4,20 @@ import propTypes from 'prop-types';
 import SettingsInputField from '../../components/SettingsInputField';
 
 /**
- * Renders the user info settings page.
+ * Renders the account info settings page.
  * @property {String} className - Custom className if wanted. Default userInfo.
  * @property {String} id - Custom id if wanted. Default userInfo.
- * @property {String} currName - the current name of the user.
- * @property {String} currUsername - the current username of the user.
- * @property {func} updateName - the function to update name.
- * @property {func} updateUsername - the function to update username.
- * @property {func} updatePassword - the function to update password.
+ * @property {String} currName - the current name of the account.
+ *  * @property {String} currName - the current role of the account.
+ * @property {String} currUsername - the current username of the account.
+ * @property {String} currEmail - the current email of the account
+ * @property {func} updateAccount - the function to update account.
+ * @property {func} openForm - the function to open the form.
+ * @property {func} setName - the function to set the name on change.
+ * @property {func} setUsername - the function to set the username on change.
+ * @property {func} setEmail - the function to set the email on change.
+ * @property {func} setNewPassword - the function to set the password on change.
+ * @property {func} setRole - the function to set the role on change.
  * @returns user info page.
  */
 const UserInfo = ({
@@ -22,6 +28,7 @@ const UserInfo = ({
   setName,
   setUsername,
   setNewPassword,
+  setRole,
   updateAccount,
   className,
   id,
@@ -30,6 +37,10 @@ const UserInfo = ({
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  /**
+   * UseEffect to check that the password and confirm password match and opens the
+   * change button if they do.
+   */
   useEffect(() => {
     if (password !== '') $(`#${id}__values__password__confirmContainer`).css('display', 'grid');
     else $(`#${id}__values__password__confirmContainer`).css('display', 'none');
@@ -55,6 +66,13 @@ const UserInfo = ({
         <SettingsInputField title="name" onChange={setName} onSubmit={(e) => updateAccount(e)} defaultValue={currName} id="settingsName" />
         <SettingsInputField title="username" onChange={setUsername} onSubmit={(e) => updateAccount(e)} defaultValue={currUsername} id="settingsUsername" />
         <SettingsInputField title="email" onChange={setEmail} onSubmit={(e) => updateAccount(e)} defaultValue={currEmail} id="settingsEmail" />
+        <label className={`${className}__values__role`} htmlFor="updateRole">
+          role:
+          <select id="updateRole" name="updateRole" onChange={(e) => setRole(e.target.value)}>
+            <option value="1"> Seller </option>
+            <option value="2"> Customer </option>
+          </select>
+        </label>
         <form className={`${className}__values__password`} id={`${className}__values__password`} onSubmit={(e) => updateAccount(e)}>
           <div className={`${className}__values__password__passContainer`}>
             <div className={`${className}__values__password__passContainer__passText`}>
@@ -85,6 +103,7 @@ UserInfo.propTypes = {
   currUsername: propTypes.string,
   openForm: propTypes.func,
   currName: propTypes.string,
+  setRole: propTypes.func,
   setName: propTypes.func,
   setUsername: propTypes.func,
   setNewPassword: propTypes.func,
@@ -97,6 +116,7 @@ UserInfo.defaultProps = {
   className: 'userInfo',
   id: 'userInfo',
   currUsername: null,
+  setRole: null,
   openForm: null,
   currName: null,
   setName: null,

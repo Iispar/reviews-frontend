@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import Selections from './Selections';
 import accountService from '../../services/accountService';
-import { UseUpdateAccount } from './settingsHooks';
+import { useUpdateAccount } from './settingsHooks';
+import { useGetLocalStorage } from '../../helpers/helperHooks';
 
 /**
  * Renders the settings page.
@@ -34,12 +35,11 @@ const Settings = ({ className, id }) => {
   const [newRole, setNewRole] = useState(null);
 
   useEffect(() => {
-    const newToken = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
-    const curAccountId = window.localStorage.getItem('accountId').replace(/^"(.*)"$/, '$1');
-    setAccountId(curAccountId);
-    setToken(newToken);
+    const storage = useGetLocalStorage();
+    setAccountId(storage.accountId);
+    setToken(storage.token);
 
-    accountService.getAccount(curAccountId, newToken)
+    accountService.getAccount(storage.accountId, storage.token)
       .then((res) => {
         setCurName(res.name);
         setCurUsername(res.username);
@@ -54,7 +54,8 @@ const Settings = ({ className, id }) => {
   }, []);
   /**
    * Formats the event call and calls the delete account hook.
-   * @param {*} e - event called with.
+   * @param {Function} e
+   *        event called with.
    */
   const deleteAccount = (e) => {
     e.preventDefault();
@@ -65,11 +66,12 @@ const Settings = ({ className, id }) => {
 
   /**
      * Formats the event call and calls the update name hook.
-     * @param {*} e - event called with.
+     * @param {Function} e
+     *        event called with.
      */
   const updateAccount = (e) => {
     e.preventDefault();
-    UseUpdateAccount(accountId, newName, newUsername, newPassword, newRole, newEmail, token);
+    useUpdateAccount(accountId, newName, newUsername, newPassword, newRole, newEmail, token);
     // if username is updated logout.
     if (newUsername !== curUsername) {
       window.localStorage.removeItem('token');
@@ -88,6 +90,7 @@ const Settings = ({ className, id }) => {
             setPassword={setNewPassword}
             setUsername={setNewUsername}
             setName={setNewName}
+            setRole={setNewRole}
             deleteAccount={(e) => deleteAccount(e)}
             setEmail={setNewEmail}
             updateAccount={(e) => updateAccount(e)}
@@ -95,6 +98,7 @@ const Settings = ({ className, id }) => {
             name={curName}
             email={curEmail}
             key={curEmail}
+            role={curRole}
           />
         </div>
       </div>
