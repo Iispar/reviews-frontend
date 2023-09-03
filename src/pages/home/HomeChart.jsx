@@ -7,15 +7,16 @@ import reviewsService from '../../services/reviewsService';
 /**
  * Renders the chart component for the home page.
  * @property {String} ClassName - Custom className if wanted. Default homeChart.
+ * @property {json} initData - The initial data that this component is loaded with.
  * @property {String} id - Custom id if wanted. Default homeChart.
  * @property {string} accountId - Id of account used for chart
  * @property {String} token - Token for account
  * @returns chart component
  */
 const HomeChart = ({
-  className, curData, id, token, accountId,
+  className, initData, id, token, accountId,
 }) => {
-  const [data, setData] = useState(curData);
+  const [data, setData] = useState(initData);
 
   /**
    * Changes the view and sets the css for the active bar.
@@ -54,7 +55,7 @@ const HomeChart = ({
 HomeChart.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
-  curData: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
+  initData: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   token: propTypes.string,
   accountId: propTypes.string,
 };
@@ -62,7 +63,7 @@ HomeChart.propTypes = {
 HomeChart.defaultProps = {
   className: 'homeChart',
   id: 'homeChart',
-  curData: [],
+  initData: [],
   token: null,
   accountId: null,
 };

@@ -4,7 +4,7 @@
  * @returns accounts id and token.
  */
 export const useGetLocalStorage = () => {
-  const newToken = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
-  const curAccountId = window.localStorage.getItem('accountId').replace(/^"(.*)"$/, '$1');
-  return ({ newToken, curAccountId });
+  const token = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
+  const accountId = window.localStorage.getItem('accountId').replace(/^"(.*)"$/, '$1');
+  return ({ token, accountId });
 };

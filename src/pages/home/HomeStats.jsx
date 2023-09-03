@@ -4,6 +4,10 @@ import BarChart from '../../components/BarChart';
 
 /**
  * Renders the stats component used in the home screen.
+ * @property {json} barChartData - The data used for barChart.
+ * @property {Integer} itemCount - Count of items for account
+ * @property {Double} ratingAvg - Average rating of items for account.
+ * @property {Integer} reviewCount - Count of reviews for account.
  * @property {String} className - custom className if wanted. Default homeStats.
  * @property {String} id - custom id if wanted. Default homeStats.
  * @returns stats component

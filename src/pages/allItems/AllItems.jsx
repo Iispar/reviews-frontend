@@ -28,10 +28,10 @@ const AllItems = ({ className, id }) => {
   useEffect(() => {
     const storage = useGetLocalStorage();
 
-    setToken(storage.newToken);
-    setAccountId(storage.curAccountId);
+    setToken(storage.token);
+    setAccountId(storage.accountId);
 
-    itemService.getAll(storage.curAccountId, page.current, storage.newToken)
+    itemService.getAll(storage.accountId, page.current, storage.token)
       .then((res) => setItems(res));
   }, []);
 
