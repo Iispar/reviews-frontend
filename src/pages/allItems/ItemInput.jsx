@@ -3,13 +3,13 @@ import propTypes from 'prop-types';
 import InputField from '../../components/InputField';
 
 /**
- * Renders the file input component.
- * @propery {func} onSubmit - the onSubmit function to be used when form is submitted.
+ * Renders the item input component.
+ * @propery {Function} onSubmit - the onSubmit function to be used when form is submitted.
  * @property {string} className - custom className if wanted. Default is fileInput.
  * @property {string} id - custom id if wanted. Default is fileInput.
  * @returns file input component
  */
-const FileInput = ({ onSubmit, className, id }) => (
+const ItemInput = ({ onSubmit, className, id }) => (
   <div className={className}>
     <div className={`${className}__title`} id={`${id}__title`}> Add new item </div>
     <form className={`${className}__form`} id={`${id}__form`} onSubmit={(e) => onSubmit(e)}>
@@ -26,16 +26,16 @@ const FileInput = ({ onSubmit, className, id }) => (
   </div>
 );
 
-FileInput.propTypes = {
+ItemInput.propTypes = {
   onSubmit: propTypes.func,
   className: propTypes.string,
   id: propTypes.string,
 };
 
-FileInput.defaultProps = {
+ItemInput.defaultProps = {
   onSubmit: null,
   className: 'fileInput',
   id: 'fileInput',
 };
 
-export default FileInput;
+export default ItemInput;

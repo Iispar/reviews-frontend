@@ -8,10 +8,15 @@ import DropDownSortMenu from '../../components/DropDownSortMenu';
 
 /**
  * Renders the items component on the allItems page
- * @propert {JSON} items - JSON object that contains all the items.
- * @propert {String} className - custom className if wanted. Default items.
- * @propert {String} id - custom id if wanted. Default items.
- * @returns items component for ALlItems page
+ * @property {JSON} items - JSON object that contains all the items.
+ * @property {String} className - custom className if wanted. Default items.
+ * @property {String} id - custom id if wanted. Default items.
+ * @property {Function} onSubmit - the onSubmit function to be used when submitted.
+ * @property {Function} setSort - the set function when sort is selected.
+ * @property {Function} setSearch - the set function when search is modified.
+ * @property {SFunctiontring} nextPage - the function to be called when next page is clicked.
+ * @property {Function} prevPage - the function to be called when previous page is clicked.
+ * @returns items component.
  */
 const Items = ({
   items, className, id, onSubmit, setSort, setSearch, nextPage, prevPage,

@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
-import { useNewItem } from './allItemsHooks';
+import { useGetLocalStorage } from '../../helpers/helperHooks';
+import { useNewItem, useSearch } from './allItemsHooks';
 import Items from './Items';
-import FileInput from './FileInput';
+import ItemInput from './ItemInput';
 import itemService from '../../services/itemService';
 
 /**
@@ -25,20 +26,20 @@ const AllItems = ({ className, id }) => {
    * UseEffect loads the token and account id for the user and loads the data on page load.
    */
   useEffect(() => {
-    const newToken = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
-    const curAccountId = window.localStorage.getItem('accountId').replace(/^"(.*)"$/, '$1');
-    setToken(newToken);
-    setAccountId(curAccountId);
+    const storage = useGetLocalStorage();
 
-    itemService.getAll(curAccountId, page.current, newToken)
+    setToken(storage.newToken);
+    setAccountId(storage.curAccountId);
+
+    itemService.getAll(storage.curAccountId, page.current, storage.newToken)
       .then((res) => setItems(res));
   }, []);
 
   /**
    * takes in the submit and calls the new item hook to submit it.
    * Acts accordinfg to the result of the hook.
-   * @param {*} e
-   *        Submit data.
+   * @param {function} e
+   *        The event that calls this function.
    */
   const handleCreation = (e) => {
     e.preventDefault();
@@ -48,14 +49,13 @@ const AllItems = ({ className, id }) => {
 
   /**
    * Searches with the value in the input field and selected sorts.
-   * @param {*} e
+   * @param {function} e
+   *        The event that calls this function.
    */
   const searchInput = (e) => {
     page.current = 0;
     if (e) e.preventDefault();
-
-    itemService.getSearch(accountId, search, page.current, sort, sortDir, token)
-      .then((res) => setItems(res));
+    useSearch(accountId, search, page.current, sort, sortDir, token, setItems);
   };
 
   /**
@@ -69,13 +69,7 @@ const AllItems = ({ className, id }) => {
     page.current = 0;
     setSort(selSort);
     setSortDir(selSortDir);
-    if (search == null) {
-      itemService.getSort(accountId, page.current, selSort, selSortDir, token)
-        .then((res) => setItems(res));
-    } else {
-      itemService.getSearch(accountId, search, page.current, selSort, selSortDir, token)
-        .then((res) => setItems(res));
-    }
+    useSearch(accountId, search, page.current, selSort, selSortDir, token, setItems);
   };
 
   /**
@@ -83,27 +77,15 @@ const AllItems = ({ className, id }) => {
    */
   const nextPage = () => {
     $('#pagination__prev').prop('disabled', false);
-    if (search == null) {
-      itemService.getSort(accountId, page.current + 1, sort, sortDir, token)
-        .then((res) => setItems(res));
-    } else {
-      itemService.getSearch(accountId, search, page.current + 1, sort, sortDir, token)
-        .then((res) => setItems(res));
-    }
+    useSearch(accountId, search, page.current + 1, sort, sortDir, token, setItems);
     page.current += 1;
   };
 
   /**
-       * Function to move to load the previous page of reviews
-       */
+  * Function to move to load the previous page of reviews
+  */
   const prevPage = () => {
-    if (search == null) {
-      itemService.getSort(accountId, page.current - 1, sort, sortDir, token)
-        .then((res) => setItems(res));
-    } else {
-      itemService.getSearch(accountId, search, page.current - 1, sort, sortDir, token)
-        .then((res) => setItems(res));
-    }
+    useSearch(accountId, search, page.current - 1, sort, sortDir, token, setItems);
     page.current -= 1;
     if (page.current === 0) {
       $('#pagination__prev').prop('disabled', true);
@@ -127,7 +109,7 @@ const AllItems = ({ className, id }) => {
           />
         </div>
         <div className={`${className}__grid__fileInput`} id={`${id}__grid__fileInput`}>
-          <FileInput onSubmit={handleCreation} token={token} accountId={accountId} />
+          <ItemInput onSubmit={handleCreation} token={token} accountId={accountId} />
         </div>
       </div>
     </div>
