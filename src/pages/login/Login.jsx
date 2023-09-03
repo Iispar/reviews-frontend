@@ -16,7 +16,7 @@ const Login = ({ className, id }) => {
 
   /**
    * Handles the login and moves to home page.
-   * @param {*} e
+   * @param {Function} e
    *        The event that the login is called with.
    */
   const handleLogin = async (e) => {
@@ -27,7 +27,7 @@ const Login = ({ className, id }) => {
 
   /**
    * creates a new account.
-   * @param {*} e
+   * @param {Function} e
    *        The event that the login is called with.
    */
   const handleCreation = async (e) => {

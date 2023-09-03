@@ -13,6 +13,7 @@ import InputField from '../../components/InputField';
 const CreateAccountForm = ({ className, id, onSubmit }) => {
   const [password, setPassword] = useState('null');
   const [confirmPassword, setConfirmPassword] = useState('null');
+  // regex to match password.
   const regexp = /^(?=.*\w)(?=.*\d)(?=.*[@$!%*#?&])[\w@$!%*#?&]{8,}/;
 
   /**
@@ -26,7 +27,7 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
 
   /**
    * Displays the error message to a component.
-   * @param {String} id
+   * @param {String} selection
    *        id of the component to display error message to
    * @param {boolean} on
    *        if the error message should be on or off.
@@ -50,54 +51,19 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
    * and check that it matches the required format.
    */
   useEffect(() => {
-    if (password !== confirmPassword) errorMessage('createConfirmPassword', true);
-    else {
+    if (!regexp.test(password)) {
+      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'block');
+      $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
+    } else if (password !== confirmPassword) {
+      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
+      $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
+      errorMessage('createConfirmPassword', true);
+    } else {
+      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
+      $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', false);
       errorMessage('createConfirmPassword', false);
     }
   }, [password, confirmPassword]);
-
-  /**
-   * Loads listeners to input fields when the app loads fully.
-   * CAN THIS BE DONE IN INPUTFIELD!!!!!!! TODO:
-   * Currently here because I don't really have a good way of checking that it matches
-   * the other input field. Could make a new component (?).
-   */
-  $(document).ready(() => {
-    /**
-     * Checks the passwords match
-     */
-    $('#createPassword').on('input', async (val) => {
-      const input = val.target.value;
-      await setPassword(input);
-      if (!regexp.test(input)) {
-        $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'block');
-        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
-      } else if (input !== confirmPassword) {
-        $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
-        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
-        errorMessage('createConfirmPassword', true);
-      } else {
-        errorMessage('createConfirmPassword', false);
-        $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
-        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', false);
-      }
-    });
-
-    /**
-     * Checks the passwords match.
-     */
-    $('#createConfirmPassword').on('input', async (val) => {
-      const input = val.target.value;
-      await setConfirmPassword(input);
-      if (input !== password) {
-        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
-        errorMessage('createConfirmPassword', true);
-      } else if (regexp.test(password)) {
-        $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', false);
-        errorMessage('createConfirmPassword', false);
-      }
-    });
-  });
 
   return (
     <div className={className} id={id}>
@@ -109,7 +75,7 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
             <InputField id="createName" title="first name" width="240px" height="40px" />
             <InputField id="createEmail" title="email" width="240px" height="40px" />
             <div className={`${className}__createAccountForm__inputs__form__password`}>
-              <InputField className={className} id="createPassword" type="password" title="password" width="240px" height="40px" regex={regexp} error="doesn't include all required characters" />
+              <InputField className={className} id="createPassword" type="password" title="password" width="240px" height="40px" regex={regexp} error="doesn't include all required characters" onChange={setPassword} />
               <div className={`${className}__createAccountForm__inputs__form__password__message`} id={`${className}__createAccountForm__inputs__form__password__message`}>
                 Password must be minimum of 8 characters with:
                 <br />
@@ -120,7 +86,7 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
                 - special character
               </div>
             </div>
-            <InputField id="createConfirmPassword" type="password" title="confirm password" width="240px" height="40px" error="passwords don't match" />
+            <InputField id="createConfirmPassword" type="password" title="confirm password" width="240px" height="40px" error="passwords don't match" onChange={setConfirmPassword} />
             <label className={`${className}__createAccountForm__inputs__form__roleLabel`} htmlFor="createRole">
               role:
               <select id="createRole" name="createRole">

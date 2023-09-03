@@ -16,7 +16,7 @@ import { useTextWidth } from '../helpers/componentHelpers';
  * @returns custom input field.
  */
 const InputField = ({
-  title, id, name, width, height, type, error, regex,
+  title, id, name, width, height, type, error, regex, onChange,
 }) => {
   const [value, setValue] = useState(null);
 
@@ -24,6 +24,16 @@ const InputField = ({
   const cutoutWidth = useTextWidth(title, '16px hind');
   const errorWidth = useTextWidth(error, '15px hind');
   const labelHeight = `${height.replace('px', '') / 4}px`;
+
+  /**
+   * Sets change value to local useState and parent component useState.
+   * @param {String} val
+   *        Changed value.
+   */
+  const setValues = (val) => {
+    setValue(val);
+    if (onChange) onChange(val);
+  };
 
   /**
    * Displays the error message.
@@ -60,7 +70,7 @@ const InputField = ({
   return (
     <div className={name} id={id} style={{ width, height }}>
       <div className={`${name}__container`}>
-        <input className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} onChange={(e) => setValue(e.target.value)} />
+        <input className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} onChange={(e) => setValues(e.target.value)} />
         <div className={`${name}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
         <div className={`${name}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>
           {error}
@@ -82,6 +92,7 @@ InputField.propTypes = {
   error: propTypes.string,
   height: propTypes.string,
   regex: propTypes.instanceOf(RegExp),
+  onChange: propTypes.func,
 };
 
 InputField.defaultProps = {
@@ -93,6 +104,7 @@ InputField.defaultProps = {
   error: 'wrong input',
   height: '40px',
   regex: null,
+  onChange: null,
 };
 
 export default InputField;
