@@ -58,8 +58,9 @@ const Settings = ({ className, id }) => {
    */
   const deleteAccount = (e) => {
     e.preventDefault();
-    useDeleteAccount(curUsername, e.target[0].value, token);
+    useDeleteAccount(accountId, token);
     window.localStorage.removeItem('token');
+    window.localStorage.removeItem('accountId');
     window.location.reload();
   };
 

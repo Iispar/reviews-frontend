@@ -44,12 +44,11 @@ const updateAccount = async (accountId, payload, token) => {
  *        The token of the logged in user.
  * @returns true if succesful.
  */
-const deleteAccount = async (payload, token) => {
+const deleteAccount = async (id, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
-    data: payload,
   };
-  await axios.delete(`${baseUrl}/del`, config)
+  await axios.delete(`${baseUrl}/del?accountId=${id}`, config)
     .then();
   return true;
 };
