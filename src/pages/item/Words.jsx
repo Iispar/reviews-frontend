@@ -6,8 +6,9 @@ import TopWords from '../../components/TopWords';
  * Renders the top words component on item page.
  * @property {String} className - Custom className if wanted. Default words.
  * @property {String} id - Custom id if wanted. Default words.
- * @property {JSON} words - An JSON object containing the words to be displayed.
- * @returns top words.
+ * @property {List<String>} posWords - List of the most positive words.
+ * @property {List<String>} negWords - List of the most negative words.
+ * @returns top words component.
  */
 const Words = ({
   className, id, posWords, negWords,

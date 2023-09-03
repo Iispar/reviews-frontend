@@ -29,6 +29,7 @@ const Title = ({
     const left = stars * 24 + stars * 2 + (2.4 * parseInt(split[1].slice(0, 2), 10)) / 10;
     const list = [];
     const width = 2.4 * (11 - parseInt(split[1], 10));
+
     // if only zero point some stars we need to draw this alone because the loop wont work...
     if (stars === 0) {
       list.push(<div className="star" key="singularStar" />);
@@ -36,7 +37,6 @@ const Title = ({
     }
 
     for (let i = 0; i < stars; i += 1) {
-      // rename the keys to something better than the index.
       list.push(<div className="star" key={i} />);
       if (i === stars - 1 && parseInt(split[1], 10) !== 0) {
         list.push(<div className="star" key="final" />);

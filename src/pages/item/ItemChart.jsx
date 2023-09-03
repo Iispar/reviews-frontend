@@ -8,18 +8,18 @@ import reviewsService from '../../services/reviewsService';
  * Renders the chart component for the item page
  * @property {String} className - Custom className if wanted. Default is itemChart.
  * @property {String} id - Custom id if wanted. Default is itemChart.
+ * @property {String} initData - Data to initialize the chart with.
+ * @property {String} itemId - Id of item that is displayed.
+ * @property {String} token - Token for logged in account.
  * @returns chart component for item.
  */
 const ItemChart = ({
-  // eslint-disable-next-line no-unused-vars
-  className, id, curData, itemId, token,
+  className, id, initData, itemId, token,
 }) => {
-  const [data, setData] = useState(curData);
+  const [data, setData] = useState(initData);
 
   /**
    * Changes the view and sets the css for the active bar.
-   * @param {String} selection
-   *        The selected month as data.
    * @param {String} selectionText
    *        The selected button as text.
    */
@@ -54,7 +54,7 @@ const ItemChart = ({
 ItemChart.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
-  curData: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
+  initData: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   itemId: propTypes.string,
   token: propTypes.string,
 };
@@ -62,7 +62,7 @@ ItemChart.propTypes = {
 ItemChart.defaultProps = {
   className: 'itemChart',
   id: 'itemChart',
-  curData: null,
+  initData: null,
   itemId: null,
   token: null,
 };

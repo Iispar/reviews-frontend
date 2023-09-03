@@ -10,9 +10,10 @@ import ItemChart from './ItemChart';
 import Reviews from './Reviews';
 import NewReviewForm from './NewReviewForm';
 import pagesService from '../../services/pagesService';
-import { UseNewReview } from './itemHooks';
+import { UseNewReview, useGetReviews } from './itemHooks';
 import reviewsService from '../../services/reviewsService';
 import ParseInputFile from '../../helpers/ParseInputFile';
+import { useGetLocalStorage } from '../../helpers/helperHooks';
 
 /**
  * Renders the single Item page.
@@ -38,14 +39,16 @@ const Item = ({ className, id }) => {
   const [sortDir, setSortDir] = useState('none');
   const page = useRef(0);
 
+  /**
+   * UseEffect to get data at page load.
+   */
   useEffect(() => {
-    const newToken = window.localStorage.getItem('token').replace(/^"(.*)"$/, '$1');
-    const curAccountId = window.localStorage.getItem('accountId').replace(/^"(.*)"$/, '$1');
+    const storage = useGetLocalStorage();
 
-    setToken(newToken);
-    setAccountId(curAccountId);
+    setToken(storage.token);
+    setAccountId(storage.accountId);
 
-    pagesService.getItem(itemId, newToken)
+    pagesService.getItem(itemId, storage.token)
       .then((res) => {
         setReviews(res.reviews);
         setPosWords(res.topPos.slice(0, 5));
@@ -58,21 +61,34 @@ const Item = ({ className, id }) => {
         setNegReviews(res.negativeReviews);
       });
   }, []);
+
+  /**
+   * Opens the new review form.
+   */
   const newReview = () => {
     $('#words').css('display', 'none');
     $('#newReview').css('display', 'none');
     $('#newReviewForm').css('display', 'flex');
   };
 
+  /**
+   * Closes the new review form.
+   */
   const closeNew = () => {
     $('#words').css('display', 'flex');
     $('#newReview').css('display', 'flex');
     $('#newReviewForm').css('display', 'none');
   };
 
+  /**
+   * Function to create new review.
+   * @param {Function} e
+   *        Event that is called with.
+   */
   const submitReview = async (e) => {
     e.preventDefault();
     let list;
+    // if file input is not empty.
     if (e.target[3].files[0]) {
       list = await ParseInputFile(e.target[3].files[0]);
     } else {
@@ -87,63 +103,52 @@ const Item = ({ className, id }) => {
   };
 
   /**
-   * Function to move to load the next page of reviews
+   * Function to load the next page of reviews
    */
   const nextPage = () => {
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     $('#pagination__prev').prop('disabled', false);
-    if (search != null) {
-      reviewsService
-        .getSearchReviewsForItem(itemId, search, page.current + 1, formattedSort, sortDir, token)
-        .then((res) => setReviews(res));
-    } else {
-      reviewsService.getReviewsForItem(itemId, page.current + 1, formattedSort, sortDir, token)
-        .then((res) => setReviews(res));
-    }
+    useGetReviews(itemId, search, page.current + 1, formattedSort, sortDir, token, setReviews);
     page.current += 1;
   };
 
   /**
-     * Function to move to load the previous page of reviews
+     * Function to load the previous page of reviews
      */
   const prevPage = () => {
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
-    if (search != null) {
-      reviewsService
-        .getSearchReviewsForItem(itemId, search, page.current - 1, formattedSort, sortDir, token)
-        .then((res) => setReviews(res));
-    } else {
-      reviewsService.getReviewsForItem(itemId, page.current - 1, formattedSort, sortDir, token)
-        .then((res) => setReviews(res));
-    }
+    useGetReviews(itemId, search, page.current - 1, formattedSort, sortDir, token, setReviews);
     page.current -= 1;
     if (page.current === 0) {
       $('#pagination__prev').prop('disabled', true);
     }
   };
 
+  /**
+   * Function to search with search
+   * @param {Function} e
+   *        event that is called with.
+   */
   const onSearch = (e) => {
     page.current = 0;
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     e.preventDefault();
-    reviewsService
-      .getSearchReviewsForItem(itemId, search, page.current, formattedSort, sortDir, token)
-      .then((res) => setReviews(res));
+    useGetReviews(itemId, search, page.current, formattedSort, sortDir, token, setReviews);
   };
 
+  /**
+   * Function to search with selected sort.
+   * @param {String} selSort
+   *        Sort that was selected.
+   * @param {String} selSortDir
+   *        Sort direction that was selected.
+   */
   const searchSort = (selSort, selSortDir) => {
     page.current = 0;
     setSort(selSort);
     setSortDir(selSortDir);
 
-    if (search != null) {
-      reviewsService
-        .getSearchReviewsForItem(itemId, search, page.current, `review_${selSort}`, selSortDir, token)
-        .then((res) => setReviews(res));
-    } else {
-      reviewsService.getReviewsForItem(itemId, page.current, `review_${selSort}`, selSortDir, token)
-        .then((res) => setReviews(res));
-    }
+    useGetReviews(itemId, search, page.current, `review_${selSort}`, selSortDir, token, setReviews);
   };
 
   return (
@@ -176,7 +181,7 @@ const Item = ({ className, id }) => {
           <NewReview onClick={newReview} />
         </div>
         <div className={`${className}__grid__chart`} id={`${className}__grid__chart`}>
-          <ItemChart curData={chart} key={chart} itemId={itemId} token={token} />
+          <ItemChart initData={chart} key={chart} itemId={itemId} token={token} />
         </div>
       </div>
     </div>

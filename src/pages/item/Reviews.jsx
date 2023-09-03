@@ -7,14 +7,19 @@ import SearchField from '../../components/SearchField';
 import DropDownSortMenu from '../../components/DropDownSortMenu';
 
 /**
- * Creates the latest review component for the item page.
+ * Creates the reviews component for the item page.
  * @property {JSON} reviews - a JSON object with the reviews used.
  * @property {String} className - Custom className if wanted. Default reviews.
  * @property {String} id - Custom id if wanted. Default reviews.
+ * @property {Function} setSort - The function to be called when sort changes.
+ * @property {Function} nextPage - The function to be used when next page is clicked.
+ * @property {Function} prevPage - The function to be used when previous page is clicked.
+ * @property {Function} onSubmit - The function to be used on submit of the search.
+ * @property {Function} setSearch - The function to be used on search change.
  * @returns component for latest reviews
  */
 const Reviews = ({
-  reviews, className, id, setSort, setSortDir, nextPage, prevPage, onSubmit, setSearch,
+  reviews, className, id, setSort, nextPage, prevPage, onSubmit, setSearch,
 }) => (
   <div className={className} id={id}>
     <div className={`${className}__header`}>
@@ -40,7 +45,6 @@ Reviews.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
   setSort: propTypes.func,
-  setSortDir: propTypes.func,
   nextPage: propTypes.func,
   prevPage: propTypes.func,
   onSubmit: propTypes.func,
@@ -52,7 +56,6 @@ Reviews.defaultProps = {
   className: 'reviews',
   id: 'reviews',
   setSort: 'none',
-  setSortDir: 'none',
   nextPage: null,
   prevPage: null,
   onSubmit: null,

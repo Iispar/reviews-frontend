@@ -5,7 +5,7 @@ import JsonFileInput from '../../components/JsonFileInput';
 import InputField from '../../components/InputField';
 
 /**
- * renders the the new review component for for single item.
+ * renders the the new review component.
  * @property {func} onSubmit - the submit function to be used when the form is submitted.
  * @property {func} onClick - the function to be used when the close button is clicked.
  * @property {String} className - Custom className if wanted. Default newReviewForm.
