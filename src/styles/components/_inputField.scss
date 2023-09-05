@@ -43,7 +43,7 @@
                 outline: none;
                 border: 1.5px solid $orange;
                 & ~ label {
-                    transform: translate(8px, -19px);
+                    transform: translate(7px, -19px);
                     font-size: 12px;
                 }
                 & ~ div {
@@ -55,12 +55,13 @@
             display: none;
             justify-content: center;
             align-items: center;
-            padding-right: 4px;
             position: absolute;
             white-space: nowrap;
+            padding-left: 2px;
+            padding-right: 2px;
             height: 12px;
             top: -7px;
-            left: 14px;
+            left: 6px;
             pointer-events:none;
             background: $white;
             font-size: 12px;

@@ -14,16 +14,14 @@ import authService from '../../services/authService';
  * @returns token if successful, null otherwise.
  */
 export const UseLogin = async (username, password) => {
-  try {
-    const res = await authService.login(username, password);
-    window.localStorage.setItem('token', JSON.stringify(res.token).replace(/^"(.*)"$/, '$1'));
-    window.localStorage.setItem('accountId', JSON.stringify(res.accountId).replace(/^"(.*)"$/, '$1'));
-    return res.token;
-  } catch (exception) {
-    // TODO: ERROR MESSAGE
-    // console.log('wrong credentials');
-  }
-  return null;
+  const payload = {
+    username,
+    password,
+  };
+  const res = await authService.login(payload);
+  window.localStorage.setItem('token', JSON.stringify(res.token).replace(/^"(.*)"$/, '$1'));
+  window.localStorage.setItem('accountId', JSON.stringify(res.accountId).replace(/^"(.*)"$/, '$1'));
+  return res.token;
 };
 
 /**
@@ -58,15 +56,4 @@ export const UseCreateAccount = async (username, name, email, password, role) =>
     // console.log('error while creating');
   }
   return null;
-};
-
-/**
- * the new password hook that gets called when you try to get a new password.
- * @param {String} email
- *        email that wants a new password.
- * @returns true if successful, false otherwise.
- */
-export const UseNewPassword = (email) => {
-  // console.log(`email request with ${email}`);
-  return true;
 };

@@ -9,7 +9,7 @@ btn {
     background: $white;
     font-size: 16px;
     font-family: mainFont;
-    &:hover {
+    &:hover:enabled {
         box-shadow: 0 0 2px 1px $orange;
         border: 0px;
     }

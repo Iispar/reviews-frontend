@@ -22,7 +22,13 @@ const Login = ({ className, id }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     const values = e.target;
-    if (await UseLogin(values[0].value, values[1].value)) navigate('/home');
+    try {
+      await UseLogin(values[0].value, values[1].value);
+      navigate('/home');
+    } catch (exception) {
+      console.log(exception.response.status);
+      console.log(exception);
+    }
   };
 
   /**

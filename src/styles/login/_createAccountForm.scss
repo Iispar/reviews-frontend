@@ -4,13 +4,13 @@
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    height: 456px;
+    height: 470px;
     display: none;
     &__createAccountForm {
         display: flex;
         flex-direction: column;
         gap: 5px;
-        height: 400px;
+        height: 430px;
         width: 300px;
         border-radius: 10px;
         background: $white;
@@ -54,6 +54,20 @@
                         border-radius: 8px;
                         padding: 5px;
                         font-size: 12px;
+                    }
+                }
+                &__roleLabel {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    padding: 2px;
+                    padding-top: 0px;
+                    height: 24px;
+                    gap: 10px;
+                    &__selection {
+                        color: $grey;
+                        width: 100px;
                     }
                 }
             }

@@ -10,12 +10,7 @@ const baseUrl = 'http://localhost:8080/api/account';
  *        Password used for login
  * @returns token if succesful
  */
-const login = async (username, password) => {
-  const payload = {
-    username,
-    password,
-  };
-
+const login = async (payload) => {
   const res = await axios.post(`${baseUrl}/login`, payload);
   return res.data;
 };

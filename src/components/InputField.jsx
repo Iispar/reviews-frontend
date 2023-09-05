@@ -21,8 +21,8 @@ const InputField = ({
   const [value, setValue] = useState(null);
 
   // hook to calculate the width of the text
-  const cutoutWidth = useTextWidth(title, '16px hind');
-  const errorWidth = useTextWidth(error, '15px hind');
+  const cutoutWidth = useTextWidth(title, '16px mulish');
+  const errorWidth = useTextWidth(error, '14px mulish');
   const labelHeight = `${height.replace('px', '') / 4}px`;
 
   /**

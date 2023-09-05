@@ -14,7 +14,9 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
   const [password, setPassword] = useState('null');
   const [confirmPassword, setConfirmPassword] = useState('null');
   // regex to match password.
-  const regexp = /^(?=.*\w)(?=.*\d)(?=.*[@$!%*#?&])[\w@$!%*#?&]{8,}/;
+  const passRegexp = /^(?=.*\w)(?=.*\d)(?=.*[@$!%*#?&])[\w@$!%*#?&]{8,}/;
+  // regex to match username
+  const userNameRehexp = /^(?=[a-zA-Z0-9._]{2,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
 
   /**
    * changes view between create account and login view.
@@ -51,7 +53,7 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
    * and check that it matches the required format.
    */
   useEffect(() => {
-    if (!regexp.test(password)) {
+    if (!passRegexp.test(password)) {
       $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'block');
       $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
     } else if (password !== confirmPassword) {
@@ -71,11 +73,11 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
         <div className={`${className}__createAccountForm__header`} id={`${className}__createAccountForm__header`}> Create account </div>
         <div className={`${className}__createAccountForm__inputs`}>
           <form className={`${className}__createAccountForm__inputs__form`} id={`${className}__createAccountForm__inputs__form`} onSubmit={(e) => onSubmit(e)}>
-            <InputField id="createUsername" title="username" width="240px" height="40px" />
+            <InputField id="createUsername" title="username" width="240px" height="40px" regex={userNameRehexp} error="no special characters or spaces" />
             <InputField id="createName" title="first name" width="240px" height="40px" />
             <InputField id="createEmail" title="email" width="240px" height="40px" />
             <div className={`${className}__createAccountForm__inputs__form__password`}>
-              <InputField className={className} id="createPassword" type="password" title="password" width="240px" height="40px" regex={regexp} error="doesn't include all required characters" onChange={setPassword} />
+              <InputField className={className} id="createPassword" type="password" title="password" width="240px" height="40px" regex={passRegexp} error="doesn't include all required characters" onChange={setPassword} />
               <div className={`${className}__createAccountForm__inputs__form__password__message`} id={`${className}__createAccountForm__inputs__form__password__message`}>
                 Password must be minimum of 8 characters with:
                 <br />
@@ -89,9 +91,8 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
             <InputField id="createConfirmPassword" type="password" title="confirm password" width="240px" height="40px" error="passwords don't match" onChange={setConfirmPassword} />
             <label className={`${className}__createAccountForm__inputs__form__roleLabel`} htmlFor="createRole">
               role:
-              <select id="createRole" name="createRole">
+              <select className={`${className}__createAccountForm__inputs__form__roleLabel__selection`} id={`${id}__createAccountForm__inputs__form__roleLabel__selection`} name="createRole">
                 <option value="1"> Seller </option>
-                <option value="2"> Customer </option>
               </select>
             </label>
           </form>
