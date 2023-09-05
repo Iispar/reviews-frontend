@@ -8,10 +8,11 @@ import InputField from '../../components/InputField';
  * @property {String} className - Custom className if wanted. Default loginForm.
  * @property {String} id - Custom id if wanted. Default loginForm.
  * @property {func} onSubmit - The onSubmit function to be used with the form.
+ * @property {String} errorMessage - The error meessage for login if there is.
  * @returns loginin view.
  */
 const LoginForm = ({
-  onSubmit, className, id,
+  onSubmit, className, id, errorMessage,
 }) => {
   const [contactVisible, setcontactVisible] = useState(false);
   /**
@@ -41,6 +42,9 @@ const LoginForm = ({
     <div className={className} id={id}>
       <div className={`${className}__loginForm`}>
         <div className={`${className}__loginForm__header`} id={`${id}__loginForm__header`}> Login </div>
+        <div className={`${className}__loginForm__error`}>
+          {errorMessage}
+        </div>
         <div className={`${className}__loginForm__inputs`}>
           <form className={`${className}__loginForm__inputs__form`} id={`${id}Form__inputs__form`} onSubmit={(e) => onSubmit(e)}>
             <InputField id="loginUsername" title="username" width="240px" height="40px" />
@@ -69,12 +73,14 @@ LoginForm.propTypes = {
   onSubmit: propTypes.func,
   className: propTypes.string,
   id: propTypes.string,
+  errorMessage: propTypes.string,
 };
 
 LoginForm.defaultProps = {
   onSubmit: null,
   className: 'login',
   id: 'login',
+  errorMessage: null,
 };
 
 export default LoginForm;

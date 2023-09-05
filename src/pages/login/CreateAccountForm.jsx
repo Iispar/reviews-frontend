@@ -53,14 +53,17 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
    * and check that it matches the required format.
    */
   useEffect(() => {
-    if (!passRegexp.test(password)) {
+    if (!passRegexp.test(password) && password !== 'null') {
       $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'block');
       $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
+      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'block');
     } else if (password !== confirmPassword) {
+      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
       $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
       $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
       errorMessage('createConfirmPassword', true);
     } else {
+      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
       $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
       $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', false);
       errorMessage('createConfirmPassword', false);

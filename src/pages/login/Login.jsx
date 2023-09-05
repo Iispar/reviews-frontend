@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import propTypes from 'prop-types';
 import LoginForm from './LoginForm';
@@ -13,6 +13,7 @@ import { UseLogin, UseCreateAccount } from './loginHooks';
  */
 const Login = ({ className, id }) => {
   const navigate = useNavigate();
+  const [loginError, setLoginError] = useState(null);
 
   /**
    * Handles the login and moves to home page.
@@ -26,8 +27,7 @@ const Login = ({ className, id }) => {
       await UseLogin(values[0].value, values[1].value);
       navigate('/home');
     } catch (exception) {
-      console.log(exception.response.status);
-      console.log(exception);
+      if (exception.response.status === 403) setLoginError('Incorrect username or password.');
     }
   };
 
@@ -50,7 +50,7 @@ const Login = ({ className, id }) => {
 
   return (
     <div className={className} id={id}>
-      <LoginForm onSubmit={handleLogin} />
+      <LoginForm onSubmit={handleLogin} errorMessage={loginError} />
       <CreateAccountForm onSubmit={handleCreation} />
     </div>
   );
