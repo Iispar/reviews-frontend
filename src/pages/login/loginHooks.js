@@ -16,8 +16,8 @@ import authService from '../../services/authService';
 export const UseLogin = async (username, password) => {
   try {
     const res = await authService.login(username, password);
-    window.localStorage.setItem('token', JSON.stringify(res.token));
-    window.localStorage.setItem('accountId', JSON.stringify(res.accountId));
+    window.localStorage.setItem('token', JSON.stringify(res.token).replace(/^"(.*)"$/, '$1'));
+    window.localStorage.setItem('accountId', JSON.stringify(res.accountId).replace(/^"(.*)"$/, '$1'));
     return res.token;
   } catch (exception) {
     // TODO: ERROR MESSAGE
@@ -49,9 +49,10 @@ export const UseCreateAccount = async (username, name, email, password, role) =>
     role: { id: role },
   };
   try {
-    const token = await authService.createAccount(payload);
-    window.localStorage.setItem('token', JSON.stringify(token, token));
-    return token;
+    const res = await authService.createAccount(payload);
+    window.localStorage.setItem('token', JSON.stringify(res.token).replace(/^"(.*)"$/, '$1'));
+    window.localStorage.setItem('accountId', JSON.stringify(res.accountId).replace(/^"(.*)"$/, '$1'));
+    return res.token;
   } catch (exception) {
     // TODO: ERROR MESSAGE
     // console.log('error while creating');

@@ -26,6 +26,16 @@ const Header = () => {
       setNavState(true);
     }
   };
+
+  /**
+   * Logs the user out.
+   */
+  const logOut = () => {
+    window.localStorage.removeItem('token');
+    window.localStorage.removeItem('accountId');
+    window.location.reload();
+  };
+
   return (
     <div>
       <div className="header">
@@ -37,6 +47,8 @@ const Header = () => {
         <a className="navBar__list__home" href="/home"> home </a>
         <a className="navBar__list__allItems" href="/all"> all items </a>
         <a className="navBar__list__settings" href="settings"> settings </a>
+
+        <button className="navBar__list__logout" type="button" onClick={() => logOut()}> log out </button>
       </nav>
     </div>
   );

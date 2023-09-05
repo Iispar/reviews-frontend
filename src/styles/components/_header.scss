@@ -65,6 +65,10 @@
     padding-top: 60px;
     align-items: center;
     gap: 6px;
+    &__list__logout {
+        position: absolute;
+        bottom: 20px;
+    }
     & button {
         background: transparent;
         border: none;
