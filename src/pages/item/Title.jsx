@@ -24,6 +24,7 @@ const Title = ({
    * @returns stars for the reviews title component
    */
   const ratingToStars = (reviews) => {
+    if (reviews % 1 === 0) return null;
     const split = reviews.split('.');
     const stars = parseInt(split[0], 10);
     const left = stars * 24 + stars * 2 + (2.4 * parseInt(split[1].slice(0, 2), 10)) / 10;

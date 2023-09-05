@@ -32,6 +32,10 @@
             grid-column: 3/3;
             flex-direction: column;
             justify-content: space-between;
+            &__buttons {
+                display: flex;
+                flex-direction: row;
+            }
         }
         &__chart {
             grid-row: 4/4;

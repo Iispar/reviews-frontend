@@ -19,7 +19,15 @@ const DeleteAccount = ({
       <button className={`${className}__header__closeButton`} id={`${className}__header__closeButton`} type="submit" onClick={() => openForm('none')}> </button>
     </div>
     <div className={`${className}__form`} id={`${className}__form`}>
-      <SettingsInputField type="password" onSubmit={onSubmit} id="deletePassword" warningText="cannot be undone please confirm with your password" button="delete" submitText="I understand. Delete account" />
+      <SettingsInputField
+        type="text"
+        onSubmit={onSubmit}
+        id="deletePassword"
+        warningText="cannot be undone please confirm by writing this cannot be undone"
+        button="delete"
+        submitText="I understand. Delete account"
+        defaultValue="this cannot be undone"
+      />
     </div>
   </div>
 );

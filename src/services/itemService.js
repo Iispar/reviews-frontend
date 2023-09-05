@@ -82,6 +82,22 @@ const createNew = async (payload, token) => {
   return res.data;
 };
 
+/**
+ * Calls the api to delete selected item.
+ * @param {String} id
+ *        Item to be deleted.
+ * @param {String} token
+ *                 Token of the logged in account.
+ * @returns True if successful, false otherwise.
+ */
+const deleteItem = async (id, token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const res = await axios.delete(`${baseUrl}/del?itemId=${id}`, config);
+  return res.data;
+};
+
 export default {
-  getAll, getSearch, getSort, createNew,
+  getAll, getSearch, getSort, createNew, deleteItem,
 };

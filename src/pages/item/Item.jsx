@@ -14,6 +14,7 @@ import { UseNewReview, useGetReviews } from './itemHooks';
 import reviewsService from '../../services/reviewsService';
 import ParseInputFile from '../../helpers/ParseInputFile';
 import { useGetLocalStorage } from '../../helpers/helperHooks';
+import itemService from '../../services/itemService';
 
 /**
  * Renders the single Item page.
@@ -51,8 +52,13 @@ const Item = ({ className, id }) => {
     pagesService.getItem(itemId, storage.token)
       .then((res) => {
         setReviews(res.reviews);
-        setPosWords(res.topPos.slice(0, 5));
-        setNegWords(res.topNeg.slice(0, 5));
+        if (res.topPos == null) {
+          setPosWords(null);
+          setNegWords(null);
+        } else {
+          setPosWords(res.topPos.slice(0, 5));
+          setNegWords(res.topNeg.slice(0, 5));
+        }
         setChart(res.chart);
         setTitle(res.title);
         setRating(res.rating.toString());
@@ -151,6 +157,13 @@ const Item = ({ className, id }) => {
     useGetReviews(itemId, search, page.current, `review_${selSort}`, selSortDir, token, setReviews);
   };
 
+  /**
+   * Calls the service to delete current item from database
+   */
+  const deleteItem = () => {
+    itemService.deleteItem(itemId, token);
+  };
+
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`}>
@@ -178,7 +191,10 @@ const Item = ({ className, id }) => {
         <div className={`${className}__grid__words`} id={`${className}__grid__words`}>
           <Words posWords={posWords} negWords={negWords} />
           <NewReviewForm onSubmit={submitReview} onClick={closeNew} />
-          <NewReview onClick={newReview} />
+          <div className={`${className}__grid__words__buttons`} id={`${className}__grid__words__buttons`}>
+            <NewReview onClick={newReview} />
+            <button type="button" onClick={() => deleteItem()}> delete item </button>
+          </div>
         </div>
         <div className={`${className}__grid__chart`} id={`${className}__grid__chart`}>
           <ItemChart initData={chart} key={chart} itemId={itemId} token={token} />
