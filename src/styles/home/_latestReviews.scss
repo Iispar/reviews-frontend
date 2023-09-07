@@ -23,10 +23,16 @@
     }
     &__reviews {
         height: 100%;
-        
-    }
-    &__pagination {
-        height: 80px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &__list {
+            height: 100%;
+        }
+        &__pagination {
+            padding: 10px;
+        }
     }
     &__empty {
         display: flex;

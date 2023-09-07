@@ -20,11 +20,11 @@ const LatestReviews = ({
       <div className={`${className}__header__text`}> Latest reviews </div>
     </div>
     {reviews.length > 0 ? (
-      <div>
-        <div className={`${className}__reviews`} id={`${id}__reviews`}>
+      <div className={`${className}__reviews`}>
+        <div className={`${className}__reviews__list`} id={`${id}__reviews`}>
           <ReviewsList reviews={reviews} />
         </div>
-        <div className={`${className}__pagination`} id={`${id}__pagination`}>
+        <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
           <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
         </div>
       </div>

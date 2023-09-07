@@ -1,15 +1,13 @@
 .reviewsList {
     display: flex;
     flex-direction: column;
-    height: 400px;
-    width: 100%;
-    padding: 10px;
+    height: 100%;
+    max-height: 400px;
     padding-left: 0px;
     padding-right: 0px;
-    padding-bottom: 0px;
-    justify-content: space-around;
-    flex-flow: column wrap;
-    align-items: stretch;
-    flex-wrap: nowrap;
+    gap: 14px;
+    justify-content: flex-start;
     box-sizing: border-box;
+    flex: 1;
+    min-height: 0;
 }

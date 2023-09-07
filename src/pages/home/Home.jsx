@@ -56,8 +56,8 @@ const Home = ({ className, id }) => {
    * Function to move to load the next page of reviews
    */
   const nextPage = () => {
-    $('#pagination__prev').prop('disabled', false);
     useGetReviewsForAccount(accountId, page.current + 1, token, setLatestReviews);
+    $('#pagination__prev').prop('disabled', false);
     page.current += 1;
   };
 

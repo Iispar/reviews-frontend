@@ -29,9 +29,9 @@ const LargeReview = ({
    */
   const toggle = (open) => {
     // scroll to top when I close the div so it doesn't show middle of the ext.
-    $(`.${className}__info__body`).animate({ scrollTop: $(window).scrollTop(0) });
+    $(`.${className}__info__body`).animate({ scrollTop: $(`${className}__info__body`).scrollTop(0) });
     // close all
-    $(`.${className}`).css('flex-grow', 0);
+    $(`.${className}`).css('flex-grow', '1');
     $(`.${className}`).css('padding-bottom', '12px');
     $(`.${className}__info__stats__rating__expandBtn`).css('display', 'flex');
     $(`.${className}__info__closeBtn`).css('display', 'none');
@@ -40,12 +40,12 @@ const LargeReview = ({
     $(`.${className}__info__stats__item`).css('display', 'none');
     // open btn is pressed. First open correct one.
     if (open) {
-      $(`.${className}`).css('padding-bottom', '4px');
+      // $(`.${className}`).css('padding-bottom', '4px');
       $(`#${className}__info__body__${id}`).addClass('showAll');
       $(`#${className}__info__stats__rating__expandBtn__${id}`).css('display', 'none');
+      $(`#${className}__${id}`).css('flex-grow', '2.4');
       $(`#${className}__info__closeBtn__${id}`).css('display', 'flex');
       $(`#${className}__info__body__header__${id}`).css('display', 'flex');
-      $(`#${className}__${id}`).css('flex-grow', '2');
       $(`#${className}__info__stats__item__${id}`).css('display', 'flex');
     }
   };
@@ -67,10 +67,13 @@ const LargeReview = ({
             <span className={`${className}__info__stats__rating__value`} id={`${className}__info__stats__rating__value`}>{rating}</span>
             <div className={`${className}__info__stats__rating__icon`} />
           </div>
-          <div className={`${className}__info__stats__item`} id={`${className}__info__stats__item__${id}`}>
-            items id:
-            {item}
-          </div>
+          {item ? (
+            <a href={`/item/${item}`} className={`${className}__info__stats__item`} id={`${className}__info__stats__item__${id}`}>
+              item
+            </a>
+          ) : (
+            null
+          )}
         </div>
       </div>
     </div>
