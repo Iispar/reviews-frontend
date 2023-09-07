@@ -13,8 +13,6 @@ import propTypes from 'prop-types';
 const ItemList = ({
   items, View, className, id,
 }) => {
-  if (items == null) return null;
-
   const productList = [];
   for (let i = 0; i < items.length; i += 1) {
     // with the if else I can use this compoment to create all lists of items. It is a bit clumsy

@@ -16,7 +16,7 @@ import itemService from '../../services/itemService';
 const AllItems = ({ className, id }) => {
   const [token, setToken] = useState(null);
   const [accountId, setAccountId] = useState(null);
-  const [items, setItems] = useState(null);
+  const [items, setItems] = useState([]);
   const [search, setSearch] = useState(null);
   const [sort, setSort] = useState('none');
   const [sortDir, setSortDir] = useState('none');

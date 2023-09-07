@@ -25,16 +25,16 @@ import itemService from '../../services/itemService';
 const Item = ({ className, id }) => {
   const { itemId } = useParams();
   const [title, setTitle] = useState(null);
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState(null);
-  const [posWords, setPosWords] = useState(null);
-  const [negWords, setNegWords] = useState(null);
+  const [posWords, setPosWords] = useState([]);
+  const [negWords, setNegWords] = useState([]);
   const [posReviews, setPosReviews] = useState(null);
   const [negReviews, setNegReviews] = useState(null);
   const [reviewsCount, setReviewsCount] = useState(null);
   const [token, setToken] = useState(null);
   const [accountId, setAccountId] = useState(null);
-  const [chart, setChart] = useState(null);
+  const [chart, setChart] = useState([]);
   const [sort, setSort] = useState('none');
   const [search, setSearch] = useState(null);
   const [sortDir, setSortDir] = useState('none');
@@ -53,8 +53,8 @@ const Item = ({ className, id }) => {
       .then((res) => {
         setReviews(res.reviews);
         if (res.topPos == null) {
-          setPosWords(null);
-          setNegWords(null);
+          setPosWords([]);
+          setNegWords([]);
         } else {
           setPosWords(res.topPos.slice(0, 5));
           setNegWords(res.topNeg.slice(0, 5));

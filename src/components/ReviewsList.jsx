@@ -10,7 +10,6 @@ import LargeReview from './LargeReview';
  * @returns list of reviews
  */
 const ReviewsList = ({ reviews, className }) => {
-  if (reviews == null) return null;
   const list = [];
 
   for (let i = 0; i < reviews.length; i += 1) {

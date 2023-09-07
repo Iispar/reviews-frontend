@@ -42,12 +42,18 @@ const HomeChart = ({
 
   return (
     <div className={className} id={id}>
-      <DoubleLineChart data={data} />
-      <div className={`${className}__selector`} id={`${id}__selector`}>
-        <button className={`${className}__selector__month`} type="button" onClick={() => changeView('month')}> month </button>
-        <button className={`${className}__selector__week`} type="button" onClick={() => changeView('week')}> week </button>
-        <div className={`${className}__selector__active`} id={`${id}__selector__active`} />
-      </div>
+      {data.length > 2 ? (
+        <div>
+          <DoubleLineChart data={data} />
+          <div className={`${className}__selector`} id={`${id}__selector`}>
+            <button className={`${className}__selector__month`} type="button" onClick={() => changeView('month')}> month </button>
+            <button className={`${className}__selector__week`} type="button" onClick={() => changeView('week')}> week </button>
+            <div className={`${className}__selector__active`} id={`${id}__selector__active`} />
+          </div>
+        </div>
+      ) : (
+        <div className={`${className}__empty`}> no data </div>
+      )}
     </div>
   );
 };

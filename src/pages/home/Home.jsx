@@ -18,13 +18,13 @@ import { useGetReviewsForAccount } from './homeHooks';
  * @returns home screen
  */
 const Home = ({ className, id }) => {
-  const [latestReviews, setLatestReviews] = useState(null);
-  const [topItems, setTopItems] = useState(null);
+  const [latestReviews, setLatestReviews] = useState([]);
+  const [topItems, setTopItems] = useState([]);
   const [itemCount, setItemCount] = useState(null);
   const [reviewCount, setReviewCount] = useState(null);
   const [ratingAvg, setRatingAvg] = useState(null);
-  const [chart, setChart] = useState(null);
-  const [barChart, setBarChart] = useState(null);
+  const [chart, setChart] = useState([]);
+  const [barChart, setBarChart] = useState([]);
   const [accountId, setAccountId] = useState(null);
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);

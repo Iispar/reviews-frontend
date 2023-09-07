@@ -18,10 +18,18 @@ const Words = ({
       most common words
     </div>
     <div className={`${className}__positive`} id={`${className}__positive`}>
-      <TopWords words={posWords} title="with positive reviews" />
+      {posWords.length > 0 ? (
+        <TopWords words={posWords} title="with positive reviews" />
+      ) : (
+        <div className={`${className}__empty`}> no top pos </div>
+      )}
     </div>
     <div className={`${className}__negative`} id={`${className}__negative`}>
-      <TopWords words={negWords} title="with negative reviews" />
+      {negWords.length > 0 ? (
+        <TopWords words={negWords} title="with negative reviews" />
+      ) : (
+        <div className={`${className}__empty`}> no top pos </div>
+      )}
     </div>
   </div>
 );
@@ -34,8 +42,8 @@ Words.propTypes = {
 };
 
 Words.defaultProps = {
-  negWords: null,
-  posWords: null,
+  negWords: [],
+  posWords: [],
   className: 'words',
   id: 'words',
 };

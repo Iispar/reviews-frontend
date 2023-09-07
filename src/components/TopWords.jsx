@@ -13,7 +13,6 @@ import WordListItem from './WordListItem';
 const TopWords = ({
   words, title, className, id,
 }) => {
-  if (words == null) return null;
   const list = [];
 
   for (let i = 0; i < words.length; i += 1) {

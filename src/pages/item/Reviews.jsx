@@ -31,12 +31,19 @@ const Reviews = ({
       </form>
       <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} sortOne="date" />
     </div>
-    <div className={`${className}__reviews`}>
-      <ReviewsList reviews={reviews} />
-    </div>
-    <div className={`${className}__pagination`}>
-      <Pagination next={() => nextPage()} prev={() => prevPage()} />
-    </div>
+    { reviews.length > 0 ? (
+      <div>
+        <div className={`${className}__reviews`}>
+          <ReviewsList reviews={reviews} />
+        </div>
+        <div className={`${className}__pagination`}>
+          <Pagination next={() => nextPage()} prev={() => prevPage()} />
+        </div>
+
+      </div>
+    ) : (
+      <div className={`${className}__empty`}> no reviews </div>
+    )}
   </div>
 );
 

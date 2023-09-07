@@ -28,12 +28,18 @@ const Items = ({
       </form>
       <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} />
     </div>
-    <div className={`${className}__list`} id={`${id}__list`}>
-      <ItemList items={items} View={LargeItem} count={6} />
-    </div>
-    <div className={`${className}__pagination`}>
-      <Pagination next={() => nextPage()} prev={() => prevPage()} />
-    </div>
+    { items.length > 0 ? (
+      <div>
+        <div className={`${className}__list`} id={`${id}__list`}>
+          <ItemList items={items} View={LargeItem} count={6} />
+        </div>
+        <div className={`${className}__pagination`}>
+          <Pagination next={() => nextPage()} prev={() => prevPage()} />
+        </div>
+      </div>
+    ) : (
+      <div className={`${className}__empty`}> no items </div>
+    )}
   </div>
 );
 

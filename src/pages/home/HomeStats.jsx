@@ -18,7 +18,11 @@ const HomeStats = ({
   <div className={className}>
     <div className={`${className}__ratings`}>
       <div className={`${className}__ratings__chart`} id={`${id}__ratings__chart`}>
-        <BarChart data={barChartData} />
+        {barChartData.length > 0 ? (
+          <BarChart data={barChartData} />
+        ) : (
+          <div className={`${className}__ratings__empty`}>  no data </div>
+        )}
       </div>
       <div className={`${className}__ratings__label`}> distribution of ratings </div>
     </div>

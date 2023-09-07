@@ -19,12 +19,18 @@ const LatestReviews = ({
     <div className={`${className}__header`} id={`${id}__header`}>
       <div className={`${className}__header__text`}> Latest reviews </div>
     </div>
-    <div className={`${className}__reviews`} id={`${id}__reviews`}>
-      <ReviewsList reviews={reviews} />
-    </div>
-    <div className={`${className}__pagination`} id={`${id}__pagination`}>
-      <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
-    </div>
+    {reviews.length > 0 ? (
+      <div>
+        <div className={`${className}__reviews`} id={`${id}__reviews`}>
+          <ReviewsList reviews={reviews} />
+        </div>
+        <div className={`${className}__pagination`} id={`${id}__pagination`}>
+          <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
+        </div>
+      </div>
+    ) : (
+      <div className={`${className}__empty`}> no reviews </div>
+    )}
   </div>
 );
 
