@@ -9,14 +9,8 @@ import reviewsService from '../../services/reviewsService';
  * @returns home data for account
  */
 export const useGetHome = (accountId) => {
-  try {
-    const res = pagesService.getHome(accountId);
-    return res;
-  } catch (exception) {
-    // TODO: ERROR MESSAGE
-    // console.log('wrong credentials');
-  }
-  return null;
+  const res = pagesService.getHome(accountId);
+  return res;
 };
 
 /**

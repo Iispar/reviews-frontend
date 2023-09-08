@@ -14,8 +14,13 @@ const getAccount = async (accountId, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  const res = await axios.get(`${baseUrl}/get?accountId=${accountId}`, config);
-  return res.data;
+  try {
+    const res = await axios.get(`${baseUrl}/get?accountId=${accountId}`, config);
+    return res.data;
+  } catch (exception) {
+    if (exception.response.data.status === 500) window.location.href = '/login';
+  }
+  return null;
 };
 
 /**
@@ -53,4 +58,6 @@ const deleteAccount = async (id, token) => {
   return true;
 };
 
-export default { getAccount, updateAccount, deleteAccount };
+export default {
+  getAccount, updateAccount, deleteAccount,
+};

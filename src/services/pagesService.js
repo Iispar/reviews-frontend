@@ -14,8 +14,13 @@ const getHome = async (accountId, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  const res = await axios.get(`${baseUrl}/get/home?accountId=${accountId}`, config);
-  return res.data;
+  try {
+    const res = await axios.get(`${baseUrl}/get/home?accountId=${accountId}`, config);
+    return res.data;
+  } catch (exception) {
+    if (exception.response.data.status === 500) window.location.href = '/login';
+  }
+  return null;
 };
 
 /**
@@ -30,8 +35,13 @@ const getItem = async (itemId, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  const res = await axios.get(`${baseUrl}/get/item?itemId=${itemId}`, config);
-  return res.data;
+  try {
+    const res = await axios.get(`${baseUrl}/get/item?itemId=${itemId}`, config);
+    return res.data;
+  } catch (exception) {
+    if (exception.response.data.status === 500) window.location.href = '/login';
+  }
+  return null;
 };
 
 export default { getHome, getItem };

@@ -47,7 +47,7 @@
 }
 
 .hover {
-    transition: all 8s linear;
+    transition: all 5s linear;
     white-space: nowrap;
     &:hover {
         transform: translateX(calc(200px - 100%));
