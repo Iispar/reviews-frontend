@@ -98,7 +98,7 @@ const Home = ({ className, id }) => {
         <div className={`${className}__grid__homeChart`} id={`${id}__grid__homeChart`}>
           <HomeChart initData={chart} key={chart} accountId={accountId} token={token} />
         </div>
-        <div className={`${className}__grid__homeChange`} id={`${id}__grid__homeChange`}>
+        <div className={`${className}__grid__homeStats`} id={`${id}__grid__homeStats`}>
           <HomeStats
             barChartData={barChart}
             itemCount={itemCount}

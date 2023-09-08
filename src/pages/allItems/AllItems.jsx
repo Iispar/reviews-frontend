@@ -34,7 +34,6 @@ const AllItems = ({ className, id }) => {
     itemService.getAll(storage.accountId, page.current, storage.token)
       .then((res) => setItems(res));
   }, []);
-
   /**
    * takes in the submit and calls the new item hook to submit it.
    * Acts accordinfg to the result of the hook.

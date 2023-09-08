@@ -37,7 +37,7 @@ const SmallItem = ({
         <span className={`${className}__name__text`} id={`smallItem__name__text__${id}`}>{item}</span>
       </div>
       <div className={`${className}__rating`}>
-        <span className={`${className}__rating__value`} id={`smallItem__rating__value__${id}`}>{rating}</span>
+        <span className={`${className}__rating__value`} id={`smallItem__rating__value__${id}`}>{rating.toFixed(1)}</span>
         <div className={`${className}__rating__icon`} />
       </div>
     </div>
