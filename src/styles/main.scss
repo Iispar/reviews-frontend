@@ -29,3 +29,9 @@ html,body {
         justify-self: flex-end
     }
 }
+
+
+.disableScroll {
+    height: 80vh !important;
+    overflow: hidden;
+}

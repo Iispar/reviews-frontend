@@ -15,13 +15,13 @@ const Header = () => {
     if (navState) {
       $('#navBar').css('transform', 'scaleX(0)');
       $('#header__hamburger').removeClass('clicked');
-      $('#home__grid').removeClass('disableScroll');
+      $('#layout').removeClass('disableScroll');
 
       setNavState(false);
     } else {
       $('#navBar').css('transform', 'scaleX(1)');
       $('#header__hamburger').addClass('clicked');
-      $('#home__grid').addClass('disableScroll');
+      $('#layout').addClass('disableScroll');
 
       setNavState(true);
     }

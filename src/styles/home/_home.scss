@@ -17,7 +17,7 @@
         grid-template-columns: auto 700px 320px auto;
         grid-template-rows: 100px 370px 100px 200px auto 10px;
         gap: 20px;
-        overflow: scroll;
+        overflow: hidden;
         &__title {
             grid-row: 1/1;
             grid-column: 2/4;
@@ -46,10 +46,4 @@
             grid-column: 3/3;
         }
     }
-}
-
-
-.disableScroll {
-    height: 100vh;
-    overflow: hidden;
 }

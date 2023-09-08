@@ -1674,7 +1674,7 @@ input[type=file] {
   grid-template-columns: auto 700px 320px auto;
   grid-template-rows: 100px 370px 100px 200px auto 10px;
   gap: 20px;
-  overflow: scroll;
+  overflow: hidden;
 }
 .home__grid__title {
   grid-row: 1/1;
@@ -1702,11 +1702,6 @@ input[type=file] {
 .home__grid__homeChange {
   grid-row: 3/4;
   grid-column: 3/3;
-}
-
-.disableScroll {
-  height: 100vh;
-  overflow: hidden;
 }
 
 .fileInput {
@@ -2402,4 +2397,9 @@ html, body {
 .layout__footer {
   height: 200px;
   justify-self: flex-end;
+}
+
+.disableScroll {
+  height: 80vh !important;
+  overflow: hidden;
 }/*# sourceMappingURL=main.css.map */
