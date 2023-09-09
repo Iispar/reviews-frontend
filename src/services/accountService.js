@@ -18,7 +18,7 @@ const getAccount = async (accountId, token) => {
     const res = await axios.get(`${baseUrl}/get?accountId=${accountId}`, config);
     return res.data;
   } catch (exception) {
-    if (exception.response.data.status === 500) window.location.href = '/login';
+    if (exception.response.data.status === 401) window.location.href = '/login';
   }
   return null;
 };

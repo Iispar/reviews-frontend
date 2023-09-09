@@ -18,7 +18,7 @@ const getHome = async (accountId, token) => {
     const res = await axios.get(`${baseUrl}/get/home?accountId=${accountId}`, config);
     return res.data;
   } catch (exception) {
-    if (exception.response.data.status === 500) window.location.href = '/login';
+    if (exception.response.data.status === 401) window.location.href = '/login';
   }
   return null;
 };
@@ -39,7 +39,7 @@ const getItem = async (itemId, token) => {
     const res = await axios.get(`${baseUrl}/get/item?itemId=${itemId}`, config);
     return res.data;
   } catch (exception) {
-    if (exception.response.data.status === 500) window.location.href = '/login';
+    if (exception.response.data.status === 401) window.location.href = '/login';
   }
   return null;
 };
