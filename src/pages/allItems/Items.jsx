@@ -19,21 +19,21 @@ import DropDownSortMenu from '../../components/DropDownSortMenu';
  * @returns items component.
  */
 const Items = ({
-  items, className, id, onSubmit, setSort, setSearch, nextPage, prevPage,
+  items, className, id, onSubmit, setSort, setSearch, nextPage, prevPage, clearInput,
 }) => (
   <div className={className}>
     <div className={`${className}__header`}>
       <form className={`${className}__header__search`} onSubmit={(e) => onSubmit(e)}>
-        <SearchField placeholder="Search" onChange={setSearch} />
+        <SearchField placeholder="Search" onChange={setSearch} onClear={clearInput} id="allItemsSearch" />
       </form>
       <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} />
     </div>
     { items.length > 0 ? (
-      <div>
-        <div className={`${className}__list`} id={`${id}__list`}>
+      <div className={`${className}__reviews`}>
+        <div className={`${className}__reviews__list`} id={`${id}__reviews__list`}>
           <ItemList items={items} View={LargeItem} count={6} />
         </div>
-        <div className={`${className}__pagination`}>
+        <div className={`${className}__reviews__pagination`}>
           <Pagination next={() => nextPage()} prev={() => prevPage()} />
         </div>
       </div>
@@ -52,6 +52,7 @@ Items.propTypes = {
   setSort: propTypes.func,
   nextPage: propTypes.func,
   prevPage: propTypes.func,
+  clearInput: propTypes.func,
 };
 
 Items.defaultProps = {
@@ -63,6 +64,7 @@ Items.defaultProps = {
   setSort: null,
   nextPage: null,
   prevPage: null,
+  clearInput: null,
 };
 
 export default Items;

@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import propTypes from 'prop-types';
 
 /**
@@ -10,10 +11,13 @@ import propTypes from 'prop-types';
  * @returns a search field
  */
 const SearchField = ({
-  placeholder, id, className, onChange,
+  placeholder, id, className, onChange, onClear,
 }) => (
   <div className={className}>
     <input className={`${className}__input`} id={`${id}__input`} placeholder={placeholder} type="search" onChange={(e) => onChange(e.target.value)} />
+    {$(`#${id}__input`).val() !== '' ? (
+      <button className={`${className}__close`} id={`${id}__close`} type="button" onClick={() => onClear(id)}> </button>
+    ) : (<div />)}
   </div>
 );
 
@@ -22,6 +26,7 @@ SearchField.propTypes = {
   id: propTypes.string,
   className: propTypes.string,
   onChange: propTypes.func,
+  onClear: propTypes.func,
 };
 
 SearchField.defaultProps = {
@@ -29,6 +34,7 @@ SearchField.defaultProps = {
   id: 'searchField',
   className: 'searchField',
   onChange: null,
+  onClear: null,
 };
 
 export default SearchField;

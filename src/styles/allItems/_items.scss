@@ -1,3 +1,6 @@
+/**
+ * Sets the styling for the items list and header for it in all items page.
+ */
 .items {
     box-shadow: 0 0 40px 1px $shadow;
     border-radius: 10px;
@@ -19,14 +22,17 @@
             padding-top: 0px;
         }
     }
-    &__list {
+    &__reviews {
         height: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
-        box-sizing: border-box;
-    }
-    &__pagination {
-        height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &__list {
+            height: 100%;
+        }
+        &__pagination {
+            padding: 10px;
+        }
     }
     &__empty {
         display: flex;

@@ -61,10 +61,11 @@
                     align-items: center;
                     justify-content: center;
                     text-align: center;
-                    padding: 2px;
-                    padding-top: 0px;
                     height: 24px;
                     gap: 10px;
+                    &__text {
+                        padding-bottom: 3px;
+                    }
                     &__selection {
                         color: $grey;
                         width: 100px;

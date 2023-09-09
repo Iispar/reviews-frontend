@@ -14,14 +14,18 @@ const ItemInput = ({ onSubmit, className, id }) => (
     <div className={`${className}__title`} id={`${id}__title`}> Add new item </div>
     <form className={`${className}__form`} id={`${id}__form`} onSubmit={(e) => onSubmit(e)}>
       <InputField id="fileName" title="product name" width="280px" height="40px" />
-      <label className={`${className}__form__category__label`} htmlFor="createCategory">
-        role:
-        <select id="createCategory" name="createCategory">
-          <option value="1"> Sports </option>
-          <option value="2"> TODO </option>
-        </select>
-      </label>
-      <button className={`${className}__form__submitBtn`} id={`${id}__form__submitBtn`} type="submit"> submit </button>
+      <div className={`${className}__form__categoryAndSubmit`}>
+        <label className={`${className}__form__categoryAndSubmit__categoryLabel`} htmlFor="createCategory">
+          <span className={`${className}__form__categoryAndSubmit__categoryLabel__text`}>
+            category:
+          </span>
+          <select className={`${className}__form__categoryAndSubmit__categoryLabel__selection`} id="createCategory" name="createCategory">
+            <option value="1"> Sports </option>
+            <option value="2"> TODO </option>
+          </select>
+        </label>
+        <button className={`${className}__form__categoryAndSubmit__submitBtn`} id={`${id}__form__submitBtn`} type="submit"> submit </button>
+      </div>
     </form>
   </div>
 );
@@ -34,8 +38,8 @@ ItemInput.propTypes = {
 
 ItemInput.defaultProps = {
   onSubmit: null,
-  className: 'fileInput',
-  id: 'fileInput',
+  className: 'itemInput',
+  id: 'itemInput',
 };
 
 export default ItemInput;

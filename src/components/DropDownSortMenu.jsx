@@ -28,7 +28,7 @@ const DropDownSortMenu = ({
     setSort(splitSort, splitSortDir);
 
     // calculate width of the button based on the length of the sort text.
-    const width = useTextWidth(splitSort) + 30;
+    const width = useTextWidth(splitSort) + 40;
 
     // use jquery animate instead of css as it works better here.
     $(`#${id}`).animate({

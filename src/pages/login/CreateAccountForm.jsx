@@ -93,7 +93,9 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
             </div>
             <InputField id="createConfirmPassword" type="password" title="confirm password" width="240px" height="40px" error="passwords don't match" onChange={setConfirmPassword} />
             <label className={`${className}__createAccountForm__inputs__form__roleLabel`} htmlFor="createRole">
-              role:
+              <span className={`${className}__createAccountForm__inputs__form__roleLabel__text`}>
+                role:
+              </span>
               <select className={`${className}__createAccountForm__inputs__form__roleLabel__selection`} id={`${id}__createAccountForm__inputs__form__roleLabel__selection`} name="createRole">
                 <option value="1"> Seller </option>
               </select>

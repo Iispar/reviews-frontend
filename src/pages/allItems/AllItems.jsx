@@ -34,6 +34,7 @@ const AllItems = ({ className, id }) => {
     itemService.getAll(storage.accountId, page.current, storage.token)
       .then((res) => setItems(res));
   }, []);
+
   /**
    * takes in the submit and calls the new item hook to submit it.
    * Acts accordinfg to the result of the hook.
@@ -91,6 +92,12 @@ const AllItems = ({ className, id }) => {
     }
   };
 
+  const clearInput = (inputId) => {
+    $(`#${inputId}__input`).val(null);
+    setSearch('');
+    useSearch(accountId, '', 0, sort, sortDir, token, setItems);
+  };
+
   return (
     <div className={className}>
       <div className={`${className}__grid`}>
@@ -105,6 +112,7 @@ const AllItems = ({ className, id }) => {
             onSubmit={(e) => searchInput(e)}
             nextPage={() => nextPage()}
             prevPage={() => prevPage()}
+            clearInput={clearInput}
           />
         </div>
         <div className={`${className}__grid__fileInput`} id={`${id}__grid__fileInput`}>
