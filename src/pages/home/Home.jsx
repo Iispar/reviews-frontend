@@ -49,6 +49,7 @@ const Home = ({ className, id }) => {
         setRatingAvg(res.ratingsAvg);
         setChart(res.chart);
         setBarChart(res.barChart);
+        console.log(res.chart);
       });
   }, []);
 
