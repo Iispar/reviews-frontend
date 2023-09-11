@@ -23,11 +23,12 @@ const JsonInputField = ({ id, height, className }) => {
     const format = file.match(regex)[0];
 
     if (format === '.json') {
-      $(`#${id}__label`).css('border-color', '#EF8354');
+      $(`#${id}__label`).css('border-color', '#16ca4c');
       $(`#${id}__label__succesful`).css('display', 'flex');
       $(`#${id}__label__text`).css('display', 'none');
       $(`#${id}__label__error`).css('display', 'none');
     } else {
+      $(`#${id}__label`).css('border-color', '#EF8354');
       $(`#${id}__label`).css('border-color', 'red');
       $(`#${id}__label__error`).css('display', 'flex');
       $(`#${id}__label__succesful`).css('display', 'none');
@@ -42,7 +43,7 @@ const JsonInputField = ({ id, height, className }) => {
         <div className={`${className}__label__succesful`} id={`${id}__label__succesful`} />
         <div className={`${className}__label__error`} id={`${id}__label__error`}>
           <div className={`${className}__label__error__logo`} />
-          <span className={`${className}__label__error__text`} id={`${id}__label__error__text`}> not a json file </span>
+          <span className={`${className}__label__error__text`} id={`${id}__label__error__text`}> needs to be a JSON file! </span>
         </div>
         <input className={`${className}__label`} id={`${id}__form`} type="file" required onChange={(e) => setFile(e.target.value)} />
       </label>

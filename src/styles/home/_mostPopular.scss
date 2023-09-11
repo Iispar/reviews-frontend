@@ -26,6 +26,15 @@
     &__list {
         height: 100%;
         width: 100%;
+        &__items {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            height: 100%;
+            width: 100%;
+        }
     }
     &__empty {
         height: 100%;

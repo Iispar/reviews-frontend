@@ -17,7 +17,7 @@ const MostPopular = ({ className, id, items }) => (
     </div>
     { items.length > 0 ? (
       <div className={`${className}__list`} id={`${id}__list`}>
-        <ItemList items={items} View={SmallItem} />
+        <ItemList items={items} View={SmallItem} className={`${className}__list__items`} />
       </div>
     ) : (
       <div className={`${className}__empty`}> no items</div>

@@ -19,24 +19,24 @@ import DropDownSortMenu from '../../components/DropDownSortMenu';
  * @returns component for latest reviews
  */
 const Reviews = ({
-  reviews, className, id, setSort, nextPage, prevPage, onSubmit, setSearch,
+  reviews, className, id, setSort, nextPage, prevPage, onSubmit, setSearch, clearSearch,
 }) => (
   <div className={className} id={id}>
     <div className={`${className}__header`}>
       <div className={`${className}__header__text`}> Reviews </div>
-    </div>
-    <div className={`${className}__filters`}>
-      <form className={`${className}__filter__search`} onSubmit={(e) => onSubmit(e)}>
-        <SearchField placeholder="Search" onChange={setSearch} />
-      </form>
-      <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} sortOne="date" />
+      <div className={`${className}__header__filters`}>
+        <form className={`${className}__header__filter__search`} onSubmit={(e) => onSubmit(e)}>
+          <SearchField id="itemReviewsSearch" placeholder="Search" onChange={setSearch} onClear={clearSearch} />
+        </form>
+        <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} sortOne="date" />
+      </div>
     </div>
     { reviews.length > 0 ? (
-      <div>
-        <div className={`${className}__reviews`}>
+      <div className={`${className}__reviews`}>
+        <div className={`${className}__reviews__list`}>
           <ReviewsList reviews={reviews} />
         </div>
-        <div className={`${className}__pagination`}>
+        <div className={`${className}__reviews__pagination`}>
           <Pagination next={() => nextPage()} prev={() => prevPage()} />
         </div>
 
@@ -56,6 +56,7 @@ Reviews.propTypes = {
   prevPage: propTypes.func,
   onSubmit: propTypes.func,
   setSearch: propTypes.func,
+  clearSearch: propTypes.func,
 };
 
 Reviews.defaultProps = {
@@ -67,6 +68,7 @@ Reviews.defaultProps = {
   prevPage: null,
   onSubmit: null,
   setSearch: null,
+  clearSearch: null,
 };
 
 export default Reviews;

@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import propTypes from 'prop-types';
 
 /**
@@ -51,6 +52,16 @@ const Title = ({
     );
   };
 
+  const showRating = (into) => {
+    if (into) {
+      $(`#${id}__data__rating__hover`).css('display', 'flex');
+      $(`#${id}__data__rating__value`).css('display', 'none');
+    } else {
+      $(`#${id}__data__rating__hover`).css('display', 'none');
+      $(`#${id}__data__rating__value`).css('display', 'flex');
+    }
+  };
+
   return (
     <div className={`${className}`} id={`${id}`}>
       <div className={`${className}__info`}>
@@ -65,8 +76,11 @@ const Title = ({
           </span>
           reviews
         </div>
-        <div className={`${className}__data__rating`} id={`${className}__data__rating`}>
-          <span className={`${className}__data__rating__value`}>
+        <div className={`${className}__data__rating`} id={`${className}__data__rating`} onMouseLeave={() => showRating(false)} onMouseEnter={() => showRating(true)}>
+          <span className={`${className}__data__rating__hover`} id={`${id}__data__rating__hover`}>
+            {parseFloat(ratingValue, 10).toFixed(1)}
+          </span>
+          <span className={`${className}__data__rating__value`} id={`${id}__data__rating__value`}>
             {ratingToStars(ratingValue)}
           </span>
           rating

@@ -66,10 +66,10 @@
                     @include arrow(rotate(90deg));
                 }
             }
-            &__reviews__asc {
+            &__reviews__asc, &__date__asc {
                 border-top-left-radius: 9px;
             }
-            &__reviews__desc {
+            &__reviews__desc, &__date__desc {
                 border-bottom-left-radius: 9px;
             }
             &__arrow {

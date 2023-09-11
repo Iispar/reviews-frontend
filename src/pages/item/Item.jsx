@@ -4,7 +4,6 @@ import $ from 'jquery';
 import { useParams } from 'react-router-dom';
 import propTypes from 'prop-types';
 import Title from './Title';
-import NewReview from './NewReview';
 import Words from './Words';
 import ItemChart from './ItemChart';
 import Reviews from './Reviews';
@@ -73,7 +72,8 @@ const Item = ({ className, id }) => {
    */
   const newReview = () => {
     $('#words').css('display', 'none');
-    $('#newReview').css('display', 'none');
+    $(`#${className}__grid__words__selection__new`).css('display', 'none');
+    $(`#${className}__grid__words__selection__delete`).css('display', 'none');
     $('#newReviewForm').css('display', 'flex');
   };
 
@@ -82,7 +82,8 @@ const Item = ({ className, id }) => {
    */
   const closeNew = () => {
     $('#words').css('display', 'flex');
-    $('#newReview').css('display', 'flex');
+    $(`#${className}__grid__words__selection__new`).css('display', 'flex');
+    $(`#${className}__grid__words__selection__delete`).css('display', 'flex');
     $('#newReviewForm').css('display', 'none');
   };
 
@@ -158,10 +159,36 @@ const Item = ({ className, id }) => {
   };
 
   /**
+   * Shows the confirm delete buttons.
+   */
+  const confirmDeletion = () => {
+    $(`#${className}__grid__words__selection__new`).css('display', 'none');
+    $(`#${className}__grid__words__selection__delete`).css('display', 'none');
+    $(`#${className}__grid__words__selection__confirmDelete`).css('display', 'flex');
+  };
+
+  /**
    * Calls the service to delete current item from database
    */
-  const deleteItem = () => {
-    itemService.deleteItem(itemId, token);
+  const deleteReview = (deletion) => {
+    if (deletion) itemService.deleteItem(itemId, token);
+    else {
+      $(`#${className}__grid__words__selection__new`).css('display', 'flex');
+      $(`#${className}__grid__words__selection__delete`).css('display', 'flex');
+      $(`#${className}__grid__words__selection__confirmDelete`).css('display', 'none');
+    }
+  };
+
+  /**
+   * Clears the search input when the X is pressed.
+   * @param {String} inputId - id of the input field.
+   */
+  const clearSearch = (inputId) => {
+    page.current = 0;
+    $(`#${inputId}__input`).val(null);
+    setSearch('');
+    const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
+    useGetReviews(itemId, '', 0, formattedSort, sortDir, token, setReviews);
   };
 
   return (
@@ -186,14 +213,20 @@ const Item = ({ className, id }) => {
             prevPage={() => prevPage()}
             onSubmit={(e) => onSearch(e)}
             setSearch={setSearch}
+            clearSearch={clearSearch}
           />
         </div>
         <div className={`${className}__grid__words`} id={`${className}__grid__words`}>
           <Words posWords={posWords} negWords={negWords} />
           <NewReviewForm onSubmit={submitReview} onClick={closeNew} />
-          <div className={`${className}__grid__words__buttons`} id={`${className}__grid__words__buttons`}>
-            <NewReview onClick={newReview} />
-            <button type="button" onClick={() => deleteItem()}> delete item </button>
+          <div className={`${className}__grid__words__selection`} id={`${className}__grid__words__selection`}>
+            <button className={`${className}__grid__words__selection__new`} id={`${id}__grid__words__selection__new`} type="button" onClick={() => newReview()}> new review </button>
+            <button className={`${className}__grid__words__selection__delete`} id={`${id}__grid__words__selection__delete`} type="button" onClick={() => confirmDeletion()}> delete </button>
+            <div className={`${className}__grid__words__selection__confirmDelete`} id={`${className}__grid__words__selection__confirmDelete`}>
+              <span className={`${className}__grid__words__selection__confirmDelete__text`}>Are you sure?</span>
+              <button className={`${className}__grid__words__selection__confirmDelete__wantedDelete`} id={`${id}__grid__words__selection__confirmDelete__wantedDelete`} type="button" onClick={() => deleteReview(true)}> yes </button>
+              <button className={`${className}__grid__words__selection__confirmDelete__cancelDelete`} id={`${id}__grid__words__selection__confirmDelete__cancelDelete`} type="button" onClick={() => deleteReview(false)}> no </button>
+            </div>
           </div>
         </div>
         <div className={`${className}__grid__chart`} id={`${className}__grid__chart`}>

@@ -92,9 +92,14 @@ const AllItems = ({ className, id }) => {
     }
   };
 
+  /**
+   * Clears the search field when the X is pressed.
+   * @param {String} inputId - id of the input field.
+   */
   const clearInput = (inputId) => {
     $(`#${inputId}__input`).val(null);
     setSearch('');
+    page.current = 0;
     useSearch(accountId, '', 0, sort, sortDir, token, setItems);
   };
 
