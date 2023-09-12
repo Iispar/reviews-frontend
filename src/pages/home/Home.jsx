@@ -78,7 +78,7 @@ const Home = ({ className, id }) => {
       <div className={`${className}__grid`} id={`${className}__grid`}>
         <div className={`${className}__grid__title`}>
           <div className={`${className}__grid__title__text`} id={`${className}__grid__title__text`}>
-            Welcome &nbsp;
+            Welcome&nbsp;
             {user}
             !
           </div>
