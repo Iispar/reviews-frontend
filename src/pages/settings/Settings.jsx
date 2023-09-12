@@ -31,7 +31,6 @@ const Settings = ({ className, id }) => {
   const [newUsername, setNewUsername] = useState(null);
   const [newEmail, setNewEmail] = useState(null);
   const [newPassword, setNewPassword] = useState('none');
-  const [newRole, setNewRole] = useState(null);
 
   useEffect(() => {
     const storage = useGetLocalStorage();
@@ -48,7 +47,6 @@ const Settings = ({ className, id }) => {
         setNewName(res.name);
         setNewUsername(res.username);
         setNewEmail(res.email);
-        setNewRole(res.role.id);
       });
   }, []);
   /**
@@ -71,7 +69,7 @@ const Settings = ({ className, id }) => {
      */
   const updateAccount = (e) => {
     e.preventDefault();
-    useUpdateAccount(accountId, newName, newUsername, newPassword, newRole, newEmail, token);
+    useUpdateAccount(accountId, newName, newUsername, newPassword, curRole, newEmail, token);
     // if username is updated logout.
     if (newUsername !== curUsername) {
       window.localStorage.removeItem('token');
@@ -90,7 +88,6 @@ const Settings = ({ className, id }) => {
             setPassword={setNewPassword}
             setUsername={setNewUsername}
             setName={setNewName}
-            setRole={setNewRole}
             deleteAccount={(e) => deleteAccount(e)}
             setEmail={setNewEmail}
             updateAccount={(e) => updateAccount(e)}

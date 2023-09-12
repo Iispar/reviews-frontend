@@ -17,7 +17,17 @@ import $ from 'jquery';
  * @returns input field for settings
  */
 const SettingsInputField = ({
-  className, id, onSubmit, defaultValue, title, warningText, button, submitText, type, onChange,
+  className,
+  id,
+  onSubmit,
+  defaultValue,
+  title,
+  warningText,
+  button,
+  submitText,
+  type,
+  onChange,
+  confirmationText,
 }) => {
   const [value, setValue] = useState(defaultValue);
 
@@ -33,7 +43,10 @@ const SettingsInputField = ({
    * if the value is different than original value.
    */
   useEffect(() => {
-    if (value !== defaultValue) $(`#${id}__form__${button}`).css('display', 'flex');
+    if (defaultValue !== null) {
+      if (value !== defaultValue) $(`#${id}__form__${button}`).css('display', 'flex');
+      else $(`#${id}__form__${button}`).css('display', 'none');
+    } else if (value === confirmationText) $(`#${id}__form__${button}`).css('display', 'flex');
     else $(`#${id}__form__${button}`).css('display', 'none');
   }, [value]);
 
@@ -77,6 +90,7 @@ SettingsInputField.propTypes = {
   button: propTypes.string,
   submitText: propTypes.string,
   type: propTypes.string,
+  confirmationText: propTypes.string,
 };
 
 SettingsInputField.defaultProps = {
@@ -90,6 +104,7 @@ SettingsInputField.defaultProps = {
   button: 'change',
   submitText: 'change',
   type: 'text',
+  confirmationText: null,
 };
 
 export default SettingsInputField;

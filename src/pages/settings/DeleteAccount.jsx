@@ -23,10 +23,10 @@ const DeleteAccount = ({
         type="text"
         onSubmit={onSubmit}
         id="deletePassword"
-        warningText="cannot be undone please confirm by writing this cannot be undone"
+        warningText="this action cannot be undone please confirm by writing: this cannot be undone"
         button="delete"
         submitText="I understand. Delete account"
-        defaultValue="this cannot be undone"
+        confirmationText="this cannot be undone"
       />
     </div>
   </div>

@@ -16,7 +16,6 @@ const Selections = ({
   setPassword,
   setUsername,
   setName,
-  setRole,
   deleteAccount,
   setEmail,
   updateAccount,
@@ -68,7 +67,6 @@ const Selections = ({
           openForm={openForm}
           setUsername={setUsername}
           setName={setName}
-          setRole={setRole}
           setNewPassword={setPassword}
           setEmail={setEmail}
           updateAccount={(e) => updateAccount(e)}
@@ -87,7 +85,6 @@ Selections.propTypes = {
   setPassword: propTypes.func,
   setName: propTypes.func,
   setUsername: propTypes.func,
-  setRole: propTypes.func,
   deleteAccount: propTypes.func,
   setEmail: propTypes.func,
   updateAccount: propTypes.func,
@@ -103,7 +100,6 @@ Selections.defaultProps = {
   setPassword: null,
   setName: null,
   setUsername: null,
-  setRole: null,
   deleteAccount: null,
   setEmail: null,
   updateAccount: null,

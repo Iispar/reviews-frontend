@@ -28,7 +28,6 @@ const UserInfo = ({
   setName,
   setUsername,
   setNewPassword,
-  setRole,
   updateAccount,
   className,
   id,
@@ -52,27 +51,11 @@ const UserInfo = ({
 
   return (
     <div className={className} id={id}>
-      <div className={`${className}__header`}>
-        <div className={`${className}__header__icon`} />
-        <div className={`${className}__header__title`}>
-          <span className={`${className}__header__title__username`} id={`${className}__header__title__username`}>
-            {currUsername}
-          </span>
-          <button className={`${className}__header__title__change`} id={`${className}__header__title__change`} type="button"> Change profile picture </button>
-        </div>
-        <button className={`${className}__header__closeButton`} id={`${className}__header__closeButton`} type="submit" onClick={() => openForm('none')}>  </button>
-      </div>
       <div className={`${className}__values`}>
+        <button className={`${className}__values__closeButton`} id={`${className}__header__closeButton`} type="submit" onClick={() => openForm('none')}>  </button>
         <SettingsInputField title="name" onChange={setName} onSubmit={(e) => updateAccount(e)} defaultValue={currName} id="settingsName" />
         <SettingsInputField title="username" onChange={setUsername} onSubmit={(e) => updateAccount(e)} defaultValue={currUsername} id="settingsUsername" />
         <SettingsInputField title="email" onChange={setEmail} onSubmit={(e) => updateAccount(e)} defaultValue={currEmail} id="settingsEmail" />
-        <label className={`${className}__values__role`} htmlFor="updateRole">
-          role:
-          <select id="updateRole" name="updateRole" onChange={(e) => setRole(e.target.value)}>
-            <option value="1"> Seller </option>
-            <option value="2"> Customer </option>
-          </select>
-        </label>
         <form className={`${className}__values__password`} id={`${className}__values__password`} onSubmit={(e) => updateAccount(e)}>
           <div className={`${className}__values__password__passContainer`}>
             <div className={`${className}__values__password__passContainer__passText`}>
@@ -103,7 +86,6 @@ UserInfo.propTypes = {
   currUsername: propTypes.string,
   openForm: propTypes.func,
   currName: propTypes.string,
-  setRole: propTypes.func,
   setName: propTypes.func,
   setUsername: propTypes.func,
   setNewPassword: propTypes.func,
@@ -116,7 +98,6 @@ UserInfo.defaultProps = {
   className: 'userInfo',
   id: 'userInfo',
   currUsername: null,
-  setRole: null,
   openForm: null,
   currName: null,
   setName: null,
