@@ -10,20 +10,29 @@ import SmallItem from '../../components/SmallItem';
  * @property {String} id - Custom id if wanted. Default is mostPopular.
  * @returns most popular component
  */
-const MostPopular = ({ className, id, items }) => (
-  <div className={`${className}`}>
-    <div className={`${className}__header`} id={`${id}__header`}>
-      <span className={`${className}__header__text`}>popular items</span>
-    </div>
-    { items.length > 0 ? (
-      <div className={`${className}__list`} id={`${id}__list`}>
-        <ItemList items={items} View={SmallItem} className={`${className}__list__items`} />
+const MostPopular = ({ className, id, items }) => {
+  if (items == null) {
+    return (
+      <div className={`${className}`}>
+        <div className={`${className}__loading`}> loading </div>
       </div>
-    ) : (
-      <div className={`${className}__empty`}> no items</div>
-    )}
-  </div>
-);
+    );
+  }
+  return (
+    <div className={`${className}`}>
+      <div className={`${className}__header`} id={`${id}__header`}>
+        <span className={`${className}__header__text`}>popular items</span>
+      </div>
+      { items.length > 0 ? (
+        <div className={`${className}__list`} id={`${id}__list`}>
+          <ItemList items={items} View={SmallItem} className={`${className}__list__items`} />
+        </div>
+      ) : (
+        <div className={`${className}__empty`}> no items</div>
+      )}
+    </div>
+  );
+};
 
 MostPopular.propTypes = {
   items: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),

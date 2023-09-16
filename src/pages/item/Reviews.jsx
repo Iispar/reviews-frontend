@@ -20,32 +20,41 @@ import DropDownSortMenu from '../../components/DropDownSortMenu';
  */
 const Reviews = ({
   reviews, className, id, setSort, nextPage, prevPage, onSubmit, setSearch, clearSearch,
-}) => (
-  <div className={className} id={id}>
-    <div className={`${className}__header`}>
-      <div className={`${className}__header__text`}> Reviews </div>
-      <div className={`${className}__header__filters`}>
-        <form className={`${className}__header__filter__search`} onSubmit={(e) => onSubmit(e)}>
-          <SearchField id="itemReviewsSearch" placeholder="Search" onChange={setSearch} onClear={clearSearch} />
-        </form>
-        <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} sortOne="date" />
+}) => {
+  if (reviews == null) {
+    return (
+      <div className={className}>
+        <div className={`${className}__loading`}> loading </div>
       </div>
-    </div>
-    { reviews.length > 0 ? (
-      <div className={`${className}__reviews`}>
-        <div className={`${className}__reviews__list`}>
-          <ReviewsList reviews={reviews} />
+    );
+  }
+  return (
+    <div className={className} id={id}>
+      <div className={`${className}__header`}>
+        <div className={`${className}__header__text`}> Reviews </div>
+        <div className={`${className}__header__filters`}>
+          <form className={`${className}__header__filter__search`} onSubmit={(e) => onSubmit(e)}>
+            <SearchField id="itemReviewsSearch" placeholder="Search" onChange={setSearch} onClear={clearSearch} />
+          </form>
+          <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} sortOne="date" />
         </div>
-        <div className={`${className}__reviews__pagination`}>
-          <Pagination next={() => nextPage()} prev={() => prevPage()} />
-        </div>
+      </div>
+      { reviews.length > 0 ? (
+        <div className={`${className}__reviews`}>
+          <div className={`${className}__reviews__list`}>
+            <ReviewsList reviews={reviews} />
+          </div>
+          <div className={`${className}__reviews__pagination`}>
+            <Pagination next={() => nextPage()} prev={() => prevPage()} />
+          </div>
 
-      </div>
-    ) : (
-      <div className={`${className}__empty`}> no reviews </div>
-    )}
-  </div>
-);
+        </div>
+      ) : (
+        <div className={`${className}__empty`}> no reviews </div>
+      )}
+    </div>
+  );
+};
 
 Reviews.propTypes = {
   reviews: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),

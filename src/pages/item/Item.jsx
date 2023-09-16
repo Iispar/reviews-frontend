@@ -24,7 +24,7 @@ import itemService from '../../services/itemService';
 const Item = ({ className, id }) => {
   const { itemId } = useParams();
   const [title, setTitle] = useState(null);
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState(null);
   const [rating, setRating] = useState(null);
   const [posWords, setPosWords] = useState([]);
   const [negWords, setNegWords] = useState([]);

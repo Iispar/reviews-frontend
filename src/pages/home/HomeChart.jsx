@@ -40,6 +40,15 @@ const HomeChart = ({
     }
   };
 
+  // if loading.
+  if (data == null) {
+    return (
+      <div className={className}>
+        <div className={`${className}__loading`}> loading </div>
+      </div>
+    );
+  }
+  // if data loaded.
   return (
     <div className={className} id={id}>
       {data.length > 2 ? (

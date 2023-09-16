@@ -16,7 +16,7 @@ import itemService from '../../services/itemService';
 const AllItems = ({ className, id }) => {
   const [token, setToken] = useState(null);
   const [accountId, setAccountId] = useState(null);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(null);
   const [search, setSearch] = useState(null);
   const [sort, setSort] = useState('none');
   const [sortDir, setSortDir] = useState('none');
@@ -54,6 +54,7 @@ const AllItems = ({ className, id }) => {
    */
   const searchInput = (e) => {
     page.current = 0;
+    $('#pagination__prev').prop('disabled', true);
     if (e) e.preventDefault();
     useSearch(accountId, search, page.current, sort, sortDir, token, setItems);
   };
@@ -67,6 +68,7 @@ const AllItems = ({ className, id }) => {
    */
   const searchSort = (selSort, selSortDir) => {
     page.current = 0;
+    $('#pagination__prev').prop('disabled', true);
     setSort(selSort);
     setSortDir(selSortDir);
     useSearch(accountId, search, page.current, selSort, selSortDir, token, setItems);
@@ -76,6 +78,7 @@ const AllItems = ({ className, id }) => {
    * Function to move to load the next page of reviews
    */
   const nextPage = () => {
+    setItems(null);
     $('#pagination__prev').prop('disabled', false);
     useSearch(accountId, search, page.current + 1, sort, sortDir, token, setItems);
     page.current += 1;
@@ -85,6 +88,7 @@ const AllItems = ({ className, id }) => {
   * Function to move to load the previous page of reviews
   */
   const prevPage = () => {
+    setItems(null);
     useSearch(accountId, search, page.current - 1, sort, sortDir, token, setItems);
     page.current -= 1;
     if (page.current === 0) {
@@ -100,6 +104,7 @@ const AllItems = ({ className, id }) => {
     $(`#${inputId}__input`).val(null);
     setSearch('');
     page.current = 0;
+    $('#pagination__prev').prop('disabled', true);
     useSearch(accountId, '', 0, sort, sortDir, token, setItems);
   };
 

@@ -20,28 +20,48 @@ import DropDownSortMenu from '../../components/DropDownSortMenu';
  */
 const Items = ({
   items, className, id, onSubmit, setSort, setSearch, nextPage, prevPage, clearInput,
-}) => (
-  <div className={className}>
-    <div className={`${className}__header`}>
-      <form className={`${className}__header__search`} onSubmit={(e) => onSubmit(e)}>
-        <SearchField placeholder="Search" onChange={setSearch} onClear={clearInput} id="allItemsSearch" />
-      </form>
-      <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} />
-    </div>
-    { items.length > 0 ? (
-      <div className={`${className}__reviews`}>
-        <div className={`${className}__reviews__list`} id={`${id}__reviews__list`}>
-          <ItemList items={items} View={LargeItem} count={6} />
+}) => {
+  if (items == null) {
+    return (
+      <div className={className}>
+        <div className={`${className}__header`}>
+          <form className={`${className}__header__search`} onSubmit={(e) => onSubmit(e)}>
+            <SearchField placeholder="Search" onChange={setSearch} onClear={clearInput} id="allItemsSearch" />
+          </form>
+          <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} />
+        </div>
+        <div className={`${className}__reviews`}>
+          <div className={`${className}__loading`}> loading </div>
         </div>
         <div className={`${className}__reviews__pagination`}>
           <Pagination next={() => nextPage()} prev={() => prevPage()} />
         </div>
       </div>
-    ) : (
-      <div className={`${className}__empty`}> no items </div>
-    )}
-  </div>
-);
+    );
+  }
+  return (
+    <div className={className}>
+      <div className={`${className}__header`}>
+        <form className={`${className}__header__search`} onSubmit={(e) => onSubmit(e)}>
+          <SearchField placeholder="Search" onChange={setSearch} onClear={clearInput} id="allItemsSearch" />
+        </form>
+        <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} />
+      </div>
+      { items.length > 0 ? (
+        <div className={`${className}__reviews`}>
+          <div className={`${className}__reviews__list`} id={`${id}__reviews__list`}>
+            <ItemList items={items} View={LargeItem} count={6} />
+          </div>
+        </div>
+      ) : (
+        <div className={`${className}__empty`}> no items </div>
+      )}
+      <div className={`${className}__reviews__pagination`}>
+        <Pagination next={() => nextPage()} prev={() => prevPage()} />
+      </div>
+    </div>
+  );
+};
 
 Items.propTypes = {
   items: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),

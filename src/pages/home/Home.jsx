@@ -18,12 +18,12 @@ import { useGetReviewsForAccount } from './homeHooks';
  * @returns home screen
  */
 const Home = ({ className, id }) => {
-  const [latestReviews, setLatestReviews] = useState([]);
-  const [topItems, setTopItems] = useState([]);
+  const [latestReviews, setLatestReviews] = useState(null);
+  const [topItems, setTopItems] = useState(null);
   const [itemCount, setItemCount] = useState(null);
   const [reviewCount, setReviewCount] = useState(null);
   const [ratingAvg, setRatingAvg] = useState(null);
-  const [chart, setChart] = useState([]);
+  const [chart, setChart] = useState(null);
   const [barChart, setBarChart] = useState([]);
   const [accountId, setAccountId] = useState(null);
   const [token, setToken] = useState(null);
@@ -49,7 +49,6 @@ const Home = ({ className, id }) => {
         setRatingAvg(res.ratingsAvg);
         setChart(res.chart);
         setBarChart(res.barChart);
-        console.log(res.chart);
       });
   }, []);
 
@@ -77,11 +76,13 @@ const Home = ({ className, id }) => {
     <div className={className} id={id}>
       <div className={`${className}__grid`} id={`${className}__grid`}>
         <div className={`${className}__grid__title`}>
-          <div className={`${className}__grid__title__text`} id={`${className}__grid__title__text`}>
-            Welcome&nbsp;
-            {user}
-            !
-          </div>
+          {user ? (
+            <div className={`${className}__grid__title__text`} id={`${className}__grid__title__text`}>
+              Welcome&nbsp;
+              {user}
+              !
+            </div>
+          ) : (<div />)}
         </div>
         <div className={`${className}__grid__latestReviews`} id={`${id}__grid__latestReviews`}>
           <LatestReviews

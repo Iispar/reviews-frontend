@@ -14,25 +14,35 @@ import Pagination from '../../components/Pagination';
  */
 const LatestReviews = ({
   className, id, reviews, nextPage, prevPage,
-}) => (
-  <div className={`${className}`}>
-    <div className={`${className}__header`} id={`${id}__header`}>
-      <div className={`${className}__header__text`}> Latest reviews </div>
-    </div>
-    {reviews.length > 0 ? (
-      <div className={`${className}__reviews`}>
-        <div className={`${className}__reviews__list`} id={`${id}__reviews`}>
-          <ReviewsList reviews={reviews} />
-        </div>
-        <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
-          <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
-        </div>
+}) => {
+  // if loading reviews.
+  if (reviews == null) {
+    return (
+      <div className={`${className}`}>
+        <div className={`${className}__loading`}> loading </div>
       </div>
-    ) : (
-      <div className={`${className}__empty`}> no reviews </div>
-    )}
-  </div>
-);
+    );
+  // if reviews found.
+  } return (
+    <div className={`${className}`}>
+      <div className={`${className}__header`} id={`${id}__header`}>
+        <div className={`${className}__header__text`}> Latest reviews </div>
+      </div>
+      {reviews.length > 0 ? (
+        <div className={`${className}__reviews`}>
+          <div className={`${className}__reviews__list`} id={`${id}__reviews`}>
+            <ReviewsList reviews={reviews} />
+          </div>
+          <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
+            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
+          </div>
+        </div>
+      ) : (
+        <div className={`${className}__empty`}> no reviews </div>
+      )}
+    </div>
+  );
+};
 
 LatestReviews.propTypes = {
   reviews: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),

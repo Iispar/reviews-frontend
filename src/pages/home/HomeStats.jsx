@@ -14,49 +14,57 @@ import BarChart from '../../components/BarChart';
  */
 const HomeStats = ({
   barChartData, itemCount, ratingAvg, reviewCount, className, id,
-}) => (
-  <div className={className}>
-    <div className={`${className}__ratings`}>
-      <div className={`${className}__ratings__chart`} id={`${id}__ratings__chart`}>
-        {barChartData.length > 0 ? (
-          <BarChart data={barChartData} />
-        ) : (
-          <div className={`${className}__ratings__empty`}>  no data </div>
-        )}
-      </div>
-      <div className={`${className}__ratings__label`}> distribution of ratings </div>
-    </div>
-    <div className={`${className}__allTime`} id={`${id}__allTime`}>
-      <div className={`${className}__allTime__stats`}>
-        <div className={`${className}__allTime__stats__items`}>
-          <span className={`${className}__allTime__stats__items__value`}>
-            {' '}
-            {itemCount}
-            {' '}
-          </span>
-          <span className={`${className}__allTime__stats__items__label`}> items </span>
+}) => {
+  if (barChartData == null || itemCount == null) {
+    return (
+      <div className={className}>
+        <div className={`${className}__ratings`}>
+          <div className={`${className}__loading`}> loading </div>
         </div>
-        <div className={`${className}__allTime__stats__reviews`}>
-          <span className={`${className}__allTime__stats__reviews__value`}>
-            {' '}
-            {reviewCount}
-            {' '}
-          </span>
-          <span className={`${className}__allTime__stats__reviews__label`}> reviews </span>
-        </div>
-        <div className={`${className}__allTime__stats__ratings`}>
-          <span className={`${className}__allTime__stats__ratings__value`}>
-            {' '}
-            {ratingAvg}
-            {' '}
-          </span>
-          <span className={`${className}__allTime__stats__ratings__label`}> avg rating </span>
+        <div className={`${className}__allTime`}>
+          <div className={`${className}__loading`}> loading </div>
         </div>
       </div>
-      <div className={`${className}__allTime__title`} id={`${id}__allTime__title`}> all time</div>
+    );
+  }
+  return (
+    <div className={className}>
+      <div className={`${className}__ratings`}>
+        <div className={`${className}__ratings__chart`} id={`${id}__ratings__chart`}>
+          {barChartData.length > 0 ? (
+            <BarChart data={barChartData} />
+          ) : (
+            <div className={`${className}__ratings__empty`}>  no data </div>
+          )}
+        </div>
+        <div className={`${className}__ratings__label`}> distribution of ratings </div>
+      </div>
+      <div className={`${className}__allTime`} id={`${id}__allTime`}>
+        <div className={`${className}__allTime__stats`}>
+          <div className={`${className}__allTime__stats__items`}>
+            <span className={`${className}__allTime__stats__items__value`}>
+              {itemCount}
+            </span>
+            <span className={`${className}__allTime__stats__items__label`}> items </span>
+          </div>
+          <div className={`${className}__allTime__stats__reviews`}>
+            <span className={`${className}__allTime__stats__reviews__value`}>
+              {reviewCount}
+            </span>
+            <span className={`${className}__allTime__stats__reviews__label`}> reviews </span>
+          </div>
+          <div className={`${className}__allTime__stats__ratings`}>
+            <span className={`${className}__allTime__stats__ratings__value`}>
+              {ratingAvg}
+            </span>
+            <span className={`${className}__allTime__stats__ratings__label`}> avg rating </span>
+          </div>
+        </div>
+        <div className={`${className}__allTime__title`} id={`${id}__allTime__title`}> all time</div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 HomeStats.propTypes = {
   className: propTypes.string,
