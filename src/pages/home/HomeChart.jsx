@@ -3,6 +3,8 @@ import $ from 'jquery';
 import propTypes from 'prop-types';
 import DoubleLineChart from '../../components/DoubleLineChart';
 import reviewsService from '../../services/reviewsService';
+import SkeletonLoad from '../../components/SkeletonLoad';
+import LoadingBar from '../../components/LoadingBar';
 
 /**
  * Renders the chart component for the home page.
@@ -11,12 +13,15 @@ import reviewsService from '../../services/reviewsService';
  * @property {String} id - Custom id if wanted. Default homeChart.
  * @property {string} accountId - Id of account used for chart
  * @property {String} token - Token for account
+ * @property {Integer} loading - Status of loading. 0 is loaded, 1 is initial load
+ *                               and 2 is retrieving data.
  * @returns chart component
  */
 const HomeChart = ({
-  className, initData, id, token, accountId,
+  className, initData, id, token, accountId, initLoading,
 }) => {
   const [data, setData] = useState(initData);
+  const [loading, setLoading] = useState(initLoading);
 
   /**
    * Changes the view and sets the css for the active bar.
@@ -24,16 +29,20 @@ const HomeChart = ({
    * @param {String} selectionText - text of selection
    */
   const changeView = (selectionText) => {
+    setLoading(2);
     reviewsService.getChartForAccount(accountId, selectionText, token)
-      .then((res) => setData(res));
+      .then((res) => {
+        setData(res);
+        setLoading(0);
+      });
 
     if (selectionText === 'month') {
-      $(`#${className}__selector__active`).css({
+      $(`#${id}__selector__active`).css({
         left: '63px',
         width: '38px',
       });
     } else {
-      $(`#${className}__selector__active`).css({
+      $(`#${id}__selector__active`).css({
         left: '106px',
         width: '32px',
       });
@@ -41,10 +50,24 @@ const HomeChart = ({
   };
 
   // if loading.
-  if (data == null) {
+  if (loading !== 0) {
+    // if initial load
+    if (loading === 1) {
+      return (
+        <SkeletonLoad />
+      );
+    }
+    // if waiting for data.
     return (
-      <div className={className}>
-        <div className={`${className}__loading`}> loading </div>
+      <div className={className} id={id}>
+        <div>
+          <LoadingBar />
+          <div className={`${className}__selector`} id={`${id}__selector`}>
+            <button className={`${className}__selector__month`} type="button" onClick={() => changeView('month')}> month </button>
+            <button className={`${className}__selector__week`} type="button" onClick={() => changeView('week')}> week </button>
+            <div className={`${className}__selector__active`} id={`${id}__selector__active`} />
+          </div>
+        </div>
       </div>
     );
   }
@@ -73,6 +96,7 @@ HomeChart.propTypes = {
   initData: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   token: propTypes.string,
   accountId: propTypes.string,
+  initLoading: propTypes.number,
 };
 
 HomeChart.defaultProps = {
@@ -81,6 +105,7 @@ HomeChart.defaultProps = {
   initData: [],
   token: null,
   accountId: null,
+  initLoading: 0,
 };
 
 export default HomeChart;

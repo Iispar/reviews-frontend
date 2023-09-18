@@ -25,6 +25,8 @@ export const useGetHome = (accountId) => {
  *        Function to be used to set the results.
  * @param {Function} setIsNextPage
  *        Function to be used to set the res on next page data.
+ * @param {Function} setIsNextPage
+ *        Function to be used to set the loading status.
  */
 export const useGetReviewsForAccount = (
   accountId,
@@ -32,7 +34,12 @@ export const useGetReviewsForAccount = (
   token,
   setLatestReviews,
   setIsNextPage,
+  setLoading,
 ) => {
   reviewsService.getReviewsForAccount(accountId, page, token)
-    .then((res) => { setLatestReviews(res.responseList); setIsNextPage(res.nextPage); });
+    .then((res) => {
+      setLatestReviews(res.responseList);
+      setIsNextPage(res.nextPage);
+      setLoading(0);
+    });
 };

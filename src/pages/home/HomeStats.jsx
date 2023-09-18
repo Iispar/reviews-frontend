@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import BarChart from '../../components/BarChart';
+import SkeletonLoad from '../../components/SkeletonLoad';
 
 /**
  * Renders the stats component used in the home screen.
@@ -18,11 +19,11 @@ const HomeStats = ({
   if (barChartData == null || itemCount == null) {
     return (
       <div className={className}>
-        <div className={`${className}__ratings`}>
-          <div className={`${className}__loading`}> loading </div>
+        <div className={`${className}__barLoad`}>
+          <SkeletonLoad />
         </div>
-        <div className={`${className}__allTime`}>
-          <div className={`${className}__loading`}> loading </div>
+        <div className={`${className}__statsLoad`}>
+          <SkeletonLoad />
         </div>
       </div>
     );

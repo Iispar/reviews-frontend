@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import ItemList from '../../components/ItemList';
 import SmallItem from '../../components/SmallItem';
+import SkeletonLoad from '../../components/SkeletonLoad';
 
 /**
  * Creates the most popular conmponent used on the home screen
@@ -13,9 +14,7 @@ import SmallItem from '../../components/SmallItem';
 const MostPopular = ({ className, id, items }) => {
   if (items == null) {
     return (
-      <div className={`${className}`}>
-        <div className={`${className}__loading`}> loading </div>
-      </div>
+      <SkeletonLoad />
     );
   }
   return (

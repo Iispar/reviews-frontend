@@ -47,7 +47,6 @@ const Header = () => {
         <a className="navBar__list__home" href="/home"> home </a>
         <a className="navBar__list__allItems" href="/all"> all items </a>
         <a className="navBar__list__settings" href="/settings"> settings </a>
-
         <button className="navBar__list__logout" type="button" onClick={() => logOut()}> log out </button>
       </nav>
     </div>

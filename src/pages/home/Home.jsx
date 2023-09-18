@@ -29,6 +29,7 @@ const Home = ({ className, id }) => {
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
   const [isNextPage, setIsNextPage] = useState(true);
+  const [loading, setLoading] = useState(1);
   const page = useRef(0);
 
   /**
@@ -50,6 +51,8 @@ const Home = ({ className, id }) => {
         setRatingAvg(res.ratingsAvg);
         setChart(res.chart);
         setBarChart(res.barChart);
+        setLoading(0);
+        page.current = 0;
       });
   }, []);
 
@@ -62,11 +65,26 @@ const Home = ({ className, id }) => {
   }, [isNextPage]);
 
   /**
+   * UseEffect to disable prev so we dont do into negative pages.
+   */
+  useEffect(() => {
+    if (page.current <= 0) $('#pagination__prev').prop('disabled', true);
+    else $('#pagination__prev').prop('disabled', false);
+  }, [page.current]);
+
+  /**
    * Function to move to load the next page of reviews
    */
   const nextPage = () => {
-    useGetReviewsForAccount(accountId, page.current + 1, token, setLatestReviews, setIsNextPage);
-    $('#pagination__prev').prop('disabled', false);
+    setLoading(2);
+    useGetReviewsForAccount(
+      accountId,
+      page.current + 1,
+      token,
+      setLatestReviews,
+      setIsNextPage,
+      setLoading,
+    );
     page.current += 1;
   };
 
@@ -74,11 +92,16 @@ const Home = ({ className, id }) => {
      * Function to move to load the previous page of reviews
      */
   const prevPage = () => {
-    useGetReviewsForAccount(accountId, page.current - 1, token, setLatestReviews, setIsNextPage);
+    setLoading(2);
+    useGetReviewsForAccount(
+      accountId,
+      page.current - 1,
+      token,
+      setLatestReviews,
+      setIsNextPage,
+      setLoading,
+    );
     page.current -= 1;
-    if (page.current === 0) {
-      $('#pagination__prev').prop('disabled', true);
-    }
   };
 
   return (
@@ -101,13 +124,20 @@ const Home = ({ className, id }) => {
             key={latestReviews}
             nextPage={nextPage}
             prevPage={prevPage}
+            loading={loading}
           />
         </div>
         <div className={`${className}__grid__mostPopular`} id={`${id}__grid__mostPopular`}>
           <MostPopular items={topItems} />
         </div>
         <div className={`${className}__grid__homeChart`} id={`${id}__grid__homeChart`}>
-          <HomeChart initData={chart} key={chart} accountId={accountId} token={token} />
+          <HomeChart
+            initData={chart}
+            key={chart}
+            accountId={accountId}
+            token={token}
+            initLoading={loading}
+          />
         </div>
         <div className={`${className}__grid__homeStats`} id={`${id}__grid__homeStats`}>
           <HomeStats

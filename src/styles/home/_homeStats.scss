@@ -8,7 +8,6 @@
     justify-content: flex-end;
     gap: 20px;
     height: 100%;
-    background: $containerWhite;
     &__ratings {
         width: 100%;
         height: 100%;
@@ -80,10 +79,10 @@
             font-size: 16px;
         }
     }
-    &__loading {
+    &__barLoad {
         height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    }
+    &__statsLoad {
+        height: 120px;
     }
 }
