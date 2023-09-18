@@ -47,13 +47,24 @@ export const useNewItem = (accountId, title, category, token) => {
  *                 Token of account searching for items.
  * @param {Function} setItems
  *                 setFunction for the results to be set to.
+ * @param {Function} setIsNextPage
+ *                 setFunction for the res of next page to be set to.
  */
-export const useSearch = (accountId, search, page, sort, sortDir, token, setItems) => {
+export const useSearch = (
+  accountId,
+  search,
+  page,
+  sort,
+  sortDir,
+  token,
+  setItems,
+  setIsNextPage,
+) => {
   if (search) {
     itemService.getSearch(accountId, search, page, sort, sortDir, token)
-      .then((res) => setItems(res));
+      .then((res) => { setItems(res.responseList); setIsNextPage(res.nextPage); });
   } else {
     itemService.getSort(accountId, page, sort, sortDir, token)
-      .then((res) => setItems(res));
+      .then((res) => { setItems(res.responseList); setIsNextPage(res.nextPage); });
   }
 };

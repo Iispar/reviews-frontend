@@ -23,8 +23,16 @@ export const useGetHome = (accountId) => {
  *        Token of logged in user.
  * @param {Function} setLatestReviews
  *        Function to be used to set the results.
+ * @param {Function} setIsNextPage
+ *        Function to be used to set the res on next page data.
  */
-export const useGetReviewsForAccount = (accountId, page, token, setLatestReviews) => {
+export const useGetReviewsForAccount = (
+  accountId,
+  page,
+  token,
+  setLatestReviews,
+  setIsNextPage,
+) => {
   reviewsService.getReviewsForAccount(accountId, page, token)
-    .then((res) => setLatestReviews(res));
+    .then((res) => { setLatestReviews(res.responseList); setIsNextPage(res.nextPage); });
 };

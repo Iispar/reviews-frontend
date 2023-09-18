@@ -28,6 +28,7 @@ const Home = ({ className, id }) => {
   const [accountId, setAccountId] = useState(null);
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
+  const [isNextPage, setIsNextPage] = useState(true);
   const page = useRef(0);
 
   /**
@@ -42,7 +43,7 @@ const Home = ({ className, id }) => {
     pagesService.getHome(storage.accountId, storage.token)
       .then((res) => {
         setUser(res.accountName);
-        setLatestReviews(res.latestReviews);
+        setLatestReviews(res.latestReviews.responseList);
         setTopItems(res.topItems);
         setItemCount(res.itemsCount);
         setReviewCount(res.reviewsCount);
@@ -53,10 +54,18 @@ const Home = ({ className, id }) => {
   }, []);
 
   /**
+   * Useeffect to check if page is the last one with values.
+   */
+  useEffect(() => {
+    if (isNextPage) $('#pagination__next').prop('disabled', false);
+    else $('#pagination__next').prop('disabled', true);
+  }, [isNextPage]);
+
+  /**
    * Function to move to load the next page of reviews
    */
   const nextPage = () => {
-    useGetReviewsForAccount(accountId, page.current + 1, token, setLatestReviews);
+    useGetReviewsForAccount(accountId, page.current + 1, token, setLatestReviews, setIsNextPage);
     $('#pagination__prev').prop('disabled', false);
     page.current += 1;
   };
@@ -65,7 +74,7 @@ const Home = ({ className, id }) => {
      * Function to move to load the previous page of reviews
      */
   const prevPage = () => {
-    useGetReviewsForAccount(accountId, page.current - 1, token, setLatestReviews);
+    useGetReviewsForAccount(accountId, page.current - 1, token, setLatestReviews, setIsNextPage);
     page.current -= 1;
     if (page.current === 0) {
       $('#pagination__prev').prop('disabled', true);

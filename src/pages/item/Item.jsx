@@ -26,17 +26,18 @@ const Item = ({ className, id }) => {
   const [title, setTitle] = useState(null);
   const [reviews, setReviews] = useState(null);
   const [rating, setRating] = useState(null);
-  const [posWords, setPosWords] = useState([]);
-  const [negWords, setNegWords] = useState([]);
+  const [posWords, setPosWords] = useState(null);
+  const [negWords, setNegWords] = useState(null);
   const [posReviews, setPosReviews] = useState(null);
   const [negReviews, setNegReviews] = useState(null);
   const [reviewsCount, setReviewsCount] = useState(null);
   const [token, setToken] = useState(null);
   const [accountId, setAccountId] = useState(null);
-  const [chart, setChart] = useState([]);
+  const [chart, setChart] = useState(null);
   const [sort, setSort] = useState('none');
   const [search, setSearch] = useState(null);
   const [sortDir, setSortDir] = useState('none');
+  const [isNextPage, setIsNextPage] = useState(null);
   const page = useRef(0);
 
   /**
@@ -50,7 +51,7 @@ const Item = ({ className, id }) => {
 
     pagesService.getItem(itemId, storage.token)
       .then((res) => {
-        setReviews(res.reviews);
+        setReviews(res.reviews.responseList);
         if (res.topPos == null) {
           setPosWords([]);
           setNegWords([]);
@@ -66,6 +67,14 @@ const Item = ({ className, id }) => {
         setNegReviews(res.negativeReviews);
       });
   }, []);
+
+  /**
+   * UseEffect to check if next page of results is empty.
+   */
+  useEffect(() => {
+    if (isNextPage) $('#pagination__next').prop('disabled', false);
+    else $('#pagination__next').prop('disabled', true);
+  }, [isNextPage]);
 
   /**
    * Opens the new review form.
@@ -115,7 +124,16 @@ const Item = ({ className, id }) => {
   const nextPage = () => {
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     $('#pagination__prev').prop('disabled', false);
-    useGetReviews(itemId, search, page.current + 1, formattedSort, sortDir, token, setReviews);
+    useGetReviews(
+      itemId,
+      search,
+      page.current + 1,
+      formattedSort,
+      sortDir,
+      token,
+      setReviews,
+      setIsNextPage,
+    );
     page.current += 1;
   };
 
@@ -124,7 +142,16 @@ const Item = ({ className, id }) => {
      */
   const prevPage = () => {
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
-    useGetReviews(itemId, search, page.current - 1, formattedSort, sortDir, token, setReviews);
+    useGetReviews(
+      itemId,
+      search,
+      page.current - 1,
+      formattedSort,
+      sortDir,
+      token,
+      setReviews,
+      setIsNextPage,
+    );
     page.current -= 1;
     if (page.current === 0) {
       $('#pagination__prev').prop('disabled', true);
@@ -140,7 +167,16 @@ const Item = ({ className, id }) => {
     page.current = 0;
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     e.preventDefault();
-    useGetReviews(itemId, search, page.current, formattedSort, sortDir, token, setReviews);
+    useGetReviews(
+      itemId,
+      search,
+      page.current,
+      formattedSort,
+      sortDir,
+      token,
+      setReviews,
+      setIsNextPage,
+    );
   };
 
   /**
@@ -155,7 +191,7 @@ const Item = ({ className, id }) => {
     setSort(selSort);
     setSortDir(selSortDir);
 
-    useGetReviews(itemId, search, page.current, `review_${selSort}`, selSortDir, token, setReviews);
+    useGetReviews(itemId, search, page.current, `review_${selSort}`, selSortDir, token, setReviews, setIsNextPage);
   };
 
   /**
@@ -188,7 +224,7 @@ const Item = ({ className, id }) => {
     $(`#${inputId}__input`).val(null);
     setSearch('');
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
-    useGetReviews(itemId, '', 0, formattedSort, sortDir, token, setReviews);
+    useGetReviews(itemId, '', 0, formattedSort, sortDir, token, setReviews, setIsNextPage);
   };
 
   return (

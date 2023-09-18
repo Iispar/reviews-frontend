@@ -54,15 +54,26 @@ export const UseNewReview = (itemId, accountId, reviews, token) => {
  * @param {String} token
  *        The token for the logged in account.
  * @param {Function} setReviews
- *        Function to use for the response to set the res.
+ *        Function to set the response the res
+ * @param {Function} setIsNextPage
+ *        Function to set for the next page of results.
  */
-export const useGetReviews = (itemId, search, page, sort, sortDir, token, setReviews) => {
+export const useGetReviews = (
+  itemId,
+  search,
+  page,
+  sort,
+  sortDir,
+  token,
+  setReviews,
+  setIsNextPage,
+) => {
   if (search) {
     reviewsService
       .getSearchReviewsForItem(itemId, search, page, sort, sortDir, token)
-      .then((res) => setReviews(res));
+      .then((res) => { setReviews(res.responseList); setIsNextPage(res.nextPage); });
   } else {
     reviewsService.getReviewsForItem(itemId, page, sort, sortDir, token)
-      .then((res) => setReviews(res));
+      .then((res) => { setReviews(res.responseList); setIsNextPage(res.nextPage); });
   }
 };

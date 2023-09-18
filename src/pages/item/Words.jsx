@@ -12,27 +12,44 @@ import TopWords from '../../components/TopWords';
  */
 const Words = ({
   className, id, posWords, negWords,
-}) => (
-  <div className={className} id={id}>
-    <div className={`${className}__title`} id={`${className}__title`}>
-      most common words
+}) => {
+  if (posWords == null || negWords == null) {
+    return (
+      <div className={className} id={id}>
+        <div className={`${className}__title`} id={`${className}__title`}>
+          most common words
+        </div>
+        <div className={`${className}__positive`} id={`${className}__positive`}>
+          <div className={`${className}__loading`}> loading </div>
+        </div>
+        <div className={`${className}__negative`} id={`${className}__negative`}>
+          <div className={`${className}__loading`}> loading </div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className={className} id={id}>
+      <div className={`${className}__title`} id={`${className}__title`}>
+        most common words
+      </div>
+      <div className={`${className}__positive`} id={`${className}__positive`}>
+        {posWords.length > 0 ? (
+          <TopWords words={posWords} title="with positive reviews" />
+        ) : (
+          <div className={`${className}__empty`}> no top pos </div>
+        )}
+      </div>
+      <div className={`${className}__negative`} id={`${className}__negative`}>
+        {negWords.length > 0 ? (
+          <TopWords words={negWords} title="with negative reviews" />
+        ) : (
+          <div className={`${className}__empty`}> no top pos </div>
+        )}
+      </div>
     </div>
-    <div className={`${className}__positive`} id={`${className}__positive`}>
-      {posWords.length > 0 ? (
-        <TopWords words={posWords} title="with positive reviews" />
-      ) : (
-        <div className={`${className}__empty`}> no top pos </div>
-      )}
-    </div>
-    <div className={`${className}__negative`} id={`${className}__negative`}>
-      {negWords.length > 0 ? (
-        <TopWords words={negWords} title="with negative reviews" />
-      ) : (
-        <div className={`${className}__empty`}> no top pos </div>
-      )}
-    </div>
-  </div>
-);
+  );
+};
 
 Words.propTypes = {
   posWords: propTypes.arrayOf(propTypes.string),

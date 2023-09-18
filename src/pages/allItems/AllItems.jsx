@@ -20,6 +20,7 @@ const AllItems = ({ className, id }) => {
   const [search, setSearch] = useState(null);
   const [sort, setSort] = useState('none');
   const [sortDir, setSortDir] = useState('none');
+  const [isNextPage, setIsNextPage] = useState(true);
   const page = useRef(0);
 
   /**
@@ -32,8 +33,19 @@ const AllItems = ({ className, id }) => {
     setAccountId(storage.accountId);
 
     itemService.getAll(storage.accountId, page.current, storage.token)
-      .then((res) => setItems(res));
+      .then((res) => {
+        setItems(res.responseList);
+        if (!res.nextPage) setIsNextPage(false);
+      });
   }, []);
+
+  /**
+   * UseEffect to check if page is last one with values.
+   */
+  useEffect(() => {
+    if (isNextPage) $('#pagination__next').prop('disabled', false);
+    else $('#pagination__next').prop('disabled', true);
+  }, [isNextPage]);
 
   /**
    * takes in the submit and calls the new item hook to submit it.
@@ -56,7 +68,7 @@ const AllItems = ({ className, id }) => {
     page.current = 0;
     $('#pagination__prev').prop('disabled', true);
     if (e) e.preventDefault();
-    useSearch(accountId, search, page.current, sort, sortDir, token, setItems);
+    useSearch(accountId, search, page.current, sort, sortDir, token, setItems, setIsNextPage);
   };
 
   /**
@@ -71,7 +83,7 @@ const AllItems = ({ className, id }) => {
     $('#pagination__prev').prop('disabled', true);
     setSort(selSort);
     setSortDir(selSortDir);
-    useSearch(accountId, search, page.current, selSort, selSortDir, token, setItems);
+    useSearch(accountId, search, page.current, selSort, selSortDir, token, setItems, setIsNextPage);
   };
 
   /**
@@ -80,7 +92,16 @@ const AllItems = ({ className, id }) => {
   const nextPage = () => {
     setItems(null);
     $('#pagination__prev').prop('disabled', false);
-    useSearch(accountId, search, page.current + 1, sort, sortDir, token, setItems);
+    useSearch(
+      accountId,
+      search,
+      page.current + 1,
+      sort,
+      sortDir,
+      token,
+      setItems,
+      setIsNextPage,
+    );
     page.current += 1;
   };
 
@@ -89,7 +110,16 @@ const AllItems = ({ className, id }) => {
   */
   const prevPage = () => {
     setItems(null);
-    useSearch(accountId, search, page.current - 1, sort, sortDir, token, setItems);
+    useSearch(
+      accountId,
+      search,
+      page.current - 1,
+      sort,
+      sortDir,
+      token,
+      setItems,
+      setIsNextPage,
+    );
     page.current -= 1;
     if (page.current === 0) {
       $('#pagination__prev').prop('disabled', true);

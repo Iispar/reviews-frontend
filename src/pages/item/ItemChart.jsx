@@ -24,6 +24,7 @@ const ItemChart = ({
    *        The selected button as text.
    */
   const changeView = (selectionText) => {
+    setData(null);
     reviewsService.getChartForItem(itemId, selectionText, token)
       .then((res) => setData(res));
 
@@ -39,6 +40,13 @@ const ItemChart = ({
       });
     }
   };
+  if (data == null) {
+    return (
+      <div className={className} id={id}>
+        <div className={`${className}__loading`}> loading </div>
+      </div>
+    );
+  }
   return (
     <div className={className} id={id}>
       {data.length > 2 ? (
