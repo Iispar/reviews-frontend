@@ -5,6 +5,8 @@ import ReviewsList from '../../components/ReviewsList';
 import Pagination from '../../components/Pagination';
 import SearchField from '../../components/SearchField';
 import DropDownSortMenu from '../../components/DropDownSortMenu';
+import SkeletonLoad from '../../components/SkeletonLoad';
+import LoadingBar from '../../components/LoadingBar';
 
 /**
  * Creates the reviews component for the item page.
@@ -16,15 +18,38 @@ import DropDownSortMenu from '../../components/DropDownSortMenu';
  * @property {Function} prevPage - The function to be used when previous page is clicked.
  * @property {Function} onSubmit - The function to be used on submit of the search.
  * @property {Function} setSearch - The function to be used on search change.
+ * @property {Integer} loading - The state of loading. 0 is loaded, 1 is initial load
+ *                               and 2 is loading data.
  * @returns component for latest reviews
  */
 const Reviews = ({
-  reviews, className, id, setSort, nextPage, prevPage, onSubmit, setSearch, clearSearch,
+  reviews, className, id, setSort, nextPage, prevPage, onSubmit, setSearch, clearSearch, loading,
 }) => {
-  if (reviews == null) {
+  if (loading !== 0) {
+    if (loading === 1) {
+      return (
+        <SkeletonLoad />
+      );
+    }
     return (
-      <div className={className}>
-        <div className={`${className}__loading`}> loading </div>
+      <div className={`${className}`}>
+        <div className={`${className}__header`}>
+          <div className={`${className}__header__text`}> Reviews </div>
+          <div className={`${className}__header__filters`}>
+            <form className={`${className}__header__filter__search`} onSubmit={(e) => onSubmit(e)}>
+              <SearchField id="itemReviewsSearch" placeholder="Search" onChange={setSearch} onClear={clearSearch} />
+            </form>
+            <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} sortOne="date" />
+          </div>
+        </div>
+        <div className={`${className}__reviews`}>
+          <div className="loading">
+            <LoadingBar />
+          </div>
+          <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
+            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
+          </div>
+        </div>
       </div>
     );
   }
@@ -47,7 +72,6 @@ const Reviews = ({
           <div className={`${className}__reviews__pagination`}>
             <Pagination next={() => nextPage()} prev={() => prevPage()} />
           </div>
-
         </div>
       ) : (
         <div className={`${className}__empty`}> no reviews </div>
@@ -66,6 +90,7 @@ Reviews.propTypes = {
   onSubmit: propTypes.func,
   setSearch: propTypes.func,
   clearSearch: propTypes.func,
+  loading: propTypes.number,
 };
 
 Reviews.defaultProps = {
@@ -78,6 +103,7 @@ Reviews.defaultProps = {
   onSubmit: null,
   setSearch: null,
   clearSearch: null,
+  loading: 0,
 };
 
 export default Reviews;

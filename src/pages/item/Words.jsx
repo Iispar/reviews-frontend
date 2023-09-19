@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import TopWords from '../../components/TopWords';
+import SkeletonLoad from '../../components/SkeletonLoad';
 
 /**
  * Renders the top words component on item page.
@@ -16,14 +17,14 @@ const Words = ({
   if (posWords == null || negWords == null) {
     return (
       <div className={className} id={id}>
-        <div className={`${className}__title`} id={`${className}__title`}>
-          most common words
+        <div className={`${className}__loadingTitle`}>
+          <SkeletonLoad />
         </div>
-        <div className={`${className}__positive`} id={`${className}__positive`}>
-          <div className={`${className}__loading`}> loading </div>
+        <div className={`${className}__loading`}>
+          <SkeletonLoad />
         </div>
-        <div className={`${className}__negative`} id={`${className}__negative`}>
-          <div className={`${className}__loading`}> loading </div>
+        <div className={`${className}__loading`}>
+          <SkeletonLoad />
         </div>
       </div>
     );

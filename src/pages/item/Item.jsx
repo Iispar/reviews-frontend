@@ -10,7 +10,7 @@ import Reviews from './Reviews';
 import NewReviewForm from './NewReviewForm';
 import pagesService from '../../services/pagesService';
 import { UseNewReview, useGetReviews } from './itemHooks';
-import reviewsService from '../../services/reviewsService';
+import SkeletonLoad from '../../components/SkeletonLoad';
 import ParseInputFile from '../../helpers/ParseInputFile';
 import { useGetLocalStorage } from '../../helpers/helperHooks';
 import itemService from '../../services/itemService';
@@ -38,6 +38,7 @@ const Item = ({ className, id }) => {
   const [search, setSearch] = useState(null);
   const [sortDir, setSortDir] = useState('none');
   const [isNextPage, setIsNextPage] = useState(null);
+  const [loading, setLoading] = useState(1);
   const page = useRef(0);
 
   /**
@@ -65,6 +66,7 @@ const Item = ({ className, id }) => {
         setReviewsCount(res.reviewsCount);
         setPosReviews(res.positiveReviews);
         setNegReviews(res.negativeReviews);
+        setLoading(0);
       });
   }, []);
 
@@ -81,8 +83,7 @@ const Item = ({ className, id }) => {
    */
   const newReview = () => {
     $('#words').css('display', 'none');
-    $(`#${className}__grid__words__selection__new`).css('display', 'none');
-    $(`#${className}__grid__words__selection__delete`).css('display', 'none');
+    $(`#${className}__grid__words__selection`).css('display', 'none');
     $('#newReviewForm').css('display', 'flex');
   };
 
@@ -91,8 +92,7 @@ const Item = ({ className, id }) => {
    */
   const closeNew = () => {
     $('#words').css('display', 'flex');
-    $(`#${className}__grid__words__selection__new`).css('display', 'flex');
-    $(`#${className}__grid__words__selection__delete`).css('display', 'flex');
+    $(`#${className}__grid__words__selection`).css('display', 'flex');
     $('#newReviewForm').css('display', 'none');
   };
 
@@ -122,6 +122,7 @@ const Item = ({ className, id }) => {
    * Function to load the next page of reviews
    */
   const nextPage = () => {
+    setLoading(2);
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     $('#pagination__prev').prop('disabled', false);
     useGetReviews(
@@ -133,6 +134,7 @@ const Item = ({ className, id }) => {
       token,
       setReviews,
       setIsNextPage,
+      setLoading,
     );
     page.current += 1;
   };
@@ -141,6 +143,7 @@ const Item = ({ className, id }) => {
      * Function to load the previous page of reviews
      */
   const prevPage = () => {
+    setLoading(2);
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     useGetReviews(
       itemId,
@@ -151,6 +154,7 @@ const Item = ({ className, id }) => {
       token,
       setReviews,
       setIsNextPage,
+      setLoading,
     );
     page.current -= 1;
     if (page.current === 0) {
@@ -164,6 +168,7 @@ const Item = ({ className, id }) => {
    *        event that is called with.
    */
   const onSearch = (e) => {
+    setLoading(2);
     page.current = 0;
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     e.preventDefault();
@@ -176,6 +181,7 @@ const Item = ({ className, id }) => {
       token,
       setReviews,
       setIsNextPage,
+      setLoading,
     );
   };
 
@@ -187,11 +193,12 @@ const Item = ({ className, id }) => {
    *        Sort direction that was selected.
    */
   const searchSort = (selSort, selSortDir) => {
+    setLoading(2);
     page.current = 0;
     setSort(selSort);
     setSortDir(selSortDir);
 
-    useGetReviews(itemId, search, page.current, `review_${selSort}`, selSortDir, token, setReviews, setIsNextPage);
+    useGetReviews(itemId, search, page.current, `review_${selSort}`, selSortDir, token, setReviews, setIsNextPage, setLoading);
   };
 
   /**
@@ -220,25 +227,31 @@ const Item = ({ className, id }) => {
    * @param {String} inputId - id of the input field.
    */
   const clearSearch = (inputId) => {
+    setLoading(2);
     page.current = 0;
     $(`#${inputId}__input`).val(null);
     setSearch('');
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
-    useGetReviews(itemId, '', 0, formattedSort, sortDir, token, setReviews, setIsNextPage);
+    useGetReviews(itemId, '', 0, formattedSort, sortDir, token, setReviews, setIsNextPage, setLoading);
   };
 
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`}>
         <div className={`${className}__grid__title`} id={`${className}__grid__title`}>
-          <Title
-            name={title}
-            reviewsCount={reviewsCount}
-            ratingValue={rating}
-            posReviews={posReviews}
-            negReviews={negReviews}
-            testId="test"
-          />
+          { title ? (
+            <Title
+              name={title}
+              reviewsCount={reviewsCount}
+              ratingValue={rating}
+              posReviews={posReviews}
+              negReviews={negReviews}
+              testId="test"
+            />
+
+          ) : (
+            <SkeletonLoad />
+          )}
         </div>
         <div className={`${className}__grid__reviews`} id={`${className}__grid__reviews`}>
           <Reviews
@@ -250,23 +263,36 @@ const Item = ({ className, id }) => {
             onSubmit={(e) => onSearch(e)}
             setSearch={setSearch}
             clearSearch={clearSearch}
+            loading={loading}
           />
         </div>
         <div className={`${className}__grid__words`} id={`${className}__grid__words`}>
           <Words posWords={posWords} negWords={negWords} />
           <NewReviewForm onSubmit={submitReview} onClick={closeNew} />
-          <div className={`${className}__grid__words__selection`} id={`${className}__grid__words__selection`}>
-            <button className={`${className}__grid__words__selection__new`} id={`${id}__grid__words__selection__new`} type="button" onClick={() => newReview()}> new review </button>
-            <button className={`${className}__grid__words__selection__delete`} id={`${id}__grid__words__selection__delete`} type="button" onClick={() => confirmDeletion()}> delete </button>
-            <div className={`${className}__grid__words__selection__confirmDelete`} id={`${className}__grid__words__selection__confirmDelete`}>
-              <span className={`${className}__grid__words__selection__confirmDelete__text`}>Are you sure?</span>
-              <button className={`${className}__grid__words__selection__confirmDelete__wantedDelete`} id={`${id}__grid__words__selection__confirmDelete__wantedDelete`} type="button" onClick={() => deleteReview(true)}> yes </button>
-              <button className={`${className}__grid__words__selection__confirmDelete__cancelDelete`} id={`${id}__grid__words__selection__confirmDelete__cancelDelete`} type="button" onClick={() => deleteReview(false)}> no </button>
+          {loading === 1 ? (
+            <div className={`${className}__grid__words__selection`} id={`${className}__grid__words__selection`}>
+              <SkeletonLoad />
             </div>
-          </div>
+          ) : (
+            <div className={`${className}__grid__words__selection`} id={`${className}__grid__words__selection`}>
+              <button className={`${className}__grid__words__selection__new`} id={`${id}__grid__words__selection__new`} type="button" onClick={() => newReview()}> new review </button>
+              <button className={`${className}__grid__words__selection__delete`} id={`${id}__grid__words__selection__delete`} type="button" onClick={() => confirmDeletion()}> delete </button>
+              <div className={`${className}__grid__words__selection__confirmDelete`} id={`${className}__grid__words__selection__confirmDelete`}>
+                <span className={`${className}__grid__words__selection__confirmDelete__text`}>Are you sure?</span>
+                <button className={`${className}__grid__words__selection__confirmDelete__wantedDelete`} id={`${id}__grid__words__selection__confirmDelete__wantedDelete`} type="button" onClick={() => deleteReview(true)}> yes </button>
+                <button className={`${className}__grid__words__selection__confirmDelete__cancelDelete`} id={`${id}__grid__words__selection__confirmDelete__cancelDelete`} type="button" onClick={() => deleteReview(false)}> no </button>
+              </div>
+            </div>
+          )}
         </div>
         <div className={`${className}__grid__chart`} id={`${className}__grid__chart`}>
-          <ItemChart initData={chart} key={chart} itemId={itemId} token={token} />
+          <ItemChart
+            initData={chart}
+            key={chart}
+            itemId={itemId}
+            token={token}
+            initLoading={loading}
+          />
         </div>
       </div>
     </div>

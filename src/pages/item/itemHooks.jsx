@@ -57,6 +57,8 @@ export const UseNewReview = (itemId, accountId, reviews, token) => {
  *        Function to set the response the res
  * @param {Function} setIsNextPage
  *        Function to set for the next page of results.
+  * @param {Function} setLoading
+ *        Function to set the state of loading
  */
 export const useGetReviews = (
   itemId,
@@ -67,13 +69,22 @@ export const useGetReviews = (
   token,
   setReviews,
   setIsNextPage,
+  setLoading,
 ) => {
   if (search) {
     reviewsService
       .getSearchReviewsForItem(itemId, search, page, sort, sortDir, token)
-      .then((res) => { setReviews(res.responseList); setIsNextPage(res.nextPage); });
+      .then((res) => {
+        setReviews(res.responseList);
+        setIsNextPage(res.nextPage);
+        setLoading(0);
+      });
   } else {
     reviewsService.getReviewsForItem(itemId, page, sort, sortDir, token)
-      .then((res) => { setReviews(res.responseList); setIsNextPage(res.nextPage); });
+      .then((res) => {
+        setReviews(res.responseList);
+        setIsNextPage(res.nextPage);
+        setLoading(0);
+      });
   }
 };
