@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
 import { useNavigate } from 'react-router-dom';
+import { useTextWidth } from '../helpers/componentHelpers';
 
 /**
  * Displays a singular item as small.
@@ -22,7 +23,10 @@ const SmallItem = ({
   $(document).ready(() => {
     // if name is over 22 digits long add the scroll feature on hover
     if (item.length > 22) {
+      // get time for transition to have same speed for scroll.
+      const time = useTextWidth(item, '16px mulish') / 180;
       $(`#smallItem__name__text__${id}`).addClass('hover');
+      $(`#smallItem__name__text__${id}`).css('transition', `all ${time}s linear`);
     }
 
     // navigate to items page when clicked.
