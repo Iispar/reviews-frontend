@@ -5,6 +5,8 @@ import ItemList from '../../components/ItemList';
 import LargeItem from '../../components/LargeItem';
 import SearchField from '../../components/SearchField';
 import DropDownSortMenu from '../../components/DropDownSortMenu';
+import LoadingBar from '../../components/LoadingBar';
+import SkeletonLoad from '../../components/SkeletonLoad';
 
 /**
  * Renders the items component on the allItems page
@@ -16,12 +18,19 @@ import DropDownSortMenu from '../../components/DropDownSortMenu';
  * @property {Function} setSearch - the set function when search is modified.
  * @property {SFunctiontring} nextPage - the function to be called when next page is clicked.
  * @property {Function} prevPage - the function to be called when previous page is clicked.
+ * @property {Integer} loading - the state of lodaing. 0 is loaded, 1 is inital load
+ *                               and 2 is loading data.
  * @returns items component.
  */
 const Items = ({
-  items, className, id, onSubmit, setSort, setSearch, nextPage, prevPage, clearInput,
+  items, className, id, onSubmit, setSort, setSearch, nextPage, prevPage, clearInput, loading,
 }) => {
-  if (items == null) {
+  if (loading !== 0) {
+    if (loading === 1) {
+      return (
+        <SkeletonLoad />
+      );
+    }
     return (
       <div className={className}>
         <div className={`${className}__header`}>
@@ -30,8 +39,8 @@ const Items = ({
           </form>
           <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} />
         </div>
-        <div className={`${className}__reviews`}>
-          <div className={`${className}__loading`}> loading </div>
+        <div className="loading">
+          <LoadingBar />
         </div>
         <div className={`${className}__reviews__pagination`}>
           <Pagination next={() => nextPage()} prev={() => prevPage()} />
@@ -73,6 +82,7 @@ Items.propTypes = {
   nextPage: propTypes.func,
   prevPage: propTypes.func,
   clearInput: propTypes.func,
+  loading: propTypes.number,
 };
 
 Items.defaultProps = {
@@ -85,6 +95,7 @@ Items.defaultProps = {
   nextPage: null,
   prevPage: null,
   clearInput: null,
+  loading: 0,
 };
 
 export default Items;

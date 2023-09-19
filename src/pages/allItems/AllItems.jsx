@@ -6,6 +6,7 @@ import { useNewItem, useSearch } from './allItemsHooks';
 import Items from './Items';
 import ItemInput from './ItemInput';
 import itemService from '../../services/itemService';
+import SkeletonLoad from '../../components/SkeletonLoad';
 
 /**
  * Renders the all items page.
@@ -21,6 +22,7 @@ const AllItems = ({ className, id }) => {
   const [sort, setSort] = useState('none');
   const [sortDir, setSortDir] = useState('none');
   const [isNextPage, setIsNextPage] = useState(true);
+  const [loading, setLoading] = useState(1);
   const page = useRef(0);
 
   /**
@@ -36,6 +38,7 @@ const AllItems = ({ className, id }) => {
       .then((res) => {
         setItems(res.responseList);
         if (!res.nextPage) setIsNextPage(false);
+        setLoading(0);
       });
   }, []);
 
@@ -65,10 +68,21 @@ const AllItems = ({ className, id }) => {
    *        The event that calls this function.
    */
   const searchInput = (e) => {
+    setLoading(2);
     page.current = 0;
     $('#pagination__prev').prop('disabled', true);
     if (e) e.preventDefault();
-    useSearch(accountId, search, page.current, sort, sortDir, token, setItems, setIsNextPage);
+    useSearch(
+      accountId,
+      search,
+      page.current,
+      sort,
+      sortDir,
+      token,
+      setItems,
+      setIsNextPage,
+      setLoading,
+    );
   };
 
   /**
@@ -79,17 +93,29 @@ const AllItems = ({ className, id }) => {
    *        Selected sort direction
    */
   const searchSort = (selSort, selSortDir) => {
+    setLoading(2);
     page.current = 0;
     $('#pagination__prev').prop('disabled', true);
     setSort(selSort);
     setSortDir(selSortDir);
-    useSearch(accountId, search, page.current, selSort, selSortDir, token, setItems, setIsNextPage);
+    useSearch(
+      accountId,
+      search,
+      page.current,
+      selSort,
+      selSortDir,
+      token,
+      setItems,
+      setIsNextPage,
+      setLoading,
+    );
   };
 
   /**
    * Function to move to load the next page of reviews
    */
   const nextPage = () => {
+    setLoading(2);
     setItems(null);
     $('#pagination__prev').prop('disabled', false);
     useSearch(
@@ -101,6 +127,7 @@ const AllItems = ({ className, id }) => {
       token,
       setItems,
       setIsNextPage,
+      setLoading,
     );
     page.current += 1;
   };
@@ -109,6 +136,7 @@ const AllItems = ({ className, id }) => {
   * Function to move to load the previous page of reviews
   */
   const prevPage = () => {
+    setLoading(2);
     setItems(null);
     useSearch(
       accountId,
@@ -119,6 +147,7 @@ const AllItems = ({ className, id }) => {
       token,
       setItems,
       setIsNextPage,
+      setLoading,
     );
     page.current -= 1;
     if (page.current === 0) {
@@ -131,18 +160,21 @@ const AllItems = ({ className, id }) => {
    * @param {String} inputId - id of the input field.
    */
   const clearInput = (inputId) => {
+    setLoading(2);
     $(`#${inputId}__input`).val(null);
     setSearch('');
     page.current = 0;
     $('#pagination__prev').prop('disabled', true);
-    useSearch(accountId, '', 0, sort, sortDir, token, setItems);
+    useSearch(accountId, '', 0, sort, sortDir, token, setItems, setLoading);
   };
 
   return (
     <div className={className}>
       <div className={`${className}__grid`}>
         <div className={`${className}__grid__title`} id={`${id}__grid__title`}>
-          <span className={`${className}__grid__title__text`}> All your items </span>
+          {loading === 1 ? (
+            <SkeletonLoad />
+          ) : (<span className={`${className}__grid__title__text`}> All your items </span>)}
         </div>
         <div className={`${className}__grid__items`} id={`${id}__grid__items`}>
           <Items
@@ -153,10 +185,13 @@ const AllItems = ({ className, id }) => {
             nextPage={() => nextPage()}
             prevPage={() => prevPage()}
             clearInput={clearInput}
+            loading={loading}
           />
         </div>
         <div className={`${className}__grid__fileInput`} id={`${id}__grid__fileInput`}>
-          <ItemInput onSubmit={handleCreation} token={token} accountId={accountId} />
+          {loading === 1 ? (
+            <SkeletonLoad />
+          ) : (<ItemInput onSubmit={handleCreation} token={token} accountId={accountId} />)}
         </div>
       </div>
     </div>

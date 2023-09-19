@@ -10,6 +10,7 @@ import HomeStats from './HomeStats';
 import pagesService from '../../services/pagesService';
 import { useGetLocalStorage } from '../../helpers/helperHooks';
 import { useGetReviewsForAccount } from './homeHooks';
+import SkeletonLoad from '../../components/SkeletonLoad';
 
 /**
  * Renders the home screen.
@@ -114,7 +115,7 @@ const Home = ({ className, id }) => {
               {user}
               !
             </div>
-          ) : (<div />)}
+          ) : (<SkeletonLoad />)}
         </div>
         <div className={`${className}__grid__latestReviews`} id={`${id}__grid__latestReviews`}>
           <LatestReviews

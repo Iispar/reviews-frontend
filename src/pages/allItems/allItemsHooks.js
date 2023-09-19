@@ -49,6 +49,8 @@ export const useNewItem = (accountId, title, category, token) => {
  *                 setFunction for the results to be set to.
  * @param {Function} setIsNextPage
  *                 setFunction for the res of next page to be set to.
+ * @param {Function} setLoading
+ *                 setFunction to set the state of loading.
  */
 export const useSearch = (
   accountId,
@@ -59,12 +61,21 @@ export const useSearch = (
   token,
   setItems,
   setIsNextPage,
+  setLoading,
 ) => {
   if (search) {
     itemService.getSearch(accountId, search, page, sort, sortDir, token)
-      .then((res) => { setItems(res.responseList); setIsNextPage(res.nextPage); });
+      .then((res) => {
+        setItems(res.responseList);
+        setIsNextPage(res.nextPage);
+        setLoading(0);
+      });
   } else {
     itemService.getSort(accountId, page, sort, sortDir, token)
-      .then((res) => { setItems(res.responseList); setIsNextPage(res.nextPage); });
+      .then((res) => {
+        setItems(res.responseList);
+        setIsNextPage(res.nextPage);
+        setLoading(0);
+      });
   }
 };
