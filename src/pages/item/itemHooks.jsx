@@ -13,9 +13,13 @@ import reviewsService from '../../services/reviewsService';
  *        The reviews to be added.
  * @param {String} token
  *        The token of the logged in account.
+ * @param {Function} reloadReviews
+ *                 reloads the reviews.
+ * @param {Function} setLoading
+ *                 setFunction to set the state of loading.
  * @returns true if succesfull, false otherwise.
  */
-export const UseNewReview = (itemId, accountId, reviews, token) => {
+export const UseNewReview = (itemId, accountId, reviews, token, reloadReviews, setLoading) => {
   const payload = [];
   for (let i = 0; i < reviews.length; i += 1) {
     payload.push({
@@ -29,14 +33,21 @@ export const UseNewReview = (itemId, accountId, reviews, token) => {
       dislikes: 0,
     });
   }
-  try {
-    reviewsService.createNew(payload, token)
-      .then();
-    return true;
-  } catch (exceptiong) {
-    // console.log('error');
-  }
-  return false;
+
+  reviewsService.createNew(payload, token)
+    .then(() => {
+      setLoading(5);
+      setTimeout(() => {
+        setLoading(0);
+        reloadReviews();
+      }, 1000);
+    })
+    .catch(() => {
+      setLoading(6);
+      setTimeout(() => {
+        setLoading(0);
+      }, 3000);
+    });
 };
 
 /**

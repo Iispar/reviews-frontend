@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useRef } from 'react';
 import $ from 'jquery';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import propTypes from 'prop-types';
 import Title from './Title';
 import Words from './Words';
@@ -11,6 +11,7 @@ import NewReviewForm from './NewReviewForm';
 import pagesService from '../../services/pagesService';
 import { UseNewReview, useGetReviews } from './itemHooks';
 import SkeletonLoad from '../../components/SkeletonLoad';
+import ActionWait from '../../components/ActionWait';
 import ParseInputFile from '../../helpers/ParseInputFile';
 import { useGetLocalStorage } from '../../helpers/helperHooks';
 import itemService from '../../services/itemService';
@@ -40,6 +41,8 @@ const Item = ({ className, id }) => {
   const [isNextPage, setIsNextPage] = useState(null);
   const [loading, setLoading] = useState(1);
   const page = useRef(0);
+
+  const navigate = useNavigate();
 
   /**
    * UseEffect to get data at page load.
@@ -78,6 +81,22 @@ const Item = ({ className, id }) => {
     else $('#pagination__next').prop('disabled', true);
   }, [isNextPage]);
 
+  const reloadReviews = () => {
+    setLoading(2);
+    const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
+    useGetReviews(
+      itemId,
+      search,
+      page.current,
+      formattedSort,
+      sortDir,
+      token,
+      setReviews,
+      setIsNextPage,
+      setLoading,
+    );
+  };
+
   /**
    * Opens the new review form.
    */
@@ -102,6 +121,7 @@ const Item = ({ className, id }) => {
    *        Event that is called with.
    */
   const submitReview = async (e) => {
+    setLoading(4);
     e.preventDefault();
     let list;
     // if file input is not empty.
@@ -115,7 +135,11 @@ const Item = ({ className, id }) => {
         date: e.target[2].value,
       });
     }
-    UseNewReview(itemId, accountId, list, token);
+    UseNewReview(itemId, accountId, list, token, reloadReviews, setLoading);
+    $(e.target[0]).val('');
+    $(e.target[1]).val('');
+    $(e.target[2]).val('');
+    $(e.target[3]).val('');
   };
 
   /**
@@ -214,8 +238,22 @@ const Item = ({ className, id }) => {
    * Calls the service to delete current item from database
    */
   const deleteReview = (deletion) => {
-    if (deletion) itemService.deleteItem(itemId, token);
-    else {
+    if (deletion) {
+      itemService.deleteItem(itemId, token)
+        .then(() => {
+          setLoading(5);
+          setTimeout(() => {
+            setLoading(0);
+            navigate('/all');
+          }, 1000);
+        })
+        .catch(() => {
+          setLoading(6);
+          setTimeout(() => {
+            setLoading(0);
+          }, 3000);
+        });
+    } else {
       $(`#${className}__grid__words__selection__new`).css('display', 'flex');
       $(`#${className}__grid__words__selection__delete`).css('display', 'flex');
       $(`#${className}__grid__words__selection__confirmDelete`).css('display', 'none');
@@ -295,6 +333,9 @@ const Item = ({ className, id }) => {
           />
         </div>
       </div>
+      {loading === 4 || loading === 5 || loading === 6 ? (
+        <ActionWait loading={loading} />
+      ) : (<div />)}
     </div>
   );
 };

@@ -25,7 +25,7 @@ import LoadingBar from '../../components/LoadingBar';
 const Reviews = ({
   reviews, className, id, setSort, nextPage, prevPage, onSubmit, setSearch, clearSearch, loading,
 }) => {
-  if (loading !== 0) {
+  if (loading === 1 || loading === 2) {
     if (loading === 1) {
       return (
         <SkeletonLoad />
