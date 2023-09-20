@@ -10,9 +10,13 @@ import itemService from '../../services/itemService';
  *        Category of the item.
  * @Param {String} token
  *        Token of the logged in account.
+ * @param {Function} reloadItems
+ *                 reloads the items.
+ * @param {Function} setLoading
+ *                 setFunction to set the state of loading.
  * @returns true if successful, false if not.
  */
-export const useNewItem = (accountId, title, category, token) => {
+export const useNewItem = (accountId, title, category, token, reloadItems, setLoading) => {
   const payload = [{
     title,
     account: { id: accountId },
@@ -20,14 +24,20 @@ export const useNewItem = (accountId, title, category, token) => {
     rating: null,
     words: null,
   }];
-  try {
-    itemService.createNew(payload, token)
-      .then();
-    return true;
-  } catch (exception) {
-    // console.log('error while creating item');
-  }
-  return false;
+  itemService.createNew(payload, token)
+    .then(() => {
+      setLoading(5);
+      setTimeout(() => {
+        setLoading(0);
+        reloadItems();
+      }, 1000);
+    })
+    .catch(() => {
+      setLoading(6);
+      setTimeout(() => {
+        setLoading(0);
+      }, 3000);
+    });
 };
 
 /**

@@ -7,6 +7,7 @@ import Items from './Items';
 import ItemInput from './ItemInput';
 import itemService from '../../services/itemService';
 import SkeletonLoad from '../../components/SkeletonLoad';
+import ActionWait from '../../components/ActionWait';
 
 /**
  * Renders the all items page.
@@ -51,15 +52,31 @@ const AllItems = ({ className, id }) => {
   }, [isNextPage]);
 
   /**
+   * Reloads the item. Called when a new item is added.
+   */
+  const reloadItems = () => {
+    setLoading(2);
+    itemService.getAll(accountId, page.current, token)
+      .then((res) => {
+        setItems(res.responseList);
+        if (!res.nextPage) setIsNextPage(false);
+        else setIsNextPage(true);
+        setLoading(0);
+      });
+  };
+
+  /**
    * takes in the submit and calls the new item hook to submit it.
    * Acts accordinfg to the result of the hook.
    * @param {function} e
    *        The event that calls this function.
    */
-  const handleCreation = (e) => {
+  const handleCreation = async (e) => {
+    setLoading(4);
     e.preventDefault();
     const values = e.target;
-    useNewItem(accountId, values[0].value, values[1].value, token);
+    useNewItem(accountId, values[0].value, values[1].value, token, reloadItems, setLoading);
+    $(e.target[0]).val('');
   };
 
   /**
@@ -194,6 +211,9 @@ const AllItems = ({ className, id }) => {
           ) : (<ItemInput onSubmit={handleCreation} token={token} accountId={accountId} />)}
         </div>
       </div>
+      {loading === 4 || loading === 5 || loading === 6 ? (
+        <ActionWait loading={loading} />
+      ) : (<div />)}
     </div>
   );
 };
