@@ -5,58 +5,64 @@ import propTypes from 'prop-types';
  * Renders the wait circle and success / error message for the application.
  * @property {Integer} loading - the state of loading. 4 is being loaded,
  *                               5 is load failed and 6 is success.
+ * @property {String} className - custom className if wanted. Default is actionWait.
+ * @property {String} id - custom id if wanted. Default is actionWait.
  * @returns the loadingBar
  */
-const ActionWait = ({ loading }) => {
+const ActionWait = ({ loading, className, id }) => {
   let message;
   if (loading === 5) {
     message = (
-      <div className="actionWait__container">
-        <div className="actionWait__container__success">
-          <div className="actionWait__container__success__circleBorder" />
-          <div className="actionWait__container__success__circle">
-            <div className="actionWait__container__success__check" />
+      <div className={`${className}__container`} id={`${id}__container`}>
+        <div className={`${className}__container__success`} id={`${id}__container__success`}>
+          <div className={`${className}__container__success__circleBorder`} id={`${id}__container__success__circleBorder`} />
+          <div className={`${className}__container__success__circle`} id={`${id}__container__success__circle`}>
+            <div className={`${className}__container__success__circle__check`} id={`${id}__container__success__circle__check`} />
           </div>
         </div>
       </div>
     );
   } else if (loading === 6) {
     message = (
-      <div className="actionWait__container">
-        <div className="actionWait__container__error">
-          <div className="actionWait__container__error__circleBorder" />
-          <div className="actionWait__container__error__circle">
-            <div className="actionWait__container__error__cross" />
+      <div className={`${className}__container`} id={`${id}__container`}>
+        <div className={`${className}__container__error`} id={`${id}__container__error`}>
+          <div className={`${className}__container__error__circleBorder`} id={`${id}__container__error__circleBorder`} />
+          <div className={`${className}__container__error__circle`} id={`${id}__container__error__circle`}>
+            <div className={`${className}__container__error__circle__cross`} id={`${id}__container__error__circle__cross`} />
           </div>
         </div>
-        <span className="actionWait__container__errorText"> please try again </span>
+        <span className={`${className}__container__errorText`} id={`${id}__container__errorText`}> please try again </span>
       </div>
     );
   }
   return (
-    <div className="actionWait">
-      <div className="actionWait__container">
-        {loading === 4 ? (
-          <div className="actionWait__container__ring">
+    <div className={className} id={id}>
+      {loading === 4 ? (
+        <div className={`${className}__container`} id={`${id}__container`}>
+          <div className={`${className}__container__ring`} id={`${id}__container__ring`}>
             <div />
             <div />
             <div />
             <div />
           </div>
-        ) : (
-          message
-        )}
-      </div>
+        </div>
+      ) : (
+        message
+      )}
     </div>
   );
 };
 
 ActionWait.propTypes = {
   loading: propTypes.number,
+  className: propTypes.string,
+  id: propTypes.string,
 };
 
 ActionWait.defaultProps = {
   loading: 4,
+  className: 'actionWait',
+  id: 'actionWait',
 };
 
 export default ActionWait;

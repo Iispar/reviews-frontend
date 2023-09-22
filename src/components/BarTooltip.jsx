@@ -16,7 +16,7 @@ const BarTooltip = ({
     const { rating } = payload[0].payload;
     const { count } = payload[0].payload;
     return (
-      <div className="barTooltip">
+      <div className={className} id={id}>
         <span className={`${className}__count`} id={`${id}__count`}>
           {`${count} ratings`}
         </span>

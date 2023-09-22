@@ -28,13 +28,12 @@ const Chart = ({ data }) => {
     if (state.isTooltipActive) setFocusBar(state.activeTooltipIndex);
     else setFocusBar(null);
   };
-
   return (
     <ResponsiveContainer width="100%" height="100%" id="resContainer">
-      <BarChart className="barChart" data={data} onMouseMove={(state) => { hover(state); }} minWidth="0" margin={{ bottom: -14, top: 0 }}>
+      <BarChart className="barChart" id="barChart" data={data} onMouseMove={(state) => { hover(state); }} minWidth="0" margin={{ bottom: -14, top: 0 }}>
         <Tooltip cursor={false} content={<BarTooltip />} />
         <XAxis dataKey="stars" />
-        <Bar dataKey="count">
+        <Bar dataKey="count" id="bar">
           {data.map((entry, index) => (
             <Cell id="cell" cursor="pointer" key={entry} fill={focusBar === index ? color[index + 5] : color[index]} />
           ))}
