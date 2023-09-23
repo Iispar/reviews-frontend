@@ -24,7 +24,7 @@ const LineTooltip = ({
     const title = /^\d+$/.test(time) ? `week ${time} of ${timeYear}` : `${time} of ${timeYear}`;
 
     return (
-      <div className={className}>
+      <div className={className} id={id}>
         <span className={`${className}__title`} id={`${id}__title`}>
           {title}
         </span>

@@ -13,9 +13,11 @@ import BarTooltip from './BarTooltip';
  *
  * !! the colors at the moment only match to this five bar chart !!
  * @property {json} data - Includes the data in json.
+ * @property {String} className - Custom className if wanted. Default barChart.
+ * @property {String} id - Custom id if wanted. Default barChart.
  * @returns a bar chart
  */
-const Chart = ({ data }) => {
+const Chart = ({ data, id, className }) => {
   const [focusBar, setFocusBar] = useState(null);
   // colors for the chart. Goes: first bar, its hover, second bar, its hover and so on.
   const color = ['#D2222D', '#EE6F27', '#FFBF00', '#32A632', '#007000', '#A31A23', '#D16224', '#D49F00', '#278227', '#004A00'];
@@ -29,8 +31,8 @@ const Chart = ({ data }) => {
     else setFocusBar(null);
   };
   return (
-    <ResponsiveContainer width="100%" height="100%" id="resContainer">
-      <BarChart className="barChart" id="barChart" data={data} onMouseMove={(state) => { hover(state); }} minWidth="0" margin={{ bottom: -14, top: 0 }}>
+    <ResponsiveContainer width="100%" height="100%" id={id}>
+      <BarChart className={`${className}__chart`} id={`${id}__chart`} data={data} onMouseMove={(state) => { hover(state); }} minWidth="0" margin={{ bottom: -14, top: 0 }}>
         <Tooltip cursor={false} content={<BarTooltip />} />
         <XAxis dataKey="stars" />
         <Bar dataKey="count" id="bar">
@@ -45,10 +47,14 @@ const Chart = ({ data }) => {
 
 Chart.propTypes = {
   data: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
+  className: propTypes.string,
+  id: propTypes.string,
 };
 
 Chart.defaultProps = {
   data: null,
+  className: 'barChart',
+  id: 'barChart',
 
 };
 
