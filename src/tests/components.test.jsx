@@ -888,7 +888,6 @@ describe('components tests', () => {
       const input = component.getByDisplayValue('test value');
 
       await userEvent.type(input, 'test');
-
       const changeBtn = component.getByText('test submit');
       await userEvent.click(changeBtn);
 
