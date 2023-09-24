@@ -17,6 +17,7 @@ const DropDownSortMenu = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
+  const [width, setWidth] = useState(null);
 
   /**
    * Changes the filter and sets it to displayed.
@@ -28,11 +29,12 @@ const DropDownSortMenu = ({
     setSort(splitSort, splitSortDir);
 
     // calculate width of the button based on the length of the sort text.
-    const width = useTextWidth(splitSort) + 40;
+    const newWidth = useTextWidth(splitSort) + 40;
+    setWidth(newWidth);
 
     // use jquery animate instead of css as it works better here.
     $(`#${id}`).animate({
-      width,
+      width: newWidth,
       height: '20px',
     }, 200);
 
@@ -61,15 +63,24 @@ const DropDownSortMenu = ({
 
     // close dropdown
     if (open) {
-      $(`#${id}`).animate({
-        width: '44px',
-        height: '20px',
-      }, 200);
       $(`#${id}__${sortOne}__desc`).css('display', 'none');
       $(`#${id}__${sortOne}__asc`).css('display', 'none');
       $(`#${id}__${sortTwo}__desc`).css('display', 'none');
       $(`#${id}__${sortTwo}__asc`).css('display', 'none');
-      $(`#${id}__btn`).css('display', 'flex');
+      if (selected) {
+        $(`#${id}`).animate({
+          width,
+          height: '20px',
+        }, 200);
+        $(`#${selected}`).css({ display: 'flex' });
+        $(`#${selected}`).prop('disabled', true);
+      } else {
+        $(`#${id}`).animate({
+          width: '44px',
+          height: '20px',
+        }, 200);
+        $(`#${id}__btn`).css('display', 'flex');
+      }
       $(`#${id}__arrow`).css('transform', 'rotate(0deg)');
       setOpen(false);
 
@@ -93,7 +104,7 @@ const DropDownSortMenu = ({
       <button className={`${className}__btn`} id={`${id}__btn`} type="button" onClick={() => dropDown()}>
         sort
       </button>
-      <div className={`${className}__${sortOne}`}>
+      <div className={`${className}__${sortOne}`} id={`${id}__${sortOne}`}>
         <button className={`${className}__${sortOne}__asc`} id={`${id}__${sortOne}__asc`} type="button" onClick={() => changeFilter(`${id}__${sortOne}__asc`)}>
           {sortOne}
           <div className={`${className}__${sortOne}__ascArrow`} />
@@ -103,7 +114,7 @@ const DropDownSortMenu = ({
           <div className={`${className}__${sortOne}__descArrow`} />
         </button>
       </div>
-      <div className={`${className}__${sortTwo}`}>
+      <div className={`${className}__${sortTwo}`} id={`${id}__${sortTwo}`}>
         <button className={`${className}__${sortTwo}__asc`} id={`${id}__${sortTwo}__asc`} type="button" onClick={() => changeFilter(`${id}__${sortTwo}__asc`)}>
           {sortTwo}
           <div className={`${className}__${sortTwo}__ascArrow`} />
