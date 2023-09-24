@@ -6,6 +6,7 @@ import ActionWait from '../components/ActionWait';
 import BarChart from '../components/BarChart';
 import { barChart } from './mockData/barChart.json';
 import { chart } from './mockData/lineChart.json';
+import { items } from './mockData/items.json';
 import BarTooltip from '../components/BarTooltip';
 import DoubleLineChart from '../components/DoubleLineChart';
 import LineTooltip from '../components/LineTooltip';
@@ -13,6 +14,11 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { findWithSpan, addStyling } from './testHelpers';
 import DropDownSortMenu from '../components/DropDownSortMenu';
+import InputField from '../components/InputField';
+import ItemList from '../components/ItemList';
+import JsonInputField from '../components/JsonFileInput';
+import SmallItem from '../components/SmallItem';
+import LargeItem from '../components/LargeItem';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -240,6 +246,7 @@ describe('components tests', () => {
       expect(container).toBeVisible();
       expect(openButton).toBeVisible();
       expect(allButtons).toHaveLength(2);
+
       expect(sortOneAsc).not.toBeNull();
       expect(sortOneAsc).not.toBeVisible();
     });
@@ -274,35 +281,34 @@ describe('components tests', () => {
       expect(sortOneAsc).not.toBeVisible();
       expect(component.getByText('sort'));
     });
-    test('dropDown sort selection works', async () => {
+
+    const table = [
+      ['#test__reviews__asc', '73.896484375px'],
+      ['#test__reviews__desc', '73.896484375px'],
+      ['#test__rating__asc', '65.0146484375px'],
+      ['#test__rating__desc', '65.0146484375px'],
+    ];
+    test.each(table)('dropDown sort selection works', async (id, width) => {
       const mockSet = jest.fn();
       const component = render(<DropDownSortMenu id="test" sortOne="reviews" sortTwo="rating" setSort={mockSet} />);
       addStyling(component);
 
       const container = component.container.querySelector('#test');
-      const sortOneAsc = component.container.querySelector('#test__reviews__asc');
-      const sortTwoAsc = component.container.querySelector('#test__rating__asc');
-      expect(container).toBeVisible();
-      expect(sortOneAsc).not.toBeNull();
-      expect(sortOneAsc).not.toBeVisible();
-      expect(sortTwoAsc).not.toBeNull();
-      expect(sortTwoAsc).not.toBeVisible();
+      const sort = component.container.querySelector(id);
+      expect(sort).not.toBeNull();
+      expect(sort).not.toBeVisible();
 
       const openButton = component.getByText('sort');
       await userEvent.click(openButton);
 
-      expect(sortOneAsc).toBeVisible();
-      expect(sortTwoAsc).toBeVisible();
+      expect(sort).toBeVisible();
 
-      await userEvent.click(sortOneAsc);
+      await userEvent.click(sort);
 
       await waitFor(() => {
-        const allButtons = component.getAllByRole('button');
-        expect(allButtons).toHaveLength(2);
-        expect(sortOneAsc).toBeVisible();
-        expect(sortTwoAsc).not.toBeVisible();
+        expect(sort).toBeVisible();
         expect(mockSet.mock.calls).toHaveLength(1);
-        expect(container).toHaveStyle('width: 73.896484375px');
+        expect(container).toHaveStyle(`width: ${width}`);
       });
     });
     test('if open and selected closing keeps the selected sort displayed', async () => {
@@ -422,6 +428,135 @@ describe('components tests', () => {
       expect(window.localStorage.getItem('token')).toBeNull();
       expect(window.localStorage.getItem('accountId')).toBeNull();
       expect(window.location.reload).toHaveBeenCalled();
+    });
+  });
+  describe('inputField tests', () => {
+    test('inputField renders', () => {
+      const component = render(<InputField id="test" title="test title" width="200px" height="20px" type="text" error="test error" />);
+      addStyling(component);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+
+      expect(container).toHaveStyle('width: 200px');
+      expect(container).toHaveStyle('height: 20px');
+
+      const error = component.getByText('test error');
+      const input = component.getByText('test title');
+      const cutout = component.container.querySelector('#test__container__cutout');
+      const label = component.container.querySelector('#test__container__label');
+
+      expect(error).toHaveStyle('width: 56.013671875px');
+      expect(cutout).toHaveStyle('width: 55.1328125px');
+      expect(label).toHaveStyle('top: 5px');
+      expect(error).not.toBeVisible();
+      expect(input).toBeVisible();
+    });
+    test('input works', async () => {
+      const mockSet = jest.fn();
+      const userNameRehexp = /^(?=[a-zA-Z0-9._]{2,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
+      const component = render(<InputField id="test" title="test title" width="200px" height="20px" type="text" error="test error" regex={userNameRehexp} onChange={mockSet} />);
+      addStyling(component);
+
+      const input = component.getByPlaceholderText('test title');
+
+      await userEvent.type(input, 'testing');
+
+      expect(input).toHaveValue('testing');
+      expect(mockSet.mock.calls).toHaveLength(7);
+      // because on change so changes t > te > tes > test > testi > testin > testing.
+    });
+    test('error works', async () => {
+      const userNameRehexp = /^(?=[a-zA-Z0-9._]{2,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
+      const component = render(<InputField id="test" title="test title" width="200px" height="20px" type="text" error="test error" regex={userNameRehexp} />);
+      addStyling(component);
+
+      const input = component.getByPlaceholderText('test title');
+      const error = component.getByText('test error');
+      expect(error).not.toBeVisible();
+
+      await userEvent.type(input, 't.12"#!');
+
+      expect(error).toBeVisible();
+    });
+  });
+  describe('itemList tests', () => {
+    const table = [
+      SmallItem,
+      LargeItem,
+    ];
+    test.each(table)('smallItem works', (item) => {
+      const component = render(<ItemList items={items} View={item} id="test" />);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+
+      expect(container.children).toHaveLength(2);
+    });
+  });
+  describe('jsonFileInput tests', () => {
+    test('jsonFileInput renders', () => {
+      const component = render(<JsonInputField id="test" heigth="200px" />);
+      addStyling(component);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+
+      const error = component.getByText('needs to be a JSON file!');
+      const success = component.container.querySelector('#test__label__succesful');
+
+      expect(component.getByText('file'));
+      expect(error).not.toBeNull();
+      expect(error).not.toBeVisible();
+      expect(success).not.toBeNull();
+      expect(success).not.toBeVisible();
+      expect(component.container.querySelector('#test__label')).toHaveStyle('height: 200px');
+    });
+    test('input works', async () => {
+      const component = render(<JsonInputField id="test" heigth="200px" />);
+      addStyling(component);
+
+      const input = component.container.querySelector('#test__form');
+
+      const file = new File([''], 'filename.json', { type: 'text/html' });
+      await userEvent.upload(input, file);
+
+      expect(input).toHaveValue('C:\\fakepath\\filename.json');
+    });
+    test('error works', async () => {
+      const component = render(<JsonInputField id="test" heigth="200px" />);
+      addStyling(component);
+
+      const input = component.container.querySelector('#test__form');
+      const error = component.getByText('needs to be a JSON file!');
+
+      expect(error).not.toBeVisible();
+
+      const file = new File([''], 'filename.txt', { type: 'text/html' });
+      await userEvent.upload(input, file);
+
+      expect(error).toBeVisible();
+    });
+
+    test('success works', async () => {
+      const component = render(<JsonInputField id="test" heigth="200px" />);
+      addStyling(component);
+
+      const input = component.container.querySelector('#test__form');
+      const success = component.container.querySelector('#test__label__succesful');
+
+      expect(success).not.toBeVisible();
+
+      const file = new File([''], 'filename.json', { type: 'text/html' });
+      await userEvent.upload(input, file);
+
+      expect(success).toBeVisible();
     });
   });
 });

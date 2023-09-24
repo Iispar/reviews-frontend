@@ -7,7 +7,7 @@ import { useTextWidth } from '../helpers/componentHelpers';
  * Styling and functionality for the input fields in the application.
  * @property {String} title - Title of the input field.
  * @property {String} id - Id of the input field if wanted. Default searchField.
- * @property {String} name - Classname if wanted. Default searchField.
+ * @property {String} className - ClassName if wanted. Default searchField.
  * @property {String} width - Width for the input field. Default 220px.
  * @property {String} height - Heigth of the input field. Default 40px.
  * @property {String} type - Type of the input field. Default text.
@@ -16,7 +16,7 @@ import { useTextWidth } from '../helpers/componentHelpers';
  * @returns custom input field.
  */
 const InputField = ({
-  title, id, name, width, height, type, error, regex, onChange,
+  title, id, className, width, height, type, error, regex, onChange,
 }) => {
   const [value, setValue] = useState(null);
 
@@ -68,14 +68,14 @@ const InputField = ({
   }, [value]);
 
   return (
-    <div className={name} id={id} style={{ width, height }}>
-      <div className={`${name}__container`}>
-        <input className={`${name}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} onChange={(e) => setValues(e.target.value)} />
-        <div className={`${name}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
-        <div className={`${name}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>
+    <div className={className} id={id} style={{ width, height }}>
+      <div className={`${className}__container`}>
+        <input className={`${className}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} onChange={(e) => setValues(e.target.value)} />
+        <div className={`${className}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
+        <div className={`${className}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>
           {error}
         </div>
-        <label className={`${name}__container__label`} id={`${id}__container__label`} htmlFor={`${id}__container__input`} style={{ top: labelHeight }}>
+        <label className={`${className}__container__label`} id={`${id}__container__label`} htmlFor={`${id}__container__input`} style={{ top: labelHeight }}>
           <span id={`${id}__title`}>{title}</span>
         </label>
       </div>
@@ -86,7 +86,7 @@ const InputField = ({
 InputField.propTypes = {
   title: propTypes.string,
   id: propTypes.string,
-  name: propTypes.string,
+  className: propTypes.string,
   width: propTypes.string,
   type: propTypes.string,
   error: propTypes.string,
@@ -98,7 +98,7 @@ InputField.propTypes = {
 InputField.defaultProps = {
   title: null,
   id: 'searchField',
-  name: 'searchField',
+  className: 'searchField',
   width: '220px',
   type: 'text',
   error: 'wrong input',

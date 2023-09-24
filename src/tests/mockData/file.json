@@ -1,0 +1,4 @@
+[
+    {"title": "THIS IS A TEST", "body": "THIS IS TEST BODY", "date": "2015-08-31", "rating": 0, "likes": 0, "dislikes": 0, "account": {"id": 5}, "item": {"id": 2}},
+    {"title": "THIS IS A TEST", "body": "THIS IS TEST BODY", "date": "2015-08-31", "rating": 0, "likes": 0, "dislikes": 0, "account": {"id": 5}, "item": {"id": 2}}
+]

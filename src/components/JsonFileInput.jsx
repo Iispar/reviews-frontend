@@ -20,6 +20,7 @@ const JsonInputField = ({ id, height, className }) => {
     if (file == null) return;
     // get format with regex
     const regex = /\.[0-9a-z]+$/i;
+    console.log(file);
     const format = file.match(regex)[0];
 
     if (format === '.json') {

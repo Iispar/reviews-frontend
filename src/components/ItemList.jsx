@@ -18,26 +18,15 @@ const ItemList = ({
     // with the if else I can use this compoment to create all lists of items. It is a bit clumsy
     // because the different components need different values so.
     // TODO: make better.
-    if (View === 'Smallitem') {
-      productList.push(
-        <View
-          item={items[i].title}
-          rating={items[i].rating}
-          key={items[i].id}
-          id={items[i].id}
-        />,
-      );
-    } else {
-      productList.push(
-        <View
-          item={items[i].title}
-          rating={items[i].rating}
-          reviews={items[i].reviews}
-          key={items[i].id}
-          id={items[i].id}
-        />,
-      );
-    }
+    productList.push(
+      <View
+        item={items[i].title}
+        rating={items[i].rating}
+        reviews={items[i].reviews}
+        key={items[i].id}
+        id={items[i].id}
+      />,
+    );
   }
   return (
     <div className={className} id={id}>
