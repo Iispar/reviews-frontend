@@ -25,7 +25,7 @@ const TopWords = ({
     );
   }
   return (
-    <div className={className}>
+    <div className={className} id={id}>
       <div className={`${className}__title`} id={`${id}__title`}>
         {title}
       </div>

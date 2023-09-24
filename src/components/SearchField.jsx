@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import propTypes from 'prop-types';
 
@@ -12,14 +12,21 @@ import propTypes from 'prop-types';
  */
 const SearchField = ({
   placeholder, id, className, onChange, onClear,
-}) => (
-  <div className={className}>
-    <input className={`${className}__input`} id={`${id}__input`} placeholder={placeholder} type="search" onChange={(e) => onChange(e.target.value)} />
-    {$(`#${id}__input`).val() !== '' ? (
-      <button className={`${className}__close`} id={`${id}__close`} type="button" onClick={() => onClear(id)}> </button>
-    ) : (<div />)}
-  </div>
-);
+}) => {
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    if (search !== '') $(`#${id}__close`).css('display', 'flex');
+    else $(`#${id}__close`).css('display', 'none');
+  }, [search]);
+
+  return (
+    <div className={className} id={id}>
+      <input className={`${className}__input`} id={`${id}__input`} placeholder={placeholder} type="search" onChange={(e) => { setSearch(e.target.value); onChange(e.target.value); }} />
+      <button className={`${className}__close`} id={`${id}__close`} type="button" onClick={() => { setSearch(''); onClear(id); }}> </button>
+    </div>
+  );
+};
 
 SearchField.propTypes = {
   placeholder: propTypes.string,

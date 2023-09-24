@@ -12,7 +12,7 @@ import propTypes from 'prop-types';
 const WordListItem = ({
   name, index, className, id,
 }) => (
-  <div className={className}>
+  <div className={className} id={id}>
     <div className={`${className}__index`} id={`${id}__index`}>
       {index + 1}
       .

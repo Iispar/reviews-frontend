@@ -178,11 +178,11 @@ const AllItems = ({ className, id }) => {
    */
   const clearInput = (inputId) => {
     setLoading(2);
-    $(`#${inputId}__input`).val(null);
+    $(`#${inputId}__input`).val('');
     setSearch('');
     page.current = 0;
     $('#pagination__prev').prop('disabled', true);
-    useSearch(accountId, '', 0, sort, sortDir, token, setItems, setLoading);
+    useSearch(accountId, '', 0, sort, sortDir, token, setItems, setIsNextPage, setLoading);
   };
 
   return (

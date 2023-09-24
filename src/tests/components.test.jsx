@@ -8,6 +8,8 @@ import BarChart from '../components/BarChart';
 import { barChart } from './mockData/barChart.json';
 import { chart } from './mockData/lineChart.json';
 import { items } from './mockData/items.json';
+import { words } from './mockData/words.json';
+import { reviews } from './mockData/reviews.json';
 import BarTooltip from '../components/BarTooltip';
 import DoubleLineChart from '../components/DoubleLineChart';
 import LineTooltip from '../components/LineTooltip';
@@ -25,6 +27,12 @@ import LargeReview from '../components/LargeReview';
 import LayoutsWithNav from '../components/LayoutsWithNav';
 import LoadingBar from '../components/LoadingBar';
 import Pagination from '../components/Pagination';
+import ReviewsList from '../components/ReviewsList';
+import SearchField from '../components/SearchField';
+import SettingsInputField from '../components/SettingsInputField';
+import SkeletonLoad from '../components/SkeletonLoad';
+import TopWords from '../components/TopWords';
+import WordListItem from '../components/WordListItem';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -52,6 +60,7 @@ global.ResizeObserver = require('resize-observer-polyfill');
 
 beforeEach(() => {
   window.localStorage.clear();
+  jest.clearAllMocks();
 });
 
 describe('components tests', () => {
@@ -163,7 +172,7 @@ describe('components tests', () => {
       const container = component.container.querySelector('#test');
 
       expect(container).toBeVisible();
-      expect(component.getByText((content, node) => findWithSpan(node, '40 ratingswith 4.2 stars')));
+      expect(component.getByText((content, node) => findWithSpan(node, '40 ratingswith 4.2 stars'))).toBeVisible();
     });
   });
   describe('doubleLineChart tests', () => {
@@ -175,7 +184,7 @@ describe('components tests', () => {
       const wrapper = component.container.querySelectorAll('.recharts-default-legend > li > span');
 
       expect(container).toBeVisible();
-      expect(component.getByText('February'));
+      expect(component.getByText('February')).toBeVisible();
       expect(labels).toHaveLength(8);
       expect(wrapper[0].textContent).toBe('count');
       expect(wrapper[1].textContent).toBe('rating');
@@ -215,9 +224,9 @@ describe('components tests', () => {
 
       expect(container).toBeVisible();
       expect(container.className).toBe('lineTooltip');
-      expect(component.getByText((content, node) => findWithSpan(node, 'week 4 of 2012')));
-      expect(component.getByText((content, node) => findWithSpan(node, '40 reviews with')));
-      expect(component.getByText((content, node) => findWithSpan(node, 'average rating 4.2')));
+      expect(component.getByText((content, node) => findWithSpan(node, 'week 4 of 2012'))).toBeVisible();
+      expect(component.getByText((content, node) => findWithSpan(node, '40 reviews with'))).toBeVisible();
+      expect(component.getByText((content, node) => findWithSpan(node, 'average rating 4.2'))).toBeVisible();
     });
     test('lineTooltip with month renders correctly', () => {
       const component = render(<LineTooltip
@@ -234,9 +243,9 @@ describe('components tests', () => {
 
       expect(container).toBeVisible();
       expect(container.className).toBe('lineTooltip');
-      expect(component.getByText((content, node) => findWithSpan(node, 'august of 2012')));
-      expect(component.getByText((content, node) => findWithSpan(node, '40 reviews with')));
-      expect(component.getByText((content, node) => findWithSpan(node, 'average rating 4.2')));
+      expect(component.getByText((content, node) => findWithSpan(node, 'august of 2012'))).toBeVisible();
+      expect(component.getByText((content, node) => findWithSpan(node, '40 reviews with'))).toBeVisible();
+      expect(component.getByText((content, node) => findWithSpan(node, 'average rating 4.2'))).toBeVisible();
     });
   });
   describe('dropDownSortMenu tests', () => {
@@ -286,7 +295,7 @@ describe('components tests', () => {
 
       expect(closedButtons).toHaveLength(2);
       expect(sortOneAsc).not.toBeVisible();
-      expect(component.getByText('sort'));
+      expect(component.getByText('sort')).toBeVisible();
     });
 
     const table = [
@@ -362,10 +371,10 @@ describe('components tests', () => {
 
       expect(container).toBeVisible();
       expect(container.className).toBe('footer');
-      expect(component.getByText('about this website'));
-      expect(component.getByText('this application is my personal project. It mocks a online shops site for sellers. There is a lot more information about the site and how it works on github, please refer it if you would like to know more.'));
-      expect(component.getByText('iiro.s.partanen@gmail.com'));
-      expect(component.getByText('iispar@github.com'));
+      expect(component.getByText('about this website')).toBeVisible();
+      expect(component.getByText('this application is my personal project. It mocks a online shops site for sellers. There is a lot more information about the site and how it works on github, please refer it if you would like to know more.')).toBeVisible();
+      expect(component.getByText('iiro.s.partanen@gmail.com')).toBeVisible();
+      expect(component.getByText('iispar@github.com')).toBeVisible();
     });
   });
   describe('header tests', () => {
@@ -516,7 +525,7 @@ describe('components tests', () => {
       const error = component.getByText('needs to be a JSON file!');
       const success = component.container.querySelector('#test__label__succesful');
 
-      expect(component.getByText('file'));
+      expect(component.getByText('file')).toBeVisible();
       expect(error).not.toBeNull();
       expect(error).not.toBeVisible();
       expect(success).not.toBeNull();
@@ -587,7 +596,7 @@ describe('components tests', () => {
       expect(error).not.toBeVisible();
       expect(error).toHaveStyle('width: 60.017578125px');
 
-      expect(component.getByText('test title'));
+      expect(component.getByText('test title')).toBeVisible();
       expect(cutout).toHaveStyle('width: 55.1328125px');
     });
     test('input works', async () => {
@@ -603,34 +612,34 @@ describe('components tests', () => {
   });
   describe('LargeItem tests', () => {
     test('LargeItem renders', () => {
-      const component = render(<LargeItem id="test" reviews="20" rating={4.2} item="test item" />);
+      const component = render(<LargeItem id={2} reviews="20" rating={4.2} item="test item" />);
 
-      const container = component.container.querySelector('#largeItem__test');
+      const container = component.container.querySelector('#largeItem__2');
 
       expect(container).not.toBeNull();
       expect(container).toBeVisible();
       expect(container.className).toBe('largeItem');
 
-      expect(component.getByText('test item'));
-      expect(component.getByText('4.2'));
-      expect(component.getByText((content, node) => findWithSpan(node, '20reviews')));
+      expect(component.getByText('test item')).toBeVisible();
+      expect(component.getByText('4.2')).toBeVisible();
+      expect(component.getByText((content, node) => findWithSpan(node, '20reviews'))).toBeVisible();
     });
     test('clicking works', async () => {
-      const component = render(<LargeItem id="testId" reviews="20" rating={4.2} item="test item" />);
+      const component = render(<LargeItem id={4} reviews="20" rating={4.2} item="test item" />);
       const name = component.getByText('test item');
 
       await userEvent.click(name);
 
       expect(mockedUsedNavigate.mock.calls).toHaveLength(1);
-      expect(mockedUsedNavigate.mock.calls[0][0]).toBe('/item/testId');
+      expect(mockedUsedNavigate.mock.calls[0][0]).toBe('/item/4');
     });
   });
   describe('LargeReview tests', () => {
     test('LargeReview renders', () => {
-      const component = render(<LargeReview id="test" rating={4.2} body="this is a test body" title="test title" date="2022-12-02" item={2} />);
+      const component = render(<LargeReview id={2} rating={4.2} body="this is a test body" title="test title" date="2022-12-02" item={2} />);
       addStyling(component);
 
-      const container = component.container.querySelector('#largeReview__test');
+      const container = component.container.querySelector('#largeReview__2');
 
       expect(container).not.toBeNull();
       expect(container).toBeVisible();
@@ -640,8 +649,8 @@ describe('components tests', () => {
       const title = component.getByText('test title');
       const date = component.getByText('2022-12-02');
 
-      expect(component.getByText('this is a test body'));
-      expect(component.getByText('4.2'));
+      expect(component.getByText('this is a test body')).toBeVisible();
+      expect(component.getByText('4.2')).toBeVisible();
       expect(title).not.toBeNull();
       expect(title).not.toBeVisible();
       expect(date).not.toBeNull();
@@ -651,10 +660,10 @@ describe('components tests', () => {
       expect(component.getAllByRole('button')).toHaveLength(1);
     });
     test('LargeReview toggles', async () => {
-      const component = render(<LargeReview id="test" rating={4.2} body="this is a test body" title="test title" date="2022-12-02" item={2} />);
+      const component = render(<LargeReview id={1} rating={4.2} body="this is a test body" title="test title" date="2022-12-02" item={2} />);
       addStyling(component);
 
-      const container = component.container.querySelector('#largeReview__test');
+      const container = component.container.querySelector('#largeReview__1');
       const item = component.getByText('item');
       const title = component.getByText('test title');
       const date = component.getByText('2022-12-02');
@@ -720,8 +729,8 @@ describe('components tests', () => {
       expect(container).toBeVisible();
       expect(container.className).toBe('pagination');
 
-      expect(component.getByText('next'));
-      expect(component.getByText('previous'));
+      expect(component.getByText('next')).toBeVisible();
+      expect(component.getByText('previous')).toBeVisible();
       expect(component.getByText('previous')).toBeDisabled();
     });
     test('Pagination works', async () => {
@@ -739,6 +748,225 @@ describe('components tests', () => {
 
       expect(prev.mock.calls).toHaveLength(1);
       expect(next.mock.calls).toHaveLength(1);
+    });
+  });
+  describe('ReviewsList tests', () => {
+    test('ReviewsList renders', () => {
+      const component = render(<ReviewsList id="test" reviews={reviews} />);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('reviewsList');
+
+      expect(container.children).toHaveLength(2);
+    });
+  });
+  describe('searchField tests', () => {
+    test('searchField renders', () => {
+      const component = render(<SearchField id="test" placeholder="test input" />);
+      addStyling(component);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('searchField');
+
+      expect(component.getByPlaceholderText('test input')).toBeVisible();
+      expect(component.queryByRole('button')).not.toBeInTheDocument();
+    });
+    test('input works', async () => {
+      const mockSet = jest.fn();
+      const mockClear = jest.fn();
+      const component = render(<SearchField id="test" placeholder="test input" onChange={mockSet} onClear={mockClear} />);
+      addStyling(component);
+
+      const input = component.getByPlaceholderText('test input');
+      expect(component.queryByRole('button')).not.toBeInTheDocument();
+
+      await userEvent.type(input, 'testing');
+
+      const clearBtn = component.getByRole('button');
+
+      expect(mockSet.mock.calls).toHaveLength(7);
+      expect(input).toHaveValue('testing');
+      expect(clearBtn).toBeVisible();
+
+      await userEvent.click(clearBtn);
+
+      expect(mockClear.mock.calls).toHaveLength(1);
+      expect(component.queryByRole('button')).not.toBeInTheDocument();
+    });
+  });
+  describe('settingsInputField tests', () => {
+    test('settingsInputField without wariningText renders', () => {
+      const component = render(<SettingsInputField id="test" defaultValue="test value" title="test title" submitText="test submit" type="text" />);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('settingsInput');
+
+      const submit = component.getByText('test submit');
+      const warning = component.container.querySelector('test__form__warning');
+
+      expect(component.getByText('test title')).toBeVisible();
+
+      expect(submit).toBeInTheDocument();
+      expect(submit).not.toBeVisible();
+      expect(warning).toBeNull();
+      expect(component.getByDisplayValue('test value'));
+    });
+
+    test('settingsInputField with wariningText renders', () => {
+      const component = render(<SettingsInputField warningText="this is a warning" id="test" defaultValue="test value" title="test title" submitText="test submit" type="text" />);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('settingsInput');
+
+      const submit = component.getByText('test submit');
+
+      expect(component.getByText('test title')).toBeVisible();
+      expect(submit).toBeInTheDocument();
+      expect(submit).not.toBeVisible();
+      expect(component.getByText('this is a warning')).toBeInTheDocument();
+      expect(component.getByDisplayValue('test value'));
+    });
+
+    test('input works', async () => {
+      const mockSet = jest.fn();
+      const component = render(<SettingsInputField onChange={mockSet} warningText="this is a warning" id="test" defaultValue="test value" title="test title" submitText="test submit" type="text" />);
+
+      const input = component.getByDisplayValue('test value');
+
+      await userEvent.type(input, 'testing');
+
+      expect(input).toHaveValue('test valuetesting');
+      expect(mockSet.mock.calls).toHaveLength(7);
+    });
+
+    test('change button works without defaulValue', async () => {
+      const mockSet = jest.fn();
+      const component = render(<SettingsInputField onChange={mockSet} warningText="this is a warning" id="test" defaultValue="test value" title="test title" submitText="test submit" type="text" />);
+
+      const input = component.getByDisplayValue('test value');
+
+      await userEvent.type(input, 'testing');
+
+      expect(component.getByText('test submit')).toBeVisible();
+
+      await userEvent.clear(input);
+      await userEvent.type(input, 'test value');
+
+      expect(component.getByText('test submit')).not.toBeVisible();
+    });
+    test('change button works without defaulValue', async () => {
+      const mockSet = jest.fn();
+      const component = render(<SettingsInputField onChange={mockSet} warningText="this is a warning" id="test" confirmationText="test value" title="test title" submitText="test submit" type="text" />);
+
+      const input = component.getByDisplayValue('');
+
+      await userEvent.type(input, 'test value');
+
+      expect(component.getByText('test submit')).toBeVisible();
+
+      await userEvent.clear(input);
+      await userEvent.type(input, 'test');
+
+      expect(component.getByText('test submit')).not.toBeVisible();
+    });
+    test('submit works', async () => {
+      const mockSubmit = jest.fn((e) => e.preventDefault());
+      const component = render(<SettingsInputField onSubmit={mockSubmit} warningText="this is a warning" id="test" defaultValue="test value" title="test title" submitText="test submit" type="text" />);
+
+      const input = component.getByDisplayValue('test value');
+
+      await userEvent.type(input, 'test');
+
+      const changeBtn = component.getByText('test submit');
+      await userEvent.click(changeBtn);
+
+      expect(mockSubmit).toHaveBeenCalled();
+    });
+  });
+  describe('SkeletonLoad tests', () => {
+    test('SkeletonLoad renders', () => {
+      const component = render(<SkeletonLoad id="test" />);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('loading__beat');
+    });
+  });
+  describe('SmallItem tests', () => {
+    test('smallItem renders', () => {
+      const component = render(<SmallItem id={2} item="test item" rating={4.2123} />);
+
+      const container = component.container.querySelector('#smallItem__2');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('smallItem');
+
+      expect(component.getByText('test item')).toBeVisible();
+      expect(component.getByText('4.2')).toBeVisible();
+    });
+    test('long item has hover and custom scrollTime', async () => {
+      const component = render(<SmallItem id={2} item="this item has a really long name to test the scroll feature." rating={4.2123} />);
+
+      await waitFor(() => {
+        expect(component.getByText('this item has a really long name to test the scroll feature.').className).toBe('smallItem__name__text hover');
+        expect(component.getByText('this item has a really long name to test the scroll feature.')).toHaveStyle('transition: all 2.2233072916666665s linear');
+        expect(component.getByText('4.2')).toBeVisible();
+      });
+    });
+    test('navigate works', async () => {
+      const component = render(<SmallItem id={2} item="test item" rating={4.2123} />);
+
+      const text = component.getByText('test item');
+
+      await userEvent.click(text);
+
+      expect(mockedUsedNavigate.mock.calls).toHaveLength(1);
+      expect(mockedUsedNavigate.mock.calls[0][0]).toBe('/item/2');
+    });
+  });
+  describe('TopWords tests', () => {
+    test('topWords renders', () => {
+      const component = render(<TopWords words={words} id="test" title="test title" />);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('wordList');
+
+      const list = component.container.querySelector('#test__list');
+
+      expect(component.getByText('test title')).toBeVisible();
+      expect(list.children).toHaveLength(5);
+    });
+  });
+  describe('WordListItem tests', () => {
+    test('WordListItem renders', () => {
+      const component = render(<WordListItem name="test word" index={2} id="test" />);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('wordListItem');
+
+      expect(component.getByText('3.')).toBeVisible();
+      expect(component.getByText('test word')).toBeVisible();
     });
   });
 });

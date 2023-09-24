@@ -267,7 +267,7 @@ const Item = ({ className, id }) => {
   const clearSearch = (inputId) => {
     setLoading(2);
     page.current = 0;
-    $(`#${inputId}__input`).val(null);
+    $(`#${inputId}__input`).val('');
     setSearch('');
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     useGetReviews(itemId, '', 0, formattedSort, sortDir, token, setReviews, setIsNextPage, setLoading);

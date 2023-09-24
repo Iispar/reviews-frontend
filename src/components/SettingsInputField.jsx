@@ -30,14 +30,6 @@ const SettingsInputField = ({
   confirmationText,
 }) => {
   const [value, setValue] = useState(defaultValue);
-
-  /**
-   * On load if there is a warningtext set the display for it to flex.
-   */
-  $(document).ready(() => {
-    if (warningText !== null) $(`#${id}__form__warning`).css('display', 'flex');
-  });
-
   /**
    * useEffect for when value changes we show the change button
    * if the value is different than original value.
@@ -67,9 +59,11 @@ const SettingsInputField = ({
         &nbsp;
       </div>
       <form className={`${className}__form`} onSubmit={(e) => onSubmit(e)}>
-        <div className={`${className}__form__warning`} id={`${id}__form__warning`}>
-          {warningText}
-        </div>
+        {warningText !== null ? (
+          <div className={`${className}__form__warning`} id={`${id}__form__warning`}>
+            {warningText}
+          </div>
+        ) : (null)}
         <input className={`${className}__form__input`} id={`${id}__form__input`} defaultValue={value} onChange={(e) => changeValue(e.target.value)} type={type} />
         <button className={`${className}__form__${button}`} id={`${id}__form__${button}`} type="submit">
           {submitText}

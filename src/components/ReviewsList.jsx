@@ -7,9 +7,10 @@ import LargeReview from './LargeReview';
  * @property {json} reviews - Reviews in json format.
  *                            Includes the reviews key, body, rating, id, title and date.
  * @property {String} className - Custom className if wanted. Default ReviewsList.
+ * @property {String} id - Custom id if wanted. Default ReviewsList.
  * @returns list of reviews
  */
-const ReviewsList = ({ reviews, className }) => {
+const ReviewsList = ({ reviews, className, id }) => {
   const list = [];
 
   for (let i = 0; i < reviews.length; i += 1) {
@@ -29,7 +30,7 @@ const ReviewsList = ({ reviews, className }) => {
     );
   }
   return (
-    <div className={className}>
+    <div className={className} id={id}>
       {list}
     </div>
   );
@@ -38,11 +39,13 @@ const ReviewsList = ({ reviews, className }) => {
 ReviewsList.propTypes = {
   reviews: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   className: propTypes.string,
+  id: propTypes.string,
 };
 
 ReviewsList.defaultProps = {
   reviews: [],
   className: 'reviewsList',
+  id: 'reviewsList',
 };
 
 export default ReviewsList;
