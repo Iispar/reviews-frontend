@@ -21,7 +21,7 @@ const LargeInputField = ({
 
   return (
     <div className={className} id={id}>
-      <div className={`${className}__container`} style={{ width, height }}>
+      <div className={`${className}__container`} id={`${id}__container`} style={{ width, height }}>
         <textarea className={`${className}__container__input`} id={`${id}__container__input`} required placeholder={title} style={{ height, width }} />
         <div className={`${className}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
         <div className={`${className}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>

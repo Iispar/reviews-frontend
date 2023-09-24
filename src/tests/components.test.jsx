@@ -19,6 +19,7 @@ import ItemList from '../components/ItemList';
 import JsonInputField from '../components/JsonFileInput';
 import SmallItem from '../components/SmallItem';
 import LargeItem from '../components/LargeItem';
+import LargeInputField from '../components/LargeInputField';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -557,6 +558,65 @@ describe('components tests', () => {
       await userEvent.upload(input, file);
 
       expect(success).toBeVisible();
+    });
+  });
+  describe('LargeInputField tests', () => {
+    test('LargeInputField renders', () => {
+      const component = render(<LargeInputField id="test" title="test title" width="200px" height="40px" error="error text" />);
+      addStyling(component);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+
+      const inputContainer = component.container.querySelector('#test__container');
+
+      expect(inputContainer).toHaveStyle('width: 200px');
+      expect(inputContainer).toHaveStyle('height: 40px');
+
+      const error = component.getByText('error text');
+      const cutout = component.container.querySelector('#test__container__cutout');
+
+      expect(error).not.toBeNull();
+      expect(error).not.toBeVisible();
+      expect(error).toHaveStyle('width: 60.017578125px');
+
+      expect(component.getByText('test title'));
+      expect(cutout).toHaveStyle('width: 55.1328125px');
+    });
+    test('input works', async () => {
+      const component = render(<LargeInputField id="test" title="test title" width="200px" height="40px" error="error text" />);
+      addStyling(component);
+
+      const container = component.container.querySelector('#test__container__input');
+
+      await userEvent.type(container, 'testing');
+
+      expect(container).toHaveValue('testing');
+    });
+  });
+  describe('LargeItem tests', () => {
+    test('LargeItem renders', () => {
+      const component = render(<LargeItem id="test" reviews="20" rating={4.2} item="test item" />);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+
+      expect(component.getByText('test item'));
+      expect(component.getByText('4.2'));
+      expect(component.getByText((content, node) => findWithSpan(node, '20reviews')));
+    });
+    test('clicking works', async () => {
+      const component = render(<LargeItem id="testId" reviews="20" rating={4.2} item="test item" />);
+      const name = component.getByText('test item');
+
+      await userEvent.click(name);
+
+      expect(mockedUsedNavigate.mock.calls).toHaveLength(1);
+      expect(mockedUsedNavigate.mock.calls[0][0]).toBe('/item/testId');
     });
   });
 });
