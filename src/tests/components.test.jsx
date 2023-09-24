@@ -1,5 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
+import { BrowserRouter } from 'react-router-dom';
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ActionWait from '../components/ActionWait';
@@ -20,6 +21,10 @@ import JsonInputField from '../components/JsonFileInput';
 import SmallItem from '../components/SmallItem';
 import LargeItem from '../components/LargeItem';
 import LargeInputField from '../components/LargeInputField';
+import LargeReview from '../components/LargeReview';
+import LayoutsWithNav from '../components/LayoutsWithNav';
+import LoadingBar from '../components/LoadingBar';
+import Pagination from '../components/Pagination';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -196,7 +201,7 @@ describe('components tests', () => {
     // });
   });
   describe('lineTooltip tests', () => {
-    test('barTooltip with week renders correctly', () => {
+    test('lineTooltip with week renders correctly', () => {
       const component = render(<LineTooltip
         id="test"
         active
@@ -209,11 +214,12 @@ describe('components tests', () => {
       const container = component.container.querySelector('#test');
 
       expect(container).toBeVisible();
+      expect(container.className).toBe('lineTooltip');
       expect(component.getByText((content, node) => findWithSpan(node, 'week 4 of 2012')));
       expect(component.getByText((content, node) => findWithSpan(node, '40 reviews with')));
       expect(component.getByText((content, node) => findWithSpan(node, 'average rating 4.2')));
     });
-    test('barTooltip with month renders correctly', () => {
+    test('lineTooltip with month renders correctly', () => {
       const component = render(<LineTooltip
         id="test"
         active
@@ -227,6 +233,7 @@ describe('components tests', () => {
       const container = component.container.querySelector('#test');
 
       expect(container).toBeVisible();
+      expect(container.className).toBe('lineTooltip');
       expect(component.getByText((content, node) => findWithSpan(node, 'august of 2012')));
       expect(component.getByText((content, node) => findWithSpan(node, '40 reviews with')));
       expect(component.getByText((content, node) => findWithSpan(node, 'average rating 4.2')));
@@ -245,6 +252,7 @@ describe('components tests', () => {
       const sortOneAsc = component.container.querySelector('#test__reviews__asc');
 
       expect(container).toBeVisible();
+      expect(container.className).toBe('dropDownSortMenu');
       expect(openButton).toBeVisible();
       expect(allButtons).toHaveLength(2);
 
@@ -256,14 +264,12 @@ describe('components tests', () => {
       const component = render(<DropDownSortMenu id="test" sortOne="reviews" sortTwo="rating" setSort={mockSet} />);
       addStyling(component);
 
-      const container = component.container.querySelector('#test');
       const openButton = component.getByText('sort');
 
       const allButtons = component.getAllByRole('button');
       const sortOneAsc = component.container.querySelector('#test__reviews__asc');
 
       expect(allButtons).toHaveLength(2);
-      expect(container).toBeVisible();
       expect(openButton).toBeVisible();
 
       await userEvent.click(openButton);
@@ -355,7 +361,7 @@ describe('components tests', () => {
       const container = component.container.querySelector('#test');
 
       expect(container).toBeVisible();
-      expect(container).toHaveAttribute('class', 'footer');
+      expect(container.className).toBe('footer');
       expect(component.getByText('about this website'));
       expect(component.getByText('this application is my personal project. It mocks a online shops site for sellers. There is a lot more information about the site and how it works on github, please refer it if you would like to know more.'));
       expect(component.getByText('iiro.s.partanen@gmail.com'));
@@ -369,6 +375,7 @@ describe('components tests', () => {
       const container = component.container.querySelector('#test');
 
       expect(container).toBeVisible();
+      expect(container.className).toBe('headerContainer');
 
       const buttons = component.getAllByRole('button');
       const home = component.getByRole('link', { name: 'home' });
@@ -388,9 +395,6 @@ describe('components tests', () => {
     test('toggle navBar works', async () => {
       const component = render(<Header id="test" />);
       addStyling(component);
-      const container = component.container.querySelector('#test');
-
-      expect(container).toBeVisible();
 
       const hamburgerBtn = component.getAllByRole('button')[0];
       const hamburger = component.container.querySelector('#test__header__hamburger');
@@ -418,9 +422,6 @@ describe('components tests', () => {
       window.localStorage.setItem('token', 'testToken');
       window.localStorage.setItem('accountId', 'testId');
       const component = render(<Header id="test" />);
-      const container = component.container.querySelector('#test');
-
-      expect(container).toBeVisible();
 
       const logOutBtn = component.getAllByRole('button')[1];
 
@@ -440,6 +441,7 @@ describe('components tests', () => {
 
       expect(container).not.toBeNull();
       expect(container).toBeVisible();
+      expect(container.className).toBe('searchField');
 
       expect(container).toHaveStyle('width: 200px');
       expect(container).toHaveStyle('height: 20px');
@@ -495,6 +497,7 @@ describe('components tests', () => {
 
       expect(container).not.toBeNull();
       expect(container).toBeVisible();
+      expect(container.className).toBe('itemList');
 
       expect(container.children).toHaveLength(2);
     });
@@ -508,6 +511,7 @@ describe('components tests', () => {
 
       expect(container).not.toBeNull();
       expect(container).toBeVisible();
+      expect(container.className).toBe('jsonFileInput');
 
       const error = component.getByText('needs to be a JSON file!');
       const success = component.container.querySelector('#test__label__succesful');
@@ -569,6 +573,7 @@ describe('components tests', () => {
 
       expect(container).not.toBeNull();
       expect(container).toBeVisible();
+      expect(container.className).toBe('largeField');
 
       const inputContainer = component.container.querySelector('#test__container');
 
@@ -600,10 +605,11 @@ describe('components tests', () => {
     test('LargeItem renders', () => {
       const component = render(<LargeItem id="test" reviews="20" rating={4.2} item="test item" />);
 
-      const container = component.container.querySelector('#test');
+      const container = component.container.querySelector('#largeItem__test');
 
       expect(container).not.toBeNull();
       expect(container).toBeVisible();
+      expect(container.className).toBe('largeItem');
 
       expect(component.getByText('test item'));
       expect(component.getByText('4.2'));
@@ -617,6 +623,122 @@ describe('components tests', () => {
 
       expect(mockedUsedNavigate.mock.calls).toHaveLength(1);
       expect(mockedUsedNavigate.mock.calls[0][0]).toBe('/item/testId');
+    });
+  });
+  describe('LargeReview tests', () => {
+    test('LargeReview renders', () => {
+      const component = render(<LargeReview id="test" rating={4.2} body="this is a test body" title="test title" date="2022-12-02" item={2} />);
+      addStyling(component);
+
+      const container = component.container.querySelector('#largeReview__test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('largeReview');
+
+      const item = component.getByText('item');
+      const title = component.getByText('test title');
+      const date = component.getByText('2022-12-02');
+
+      expect(component.getByText('this is a test body'));
+      expect(component.getByText('4.2'));
+      expect(title).not.toBeNull();
+      expect(title).not.toBeVisible();
+      expect(date).not.toBeNull();
+      expect(date).not.toBeVisible();
+      expect(item).not.toBeNull();
+      expect(item).not.toBeVisible();
+      expect(component.getAllByRole('button')).toHaveLength(1);
+    });
+    test('LargeReview toggles', async () => {
+      const component = render(<LargeReview id="test" rating={4.2} body="this is a test body" title="test title" date="2022-12-02" item={2} />);
+      addStyling(component);
+
+      const container = component.container.querySelector('#largeReview__test');
+      const item = component.getByText('item');
+      const title = component.getByText('test title');
+      const date = component.getByText('2022-12-02');
+
+      expect(title).not.toBeNull();
+      expect(title).not.toBeVisible();
+      expect(date).not.toBeNull();
+      expect(date).not.toBeVisible();
+      expect(item).not.toBeNull();
+      expect(item).not.toBeVisible();
+      expect(item).toHaveAttribute('href', '/item/2');
+
+      const openBtn = component.getByRole('button');
+      await userEvent.click(openBtn);
+
+      expect(title).toBeVisible();
+      expect(date).toBeVisible();
+      expect(item).toBeVisible();
+      expect(container).toHaveStyle('flex-grow: 2.4');
+
+      const closeBtn = component.getByRole('button');
+      await userEvent.click(closeBtn);
+
+      expect(title).not.toBeVisible();
+      expect(date).not.toBeVisible();
+      expect(item).not.toBeVisible();
+      expect(container).toHaveStyle('flex-grow: 1');
+    });
+  });
+  describe('LayoutsWithNav tests', () => {
+    test('LayoutsWithNav renders', () => {
+      const component = render(
+        <BrowserRouter>
+          <LayoutsWithNav />
+        </BrowserRouter>,
+      );
+      const container = component.container.querySelector('#layout');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('layout');
+      expect(container.children).toHaveLength(3);
+    });
+  });
+  describe('LoadingBar tests', () => {
+    test('LoadingBar renders', () => {
+      const component = render(<LoadingBar />);
+      const container = component.container.querySelector('#loading__ellipsis');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('loading__ellipsis');
+      expect(container.children).toHaveLength(4);
+    });
+  });
+  describe('Pagination tests', () => {
+    test('Pagination renders', () => {
+      const component = render(<Pagination id="test" />);
+
+      const container = component.container.querySelector('#test');
+
+      expect(container).not.toBeNull();
+      expect(container).toBeVisible();
+      expect(container.className).toBe('pagination');
+
+      expect(component.getByText('next'));
+      expect(component.getByText('previous'));
+      expect(component.getByText('previous')).toBeDisabled();
+    });
+    test('Pagination works', async () => {
+      const prev = jest.fn();
+      const next = jest.fn();
+      const component = render(<Pagination id="test" next={next} prev={prev} />);
+
+      const nextBtn = component.getByText('next');
+      const prevBtn = component.getByText('previous');
+
+      prevBtn.removeAttribute('disabled');
+
+      await userEvent.click(nextBtn);
+      await userEvent.click(prevBtn);
+
+      expect(prev.mock.calls).toHaveLength(1);
+      expect(next.mock.calls).toHaveLength(1);
     });
   });
 });

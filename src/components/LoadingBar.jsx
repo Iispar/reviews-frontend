@@ -5,7 +5,7 @@ import React from 'react';
  * @returns the loadingBar
  */
 const LoadingBar = () => (
-  <div className="loading__ellipsis">
+  <div className="loading__ellipsis" id="loading__ellipsis">
     <div />
     <div />
     <div />

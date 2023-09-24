@@ -67,13 +67,9 @@ const LargeReview = ({
             <span className={`${className}__info__stats__rating__value`} id={`${className}__info__stats__rating__value`}>{rating}</span>
             <div className={`${className}__info__stats__rating__icon`} />
           </div>
-          {item ? (
-            <a href={`/item/${item}`} className={`${className}__info__stats__item`} id={`${className}__info__stats__item__${id}`}>
-              item
-            </a>
-          ) : (
-            null
-          )}
+          <a href={`/item/${item}`} className={`${className}__info__stats__item`} id={`${className}__info__stats__item__${id}`}>
+            item
+          </a>
         </div>
       </div>
     </div>

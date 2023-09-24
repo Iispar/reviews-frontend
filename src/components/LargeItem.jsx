@@ -20,13 +20,13 @@ const LargeItem = ({
   // wait for the page to load before setting listeners
   $(document).ready(() => {
     // navigate to items page when clicked.
-    $(`#${id}`).on('click', () => {
+    $(`#${className}__${id}`).on('click', () => {
       navigate(`/item/${id}`);
     });
   });
 
   return (
-    <div className={className} id={id}>
+    <div className={className} id={`${className}__${id}`}>
       <div className={`${className}__nameReviews`}>
         <span className={`${className}__nameReviews__name`} id={`${className}__nameReviews__name`}>
           {item}
