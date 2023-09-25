@@ -12,7 +12,7 @@ import pagesService from '../../services/pagesService';
 import { UseNewReview, useGetReviews } from './itemHooks';
 import SkeletonLoad from '../../components/SkeletonLoad';
 import ActionWait from '../../components/ActionWait';
-import ParseInputFile from '../../helpers/ParseInputFile';
+import parseInputFile from '../../helpers/ParseInputFile';
 import { useGetLocalStorage } from '../../helpers/helperHooks';
 import itemService from '../../services/itemService';
 
@@ -126,7 +126,7 @@ const Item = ({ className, id }) => {
     let list;
     // if file input is not empty.
     if (e.target[3].files[0]) {
-      list = await ParseInputFile(e.target[3].files[0]);
+      list = await parseInputFile(e.target[3].files[0]);
     } else {
       list = [];
       list.push({

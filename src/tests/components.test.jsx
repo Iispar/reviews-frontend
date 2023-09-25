@@ -298,13 +298,13 @@ describe('components tests', () => {
       expect(component.getByText('sort')).toBeVisible();
     });
 
-    const table = [
+    const sortSelections = [
       ['#test__reviews__asc', '73.896484375px'],
       ['#test__reviews__desc', '73.896484375px'],
       ['#test__rating__asc', '65.0146484375px'],
       ['#test__rating__desc', '65.0146484375px'],
     ];
-    test.each(table)('dropDown sort selection works', async (id, width) => {
+    test.each(sortSelections)('dropDown sort selection works', async (id, width) => {
       const mockSet = jest.fn();
       const component = render(<DropDownSortMenu id="test" sortOne="reviews" sortTwo="rating" setSort={mockSet} />);
       addStyling(component);
@@ -495,11 +495,11 @@ describe('components tests', () => {
     });
   });
   describe('itemList tests', () => {
-    const table = [
+    const views = [
       SmallItem,
       LargeItem,
     ];
-    test.each(table)('smallItem works', (item) => {
+    test.each(views)('smallItem works', (item) => {
       const component = render(<ItemList items={items} View={item} id="test" />);
 
       const container = component.container.querySelector('#test');
