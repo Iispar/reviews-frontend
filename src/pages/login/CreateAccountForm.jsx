@@ -1,4 +1,4 @@
-import { useState, React, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import propTypes from 'prop-types';
 import InputField from '../../components/InputField';
@@ -8,9 +8,12 @@ import InputField from '../../components/InputField';
  * @property {String} ClassName - custom className if wanted. Default is createNew.
  * @property {String} id - custom id if wanted. Default is createNew.
  * @property {func} onSubmit - The onSubmit function to be used in the form.
+ * @property {String} error - The error meessage for login if there is.
  * @returns create account form
  */
-const CreateAccountForm = ({ className, id, onSubmit }) => {
+const CreateAccountForm = ({
+  className, id, onSubmit, error,
+}) => {
   const [password, setPassword] = useState('null');
   const [confirmPassword, setConfirmPassword] = useState('null');
   // regex to match password.
@@ -21,8 +24,8 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
   /**
    * changes view between create account and login view.
    */
-  const changeView = () => {
-    $('#login').css('display', 'flex');
+  const changeView = (to) => {
+    $(`#${to}`).css('display', 'flex');
     $(`#${id}`).css('display', 'none');
     $(`#${id}__createAccountForm__inputs__form`).trigger('reset');
   };
@@ -74,13 +77,16 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
     <div className={className} id={id}>
       <div className={`${className}__createAccountForm`}>
         <div className={`${className}__createAccountForm__header`} id={`${className}__createAccountForm__header`}> Create account </div>
+        <div className={`${className}__createAccountForm__error`}>
+          {error}
+        </div>
         <div className={`${className}__createAccountForm__inputs`}>
           <form className={`${className}__createAccountForm__inputs__form`} id={`${className}__createAccountForm__inputs__form`} onSubmit={(e) => onSubmit(e)}>
             <InputField id="createUsername" title="username" width="240px" height="40px" regex={userNameRehexp} error="no special characters or spaces" />
             <InputField id="createName" title="first name" width="240px" height="40px" />
             <InputField id="createEmail" title="email" width="240px" height="40px" />
             <div className={`${className}__createAccountForm__inputs__form__password`}>
-              <InputField className={className} id="createPassword" type="password" title="password" width="240px" height="40px" regex={passRegexp} error="doesn't include all required characters" onChange={setPassword} />
+              <InputField id="createPassword" type="password" title="password" width="240px" height="40px" regex={passRegexp} error="doesn't include all required characters" onChange={setPassword} />
               <div className={`${className}__createAccountForm__inputs__form__password__message`} id={`${className}__createAccountForm__inputs__form__password__message`}>
                 Password must be minimum of 8 characters with:
                 <br />
@@ -106,7 +112,7 @@ const CreateAccountForm = ({ className, id, onSubmit }) => {
       </div>
       <div className={`${className}__login`}>
         Already have an account?&nbsp;
-        <button className={`${className}__login__button`} id={`${className}__login__button`} type="button" tabIndex={0} onClick={() => changeView()} onKeyDown={() => changeView()}> Login </button>
+        <button className={`${className}__login__button`} id={`${className}__login__button`} type="button" tabIndex={0} onClick={() => changeView('login')} onKeyDown={() => changeView('login')}> Login. </button>
       </div>
     </div>
   );
@@ -116,12 +122,14 @@ CreateAccountForm.propTypes = {
   onSubmit: propTypes.func,
   className: propTypes.string,
   id: propTypes.string,
+  error: propTypes.string,
 };
 
 CreateAccountForm.defaultProps = {
   onSubmit: null,
   className: 'createNew',
   id: 'createNew',
+  error: null,
 };
 
 export default CreateAccountForm;

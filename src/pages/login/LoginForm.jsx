@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { useState, React } from 'react';
+import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import InputField from '../../components/InputField';
 
@@ -18,9 +18,9 @@ const LoginForm = ({
   /**
    * changes view between login form and create account form.
    */
-  const changeView = () => {
+  const changeView = (to) => {
     $(`#${id}`).css('display', 'none');
-    $('#createNew').css('display', 'flex');
+    $(`#${to}`).css('display', 'flex');
     // reset the forms so they become empty.
     $(`#${id}__inputs__form`).trigger('reset');
   };
@@ -62,8 +62,8 @@ const LoginForm = ({
         </div>
       </div>
       <div className={`${className}__createAccount`}>
-        Don&apos;t have an account?&nbsp;
-        <button type="button" className={`${className}__createAccount__button`} id={`${id}__createAccount__button`} tabIndex={0} onClick={() => changeView()} onKeyDown={() => changeView()}> Create new </button>
+        Don&#39;t have an account?&nbsp;
+        <button type="button" className={`${className}__createAccount__button`} id={`${id}__createAccount__button`} tabIndex={0} onClick={() => changeView('createNew')} onKeyDown={() => changeView('createNew')}> Create new </button>
       </div>
     </div>
   );

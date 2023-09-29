@@ -130,9 +130,9 @@ const Item = ({ className, id }) => {
     } else {
       list = [];
       list.push({
-        title: e.target[0].value,
-        body: e.target[1].value,
-        date: e.target[2].value,
+        title: e.target.elements[0].value,
+        body: e.target.elements[1].value,
+        date: e.target.elements[2].value,
       });
     }
     UseNewReview(itemId, accountId, list, token, reloadReviews, setLoading);

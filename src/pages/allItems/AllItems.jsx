@@ -74,7 +74,7 @@ const AllItems = ({ className, id }) => {
   const handleCreation = async (e) => {
     setLoading(4);
     e.preventDefault();
-    const values = e.target;
+    const values = e.target.elements;
     useNewItem(accountId, values[0].value, values[1].value, token, reloadItems, setLoading);
     $(e.target[0]).val('');
   };

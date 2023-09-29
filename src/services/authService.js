@@ -26,13 +26,8 @@ const login = async (payload) => {
  * @returns token
  */
 const createAccount = async (payload) => {
-  try {
-    const res = await axios.post(`${baseUrl}/add`, payload);
-    return res.data;
-  } catch (e) {
-    console.log(e);
-  }
-  return null;
+  const res = await axios.post(`${baseUrl}/add`, payload);
+  return res.data;
 };
 
 export default { login, createAccount };

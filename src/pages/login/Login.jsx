@@ -13,7 +13,7 @@ import { UseLogin, UseCreateAccount } from './loginHooks';
  */
 const Login = ({ className, id }) => {
   const navigate = useNavigate();
-  const [loginError, setLoginError] = useState(null);
+  const [error, setError] = useState(null);
 
   /**
    * Handles the login and moves to home page.
@@ -22,12 +22,13 @@ const Login = ({ className, id }) => {
    */
   const handleLogin = async (e) => {
     e.preventDefault();
-    const values = e.target;
+    const values = e.target.elements;
     try {
       await UseLogin(values[0].value, values[1].value);
       navigate('/home');
     } catch (exception) {
-      if (exception.response.status === 403) setLoginError('Incorrect username or password.');
+      if (exception.response.status === 403) setError('Incorrect username or password.');
+      else setError('an error ocurred');
     }
   };
 
@@ -38,20 +39,25 @@ const Login = ({ className, id }) => {
    */
   const handleCreation = async (e) => {
     e.preventDefault();
-    const values = e.target;
-    if (await UseCreateAccount(
-      values[0].value,
-      values[1].value,
-      values[2].value,
-      values[3].value,
-      values[5].value,
-    )) navigate('/home');
+    const values = e.target.elements;
+    try {
+      await UseCreateAccount(
+        values[0].value,
+        values[1].value,
+        values[2].value,
+        values[3].value,
+        values[5].value,
+      );
+      navigate('/home');
+    } catch (exception) {
+      setError('an error ocurred');
+    }
   };
 
   return (
     <div className={className} id={id}>
-      <LoginForm onSubmit={handleLogin} errorMessage={loginError} />
-      <CreateAccountForm onSubmit={handleCreation} />
+      <LoginForm onSubmit={handleLogin} errorMessage={error} />
+      <CreateAccountForm onSubmit={handleCreation} error={error} />
     </div>
   );
 };

@@ -4,11 +4,12 @@
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    height: 470px;
+    height: 500px;
     display: none;
     &__createAccountForm {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 5px;
         height: 430px;
         width: 300px;
@@ -25,6 +26,34 @@
             font-size: 28px;
             text-transform: uppercase;
         }
+        &__error {
+            font-size: 14px;
+            background: $lightRed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            width: 100%;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            &:empty {
+                display: none;
+            }
+        }
+        &__error {
+            font-size: 14px;
+            background: $lightRed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 240px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            &:empty {
+                display: none;
+            }
+        }
     
         &__inputs {
             display: flex;
@@ -39,6 +68,7 @@
                 align-items: center;
                 justify-content: center;
                 width: 100%;
+                height: 100%;
                 gap: 10px;
                 &__password {
                     position: relative;

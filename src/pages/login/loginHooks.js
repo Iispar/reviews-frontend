@@ -46,14 +46,8 @@ export const UseCreateAccount = async (username, name, email, password, role) =>
     password,
     role: { id: role },
   };
-  try {
-    const res = await authService.createAccount(payload);
-    window.localStorage.setItem('token', JSON.stringify(res.token).replace(/^"(.*)"$/, '$1'));
-    window.localStorage.setItem('accountId', JSON.stringify(res.accountId).replace(/^"(.*)"$/, '$1'));
-    return res.token;
-  } catch (exception) {
-    // TODO: ERROR MESSAGE
-    // console.log('error while creating');
-  }
-  return null;
+  const res = await authService.createAccount(payload);
+  window.localStorage.setItem('token', JSON.stringify(res.token).replace(/^"(.*)"$/, '$1'));
+  window.localStorage.setItem('accountId', JSON.stringify(res.accountId).replace(/^"(.*)"$/, '$1'));
+  return res.token;
 };
