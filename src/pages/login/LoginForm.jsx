@@ -22,7 +22,7 @@ const LoginForm = ({
     $(`#${id}`).css('display', 'none');
     $(`#${to}`).css('display', 'flex');
     // reset the forms so they become empty.
-    $(`#${id}__inputs__form`).trigger('reset');
+    $(`#${id}Form__inputs__form`).trigger('reset');
   };
 
   /**
@@ -42,7 +42,7 @@ const LoginForm = ({
     <div className={className} id={id}>
       <div className={`${className}__loginForm`}>
         <div className={`${className}__loginForm__header`} id={`${id}__loginForm__header`}> Login </div>
-        <div className={`${className}__loginForm__error`}>
+        <div className={`${className}__loginForm__error`} id={`${id}__loginForm__error`}>
           {errorMessage}
         </div>
         <div className={`${className}__loginForm__inputs`}>
@@ -53,17 +53,17 @@ const LoginForm = ({
           <div className={`${className}__loginForm__inputs__passwordInfo`}>
             <button type="button" className={`${className}__loginForm__inputs__passwordInfo__forgotPassword`} id={`${id}__loginForm__inputs__passwordInfo__forgotPassword`} onClick={() => switchContact()}> Forgot password? </button>
             <div className={`${className}__loginForm__inputs__passwordInfo__contact`} id={`${id}__loginForm__inputs__passwordInfo__contact`}>
-              No availabe automatically yet...
+              Not availabe automatically yet...
               Just contact me at my email if you want to reset your password.
               Or just create a new account.
             </div>
           </div>
-          <button type="submit" className={`${className}__loginForm__inputs__loginBtn`} id={`${id}__loginForm__inputs__loginBtn`} name={`${className}Btn`} form={`${className}Form__inputs__form`}> login </button>
+          <button type="submit" className={`${className}__loginForm__inputs__loginBtn`} id={`${id}__loginForm__inputs__loginBtn`} name={`${className}Btn`} form={`${id}Form__inputs__form`}> login </button>
         </div>
       </div>
       <div className={`${className}__createAccount`}>
         Don&#39;t have an account?&nbsp;
-        <button type="button" className={`${className}__createAccount__button`} id={`${id}__createAccount__button`} tabIndex={0} onClick={() => changeView('createNew')} onKeyDown={() => changeView('createNew')}> Create new </button>
+        <button type="button" className={`${className}__createAccount__button`} id={`${id}__createAccount__button`} tabIndex={0} onClick={() => changeView('createNew')}> Create new </button>
       </div>
     </div>
   );

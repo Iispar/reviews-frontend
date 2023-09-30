@@ -882,7 +882,10 @@ describe('components tests', () => {
       expect(component.getByText('test submit')).not.toBeVisible();
     });
     test('submit works', async () => {
-      const mockSubmit = jest.fn((e) => e.preventDefault());
+      const mockSubmit = jest.fn((e) => {
+        e.preventDefault();
+        expect(e.target.elements[0].value).toBe('test valuetest');
+      });
       const component = render(<SettingsInputField onSubmit={mockSubmit} warningText="this is a warning" id="test" defaultValue="test value" title="test title" submitText="test submit" type="text" />);
 
       const input = component.getByDisplayValue('test value');

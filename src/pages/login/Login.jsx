@@ -27,8 +27,17 @@ const Login = ({ className, id }) => {
       await UseLogin(values[0].value, values[1].value);
       navigate('/home');
     } catch (exception) {
-      if (exception.response.status === 403) setError('Incorrect username or password.');
-      else setError('an error ocurred');
+      if (exception.response.status === 403) {
+        setError('Incorrect username or password.');
+        setTimeout(() => {
+          setError(null);
+        }, 2000);
+      } else {
+        setError('an error occurred');
+        setTimeout(() => {
+          setError(null);
+        }, 2000);
+      }
     }
   };
 
@@ -50,7 +59,10 @@ const Login = ({ className, id }) => {
       );
       navigate('/home');
     } catch (exception) {
-      setError('an error ocurred');
+      setError('an error occurred');
+      setTimeout(() => {
+        setError(null);
+      }, 2000);
     }
   };
 
