@@ -76,12 +76,12 @@ const CreateAccountForm = ({
   return (
     <div className={className} id={id}>
       <div className={`${className}__createAccountForm`}>
-        <div className={`${className}__createAccountForm__header`} id={`${className}__createAccountForm__header`}> Create account </div>
-        <div className={`${className}__createAccountForm__error`}>
+        <div className={`${className}__createAccountForm__header`} id={`${id}__createAccountForm__header`}> Create account </div>
+        <div className={`${className}__createAccountForm__error`} id={`${id}__createAccountForm__error`}>
           {error}
         </div>
         <div className={`${className}__createAccountForm__inputs`}>
-          <form className={`${className}__createAccountForm__inputs__form`} id={`${className}__createAccountForm__inputs__form`} onSubmit={(e) => onSubmit(e)}>
+          <form className={`${className}__createAccountForm__inputs__form`} id={`${id}__createAccountForm__inputs__form`} onSubmit={(e) => onSubmit(e)}>
             <InputField id="createUsername" title="username" width="240px" height="40px" regex={userNameRehexp} error="no special characters or spaces" />
             <InputField id="createName" title="first name" width="240px" height="40px" />
             <InputField id="createEmail" title="email" width="240px" height="40px" />
@@ -107,12 +107,12 @@ const CreateAccountForm = ({
               </select>
             </label>
           </form>
-          <button className={`${className}__createAccountForm__inputs__submit`} id={`${className}__createAccountForm__inputs__submit`} type="submit" form={`${className}__createAccountForm__inputs__form`}> submit </button>
+          <button className={`${className}__createAccountForm__inputs__submit`} id={`${id}__createAccountForm__inputs__submit`} type="submit" form={`${id}__createAccountForm__inputs__form`}> submit </button>
         </div>
       </div>
       <div className={`${className}__login`}>
         Already have an account?&nbsp;
-        <button className={`${className}__login__button`} id={`${className}__login__button`} type="button" tabIndex={0} onClick={() => changeView('login')} onKeyDown={() => changeView('login')}> Login. </button>
+        <button className={`${className}__login__button`} id={`${id}__login__button`} type="button" tabIndex={0} onClick={() => changeView('login')}> Login. </button>
       </div>
     </div>
   );
