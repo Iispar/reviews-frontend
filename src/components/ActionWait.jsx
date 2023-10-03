@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 /**
  * Renders the wait circle and success / error message for the application.
  * @property {Integer} loading - the state of loading. 4 is being loaded,
- *                               5 is load failed and 6 is success.
+ *                               6 is load failed and 5 is success.
  * @property {String} className - custom className if wanted. Default is actionWait.
  * @property {String} id - custom id if wanted. Default is actionWait.
  * @returns the loadingBar

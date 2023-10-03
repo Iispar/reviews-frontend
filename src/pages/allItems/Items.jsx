@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 import Pagination from '../../components/Pagination';
 import ItemList from '../../components/ItemList';
@@ -32,7 +32,7 @@ const Items = ({
       );
     }
     return (
-      <div className={className}>
+      <div className={className} id={id}>
         <div className={`${className}__header`}>
           <form className={`${className}__header__search`} onSubmit={(e) => onSubmit(e)}>
             <SearchField placeholder="Search" onChange={setSearch} onClear={clearInput} id="allItemsSearch" />
@@ -49,7 +49,7 @@ const Items = ({
     );
   }
   return (
-    <div className={className}>
+    <div className={className} id={id}>
       <div className={`${className}__header`}>
         <form className={`${className}__header__search`} onSubmit={(e) => onSubmit(e)}>
           <SearchField placeholder="Search" onChange={setSearch} onClear={clearInput} id="allItemsSearch" />

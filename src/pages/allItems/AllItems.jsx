@@ -59,8 +59,8 @@ const AllItems = ({ className, id }) => {
     itemService.getAll(accountId, page.current, token)
       .then((res) => {
         setItems(res.responseList);
-        if (!res.nextPage) setIsNextPage(false);
-        else setIsNextPage(true);
+        if (res.nextPage) setIsNextPage(true);
+        else setIsNextPage(false);
         setLoading(0);
       });
   };
@@ -88,7 +88,7 @@ const AllItems = ({ className, id }) => {
     setLoading(2);
     page.current = 0;
     $('#pagination__prev').prop('disabled', true);
-    if (e) e.preventDefault();
+    e.preventDefault();
     useSearch(
       accountId,
       search,
@@ -186,11 +186,11 @@ const AllItems = ({ className, id }) => {
   };
 
   return (
-    <div className={className}>
+    <div className={className} id={id}>
       <div className={`${className}__grid`}>
         <div className={`${className}__grid__title`} id={`${id}__grid__title`}>
           {loading === 1 ? (
-            <SkeletonLoad />
+            <SkeletonLoad id={`${id}__headerLoad`} />
           ) : (<span className={`${className}__grid__title__text`}> All your items </span>)}
         </div>
         <div className={`${className}__grid__items`} id={`${id}__grid__items`}>
@@ -207,12 +207,12 @@ const AllItems = ({ className, id }) => {
         </div>
         <div className={`${className}__grid__fileInput`} id={`${id}__grid__fileInput`}>
           {loading === 1 ? (
-            <SkeletonLoad />
+            <SkeletonLoad id={`${id}__paginationLoad`} />
           ) : (<ItemInput onSubmit={handleCreation} token={token} accountId={accountId} />)}
         </div>
       </div>
       {loading === 4 || loading === 5 || loading === 6 ? (
-        <ActionWait loading={loading} />
+        <ActionWait id={`${id}__actionWait`} loading={loading} />
       ) : (<div />)}
     </div>
   );
