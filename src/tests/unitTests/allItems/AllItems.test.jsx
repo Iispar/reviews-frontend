@@ -4,15 +4,14 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import {
-  render, act, waitFor,
+  render, waitFor,
 } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { resNoNextPage, resNextPage } from '../../mockData/AllItems.json';
 import AllItems from '../../../pages/allItems/AllItems';
-import { addStyling } from '../../testHelpers';
 import { getAll } from '../../../services/itemService';
-import { useNewItem, useSearch } from '../../../pages/allItems/allItemsHooks';
+import { UseNewItem, UseSearch } from '../../../pages/allItems/allItemsHooks';
 
 const getAllNoNextPageMock = () => Promise.resolve(resNoNextPage);
 const getAllNextPageMock = () => Promise.resolve(resNextPage);
@@ -25,8 +24,8 @@ jest.mock('../../../components/ActionWait');
 const useSearchMock = jest.fn();
 const useNewItemMock = jest.fn();
 jest.mock('../../../pages/allItems/allItemsHooks', () => ({
-  useSearch: jest.fn(),
-  useNewItem: jest.fn(),
+  UseSearch: jest.fn(),
+  UseNewItem: jest.fn(),
 }));
 
 jest.mock('../../../pages/allItems/Items');
@@ -35,7 +34,7 @@ jest.mock('../../../pages/allItems/ItemInput');
 beforeEach(() => {
   getAll.mockImplementation(getAllNextPageMock);
   jest.clearAllMocks();
-  useSearch.mockImplementation((
+  UseSearch.mockImplementation((
     accountId,
     search,
     page,
@@ -58,7 +57,7 @@ beforeEach(() => {
       token,
     );
   });
-  useNewItem.mockImplementation((accountId, title, category, token, reloadItems, setLoading) => {
+  UseNewItem.mockImplementation((accountId, title, category, token, reloadItems, setLoading) => {
     setLoading(0);
     reloadItems();
     useNewItemMock(accountId, title, category);
@@ -117,7 +116,7 @@ describe('AllItems tests', () => {
   });
   describe('pagination tests', () => {
     test('pagination works', async () => {
-      useSearch.mockImplementation((
+      UseSearch.mockImplementation((
         accountId,
         search,
         page,
@@ -192,7 +191,7 @@ describe('AllItems tests', () => {
       expect(component.getByRole('button', { name: 'previous' })).not.toBeDisabled();
     });
     test('pagination load works', async () => {
-      useSearch.mockImplementation(jest.fn());
+      UseSearch.mockImplementation(jest.fn());
       const component = render(
         <BrowserRouter>
           <AllItems id="test" />
@@ -262,7 +261,7 @@ describe('AllItems tests', () => {
       expect(input).toHaveValue('');
     });
     test('search load works', async () => {
-      useSearch.mockImplementation(jest.fn());
+      UseSearch.mockImplementation(jest.fn());
       const component = render(
         <BrowserRouter>
           <AllItems id="test" />
@@ -335,7 +334,7 @@ describe('AllItems tests', () => {
       expect(component.container.querySelector('#mockItems__items').children.length).toBe(2);
     });
     test('sort loading', async () => {
-      useSearch.mockImplementation(jest.fn());
+      UseSearch.mockImplementation(jest.fn());
       const component = render(
         <BrowserRouter>
           <AllItems id="test" />
@@ -420,7 +419,7 @@ describe('AllItems tests', () => {
       [4, 'loading'], [5, 'success'], [6, 'fail'],
     ];
     test.each(states)('creation loading works', async (state, result) => {
-      useNewItem.mockImplementation(
+      UseNewItem.mockImplementation(
         (accountId, title, category, token, reloadItems, setLoading) => setLoading(state),
       );
       const component = render(

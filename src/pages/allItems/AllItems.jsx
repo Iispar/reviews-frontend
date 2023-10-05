@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
 import { useGetLocalStorage } from '../../helpers/helperHooks';
-import { useNewItem, useSearch } from './allItemsHooks';
+import { UseNewItem, UseSearch } from './allItemsHooks';
 import Items from './Items';
 import ItemInput from './ItemInput';
 import itemService from '../../services/itemService';
@@ -71,11 +71,11 @@ const AllItems = ({ className, id }) => {
    * @param {function} e
    *        The event that calls this function.
    */
-  const handleCreation = async (e) => {
+  const handleCreation = (e) => {
     setLoading(4);
     e.preventDefault();
     const values = e.target.elements;
-    useNewItem(accountId, values[0].value, values[1].value, token, reloadItems, setLoading);
+    UseNewItem(accountId, values[0].value, values[1].value, token, reloadItems, setLoading);
     $(e.target[0]).val('');
   };
 
@@ -89,7 +89,7 @@ const AllItems = ({ className, id }) => {
     page.current = 0;
     $('#pagination__prev').prop('disabled', true);
     e.preventDefault();
-    useSearch(
+    UseSearch(
       accountId,
       search,
       page.current,
@@ -115,7 +115,7 @@ const AllItems = ({ className, id }) => {
     $('#pagination__prev').prop('disabled', true);
     setSort(selSort);
     setSortDir(selSortDir);
-    useSearch(
+    UseSearch(
       accountId,
       search,
       page.current,
@@ -135,7 +135,7 @@ const AllItems = ({ className, id }) => {
     setLoading(2);
     setItems(null);
     $('#pagination__prev').prop('disabled', false);
-    useSearch(
+    UseSearch(
       accountId,
       search,
       page.current + 1,
@@ -155,7 +155,7 @@ const AllItems = ({ className, id }) => {
   const prevPage = () => {
     setLoading(2);
     setItems(null);
-    useSearch(
+    UseSearch(
       accountId,
       search,
       page.current - 1,
@@ -182,7 +182,7 @@ const AllItems = ({ className, id }) => {
     setSearch('');
     page.current = 0;
     $('#pagination__prev').prop('disabled', true);
-    useSearch(accountId, '', 0, sort, sortDir, token, setItems, setIsNextPage, setLoading);
+    UseSearch(accountId, '', 0, sort, sortDir, token, setItems, setIsNextPage, setLoading);
   };
 
   return (

@@ -8,6 +8,8 @@ import { addStyling } from '../../testHelpers';
 import LoginForm from '../../../pages/login/LoginForm';
 import CreateAccountForm from '../../../pages/login/CreateAccountForm';
 
+jest.mock('../../../components/InputField');
+
 const mockedUsedNavigate = jest.fn();
 // mocks the useNavigate() function.
 jest.mock('react-router-dom', () => ({

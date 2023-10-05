@@ -16,7 +16,7 @@ import itemService from '../../services/itemService';
  *                 setFunction to set the state of loading.
  * @returns true if successful, false if not.
  */
-export const useNewItem = (accountId, title, category, token, reloadItems, setLoading) => {
+export const UseNewItem = (accountId, title, category, token, reloadItems, setLoading) => {
   const payload = [{
     title,
     account: { id: accountId },
@@ -62,7 +62,7 @@ export const useNewItem = (accountId, title, category, token, reloadItems, setLo
  * @param {Function} setLoading
  *                 setFunction to set the state of loading.
  */
-export const useSearch = (
+export const UseSearch = (
   accountId,
   search,
   page,
@@ -79,6 +79,9 @@ export const useSearch = (
         setItems(res.responseList);
         setIsNextPage(res.nextPage);
         setLoading(0);
+      })
+      .catch(() => {
+        setLoading(3);
       });
   } else {
     itemService.getSort(accountId, page, sort, sortDir, token)
@@ -86,6 +89,9 @@ export const useSearch = (
         setItems(res.responseList);
         setIsNextPage(res.nextPage);
         setLoading(0);
+      })
+      .catch(() => {
+        setLoading(3);
       });
   }
 };

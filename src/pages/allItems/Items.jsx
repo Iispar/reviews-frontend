@@ -25,12 +25,8 @@ import SkeletonLoad from '../../components/SkeletonLoad';
 const Items = ({
   items, className, id, onSubmit, setSort, setSearch, nextPage, prevPage, clearInput, loading,
 }) => {
-  if (loading === 1 || loading === 2) {
-    if (loading === 1) {
-      return (
-        <SkeletonLoad />
-      );
-    }
+  if (loading === 1) return (<SkeletonLoad />);
+  if (loading === 2 || loading === 3) {
     return (
       <div className={className} id={id}>
         <div className={`${className}__header`}>
@@ -39,8 +35,8 @@ const Items = ({
           </form>
           <DropDownSortMenu setSort={(sort, sortDir) => setSort(sort, sortDir)} />
         </div>
-        <div className="loading">
-          <LoadingBar />
+        <div className="loading" id="loading">
+          {loading === 2 ? (<LoadingBar />) : (<div>error ocurred, please reload</div>)}
         </div>
         <div className={`${className}__reviews__pagination`}>
           <Pagination next={() => nextPage()} prev={() => prevPage()} />
