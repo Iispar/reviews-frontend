@@ -23,7 +23,7 @@ const ReviewsList = ({ reviews, className, id }) => {
         id={review.id}
         title={review.title}
         date={review.date}
-        item={review.item.id}
+        item={review.itemId}
       >
         {reviews[i]}
       </LargeReview>,
