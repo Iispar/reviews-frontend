@@ -1,5 +1,5 @@
-import {
-  useState, React, useEffect, useRef,
+import React, {
+  useState, useEffect, useRef,
 } from 'react';
 import $ from 'jquery';
 import propTypes from 'prop-types';

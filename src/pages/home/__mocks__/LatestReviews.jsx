@@ -1,25 +1,16 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import SkeletonLoad from '../../components/SkeletonLoad';
+import SkeletonLoad from '../../../components/SkeletonLoad';
 
 const LatestReviews = ({
   className, id, reviews, nextPage, prevPage, loading,
 }) => {
   const reviewList = [];
-
-  for (let i = 0; i < reviews.length; i += 1) {
-    reviewList.push(
-        <div>
-            {reviews[i]}
-        </div>,
-    );
-  }
   // if reviews being loaded.
-  if (loading !== 0) {
-    // if page load
-    if (loading === 1) {
-      return (<SkeletonLoad />);
-    }
-    // else waiting for data.
+  // if page load
+  if (loading === 1) return (<SkeletonLoad />);
+  // else waiting for data.
+  if (loading === 2 || loading === 3) {
     return (
       <div className={`${className}`}>
         <div className={`${className}__header`} id={`${id}__header`}>
@@ -27,13 +18,30 @@ const LatestReviews = ({
         </div>
         <div className={`${className}__reviews`}>
           <div className="loading">
-            loading
+            {loading === 2 ? (<div> loading </div>) : (<div>error ocurred, please reload</div>)}
           </div>
           <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
-            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
+            <button type="button" onClick={() => nextPage()}> next </button>
+            <button type="button" onClick={() => prevPage()}> previous </button>
           </div>
         </div>
       </div>
+    );
+  }
+  for (let i = 0; i < reviews.length; i += 1) {
+    reviewList.push(
+      <div>
+        {reviews[i].date}
+        <br />
+        {reviews[i].body}
+        <br />
+        {reviews[i].title}
+        <br />
+        {reviews[i].rating}
+        <br />
+        {reviews[i].item.id}
+        <br />
+      </div>,
     );
   }
   // no waiting
@@ -45,10 +53,11 @@ const LatestReviews = ({
       {reviews.length > 0 ? (
         <div className={`${className}__reviews`}>
           <div className={`${className}__reviews__list`} id={`${id}__reviews`}>
-            <ReviewsList reviews={reviews} />
+            {reviewList}
           </div>
           <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
-            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
+            <button type="button" onClick={() => nextPage()}> next </button>
+            <button type="button" onClick={() => prevPage()}> previous </button>
           </div>
         </div>
       ) : (
@@ -57,3 +66,5 @@ const LatestReviews = ({
     </div>
   );
 };
+
+export default LatestReviews;

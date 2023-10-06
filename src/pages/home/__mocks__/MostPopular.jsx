@@ -4,17 +4,21 @@ import SkeletonLoad from '../../../components/SkeletonLoad';
 
 const MostPopular = ({ className, id, items }) => {
   const itemList = [];
-
-  for (let i = 0; i < items.length; i += 1) {
-    itemList.push(
-      <div>
-        {items[0]}
-      </div>,
-    );
-  }
   if (items == null) {
     return (
       <SkeletonLoad />
+    );
+  }
+  for (let i = 0; i < items.length; i += 1) {
+    itemList.push(
+      <div>
+        {items[i].title}
+        <br />
+        {items[i].account.id}
+        <br />
+        {items[i].rating}
+        <br />
+      </div>,
     );
   }
   return (
