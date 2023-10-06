@@ -42,7 +42,7 @@ const AllItems = ({ className, id }) => {
         setLoading(0);
       })
       .catch(() => {
-        setLoading(3);
+        setLoading(7);
       });
   }, []);
 
@@ -191,6 +191,14 @@ const AllItems = ({ className, id }) => {
     UseSearch(accountId, '', 0, sort, sortDir, token, setItems, setIsNextPage, setLoading);
   };
 
+  // If error while fetching data at useEffect we just return empty page with error message.
+  if (loading === 7) {
+    return (
+      <div className={className} id={id}>
+        <div> error while fetching data, please wait and reload </div>
+      </div>
+    );
+  }
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`}>

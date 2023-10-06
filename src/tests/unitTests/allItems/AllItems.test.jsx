@@ -105,21 +105,7 @@ describe('AllItems tests', () => {
       );
 
       await waitFor(() => {
-        expect(component.container.querySelector('#test__paginationLoad')).toBeNull();
-        expect(component.container.querySelector('#test__headerLoad')).toBeNull();
-        expect(component.container.querySelector('#test__actionWait')).toBeNull();
-        const container = component.container.querySelector('#test');
-        expect(container).not.toBeNull();
-        expect(container).toBeVisible();
-        expect(container.className).toBe('allItems');
-
-        expect(component.getByText('All your items'));
-
-        expect(component.getByText('error ocurred, please reload')).toBeVisible();
-
-        const input = component.container.querySelector('#test__grid__fileInput');
-        expect(input).not.toBeNull();
-        expect(input).toBeVisible();
+        expect(component.getByText('error while fetching data, please wait and reload')).toBeVisible();
       });
     });
     test('AllItems initial loading render correctly', async () => {

@@ -41,5 +41,8 @@ export const useGetReviewsForAccount = (
       setLatestReviews(res.responseList);
       setIsNextPage(res.nextPage);
       setLoading(0);
+    })
+    .catch(() => {
+      setLoading(3);
     });
 };

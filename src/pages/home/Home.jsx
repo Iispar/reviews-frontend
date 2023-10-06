@@ -54,6 +54,9 @@ const Home = ({ className, id }) => {
         setBarChart(res.barChart);
         setLoading(0);
         page.current = 0;
+      })
+      .catch(() => {
+        setLoading(7);
       });
   }, []);
 
@@ -105,6 +108,7 @@ const Home = ({ className, id }) => {
     page.current -= 1;
   };
 
+  if (loading === 7) (<div> error while fetching data, please try again </div>);
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`} id={`${className}__grid`}>

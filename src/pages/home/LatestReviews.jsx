@@ -19,13 +19,10 @@ import LoadingBar from '../../components/LoadingBar';
 const LatestReviews = ({
   className, id, reviews, nextPage, prevPage, loading,
 }) => {
-  // if reviews being loaded.
-  if (loading !== 0) {
-    // if page load
-    if (loading === 1) {
-      return (<SkeletonLoad />);
-    }
-    // else waiting for data.
+  // if page load
+  if (loading === 1) return (<SkeletonLoad />);
+  // else waiting for data.
+  if (loading === 2 || loading === 3) {
     return (
       <div className={`${className}`}>
         <div className={`${className}__header`} id={`${id}__header`}>
@@ -33,7 +30,7 @@ const LatestReviews = ({
         </div>
         <div className={`${className}__reviews`}>
           <div className="loading">
-            <LoadingBar />
+            {loading === 2 ? (<LoadingBar />) : (<div>error ocurred, please reload</div>)}
           </div>
           <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
             <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
