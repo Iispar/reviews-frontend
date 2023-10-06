@@ -1,17 +1,16 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import LoadingBar from '../../../components/LoadingBar';
 import SkeletonLoad from '../../../components/SkeletonLoad';
 
 const Items = ({
   items, onSubmit, setSort, setSearch, nextPage, prevPage, clearInput, loading,
 }) => {
-  if (loading === 1 || loading === 2) {
-    if (loading === 1) {
-      return (
-        <SkeletonLoad />
-      );
-    }
+  if (loading === 1) {
+    return (
+      <SkeletonLoad />
+    );
+  }
+  if (loading === 2 || loading === 3) {
     return (
       <div id="mockItems">
         <div id="mockItems__form">
@@ -28,7 +27,7 @@ const Items = ({
           <button type="button" onClick={() => setSort('sort2', 'asc')}> sort2 desc </button>
         </div>
         <div className="loading" id="loading">
-          <LoadingBar id="mockLoadingBar" />
+          {loading === 2 ? (<div> loadingBar </div>) : (<div>error ocurred, please reload</div>)}
         </div>
         <div id="mockItems__pagination">
           <button type="button" onClick={() => nextPage()}> next </button>

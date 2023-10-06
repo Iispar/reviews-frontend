@@ -40,6 +40,9 @@ const AllItems = ({ className, id }) => {
         setItems(res.responseList);
         if (!res.nextPage) setIsNextPage(false);
         setLoading(0);
+      })
+      .catch(() => {
+        setLoading(3);
       });
   }, []);
 
@@ -62,6 +65,9 @@ const AllItems = ({ className, id }) => {
         if (res.nextPage) setIsNextPage(true);
         else setIsNextPage(false);
         setLoading(0);
+      })
+      .catch(() => {
+        setLoading(3);
       });
   };
 

@@ -96,6 +96,32 @@ describe('AllItems tests', () => {
         expect(component.getByRole('button', { name: 'next' })).toBeDisabled();
       });
     });
+    test('AllItems with error render correctly', async () => {
+      getAll.mockImplementation(() => (Promise.reject()));
+      const component = render(
+        <BrowserRouter>
+          <AllItems id="test" />
+        </BrowserRouter>,
+      );
+
+      await waitFor(() => {
+        expect(component.container.querySelector('#test__paginationLoad')).toBeNull();
+        expect(component.container.querySelector('#test__headerLoad')).toBeNull();
+        expect(component.container.querySelector('#test__actionWait')).toBeNull();
+        const container = component.container.querySelector('#test');
+        expect(container).not.toBeNull();
+        expect(container).toBeVisible();
+        expect(container.className).toBe('allItems');
+
+        expect(component.getByText('All your items'));
+
+        expect(component.getByText('error ocurred, please reload')).toBeVisible();
+
+        const input = component.container.querySelector('#test__grid__fileInput');
+        expect(input).not.toBeNull();
+        expect(input).toBeVisible();
+      });
+    });
     test('AllItems initial loading render correctly', async () => {
       const component = render(
         <BrowserRouter>
@@ -447,6 +473,39 @@ describe('AllItems tests', () => {
 
       expect(component.container.querySelector('#test__actionWait')).not.toBeNull();
       expect(component.getByText(result));
+    });
+    test('creation reload fail works', async () => {
+      getAll
+        .mockImplementationOnce(getAllNoNextPageMock)
+        .mockImplementation(() => (Promise.reject()));
+      const component = render(
+        <BrowserRouter>
+          <AllItems id="test" />
+        </BrowserRouter>,
+      );
+
+      await waitFor(() => {
+        expect(component.getByText('All your items')).toBeVisible();
+        expect(component.container.querySelector('#mockItems__items').children.length).toBe(2);
+        expect(getAll.mock.calls).toHaveLength(1);
+      });
+
+      const input = component.container.querySelector('#mockNameInput');
+      const select = component.container.querySelector('#mockSelect');
+
+      await userEvent.type(input, 'test title');
+      await userEvent.selectOptions(select, '1');
+
+      expect(input).toHaveValue('test title');
+
+      await userEvent.click(component.getByRole('button', { name: 'submit' }));
+
+      expect(useNewItemMock.mock.calls).toHaveLength(1);
+      expect(useNewItemMock.mock.calls[0][1]).toBe('test title');
+      expect(useNewItemMock.mock.calls[0][2]).toBe('1');
+
+      expect(getAll.mock.calls).toHaveLength(2);
+      expect(component.getByText('error ocurred, please reload')).toBeVisible();
     });
   });
 });
