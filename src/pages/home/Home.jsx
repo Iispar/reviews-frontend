@@ -108,7 +108,14 @@ const Home = ({ className, id }) => {
     page.current -= 1;
   };
 
-  if (loading === 7) (<div> error while fetching data, please try again </div>);
+  // if error while fetching at useState display error page.
+  if (loading === 7) {
+    return (
+      <div className={className} id={id}>
+        <div> error while fetching data, please try again </div>
+      </div>
+    );
+  }
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`} id={`${className}__grid`}>
