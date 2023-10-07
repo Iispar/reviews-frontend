@@ -57,18 +57,17 @@ const CreateAccountForm = ({
    */
   useEffect(() => {
     if (!passRegexp.test(password) && password !== 'null') {
-      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'block');
-      $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
-      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'block');
+      $(`#${id}__createAccountForm__inputs__form__password__message`).css('display', 'block');
+      $(`#${id}__createAccountForm__inputs__submit`).prop('disabled', true);
     } else if (password !== confirmPassword) {
-      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
-      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
-      $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', true);
+      $(`#${id}__createAccountForm__inputs__form__password__message`).css('display', 'none');
+      $(`#${id}__createAccountForm__inputs__form__password__message`).css('display', 'none');
+      $(`#${id}__createAccountForm__inputs__submit`).prop('disabled', true);
       errorMessage('createConfirmPassword', true);
     } else {
-      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
-      $(`#${className}__createAccountForm__inputs__form__password__message`).css('display', 'none');
-      $(`#${className}__createAccountForm__inputs__submit`).prop('disabled', false);
+      $(`#${id}__createAccountForm__inputs__form__password__message`).css('display', 'none');
+      $(`#${id}__createAccountForm__inputs__form__password__message`).css('display', 'none');
+      $(`#${id}__createAccountForm__inputs__submit`).prop('disabled', false);
       errorMessage('createConfirmPassword', false);
     }
   }, [password, confirmPassword]);
@@ -87,7 +86,7 @@ const CreateAccountForm = ({
             <InputField id="createEmail" title="email" width="240px" height="40px" />
             <div className={`${className}__createAccountForm__inputs__form__password`}>
               <InputField id="createPassword" type="password" title="password" width="240px" height="40px" regex={passRegexp} error="doesn't include all required characters" onChange={setPassword} />
-              <div className={`${className}__createAccountForm__inputs__form__password__message`} id={`${className}__createAccountForm__inputs__form__password__message`}>
+              <div className={`${className}__createAccountForm__inputs__form__password__message`} id={`${id}__createAccountForm__inputs__form__password__message`}>
                 Password must be minimum of 8 characters with:
                 <br />
                 - uppercase letter

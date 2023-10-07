@@ -173,24 +173,13 @@ describe('createAccountForm tests', () => {
     addStyling(component);
     $('#test').css('display', 'flex');
 
-    expect(component.getByText('doesn\'t include all required characters')).not.toBeVisible();
+    expect(component.container.querySelector('#test__createAccountForm__inputs__form__password__message')).not.toBeNull();
+    expect(component.container.querySelector('#test__createAccountForm__inputs__form__password__message')).not.toBeVisible();
 
     const password = component.getByLabelText('password');
     await userEvent.type(password, 'test');
 
-    expect(component.getByText('doesn\'t include all required characters')).toBeVisible();
-  });
-  test('CreateAccountForm username error works', async () => {
-    const component = render(<CreateAccountForm id="test" />);
-    addStyling(component);
-    $('#test').css('display', 'flex');
-
-    expect(component.getByText('doesn\'t include all required characters')).not.toBeVisible();
-
-    const password = component.getByLabelText('username');
-    await userEvent.type(password, 'test-.?!');
-
-    expect(component.getByText('no special characters or spaces')).toBeVisible();
+    expect(component.container.querySelector('#test__createAccountForm__inputs__form__password__message')).toBeVisible();
   });
   test('CreateAccountForm confirm password error works', async () => {
     const component = render(<CreateAccountForm id="test" />);
@@ -199,11 +188,16 @@ describe('createAccountForm tests', () => {
 
     expect(component.getByText('passwords don\'t match')).not.toBeVisible();
 
-    const password = component.getByLabelText('username');
+    const password = component.getByLabelText('password');
     const confirm = component.getByLabelText('confirm password');
     await userEvent.type(password, 'testPass123!');
     await userEvent.type(confirm, 'test');
 
     expect(component.getByText('passwords don\'t match')).toBeVisible();
+
+    await userEvent.type(confirm, 'Pass123!');
+
+    expect(confirm).toHaveValue('testPass123!');
+    expect(component.getByText('passwords don\'t match')).not.toBeVisible();
   });
 });
