@@ -13,7 +13,7 @@ import { UseNewReview, useGetReviews } from './itemHooks';
 import SkeletonLoad from '../../components/SkeletonLoad';
 import ActionWait from '../../components/ActionWait';
 import parseInputFile from '../../helpers/ParseInputFile';
-import { useGetLocalStorage } from '../../helpers/helperHooks';
+import { UseGetLocalStorage } from '../../helpers/helperHooks';
 import itemService from '../../services/itemService';
 
 /**
@@ -48,7 +48,7 @@ const Item = ({ className, id }) => {
    * UseEffect to get data at page load.
    */
   useEffect(() => {
-    const storage = useGetLocalStorage();
+    const storage = UseGetLocalStorage();
 
     setToken(storage.token);
     setAccountId(storage.accountId);

@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import Selections from './Selections';
 import accountService from '../../services/accountService';
 import { useUpdateAccount, useDeleteAccount } from './settingsHooks';
-import { useGetLocalStorage } from '../../helpers/helperHooks';
+import { UseGetLocalStorage } from '../../helpers/helperHooks';
 
 /**
  * Renders the settings page.
@@ -33,7 +33,7 @@ const Settings = ({ className, id }) => {
   const [newPassword, setNewPassword] = useState('none');
 
   useEffect(() => {
-    const storage = useGetLocalStorage();
+    const storage = UseGetLocalStorage();
     setAccountId(storage.accountId);
     setToken(storage.token);
 

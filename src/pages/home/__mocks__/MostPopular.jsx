@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import SkeletonLoad from '../../../components/SkeletonLoad';
@@ -11,10 +12,10 @@ const MostPopular = ({ className, id, items }) => {
   }
   for (let i = 0; i < items.length; i += 1) {
     itemList.push(
-      <div>
+      <div key={items[i].id}>
         {items[i].title}
         <br />
-        {items[i].account.id}
+        {items[i].accountId}
         <br />
         {items[i].rating}
         <br />
@@ -22,16 +23,16 @@ const MostPopular = ({ className, id, items }) => {
     );
   }
   return (
-    <div className={`${className}`}>
-      <div className={`${className}__header`} id={`${id}__header`}>
-        <span className={`${className}__header__text`}>popular items</span>
+    <div id="testItems">
+      <div>
+        <span>popular items</span>
       </div>
       { items.length > 0 ? (
-        <div className={`${className}__list`} id={`${id}__list`}>
+        <div id="testItems__list">
           {itemList}
         </div>
       ) : (
-        <div className={`${className}__empty`}> no items</div>
+        <div> no items</div>
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
-import { useGetLocalStorage } from '../../helpers/helperHooks';
+import { UseGetLocalStorage } from '../../helpers/helperHooks';
 import { UseNewItem, UseSearch } from './allItemsHooks';
 import Items from './Items';
 import ItemInput from './ItemInput';
@@ -30,7 +30,7 @@ const AllItems = ({ className, id }) => {
    * UseEffect loads the token and account id for the user and loads the data on page load.
    */
   useEffect(() => {
-    const storage = useGetLocalStorage();
+    const storage = UseGetLocalStorage();
 
     setToken(storage.token);
     setAccountId(storage.accountId);

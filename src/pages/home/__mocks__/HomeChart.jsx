@@ -27,12 +27,15 @@ const HomeChart = ({
   const data = [];
   for (let i = 0; i < initData.length; i += 1) {
     data.push(
-      <div>
+      <div key={i}>
         {initData[i].count}
+        count
         <br />
         {initData[i].time}
+        time
         <br />
         {initData[i].rating}
+        rating
       </div>,
     );
   }
@@ -41,6 +44,7 @@ const HomeChart = ({
     <div className={className} id={id}>
       {initData.length > 2 ? (
         <div>
+          data:
           <div>{data}</div>
           <div className={`${className}__selector`} id={`${id}__selector`}>
             <button className={`${className}__selector__month`} type="button"> month </button>

@@ -85,6 +85,7 @@ describe('AllItems tests', () => {
 
         expect(component.getByText('All your items'));
 
+        expect(component.getByText(/Test item number 1 Loaded/)).toBeVisible();
         const items = component.container.querySelector('#test__grid__items');
         expect(items).not.toBeNull();
         expect(items).toBeVisible();
@@ -177,6 +178,7 @@ describe('AllItems tests', () => {
       expect(useSearchMock.mock.calls[0][2]).toBe(1);
 
       expect(component.getByRole('button', { name: 'next' })).not.toBeDisabled();
+      expect(component.queryByText(/Test item number 1 Loaded/)).not.toBeInTheDocument();
 
       await userEvent.click(component.getByRole('button', { name: 'next' }));
       expect(useSearchMock.mock.calls).toHaveLength(2);
@@ -184,6 +186,7 @@ describe('AllItems tests', () => {
 
       expect(component.container.querySelector('#mockItems__items').children.length).toBe(2);
       expect(component.getByRole('button', { name: 'next' })).toBeDisabled();
+      expect(component.getByText(/Test item number 1 Loaded/)).toBeVisible();
 
       expect(component.getByRole('button', { name: 'previous' })).not.toBeDisabled();
       await userEvent.click(component.getByRole('button', { name: 'previous' }));
@@ -233,6 +236,7 @@ describe('AllItems tests', () => {
       await waitFor(() => {
         expect(component.getByText('All your items')).toBeVisible();
         expect(component.container.querySelector('#mockItems__items').children.length).toBe(5);
+        expect(component.queryByText(/Test item number 1 Loaded/)).not.toBeInTheDocument();
       });
 
       const input = component.container.querySelector('#mockSearch__input');
@@ -246,6 +250,7 @@ describe('AllItems tests', () => {
       expect(useSearchMock.mock.calls).toHaveLength(1);
       expect(useSearchMock.mock.calls[0][1]).toBe('test search');
       expect(component.container.querySelector('#mockItems__items').children.length).toBe(2);
+      expect(component.getByText(/Test item number 1 Loaded/)).toBeVisible();
     });
     test('search clear works', async () => {
       const component = render(
@@ -257,6 +262,7 @@ describe('AllItems tests', () => {
       await waitFor(() => {
         expect(component.getByText('All your items')).toBeVisible();
         expect(component.container.querySelector('#mockItems__items').children.length).toBe(5);
+        expect(component.queryByText(/Test item number 1 Loaded/)).not.toBeInTheDocument();
       });
 
       const input = component.container.querySelector('#mockSearch__input');
@@ -270,6 +276,7 @@ describe('AllItems tests', () => {
       expect(useSearchMock.mock.calls).toHaveLength(1);
       expect(useSearchMock.mock.calls[0][1]).toBe('');
       expect(component.container.querySelector('#mockItems__items').children.length).toBe(2);
+      expect(component.getByText(/Test item number 1 Loaded/)).toBeVisible();
       expect(input).toHaveValue('');
     });
     test('search load works', async () => {
@@ -311,6 +318,7 @@ describe('AllItems tests', () => {
       await waitFor(() => {
         expect(component.getByText('All your items')).toBeVisible();
         expect(component.container.querySelector('#mockItems__items').children.length).toBe(5);
+        expect(component.queryByText(/Test item number 1 Loaded/)).not.toBeInTheDocument();
       });
 
       const sortBtn = component.getByRole('button', { name: sort });
@@ -321,6 +329,7 @@ describe('AllItems tests', () => {
       expect(useSearchMock.mock.calls[0][3]).toBe(sort.split(' ')[0]);
       expect(useSearchMock.mock.calls[0][4]).toBe(sort.split(' ')[1]);
       expect(component.container.querySelector('#mockItems__items').children.length).toBe(2);
+      expect(component.getByText(/Test item number 1 Loaded/)).toBeVisible();
     });
     test.each(sorts)('sort with search works', async (sort) => {
       const component = render(
@@ -331,6 +340,7 @@ describe('AllItems tests', () => {
       await waitFor(() => {
         expect(component.getByText('All your items')).toBeVisible();
         expect(component.container.querySelector('#mockItems__items').children.length).toBe(5);
+        expect(component.queryByText(/Test item number 1 Loaded/)).not.toBeInTheDocument();
       });
       const input = component.container.querySelector('#mockSearch__input');
       await userEvent.type(input, 'test search');
@@ -344,6 +354,7 @@ describe('AllItems tests', () => {
       expect(useSearchMock.mock.calls[0][3]).toBe(sort.split(' ')[0]);
       expect(useSearchMock.mock.calls[0][4]).toBe(sort.split(' ')[1]);
       expect(component.container.querySelector('#mockItems__items').children.length).toBe(2);
+      expect(component.getByText(/Test item number 1 Loaded/)).toBeVisible();
     });
     test('sort loading', async () => {
       UseSearch.mockImplementation(jest.fn());

@@ -4,304 +4,48 @@
         "latestReviews": {
             "responseList": [
                 {
-                    "id": 512,
+                    "id": 0,
                     "date": "2012-05-22",
                     "body": "This product was easy to set up, works every time I use it, and does exactly what I expected it to do.",
                     "title": "Love it!",
                     "likes": 0,
                     "dislikes": 0,
-                    "rating": 5,
-                    "account": {
-                        "id": 5,
-                        "name": "admin",
-                        "username": "admin",
-                        "password": null,
-                        "email": "adminEmail",
-                        "role": {
-                            "id": 1,
-                            "name": "seller"
-                        },
-                        "enabled": true,
-                        "accountNonExpired": true,
-                        "accountNonLocked": true,
-                        "credentialsNonExpired": true,
-                        "authorities": []
-                    },
-                    "item": {
-                        "id": 17,
-                        "title": "Polar FT4 Heart Rate Monitor",
-                        "account": {
-                            "id": 5,
-                            "name": "admin",
-                            "username": "admin",
-                            "password": null,
-                            "email": "adminEmail",
-                            "role": {
-                                "id": 1,
-                                "name": "seller"
-                            },
-                            "enabled": true,
-                            "accountNonExpired": true,
-                            "accountNonLocked": true,
-                            "credentialsNonExpired": true,
-                            "authorities": []
-                        },
-                        "rating": 4.27815,
-                        "category": {
-                            "@id": 1,
-                            "id": 1,
-                            "name": "sports"
-                        },
-                        "words": {
-                            "id": 20,
-                            "positive": [
-                                "love",
-                                "great",
-                                "heart",
-                                "rate",
-                                "watch",
-                                "monitor",
-                                "use",
-                                "calories",
-                                "works",
-                                "br"
-                            ],
-                            "negative": [
-                                "work",
-                                "heart",
-                                "rate",
-                                "product",
-                                "working",
-                                "months",
-                                "use",
-                                "watch",
-                                "doesn",
-                                "calories"
-                            ]
-                        }
-                    }
+                    "rating": 211,
+                    "accountId": 5,
+                    "itemId": 212
                 },
                 {
-                    "id": 465,
+                    "id": 0,
                     "date": "2012-06-14",
                     "body": "this watch is great. has been working perfectly since the purchase. only small issue I have is that when I am out of zone the warning chime is not too loud. wish it was a bit louder. I have bought other heart rate watches for cheaper prices but the quality doesn't compare. I had a cheap $34 dollar one that I had issues with so I gave in to buy this one. I wish I would have invested in it sooner it would have saved me time and money.  great product.",
                     "title": "very pleased!",
                     "likes": 0,
                     "dislikes": 0,
                     "rating": 4,
-                    "account": {
-                        "id": 5,
-                        "name": "admin",
-                        "username": "admin",
-                        "password": null,
-                        "email": "adminEmail",
-                        "role": {
-                            "id": 1,
-                            "name": "seller"
-                        },
-                        "enabled": true,
-                        "accountNonExpired": true,
-                        "accountNonLocked": true,
-                        "credentialsNonExpired": true,
-                        "authorities": []
-                    },
-                    "item": {
-                        "id": 17,
-                        "title": "Polar FT4 Heart Rate Monitor",
-                        "account": {
-                            "id": 5,
-                            "name": "admin",
-                            "username": "admin",
-                            "password": null,
-                            "email": "adminEmail",
-                            "role": {
-                                "id": 1,
-                                "name": "seller"
-                            },
-                            "enabled": true,
-                            "accountNonExpired": true,
-                            "accountNonLocked": true,
-                            "credentialsNonExpired": true,
-                            "authorities": []
-                        },
-                        "rating": 4.27815,
-                        "category": 1,
-                        "words": {
-                            "id": 20,
-                            "positive": [
-                                "love",
-                                "great",
-                                "heart",
-                                "rate",
-                                "watch",
-                                "monitor",
-                                "use",
-                                "calories",
-                                "works",
-                                "br"
-                            ],
-                            "negative": [
-                                "work",
-                                "heart",
-                                "rate",
-                                "product",
-                                "working",
-                                "months",
-                                "use",
-                                "watch",
-                                "doesn",
-                                "calories"
-                            ]
-                        }
-                    }
+                    "accountId": 5,
+                    "itemId": 17
                 },
                 {
-                    "id": 497,
+                    "id": 0,
                     "date": "2012-09-18",
                     "body": "I love this monitor. Polar makes an amazing product. I only wish I could sync it online with my computer. It is way easy to use and the pink is cute, I love that it also tells me my calories burned. Yay!",
                     "title": "it's great",
                     "likes": 0,
                     "dislikes": 0,
                     "rating": 5,
-                    "account": {
-                        "id": 5,
-                        "name": "admin",
-                        "username": "admin",
-                        "password": null,
-                        "email": "adminEmail",
-                        "role": {
-                            "id": 1,
-                            "name": "seller"
-                        },
-                        "enabled": true,
-                        "accountNonExpired": true,
-                        "accountNonLocked": true,
-                        "credentialsNonExpired": true,
-                        "authorities": []
-                    },
-                    "item": {
-                        "id": 17,
-                        "title": "Polar FT4 Heart Rate Monitor",
-                        "account": {
-                            "id": 5,
-                            "name": "admin",
-                            "username": "admin",
-                            "password": null,
-                            "email": "adminEmail",
-                            "role": {
-                                "id": 1,
-                                "name": "seller"
-                            },
-                            "enabled": true,
-                            "accountNonExpired": true,
-                            "accountNonLocked": true,
-                            "credentialsNonExpired": true,
-                            "authorities": []
-                        },
-                        "rating": 4.27815,
-                        "category": 1,
-                        "words": {
-                            "id": 20,
-                            "positive": [
-                                "love",
-                                "great",
-                                "heart",
-                                "rate",
-                                "watch",
-                                "monitor",
-                                "use",
-                                "calories",
-                                "works",
-                                "br"
-                            ],
-                            "negative": [
-                                "work",
-                                "heart",
-                                "rate",
-                                "product",
-                                "working",
-                                "months",
-                                "use",
-                                "watch",
-                                "doesn",
-                                "calories"
-                            ]
-                        }
-                    }
+                    "accountId": 5,
+                    "itemId": 17
                 },
                 {
-                    "id": 404,
+                    "id": 0,
                     "date": "2012-12-20",
                     "body": "Love this HRM. It works great and is easy to use. It is definitely more of a hot pink color than purple. I do wish it came in more neutral colors but it's not a big deal as I only wear it when I'm working out and could care less what I look like.",
                     "title": "Works great for what I need it for.",
                     "likes": 0,
                     "dislikes": 0,
                     "rating": 4,
-                    "account": {
-                        "id": 5,
-                        "name": "admin",
-                        "username": "admin",
-                        "password": null,
-                        "email": "adminEmail",
-                        "role": {
-                            "id": 1,
-                            "name": "seller"
-                        },
-                        "enabled": true,
-                        "accountNonExpired": true,
-                        "accountNonLocked": true,
-                        "credentialsNonExpired": true,
-                        "authorities": []
-                    },
-                    "item": {
-                        "id": 17,
-                        "title": "Polar FT4 Heart Rate Monitor",
-                        "account": {
-                            "id": 5,
-                            "name": "admin",
-                            "username": "admin",
-                            "password": null,
-                            "email": "adminEmail",
-                            "role": {
-                                "id": 1,
-                                "name": "seller"
-                            },
-                            "enabled": true,
-                            "accountNonExpired": true,
-                            "accountNonLocked": true,
-                            "credentialsNonExpired": true,
-                            "authorities": []
-                        },
-                        "rating": 4.27815,
-                        "category": 1,
-                        "words": {
-                            "id": 20,
-                            "positive": [
-                                "love",
-                                "great",
-                                "heart",
-                                "rate",
-                                "watch",
-                                "monitor",
-                                "use",
-                                "calories",
-                                "works",
-                                "br"
-                            ],
-                            "negative": [
-                                "work",
-                                "heart",
-                                "rate",
-                                "product",
-                                "working",
-                                "months",
-                                "use",
-                                "watch",
-                                "doesn",
-                                "calories"
-                            ]
-                        }
-                    }
+                    "accountId": 5,
+                    "itemId": 17
                 }
             ],
             "nextPage": true
@@ -310,181 +54,37 @@
             {
                 "id": 16,
                 "title": "BalanceFrom High Accuracy Premium Digital Bathroom Scale with 3.6 Extra Large Backlight Display",
-                "account": {
-                    "id": 5,
-                    "name": "admin",
-                    "username": "admin",
-                    "password": null,
-                    "email": "adminEmail",
-                    "role": {
-                        "id": 1,
-                        "name": "seller"
-                    },
-                    "enabled": true,
-                    "accountNonExpired": true,
-                    "accountNonLocked": true,
-                    "credentialsNonExpired": true,
-                    "authorities": []
-                },
+                "accountId": 5,
                 "rating": 4.35,
-                "category": 1,
-                "words": {
-                    "id": 19,
-                    "positive": [
-                        "scale",
-                        "accurate",
-                        "weight",
-                        "great",
-                        "works",
-                        "love",
-                        "nice",
-                        "easy",
-                        "good",
-                        "product"
-                    ],
-                    "negative": [
-                        "scale",
-                        "accurate",
-                        "34",
-                        "pounds",
-                        "weight",
-                        "doesn",
-                        "batteries",
-                        "review",
-                        "buy",
-                        "work"
-                    ]
-                }
+                "categoryName": "Sports"
             },
             {
                 "id": 17,
                 "title": "Polar FT4 Heart Rate Monitor",
-                "account": {
-                    "id": 5,
-                    "name": "admin",
-                    "username": "admin",
-                    "password": null,
-                    "email": "adminEmail",
-                    "role": {
-                        "id": 1,
-                        "name": "seller"
-                    },
-                    "enabled": true,
-                    "accountNonExpired": true,
-                    "accountNonLocked": true,
-                    "credentialsNonExpired": true,
-                    "authorities": []
-                },
-                "rating": 4.27815,
-                "category": 1,
-                "words": {
-                    "id": 20,
-                    "positive": [
-                        "love",
-                        "great",
-                        "heart",
-                        "rate",
-                        "watch",
-                        "monitor",
-                        "use",
-                        "calories",
-                        "works",
-                        "br"
-                    ],
-                    "negative": [
-                        "work",
-                        "heart",
-                        "rate",
-                        "product",
-                        "working",
-                        "months",
-                        "use",
-                        "watch",
-                        "doesn",
-                        "calories"
-                    ]
-                }
+                "accountId": 213,
+                "rating": 214,
+                "categoryName": "Sports"
             },
             {
                 "id": 18,
                 "title": "test item with a really long name to test the scroll",
-                "account": {
-                    "id": 5,
-                    "name": "admin",
-                    "username": "admin",
-                    "password": null,
-                    "email": "adminEmail",
-                    "role": {
-                        "id": 1,
-                        "name": "seller"
-                    },
-                    "enabled": true,
-                    "accountNonExpired": true,
-                    "accountNonLocked": true,
-                    "credentialsNonExpired": true,
-                    "authorities": []
-                },
+                "accountId": 5,
                 "rating": 0.0,
-                "category": 1,
-                "words": {
-                    "id": 21,
-                    "positive": null,
-                    "negative": null
-                }
+                "categoryName": "Sports"
             },
             {
                 "id": 49,
                 "title": "test",
-                "account": {
-                    "id": 5,
-                    "name": "admin",
-                    "username": "admin",
-                    "password": null,
-                    "email": "adminEmail",
-                    "role": {
-                        "id": 1,
-                        "name": "seller"
-                    },
-                    "enabled": true,
-                    "accountNonExpired": true,
-                    "accountNonLocked": true,
-                    "credentialsNonExpired": true,
-                    "authorities": []
-                },
+                "accountId": 5,
                 "rating": 0.0,
-                "category": 1,
-                "words": {
-                    "id": 233,
-                    "positive": null,
-                    "negative": null
-                }
+                "categoryName": "Sports"
             },
             {
                 "id": 50,
                 "title": "test",
-                "account": {
-                    "id": 5,
-                    "name": "admin",
-                    "username": "admin",
-                    "password": null,
-                    "email": "adminEmail",
-                    "role": {
-                        "id": 1,
-                        "name": "seller"
-                    },
-                    "enabled": true,
-                    "accountNonExpired": true,
-                    "accountNonLocked": true,
-                    "credentialsNonExpired": true,
-                    "authorities": []
-                },
+                "accountId": 5,
                 "rating": 0.0,
-                "category": 1,
-                "words": {
-                    "id": 235,
-                    "positive": null,
-                    "negative": null
-                }
+                "categoryName": "Sports"
             }
         ],
         "ratingsAvg": 1.4,
@@ -516,56 +116,183 @@
             {
                 "count": 12,
                 "time": null,
-                "rating": -1.0,
-                "timeYear": null
+                "timeYear": null,
+                "rating": -1.0
             },
             {
                 "count": 10,
                 "time": "February",
-                "rating": 3.8,
-                "timeYear": "2013"
+                "timeYear": "2013",
+                "rating": 3.8
             },
             {
                 "count": 9,
                 "time": "March",
-                "rating": 4.3,
-                "timeYear": "2013"
+                "timeYear": "2013",
+                "rating": 4.3
             },
             {
                 "count": 13,
                 "time": "April",
-                "rating": 4.3,
-                "timeYear": "2013"
+                "timeYear": "2013",
+                "rating": 4.3
             },
             {
                 "count": 12,
                 "time": "July",
-                "rating": 4.1,
-                "timeYear": "2013"
+                "timeYear": "2013",
+                "rating": 4.1
             },
             {
                 "count": 11,
                 "time": "August",
-                "rating": 4.5,
-                "timeYear": "2013"
+                "timeYear": "2013",
+                "rating": 4.5
             },
             {
                 "count": 11,
                 "time": "October",
-                "rating": 4.5,
-                "timeYear": "2013"
+                "timeYear": "2013",
+                "rating": 4.5
             },
             {
                 "count": 6,
                 "time": "November",
-                "rating": 4.0,
-                "timeYear": "2013"
+                "timeYear": "2013",
+                "rating": 4.0
             },
             {
                 "count": 12,
                 "time": null,
-                "rating": -1.0,
-                "timeYear": null
+                "timeYear": null,
+                "rating": -1.0
+            }
+        ]
+    },
+    "homeWithNoNextPage": {
+        "accountName": "admin",
+        "latestReviews": {
+            "responseList": [
+                {
+                    "id": 0,
+                    "date": "2012-05-22",
+                    "body": "Loaded!",
+                    "title": "Love it!",
+                    "likes": 0,
+                    "dislikes": 0,
+                    "rating": 211,
+                    "accountId": 5,
+                    "itemId": 212
+                },
+                {
+                    "id": 0,
+                    "date": "2012-06-14",
+                    "body": "this watch is great. has been working perfectly since the purchase. only small issue I have is that when I am out of zone the warning chime is not too loud. wish it was a bit louder. I have bought other heart rate watches for cheaper prices but the quality doesn't compare. I had a cheap $34 dollar one that I had issues with so I gave in to buy this one. I wish I would have invested in it sooner it would have saved me time and money.  great product.",
+                    "title": "review loaded!",
+                    "likes": 0,
+                    "dislikes": 0,
+                    "rating": 4,
+                    "accountId": 5,
+                    "itemId": 17
+                }
+            ],
+            "nextPage": false
+        },
+        "topItems": [
+            {
+                "id": 16,
+                "title": "Top items loaded!",
+                "accountId": 5,
+                "rating": 4.35,
+                "categoryName": "Sports"
+            },
+            {
+                "id": 17,
+                "title": "Polar FT4 Heart Rate Monitor",
+                "accountId": 213,
+                "rating": 214,
+                "categoryName": "Sports"
+            }
+        ],
+        "ratingsAvg": 1.4,
+        "itemsCount": 6,
+        "reviewsCount": 151,
+        "barChart": [
+            {
+                "count": 11.0,
+                "rating": 1
+            },
+            {
+                "count": 4.0,
+                "rating": 2
+            },
+            {
+                "count": 12.0,
+                "rating": 3
+            },
+            {
+                "count": 29.0,
+                "rating": 4
+            },
+            {
+                "count": 95.0,
+                "rating": 5
+            }
+        ],
+        "chart": [
+            {
+                "count": 12,
+                "time": null,
+                "timeYear": null,
+                "rating": -1.0
+            },
+            {
+                "count": 10,
+                "time": "February",
+                "timeYear": "2013",
+                "rating": 3.8
+            },
+            {
+                "count": 9,
+                "time": "March",
+                "timeYear": "2013",
+                "rating": 4.3
+            },
+            {
+                "count": 13,
+                "time": "April",
+                "timeYear": "2013",
+                "rating": 4.3
+            },
+            {
+                "count": 12,
+                "time": "July",
+                "timeYear": "2013",
+                "rating": 4.1
+            },
+            {
+                "count": 11,
+                "time": "August",
+                "timeYear": "2013",
+                "rating": 4.5
+            },
+            {
+                "count": 11,
+                "time": "October",
+                "timeYear": "2013",
+                "rating": 4.5
+            },
+            {
+                "count": 6,
+                "time": "November",
+                "timeYear": "2013",
+                "rating": 4.0
+            },
+            {
+                "count": 12,
+                "time": null,
+                "timeYear": null,
+                "rating": -1.0
             }
         ]
     }

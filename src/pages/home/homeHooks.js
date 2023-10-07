@@ -8,7 +8,7 @@ import reviewsService from '../../services/reviewsService';
  *        Id of account getting data.
  * @returns home data for account
  */
-export const useGetHome = (accountId) => {
+export const UseGetHome = (accountId) => {
   const res = pagesService.getHome(accountId);
   return res;
 };
@@ -25,10 +25,10 @@ export const useGetHome = (accountId) => {
  *        Function to be used to set the results.
  * @param {Function} setIsNextPage
  *        Function to be used to set the res on next page data.
- * @param {Function} setIsNextPage
+ * @param {Function} setLoading
  *        Function to be used to set the loading status.
  */
-export const useGetReviewsForAccount = (
+export const UseGetReviewsForAccount = (
   accountId,
   page,
   token,

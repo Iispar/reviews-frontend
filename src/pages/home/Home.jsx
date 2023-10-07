@@ -8,8 +8,8 @@ import MostPopular from './MostPopular';
 import HomeChart from './HomeChart';
 import HomeStats from './HomeStats';
 import pagesService from '../../services/pagesService';
-import { useGetLocalStorage } from '../../helpers/helperHooks';
-import { useGetReviewsForAccount } from './homeHooks';
+import { UseGetLocalStorage } from '../../helpers/helperHooks';
+import { UseGetReviewsForAccount } from './homeHooks';
 import SkeletonLoad from '../../components/SkeletonLoad';
 
 /**
@@ -31,13 +31,13 @@ const Home = ({ className, id }) => {
   const [user, setUser] = useState(null);
   const [isNextPage, setIsNextPage] = useState(true);
   const [loading, setLoading] = useState(1);
-  const page = useRef(0);
+  const page = useRef(1);
 
   /**
    * UseEffect hook to call and set the data on initialization.
    */
   useEffect(() => {
-    const storage = useGetLocalStorage();
+    const storage = UseGetLocalStorage();
 
     setToken(storage.token);
     setAccountId(storage.accountId);
@@ -46,6 +46,7 @@ const Home = ({ className, id }) => {
       .then((res) => {
         setUser(res.accountName);
         setLatestReviews(res.latestReviews.responseList);
+        if (!res.latestReviews.nextPage) setIsNextPage(false);
         setTopItems(res.topItems);
         setItemCount(res.itemsCount);
         setReviewCount(res.reviewsCount);
@@ -81,7 +82,7 @@ const Home = ({ className, id }) => {
    */
   const nextPage = () => {
     setLoading(2);
-    useGetReviewsForAccount(
+    UseGetReviewsForAccount(
       accountId,
       page.current + 1,
       token,
@@ -97,7 +98,7 @@ const Home = ({ className, id }) => {
      */
   const prevPage = () => {
     setLoading(2);
-    useGetReviewsForAccount(
+    UseGetReviewsForAccount(
       accountId,
       page.current - 1,
       token,
@@ -116,6 +117,7 @@ const Home = ({ className, id }) => {
       </div>
     );
   }
+
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`} id={`${className}__grid`}>
@@ -126,7 +128,7 @@ const Home = ({ className, id }) => {
               {user}
               !
             </div>
-          ) : (<SkeletonLoad />)}
+          ) : (<SkeletonLoad id={`${id}__skeletonLoad`} />)}
         </div>
         <div className={`${className}__grid__latestReviews`} id={`${id}__grid__latestReviews`}>
           <LatestReviews
