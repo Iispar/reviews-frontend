@@ -1,18 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import pagesService from '../../services/pagesService';
 import reviewsService from '../../services/reviewsService';
-
-/**
- * Calls the service to get home data for account.
- * @param {String} accountId
- *        Id of account getting data.
- * @returns home data for account
- */
-export const UseGetHome = (accountId) => {
-  const res = pagesService.getHome(accountId);
-  return res;
-};
-
 /**
  * Calls the service to get reviews for account with given params.
  * @param {String} accountId
