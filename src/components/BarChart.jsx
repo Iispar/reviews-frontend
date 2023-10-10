@@ -15,11 +15,10 @@ import BarTooltip from './BarTooltip';
  * @property {json} data - Includes the data in json.
  * @property {String} className - Custom className if wanted. Default barChart.
  * @property {String} id - Custom id if wanted. Default barChart.
- * @property {boolean} testing - If currently testing.
  * @returns a bar chart
  */
 const Chart = ({
-  data, id, className, testing,
+  data, id, className,
 }) => {
   const [focusBar, setFocusBar] = useState(null);
   // colors for the chart. Goes: first bar, its hover, second bar, its hover and so on.
@@ -35,7 +34,7 @@ const Chart = ({
   };
   return (
     <ResponsiveContainer width="100%" height="100%" id={id}>
-      <BarChart className={`${className}__chart`} id={`${id}__chart`} data={data} onMouseMove={testing ? null : (state) => { hover(state); }} minWidth="0" margin={{ bottom: -14, top: 0 }}>
+      <BarChart className={`${className}__chart`} id={`${id}__chart`} data={data} onMouseMove={(state) => { hover(state); }} minWidth="0" margin={{ bottom: -14, top: 0 }}>
         <Tooltip cursor={false} content={<BarTooltip />} />
         <XAxis dataKey="stars" />
         <Bar dataKey="count" id="bar">
@@ -52,14 +51,12 @@ Chart.propTypes = {
   data: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   className: propTypes.string,
   id: propTypes.string,
-  testing: propTypes.bool,
 };
 
 Chart.defaultProps = {
   data: null,
   className: 'barChart',
   id: 'barChart',
-  testing: false,
 
 };
 

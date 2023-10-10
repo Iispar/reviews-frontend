@@ -18,18 +18,18 @@ const HomeStats = ({
 }) => {
   if (barChartData == null || itemCount == null) {
     return (
-      <div className={className}>
-        <div className={`${className}__barLoad`}>
+      <div className={className} id={id}>
+        <div className={`${className}__barLoad`} id={`${id}__barLoad`}>
           <SkeletonLoad />
         </div>
-        <div className={`${className}__statsLoad`}>
+        <div className={`${className}__statsLoad`} id={`${id}__statsLoad`}>
           <SkeletonLoad />
         </div>
       </div>
     );
   }
   return (
-    <div className={className}>
+    <div className={className} id={id}>
       <div className={`${className}__ratings`}>
         <div className={`${className}__ratings__chart`} id={`${id}__ratings__chart`}>
           {barChartData.length > 0 ? (
@@ -46,19 +46,19 @@ const HomeStats = ({
             <span className={`${className}__allTime__stats__items__value`}>
               {itemCount}
             </span>
-            <span className={`${className}__allTime__stats__items__label`}> items </span>
+            items
           </div>
           <div className={`${className}__allTime__stats__reviews`}>
             <span className={`${className}__allTime__stats__reviews__value`}>
               {reviewCount}
             </span>
-            <span className={`${className}__allTime__stats__reviews__label`}> reviews </span>
+            reviews
           </div>
           <div className={`${className}__allTime__stats__ratings`}>
             <span className={`${className}__allTime__stats__ratings__value`}>
               {ratingAvg}
             </span>
-            <span className={`${className}__allTime__stats__ratings__label`}> avg rating </span>
+            avg rating
           </div>
         </div>
         <div className={`${className}__allTime__title`} id={`${id}__allTime__title`}> all time</div>

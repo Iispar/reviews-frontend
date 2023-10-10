@@ -7,7 +7,7 @@ import propTypes from 'prop-types';
  *                               6 is load failed and 5 is success.
  * @property {String} className - custom className if wanted. Default is actionWait.
  * @property {String} id - custom id if wanted. Default is actionWait.
- * @returns the loadingBar
+ * @returns the Actionwait
  */
 const ActionWait = ({ loading, className, id }) => {
   let message;

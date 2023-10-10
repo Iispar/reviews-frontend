@@ -92,20 +92,20 @@ describe('home tests', () => {
         expect(component.getByText(/alltime/)).toBeVisible();
 
         expect(component.getByText('data:')).toBeVisible();
-        expect(component.getByText(/10count/)).toBeVisible();
-        expect(component.getByText(/Februarytime/)).toBeVisible();
-        expect(component.getByText(/3.8rating/)).toBeVisible();
+        expect(component.getByText(/23count/)).toBeVisible();
+        expect(component.getByText(/testTimetime/)).toBeVisible();
+        expect(component.getByText(/12rating/)).toBeVisible();
 
         expect(component.getByText('barChart:')).toBeVisible();
         expect(component.getByText(/29count/)).toBeVisible();
-        expect(component.getByText(/2rating/)).toBeVisible();
+        expect(component.getByText(/333rating/)).toBeVisible();
 
         expect(component.getByRole('button', { name: 'next' })).not.toBeDisabled();
 
         expect(component.getByRole('button', { name: 'previous' })).toBeDisabled();
       });
     });
-    test('succesful render withNextPage works', async () => {
+    test('succesful render with NoNextPage works', async () => {
       getHome.mockImplementation(getHomeMockWithNoNext);
       const component = render(<Home id="test" />);
 

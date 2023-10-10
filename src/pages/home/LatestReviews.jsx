@@ -20,11 +20,11 @@ const LatestReviews = ({
   className, id, reviews, nextPage, prevPage, loading,
 }) => {
   // if page load
-  if (loading === 1) return (<SkeletonLoad />);
+  if (loading === 1) return (<SkeletonLoad id="skeletonLoad" />);
   // else waiting for data.
   if (loading === 2 || loading === 3) {
     return (
-      <div className={`${className}`}>
+      <div className={`${className}`} id={id}>
         <div className={`${className}__header`} id={`${id}__header`}>
           <div className={`${className}__header__text`}> Latest reviews </div>
         </div>
@@ -41,7 +41,7 @@ const LatestReviews = ({
   }
   // no waiting
   return (
-    <div className={`${className}`}>
+    <div className={`${className}`} id={id}>
       <div className={`${className}__header`} id={`${id}__header`}>
         <div className={`${className}__header__text`}> Latest reviews </div>
       </div>

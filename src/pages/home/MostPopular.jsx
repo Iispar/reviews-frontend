@@ -14,11 +14,11 @@ import SkeletonLoad from '../../components/SkeletonLoad';
 const MostPopular = ({ className, id, items }) => {
   if (items == null) {
     return (
-      <SkeletonLoad />
+      <SkeletonLoad id="loading" />
     );
   }
   return (
-    <div className={`${className}`}>
+    <div className={`${className}`} id={id}>
       <div className={`${className}__header`} id={`${id}__header`}>
         <span className={`${className}__header__text`}>popular items</span>
       </div>

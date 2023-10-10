@@ -34,6 +34,9 @@ const HomeChart = ({
       .then((res) => {
         setData(res);
         setLoading(0);
+      })
+      .catch(() => {
+        setLoading(3);
       });
 
     if (selectionText === 'month') {
@@ -54,14 +57,14 @@ const HomeChart = ({
     // if initial load
     if (loading === 1) {
       return (
-        <SkeletonLoad />
+        <SkeletonLoad id="skeletonLoad" />
       );
     }
     // if waiting for data.
     return (
       <div className={className} id={id}>
         <div>
-          <LoadingBar />
+          {loading === 2 ? (<LoadingBar />) : (<div> an error ocurred, please reload </div>)}
           <div className={`${className}__selector`} id={`${id}__selector`}>
             <button className={`${className}__selector__month`} type="button" onClick={() => changeView('month')}> month </button>
             <button className={`${className}__selector__week`} type="button" onClick={() => changeView('week')}> week </button>
