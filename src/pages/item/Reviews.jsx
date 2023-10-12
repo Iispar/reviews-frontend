@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 import ReviewsList from '../../components/ReviewsList';
 import Pagination from '../../components/Pagination';
@@ -25,7 +24,7 @@ import LoadingBar from '../../components/LoadingBar';
 const Reviews = ({
   reviews, className, id, setSort, nextPage, prevPage, onSubmit, setSearch, clearSearch, loading,
 }) => {
-  if (loading === 1 || loading === 2) {
+  if (loading === 1 || loading === 2 || loading === 3) {
     if (loading === 1) {
       return (
         <SkeletonLoad />
@@ -44,7 +43,7 @@ const Reviews = ({
         </div>
         <div className={`${className}__reviews`}>
           <div className="loading">
-            <LoadingBar />
+            {loading === 2 ? (<LoadingBar />) : (<div>error ocurred, please reload</div>)}
           </div>
           <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
             <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />

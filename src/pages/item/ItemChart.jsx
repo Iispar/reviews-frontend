@@ -34,6 +34,9 @@ const ItemChart = ({
       .then((res) => {
         setData(res);
         setLoading(0);
+      })
+      .catch(() => {
+        setLoading(4);
       });
 
     if (selectionText === 'month') {
@@ -57,7 +60,7 @@ const ItemChart = ({
     return (
       <div className={className} id={id}>
         <div>
-          <LoadingBar />
+          {loading === 2 ? (<LoadingBar />) : (<div> an error ocurred, please reload </div>)}
           <div className={`${className}__selector`} id={`${id}__selector`}>
             <button className={`${className}__selector__month`} type="button" onClick={() => changeView('month')}> month </button>
             <button className={`${className}__selector__week`} type="button" onClick={() => changeView('week')}> week </button>

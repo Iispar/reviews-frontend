@@ -36,7 +36,7 @@ const HomeChart = ({
         setLoading(0);
       })
       .catch(() => {
-        setLoading(3);
+        setLoading(4);
       });
 
     if (selectionText === 'month') {

@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 import '@testing-library/jest-dom/extend-expect';
 import { waitFor } from '@testing-library/react';
 import { UseGetReviewsForAccount } from '../../../pages/home/homeHooks';

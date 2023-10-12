@@ -45,7 +45,7 @@ const Words = ({
         {negWords.length > 0 ? (
           <TopWords words={negWords} title="with negative reviews" />
         ) : (
-          <div className={`${className}__empty`}> no top pos </div>
+          <div className={`${className}__empty`}> no top neg </div>
         )}
       </div>
     </div>

@@ -9,7 +9,7 @@ import ItemChart from './ItemChart';
 import Reviews from './Reviews';
 import NewReviewForm from './NewReviewForm';
 import pagesService from '../../services/pagesService';
-import { UseNewReview, useGetReviews } from './itemHooks';
+import { UseNewReview, UseGetReviews } from './itemHooks';
 import SkeletonLoad from '../../components/SkeletonLoad';
 import ActionWait from '../../components/ActionWait';
 import parseInputFile from '../../helpers/ParseInputFile';
@@ -38,7 +38,7 @@ const Item = ({ className, id }) => {
   const [sort, setSort] = useState('none');
   const [search, setSearch] = useState(null);
   const [sortDir, setSortDir] = useState('none');
-  const [isNextPage, setIsNextPage] = useState(null);
+  const [isNextPage, setIsNextPage] = useState(true);
   const [loading, setLoading] = useState(1);
   const page = useRef(0);
 
@@ -56,6 +56,7 @@ const Item = ({ className, id }) => {
     pagesService.getItem(itemId, storage.token)
       .then((res) => {
         setReviews(res.reviews.responseList);
+        if (!res.reviews.nextPage) setIsNextPage(false);
         if (res.topPos == null) {
           setPosWords([]);
           setNegWords([]);
@@ -70,6 +71,9 @@ const Item = ({ className, id }) => {
         setPosReviews(res.positiveReviews);
         setNegReviews(res.negativeReviews);
         setLoading(0);
+      })
+      .catch(() => {
+        setLoading(7);
       });
   }, []);
 
@@ -84,7 +88,7 @@ const Item = ({ className, id }) => {
   const reloadReviews = () => {
     setLoading(2);
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
-    useGetReviews(
+    UseGetReviews(
       itemId,
       search,
       page.current,
@@ -102,7 +106,7 @@ const Item = ({ className, id }) => {
    */
   const newReview = () => {
     $('#words').css('display', 'none');
-    $(`#${className}__grid__words__selection`).css('display', 'none');
+    $(`#${id}__grid__words__selection`).css('display', 'none');
     $('#newReviewForm').css('display', 'flex');
   };
 
@@ -111,7 +115,7 @@ const Item = ({ className, id }) => {
    */
   const closeNew = () => {
     $('#words').css('display', 'flex');
-    $(`#${className}__grid__words__selection`).css('display', 'flex');
+    $(`#${id}__grid__words__selection`).css('display', 'flex');
     $('#newReviewForm').css('display', 'none');
   };
 
@@ -125,8 +129,8 @@ const Item = ({ className, id }) => {
     e.preventDefault();
     let list;
     // if file input is not empty.
-    if (e.target[3].files[0]) {
-      list = await parseInputFile(e.target[3].files[0]);
+    if (e.target.elements[3].files[0]) {
+      list = await parseInputFile(e.target.elements[3].files[0]);
     } else {
       list = [];
       list.push({
@@ -136,10 +140,10 @@ const Item = ({ className, id }) => {
       });
     }
     UseNewReview(itemId, accountId, list, token, reloadReviews, setLoading);
-    $(e.target[0]).val('');
-    $(e.target[1]).val('');
-    $(e.target[2]).val('');
-    $(e.target[3]).val('');
+    $(e.target.elements[0]).val('');
+    $(e.target.elements[1]).val('');
+    $(e.target.elements[2]).val('');
+    $(e.target.elements[3]).val('');
   };
 
   /**
@@ -149,7 +153,7 @@ const Item = ({ className, id }) => {
     setLoading(2);
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     $('#pagination__prev').prop('disabled', false);
-    useGetReviews(
+    UseGetReviews(
       itemId,
       search,
       page.current + 1,
@@ -169,7 +173,7 @@ const Item = ({ className, id }) => {
   const prevPage = () => {
     setLoading(2);
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
-    useGetReviews(
+    UseGetReviews(
       itemId,
       search,
       page.current - 1,
@@ -196,7 +200,7 @@ const Item = ({ className, id }) => {
     page.current = 0;
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     e.preventDefault();
-    useGetReviews(
+    UseGetReviews(
       itemId,
       search,
       page.current,
@@ -222,16 +226,16 @@ const Item = ({ className, id }) => {
     setSort(selSort);
     setSortDir(selSortDir);
 
-    useGetReviews(itemId, search, page.current, `review_${selSort}`, selSortDir, token, setReviews, setIsNextPage, setLoading);
+    UseGetReviews(itemId, search, page.current, `review_${selSort}`, selSortDir, token, setReviews, setIsNextPage, setLoading);
   };
 
   /**
    * Shows the confirm delete buttons.
    */
   const confirmDeletion = () => {
-    $(`#${className}__grid__words__selection__new`).css('display', 'none');
-    $(`#${className}__grid__words__selection__delete`).css('display', 'none');
-    $(`#${className}__grid__words__selection__confirmDelete`).css('display', 'flex');
+    $(`#${id}__grid__words__selection__new`).css('display', 'none');
+    $(`#${id}__grid__words__selection__delete`).css('display', 'none');
+    $(`#${id}__grid__words__selection__confirmDelete`).css('display', 'flex');
   };
 
   /**
@@ -254,9 +258,9 @@ const Item = ({ className, id }) => {
           }, 3000);
         });
     } else {
-      $(`#${className}__grid__words__selection__new`).css('display', 'flex');
-      $(`#${className}__grid__words__selection__delete`).css('display', 'flex');
-      $(`#${className}__grid__words__selection__confirmDelete`).css('display', 'none');
+      $(`#${id}__grid__words__selection__new`).css('display', 'flex');
+      $(`#${id}__grid__words__selection__delete`).css('display', 'flex');
+      $(`#${id}__grid__words__selection__confirmDelete`).css('display', 'none');
     }
   };
 
@@ -270,9 +274,17 @@ const Item = ({ className, id }) => {
     $(`#${inputId}__input`).val('');
     setSearch('');
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
-    useGetReviews(itemId, '', 0, formattedSort, sortDir, token, setReviews, setIsNextPage, setLoading);
+    UseGetReviews(itemId, '', 0, formattedSort, sortDir, token, setReviews, setIsNextPage, setLoading);
   };
 
+  // if error while fetching at useState display error page.
+  if (loading === 7) {
+    return (
+      <div className={className} id={id}>
+        <div> error while fetching data, please try again </div>
+      </div>
+    );
+  }
   return (
     <div className={className} id={id}>
       <div className={`${className}__grid`}>
@@ -312,10 +324,10 @@ const Item = ({ className, id }) => {
               <SkeletonLoad />
             </div>
           ) : (
-            <div className={`${className}__grid__words__selection`} id={`${className}__grid__words__selection`}>
+            <div className={`${className}__grid__words__selection`} id={`${id}__grid__words__selection`}>
               <button className={`${className}__grid__words__selection__new`} id={`${id}__grid__words__selection__new`} type="button" onClick={() => newReview()}> new review </button>
               <button className={`${className}__grid__words__selection__delete`} id={`${id}__grid__words__selection__delete`} type="button" onClick={() => confirmDeletion()}> delete </button>
-              <div className={`${className}__grid__words__selection__confirmDelete`} id={`${className}__grid__words__selection__confirmDelete`}>
+              <div className={`${className}__grid__words__selection__confirmDelete`} id={`${id}__grid__words__selection__confirmDelete`}>
                 <span className={`${className}__grid__words__selection__confirmDelete__text`}>Are you sure?</span>
                 <button className={`${className}__grid__words__selection__confirmDelete__wantedDelete`} id={`${id}__grid__words__selection__confirmDelete__wantedDelete`} type="button" onClick={() => deleteReview(true)}> yes </button>
                 <button className={`${className}__grid__words__selection__confirmDelete__cancelDelete`} id={`${id}__grid__words__selection__confirmDelete__cancelDelete`} type="button" onClick={() => deleteReview(false)}> no </button>
@@ -334,7 +346,7 @@ const Item = ({ className, id }) => {
         </div>
       </div>
       {loading === 4 || loading === 5 || loading === 6 ? (
-        <ActionWait loading={loading} />
+        <ActionWait id="itemActionWait" loading={loading} />
       ) : (<div />)}
     </div>
   );

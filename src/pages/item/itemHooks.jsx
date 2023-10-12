@@ -71,7 +71,7 @@ export const UseNewReview = (itemId, accountId, reviews, token, reloadReviews, s
   * @param {Function} setLoading
  *        Function to set the state of loading
  */
-export const useGetReviews = (
+export const UseGetReviews = (
   itemId,
   search,
   page,
@@ -89,6 +89,9 @@ export const useGetReviews = (
         setReviews(res.responseList);
         setIsNextPage(res.nextPage);
         setLoading(0);
+      })
+      .catch(() => {
+        setLoading(3);
       });
   } else {
     reviewsService.getReviewsForItem(itemId, page, sort, sortDir, token)
@@ -96,6 +99,9 @@ export const useGetReviews = (
         setReviews(res.responseList);
         setIsNextPage(res.nextPage);
         setLoading(0);
+      })
+      .catch(() => {
+        setLoading(3);
       });
   }
 };
