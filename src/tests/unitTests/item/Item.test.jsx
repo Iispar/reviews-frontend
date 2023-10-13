@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import {
@@ -9,7 +10,7 @@ import { getItem } from '../../../services/pagesService';
 import { deleteItem } from '../../../services/itemService';
 import { itemSuccess, itemNoTopWords } from '../../mockData/Item.json';
 import Item from '../../../pages/item/Item';
-import { findWithSpan, addStyling } from '../../testHelpers';
+import { findWithSpan } from '../../testHelpers';
 import { UseGetReviews, UseNewReview } from '../../../pages/item/itemHooks';
 import parseInputFile from '../../../helpers/ParseInputFile';
 

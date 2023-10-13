@@ -20,9 +20,9 @@ const NewReviewForm = ({
       <span className={`${className}__form__title`}> add a new comment </span>
       <InputField className={`${className}__form__itemTitle`} title="title" width="280px" />
       <LargeInputField title="comment body" height="300px" />
-      <input className={`${className}__form__date`} type="date" />
+      <input className={`${className}__form__date`} id={`${id}__form__date`} type="date" />
       <span className={`${className}__form__file`}> or add a file </span>
-      <JsonFileInput id={`${className}__form__fileInput`} height="200px" />
+      <JsonFileInput id={`${id}__form__fileInput`} height="200px" />
     </form>
     <div className={`${className}__buttons`} id={`${className}__buttons`}>
       <button className={`${className}__buttons__create`} id={`${className}__buttons__create`} form={`${className}__form`} type="submit"> add </button>

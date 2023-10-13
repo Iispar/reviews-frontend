@@ -16,7 +16,6 @@ import propTypes from 'prop-types';
 const Title = ({
   name, reviewsCount, ratingValue, posReviews, negReviews, className, id,
 }) => {
-  if (name == null) return null;
   /**
    * Formats the star rating to actual stars.
    * @param {String} reviews
@@ -45,7 +44,7 @@ const Title = ({
       }
     }
     return (
-      <div className={`${className}__data__rating__stars`}>
+      <div className={`${className}__data__rating__stars`} id={`${id}__data__rating__stars`}>
         {list}
       </div>
     );
@@ -64,18 +63,18 @@ const Title = ({
   return (
     <div className={`${className}`} id={`${id}`}>
       <div className={`${className}__info`}>
-        <div className={`${className}__info__name`} id={`${className}__info__name`}>
+        <div className={`${className}__info__name`} id={`${id}__info__name`}>
           {name}
         </div>
       </div>
       <div className={`${className}__data`}>
-        <div className={`${className}__data__reviews`} id={`${className}__data__reviews`}>
+        <div className={`${className}__data__reviews`} id={`${id}__data__reviews`}>
           <span className={`${className}__data__reviews__value`}>
             {reviewsCount}
           </span>
           reviews
         </div>
-        <div className={`${className}__data__rating`} id={`${className}__data__rating`} onMouseLeave={() => showRating(false)} onMouseEnter={() => showRating(true)}>
+        <div className={`${className}__data__rating`} id={`${id}__data__rating`} onMouseLeave={() => showRating(false)} onMouseEnter={() => showRating(true)}>
           <span className={`${className}__data__rating__hover`} id={`${id}__data__rating__hover`}>
             {parseFloat(ratingValue, 10).toFixed(1)}
           </span>
@@ -84,13 +83,13 @@ const Title = ({
           </span>
           rating
         </div>
-        <div className={`${className}__data__positive`} id={`${className}__data__positive`}>
+        <div className={`${className}__data__positive`} id={`${id}__data__positive`}>
           <span className={`${className}__data__positive__value`}>
             {posReviews}
           </span>
           positive
         </div>
-        <div className={`${className}__data__negative`} id={`${className}__data__negative`}>
+        <div className={`${className}__data__negative`} id={`${id}__data__negative`}>
           <span className={`${className}__data__negative__value`}>
             {negReviews}
           </span>

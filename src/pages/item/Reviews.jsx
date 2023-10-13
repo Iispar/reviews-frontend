@@ -96,7 +96,7 @@ Reviews.defaultProps = {
   reviews: null,
   className: 'reviews',
   id: 'reviews',
-  setSort: 'none',
+  setSort: null,
   nextPage: null,
   prevPage: null,
   onSubmit: null,
