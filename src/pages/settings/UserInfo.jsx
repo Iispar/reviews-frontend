@@ -51,11 +51,11 @@ const UserInfo = ({
   return (
     <div className={className} id={id}>
       <div className={`${className}__values`}>
-        <button className={`${className}__values__closeButton`} id={`${className}__header__closeButton`} type="submit" onClick={() => openForm('none')}>  </button>
+        <button className={`${className}__values__closeButton`} id={`${id}__header__closeButton`} type="submit" onClick={() => openForm('none')}>  </button>
         <SettingsInputField title="name" onChange={setName} onSubmit={(e) => updateAccount(e)} defaultValue={currName} id="settingsName" />
         <SettingsInputField title="username" onChange={setUsername} onSubmit={(e) => updateAccount(e)} defaultValue={currUsername} id="settingsUsername" />
         <SettingsInputField title="email" onChange={setEmail} onSubmit={(e) => updateAccount(e)} defaultValue={currEmail} id="settingsEmail" />
-        <form className={`${className}__values__password`} id={`${className}__values__password`} onSubmit={(e) => updateAccount(e)}>
+        <form className={`${className}__values__password`} id={`${id}__values__password`} onSubmit={(e) => updateAccount(e)}>
           <div className={`${className}__values__password__passContainer`}>
             <div className={`${className}__values__password__passContainer__passText`}>
               password &nbsp;
@@ -64,13 +64,13 @@ const UserInfo = ({
               <input className={`${className}__values__password__passContainer__input__field`} placeholder="******" type="password" onChange={(current) => setPassword(current.target.value)} />
             </div>
           </div>
-          <div className={`${className}__values__password__confirmContainer`} id={`${className}__values__password__confirmContainer`}>
+          <div className={`${className}__values__password__confirmContainer`} id={`${id}__values__password__confirmContainer`}>
             <div className={`${className}__values__password__confirmContainer__confirmText`}>
               confirm &nbsp;
             </div>
             <div className={`${className}__values__password__confirmContainer__input`}>
-              <input className={`${className}__values__password__confirmContainer__input__field`} type="password" onChange={(current) => setConfirmPassword(current.target.value)} />
-              <button className={`${className}__values__password__confirmContainer__input__change`} id={`${className}__values__password__confirmContainer__input__change`} type="submit"> change </button>
+              <input className={`${className}__values__password__confirmContainer__input__field`} id="settingsConfirm__form__input" type="password" onChange={(current) => setConfirmPassword(current.target.value)} />
+              <button className={`${className}__values__password__confirmContainer__input__change`} id={`${id}__values__password__confirmContainer__input__change`} type="submit"> change </button>
             </div>
           </div>
         </form>

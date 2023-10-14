@@ -10,6 +10,7 @@ import accountService from '../../services/accountService';
  */
 export const UseDeleteAccount = (id, token) => {
   accountService.deleteAccount(id, token);
+  // TODO: loading (actionWait and catching)
 };
 
 /**
@@ -41,5 +42,6 @@ export const UseUpdateAccount = (accountId, name, username, password, role, emai
     email,
   };
   accountService.updateAccount(accountId, account, token);
+  // TODO: loading (actionWait and catching)
   return true;
 };
