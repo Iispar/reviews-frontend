@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import Selections from './Selections';
 import accountService from '../../services/accountService';
-import { useUpdateAccount, useDeleteAccount } from './settingsHooks';
+import { UseUpdateAccount, UseDeleteAccount } from './settingsHooks';
 import { UseGetLocalStorage } from '../../helpers/helperHooks';
+import SkeletonLoad from '../../components/SkeletonLoad';
 
 /**
  * Renders the settings page.
@@ -31,6 +32,7 @@ const Settings = ({ className, id }) => {
   const [newUsername, setNewUsername] = useState(null);
   const [newEmail, setNewEmail] = useState(null);
   const [newPassword, setNewPassword] = useState('none');
+  const [loading, setLoading] = useState(1);
 
   useEffect(() => {
     const storage = UseGetLocalStorage();
@@ -47,6 +49,10 @@ const Settings = ({ className, id }) => {
         setNewName(res.name);
         setNewUsername(res.username);
         setNewEmail(res.email);
+        setLoading(0);
+      })
+      .catch(() => {
+        setLoading(2);
       });
   }, []);
   /**
@@ -56,7 +62,7 @@ const Settings = ({ className, id }) => {
    */
   const deleteAccount = (e) => {
     e.preventDefault();
-    useDeleteAccount(accountId, token);
+    UseDeleteAccount(accountId, token);
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('accountId');
     window.location.reload();
@@ -69,7 +75,7 @@ const Settings = ({ className, id }) => {
      */
   const updateAccount = (e) => {
     e.preventDefault();
-    useUpdateAccount(accountId, newName, newUsername, newPassword, curRole, newEmail, token);
+    UseUpdateAccount(accountId, newName, newUsername, newPassword, curRole, newEmail, token);
     // if username is updated logout.
     if (newUsername !== curUsername) {
       window.localStorage.removeItem('token');
@@ -77,26 +83,28 @@ const Settings = ({ className, id }) => {
     }
   };
 
+  if (loading === 2) return (<div> an error occured, please reload </div>);
   return (
-    <div className={className}>
+    <div className={className} id={id}>
       <div className={`${className}__grid`}>
         <div className={`${className}__grid__title`} id={`${id}__grid__title`}>
           Settings
         </div>
         <div className={`${className}__grid__selections`} id={`${id}__grid__selections`}>
-          <Selections
-            setPassword={setNewPassword}
-            setUsername={setNewUsername}
-            setName={setNewName}
-            deleteAccount={(e) => deleteAccount(e)}
-            setEmail={setNewEmail}
-            updateAccount={(e) => updateAccount(e)}
-            username={curUsername}
-            name={curName}
-            email={curEmail}
-            key={curEmail}
-            role={curRole}
-          />
+          {loading === 1 ? (<SkeletonLoad />) : (
+            <Selections
+              setPassword={setNewPassword}
+              setUsername={setNewUsername}
+              setName={setNewName}
+              deleteAccount={(e) => deleteAccount(e)}
+              setEmail={setNewEmail}
+              updateAccount={(e) => updateAccount(e)}
+              username={curUsername}
+              name={curName}
+              email={curEmail}
+              key={curEmail}
+            />
+          )}
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ import SettingsInputField from '../../components/SettingsInputField';
  * @property {String} className - Custom className if wanted. Default userInfo.
  * @property {String} id - Custom id if wanted. Default userInfo.
  * @property {String} currName - the current name of the account.
- *  * @property {String} currName - the current role of the account.
+ * @property {String} currName - the current role of the account.
  * @property {String} currUsername - the current username of the account.
  * @property {String} currEmail - the current email of the account
  * @property {func} updateAccount - the function to update account.
@@ -17,7 +17,6 @@ import SettingsInputField from '../../components/SettingsInputField';
  * @property {func} setUsername - the function to set the username on change.
  * @property {func} setEmail - the function to set the email on change.
  * @property {func} setNewPassword - the function to set the password on change.
- * @property {func} setRole - the function to set the role on change.
  * @returns user info page.
  */
 const UserInfo = ({

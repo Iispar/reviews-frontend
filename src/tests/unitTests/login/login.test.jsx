@@ -23,7 +23,6 @@ jest.mock('../../../pages/login/loginHooks', () => ({
 }));
 
 jest.mock('../../../pages/login/LoginForm');
-
 jest.mock('../../../pages/login/CreateAccountForm');
 
 afterEach(() => {

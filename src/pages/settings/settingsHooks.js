@@ -8,7 +8,7 @@ import accountService from '../../services/accountService';
  *        the id of the account you want to delete
  * @returns true if successful, false otherwise.
  */
-export const useDeleteAccount = (id, token) => {
+export const UseDeleteAccount = (id, token) => {
   accountService.deleteAccount(id, token);
 };
 
@@ -30,7 +30,7 @@ export const useDeleteAccount = (id, token) => {
  *        The token of the logged in account.
  * @returns true if successful, false otherwise.
  */
-export const useUpdateAccount = (accountId, name, username, password, role, email, token) => {
+export const UseUpdateAccount = (accountId, name, username, password, role, email, token) => {
   const formattedPass = password.length === 0 ? 'none' : password;
 
   const account = {

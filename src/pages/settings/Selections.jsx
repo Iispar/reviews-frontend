@@ -22,7 +22,6 @@ const Selections = ({
   username,
   name,
   email,
-  role,
 }) => {
   /**
    * Opens the form to see user info or delete account.
@@ -71,7 +70,6 @@ const Selections = ({
           setEmail={setEmail}
           updateAccount={(e) => updateAccount(e)}
           currName={name}
-          currRole={role}
         />
         <DeleteAccount onSubmit={deleteAccount} openForm={openForm} />
       </div>
@@ -91,7 +89,6 @@ Selections.propTypes = {
   username: propTypes.string,
   name: propTypes.string,
   email: propTypes.string,
-  role: propTypes.number,
 };
 
 Selections.defaultProps = {
@@ -106,7 +103,6 @@ Selections.defaultProps = {
   username: null,
   name: null,
   email: null,
-  role: null,
 };
 
 export default Selections;
