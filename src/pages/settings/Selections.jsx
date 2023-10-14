@@ -33,24 +33,24 @@ const Selections = ({
   const openForm = (selection, btn) => {
     // clumsy...
     // reset borders
-    $(`#${className}__buttons__newUser`).css('border-left', 'none ');
-    $(`#${className}__buttons__newPass`).css('border-left', 'none');
-    $(`#${className}__buttons__delAccount`).css('border-left', 'none');
+    $(`#${id}__buttons__newUser`).css('border-left', 'none ');
+    $(`#${id}__buttons__newPass`).css('border-left', 'none');
+    $(`#${id}__buttons__delAccount`).css('border-left', 'none');
     // set border
     $(`#${btn}`).css('border-left', '2px solid black');
     // reset screens
-    $(`#${className}__form`).css('display', 'none');
+    $(`#${id}__form`).css('display', 'none');
     $('#userInfo').css('display', 'none');
     $('#deleteAccount').css('display', 'none');
     // set the screen of the click
     if (selection !== 'none') {
-      $(`#${className}__form`).css('display', 'flex');
+      $(`#${id}__form`).css('display', 'flex');
       $(`#${selection}`).css('display', 'flex');
     }
   };
 
   return (
-    <div className={className}>
+    <div className={className} id={id}>
       <div className={`${className}__buttons`} id={`${id}__buttons`}>
         <button className={`${className}__buttons__newUser`} id={`${id}__buttons__newUser`} type="button" onClick={() => openForm('userInfo', 'selections__buttons__newUser')}>
           edit profile

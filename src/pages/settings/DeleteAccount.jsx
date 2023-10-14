@@ -16,7 +16,7 @@ const DeleteAccount = ({
   <div className={className} id={id}>
     <div className={`${className}__header`} id={`${className}__header`}>
       <div className={`${className}__header__text`}> delete account </div>
-      <button className={`${className}__header__closeButton`} id={`${className}__header__closeButton`} type="submit" onClick={() => openForm('none')}> </button>
+      <button id={`${id}__header__closeButton`} type="submit" onClick={() => openForm('none')}> </button>
     </div>
     <div className={`${className}__form`} id={`${className}__form`}>
       <SettingsInputField

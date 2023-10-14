@@ -55,7 +55,7 @@ describe('settingsInputField tests', () => {
     expect(mockSet.mock.calls).toHaveLength(7);
   });
 
-  test('change button works without defaulValue', async () => {
+  test('change button works without defaultValue', async () => {
     const mockSet = jest.fn();
     const component = render(<SettingsInputField onChange={mockSet} warningText="this is a warning" id="test" defaultValue="test value" title="test title" submitText="test submit" type="text" />);
 
@@ -70,7 +70,7 @@ describe('settingsInputField tests', () => {
 
     expect(component.getByText('test submit')).not.toBeVisible();
   });
-  test('change button works without defaulValue', async () => {
+  test('change button works without defaultValue', async () => {
     const mockSet = jest.fn();
     const component = render(<SettingsInputField onChange={mockSet} warningText="this is a warning" id="test" confirmationText="test value" title="test title" submitText="test submit" type="text" />);
 
