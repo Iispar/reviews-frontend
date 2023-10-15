@@ -1,11 +1,12 @@
 import '@testing-library/jest-dom/extend-expect';
+import 'jest-canvas-mock';
 import { useTextWidth, useVerticalPoints } from '../../../helpers/componentHelpers';
 
 describe('componentHelpers tests', () => {
   const widths = [
-    ['test text one', 54.4775390625],
-    ['test two', 34.4580078125],
-    ['test number three which is a bit longer', 168.974609375],
+    ['test text one', 13],
+    ['test two', 8],
+    ['test number three which is a bit longer', 39],
   ];
   test.each(widths)('useTextWidth works', (text, ans) => {
     expect(useTextWidth(text)).toBe(ans, 'mulish.ttf');

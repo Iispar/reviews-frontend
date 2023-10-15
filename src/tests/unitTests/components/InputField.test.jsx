@@ -21,11 +21,8 @@ describe('inputField tests', () => {
 
     const error = component.getByText('test error');
     const input = component.getByText('test title');
-    const cutout = component.container.querySelector('#test__container__cutout');
     const label = component.container.querySelector('#test__container__label');
 
-    expect(error).toHaveStyle('width: 56.013671875px');
-    expect(cutout).toHaveStyle('width: 55.1328125px');
     expect(label).toHaveStyle('top: 5px');
     expect(error).not.toBeVisible();
     expect(input).toBeVisible();

@@ -3,6 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SmallItem from '../../../components/SmallItem';
+import { useTextWidth } from '../../../helpers/componentHelpers';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -11,6 +12,14 @@ jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: () => mockedUsedNavigate,
 }));
+
+jest.mock('../../../helpers/componentHelpers', () => ({
+  useTextWidth: jest.fn(),
+}));
+
+beforeEach(() => {
+  useTextWidth.mockImplementation(() => '20');
+});
 
 describe('SmallItem tests', () => {
   test('smallItem renders', () => {
@@ -30,7 +39,7 @@ describe('SmallItem tests', () => {
 
     await waitFor(() => {
       expect(component.getByText('this item has a really long name to test the scroll feature.').className).toBe('smallItem__name__text hover');
-      expect(component.getByText('this item has a really long name to test the scroll feature.')).toHaveStyle('transition: all 2.2233072916666665s linear');
+      expect(component.getByText('this item has a really long name to test the scroll feature.')).toHaveStyle('transition: all 0.1111111111111111s linear');
       expect(component.getByText('4.2')).toBeVisible();
     });
   });

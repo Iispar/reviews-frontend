@@ -4,7 +4,6 @@
  * @param {string} font - the font used
  * @returns width in pixels
  */
-
 export const useTextWidth = (text, font) => {
   const canvas = useTextWidth.canvas || (useTextWidth.canvas = document.createElement('canvas'));
   const context = canvas.getContext('2d');

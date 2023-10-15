@@ -4,6 +4,15 @@ import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { addStyling } from '../../testHelpers';
 import DropDownSortMenu from '../../../components/DropDownSortMenu';
+import { useTextWidth } from '../../../helpers/componentHelpers';
+
+jest.mock('../../../helpers/componentHelpers', () => ({
+  useTextWidth: jest.fn(),
+}));
+
+beforeEach(() => {
+  useTextWidth.mockImplementation(() => '20px');
+});
 
 describe('dropDownSortMenu tests', () => {
   test('dropDownSorMenu renders', () => {
@@ -56,10 +65,10 @@ describe('dropDownSortMenu tests', () => {
   });
 
   const sortSelections = [
-    ['#test__reviews__asc', '73.896484375px'],
-    ['#test__reviews__desc', '73.896484375px'],
-    ['#test__rating__asc', '65.0146484375px'],
-    ['#test__rating__desc', '65.0146484375px'],
+    ['#test__reviews__asc', '160px'],
+    ['#test__reviews__desc', '160px'],
+    ['#test__rating__asc', '160px'],
+    ['#test__rating__desc', '160px'],
   ];
   test.each(sortSelections)('dropDown sort selection works', async (id, width) => {
     const mockSet = jest.fn();
