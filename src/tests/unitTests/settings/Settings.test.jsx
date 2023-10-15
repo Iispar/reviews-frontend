@@ -66,7 +66,7 @@ describe('Settings tests', () => {
       const component = render(<Settings id="test" />);
 
       await waitFor(() => {
-        expect(component.container.querySelector('#loading__beat')).toBeVisible();
+        expect(component.container.querySelectorAll('#loading__beat')).toHaveLength(2);
       });
     });
     test('failed render works', async () => {
@@ -87,6 +87,8 @@ describe('Settings tests', () => {
       });
 
       await userEvent.click(component.getByRole('button', { name: 'delete' }));
+
+      expect(component.container.querySelector('#settingsActionWait__container')).toBeVisible();
 
       expect(useDeleteMock.mock.calls).toHaveLength(1);
       expect(useDeleteMock.mock.calls[0][0]).toBe('testId');

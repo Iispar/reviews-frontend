@@ -5,6 +5,7 @@ import accountService from '../../services/accountService';
 import { UseUpdateAccount, UseDeleteAccount } from './settingsHooks';
 import { UseGetLocalStorage } from '../../helpers/helperHooks';
 import SkeletonLoad from '../../components/SkeletonLoad';
+import ActionWait from '../../components/ActionWait';
 
 /**
  * Renders the settings page.
@@ -61,6 +62,7 @@ const Settings = ({ className, id }) => {
    *        event called with.
    */
   const deleteAccount = (e) => {
+    setLoading(4);
     e.preventDefault();
     UseDeleteAccount(accountId, token);
     window.localStorage.removeItem('token');
@@ -75,7 +77,17 @@ const Settings = ({ className, id }) => {
      */
   const updateAccount = (e) => {
     e.preventDefault();
-    UseUpdateAccount(accountId, newName, newUsername, newPassword, curRole, newEmail, token);
+    setLoading(4);
+    UseUpdateAccount(
+      accountId,
+      newName,
+      newUsername,
+      newPassword,
+      curRole,
+      newEmail,
+      token,
+      setLoading,
+    );
     // if username is updated logout.
     if (newUsername !== curUsername) {
       window.localStorage.removeItem('token');
@@ -88,7 +100,7 @@ const Settings = ({ className, id }) => {
     <div className={className} id={id}>
       <div className={`${className}__grid`}>
         <div className={`${className}__grid__title`} id={`${id}__grid__title`}>
-          Settings
+          {loading === 1 ? (<SkeletonLoad />) : (<p>Settings</p>)}
         </div>
         <div className={`${className}__grid__selections`} id={`${id}__grid__selections`}>
           {loading === 1 ? (<SkeletonLoad />) : (
@@ -107,6 +119,9 @@ const Settings = ({ className, id }) => {
           )}
         </div>
       </div>
+      {loading === 4 || loading === 5 || loading === 6 ? (
+        <ActionWait id="settingsActionWait" loading={loading} />
+      ) : (<div />)}
     </div>
   );
 };

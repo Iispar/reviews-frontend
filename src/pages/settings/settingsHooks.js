@@ -6,11 +6,24 @@ import accountService from '../../services/accountService';
  * hook to delete an users account
  * @param {String} id
  *        the id of the account you want to delete
+ * @param {Function} setLoading
+ *        Sets the state of loading for the view.
  * @returns true if successful, false otherwise.
  */
-export const UseDeleteAccount = (id, token) => {
-  accountService.deleteAccount(id, token);
-  // TODO: loading (actionWait and catching)
+export const UseDeleteAccount = (id, token, setLoading) => {
+  accountService.deleteAccount(id, token)
+    .then(() => {
+      setLoading(5);
+      setTimeout(() => {
+        setLoading(0);
+      }, 1000);
+    })
+    .catch(() => {
+      setLoading(6);
+      setTimeout(() => {
+        setLoading(0);
+      }, 3000);
+    });
 };
 
 /**
@@ -29,9 +42,20 @@ export const UseDeleteAccount = (id, token) => {
  *        The new email for the account.
  * @param {String} token
  *        The token of the logged in account.
+ * @param {Function} setLoading
+ *        Sets the state of loading for the view.
  * @returns true if successful, false otherwise.
  */
-export const UseUpdateAccount = (accountId, name, username, password, role, email, token) => {
+export const UseUpdateAccount = (
+  accountId,
+  name,
+  username,
+  password,
+  role,
+  email,
+  token,
+  setLoading,
+) => {
   const formattedPass = password.length === 0 ? 'none' : password;
 
   const account = {
@@ -41,7 +65,17 @@ export const UseUpdateAccount = (accountId, name, username, password, role, emai
     role: { id: role },
     email,
   };
-  accountService.updateAccount(accountId, account, token);
-  // TODO: loading (actionWait and catching)
-  return true;
+  accountService.updateAccount(accountId, account, token)
+    .then(() => {
+      setLoading(5);
+      setTimeout(() => {
+        setLoading(0);
+      }, 1000);
+    })
+    .catch(() => {
+      setLoading(6);
+      setTimeout(() => {
+        setLoading(0);
+      }, 3000);
+    });
 };
