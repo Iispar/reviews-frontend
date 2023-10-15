@@ -1,0 +1,58 @@
+{
+    "chart": [
+        {
+            "count": 12,
+            "time": null,
+            "rating": -1.0,
+            "timeYear": null
+        },
+        {
+            "count": 10,
+            "time": "February",
+            "rating": 3.8,
+            "timeYear": "2013"
+        },
+        {
+            "count": 9,
+            "time": "March",
+            "rating": 4.3,
+            "timeYear": "2013"
+        },
+        {
+            "count": 13,
+            "time": "April",
+            "rating": 4.3,
+            "timeYear": "2013"
+        },
+        {
+            "count": 12,
+            "time": "July",
+            "rating": 4.1,
+            "timeYear": "2013"
+        },
+        {
+            "count": 11,
+            "time": "August",
+            "rating": 4.5,
+            "timeYear": "2013"
+        },
+        {
+            "count": 11,
+            "time": "October",
+            "rating": 4.5,
+            "timeYear": "2013"
+        },
+        {
+            "count": 6,
+            "time": "November",
+            "rating": 4.0,
+            "timeYear": "2013"
+        },
+        {
+            "count": 12,
+            "time": null,
+            "rating": -1.0,
+            "timeYear": null
+        }
+    ]
+}

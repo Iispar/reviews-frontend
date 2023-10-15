@@ -14,9 +14,10 @@
         width: 180px;
         position: relative;
         &__warning {
-            display: none;
+            display: flex;
             font-size: 12px;
             padding-bottom: 10px;
+            white-space: pre-line;
         }
         &__input {
             grid-column: 2;

@@ -15,7 +15,7 @@ btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__subm
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .newReviewForm__buttons__create:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .login__loginForm__inputs__loginBtn:hover {
+btn:hover:enabled, .newReviewForm__buttons__create:hover:enabled, .newReview__button:hover:enabled, .fileInput__form__submitBtn:hover:enabled, .createNew__createAccountForm__inputs__submit:hover:enabled, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover:enabled, .login__loginForm__inputs__loginBtn:hover:enabled {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -32,8 +32,11 @@ pagination-btn, .pagination__next, .pagination__prev {
   font-family: mainFont;
   background: #FFFFFF;
 }
-pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
+pagination-btn:hover:enabled, .pagination__next:hover:enabled, .pagination__prev:hover:enabled {
   box-shadow: 0px 0px 2px 1px #EF8354;
+}
+pagination-btn:disabled, .pagination__next:disabled, .pagination__prev:disabled {
+  border: 1px solid #c2c2c2;
 }
 
 close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close, .settingsInput__form__delete {
@@ -82,13 +85,15 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 336px;
+  height: 356px;
 }
 .login__loginForm {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   gap: 5px;
-  height: 300px;
+  height: 320px;
   width: 300px;
   border-radius: 10px;
   background: #FFFFFF;
@@ -99,16 +104,29 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 60px;
-  padding-top: 10px;
+  min-height: 60px;
   font-size: 28px;
   text-transform: uppercase;
+}
+.login__loginForm__error {
+  font-size: 14px;
+  background: #FF9494;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 240px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.login__loginForm__error:empty {
+  display: none;
 }
 .login__loginForm__inputs {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 240px;
+  height: 100%;
   padding-right: 4px;
   padding-left: 4px;
   padding-bottom: 20px;
@@ -221,7 +239,7 @@ btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__subm
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .newReviewForm__buttons__create:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .createNew__createAccountForm__inputs__submit:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover {
+btn:hover:enabled, .newReviewForm__buttons__create:hover:enabled, .newReview__button:hover:enabled, .fileInput__form__submitBtn:hover:enabled, .createNew__createAccountForm__inputs__submit:hover:enabled, .login__loginForm__inputs__loginBtn:hover:enabled, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover:enabled {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -238,8 +256,11 @@ pagination-btn, .pagination__next, .pagination__prev {
   font-family: mainFont;
   background: #FFFFFF;
 }
-pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
+pagination-btn:hover:enabled, .pagination__next:hover:enabled, .pagination__prev:hover:enabled {
   box-shadow: 0px 0px 2px 1px #EF8354;
+}
+pagination-btn:disabled, .pagination__next:disabled, .pagination__prev:disabled {
+  border: 1px solid #c2c2c2;
 }
 
 close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close, .settingsInput__form__delete {
@@ -288,14 +309,14 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  height: 456px;
+  height: 470px;
   display: none;
 }
 .createNew__createAccountForm {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  height: 400px;
+  height: 430px;
   width: 300px;
   border-radius: 10px;
   background: #FFFFFF;
@@ -327,6 +348,36 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   width: 100%;
   gap: 10px;
 }
+.createNew__createAccountForm__inputs__form__password {
+  position: relative;
+}
+.createNew__createAccountForm__inputs__form__password__message {
+  display: none;
+  position: absolute;
+  top: -24px;
+  left: 260px;
+  height: 80px;
+  width: 200px;
+  background: #FFFFFF;
+  border: 1px solid #545454;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 12px;
+}
+.createNew__createAccountForm__inputs__form__roleLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2px;
+  padding-top: 0px;
+  height: 24px;
+  gap: 10px;
+}
+.createNew__createAccountForm__inputs__form__roleLabel__selection {
+  color: #545454;
+  width: 100px;
+}
 .createNew__createAccountForm__inputs__submit {
   margin-top: auto;
   width: 260px;
@@ -350,6 +401,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
 }
 
 .loginGrid {
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -417,7 +469,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   border: 1.5px solid #EF8354;
 }
 .searchField__container__input:focus ~ label, .searchField__container__input:valid ~ label {
-  transform: translate(8px, -19px);
+  transform: translate(7px, -19px);
   font-size: 12px;
 }
 .searchField__container__input:focus ~ div, .searchField__container__input:valid ~ div {
@@ -427,12 +479,13 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   display: none;
   justify-content: center;
   align-items: center;
-  padding-right: 4px;
   position: absolute;
   white-space: nowrap;
+  padding-left: 2px;
+  padding-right: 2px;
   height: 12px;
   top: -7px;
-  left: 14px;
+  left: 6px;
   pointer-events: none;
   background: #FFFFFF;
   font-size: 12px;
@@ -452,7 +505,7 @@ btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__subm
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover, .newReviewForm__buttons__create:hover, .newReview__button:hover, .fileInput__form__submitBtn:hover, .login__loginForm__inputs__loginBtn:hover, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover, .createNew__createAccountForm__inputs__submit:hover {
+btn:hover:enabled, .newReviewForm__buttons__create:hover:enabled, .newReview__button:hover:enabled, .fileInput__form__submitBtn:hover:enabled, .login__loginForm__inputs__loginBtn:hover:enabled, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover:enabled, .createNew__createAccountForm__inputs__submit:hover:enabled {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -469,8 +522,11 @@ pagination-btn, .pagination__next, .pagination__prev {
   font-family: mainFont;
   background: #FFFFFF;
 }
-pagination-btn:hover, .pagination__next:hover, .pagination__prev:hover {
+pagination-btn:hover:enabled, .pagination__next:hover:enabled, .pagination__prev:hover:enabled {
   box-shadow: 0px 0px 2px 1px #EF8354;
+}
+pagination-btn:disabled, .pagination__next:disabled, .pagination__prev:disabled {
+  border: 1px solid #c2c2c2;
 }
 
 close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close, .settingsInput__form__delete {
@@ -585,6 +641,10 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   align-items: center;
   gap: 6px;
 }
+.navBar__list__logout {
+  position: absolute;
+  bottom: 20px;
+}
 .navBar button {
   background: transparent;
   border: none;
@@ -636,11 +696,13 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   border-bottom: 1px solid #c2c2c2;
   font-size: 16px;
   transition: all 0.3s;
-  padding-bottom: 12px;
   margin-right: 20px;
   margin-left: 20px;
   justify-content: center;
-  max-height: 150px;
+  flex-grow: 1;
+  min-height: 0px;
+  flex: 1;
+  padding-bottom: 12px;
 }
 .largeReview__info {
   display: flex;
@@ -675,6 +737,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
 .largeReview__info__body__header__title {
   display: flex;
   font-size: 20px;
+  width: 420px;
 }
 .largeReview__info__body__header__date {
   display: flex;
@@ -697,9 +760,9 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   width: 20px;
   filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
 }
-.largeReview__info__rating {
+.largeReview__info__stats {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 4px;
   width: 10%;
   border-left: 2px solid #c2c2c2;
@@ -707,7 +770,14 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   align-items: center;
   padding: 10px;
 }
-.largeReview__info__rating__expandBtn {
+.largeReview__info__stats__rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+.largeReview__info__stats__rating__expandBtn {
   background: url("../../data/icons/arrowDown.svg");
   background-size: 100%;
   background-repeat: no-repeat;
@@ -720,7 +790,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   width: 20px;
   filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
 }
-.largeReview__info__rating__icon {
+.largeReview__info__stats__rating__icon {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -733,10 +803,17 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
   margin-bottom: 4px;
 }
+.largeReview__info__stats__item {
+  text-decoration: none;
+  display: none;
+  justify-content: center;
+  height: 20px;
+  width: 50px;
+}
 
 .showAll {
   display: block;
-  height: 120px;
+  height: 110px;
   padding-top: 0px;
   overflow: scroll;
   -webkit-line-clamp: none;
@@ -746,17 +823,15 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
 .reviewsList {
   display: flex;
   flex-direction: column;
-  height: 400px;
-  width: 100%;
-  padding: 10px;
+  height: 100%;
+  max-height: 400px;
   padding-left: 0px;
   padding-right: 0px;
-  padding-bottom: 0px;
-  justify-content: space-around;
-  flex-flow: column wrap;
-  align-items: stretch;
-  flex-wrap: nowrap;
+  gap: 14px;
+  justify-content: flex-start;
   box-sizing: border-box;
+  flex: 1;
+  min-height: 0;
 }
 
 .pagination {
@@ -777,9 +852,9 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
 
 .smallItem {
   display: flex;
-  border-radius: 5px;
-  width: 90%;
-  height: 46px;
+  border-radius: 6px;
+  width: calc(100% - 20px);
+  height: 50px;
   background: #FFFFFF;
   cursor: pointer;
 }
@@ -824,7 +899,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
 }
 
 .hover {
-  transition: all 2s;
+  transition: all 4s linear;
   white-space: nowrap;
 }
 .hover:hover {
@@ -835,9 +910,10 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   height: 100%;
   width: 100%;
-  justify-content: space-between;
+  gap: 10px;
 }
 
 .largeField {
@@ -1036,11 +1112,12 @@ input[type=search]::-webkit-search-cancel-button {
 
 .lineTooltip {
   background: #FFFFFF;
-  width: 140px;
+  width: 160px;
   height: 80px;
   border: 2px solid #CBDAF0;
   border-radius: 10px;
   padding: 0;
+  padding-bottom: 20px;
   padding-left: 6px;
   box-sizing: border-box;
   display: flex;
@@ -1067,7 +1144,7 @@ input[type=search]::-webkit-search-cancel-button {
   top: 0px;
   left: 0px;
   right: 0px;
-  padding: 0px;
+  padding-bottom: 0px;
   margin: 0px;
 }
 
@@ -1079,8 +1156,6 @@ input[type=search]::-webkit-search-cancel-button {
   padding: 20px;
   padding-top: 4px;
   box-sizing: border-box;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 2px #b5b5b5;
 }
 .wordList__title {
   height: 30px;
@@ -1269,6 +1344,119 @@ input[type=file] {
   gap: 10px;
 }
 
+.dropDownSortMenu {
+  display: flex;
+  width: 44px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #EF8354;
+  border-radius: 10px;
+}
+.dropDownSortMenu__btn {
+  border: none;
+  background: transparent;
+  justify-content: flex-end;
+  padding-right: 4px;
+  padding-bottom: 2px;
+}
+.dropDownSortMenu__reviews, .dropDownSortMenu__rating, .dropDownSortMenu__date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.dropDownSortMenu__reviews button, .dropDownSortMenu__rating button, .dropDownSortMenu__date button {
+  width: 100%;
+  height: 100%;
+  display: none;
+  border: none;
+  background: transparent;
+  justify-content: center;
+  padding: 0;
+  padding-top: 1px;
+  padding-left: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.dropDownSortMenu__reviews button:disabled, .dropDownSortMenu__rating button:disabled, .dropDownSortMenu__date button:disabled {
+  background: transparent;
+  color: #000000;
+}
+.dropDownSortMenu__reviews button:hover:enabled, .dropDownSortMenu__rating button:hover:enabled, .dropDownSortMenu__date button:hover:enabled {
+  background: #e2e2e2;
+}
+.dropDownSortMenu__reviews__ascArrow, .dropDownSortMenu__rating__ascArrow, .dropDownSortMenu__date__ascArrow {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  width: 14px;
+}
+.dropDownSortMenu__reviews__ascArrow::before, .dropDownSortMenu__rating__ascArrow::before, .dropDownSortMenu__date__ascArrow::before {
+  content: " ";
+  display: flex;
+  width: 14px;
+  background-image: url("../../data/icons/arrow.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  height: 14px;
+  position: absolute;
+  top: 2px;
+  transform: rotate(270deg);
+}
+.dropDownSortMenu__reviews__descArrow, .dropDownSortMenu__rating__descArrow, .dropDownSortMenu__date__descArrow {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  width: 14px;
+}
+.dropDownSortMenu__reviews__descArrow::before, .dropDownSortMenu__rating__descArrow::before, .dropDownSortMenu__date__descArrow::before {
+  content: " ";
+  display: flex;
+  width: 14px;
+  background-image: url("../../data/icons/arrow.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  height: 14px;
+  position: absolute;
+  top: 2px;
+  transform: rotate(90deg);
+}
+.dropDownSortMenu__reviews__asc {
+  border-top-left-radius: 9px;
+}
+.dropDownSortMenu__reviews__desc {
+  border-bottom-left-radius: 9px;
+}
+.dropDownSortMenu__arrow {
+  position: relative;
+  background: transparent;
+  border: none;
+}
+.dropDownSortMenu__arrow::before {
+  content: " ";
+  background-image: url("../../data/icons/arrowDown.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  z-index: -1;
+  width: 20px;
+  height: 12px;
+  position: absolute;
+  top: -5px;
+  left: -4px;
+  transition: all 0.3s;
+  transform: rotate(270deg);
+  filter: invert(33%) sepia(35%) saturate(359%) hue-rotate(179deg) brightness(96%) contrast(89%);
+}
+
 @font-face {
   font-family: "mainFont";
   letter-spacing: 2px;
@@ -1304,9 +1492,22 @@ input[type=file] {
 }
 .latestReviews__reviews {
   height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.latestReviews__pagination {
-  height: 80px;
+.latestReviews__reviews__list {
+  height: 100%;
+}
+.latestReviews__reviews__pagination {
+  padding: 10px;
+}
+.latestReviews__empty {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .mostPopular {
@@ -1315,9 +1516,9 @@ input[type=file] {
   display: flex;
   flex-direction: column;
   background: #CBDAF0;
-  border-radius: 5px;
-  gap: 30px;
-  padding-bottom: 20px;
+  border-radius: 10px;
+  gap: 10px;
+  padding-bottom: 10px;
   box-sizing: border-box;
 }
 .mostPopular__header {
@@ -1335,6 +1536,12 @@ input[type=file] {
 .mostPopular__list {
   height: 100%;
   width: 100%;
+}
+.mostPopular__empty {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .homeStats {
@@ -1361,6 +1568,12 @@ input[type=file] {
 .homeStats__ratings__label {
   font-size: 16px;
   padding-bottom: 10px;
+}
+.homeStats__ratings__empty {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .homeStats__allTime {
   width: 100%;
@@ -1459,9 +1672,9 @@ input[type=file] {
   display: grid;
   height: 100%;
   grid-template-columns: auto 700px 320px auto;
-  grid-template-rows: 100px 375px 100px 200px auto 10px;
+  grid-template-rows: 100px 370px 100px 200px auto 10px;
   gap: 20px;
-  overflow: scroll;
+  overflow: hidden;
 }
 .home__grid__title {
   grid-row: 1/1;
@@ -1489,11 +1702,6 @@ input[type=file] {
 .home__grid__homeChange {
   grid-row: 3/4;
   grid-column: 3/3;
-}
-
-.disableScroll {
-  height: 100vh;
-  overflow: hidden;
 }
 
 .fileInput {
@@ -1547,111 +1755,6 @@ input[type=file] {
 .items__header__search {
   padding-top: 0px;
 }
-.items__header__sort {
-  display: flex;
-  width: 44px;
-  height: 20px;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #EF8354;
-  border-radius: 10px;
-}
-.items__header__sort__btn {
-  border: none;
-  background: transparent;
-  justify-content: flex-end;
-  padding-right: 4px;
-}
-.items__header__sort__reviews, .items__header__sort__ratings {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-.items__header__sort__reviews button, .items__header__sort__ratings button {
-  width: 100%;
-  height: 100%;
-  display: none;
-  border: none;
-  background: transparent;
-  justify-content: center;
-  padding: 0;
-  padding-left: 6px;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-.items__header__sort__reviews__ascArrow, .items__header__sort__ratings__ascArrow {
-  position: relative;
-  box-sizing: border-box;
-  height: 100%;
-  width: 14px;
-}
-.items__header__sort__reviews__ascArrow::before, .items__header__sort__ratings__ascArrow::before {
-  content: " ";
-  display: flex;
-  width: 14px;
-  background-image: url("../../data/icons/arrow.svg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  height: 14px;
-  position: absolute;
-  top: 3px;
-  transform: rotate(270deg);
-  background: #F5F5F5;
-}
-.items__header__sort__reviews__descArrow, .items__header__sort__ratings__descArrow {
-  position: relative;
-  box-sizing: border-box;
-  height: 100%;
-  width: 14px;
-}
-.items__header__sort__reviews__descArrow::before, .items__header__sort__ratings__descArrow::before {
-  content: " ";
-  display: flex;
-  width: 14px;
-  background-image: url("../../data/icons/arrow.svg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  height: 14px;
-  position: absolute;
-  top: 3px;
-  transform: rotate(90deg);
-  background: #F5F5F5;
-}
-.items__header__sort__reviews__asc {
-  border-top-left-radius: 9px;
-}
-.items__header__sort__reviews__desc {
-  border-bottom-left-radius: 9px;
-}
-.items__header__sort__arrow {
-  position: relative;
-  background: transparent;
-  border: none;
-}
-.items__header__sort__arrow::before {
-  content: " ";
-  background-image: url("../../data/icons/arrowDown.svg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  z-index: -1;
-  width: 20px;
-  height: 12px;
-  position: absolute;
-  top: -5px;
-  left: -4px;
-  transition: all 0.3s;
-  transform: rotate(270deg);
-  filter: invert(33%) sepia(35%) saturate(359%) hue-rotate(179deg) brightness(96%) contrast(89%);
-}
 .items__list {
   height: 100%;
   padding-left: 20px;
@@ -1660,6 +1763,12 @@ input[type=file] {
 }
 .items__pagination {
   height: 60px;
+}
+.items__empty {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .selected {
@@ -1734,9 +1843,8 @@ input[type=file] {
   width: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding-left: 4px;
-  padding-bottom: 8px;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -1815,6 +1923,12 @@ input[type=file] {
 .reviews__pagination {
   height: 80px;
 }
+.reviews__empty {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
 
 .newReview {
   width: 100%;
@@ -1884,6 +1998,9 @@ input[type=file] {
   margin-top: 2px;
   border-radius: 2px;
 }
+.newReviewForm__form__du {
+  display: flex;
+}
 .newReviewForm__buttons {
   display: flex;
   gap: 10px;
@@ -1904,7 +2021,7 @@ input[type=file] {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 10px;
   font-size: 16px;
 }
@@ -1920,9 +2037,19 @@ input[type=file] {
 }
 .words__positive {
   height: 270px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 2px #b5b5b5;
 }
 .words__negative {
   height: 270px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 2px #b5b5b5;
+}
+.words__empty {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .itemChart {
@@ -1995,6 +2122,10 @@ input[type=file] {
   grid-column: 3/3;
   flex-direction: column;
   justify-content: space-between;
+}
+.item__grid__words__buttons {
+  display: flex;
+  flex-direction: row;
 }
 .item__grid__chart {
   grid-row: 4/4;
@@ -2266,4 +2397,9 @@ html, body {
 .layout__footer {
   height: 200px;
   justify-self: flex-end;
+}
+
+.disableScroll {
+  height: 80vh !important;
+  overflow: hidden;
 }/*# sourceMappingURL=main.css.map */

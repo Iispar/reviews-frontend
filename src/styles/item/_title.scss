@@ -1,3 +1,4 @@
+
 @mixin dataWidget($width) {
     display: flex;
     align-items: center;
@@ -11,6 +12,7 @@
     background: $white;
 }
 
+// styling of one star.
 .star {
     background-image: url('../../data/icons/starIcon.svg');
     background-size: 100%;
@@ -26,6 +28,10 @@
     }
 }
 
+/**
+ * Sets the styling for the header in the item page.
+ */
+
 .itemTitle {
     height: 100%;
     padding-left: 2px;
@@ -37,9 +43,8 @@
         width: 600px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-end;
         padding-left: 4px;
-        padding-bottom: 8px;
         box-sizing: border-box;
         overflow: hidden;
         &__name {
@@ -58,6 +63,7 @@
             }
         }
         &__rating {
+            position: relative;
             @include dataWidget(150px);
             &__stars {
                 position: relative;
@@ -67,6 +73,13 @@
                 height: 100%;
                 display: flex;
                 gap: 2px;
+            }
+            &__hover {
+                display: none;
+                height: 24px;
+                justify-content: center;
+                align-items: center;
+                background: white;
             }
         }
     }

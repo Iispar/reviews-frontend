@@ -1,0 +1,252 @@
+{
+    "itemSuccess" : {
+        "title": "Test item title",
+        "reviewsCount": 151,
+        "positiveReviews": 124,
+        "negativeReviews": 15,
+        "rating": 4.3,
+        "reviews": {
+            "responseList": [
+                {
+                    "id": 0,
+                    "date": "2015-06-08",
+                    "body": " t hea, you can lock the buttons to prevent accidentally pushing them during exercise, and it alerts you when the battery is low.  I have had this monitor since  December of 2013 and I have not had to replace any batteries yet. I do disconnect the transmitter from the chest strap when I am not using it.",
+                    "title": "Awesome heart rate monitor",
+                    "likes": 0,
+                    "dislikes": 0,
+                    "rating": 5,
+                    "accountId": 5,
+                    "itemId": 17
+                },
+                {
+                    "id": 0,
+                    "date": "2015-05-17",
+                    "body": "Test body",
+                    "title": "Test title",
+                    "likes": 990,
+                    "dislikes": 0,
+                    "rating": 999,
+                    "accountId": 998,
+                    "itemId": 997
+                },
+                {
+                    "id": 0,
+                    "date": "2014-04-01",
+                    "body": "I'm really liking this item.  Now I can workout and monitor my efforts and it has been cool seeing how quickly my heart rate settles down now that I have been active for a while.",
+                    "title": "Great",
+                    "likes": 0,
+                    "dislikes": 0,
+                    "rating": 5,
+                    "accountId": 5,
+                    "itemId": 17
+                },
+                {
+                    "id": 0,
+                    "date": "2013-10-21",
+                    "body": "i now use this every time i workout! it works great because it calculates your heart rate and lets you know how much you have been burning. great product!",
+                    "title": "loveeeeeeeee",
+                    "likes": 0,
+                    "dislikes": 0,
+                    "rating": 5,
+                    "accountId": 5,
+                    "itemId": 17
+                }
+            ],
+            "nextPage": true
+        },
+        "chart": [
+            {
+                "count": 12,
+                "time": null,
+                "timeYear": null,
+                "rating": -1.0
+            },
+            {
+                "count": 888,
+                "time": "testTime",
+                "timeYear": "testYear",
+                "rating": 887
+            },
+            {
+                "count": 9,
+                "time": "March",
+                "timeYear": "2013",
+                "rating": 4.3
+            },
+            {
+                "count": 13,
+                "time": "April",
+                "timeYear": "2013",
+                "rating": 4.3
+            },
+            {
+                "count": 12,
+                "time": "July",
+                "timeYear": "2013",
+                "rating": 4.1
+            },
+            {
+                "count": 11,
+                "time": "August",
+                "timeYear": "2013",
+                "rating": 4.5
+            },
+            {
+                "count": 11,
+                "time": "October",
+                "timeYear": "2013",
+                "rating": 4.5
+            },
+            {
+                "count": 6,
+                "time": "November",
+                "timeYear": "2013",
+                "rating": 4.0
+            },
+            {
+                "count": 12,
+                "time": null,
+                "timeYear": null,
+                "rating": -1.0
+            }
+        ],
+        "topPos": [
+            "pos1",
+            "pos2",
+            "heart",
+            "rate",
+            "watch",
+            "monitor",
+            "use",
+            "calories",
+            "works",
+            "br"
+        ],
+        "topNeg": [
+            "neg1",
+            "neg2",
+            "rate",
+            "product",
+            "working",
+            "months",
+            "use",
+            "watch",
+            "doesn",
+            "calories"
+        ]
+    },
+    "itemNoTopWords" : {
+        "title": "Test item title",
+        "reviewsCount": 151,
+        "positiveReviews": 124,
+        "negativeReviews": 15,
+        "rating": 4.3,
+        "reviews": {
+            "responseList": [
+                {
+                    "id": 0,
+                    "date": "2015-06-08",
+                    "body": " t hea, you can lock the buttons to prevent accidentally pushing them during exercise, and it alerts you when the battery is low.  I have had this monitor since  December of 2013 and I have not had to replace any batteries yet. I do disconnect the transmitter from the chest strap when I am not using it.",
+                    "title": "Awesome heart rate monitor",
+                    "likes": 0,
+                    "dislikes": 0,
+                    "rating": 5,
+                    "accountId": 5,
+                    "itemId": 17
+                },
+                {
+                    "id": 0,
+                    "date": "2015-05-17",
+                    "body": "Loaded item",
+                    "title": "Test title",
+                    "likes": 990,
+                    "dislikes": 0,
+                    "rating": 999,
+                    "accountId": 998,
+                    "itemId": 997
+                },
+                {
+                    "id": 0,
+                    "date": "2014-04-01",
+                    "body": "I'm really liking this item.  Now I can workout and monitor my efforts and it has been cool seeing how quickly my heart rate settles down now that I have been active for a while.",
+                    "title": "Great",
+                    "likes": 0,
+                    "dislikes": 0,
+                    "rating": 5,
+                    "accountId": 5,
+                    "itemId": 17
+                },
+                {
+                    "id": 0,
+                    "date": "2013-10-21",
+                    "body": "i now use this every time i workout! it works great because it calculates your heart rate and lets you know how much you have been burning. great product!",
+                    "title": "loveeeeeeeee",
+                    "likes": 0,
+                    "dislikes": 0,
+                    "rating": 5,
+                    "accountId": 5,
+                    "itemId": 17
+                }
+            ],
+            "nextPage": false
+        },
+        "chart": [
+            {
+                "count": 12,
+                "time": null,
+                "timeYear": null,
+                "rating": -1.0
+            },
+            {
+                "count": 888,
+                "time": "loadedTime",
+                "timeYear": "testYear",
+                "rating": 887
+            },
+            {
+                "count": 9,
+                "time": "March",
+                "timeYear": "2013",
+                "rating": 4.3
+            },
+            {
+                "count": 13,
+                "time": "April",
+                "timeYear": "2013",
+                "rating": 4.3
+            },
+            {
+                "count": 12,
+                "time": "July",
+                "timeYear": "2013",
+                "rating": 4.1
+            },
+            {
+                "count": 11,
+                "time": "August",
+                "timeYear": "2013",
+                "rating": 4.5
+            },
+            {
+                "count": 11,
+                "time": "October",
+                "timeYear": "2013",
+                "rating": 4.5
+            },
+            {
+                "count": 6,
+                "time": "November",
+                "timeYear": "2013",
+                "rating": 4.0
+            },
+            {
+                "count": 12,
+                "time": null,
+                "timeYear": null,
+                "rating": -1.0
+            }
+        ],
+        "topPos": null,
+        "topNeg": null
+    }
+}

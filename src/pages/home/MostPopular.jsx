@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import ItemList from '../../components/ItemList';
 import SmallItem from '../../components/SmallItem';
+import SkeletonLoad from '../../components/SkeletonLoad';
 
 /**
  * Creates the most popular conmponent used on the home screen
@@ -10,19 +11,24 @@ import SmallItem from '../../components/SmallItem';
  * @property {String} id - Custom id if wanted. Default is mostPopular.
  * @returns most popular component
  */
-const MostPopular = (props) => {
-  const { className } = props;
-  const { id } = props;
-  const { items } = props;
-
+const MostPopular = ({ className, id, items }) => {
+  if (items == null) {
+    return (
+      <SkeletonLoad id="loading" />
+    );
+  }
   return (
-    <div className={`${className}`}>
+    <div className={`${className}`} id={id}>
       <div className={`${className}__header`} id={`${id}__header`}>
         <span className={`${className}__header__text`}>popular items</span>
       </div>
-      <div className={`${className}__list`} id={`${id}__list`}>
-        <ItemList items={items} View={SmallItem} count={5} />
-      </div>
+      { items.length > 0 ? (
+        <div className={`${className}__list`} id={`${id}__list`}>
+          <ItemList items={items} View={SmallItem} className={`${className}__list__items`} />
+        </div>
+      ) : (
+        <div className={`${className}__empty`}> no items</div>
+      )}
     </div>
   );
 };
@@ -34,7 +40,7 @@ MostPopular.propTypes = {
 };
 
 MostPopular.defaultProps = {
-  items: null,
+  items: [],
   className: 'mostPopular',
   id: 'mostPopular',
 };

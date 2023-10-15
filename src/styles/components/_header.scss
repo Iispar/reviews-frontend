@@ -1,82 +1,101 @@
 @import '../colorsAndFonts';
-.header {
-    display: flex;
-    background: $darkBlue;
-    height: 50px;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 20px;
-    &__hamburger {
-        position: relative;
-        width: 26px;
-        height: 3px;
-        border-radius: 2px;
-        background: $white;
-        z-index: 1;
-        &::before {
-            content: '';
+.headerContainer {
+    &__header {
+        display: flex;
+        background: $darkBlue;
+        height: 50px;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 20px;
+        &__hamburger {
+            position: relative;
             width: 26px;
             height: 3px;
             border-radius: 2px;
             background: $white;
-            position: absolute;
-            top: 8px;
-            left: 0px;
-            transition: all 300ms;
+            z-index: 1;
+            &::before {
+                content: '';
+                width: 26px;
+                height: 3px;
+                border-radius: 2px;
+                background: $white;
+                position: absolute;
+                top: 8px;
+                left: 0px;
+                transition: all 300ms;
+            }
+            &::after {
+                content: '';
+                width: 26px;
+                height: 3px;
+                border-radius: 2px;
+                background: $white;
+                position: absolute;
+                bottom: 8px;
+                left: 0px;
+                transition: all 300ms;
+            }
+    
+            &__btn {
+                background: transparent;
+                border: 0px;
+                position: absolute;
+                top: -10px;
+                bottom: -10px;
+                left: -1px;
+                right: 1px;
+                pointer-events: pointer;
+            }
         }
-        &::after {
-            content: '';
-            width: 26px;
-            height: 3px;
-            border-radius: 2px;
-            background: $white;
-            position: absolute;
-            bottom: 8px;
-            left: 0px;
-            transition: all 300ms;
+    }
+    
+    
+    &__navBar {
+        display: flex;
+        background: $navBar;
+        position: absolute;
+        top: 0px;
+        left: 0;
+        bottom: 0;
+        width: 160px;
+        transition: all 300ms;
+        transform-origin: left;
+        transform: scaleX(0);
+        flex-direction: column;
+        padding-top: 50px;
+        align-items: center;
+        gap: 6px;
+        & a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $footerWhite;
+            text-decoration: none;
+            width: 100%;
+            height: 40px;
+            &:hover {
+                background: $navBarHover;
+            }
         }
-
-        &__btn {
+        &__list__logout {
+            position: absolute;
+            bottom: 0px;
+        }
+        & button {
             background: transparent;
-            border: 0px;
-            position: absolute;
-            top: -10px;
-            bottom: -10px;
-            left: -1px;
-            right: 1px;
-            pointer-events: pointer;
+            border: none;
+            width: 100%;
+            height: 50px;
+            padding: 2px;
+            font-size: 16px;
+            &:hover {
+                background: $navBarHover;
+            }
         }
     }
 }
 
-
-.navBar {
-    display: flex;
-    background: $navBarBlue;
-    position: absolute;
-    top: 0px;
-    left: 0;
-    bottom: 0;
-    width: 160px;
-    transition: all 300ms;
-    transform-origin: left;
-    transform: scaleX(0);
-    flex-direction: column;
-    padding-top: 60px;
-    align-items: center;
-    gap: 6px;
-    & button {
-        background: transparent;
-        border: none;
-        width: 100%;
-        height: 40px;
-        padding: 2px;
-        font-size: 16px;
-        &:hover {
-            background: $navBarHover;
-        }
-    }
-}
 
 .clicked {
     background: none;

@@ -1,19 +1,23 @@
-@import './fileInput.scss';
+@import './itemInput.scss';
 @import './items.scss';
+/**
+ * Sets the grid for the all items page.
+ */
 .allItems {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: default;
+    background: $containerWhite;
     &__grid {
         display: grid;
         height: 100%;
         grid-template-columns: auto 700px 320px auto;
-        grid-template-rows: 70px 500px 20px;
+        grid-template-rows: 0px 60px 160px 340px 20px;
         gap: 20px;
         &__title {
-            grid-row: 1/1;
+            grid-row: 2/2;
             grid-column: 2/4;
             padding-left: 2px;
             display: flex;
@@ -24,14 +28,12 @@
             }
         }
         &__items {
-            grid-row: 2/2;
+            grid-row: 3/5;
             grid-column: 2/2;
         }
         &__fileInput {
-            grid-row: 2/2;
+            grid-row: 3/3;
             grid-column: 3/3;
-            padding-top: 20px;
-            padding-bottom: 20px;
         }
     }
 }

@@ -14,11 +14,12 @@
 
 .lineTooltip {
     background: $white;
-    width: 140px;
+    width: 170px;
     height: 80px;
     border: 2px solid $lightBlue;
     border-radius: 10px;
     padding: 0;
+    padding-bottom: 20px;
     padding-left: 6px;
     box-sizing: border-box;
     display: flex;

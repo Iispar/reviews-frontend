@@ -10,16 +10,12 @@ import $ from 'jquery';
  * @property {String} title - Title of the review.
  * @property {String} date - Date of the review.
  * @property {String} classname - Custom className if wanted. Default largeReview.
+ * @property {String} item - id of the item the review is for.
  * @returns singular large review
  */
-const LargeReview = (props) => {
-  const { rating } = props;
-  const { body } = props;
-  const { id } = props;
-  const { title } = props;
-  const { date } = props;
-  const { className } = props;
-
+const LargeReview = ({
+  rating, body, id, title, date, className, item,
+}) => {
   /**
    * Opens and closes the view of the comment depending on its current state.
    * I need to use props close because if I use for example useState it gets
@@ -33,22 +29,24 @@ const LargeReview = (props) => {
    */
   const toggle = (open) => {
     // scroll to top when I close the div so it doesn't show middle of the ext.
-    $(`.${className}__info__body`).animate({ scrollTop: $(window).scrollTop(0) });
+    $(`.${className}__info__body`).animate({ scrollTop: $(`${className}__info__body`).scrollTop(0) });
     // close all
-    $(`.${className}`).css('flex-grow', 0);
+    $(`.${className}`).css('flex-grow', '1');
     $(`.${className}`).css('padding-bottom', '12px');
-    $(`.${className}__info__rating__expandBtn`).css('display', 'flex');
+    $(`.${className}__info__stats__rating__expandBtn`).css('display', 'flex');
     $(`.${className}__info__closeBtn`).css('display', 'none');
     $(`.${className}__info__body__header`).css('display', 'none');
     $(`.${className}__info__body`).removeClass('showAll');
+    $(`.${className}__info__stats__item`).css('display', 'none');
     // open btn is pressed. First open correct one.
     if (open) {
-      $(`.${className}`).css('padding-bottom', '4px');
+      // $(`.${className}`).css('padding-bottom', '4px');
       $(`#${className}__info__body__${id}`).addClass('showAll');
-      $(`#${className}__info__rating__expandBtn__${id}`).css('display', 'none');
+      $(`#${className}__info__stats__rating__expandBtn__${id}`).css('display', 'none');
+      $(`#${className}__${id}`).css('flex-grow', '2.4');
       $(`#${className}__info__closeBtn__${id}`).css('display', 'flex');
       $(`#${className}__info__body__header__${id}`).css('display', 'flex');
-      $(`#${className}__${id}`).css('flex-grow', '2');
+      $(`#${className}__info__stats__item__${id}`).css('display', 'flex');
     }
   };
 
@@ -63,10 +61,15 @@ const LargeReview = (props) => {
           </div>
           <span className={`${className}__info__body__comment`} id={`${className}__info__body__comment`}>{body}</span>
         </div>
-        <div className={`${className}__info__rating`}>
-          <button className={`${className}__info__rating__expandBtn`} id={`${className}__info__rating__expandBtn__${id}`} type="button" onClick={() => toggle(true)} aria-label="expandButton" />
-          <span className={`${className}__info__rating__value`} id={`${className}__info__rating__value`}>{rating}</span>
-          <div className={`${className}__info__rating__icon`} />
+        <div className={`${className}__info__stats`}>
+          <div className={`${className}__info__stats__rating`}>
+            <button className={`${className}__info__stats__rating__expandBtn`} id={`${className}__info__stats__rating__expandBtn__${id}`} type="button" onClick={() => toggle(true)} aria-label="expandButton" />
+            <span className={`${className}__info__stats__rating__value`} id={`${className}__info__stats__rating__value`}>{rating}</span>
+            <div className={`${className}__info__stats__rating__icon`} />
+          </div>
+          <a href={`/item/${item}`} className={`${className}__info__stats__item`} id={`${className}__info__stats__item__${id}`}>
+            item
+          </a>
         </div>
       </div>
     </div>
@@ -75,20 +78,22 @@ const LargeReview = (props) => {
 
 LargeReview.propTypes = {
   body: propTypes.string,
-  rating: propTypes.string,
-  id: propTypes.string,
+  rating: propTypes.number,
+  id: propTypes.number,
   title: propTypes.string,
   date: propTypes.string,
   className: propTypes.string,
+  item: propTypes.number,
 };
 
 LargeReview.defaultProps = {
   body: null,
   rating: null,
-  id: 'default',
+  id: 1,
   title: null,
   date: null,
   className: 'largeReview',
+  item: null,
 };
 
 export default LargeReview;

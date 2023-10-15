@@ -1,0 +1,97 @@
+@mixin arrow($rotate) {
+    position: relative;
+    box-sizing: border-box;
+    height: 100%;
+    width: 14px;
+    &::before {
+        content: ' ';
+        display: flex;
+        width: 14px;
+        background-image: url('../../data/icons/arrow.svg');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        height: 14px;
+        position: absolute;
+        top: 2px;
+        transform: $rotate;
+    }
+}
+
+.dropDownSortMenu {
+            display: flex;
+            width: 44px;
+            height: 20px;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $orange;
+            border-radius: 10px;
+            &__btn {
+                border: none;
+                background: transparent;
+                justify-content: flex-end;
+                padding-right: 4px;
+                padding-bottom: 2px;
+            }
+            &__reviews, &__rating, &__date {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                & button {
+                    width: 100%;
+                    height: 100%;
+                    display: none;
+                    border: none;
+                    background: transparent;
+                    justify-content: center;
+                    padding: 0;
+                    padding-top: 1px;
+                    padding-left: 8px;
+                    font-size: 14px;
+                    box-sizing: border-box;
+                    &:disabled {
+                        background: transparent;
+                        color: $black;
+                    }
+                    &:hover:enabled {
+                        background: $darkHover;
+                    }
+                }
+                &__ascArrow {
+                    @include arrow(rotate(270deg));
+                }
+                &__descArrow {
+                    @include arrow(rotate(90deg));
+                }
+            }
+            &__reviews__asc, &__date__asc {
+                border-top-left-radius: 9px;
+            }
+            &__reviews__desc, &__date__desc {
+                border-bottom-left-radius: 9px;
+            }
+            &__arrow {
+                position: relative;
+                background: transparent;
+                border: 0px;
+                height: 100%;
+                &::before {
+                    content: ' ';
+                    background-image: url('../../data/icons/arrowDown.svg');
+                    background-size: 140%;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-color: transparent;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    z-index: 1;
+                    transition: all 0.3s;
+                    transform: rotate(270deg);
+                    filter: invert(33%) sepia(35%) saturate(359%) hue-rotate(179deg) brightness(96%) contrast(89%);                }
+            }
+        }

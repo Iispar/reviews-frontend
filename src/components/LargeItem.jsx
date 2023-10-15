@@ -12,13 +12,10 @@ import $ from 'jquery';
  * @property {string} rating - Value of the rating.
  * @returns large item
  */
-const LargeItem = (props) => {
+const LargeItem = ({
+  id, item, reviews, rating, className,
+}) => {
   const navigate = useNavigate();
-  const { id } = props;
-  const { item } = props;
-  const { reviews } = props;
-  const { rating } = props;
-  const { className } = props;
 
   // wait for the page to load before setting listeners
   $(document).ready(() => {
@@ -56,8 +53,8 @@ const LargeItem = (props) => {
 LargeItem.propTypes = {
   item: propTypes.string,
   className: propTypes.string,
-  rating: propTypes.string,
-  id: propTypes.string,
+  rating: propTypes.number,
+  id: propTypes.number,
   reviews: propTypes.string,
 };
 
@@ -65,7 +62,7 @@ LargeItem.defaultProps = {
   item: null,
   className: 'largeItem',
   rating: null,
-  id: 'default',
+  id: 2,
   reviews: null,
 };
 

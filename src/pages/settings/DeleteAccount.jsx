@@ -10,24 +10,27 @@ import SettingsInputField from '../../components/SettingsInputField';
  * @property {func} openForm - the function to use when open form is clicked.
  * @returns delete account form.
  */
-const DeleteAccount = (props) => {
-  const { onSubmit } = props;
-  const { openForm } = props;
-  const { className } = props;
-  const { id } = props;
-
-  return (
-    <div className={className} id={id}>
-      <div className={`${className}__header`} id={`${className}__header`}>
-        <div className={`${className}__header__text`}> delete account </div>
-        <button className={`${className}__header__closeButton`} id={`${className}__header__closeButton`} type="submit" onClick={() => openForm('none')}> </button>
-      </div>
-      <div className={`${className}__form`} id={`${className}__form`}>
-        <SettingsInputField type="password" onSubmit={onSubmit} id="deletePassword" warningText="cannot be undone please confirm with your password" button="delete" submitText="I understand. Delete account" />
-      </div>
+const DeleteAccount = ({
+  onSubmit, openForm, className, id,
+}) => (
+  <div className={className} id={id}>
+    <div className={`${className}__header`} id={`${className}__header`}>
+      <div className={`${className}__header__text`}> delete account </div>
+      <button className={`${className}__header__closeButton`} id={`${id}__header__closeButton`} type="submit" onClick={() => openForm('none')}> </button>
     </div>
-  );
-};
+    <div className={`${className}__form`} id={`${className}__form`}>
+      <SettingsInputField
+        type="text"
+        onSubmit={onSubmit}
+        id="deletePassword"
+        warningText="this action cannot be undone please confirm by writing: this cannot be undone"
+        button="delete"
+        submitText="I understand. Delete account"
+        confirmationText="this cannot be undone"
+      />
+    </div>
+  </div>
+);
 
 DeleteAccount.propTypes = {
   onSubmit: propTypes.func,

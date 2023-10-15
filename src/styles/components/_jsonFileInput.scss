@@ -16,21 +16,27 @@
         }
         &__succesful {
             display: none;
-            background: $successGreen;
-            height: 20px;
-            width: 20px;
+            background-image: url('../../data/icons/correctIcon.svg');
+            background-size: 100%;
+            background-repeat: no-repeat;
+            height: 30px;
+            width: 30px;
+            filter: invert(54%) sepia(68%) saturate(1422%) hue-rotate(93deg) brightness(103%) contrast(83%);
         }
         &__error {
             display: none;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             height: 60px;
-            width: 100px;
+            width: 180px;
             &__logo {
-                background: $red;
+                background-image: url('../../data/icons/closeIcon.svg');
+                background-size: 100%;
+                background-repeat: no-repeat;
                 height: 30px;
                 width: 30px;
+                filter: invert(16%) sepia(100%) saturate(6370%) hue-rotate(357deg) brightness(106%) contrast(126%);filter: invert(61%) sepia(85%) saturate(3051%) hue-rotate(324deg) brightness(97%) contrast(108%);filter: invert(64%) sepia(100%) saturate(541%) hue-rotate(305deg) brightness(108%) contrast(118%);
             }
         }
     }

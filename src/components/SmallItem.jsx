@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import $ from 'jquery';
 import { useNavigate } from 'react-router-dom';
+import { useTextWidth } from '../helpers/componentHelpers';
 
 /**
  * Displays a singular item as small.
@@ -11,12 +12,10 @@ import { useNavigate } from 'react-router-dom';
  * @property {className} className - Custom className if wanted. Default is smallitem.
  * @returns item in small format.
  */
-const SmallItem = (props) => {
+const SmallItem = ({
+  item, rating, id, className,
+}) => {
   const navigate = useNavigate();
-  const { item } = props;
-  const { rating } = props;
-  const { id } = props;
-  const { className } = props;
 
   /**
    * Wait for page to render to set listeners,
@@ -24,7 +23,10 @@ const SmallItem = (props) => {
   $(document).ready(() => {
     // if name is over 22 digits long add the scroll feature on hover
     if (item.length > 22) {
+      // get time for transition to have same speed for scroll.
+      const time = useTextWidth(item, '16px mulish') / 180;
       $(`#smallItem__name__text__${id}`).addClass('hover');
+      $(`#smallItem__name__text__${id}`).css('transition', `all ${time}s linear`);
     }
 
     // navigate to items page when clicked.
@@ -39,7 +41,7 @@ const SmallItem = (props) => {
         <span className={`${className}__name__text`} id={`smallItem__name__text__${id}`}>{item}</span>
       </div>
       <div className={`${className}__rating`}>
-        <span className={`${className}__rating__value`} id={`smallItem__rating__value__${id}`}>{rating}</span>
+        <span className={`${className}__rating__value`} id={`smallItem__rating__value__${id}`}>{rating.toFixed(1)}</span>
         <div className={`${className}__rating__icon`} />
       </div>
     </div>
@@ -48,8 +50,8 @@ const SmallItem = (props) => {
 
 SmallItem.propTypes = {
   item: propTypes.string,
-  rating: propTypes.string,
-  id: propTypes.string,
+  rating: propTypes.number,
+  id: propTypes.number,
   className: propTypes.string,
 };
 

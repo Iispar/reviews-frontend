@@ -1,25 +1,6 @@
-@mixin arrow($rotate) {
-    position: relative;
-    box-sizing: border-box;
-    height: 100%;
-    width: 14px;
-    &::before {
-        content: ' ';
-        display: flex;
-        width: 14px;
-        background-image: url('../../data/icons/arrow.svg');
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-color: transparent;
-        height: 14px;
-        position: absolute;
-        top: 3px;
-        transform: $rotate;
-        background: $backgroundWhite;
-    }
-}
-
+/**
+ * Sets the styling for the items list and header for it in all items page.
+ */
 .items {
     box-shadow: 0 0 40px 1px $shadow;
     border-radius: 10px;
@@ -40,83 +21,24 @@
         &__search {
             padding-top: 0px;
         }
-        &__sort {
-            display: flex;
-            width: 44px;
-            height: 20px;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid $orange;
-            border-radius: 10px;
-            &__btn {
-                border: none;
-                background: transparent;
-                justify-content: flex-end;
-                padding-right: 4px;
-            }
-            &__reviews, &__ratings {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                height: 100%;
-                & button {
-                    width: 100%;
-                    height: 100%;
-                    display: none;
-                    border: none;
-                    background: transparent;
-                    justify-content: center;
-                    padding: 0;
-                    padding-left: 6px;
-                    font-size: 14px;
-                    box-sizing: border-box;
-                }
-                &__ascArrow {
-                    @include arrow(rotate(270deg));
-                }
-                &__descArrow {
-                    @include arrow(rotate(90deg));
-                }
-            }
-            &__reviews__asc {
-                border-top-left-radius: 9px;
-            }
-            &__reviews__desc {
-                border-bottom-left-radius: 9px;
-            }
-            &__arrow {
-                position: relative;
-                background: transparent;
-                border: none;
-                &::before {
-                    content: ' ';
-                    background-image: url('../../data/icons/arrowDown.svg');
-                    background-size: 100%;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-color: transparent;
-                    z-index: -1;
-                    width: 20px;
-                    height: 12px;
-                    position: absolute;
-                    top: -5px;
-                    left: -4px;
-                    transition: all 0.3s;
-                    transform: rotate(270deg);
-                    filter: invert(33%) sepia(35%) saturate(359%) hue-rotate(179deg) brightness(96%) contrast(89%);                }
-            }
+    }
+    &__reviews {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &__list {
+            height: 100%;
+        }
+        &__pagination {
+            padding: 10px;
         }
     }
-    &__list {
+    &__empty {
+        display: flex;
         height: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
-        box-sizing: border-box;
-    }
-    &__pagination {
-        height: 60px;
+        justify-content: center;
+        align-items: center;
     }
 }
 

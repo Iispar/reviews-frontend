@@ -1,14 +1,21 @@
-
+/**
+ * Sets the reviews for the item.
+ */
 .reviews {
     height: 100%;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 0px 40px 2px $shadow;
+    box-shadow: 0px 0px 20px 2px $shadow;
     border-radius: 5px;
+    background: $containerWhite;
     &__header {
         display: flex;
         align-items: flex-start;
-        height: 50px;
+        flex-direction: column;
+        width: 100%;
+        height: 110px;
+        gap: 6px;
+        padding-left: 14px;
         &__text {
             display: flex;
             align-items: flex-end;
@@ -16,16 +23,32 @@
             width: 100px;
             height: 36px;
             padding-top: 6px;
-            padding-left: 14px;
             display: flex;
             font-size: 26px;
+        }
+        &__filters {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
         }
     }
     &__reviews {
         height: 100%;
-        
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &__list {
+            height: 100%;
+        }
+        &__pagination {
+            padding: 10px;
+        }
     }
-    &__pagination {
-        height: 80px;
+    &__empty {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
     }
 }

@@ -2,18 +2,26 @@
 /* eslint-disable max-len */
 /* eslint-disable arrow-body-style */
 
+import authService from '../../services/authService';
+
 /**
  * The login hook to be called when trying to login.
+ * sets accountId and token to localStorage
  * @param {String} username
  *        The username that tried to login.
  * @param {String} password
  *        The password that tried to login.
- * @returns true if successful, false otherwise.
+ * @returns token if successful, null otherwise.
  */
-export const UseLogin = (username, password) => {
-  // console.log(`Login with username: ${username}, password: ${password}`);
-
-  return true;
+export const UseLogin = async (username, password) => {
+  const payload = {
+    username,
+    password,
+  };
+  const res = await authService.login(payload);
+  window.localStorage.setItem('token', JSON.stringify(res.token).replace(/^"(.*)"$/, '$1'));
+  window.localStorage.setItem('accountId', JSON.stringify(res.accountId).replace(/^"(.*)"$/, '$1'));
+  return res.token;
 };
 
 /**
@@ -26,21 +34,20 @@ export const UseLogin = (username, password) => {
  *        email that tries to create account.
  * @param {String} password
  *        password that tries to create account.
+ * @param {String} password
+ *        role that tries to create account.
  * @returns true if successful, false otherwise.
  */
-export const UseCreateAccount = (username, name, email, password) => {
-  // console.log(`New account with username: ${username}, name: ${name}, email: ${email}, password: ${password}`);
-
-  return true;
-};
-
-/**
- * the new password hook that gets called when you try to get a new password.
- * @param {String} email
- *        email that wants a new password.
- * @returns true if successful, false otherwise.
- */
-export const UseNewPassword = (email) => {
-  // console.log(`email request with ${email}`);
-  return true;
+export const UseCreateAccount = async (username, name, email, password, role) => {
+  const payload = {
+    username,
+    name,
+    email,
+    password,
+    role: { id: role },
+  };
+  const res = await authService.createAccount(payload);
+  window.localStorage.setItem('token', JSON.stringify(res.token).replace(/^"(.*)"$/, '$1'));
+  window.localStorage.setItem('accountId', JSON.stringify(res.accountId).replace(/^"(.*)"$/, '$1'));
+  return res.token;
 };

@@ -9,23 +9,19 @@ import propTypes from 'prop-types';
  * @property {string} className - Custom id if wanted. Default wordListItem.
  * @returns single top word item.
  */
-const WordListItem = (props) => {
-  const { name } = props;
-  const { index } = props;
-  const { className } = props;
-  const { id } = props;
-  return (
-    <div className={className}>
-      <div className={`${className}__index`} id={`${id}__index`}>
-        {index + 1}
-        .
-      </div>
-      <div className={`${className}__name`} id={`${id}__name`}>
-        {name}
-      </div>
+const WordListItem = ({
+  name, index, className, id,
+}) => (
+  <div className={className} id={id}>
+    <div className={`${className}__index`} id={`${id}__index`}>
+      {index + 1}
+      .
     </div>
-  );
-};
+    <div className={`${className}__name`} id={`${id}__name`}>
+      {name}
+    </div>
+  </div>
+);
 
 WordListItem.propTypes = {
   name: propTypes.string,

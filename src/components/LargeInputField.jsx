@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { useTextWidth } from './helpers';
+import { useTextWidth } from '../helpers/componentHelpers';
 
 /**
  * Styling and functionality for the large search fields in the application.
@@ -12,20 +12,16 @@ import { useTextWidth } from './helpers';
  * @property {string} error - Error message for the input field.
  * @returns
  */
-const LargeInputField = (props) => {
-  const { title } = props;
-  const { id } = props;
-  const { className } = props;
-  const { width } = props;
-  const { height } = props;
-  const { error } = props;
+const LargeInputField = ({
+  title, id, className, width, height, error,
+}) => {
   // hook to calculate the width of the text
   const cutoutWidth = useTextWidth(title, '16px hind');
   const errorWidth = useTextWidth(error, '15px hind');
 
   return (
     <div className={className} id={id}>
-      <div className={`${className}__container`} style={{ width, height }}>
+      <div className={`${className}__container`} id={`${id}__container`} style={{ width, height }}>
         <textarea className={`${className}__container__input`} id={`${id}__container__input`} required placeholder={title} style={{ height, width }} />
         <div className={`${className}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
         <div className={`${className}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>

@@ -1,11 +1,16 @@
+/**
+ * Sets the stats container for home page. Contains one recharts barchart that does not have css here as it is from
+ * recharts. Includes also the all time stats.
+ */
 .homeStats {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    gap: 20px;
     height: 100%;
-    gap: 10px;
-    justify-content: space-between;
     &__ratings {
         width: 100%;
+        height: 100%;
         box-shadow: 0 0 20px 1px $shadow;
         border-radius: 5px;
         display: flex;
@@ -13,13 +18,19 @@
         align-items: center;
         flex-direction: column;
         &__chart {
-            height: 160px;
+            height: 100%;
             width: 240px;
             padding: 0;
         }
         &__label {
             font-size: 16px;
             padding-bottom: 10px;
+        }
+        &__empty {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
     &__allTime {
@@ -31,6 +42,7 @@
         flex-direction: column;
         box-shadow: 0 0 20px 1px $shadow;
         padding: 4px;
+        box-sizing: border-box;
         &__stats {
             display: flex;
             height: 100%;
@@ -66,5 +78,11 @@
             align-items: center;
             font-size: 16px;
         }
+    }
+    &__barLoad {
+        height: 100%;
+    }
+    &__statsLoad {
+        height: 120px;
     }
 }

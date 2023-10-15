@@ -10,10 +10,19 @@ import DeleteAccount from './DeleteAccount';
  * @property {String} if - Custom className if wanted. Default selections.
  * @returns selctions
  */
-const Selections = (props) => {
-  const { className } = props;
-  const { id } = props;
-
+const Selections = ({
+  className,
+  id,
+  setPassword,
+  setUsername,
+  setName,
+  deleteAccount,
+  setEmail,
+  updateAccount,
+  username,
+  name,
+  email,
+}) => {
   /**
    * Opens the form to see user info or delete account.
    * @param {String} selection
@@ -24,66 +33,24 @@ const Selections = (props) => {
   const openForm = (selection, btn) => {
     // clumsy...
     // reset borders
-    $(`#${className}__buttons__newUser`).css('border-left', 'none ');
-    $(`#${className}__buttons__newPass`).css('border-left', 'none');
-    $(`#${className}__buttons__delAccount`).css('border-left', 'none');
+    $(`#${id}__buttons__newUser`).css('border-left', 'none ');
+    $(`#${id}__buttons__newPass`).css('border-left', 'none');
+    $(`#${id}__buttons__delAccount`).css('border-left', 'none');
     // set border
     $(`#${btn}`).css('border-left', '2px solid black');
     // reset screens
-    $(`#${className}__form`).css('display', 'none');
+    $(`#${id}__form`).css('display', 'none');
     $('#userInfo').css('display', 'none');
     $('#deleteAccount').css('display', 'none');
     // set the screen of the click
     if (selection !== 'none') {
-      $(`#${className}__form`).css('display', 'flex');
+      $(`#${id}__form`).css('display', 'flex');
       $(`#${selection}`).css('display', 'flex');
     }
   };
 
-  // ALL updates and deletes have *preventDefault* for dev to not update the page...
-
-  /**
-   * Formats the event call and calls the delete account hook.
-   * @param {*} e - event called with.
-   */
-  const deleteAccount = (e) => {
-    e.preventDefault();
-    // if (UseDeleteAccount(e.target[0].value)) console.log('success');
-    // else console.log('failure');
-  };
-
-  /**
-   * Formats the event call and calls the update name hook.
-   * @param {*} e - event called with.
-   */
-  const updateName = (e) => {
-    e.preventDefault();
-    // if (UseNewName(e.target[0].value)) console.log('success');
-    // else console.log('failure');
-  };
-
-  /**
-   * Formats the event call and calls the update username hook.
-   * @param {*} e - event called with.
-   */
-  const updateUsername = (e) => {
-    e.preventDefault();
-    // if (UseNewUsername(e.target[0].value)) console.log('success');
-    // else console.log('failure');
-  };
-
-  /**
-   * Formats the event call and calls the update password hook.
-   * @param {*} e - event called with.
-   */
-  const updatePassword = (e) => {
-    e.preventDefault();
-    // if (UseNewPassword(e.target[0].value)) console.log('success');
-    // else console.log('failure');
-  };
-
   return (
-    <div className={className}>
+    <div className={className} id={id}>
       <div className={`${className}__buttons`} id={`${id}__buttons`}>
         <button className={`${className}__buttons__newUser`} id={`${id}__buttons__newUser`} type="button" onClick={() => openForm('userInfo', 'selections__buttons__newUser')}>
           edit profile
@@ -93,7 +60,17 @@ const Selections = (props) => {
         </button>
       </div>
       <div className={`${className}__form`} id={`${id}__form`}>
-        <UserInfo currUsername="user" openForm={openForm} updateUsername={updateUsername} updateName={updateName} updatePassword={updatePassword} currName="matti meikäläinen" />
+        <UserInfo
+          currUsername={username}
+          currEmail={email}
+          openForm={openForm}
+          setUsername={setUsername}
+          setName={setName}
+          setNewPassword={setPassword}
+          setEmail={setEmail}
+          updateAccount={(e) => updateAccount(e)}
+          currName={name}
+        />
         <DeleteAccount onSubmit={deleteAccount} openForm={openForm} />
       </div>
     </div>
@@ -103,11 +80,29 @@ const Selections = (props) => {
 Selections.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
+  setPassword: propTypes.func,
+  setName: propTypes.func,
+  setUsername: propTypes.func,
+  deleteAccount: propTypes.func,
+  setEmail: propTypes.func,
+  updateAccount: propTypes.func,
+  username: propTypes.string,
+  name: propTypes.string,
+  email: propTypes.string,
 };
 
 Selections.defaultProps = {
   className: 'selections',
   id: 'selections',
+  setPassword: null,
+  setName: null,
+  setUsername: null,
+  deleteAccount: null,
+  setEmail: null,
+  updateAccount: null,
+  username: null,
+  name: null,
+  email: null,
 };
 
 export default Selections;

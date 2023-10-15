@@ -11,21 +11,26 @@ import propTypes from 'prop-types';
  * @property {string} id - Custom id if wanted. Default lineTooltip.
  * @returns line chart tooltip
  */
-const LineTooltip = (props) => {
-  const { payload } = props;
-  const { active } = props;
-  const { className } = props;
-  const { id } = props;
+const LineTooltip = ({
+  payload, active, className, id,
+}) => {
   if (active && payload && payload.length && payload[0].payload.time !== undefined) {
     const { time } = payload[0].payload;
-    const { reviews } = payload[0].payload;
+    const { count } = payload[0].payload;
     const { rating } = payload[0].payload;
+    const { timeYear } = payload[0].payload;
+
+    // check if time is month or week
+    const title = /^\d+$/.test(time) ? `week ${time} of ${timeYear}` : `${time} of ${timeYear}`;
+
     return (
-      <div className={className}>
-        <span className={`${className}__title`} id={`${id}__title`}>{`${time}`}</span>
+      <div className={className} id={id}>
+        <span className={`${className}__title`} id={`${id}__title`}>
+          {title}
+        </span>
         <div className={`${className}__countReviews`} id={`${id}__countReviews`}>
           <span className={`${className}__countReviews__count`} id={`${id}__countReviews__count`}>
-            {reviews}
+            {count}
           </span>
           {' '}
           reviews with

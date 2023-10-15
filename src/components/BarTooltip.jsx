@@ -9,21 +9,19 @@ import propTypes from 'prop-types';
  * @property {String} id - Custom id if wanted. Default barToolTip
  * @returns tooltip for barchart
  */
-const BarTooltip = (props) => {
-  const { payload } = props;
-  const { active } = props;
-  const { className } = props;
-  const { id } = props;
+const BarTooltip = ({
+  payload, active, className, id,
+}) => {
   if (active && payload && payload.length) {
-    const { title } = payload[0].payload;
+    const { rating } = payload[0].payload;
     const { count } = payload[0].payload;
     return (
-      <div className="barTooltip">
+      <div className={className} id={id}>
         <span className={`${className}__count`} id={`${id}__count`}>
           {`${count} ratings`}
         </span>
         <span className={`${className}__title`} id={`${id}__title`}>
-          {`with ${title}`}
+          {`with ${rating} stars`}
         </span>
       </div>
     );
@@ -32,7 +30,7 @@ const BarTooltip = (props) => {
 };
 
 BarTooltip.propTypes = {
-  payload: propTypes.arrayOf(propTypes.objectOf(propTypes.object)),
+  payload: propTypes.arrayOf(propTypes.objectOf(propTypes.any)),
   active: propTypes.bool,
   className: propTypes.string,
   id: propTypes.string,
