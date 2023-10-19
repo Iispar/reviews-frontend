@@ -1,4 +1,4 @@
-# reviews-backend
+# reviews-frontend
 
 Frontend for the reviews application. Other repositories:
 <br />
