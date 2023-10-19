@@ -22,25 +22,31 @@ const Title = ({
    *        the star rating as a string.
    * @returns stars for the reviews title component
    */
-  const ratingToStars = (reviews) => {
-    if (reviews % 1 === 0) return null;
-    const split = reviews.split('.');
-    const stars = parseInt(split[0], 10);
-    const left = stars * 24 + stars * 2 + (2.4 * parseInt(split[1].slice(0, 2), 10)) / 10;
+  const ratingToStars = (rating) => {
     const list = [];
-    const width = 2.4 * (11 - parseInt(split[1], 10));
-
-    // if only zero point some stars we need to draw this alone because the loop wont work...
-    if (stars === 0) {
-      list.push(<div className="star" key="singularStar" />);
-      list.push(<div className="star__cutout" key="singularCutout" style={{ left: `${left}px`, width: `${width}px` }} />);
-    }
-
-    for (let i = 0; i < stars; i += 1) {
-      list.push(<div className="star" key={i} />);
-      if (i === stars - 1 && parseInt(split[1], 10) !== 0) {
+    if (rating === '0') return null;
+    if (rating % 1 === 0) {
+      for (let i = 0; i < rating; i += 1) {
         list.push(<div className="star" key="final" />);
-        list.push(<div className="star__cutout" key="cutout" style={{ left: `${left}px`, width: `${width}px` }} />);
+      }
+    } else {
+      const split = rating.split('.');
+      const stars = parseInt(split[0], 10);
+      const left = stars * 24 + stars * 2 + (2.4 * parseInt(split[1].slice(0, 2), 10)) / 10;
+      const width = 2.4 * (11 - parseInt(split[1], 10));
+
+      // if only zero point some stars we need to draw this alone because the loop wont work...
+      if (stars === 0) {
+        list.push(<div className="star" key="singularStar" />);
+        list.push(<div className="star__cutout" key="singularCutout" style={{ left: `${left}px`, width: `${width}px` }} />);
+      }
+
+      for (let i = 0; i < stars; i += 1) {
+        list.push(<div className="star" key={i} />);
+        if (i === stars - 1 && parseInt(split[1], 10) !== 0) {
+          list.push(<div className="star" key="final" />);
+          list.push(<div className="star__cutout" key="cutout" style={{ left: `${left}px`, width: `${width}px` }} />);
+        }
       }
     }
     return (

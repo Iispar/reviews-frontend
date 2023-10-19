@@ -241,8 +241,9 @@ const Item = ({ className, id }) => {
   /**
    * Calls the service to delete current item from database
    */
-  const deleteReview = (deletion) => {
+  const deleteItem = (deletion) => {
     if (deletion) {
+      setLoading(4);
       itemService.deleteItem(itemId, token)
         .then(() => {
           setLoading(5);
@@ -329,8 +330,8 @@ const Item = ({ className, id }) => {
               <button className={`${className}__grid__words__selection__delete`} id={`${id}__grid__words__selection__delete`} type="button" onClick={() => confirmDeletion()}> delete </button>
               <div className={`${className}__grid__words__selection__confirmDelete`} id={`${id}__grid__words__selection__confirmDelete`}>
                 <span className={`${className}__grid__words__selection__confirmDelete__text`}>Are you sure?</span>
-                <button className={`${className}__grid__words__selection__confirmDelete__wantedDelete`} id={`${id}__grid__words__selection__confirmDelete__wantedDelete`} type="button" onClick={() => deleteReview(true)}> yes </button>
-                <button className={`${className}__grid__words__selection__confirmDelete__cancelDelete`} id={`${id}__grid__words__selection__confirmDelete__cancelDelete`} type="button" onClick={() => deleteReview(false)}> no </button>
+                <button className={`${className}__grid__words__selection__confirmDelete__wantedDelete`} id={`${id}__grid__words__selection__confirmDelete__wantedDelete`} type="button" onClick={() => deleteItem(true)}> yes </button>
+                <button className={`${className}__grid__words__selection__confirmDelete__cancelDelete`} id={`${id}__grid__words__selection__confirmDelete__cancelDelete`} type="button" onClick={() => deleteItem(false)}> no </button>
               </div>
             </div>
           )}

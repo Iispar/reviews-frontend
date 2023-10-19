@@ -101,7 +101,7 @@ InputField.defaultProps = {
   className: 'searchField',
   width: '220px',
   type: 'text',
-  error: 'wrong input',
+  error: null,
   height: '40px',
   regex: null,
   onChange: null,
