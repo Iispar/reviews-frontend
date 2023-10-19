@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8080/api/pages';
+const baseUrl = `${process.env.REACT_APP_URL}/pages`;
 
 /**
  * Calls the api to get home page for account.

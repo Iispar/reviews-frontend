@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8080/api/review';
+const baseUrl = `${process.env.REACT_APP_URL}/review`;
 
 /**
  * Calls the api to get reviews for account. Sorts by latest automatically.
