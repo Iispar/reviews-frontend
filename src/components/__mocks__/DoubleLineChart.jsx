@@ -3,6 +3,7 @@ import React from 'react';
 
 const DoubleLineChart = ({ data }) => {
   if (data == null) return null;
+
   const dataList = [];
   for (let i = 0; i < data.length; i += 1) {
     dataList.push(
