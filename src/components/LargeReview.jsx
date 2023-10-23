@@ -56,15 +56,15 @@ const LargeReview = ({
         <button className={`${className}__info__closeBtn`} id={`${className}__info__closeBtn__${id}`} type="button" onClick={() => toggle()} aria-label="closeButton" />
         <div className={`${className}__info__body`} id={`${className}__info__body__${id}`}>
           <div className={`${className}__info__body__header`} id={`${className}__info__body__header__${id}`}>
-            <span className={`${className}__info__body__header__title`} id={`${className}__info__body__header__title`}>{title}</span>
-            <span className={`${className}__info__body__header__date`} id={`${className}__info__body__header__date`}>{date}</span>
+            <span className={`${className}__info__body__header__title`} id={`${id}__info__body__header__title`}>{title}</span>
+            <span className={`${className}__info__body__header__date`} id={`${id}__info__body__header__date`}>{date}</span>
           </div>
-          <span className={`${className}__info__body__comment`} id={`${className}__info__body__comment`}>{body}</span>
+          <span className={`${className}__info__body__comment`} id={`${id}__info__body__comment`}>{body}</span>
         </div>
         <div className={`${className}__info__stats`}>
           <div className={`${className}__info__stats__rating`}>
             <button className={`${className}__info__stats__rating__expandBtn`} id={`${className}__info__stats__rating__expandBtn__${id}`} type="button" onClick={() => toggle(true)} aria-label="expandButton" />
-            <span className={`${className}__info__stats__rating__value`} id={`${className}__info__stats__rating__value`}>{rating}</span>
+            <span className={`${className}__info__stats__rating__value`} id={`${id}__info__stats__rating__value`}>{rating}</span>
             <div className={`${className}__info__stats__rating__icon`} />
           </div>
           <a href={`/item/${item}`} className={`${className}__info__stats__item`} id={`${className}__info__stats__item__${id}`}>

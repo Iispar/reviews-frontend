@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8080/api/account';
+const baseUrl = `${process.env.REACT_APP_URL}/account`;
 
 /**
  * Calls the api to get the account with the accountId
