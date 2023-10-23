@@ -15,4 +15,16 @@
     cursor: default;
     font-family: 'mainFont';
     background-color: $backgroundWhite;
+    &__msg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 290px;
+        height: 130px;
+        border: 2px solid $orange;
+        border-radius: 20px;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
 }

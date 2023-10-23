@@ -68,6 +68,11 @@ const Login = ({ className, id }) => {
 
   return (
     <div className={className} id={id}>
+      <div className={`${className}__msg`}>
+        if this is your first time using the backend is most likely shutdown.
+        Please try to login with random credentials until you get an error message.
+        It takes multiple minutes for the backend to wake up.
+      </div>
       <LoginForm onSubmit={handleLogin} errorMessage={error} />
       <CreateAccountForm onSubmit={handleCreation} error={error} />
     </div>

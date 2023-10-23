@@ -3,7 +3,7 @@
   letter-spacing: 2px;
   src: url("../data/fonts/mulish.ttf");
 }
-btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .login__loginForm__inputs__loginBtn {
+btn, .item__grid__words__selection__confirmDelete__cancelDelete, .item__grid__words__selection__confirmDelete__wantedDelete, .item__grid__words__selection__new, .newReviewForm__buttons__create, .itemInput__form__categoryAndSubmit__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .login__loginForm__inputs__loginBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__subm
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover:enabled, .newReviewForm__buttons__create:hover:enabled, .newReview__button:hover:enabled, .fileInput__form__submitBtn:hover:enabled, .createNew__createAccountForm__inputs__submit:hover:enabled, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover:enabled, .login__loginForm__inputs__loginBtn:hover:enabled {
+btn:hover:enabled, .item__grid__words__selection__confirmDelete__cancelDelete:hover:enabled, .item__grid__words__selection__confirmDelete__wantedDelete:hover:enabled, .item__grid__words__selection__new:hover:enabled, .newReviewForm__buttons__create:hover:enabled, .itemInput__form__categoryAndSubmit__submitBtn:hover:enabled, .createNew__createAccountForm__inputs__submit:hover:enabled, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover:enabled, .login__loginForm__inputs__loginBtn:hover:enabled {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -39,7 +39,7 @@ pagination-btn:disabled, .pagination__next:disabled, .pagination__prev:disabled 
   border: 1px solid #c2c2c2;
 }
 
-close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close, .settingsInput__form__delete {
+close-btn, .deleteAccount__form__inputs__deleteButton, .item__grid__words__selection__delete, .newReviewForm__buttons__close, .settingsInput__form__delete {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,7 +51,7 @@ close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover, .settingsInput__form__delete:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .item__grid__words__selection__delete:hover, .newReviewForm__buttons__close:hover, .settingsInput__form__delete:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
 }
@@ -71,7 +71,7 @@ settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons
   color: #EF8354;
 }
 
-settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__closeButton {
+settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__values__closeButton {
   height: 20px;
   width: 20px;
   border: none;
@@ -115,7 +115,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   justify-content: center;
   align-items: center;
   height: 50px;
-  width: 240px;
+  width: 100%;
   margin-bottom: 5px;
   border-radius: 5px;
 }
@@ -227,7 +227,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   letter-spacing: 2px;
   src: url("../data/fonts/mulish.ttf");
 }
-btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn {
+btn, .item__grid__words__selection__confirmDelete__cancelDelete, .item__grid__words__selection__confirmDelete__wantedDelete, .item__grid__words__selection__new, .newReviewForm__buttons__create, .itemInput__form__categoryAndSubmit__submitBtn, .createNew__createAccountForm__inputs__submit, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -239,7 +239,7 @@ btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__subm
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover:enabled, .newReviewForm__buttons__create:hover:enabled, .newReview__button:hover:enabled, .fileInput__form__submitBtn:hover:enabled, .createNew__createAccountForm__inputs__submit:hover:enabled, .login__loginForm__inputs__loginBtn:hover:enabled, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover:enabled {
+btn:hover:enabled, .item__grid__words__selection__confirmDelete__cancelDelete:hover:enabled, .item__grid__words__selection__confirmDelete__wantedDelete:hover:enabled, .item__grid__words__selection__new:hover:enabled, .newReviewForm__buttons__create:hover:enabled, .itemInput__form__categoryAndSubmit__submitBtn:hover:enabled, .createNew__createAccountForm__inputs__submit:hover:enabled, .login__loginForm__inputs__loginBtn:hover:enabled, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover:enabled {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -263,7 +263,7 @@ pagination-btn:disabled, .pagination__next:disabled, .pagination__prev:disabled 
   border: 1px solid #c2c2c2;
 }
 
-close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close, .settingsInput__form__delete {
+close-btn, .deleteAccount__form__inputs__deleteButton, .item__grid__words__selection__delete, .newReviewForm__buttons__close, .settingsInput__form__delete {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -275,7 +275,7 @@ close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover, .settingsInput__form__delete:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .item__grid__words__selection__delete:hover, .newReviewForm__buttons__close:hover, .settingsInput__form__delete:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
 }
@@ -295,7 +295,7 @@ settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons
   color: #EF8354;
 }
 
-settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__closeButton {
+settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__values__closeButton {
   height: 20px;
   width: 20px;
   border: none;
@@ -309,12 +309,13 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  height: 470px;
+  height: 500px;
   display: none;
 }
 .createNew__createAccountForm {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 5px;
   height: 430px;
   width: 300px;
@@ -332,6 +333,20 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   font-size: 28px;
   text-transform: uppercase;
 }
+.createNew__createAccountForm__error {
+  font-size: 14px;
+  background: #FF9494;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 300px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.createNew__createAccountForm__error:empty {
+  display: none;
+}
 .createNew__createAccountForm__inputs {
   display: flex;
   align-items: center;
@@ -346,6 +361,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
   gap: 10px;
 }
 .createNew__createAccountForm__inputs__form__password {
@@ -369,10 +385,11 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2px;
-  padding-top: 0px;
   height: 24px;
   gap: 10px;
+}
+.createNew__createAccountForm__inputs__form__roleLabel__text {
+  padding-bottom: 3px;
 }
 .createNew__createAccountForm__inputs__form__roleLabel__selection {
   color: #545454;
@@ -414,6 +431,18 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   cursor: default;
   font-family: "mainFont";
   background-color: #F5F5F5;
+}
+.loginGrid__msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 290px;
+  height: 130px;
+  border: 2px solid #EF8354;
+  border-radius: 20px;
+  padding: 5px;
+  margin-bottom: 10px;
 }
 
 .searchField {
@@ -493,7 +522,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   color: #ff0000;
 }
 
-btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__submitBtn, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .createNew__createAccountForm__inputs__submit {
+btn, .item__grid__words__selection__confirmDelete__cancelDelete, .item__grid__words__selection__confirmDelete__wantedDelete, .item__grid__words__selection__new, .newReviewForm__buttons__create, .itemInput__form__categoryAndSubmit__submitBtn, .login__loginForm__inputs__loginBtn, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn, .createNew__createAccountForm__inputs__submit {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -505,7 +534,7 @@ btn, .newReviewForm__buttons__create, .newReview__button, .fileInput__form__subm
   font-size: 16px;
   font-family: mainFont;
 }
-btn:hover:enabled, .newReviewForm__buttons__create:hover:enabled, .newReview__button:hover:enabled, .fileInput__form__submitBtn:hover:enabled, .login__loginForm__inputs__loginBtn:hover:enabled, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover:enabled, .createNew__createAccountForm__inputs__submit:hover:enabled {
+btn:hover:enabled, .item__grid__words__selection__confirmDelete__cancelDelete:hover:enabled, .item__grid__words__selection__confirmDelete__wantedDelete:hover:enabled, .item__grid__words__selection__new:hover:enabled, .newReviewForm__buttons__create:hover:enabled, .itemInput__form__categoryAndSubmit__submitBtn:hover:enabled, .login__loginForm__inputs__loginBtn:hover:enabled, .login__loginForm__inputs__passwordInfo__contact__email__resetBtn:hover:enabled, .createNew__createAccountForm__inputs__submit:hover:enabled {
   box-shadow: 0 0 2px 1px #EF8354;
   border: 0px;
 }
@@ -529,7 +558,7 @@ pagination-btn:disabled, .pagination__next:disabled, .pagination__prev:disabled 
   border: 1px solid #c2c2c2;
 }
 
-close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__close, .settingsInput__form__delete {
+close-btn, .deleteAccount__form__inputs__deleteButton, .item__grid__words__selection__delete, .newReviewForm__buttons__close, .settingsInput__form__delete {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -541,7 +570,7 @@ close-btn, .deleteAccount__form__inputs__deleteButton, .newReviewForm__buttons__
   font-size: 16px;
   font-family: mainFont;
 }
-close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .newReviewForm__buttons__close:hover, .settingsInput__form__delete:hover {
+close-btn:hover, .deleteAccount__form__inputs__deleteButton:hover, .item__grid__words__selection__delete:hover, .newReviewForm__buttons__close:hover, .settingsInput__form__delete:hover {
   box-shadow: 0 0 2px 1px red;
   border: 0px;
 }
@@ -561,7 +590,7 @@ settings-btn:hover, .selections__buttons__delAccount:hover, .selections__buttons
   color: #EF8354;
 }
 
-settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__closeButton {
+settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__values__closeButton {
   height: 20px;
   width: 20px;
   border: none;
@@ -576,7 +605,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   letter-spacing: 2px;
   src: url("../data/fonts/mulish.ttf");
 }
-.header {
+.headerContainer__header {
   display: flex;
   background: #4F5D75;
   height: 50px;
@@ -584,7 +613,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   align-items: center;
   padding-left: 20px;
 }
-.header__hamburger {
+.headerContainer__header__hamburger {
   position: relative;
   width: 26px;
   height: 3px;
@@ -592,7 +621,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   background: #FFFFFF;
   z-index: 1;
 }
-.header__hamburger::before {
+.headerContainer__header__hamburger::before {
   content: "";
   width: 26px;
   height: 3px;
@@ -603,7 +632,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   left: 0px;
   transition: all 300ms;
 }
-.header__hamburger::after {
+.headerContainer__header__hamburger::after {
   content: "";
   width: 26px;
   height: 3px;
@@ -614,7 +643,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   left: 0px;
   transition: all 300ms;
 }
-.header__hamburger__btn {
+.headerContainer__header__hamburger__btn {
   background: transparent;
   border: 0px;
   position: absolute;
@@ -624,10 +653,9 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   right: 1px;
   pointer-events: pointer;
 }
-
-.navBar {
+.headerContainer__navBar {
   display: flex;
-  background: rgba(79, 93, 117, 0.8274509804);
+  background: rgba(54, 53, 72, 0.6274509804);
   position: absolute;
   top: 0px;
   left: 0;
@@ -637,24 +665,36 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   transform-origin: left;
   transform: scaleX(0);
   flex-direction: column;
-  padding-top: 60px;
+  padding-top: 50px;
   align-items: center;
   gap: 6px;
 }
-.navBar__list__logout {
-  position: absolute;
-  bottom: 20px;
+.headerContainer__navBar a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e3e3e3;
+  text-decoration: none;
+  width: 100%;
+  height: 40px;
 }
-.navBar button {
+.headerContainer__navBar a:hover {
+  background: #919191;
+}
+.headerContainer__navBar__list__logout {
+  position: absolute;
+  bottom: 0px;
+}
+.headerContainer__navBar button {
   background: transparent;
   border: none;
   width: 100%;
-  height: 40px;
+  height: 50px;
   padding: 2px;
   font-size: 16px;
 }
-.navBar button:hover {
-  background: #4f5d75;
+.headerContainer__navBar button:hover {
+  background: #919191;
 }
 
 .clicked {
@@ -899,21 +939,19 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
 }
 
 .hover {
-  transition: all 4s linear;
   white-space: nowrap;
 }
 .hover:hover {
-  transform: translateX(calc(200px - 100%));
+  transform: translateX(calc(210px - 100%));
 }
 
 .itemList {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   height: 100%;
   width: 100%;
-  gap: 10px;
 }
 
 .largeField {
@@ -998,11 +1036,11 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  height: 40px;
-  padding: 10px;
+  height: 76px;
+  padding: 12px;
   border-bottom: 1px solid #c2c2c2;
   font-size: 16px;
-  padding-bottom: 12px;
+  box-sizing: border-box;
   cursor: pointer;
 }
 .largeItem__nameReviews {
@@ -1083,17 +1121,11 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__header__close
   background-repeat: no-repeat;
   background-color: transparent;
   border: 0;
+  filter: invert(37%) sepia(0%) saturate(1675%) hue-rotate(148deg) brightness(83%) contrast(88%);
 }
 
 input[type=search]::-webkit-search-cancel-button {
   -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
-  background-image: url("../../data/icons/closeIcon.svg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  filter: invert(37%) sepia(0%) saturate(1675%) hue-rotate(148deg) brightness(83%) contrast(88%);
 }
 
 .barTooltip {
@@ -1112,7 +1144,7 @@ input[type=search]::-webkit-search-cancel-button {
 
 .lineTooltip {
   background: #FFFFFF;
-  width: 160px;
+  width: 170px;
   height: 80px;
   border: 2px solid #CBDAF0;
   border-radius: 10px;
@@ -1139,7 +1171,7 @@ input[type=search]::-webkit-search-cancel-button {
   color: #EF8354;
 }
 
-.lineChart__chart {
+.lineChart {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -1216,22 +1248,30 @@ input[type=search]::-webkit-search-cancel-button {
 }
 .jsonFileInput__label__succesful {
   display: none;
-  background: #16ca4c;
-  height: 20px;
-  width: 20px;
+  background-image: url("../../data/icons/correctIcon.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+  filter: invert(54%) sepia(68%) saturate(1422%) hue-rotate(93deg) brightness(103%) contrast(83%);
 }
 .jsonFileInput__label__error {
   display: none;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 60px;
-  width: 100px;
+  width: 180px;
 }
 .jsonFileInput__label__error__logo {
-  background: #ff0000;
+  background-image: url("../../data/icons/closeIcon.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
   height: 30px;
   width: 30px;
+  filter: invert(16%) sepia(100%) saturate(6370%) hue-rotate(357deg) brightness(106%) contrast(126%);
+  filter: invert(61%) sepia(85%) saturate(3051%) hue-rotate(324deg) brightness(97%) contrast(108%);
+  filter: invert(64%) sepia(100%) saturate(541%) hue-rotate(305deg) brightness(108%) contrast(118%);
 }
 .jsonFileInput__form {
   width: 100%;
@@ -1260,9 +1300,10 @@ input[type=file] {
   position: relative;
 }
 .settingsInput__form__warning {
-  display: none;
+  display: flex;
   font-size: 12px;
   padding-bottom: 10px;
+  white-space: pre-line;
 }
 .settingsInput__form__input {
   grid-column: 2;
@@ -1363,8 +1404,6 @@ input[type=file] {
 .dropDownSortMenu__reviews, .dropDownSortMenu__rating, .dropDownSortMenu__date {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
 }
@@ -1386,7 +1425,7 @@ input[type=file] {
   color: #000000;
 }
 .dropDownSortMenu__reviews button:hover:enabled, .dropDownSortMenu__rating button:hover:enabled, .dropDownSortMenu__date button:hover:enabled {
-  background: #e2e2e2;
+  background: #f1f1f1;
 }
 .dropDownSortMenu__reviews__ascArrow, .dropDownSortMenu__rating__ascArrow, .dropDownSortMenu__date__ascArrow {
   position: relative;
@@ -1428,51 +1467,273 @@ input[type=file] {
   top: 2px;
   transform: rotate(90deg);
 }
-.dropDownSortMenu__reviews__asc {
+.dropDownSortMenu__reviews__asc, .dropDownSortMenu__date__asc {
   border-top-left-radius: 9px;
 }
-.dropDownSortMenu__reviews__desc {
+.dropDownSortMenu__reviews__desc, .dropDownSortMenu__date__desc {
   border-bottom-left-radius: 9px;
 }
 .dropDownSortMenu__arrow {
   position: relative;
   background: transparent;
-  border: none;
+  border: 0px;
+  height: 100%;
 }
 .dropDownSortMenu__arrow::before {
   content: " ";
   background-image: url("../../data/icons/arrowDown.svg");
-  background-size: 100%;
+  background-size: 140%;
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
-  z-index: -1;
-  width: 20px;
-  height: 12px;
   position: absolute;
-  top: -5px;
-  left: -4px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
   transition: all 0.3s;
   transform: rotate(270deg);
   filter: invert(33%) sepia(35%) saturate(359%) hue-rotate(179deg) brightness(96%) contrast(89%);
 }
 
-@font-face {
-  font-family: "mainFont";
-  letter-spacing: 2px;
-  src: url("../data/fonts/mulish.ttf");
+.loading {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading__beat {
+  height: 100%;
+  width: 100%;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+.loading__ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading__ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #8884d8;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.loading__ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: loading-ellipsis1 0.6s infinite;
+}
+.loading__ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: loading-ellipsis2 0.6s infinite;
+}
+.loading__ellipsis div:nth-child(3) {
+  left: 8px;
+  animation: loading-ellipsis2 0.6s infinite;
+}
+.loading__ellipsis div:nth-child(4) {
+  left: 8px;
+  animation: loading-ellipsis3 0.6s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(0, 0%, 94%);
+  }
+  100% {
+    background-color: hsl(200, 16%, 89%);
+  }
+}
+@keyframes loading-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes loading-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes loading-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+.actionWait {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.actionWait__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 5px;
+  height: 200px;
+  width: 300px;
+  background: #f1f1f1;
+}
+.actionWait__container__ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.actionWait__container__ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #000000;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #000000 transparent transparent transparent;
+}
+.actionWait__container__ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.actionWait__container__ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.actionWait__container__ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+.actionWait__container__error {
+  position: relative;
+}
+.actionWait__container__error__circle, .actionWait__container__error__circleBorder {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.actionWait__container__error__circle {
+  z-index: 1;
+  background: white;
+  transform: scale(1);
+  animation: success-anim 700ms ease;
+}
+.actionWait__container__error__circle__cross {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-image: url("../../data/icons/closeIcon.svg");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: invert(50%) sepia(94%) saturate(7499%) hue-rotate(353deg) brightness(85%) contrast(118%);
+}
+.actionWait__container__error__circleBorder {
+  position: absolute;
+  z-index: 0;
+  transform: scale(1.1);
+  animation: circle-anim 400ms ease;
+  background: #ff0000;
+}
+.actionWait__container__errorText {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+}
+.actionWait__container__success {
+  position: relative;
+  display: flex;
+}
+.actionWait__container__success__circle, .actionWait__container__success__circleBorder {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.actionWait__container__success__circle {
+  z-index: 1;
+  background: white;
+  transform: scale(1);
+  animation: success-anim 700ms ease;
+}
+.actionWait__container__success__circle__check {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-image: url("../../data/icons/correctIcon.svg");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: invert(38%) sepia(90%) saturate(529%) hue-rotate(87deg) brightness(100%) contrast(85%);
+}
+.actionWait__container__success__circleBorder {
+  position: absolute;
+  z-index: 0;
+  transform: scale(1.1);
+  animation: circle-anim 400ms ease;
+  background: #0ba100;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes success-anim {
+  0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes circle-anim {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1.1);
+  }
 }
 @font-face {
   font-family: "mainFont";
   letter-spacing: 2px;
   src: url("../data/fonts/mulish.ttf");
 }
+/**
+ * Sets the reviews container for the home page.
+ */
 .latestReviews {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 40px 2px #b5b5b5;
+  box-shadow: 0px 0px 20px 2px #b5b5b5;
   border-radius: 5px;
+  background: #fefefe;
 }
 .latestReviews__header {
   display: flex;
@@ -1510,6 +1771,9 @@ input[type=file] {
   align-items: center;
 }
 
+/**
+ * Sets the most popular items container for the home page.
+ */
 .mostPopular {
   height: 100%;
   width: 100%;
@@ -1537,6 +1801,15 @@ input[type=file] {
   height: 100%;
   width: 100%;
 }
+.mostPopular__list__items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+}
 .mostPopular__empty {
   height: 100%;
   display: flex;
@@ -1544,15 +1817,20 @@ input[type=file] {
   align-items: center;
 }
 
+/**
+ * Sets the stats container for home page. Contains one recharts barchart that does not have css here as it is from
+ * recharts. Includes also the all time stats.
+ */
 .homeStats {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  gap: 20px;
   height: 100%;
-  gap: 10px;
-  justify-content: space-between;
 }
 .homeStats__ratings {
   width: 100%;
+  height: 100%;
   box-shadow: 0 0 20px 1px #b5b5b5;
   border-radius: 5px;
   display: flex;
@@ -1561,7 +1839,7 @@ input[type=file] {
   flex-direction: column;
 }
 .homeStats__ratings__chart {
-  height: 160px;
+  height: 100%;
   width: 240px;
   padding: 0;
 }
@@ -1584,6 +1862,7 @@ input[type=file] {
   flex-direction: column;
   box-shadow: 0 0 20px 1px #b5b5b5;
   padding: 4px;
+  box-sizing: border-box;
 }
 .homeStats__allTime__stats {
   display: flex;
@@ -1619,7 +1898,16 @@ input[type=file] {
   align-items: center;
   font-size: 16px;
 }
+.homeStats__barLoad {
+  height: 100%;
+}
+.homeStats__statsLoad {
+  height: 120px;
+}
 
+/**
+* Sets the container(!) for the chart. The chart is created straight from recharts.
+*/
 .homeChart {
   position: relative;
   display: flex;
@@ -1627,7 +1915,7 @@ input[type=file] {
   align-items: center;
   height: 100%;
   width: 100%;
-  background: #FFFFFF;
+  background: #fefefe;
   border: 2px solid #CBDAF0;
   border-radius: 10px;
   padding: 5px;
@@ -1660,6 +1948,9 @@ input[type=file] {
   transition: all 0.3s ease-out;
 }
 
+/**
+* Sets the grid for the home page.
+*/
 .home {
   height: 100%;
   display: flex;
@@ -1672,12 +1963,12 @@ input[type=file] {
   display: grid;
   height: 100%;
   grid-template-columns: auto 700px 320px auto;
-  grid-template-rows: 100px 370px 100px 200px auto 10px;
+  grid-template-rows: 0px 60px 370px 100px 200px auto 10px;
   gap: 20px;
   overflow: hidden;
 }
 .home__grid__title {
-  grid-row: 1/1;
+  grid-row: 2/2;
   grid-column: 2/4;
   padding-left: 2px;
   display: flex;
@@ -1688,23 +1979,26 @@ input[type=file] {
   font-size: 36px;
 }
 .home__grid__latestReviews {
-  grid-row: 2/4;
+  grid-row: 3/5;
   grid-column: 2/2;
 }
 .home__grid__mostPopular {
-  grid-row: 2/2;
+  grid-row: 3/3;
   grid-column: 3/3;
 }
 .home__grid__homeChart {
-  grid-row: 4/4;
+  grid-row: 5/5;
   grid-column: 2/2;
 }
-.home__grid__homeChange {
-  grid-row: 3/4;
+.home__grid__homeStats {
+  grid-row: 4/6;
   grid-column: 3/3;
 }
 
-.fileInput {
+/*
+ * Sets the styling for the item input on the all items page.
+ */
+.itemInput {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1712,8 +2006,9 @@ input[type=file] {
   height: 100%;
   border-radius: 10px;
   box-shadow: 0px 0px 40px 2px #b5b5b5;
+  background: #fefefe;
 }
-.fileInput__title {
+.itemInput__title {
   display: flex;
   height: 50px;
   font-size: 20px;
@@ -1721,18 +2016,45 @@ input[type=file] {
   justify-content: center;
   text-align: center;
 }
-.fileInput__form {
+.itemInput__form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
-.fileInput__form__submitBtn {
+.itemInput__form__categoryAndSubmit {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.itemInput__form__categoryAndSubmit__categoryLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2px;
+  padding-top: 0px;
+  height: 24px;
+  gap: 6px;
+}
+.itemInput__form__categoryAndSubmit__categoryLabel__text {
+  padding-bottom: 3px;
+}
+.itemInput__form__categoryAndSubmit__categoryLabel__selection {
+  color: #545454;
+  width: 60px;
+}
+.itemInput__form__categoryAndSubmit__submitBtn {
   width: 100px;
   height: 34px;
 }
 
+/**
+ * Sets the styling for the items list and header for it in all items page.
+ */
 .items {
   box-shadow: 0 0 40px 1px #b5b5b5;
   border-radius: 10px;
@@ -1755,14 +2077,17 @@ input[type=file] {
 .items__header__search {
   padding-top: 0px;
 }
-.items__list {
+.items__reviews {
   height: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.items__pagination {
-  height: 60px;
+.items__reviews__list {
+  height: 100%;
+}
+.items__reviews__pagination {
+  padding: 10px;
 }
 .items__empty {
   display: flex;
@@ -1780,22 +2105,26 @@ input[type=file] {
   background: transparent;
 }
 
+/**
+ * Sets the grid for the all items page.
+ */
 .allItems {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: default;
+  background: #fefefe;
 }
 .allItems__grid {
   display: grid;
   height: 100%;
   grid-template-columns: auto 700px 320px auto;
-  grid-template-rows: 70px 500px 20px;
+  grid-template-rows: 0px 60px 160px 340px 20px;
   gap: 20px;
 }
 .allItems__grid__title {
-  grid-row: 1/1;
+  grid-row: 2/2;
   grid-column: 2/4;
   padding-left: 2px;
   display: flex;
@@ -1806,14 +2135,12 @@ input[type=file] {
   font-size: 36px;
 }
 .allItems__grid__items {
-  grid-row: 2/2;
+  grid-row: 3/5;
   grid-column: 2/2;
 }
 .allItems__grid__fileInput {
-  grid-row: 2/2;
+  grid-row: 3/3;
   grid-column: 3/3;
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 
 .star {
@@ -1831,6 +2158,9 @@ input[type=file] {
   height: 24px;
 }
 
+/**
+ * Sets the styling for the header in the item page.
+ */
 .itemTitle {
   height: 100%;
   padding-left: 2px;
@@ -1873,6 +2203,7 @@ input[type=file] {
   font-size: 20px;
 }
 .itemTitle__data__rating {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1893,18 +2224,33 @@ input[type=file] {
   display: flex;
   gap: 2px;
 }
+.itemTitle__data__rating__hover {
+  display: none;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
 
+/**
+ * Sets the reviews for the item.
+ */
 .reviews {
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 40px 2px #b5b5b5;
+  box-shadow: 0px 0px 20px 2px #b5b5b5;
   border-radius: 5px;
+  background: #fefefe;
 }
 .reviews__header {
   display: flex;
   align-items: flex-start;
-  height: 50px;
+  flex-direction: column;
+  width: 100%;
+  height: 110px;
+  gap: 6px;
+  padding-left: 14px;
 }
 .reviews__header__text {
   display: flex;
@@ -1913,15 +2259,26 @@ input[type=file] {
   width: 100px;
   height: 36px;
   padding-top: 6px;
-  padding-left: 14px;
   display: flex;
   font-size: 26px;
 }
+.reviews__header__filters {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
 .reviews__reviews {
   height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.reviews__pagination {
-  height: 80px;
+.reviews__reviews__list {
+  height: 100%;
+}
+.reviews__reviews__pagination {
+  padding: 10px;
 }
 .reviews__empty {
   display: flex;
@@ -1930,24 +2287,9 @@ input[type=file] {
   align-items: center;
 }
 
-.newReview {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  box-sizing: border-box;
-  flex-direction: column;
-}
-.newReview__form {
-  display: none;
-}
-.newReview__button {
-  width: 200px;
-  height: 50px;
-  border-radius: 25px;
-}
-
+/**
+ * Sets the form for a new review.
+ */
 .newReviewForm {
   display: none;
   flex-direction: column;
@@ -1960,12 +2302,14 @@ input[type=file] {
 .newReviewForm__form {
   display: flex;
   flex-direction: column;
-  background: #FFFFFF;
+  align-items: center;
+  background: #fefefe;
   box-shadow: 0 0 10px 2px #b5b5b5;
   border-radius: 10px;
   padding: 10px;
   box-sizing: border-box;
   height: 100%;
+  width: 100%;
   justify-content: space-between;
 }
 .newReviewForm__form__title {
@@ -1975,10 +2319,15 @@ input[type=file] {
   height: 40px;
   font-size: 20px;
 }
+.newReviewForm__form__date {
+  width: 276px;
+  height: 20px;
+}
 .newReviewForm__form__file {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .newReviewForm__form__file:before {
   content: "";
@@ -1998,35 +2347,38 @@ input[type=file] {
   margin-top: 2px;
   border-radius: 2px;
 }
-.newReviewForm__form__du {
-  display: flex;
-}
 .newReviewForm__buttons {
   display: flex;
-  gap: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
 }
 .newReviewForm__buttons__create {
-  width: 200px;
+  width: 180px;
   height: 50px;
   border-radius: 25px;
 }
 .newReviewForm__buttons__close {
-  width: 80px;
+  width: 100px;
   height: 50px;
   border-radius: 25px;
 }
 
+/**
+ * Sets the item top words.
+ */
 .words {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 20px;
   font-size: 16px;
 }
 .words__title {
-  background: #FFFFFF;
+  background: #fefefe;
   height: 60px;
   font-size: 24px;
   display: flex;
@@ -2038,11 +2390,13 @@ input[type=file] {
 .words__positive {
   height: 270px;
   border-radius: 10px;
+  background: #fefefe;
   box-shadow: 0 0 10px 2px #b5b5b5;
 }
 .words__negative {
   height: 270px;
   border-radius: 10px;
+  background: #fefefe;
   box-shadow: 0 0 10px 2px #b5b5b5;
 }
 .words__empty {
@@ -2051,7 +2405,18 @@ input[type=file] {
   justify-content: center;
   align-items: center;
 }
+.words__loadingTitle {
+  height: 60px;
+  border-radius: 10px;
+}
+.words__loading {
+  height: 270px;
+  border-radius: 10px;
+}
 
+/**
+ * Sets the chart container for the item.
+ */
 .itemChart {
   position: relative;
   display: flex;
@@ -2059,7 +2424,7 @@ input[type=file] {
   align-items: center;
   height: 100%;
   width: 100%;
-  background: #FFFFFF;
+  background: #fefefe;
   border: 2px solid #CBDAF0;
   border-radius: 10px;
   padding: 5px;
@@ -2092,6 +2457,9 @@ input[type=file] {
   transition: all 0.3s ease-out;
 }
 
+/**
+ * Sets the grid for item page.
+ */
 .item {
   height: 100%;
   display: flex;
@@ -2104,7 +2472,7 @@ input[type=file] {
   display: grid;
   height: 100%;
   grid-template-columns: auto 700px 320px auto;
-  grid-template-rows: 20px 90px 500px 200px 20px;
+  grid-template-rows: 20px 90px 540px 170px 20px;
   gap: 20px;
   overflow: scroll;
 }
@@ -2123,9 +2491,49 @@ input[type=file] {
   flex-direction: column;
   justify-content: space-between;
 }
-.item__grid__words__buttons {
+.item__grid__words__selection {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 60px;
+}
+.item__grid__words__selection__new {
+  width: 180px;
+  height: 50px;
+  border-radius: 25px;
+}
+.item__grid__words__selection__delete {
+  border: 1px solid #ff0000;
+  width: 100px;
+  height: 50px;
+  border-radius: 25px;
+}
+.item__grid__words__selection__confirmDelete {
+  display: none;
+  height: 50px;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 16px;
+  border-radius: 30px;
+  box-shadow: 0 0 2px 1px red;
+  background: #FFFFFF;
+  border: 0px;
+}
+.item__grid__words__selection__confirmDelete__wantedDelete {
+  height: 40px;
+  width: 60px;
+  border-radius: 20px;
+  justify-self: flex-end;
+}
+.item__grid__words__selection__confirmDelete__cancelDelete {
+  height: 40px;
+  width: 60px;
+  border-radius: 20px;
+  justify-self: flex-end;
 }
 .item__grid__chart {
   grid-row: 4/4;
@@ -2174,53 +2582,22 @@ input[type=file] {
 
 .userInfo {
   display: flex;
+  position: relative;
   flex-direction: column;
   height: 100%;
-}
-.userInfo__header {
-  height: 50px;
-  display: grid;
-  grid-template-columns: 100px auto 40px;
-  gap: 10px;
-  align-content: center;
-  align-items: center;
-}
-.userInfo__header__icon {
-  grid-column: 1;
-  justify-self: flex-end;
-  height: 30px;
-  width: 30px;
-  border-radius: 15px;
-  border: 1px solid #ff0000;
-}
-.userInfo__header__title {
-  font-size: 24px;
-  justify-self: flex-start;
-  grid-column: 2;
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  line-height: 1;
-  padding-bottom: 4px;
-}
-.userInfo__header__title__change {
-  background: none;
-  border: none;
-  padding: 0;
-  color: #2156c0;
-  font-size: 10px;
-  cursor: pointer;
-}
-.userInfo__header__closeButton {
-  grid-column: 3;
-  justify-self: flex-end;
-  align-self: flex-start;
 }
 .userInfo__values {
   display: grid;
   flex-direction: column;
   padding-top: 10px;
   gap: 10px;
+}
+.userInfo__values__closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  justify-self: flex-end;
+  align-self: flex-start;
 }
 .userInfo__values__password {
   display: flex;
@@ -2277,29 +2654,32 @@ input[type=file] {
   display: flex;
   flex-direction: column;
   height: 100%;
-  gap: 20px;
+  gap: 10px;
 }
 .deleteAccount__header {
-  height: 54px;
+  position: relative;
+  height: 50px;
   display: grid;
-  grid-template-columns: 60px auto;
+  grid-template-columns: 100px auto;
   gap: 10px;
   align-content: center;
   align-items: center;
+  padding: 0;
 }
 .deleteAccount__header__text {
   grid-column: 2;
   font-size: 24px;
 }
 .deleteAccount__header__closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
   grid-column: 3;
-  justify-self: flex-end;
-  align-self: flex-start;
 }
 .deleteAccount__form {
   height: 100%;
   display: grid;
-  grid-template-columns: 60px 200px auto;
+  grid-template-columns: 100px auto;
   gap: 10px;
   align-content: flex-start;
   align-items: center;
