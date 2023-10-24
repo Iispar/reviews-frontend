@@ -59,6 +59,12 @@ describe('LoginForm tests', () => {
 
     expect(component.getByText('test error')).toBeVisible();
   });
+  test('LoginForm with load renders', () => {
+    const component = render(<LoginForm id="test" errorMessage="test error" loading={2} />);
+    const loading = component.container.querySelector('#loading__ellipsis');
+
+    expect(loading).toBeVisible();
+  });
   test('LoginForm submit works', async () => {
     const mockSubmit = jest.fn((e) => {
       e.preventDefault();

@@ -14,6 +14,7 @@ import { UseLogin, UseCreateAccount } from './loginHooks';
 const Login = ({ className, id }) => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(0);
 
   /**
    * Handles the login and moves to home page.
@@ -21,19 +22,23 @@ const Login = ({ className, id }) => {
    *        The event that the login is called with.
    */
   const handleLogin = async (e) => {
+    setLoading(2);
     e.preventDefault();
     const values = e.target.elements;
     try {
       await UseLogin(values[0].value, values[1].value);
+      setLoading(0);
       navigate('/home');
     } catch (exception) {
       if (exception.response.status === 403) {
+        setLoading(0);
         setError('Incorrect username or password.');
         setTimeout(() => {
           setError(null);
         }, 2000);
       } else {
         setError('an error occurred');
+        setLoading(0);
         setTimeout(() => {
           setError(null);
         }, 2000);
@@ -47,6 +52,7 @@ const Login = ({ className, id }) => {
    *        The event that the login is called with.
    */
   const handleCreation = async (e) => {
+    setLoading(2);
     e.preventDefault();
     const values = e.target.elements;
     try {
@@ -57,8 +63,10 @@ const Login = ({ className, id }) => {
         values[3].value,
         values[5].value,
       );
+      setLoading(0);
       navigate('/home');
     } catch (exception) {
+      setLoading(0);
       setError('an error occurred');
       setTimeout(() => {
         setError(null);
@@ -68,8 +76,13 @@ const Login = ({ className, id }) => {
 
   return (
     <div className={className} id={id}>
-      <LoginForm onSubmit={handleLogin} errorMessage={error} />
-      <CreateAccountForm onSubmit={handleCreation} error={error} />
+      <div className={`${className}__msg`}>
+        if this is your first time using the backend is most likely shutdown.
+        Please try to login with random credentials until you get an error message.
+        It takes multiple minutes for the backend to wake up.
+      </div>
+      <LoginForm onSubmit={handleLogin} errorMessage={error} loading={loading} />
+      <CreateAccountForm onSubmit={handleCreation} error={error} loading={loading} />
     </div>
   );
 };

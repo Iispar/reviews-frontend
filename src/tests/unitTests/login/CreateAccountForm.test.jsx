@@ -91,6 +91,12 @@ describe('createAccountForm tests', () => {
     expect(component.getByRole('button', { name: 'submit' })).toBeVisible();
     expect(component.getByRole('button', { name: 'Login.' })).toBeVisible();
   });
+  test('LoginForm with load renders', () => {
+    const component = render(<CreateAccountForm id="test" loading={2} />);
+    const loading = component.container.querySelector('#loading__ellipsis');
+
+    expect(loading).toBeVisible();
+  });
   test('CreateAccountForm with error renders', () => {
     const component = render(<CreateAccountForm id="test" error="test error" />);
     addStyling(component);

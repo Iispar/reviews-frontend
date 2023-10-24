@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import propTypes from 'prop-types';
 import InputField from '../../components/InputField';
+import LoadingBar from '../../components/LoadingBar';
 
 /**
  * creates the create accoun form.
@@ -9,10 +10,11 @@ import InputField from '../../components/InputField';
  * @property {String} id - custom id if wanted. Default is createNew.
  * @property {func} onSubmit - The onSubmit function to be used in the form.
  * @property {String} error - The error meessage for login if there is.
+ * @property {Integer} loading - The state of loading
  * @returns create account form
  */
 const CreateAccountForm = ({
-  className, id, onSubmit, error,
+  className, id, onSubmit, error, loading,
 }) => {
   const [password, setPassword] = useState('null');
   const [confirmPassword, setConfirmPassword] = useState('null');
@@ -106,7 +108,16 @@ const CreateAccountForm = ({
               </select>
             </label>
           </form>
-          <button className={`${className}__createAccountForm__inputs__submit`} id={`${id}__createAccountForm__inputs__submit`} type="submit" form={`${id}__createAccountForm__inputs__form`}> submit </button>
+          {loading === 2 ? (
+            <div className={`${className}__createAccountForm__inputs__load`}>
+              <div className={`${className}__createAccountForm__inputs__load__container`}>
+                <LoadingBar />
+              </div>
+            </div>
+          ) : (
+            <button className={`${className}__createAccountForm__inputs__submit`} id={`${id}__createAccountForm__inputs__submit`} type="submit" form={`${id}__createAccountForm__inputs__form`}> submit </button>
+          )}
+          ;
         </div>
       </div>
       <div className={`${className}__login`}>
@@ -122,6 +133,7 @@ CreateAccountForm.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
   error: propTypes.string,
+  loading: propTypes.number,
 };
 
 CreateAccountForm.defaultProps = {
@@ -129,6 +141,7 @@ CreateAccountForm.defaultProps = {
   className: 'createNew',
   id: 'createNew',
   error: null,
+  loading: 0,
 };
 
 export default CreateAccountForm;

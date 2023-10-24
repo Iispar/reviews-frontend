@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import InputField from '../../components/InputField';
+import LoadingBar from '../../components/LoadingBar';
 
 /**
  * creates the login form.
@@ -9,10 +10,11 @@ import InputField from '../../components/InputField';
  * @property {String} id - Custom id if wanted. Default loginForm.
  * @property {func} onSubmit - The onSubmit function to be used with the form.
  * @property {String} errorMessage - The error meessage for login if there is.
+ * @property {Integer} loading - The state of loading.
  * @returns loginin view.
  */
 const LoginForm = ({
-  onSubmit, className, id, errorMessage,
+  onSubmit, className, id, errorMessage, loading,
 }) => {
   const [contactVisible, setcontactVisible] = useState(false);
   /**
@@ -58,7 +60,15 @@ const LoginForm = ({
               Or just create a new account.
             </div>
           </div>
-          <button type="submit" className={`${className}__loginForm__inputs__loginBtn`} id={`${id}__loginForm__inputs__loginBtn`} name={`${className}Btn`} form={`${id}Form__inputs__form`}> login </button>
+          {loading === 2 ? (
+            <div className={`${className}__loginForm__inputs__load`}>
+              <div className={`${className}__loginForm__inputs__load__container`}>
+                <LoadingBar />
+              </div>
+            </div>
+          ) : (
+            <button type="submit" className={`${className}__loginForm__inputs__loginBtn`} id={`${id}__loginForm__inputs__loginBtn`} name={`${className}Btn`} form={`${id}Form__inputs__form`}> login </button>
+          )}
         </div>
       </div>
       <div className={`${className}__createAccount`}>
@@ -74,6 +84,7 @@ LoginForm.propTypes = {
   className: propTypes.string,
   id: propTypes.string,
   errorMessage: propTypes.string,
+  loading: propTypes.number,
 };
 
 LoginForm.defaultProps = {
@@ -81,6 +92,7 @@ LoginForm.defaultProps = {
   className: 'login',
   id: 'login',
   errorMessage: null,
+  loading: 0,
 };
 
 export default LoginForm;

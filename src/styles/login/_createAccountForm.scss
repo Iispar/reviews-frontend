@@ -47,6 +47,22 @@
             height: 340px;
             padding: 10px;
             padding-bottom: 20px;
+            &__load {
+                display: flex;
+                height: 100%;
+                align-items: flex-end;
+                &__container {
+                    display:flex;
+                    height: 34px;
+                    width: 260px;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid $orange;
+                    background: $white;
+                    border-radius: 20px;
+                    padding: 0;
+                }
+            }
             &__form {
                 display: flex;
                 flex-direction: column;
