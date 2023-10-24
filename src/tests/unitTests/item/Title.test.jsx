@@ -27,6 +27,11 @@ describe('Title tests', () => {
 
       expect(component.container.querySelector('#test__data__rating__stars')).toBeNull();
     });
+    test('2 stars render works', () => {
+      const component = render(<Title id="test" name="test name" reviewsCount={30} ratingValue="2" posReviews={20} negReviews={10} />);
+
+      expect(component.container.querySelector('#test__data__rating__stars').children).toHaveLength(2);
+    });
     test('0.x stars render works', () => {
       const component = render(<Title id="test" name="test name" reviewsCount={30} ratingValue="0.2" posReviews={20} negReviews={10} />);
 
