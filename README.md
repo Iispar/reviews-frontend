@@ -8,6 +8,7 @@ Use the app [here](https://reviews-frontend-ochre.vercel.app/login)
 he backend is probably at sleep so it will take few minutes for it to wake up from the first call. If you just login it will eventually give error or log you in when it wakes up... Also the add rating API is probably at sleep so try adding a review and after it gives an error try again after waiting until it works.
 
 You can use the username: admin with password: adminPass123!
+<br />
 This has some items with reviews already added. Otherwise there are some JSON files with reviews in the testData folder for you to try the rating.
 
 Frontend for the reviews application. Other repositories:
