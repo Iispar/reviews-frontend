@@ -131,7 +131,7 @@ const Item = ({ className, id }) => {
     // if file input is not empty.
     if (e.target.elements[3].files[0]) {
       list = await parseInputFile(e.target.elements[3].files[0]);
-      const reload = window.location.reload();
+      const reload = () => window.location.reload();
       UseNewReview(itemId, accountId, list, token, reload, setLoading);
     } else {
       list = [];
@@ -145,7 +145,6 @@ const Item = ({ className, id }) => {
     $(e.target.elements[0]).val('');
     $(e.target.elements[1]).val('');
     $(e.target.elements[2]).val('');
-    $(e.target.elements[3]).val('');
   };
 
   /**
