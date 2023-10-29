@@ -32,7 +32,7 @@ const Words = ({
   return (
     <div className={className} id={id}>
       <div className={`${className}__title`} id={`${className}__title`}>
-        most common words
+        most important words
       </div>
       <div className={`${className}__positive`} id={`${className}__positive`}>
         {posWords.length > 0 ? (
