@@ -7,19 +7,18 @@ Use the app [here](https://reviews-frontend-ochre.vercel.app/login)
 <br />
 he backend is probably at sleep so it will take few minutes for it to wake up from the first call. If you just login it will eventually give error or log you in when it wakes up... Also the add rating API is probably at sleep so try adding a review and after it gives an error try again after waiting until it works.
 
-<<<<<<< HEAD
-You can use the username: example with password: examplePass123!
+You can use the account
+<br />
+username: example
+<br />
+password: examplePass123!
+<br />
 This has some items with reviews already added. 
 
 You can also use the reviews.ipynb colab file to get your own reviews. It downloads the amazon_us_reviews dataset from Kaggle, because it is deleted from Huggingface, so you will need a Kaggle account for this. Check the colab file for instructions on how to use it.
 
 Otherwise there are some JSON files with reviews in the testData folder for you to try the rating. I recommend loading your own reviews, but the testData files should also work as I checked them.
 <br />
-=======
-You can use the username: admin with password: adminPass123!
-<br />
-This has some items with reviews already added. Otherwise there are some JSON files with reviews in the testData folder for you to try the rating.
->>>>>>> 5436645ebc9995126597ea5aa95329396101c081
 
 Frontend for the reviews application. Other repositories:
 <br />
