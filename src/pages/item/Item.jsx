@@ -131,6 +131,8 @@ const Item = ({ className, id }) => {
     // if file input is not empty.
     if (e.target.elements[3].files[0]) {
       list = await parseInputFile(e.target.elements[3].files[0]);
+      const reload = () => window.location.reload();
+      UseNewReview(itemId, accountId, list, token, reload, setLoading);
     } else {
       list = [];
       list.push({
@@ -138,12 +140,11 @@ const Item = ({ className, id }) => {
         body: e.target.elements[1].value,
         date: e.target.elements[2].value,
       });
+      UseNewReview(itemId, accountId, list, token, reloadReviews, setLoading);
     }
-    UseNewReview(itemId, accountId, list, token, reloadReviews, setLoading);
     $(e.target.elements[0]).val('');
     $(e.target.elements[1]).val('');
     $(e.target.elements[2]).val('');
-    $(e.target.elements[3]).val('');
   };
 
   /**

@@ -21,7 +21,17 @@ const ItemInput = ({ onSubmit, className, id }) => (
           </span>
           <select className={`${className}__form__categoryAndSubmit__categoryLabel__selection`} id="createCategory" name="createCategory">
             <option value="1"> Sports </option>
-            <option value="2"> TODO </option>
+            <option value="2"> Video games </option>
+            <option value="3"> tools </option>
+            <option value="4"> pets </option>
+            <option value="5"> kitchen </option>
+            <option value="6"> apparel </option>
+            <option value="7"> electronics </option>
+            <option value="8"> furniture </option>
+            <option value="9"> home </option>
+            <option value="10"> office </option>
+            <option value="11"> outdoors </option>
+            <option value="12"> toys </option>
           </select>
         </label>
         <button className={`${className}__form__categoryAndSubmit__submitBtn`} id={`${id}__form__submitBtn`} type="submit"> submit </button>

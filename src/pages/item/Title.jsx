@@ -33,7 +33,7 @@ const Title = ({
       const split = rating.split('.');
       const stars = parseInt(split[0], 10);
       const left = stars * 24 + stars * 2 + (2.4 * parseInt(split[1].slice(0, 2), 10)) / 10;
-      const width = 2.4 * (11 - parseInt(split[1], 10));
+      const width = 2.4 * (11 - parseInt(split[1].slice(0, 2), 10) / 10);
 
       // if only zero point some stars we need to draw this alone because the loop wont work...
       if (stars === 0) {

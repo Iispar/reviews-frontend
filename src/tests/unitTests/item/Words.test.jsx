@@ -21,7 +21,7 @@ describe('Words tests', () => {
       expect(container).toBeVisible();
       expect(container.className).toBe('words');
 
-      expect(component.getByText('most common words'));
+      expect(component.getByText('most important words'));
       expect(component.getByText('with positive reviews'));
       expect(component.getByText('with negative reviews'));
       expect(component.getByText('pos2'));
