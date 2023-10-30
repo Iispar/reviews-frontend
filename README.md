@@ -5,7 +5,7 @@ Use the app [here](https://reviews-frontend-ochre.vercel.app/login)
 <br />
 ** HOX **
 <br />
-he backend is probably at sleep so it will take few minutes for it to wake up from the first call. If you just login it will eventually give error or log you in when it wakes up... Also the add rating API is probably at sleep so try adding a review and after it gives an error try again after waiting until it works.
+The backend is probably at sleep so it will take few minutes for it to wake up from the first call. If you just login it will eventually give error or log you in when it wakes up... Also the add rating API is probably at sleep so try adding a review and after it gives an error try again after waiting until it works.
 
 You can use the account
 <br />
@@ -37,10 +37,14 @@ more on this in the APIs repository and also in the main document file.
 It has unit tests that cover almost 100% (could not test hover on recharts, because this is apparently not possible :( ) of all the files. Testing is done solely with Jest. This application is deployed into Vercel.com and you can access it from this [link](https://reviews-frontend-ochre.vercel.app/login)
 
 ## configuration
-If you are running this without the backend you will need the link for the backend API, please contact me at iiro.s.partanen@gmail.com to get this. Alternatively you can run the backend at the same time
-and then just create a .env.local file with REACT_APP_URL=http://localhost:8080/api (or the URL the backend uses) in it into the root directory.
+If you are running this without the backend you will need to create a .env.local file in the roow with ```REACT_APP_URL=https://reviews-backend-ftud.onrender.com/api```
+and then just create a .env.local file with ```REACT_APP_URL=http://localhost:8080/api``` (or the URL the backend uses) in it into the root directory.
 
 The tests **can** be run without this file.
+
+## Prequisites
+
+You need to have node installed.
 
 ## Running
 
@@ -56,7 +60,7 @@ To run this application you will need to fulfill configuration.
 You can then use either docker if you have it installed or just the command line. To run the dockerfile run ```docker build -t frontend .```
 and then run ```docker run -p 3000:3000 frontend``` and the application should start in http://localhost:3000/
 
-Alternatively you can run the application from the command line you just need to run from the root directory `npm install` in the terminal and then `npm run`
+Alternatively you can run the application from the command line you just need to run from the root directory `npm install` in the terminal (I got some errors here, but deleting the node_modules file and retrying fixed the problem). Then run `npm start`
 ### Test
 To run the tests you just need to clone the repository and from the root directory at the terminal run `npm run jest`. If you want coverage for the tests run `npm run jest -- --coverage` and if you want specific tests run for example `npm run jest --login (--coverage)`
 
