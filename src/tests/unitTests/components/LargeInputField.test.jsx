@@ -4,6 +4,15 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { addStyling } from '../../testHelpers';
 import LargeInputField from '../../../components/LargeInputField';
+import { useTextWidth } from '../../../helpers/componentHelpers';
+
+jest.mock('../../../helpers/componentHelpers', () => ({
+  useTextWidth: jest.fn(),
+}));
+
+beforeEach(() => {
+  useTextWidth.mockImplementation(() => '20px');
+});
 
 describe('LargeInputField tests', () => {
   test('LargeInputField renders', () => {
