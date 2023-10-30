@@ -117,7 +117,6 @@ const CreateAccountForm = ({
           ) : (
             <button className={`${className}__createAccountForm__inputs__submit`} id={`${id}__createAccountForm__inputs__submit`} type="submit" form={`${id}__createAccountForm__inputs__form`}> submit </button>
           )}
-          ;
         </div>
       </div>
       <div className={`${className}__login`}>

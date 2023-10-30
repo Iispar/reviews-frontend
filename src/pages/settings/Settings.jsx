@@ -89,7 +89,7 @@ const Settings = ({ className, id }) => {
       setLoading,
     );
     // if username is updated logout.
-    if (newUsername !== curUsername) {
+    if (newUsername !== curUsername || newPassword !== 'none') {
       window.localStorage.removeItem('token');
       window.location.reload();
     }
