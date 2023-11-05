@@ -28,7 +28,7 @@ Frontend for the reviews application. Other repositories:
 
 ## About this project
 
-**!! For a detailed look at the whole project please refer to the document in the files that was created for the college course. !!**
+**!! For a detailed look at the whole project please refer to the document "project.pdf" in the files that was created for the college course. !!**
 
 This is the frontend and also the main repository of the project that I created. It is a page where an online seller can input his items and
 reviews that are associated with the items. The site automatically with machine learning rates the reviews and also calculates the top most positive and negative words
