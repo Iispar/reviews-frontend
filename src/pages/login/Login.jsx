@@ -15,6 +15,7 @@ const Login = ({ className, id }) => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(0);
+  const [login, setLogin] = useState(true);
 
   /**
    * Handles the login and moves to home page.
@@ -74,6 +75,11 @@ const Login = ({ className, id }) => {
     }
   };
 
+  const changeView = (from) => {
+    if (from === 'login') setLogin(false);
+    else setLogin(true);
+  };
+
   return (
     <div className={className} id={id}>
       <div className={`${className}__msg`}>
@@ -81,8 +87,20 @@ const Login = ({ className, id }) => {
         Please try to login with random credentials until you get an error message.
         It takes multiple minutes for the backend to wake up.
       </div>
-      <LoginForm onSubmit={handleLogin} errorMessage={error} loading={loading} />
-      <CreateAccountForm onSubmit={handleCreation} error={error} loading={loading} />
+      <LoginForm
+        onSubmit={handleLogin}
+        errorMessage={error}
+        loading={loading}
+        view={login}
+        setView={changeView}
+      />
+      <CreateAccountForm
+        onSubmit={handleCreation}
+        error={error}
+        loading={loading}
+        view={!login}
+        setView={changeView}
+      />
     </div>
   );
 };

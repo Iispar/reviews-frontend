@@ -23,7 +23,18 @@ import SkeletonLoad from '../../components/SkeletonLoad';
  * @returns items component.
  */
 const Items = ({
-  items, className, id, onSubmit, setSort, setSearch, nextPage, prevPage, clearInput, loading,
+  items,
+  className,
+  id,
+  onSubmit,
+  setSort,
+  setSearch,
+  nextPage,
+  prevPage,
+  clearInput,
+  loading,
+  nextDisabled,
+  prevDisabled,
 }) => {
   if (loading === 1) return (<SkeletonLoad />);
   if (loading === 2 || loading === 3) {
@@ -39,7 +50,7 @@ const Items = ({
           {loading === 2 ? (<LoadingBar />) : (<div>error ocurred, please reload</div>)}
         </div>
         <div className={`${className}__reviews__pagination`}>
-          <Pagination next={() => nextPage()} prev={() => prevPage()} />
+          <Pagination next={() => nextPage()} prev={() => prevPage()} nextDisabled prevDisabled />
         </div>
       </div>
     );
@@ -62,7 +73,12 @@ const Items = ({
         <div className={`${className}__empty`}> no items </div>
       )}
       <div className={`${className}__reviews__pagination`}>
-        <Pagination next={() => nextPage()} prev={() => prevPage()} />
+        <Pagination
+          next={() => nextPage()}
+          prev={() => prevPage()}
+          nextDisabled={nextDisabled}
+          prevDisabled={prevDisabled}
+        />
       </div>
     </div>
   );
@@ -79,6 +95,8 @@ Items.propTypes = {
   prevPage: propTypes.func,
   clearInput: propTypes.func,
   loading: propTypes.number,
+  prevDisabled: propTypes.bool,
+  nextDisabled: propTypes.bool,
 };
 
 Items.defaultProps = {
@@ -92,6 +110,8 @@ Items.defaultProps = {
   prevPage: null,
   clearInput: null,
   loading: 0,
+  prevDisabled: true,
+  nextDisabled: true,
 };
 
 export default Items;

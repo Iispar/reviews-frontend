@@ -1,5 +1,4 @@
-import React from 'react';
-import $ from 'jquery';
+import React, { useState } from 'react';
 import propTypes from 'prop-types';
 
 /**
@@ -16,6 +15,7 @@ import propTypes from 'prop-types';
 const Title = ({
   name, reviewsCount, ratingValue, posReviews, negReviews, className, id,
 }) => {
+  const [hover, setHover] = useState(false);
   /**
    * Formats the star rating to actual stars.
    * @param {String} reviews
@@ -56,16 +56,6 @@ const Title = ({
     );
   };
 
-  const showRating = (into) => {
-    if (into) {
-      $(`#${id}__data__rating__hover`).css('display', 'flex');
-      $(`#${id}__data__rating__value`).css('display', 'none');
-    } else {
-      $(`#${id}__data__rating__hover`).css('display', 'none');
-      $(`#${id}__data__rating__value`).css('display', 'flex');
-    }
-  };
-
   return (
     <div className={`${className}`} id={`${id}`}>
       <div className={`${className}__info`}>
@@ -80,11 +70,11 @@ const Title = ({
           </span>
           reviews
         </div>
-        <div className={`${className}__data__rating`} id={`${id}__data__rating`} onMouseLeave={() => showRating(false)} onMouseEnter={() => showRating(true)}>
-          <span className={`${className}__data__rating__hover`} id={`${id}__data__rating__hover`}>
+        <div className={`${className}__data__rating`} id={`${id}__data__rating`} onMouseLeave={() => setHover(false)} onMouseEnter={() => setHover(true)}>
+          <span className={`${className}__data__rating__hover`} id={`${id}__data__rating__hover`} style={hover ? { display: 'flex' } : { display: 'none' }}>
             {parseFloat(ratingValue, 10).toFixed(1)}
           </span>
-          <span className={`${className}__data__rating__value`} id={`${id}__data__rating__value`}>
+          <span className={`${className}__data__rating__value`} id={`${id}__data__rating__value`} style={hover ? { display: 'none' } : { display: 'flex' }}>
             {ratingToStars(ratingValue)}
           </span>
           rating

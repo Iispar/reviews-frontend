@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import $ from 'jquery';
+import React from 'react';
 import propTypes from 'prop-types';
 
 /**
@@ -8,29 +7,25 @@ import propTypes from 'prop-types';
  * @Property {id} id - Custom id if wanted. Default is pagination.
  * @Property {Function} next - Function to use when next button is clicked.
  * @Property {Function} prev - Function to use when previous button is clicked.
+ * @Property {Bool} disabled - If prev button is disabled or not
  * @returns pagination buttons
  */
 const Pagination = ({
-  next, prev, className, id,
-}) => {
-  // disables the prev button at load
-  useEffect(() => {
-    $(`#${id}__prev`).prop('disabled', true);
-  }, []);
-
-  return (
-    <div className={className} id={id}>
-      <button className={`${className}__prev`} id={`${id}__prev`} type="button" onClick={prev}> previous </button>
-      <button className={`${className}__next`} id={`${id}__next`} type="button" onClick={next}> next </button>
-    </div>
-  );
-};
+  next, prev, className, id, prevDisabled, nextDisabled,
+}) => (
+  <div className={className} id={id}>
+    <button className={`${className}__prev`} id={`${id}__prev`} type="button" onClick={prev} disabled={prevDisabled}> previous </button>
+    <button className={`${className}__next`} id={`${id}__next`} type="button" onClick={next} disabled={nextDisabled}> next </button>
+  </div>
+);
 
 Pagination.propTypes = {
   next: propTypes.func,
   prev: propTypes.func,
   className: propTypes.string,
   id: propTypes.string,
+  prevDisabled: propTypes.bool,
+  nextDisabled: propTypes.bool,
 };
 
 Pagination.defaultProps = {
@@ -38,6 +33,8 @@ Pagination.defaultProps = {
   prev: null,
   className: 'pagination',
   id: 'pagination',
+  prevDisabled: true,
+  nextDisabled: true,
 };
 
 export default Pagination;

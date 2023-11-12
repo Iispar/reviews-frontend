@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import InputField from '../../components/InputField';
@@ -14,34 +13,11 @@ import LoadingBar from '../../components/LoadingBar';
  * @returns loginin view.
  */
 const LoginForm = ({
-  onSubmit, className, id, errorMessage, loading,
+  onSubmit, className, id, errorMessage, loading, view, setView,
 }) => {
-  const [contactVisible, setcontactVisible] = useState(false);
-  /**
-   * changes view between login form and create account form.
-   */
-  const changeView = (to) => {
-    $(`#${id}`).css('display', 'none');
-    $(`#${to}`).css('display', 'flex');
-    // reset the forms so they become empty.
-    $(`#${id}Form__inputs__form`).trigger('reset');
-  };
-
-  /**
-   * Opens the contact form for a new password.
-   */
-  const switchContact = () => {
-    if (contactVisible) {
-      $(`#${id}__loginForm__inputs__passwordInfo__contact`).css('display', 'none');
-      setcontactVisible(false);
-    } else {
-      $(`#${id}__loginForm__inputs__passwordInfo__contact`).css('display', 'flex');
-      setcontactVisible(true);
-    }
-  };
-
+  const [contact, setContact] = useState(false);
   return (
-    <div className={className} id={id}>
+    <div className={className} id={id} style={view ? { display: 'flex' } : { display: 'none' }}>
       <div className={`${className}__loginForm`}>
         <div className={`${className}__loginForm__header`} id={`${id}__loginForm__header`}> Login </div>
         <div className={`${className}__loginForm__error`} id={`${id}__loginForm__error`}>
@@ -53,8 +29,8 @@ const LoginForm = ({
             <InputField id="loginPassword" type="password" title="password" width="240px" height="40px" />
           </form>
           <div className={`${className}__loginForm__inputs__passwordInfo`}>
-            <button type="button" className={`${className}__loginForm__inputs__passwordInfo__forgotPassword`} id={`${id}__loginForm__inputs__passwordInfo__forgotPassword`} onClick={() => switchContact()}> Forgot password? </button>
-            <div className={`${className}__loginForm__inputs__passwordInfo__contact`} id={`${id}__loginForm__inputs__passwordInfo__contact`}>
+            <button type="button" className={`${className}__loginForm__inputs__passwordInfo__forgotPassword`} id={`${id}__loginForm__inputs__passwordInfo__forgotPassword`} onClick={contact ? () => setContact(false) : () => setContact(true)}> Forgot password? </button>
+            <div className={`${className}__loginForm__inputs__passwordInfo__contact`} id={`${id}__loginForm__inputs__passwordInfo__contact`} style={contact ? { display: 'flex' } : { display: 'none' }}>
               Not availabe automatically yet...
               Just contact me at my email if you want to reset your password.
               Or just create a new account.
@@ -73,7 +49,7 @@ const LoginForm = ({
       </div>
       <div className={`${className}__createAccount`}>
         Don&#39;t have an account?&nbsp;
-        <button type="button" className={`${className}__createAccount__button`} id={`${id}__createAccount__button`} tabIndex={0} onClick={() => changeView('createNew')}> Create new </button>
+        <button type="button" className={`${className}__createAccount__button`} id={`${id}__createAccount__button`} tabIndex={0} onClick={() => setView('login')}> Create new </button>
       </div>
     </div>
   );
@@ -85,6 +61,8 @@ LoginForm.propTypes = {
   id: propTypes.string,
   errorMessage: propTypes.string,
   loading: propTypes.number,
+  view: propTypes.number,
+  setView: propTypes.func,
 };
 
 LoginForm.defaultProps = {
@@ -93,6 +71,8 @@ LoginForm.defaultProps = {
   id: 'login',
   errorMessage: null,
   loading: 0,
+  view: true,
+  setView: null,
 };
 
 export default LoginForm;

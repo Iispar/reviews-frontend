@@ -40,6 +40,10 @@ const Item = ({ className, id }) => {
   const [sortDir, setSortDir] = useState('none');
   const [isNextPage, setIsNextPage] = useState(true);
   const [loading, setLoading] = useState(1);
+  const [nextDisabled, setNextDisabled] = useState(false);
+  const [prevDisabled, setPrevDisabled] = useState(true);
+  const [newView, setNewView] = useState(false);
+  const [confirm, setConfirm] = useState(false);
   const page = useRef(0);
 
   const navigate = useNavigate();
@@ -81,8 +85,8 @@ const Item = ({ className, id }) => {
    * UseEffect to check if next page of results is empty.
    */
   useEffect(() => {
-    if (isNextPage) $('#pagination__next').prop('disabled', false);
-    else $('#pagination__next').prop('disabled', true);
+    if (isNextPage) setNextDisabled(false);
+    else setNextDisabled(true);
   }, [isNextPage]);
 
   const reloadReviews = () => {
@@ -99,24 +103,6 @@ const Item = ({ className, id }) => {
       setIsNextPage,
       setLoading,
     );
-  };
-
-  /**
-   * Opens the new review form.
-   */
-  const newReview = () => {
-    $('#words').css('display', 'none');
-    $(`#${id}__grid__words__selection`).css('display', 'none');
-    $('#newReviewForm').css('display', 'flex');
-  };
-
-  /**
-   * Closes the new review form.
-   */
-  const closeNew = () => {
-    $('#words').css('display', 'flex');
-    $(`#${id}__grid__words__selection`).css('display', 'flex');
-    $('#newReviewForm').css('display', 'none');
   };
 
   /**
@@ -153,7 +139,7 @@ const Item = ({ className, id }) => {
   const nextPage = () => {
     setLoading(2);
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
-    $('#pagination__prev').prop('disabled', false);
+    setPrevDisabled(false);
     UseGetReviews(
       itemId,
       search,
@@ -187,7 +173,7 @@ const Item = ({ className, id }) => {
     );
     page.current -= 1;
     if (page.current === 0) {
-      $('#pagination__prev').prop('disabled', true);
+      setPrevDisabled(true);
     }
   };
 
@@ -234,9 +220,7 @@ const Item = ({ className, id }) => {
    * Shows the confirm delete buttons.
    */
   const confirmDeletion = () => {
-    $(`#${id}__grid__words__selection__new`).css('display', 'none');
-    $(`#${id}__grid__words__selection__delete`).css('display', 'none');
-    $(`#${id}__grid__words__selection__confirmDelete`).css('display', 'flex');
+    setConfirm(true);
   };
 
   /**
@@ -260,9 +244,7 @@ const Item = ({ className, id }) => {
           }, 3000);
         });
     } else {
-      $(`#${id}__grid__words__selection__new`).css('display', 'flex');
-      $(`#${id}__grid__words__selection__delete`).css('display', 'flex');
-      $(`#${id}__grid__words__selection__confirmDelete`).css('display', 'none');
+      setConfirm(false);
     }
   };
 
@@ -273,7 +255,7 @@ const Item = ({ className, id }) => {
   const clearSearch = (inputId) => {
     setLoading(2);
     page.current = 0;
-    $(`#${inputId}__input`).val('');
+    setPrevDisabled(true);
     setSearch('');
     const formattedSort = sort !== 'none' ? `review_${sort}` : sort;
     UseGetReviews(itemId, '', 0, formattedSort, sortDir, token, setReviews, setIsNextPage, setLoading);
@@ -316,20 +298,22 @@ const Item = ({ className, id }) => {
             setSearch={setSearch}
             clearSearch={clearSearch}
             loading={loading}
+            nextDisabled={nextDisabled}
+            prevDisabled={prevDisabled}
           />
         </div>
         <div className={`${className}__grid__words`} id={`${className}__grid__words`}>
-          <Words posWords={posWords} negWords={negWords} />
-          <NewReviewForm onSubmit={submitReview} onClick={closeNew} />
+          <Words posWords={posWords} negWords={negWords} view={newView} />
+          <NewReviewForm onSubmit={submitReview} onClick={() => setNewView(false)} view={newView} />
           {loading === 1 ? (
-            <div className={`${className}__grid__words__selection`} id={`${className}__grid__words__selection`}>
+            <div className={`${className}__grid__words__selection`} id={`${id}__grid__words__selection`}>
               <SkeletonLoad />
             </div>
           ) : (
-            <div className={`${className}__grid__words__selection`} id={`${id}__grid__words__selection`}>
-              <button className={`${className}__grid__words__selection__new`} id={`${id}__grid__words__selection__new`} type="button" onClick={() => newReview()}> new review </button>
-              <button className={`${className}__grid__words__selection__delete`} id={`${id}__grid__words__selection__delete`} type="button" onClick={() => confirmDeletion()}> delete </button>
-              <div className={`${className}__grid__words__selection__confirmDelete`} id={`${id}__grid__words__selection__confirmDelete`}>
+            <div className={`${className}__grid__words__selection`} id={`${id}__grid__words__selection`} style={newView ? { display: 'none' } : { display: 'flex' }}>
+              <button className={`${className}__grid__words__selection__new`} id={`${id}__grid__words__selection__new`} type="button" onClick={() => setNewView(true)} style={confirm ? { display: 'none' } : { display: 'flex' }}> new review </button>
+              <button className={`${className}__grid__words__selection__delete`} id={`${id}__grid__words__selection__delete`} type="button" onClick={() => confirmDeletion()} style={confirm ? { display: 'none' } : { display: 'flex' }}> delete </button>
+              <div className={`${className}__grid__words__selection__confirmDelete`} id={`${id}__grid__words__selection__confirmDelete`} style={confirm ? { display: 'flex' } : { display: 'none' }}>
                 <span className={`${className}__grid__words__selection__confirmDelete__text`}>Are you sure?</span>
                 <button className={`${className}__grid__words__selection__confirmDelete__wantedDelete`} id={`${id}__grid__words__selection__confirmDelete__wantedDelete`} type="button" onClick={() => deleteItem(true)}> yes </button>
                 <button className={`${className}__grid__words__selection__confirmDelete__cancelDelete`} id={`${id}__grid__words__selection__confirmDelete__cancelDelete`} type="button" onClick={() => deleteItem(false)}> no </button>

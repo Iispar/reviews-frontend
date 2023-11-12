@@ -36,6 +36,39 @@
                 left: 0px;
                 transition: all 300ms;
             }
+            &__clicked {
+                position: relative;
+                width: 26px;
+                height: 3px;
+                border-radius: 2px;
+                background: transparent;
+                z-index: 1;
+                &::before {
+                    content: '';
+                    width: 26px;
+                    height: 3px;
+                    border-radius: 2px;
+                    background: $white;
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    transition: all 300ms;
+                    transform: rotate(45deg);
+                }
+                &::after {
+                    content: '';
+                    width: 26px;
+                    height: 3px;
+                    border-radius: 2px;
+                    background: $white;
+                    position: absolute;
+
+                    left: 0px;
+                    transition: all 300ms;
+                    bottom: 0;
+                    transform: rotate(-45deg);
+                }
+            }
     
             &__btn {
                 background: transparent;

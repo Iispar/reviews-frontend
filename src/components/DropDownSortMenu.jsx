@@ -24,8 +24,8 @@ const DropDownSortMenu = ({
    * @param {String} sort - the selected filter.
    */
   const changeFilter = async (sort) => {
-    const splitSort = sort.split('__')[1];
-    const splitSortDir = sort.split('__')[2];
+    const splitSort = sort.split('-')[0];
+    const splitSortDir = sort.split('-')[1];
     setSort(splitSort, splitSortDir);
 
     // calculate width of the button based on the length of the sort text.
@@ -38,19 +38,7 @@ const DropDownSortMenu = ({
       height: '20px',
     }, 200);
 
-    // set all the sorts to invisible
-    $(`#${id}__${sortOne}__desc`).css('display', 'none');
-    $(`#${id}__${sortOne}__asc`).css('display', 'none');
-    $(`#${id}__${sortTwo}__desc`).css('display', 'none');
-    $(`#${id}__${sortTwo}__asc`).css('display', 'none');
-
-    // set the selected visible
-    $(`#${sort}`).css({ display: 'flex' });
-    $(`#${sort}`).prop('disabled', true);
     setSelected(sort);
-
-    // rotate the arrow back
-    $(`#${id}__arrow`).css('transform', 'rotate(0deg)');
     setOpen(false);
   };
 
@@ -58,30 +46,20 @@ const DropDownSortMenu = ({
        * Animates and opens or closes the dropdown menu for the sort.
        */
   const dropDown = () => {
-    // enable the selected button
-    $(`#${selected}`).prop('disabled', false);
-
     // close dropdown
     if (open) {
-      $(`#${id}__${sortOne}__desc`).css('display', 'none');
-      $(`#${id}__${sortOne}__asc`).css('display', 'none');
-      $(`#${id}__${sortTwo}__desc`).css('display', 'none');
-      $(`#${id}__${sortTwo}__asc`).css('display', 'none');
       if (selected) {
         $(`#${id}`).animate({
           width,
           height: '20px',
         }, 200);
-        $(`#${selected}`).css({ display: 'flex' });
-        $(`#${selected}`).prop('disabled', true);
       } else {
         $(`#${id}`).animate({
           width: '44px',
           height: '20px',
         }, 200);
-        $(`#${id}__btn`).css('display', 'flex');
       }
-      $(`#${id}__arrow`).css('transform', 'rotate(0deg)');
+
       setOpen(false);
 
       // open dropdown
@@ -90,41 +68,63 @@ const DropDownSortMenu = ({
         width: '160px',
         height: '40px',
       }, 200);
-      $(`#${id}__${sortOne}__desc`).css('display', 'flex');
-      $(`#${id}__${sortOne}__asc`).css('display', 'flex');
-      $(`#${id}__${sortTwo}__desc`).css('display', 'flex');
-      $(`#${id}__${sortTwo}__asc`).css('display', 'flex');
-      $(`#${id}__btn`).css('display', 'none');
-      $(`#${id}__arrow`).css('transform', 'rotate(180deg)');
       setOpen(true);
     }
   };
   return (
     <div className={`${className}`} id={`${id}`}>
-      <button className={`${className}__btn`} id={`${id}__btn`} type="button" onClick={() => dropDown()}>
+      <button className={`${className}__btn`} id={`${id}__btn`} type="button" onClick={() => dropDown()} style={!open && !selected ? { display: 'flex' } : { display: 'none' }}>
         sort
       </button>
       <div className={`${className}__${sortOne}`} id={`${id}__${sortOne}`}>
-        <button className={`${className}__${sortOne}__asc`} id={`${id}__${sortOne}__asc`} type="button" onClick={() => changeFilter(`${id}__${sortOne}__asc`)}>
+        <button
+          className={`${className}__${sortOne}__asc`}
+          id={`${id}__${sortOne}__asc`}
+          type="button"
+          onClick={() => changeFilter(`${sortOne}-asc`)}
+          style={open || selected === `${sortOne}-asc` ? { display: 'flex' } : { display: 'none' }}
+          disabled={selected === `${sortOne}-asc`}
+        >
           {sortOne}
           <div className={`${className}__${sortOne}__ascArrow`} />
         </button>
-        <button className={`${className}__${sortOne}__desc`} id={`${id}__${sortOne}__desc`} type="button" onClick={() => changeFilter(`${id}__${sortOne}__desc`)}>
+        <button
+          className={`${className}__${sortOne}__desc`}
+          id={`${id}__${sortOne}__desc`}
+          type="button"
+          onClick={() => changeFilter(`${sortOne}-desc`)}
+          style={open || selected === `${sortOne}-desc` ? { display: 'flex' } : { display: 'none' }}
+          disabled={selected === `${sortOne}-desc`}
+        >
           {sortOne}
           <div className={`${className}__${sortOne}__descArrow`} />
         </button>
       </div>
       <div className={`${className}__${sortTwo}`} id={`${id}__${sortTwo}`}>
-        <button className={`${className}__${sortTwo}__asc`} id={`${id}__${sortTwo}__asc`} type="button" onClick={() => changeFilter(`${id}__${sortTwo}__asc`)}>
+        <button
+          className={`${className}__${sortTwo}__asc`}
+          id={`${id}__${sortTwo}__asc`}
+          type="button"
+          onClick={() => changeFilter(`${sortTwo}-asc`)}
+          style={open || selected === `${sortTwo}-asc` ? { display: 'flex' } : { display: 'none' }}
+          disabled={selected === `${sortTwo}-asc`}
+        >
           {sortTwo}
           <div className={`${className}__${sortTwo}__ascArrow`} />
         </button>
-        <button className={`${className}__${sortTwo}__desc`} id={`${id}__${sortTwo}__desc`} type="button" onClick={() => changeFilter(`${id}__${sortTwo}__desc`)}>
+        <button
+          className={`${className}__${sortTwo}__desc`}
+          id={`${id}__${sortTwo}__desc`}
+          type="button"
+          onClick={() => changeFilter(`${sortTwo}-desc`)}
+          style={open || selected === `${sortTwo}-desc` ? { display: 'flex' } : { display: 'none' }}
+          disabled={selected === `${sortTwo}-desc`}
+        >
           {sortTwo}
           <div className={`${className}__${sortTwo}__descArrow`} />
         </button>
       </div>
-      <button className={`${className}__arrow`} id={`${id}__arrow`} type="button" onClick={() => dropDown()}> </button>
+      <button className={`${className}__arrow`} id={`${id}__arrow`} type="button" onClick={() => dropDown()} style={open ? { transform: 'rotate(180deg)' } : { transform: 'rotate(0deg)' }}> </button>
     </div>
   );
 };

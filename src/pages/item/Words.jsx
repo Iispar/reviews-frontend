@@ -12,7 +12,7 @@ import SkeletonLoad from '../../components/SkeletonLoad';
  * @returns top words component.
  */
 const Words = ({
-  className, id, posWords, negWords,
+  className, id, posWords, negWords, view,
 }) => {
   if (posWords == null || negWords == null) {
     return (
@@ -30,7 +30,7 @@ const Words = ({
     );
   }
   return (
-    <div className={className} id={id}>
+    <div className={className} id={id} style={view ? { display: 'none' } : { display: 'flex' }}>
       <div className={`${className}__title`} id={`${className}__title`}>
         most important words
       </div>
@@ -57,6 +57,7 @@ Words.propTypes = {
   negWords: propTypes.arrayOf(propTypes.string),
   className: propTypes.string,
   id: propTypes.string,
+  view: propTypes.bool,
 };
 
 Words.defaultProps = {
@@ -64,6 +65,7 @@ Words.defaultProps = {
   posWords: [],
   className: 'words',
   id: 'words',
+  view: true,
 };
 
 export default Words;

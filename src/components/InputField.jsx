@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
-import $ from 'jquery';
 import { useTextWidth } from '../helpers/componentHelpers';
 
 /**
@@ -16,9 +15,10 @@ import { useTextWidth } from '../helpers/componentHelpers';
  * @returns custom input field.
  */
 const InputField = ({
-  title, id, className, width, height, type, error, regex, onChange,
+  title, id, className, width, height, type, error, regex, onChange, displayError,
 }) => {
   const [value, setValue] = useState(null);
+  const [errorState, setErrorState] = useState(false);
 
   // hook to calculate the width of the text
   const cutoutWidth = useTextWidth(title, '16px mulish');
@@ -36,46 +36,27 @@ const InputField = ({
   };
 
   /**
-   * Displays the error message.
-   * @param {boolean} on
-   *        is the error message should be displayed or not.
-   */
-  const errorMessage = (on) => {
-    if (on) {
-      $(`#${id}__container__error`).css('display', 'flex');
-      $(`#${id}__container__label`).css('display', 'none');
-      $(`#${id}__container__cutout`).css('display', 'none');
-      $(`#${id}__container__input`).css('border', '1.5px solid $red');
-    } else {
-      $(`#${id}__container__error`).css('display', 'none');
-      $(`#${id}__container__label`).css('display', 'flex');
-      $(`#${id}__container__cutout`).css('display', 'flex');
-      $(`#${id}__container__input`).css('border', '1.5px solid $orange');
-    }
-  };
-
-  /**
    * UseEffect hook to check the input that it matches to the regex
    * sets additional error message on display if it exists
    */
   useEffect(() => {
     if (value === null || regex == null) return;
     if (regex.test(value)) {
-      errorMessage(false);
+      setErrorState(false);
     } else {
-      errorMessage(true);
+      setErrorState(true);
     }
   }, [value]);
 
   return (
     <div className={className} id={id} style={{ width, height }}>
       <div className={`${className}__container`}>
-        <input className={`${className}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} onChange={(e) => setValues(e.target.value)} />
+        <input className={`${className}__container__input`} id={`${id}__container__input`} required placeholder={title} autoComplete="off" type={type} onChange={(e) => setValues(e.target.value)} style={errorState || displayError ? { 'border-color': '#FF0000' } : { 'border-color': '#EF8354' }} />
         <div className={`${className}__container__cutout`} id={`${id}__container__cutout`} htmlFor={`${id}__container__input`} style={{ width: cutoutWidth }} />
-        <div className={`${className}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={{ width: errorWidth }}>
+        <div className={`${className}__container__error`} id={`${id}__container__error`} htmlFor={`${id}__container__input`} style={errorState || displayError ? { width: errorWidth, display: 'flex' } : { width: errorWidth, display: 'none' }}>
           {error}
         </div>
-        <label className={`${className}__container__label`} id={`${id}__container__label`} htmlFor={`${id}__container__input`} style={{ top: labelHeight }}>
+        <label className={`${className}__container__label`} id={`${id}__container__label`} htmlFor={`${id}__container__input`} style={errorState || displayError ? { top: labelHeight, display: 'none' } : { top: labelHeight, display: 'flex' }}>
           <span id={`${id}__title`}>{title}</span>
         </label>
       </div>
@@ -93,6 +74,7 @@ InputField.propTypes = {
   height: propTypes.string,
   regex: propTypes.instanceOf(RegExp),
   onChange: propTypes.func,
+  displayError: propTypes.bool,
 };
 
 InputField.defaultProps = {
@@ -105,6 +87,7 @@ InputField.defaultProps = {
   height: '40px',
   regex: null,
   onChange: null,
+  displayError: false,
 };
 
 export default InputField;

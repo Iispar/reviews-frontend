@@ -17,6 +17,9 @@ export const UseDeleteAccount = (id, token, setLoading) => {
       setTimeout(() => {
         setLoading(0);
       }, 1000);
+      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('accountId');
+      window.location.reload();
     })
     .catch(() => {
       setLoading(6);
@@ -55,6 +58,7 @@ export const UseUpdateAccount = (
   email,
   token,
   setLoading,
+  curUsername,
 ) => {
   const formattedPass = password.length === 0 ? 'none' : password;
 
@@ -71,6 +75,11 @@ export const UseUpdateAccount = (
       setTimeout(() => {
         setLoading(0);
       }, 1000);
+      // if username is updated logout.
+      if (username !== curUsername || password !== 'none') {
+        window.localStorage.removeItem('token');
+        window.location.reload();
+      }
     })
     .catch(() => {
       setLoading(6);

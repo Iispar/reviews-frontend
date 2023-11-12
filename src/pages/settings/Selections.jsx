@@ -1,5 +1,4 @@
-import React from 'react';
-import $ from 'jquery';
+import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import UserInfo from './UserInfo';
 import DeleteAccount from './DeleteAccount';
@@ -23,55 +22,44 @@ const Selections = ({
   name,
   email,
 }) => {
-  /**
-   * Opens the form to see user info or delete account.
-   * @param {String} selection
-   *        Selected id to view.
-   * @param {String} btn
-   *        What button is pressed.
-   */
-  const openForm = (selection, btn) => {
-    // clumsy...
-    // reset borders
-    $(`#${id}__buttons__newUser`).css('border-left', 'none ');
-    $(`#${id}__buttons__newPass`).css('border-left', 'none');
-    $(`#${id}__buttons__delAccount`).css('border-left', 'none');
-    // set border
-    $(`#${btn}`).css('border-left', '2px solid black');
-    // reset screens
-    $(`#${id}__form`).css('display', 'none');
-    $('#userInfo').css('display', 'none');
-    $('#deleteAccount').css('display', 'none');
-    // set the screen of the click
-    if (selection !== 'none') {
-      $(`#${id}__form`).css('display', 'flex');
-      $(`#${selection}`).css('display', 'flex');
-    }
-  };
+  const [selection, setSelection] = useState('none');
 
   return (
     <div className={className} id={id}>
       <div className={`${className}__buttons`} id={`${id}__buttons`}>
-        <button className={`${className}__buttons__newUser`} id={`${id}__buttons__newUser`} type="button" onClick={() => openForm('userInfo', 'selections__buttons__newUser')}>
+        <button
+          className={`${className}__buttons__newUser`}
+          id={`${id}__buttons__newUser`}
+          type="button"
+          onClick={() => setSelection('profile')}
+          style={selection === 'profile' ? { 'border-left': '2px solid black' } : { 'border-left': 'none' }}
+        >
           edit profile
         </button>
-        <button className={`${className}__buttons__delAccount`} id={`${id}__buttons__delAccount`} type="button" onClick={() => openForm('deleteAccount', 'selections__buttons__delAccount')}>
+        <button
+          className={`${className}__buttons__delAccount`}
+          id={`${id}__buttons__delAccount`}
+          type="button"
+          onClick={() => setSelection('delete')}
+          style={selection === 'delete' ? { 'border-left': '2px solid black' } : { 'border-left': 'none' }}
+        >
           delete account
         </button>
       </div>
-      <div className={`${className}__form`} id={`${id}__form`}>
+      <div className={`${className}__form`} id={`${id}__form`} style={selection === 'none' ? { display: 'none' } : { display: 'flex' }}>
         <UserInfo
           currUsername={username}
           currEmail={email}
-          openForm={openForm}
+          openForm={setSelection}
           setUsername={setUsername}
           setName={setName}
           setNewPassword={setPassword}
           setEmail={setEmail}
           updateAccount={(e) => updateAccount(e)}
           currName={name}
+          view={selection === 'profile'}
         />
-        <DeleteAccount onSubmit={deleteAccount} openForm={openForm} />
+        <DeleteAccount onSubmit={deleteAccount} openForm={setSelection} view={selection === 'delete'} />
       </div>
     </div>
   );

@@ -64,10 +64,7 @@ const Settings = ({ className, id }) => {
   const deleteAccount = (e) => {
     setLoading(4);
     e.preventDefault();
-    UseDeleteAccount(accountId, token);
-    window.localStorage.removeItem('token');
-    window.localStorage.removeItem('accountId');
-    window.location.reload();
+    UseDeleteAccount(accountId, token, setLoading);
   };
 
   /**
@@ -87,12 +84,8 @@ const Settings = ({ className, id }) => {
       newEmail,
       token,
       setLoading,
+      curUsername,
     );
-    // if username is updated logout.
-    if (newUsername !== curUsername || newPassword !== 'none') {
-      window.localStorage.removeItem('token');
-      window.location.reload();
-    }
   };
 
   if (loading === 2) return (<div> an error occured, please reload </div>);

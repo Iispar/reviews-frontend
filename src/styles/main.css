@@ -131,6 +131,22 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__values__close
   padding-left: 4px;
   padding-bottom: 20px;
 }
+.login__loginForm__inputs__load {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+}
+.login__loginForm__inputs__load__container {
+  display: flex;
+  height: 35px;
+  width: 260px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #EF8354;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 0;
+}
 .login__loginForm__inputs__form {
   display: flex;
   flex-direction: column;
@@ -308,7 +324,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__values__close
 .createNew {
   display: none;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 500px;
   display: none;
 }
@@ -354,6 +370,22 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__values__close
   height: 340px;
   padding: 10px;
   padding-bottom: 20px;
+}
+.createNew__createAccountForm__inputs__load {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+}
+.createNew__createAccountForm__inputs__load__container {
+  display: flex;
+  height: 34px;
+  width: 260px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #EF8354;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 0;
 }
 .createNew__createAccountForm__inputs__form {
   display: flex;
@@ -642,6 +674,38 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__values__close
   bottom: 8px;
   left: 0px;
   transition: all 300ms;
+}
+.headerContainer__header__hamburger__clicked {
+  position: relative;
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+  background: transparent;
+  z-index: 1;
+}
+.headerContainer__header__hamburger__clicked::before {
+  content: "";
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transition: all 300ms;
+  transform: rotate(45deg);
+}
+.headerContainer__header__hamburger__clicked::after {
+  content: "";
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+  background: #FFFFFF;
+  position: absolute;
+  left: 0px;
+  transition: all 300ms;
+  bottom: 0;
+  transform: rotate(-45deg);
 }
 .headerContainer__header__hamburger__btn {
   background: transparent;
@@ -937,11 +1001,10 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__values__close
   padding-left: 8px;
   overflow: hidden;
 }
-
-.hover {
+.smallItem__name__text__hover {
   white-space: nowrap;
 }
-.hover:hover {
+.smallItem__name__text__hover:hover {
   transform: translateX(calc(210px - 100%));
 }
 
@@ -1097,6 +1160,7 @@ settings-closeBtn, .deleteAccount__header__closeButton, .userInfo__values__close
   border-radius: 5px;
   border: 1px solid #545454;
   font-size: 16px;
+  padding-left: 4px;
 }
 .searchField__input:focus {
   outline: none;

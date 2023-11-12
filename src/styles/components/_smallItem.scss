@@ -43,12 +43,11 @@
         font-size: 20px;
         padding-left: 8px;
         overflow: hidden;
-    }
-}
-
-.hover {
-    white-space: nowrap;
-    &:hover {
-        transform: translateX(calc(210px - 100%));
+        &__text__hover {
+            white-space: nowrap;
+            &:hover {
+                transform: translateX(calc(210px - 100%));
+            }
+        }
     }
 }

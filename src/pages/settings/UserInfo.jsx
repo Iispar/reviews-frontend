@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import $ from 'jquery';
 import propTypes from 'prop-types';
 import SettingsInputField from '../../components/SettingsInputField';
 
@@ -31,6 +30,7 @@ const UserInfo = ({
   className,
   id,
   setEmail,
+  view,
 }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -40,16 +40,11 @@ const UserInfo = ({
    * change button if they do.
    */
   useEffect(() => {
-    if (password !== '') $(`#${id}__values__password__confirmContainer`).css('display', 'grid');
-    else $(`#${id}__values__password__confirmContainer`).css('display', 'none');
-    if (password === confirmPassword) {
-      setNewPassword(password);
-      $(`#${id}__values__password__confirmContainer__input__change`).css('display', 'flex');
-    } else $(`#${id}__values__password__confirmContainer__input__change`).css('display', 'none');
+    if (password === confirmPassword) setNewPassword(password);
   }, [password, confirmPassword]);
 
   return (
-    <div className={className} id={id}>
+    <div className={className} id={id} style={view ? { display: 'flex' } : { display: 'none' }}>
       <div className={`${className}__values`}>
         <button className={`${className}__values__closeButton`} id={`${id}__header__closeButton`} type="submit" onClick={() => openForm('none')}>  </button>
         <SettingsInputField title="name" onChange={setName} onSubmit={(e) => updateAccount(e)} defaultValue={currName} id="settingsName" />
@@ -64,13 +59,24 @@ const UserInfo = ({
               <input className={`${className}__values__password__passContainer__input__field`} placeholder="******" type="password" onChange={(current) => setPassword(current.target.value)} />
             </div>
           </div>
-          <div className={`${className}__values__password__confirmContainer`} id={`${id}__values__password__confirmContainer`}>
+          <div
+            className={`${className}__values__password__confirmContainer`}
+            id={`${id}__values__password__confirmContainer`}
+            style={password !== '' ? { display: 'grid' } : { display: 'none' }}
+          >
             <div className={`${className}__values__password__confirmContainer__confirmText`}>
               confirm &nbsp;
             </div>
             <div className={`${className}__values__password__confirmContainer__input`}>
               <input className={`${className}__values__password__confirmContainer__input__field`} id="settingsConfirm__form__input" type="password" onChange={(current) => setConfirmPassword(current.target.value)} />
-              <button className={`${className}__values__password__confirmContainer__input__change`} id={`${id}__values__password__confirmContainer__input__change`} type="submit"> change </button>
+              <button
+                className={`${className}__values__password__confirmContainer__input__change`}
+                id={`${id}__values__password__confirmContainer__input__change`}
+                type="submit"
+                style={password === confirmPassword ? { display: 'flex' } : { display: 'none' }}
+              >
+                change
+              </button>
             </div>
           </div>
         </form>
@@ -91,6 +97,7 @@ UserInfo.propTypes = {
   setEmail: propTypes.func,
   currEmail: propTypes.string,
   updateAccount: propTypes.func,
+  view: propTypes.bool,
 };
 
 UserInfo.defaultProps = {
@@ -105,6 +112,7 @@ UserInfo.defaultProps = {
   setEmail: null,
   currEmail: null,
   updateAccount: null,
+  view: true,
 };
 
 export default UserInfo;

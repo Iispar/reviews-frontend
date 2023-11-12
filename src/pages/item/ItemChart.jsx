@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import $ from 'jquery';
 import propTypes from 'prop-types';
 import DoubleLineChart from '../../components/DoubleLineChart';
 import reviewsService from '../../services/reviewsService';
@@ -21,6 +20,7 @@ const ItemChart = ({
 }) => {
   const [data, setData] = useState(initData);
   const [loading, setLoading] = useState(initLoading);
+  const [selection, setSelection] = useState('month');
 
   /**
    * Changes the view and sets the css for the active bar.
@@ -38,18 +38,7 @@ const ItemChart = ({
       .catch(() => {
         setLoading(4);
       });
-
-    if (selectionText === 'month') {
-      $(`#${id}__selector__active`).css({
-        left: '63px',
-        width: '38px',
-      });
-    } else {
-      $(`#${id}__selector__active`).css({
-        left: '106px',
-        width: '32px',
-      });
-    }
+    setSelection(selectionText);
   };
   if (loading !== 0) {
     if (loading === 1) {
@@ -64,7 +53,7 @@ const ItemChart = ({
           <div className={`${className}__selector`} id={`${id}__selector`}>
             <button className={`${className}__selector__month`} type="button" onClick={() => changeView('month')}> month </button>
             <button className={`${className}__selector__week`} type="button" onClick={() => changeView('week')}> week </button>
-            <div className={`${className}__selector__active`} id={`${id}__selector__active`} />
+            <div className={`${className}__selector__active`} id={`${id}__selector__active`} style={selection === 'month' ? { left: '63px', width: '38px' } : { left: '106px', width: '32px' }} />
           </div>
         </div>
       </div>
@@ -78,7 +67,7 @@ const ItemChart = ({
           <div className={`${className}__selector`} id={`${id}__selector`}>
             <button className={`${className}__selector__month`} type="button" onClick={() => changeView('month')}> month </button>
             <button className={`${className}__selector__week`} type="button" onClick={() => changeView('week')}> week </button>
-            <div className={`${className}__selector__active`} id={`${id}__selector__active`} />
+            <div className={`${className}__selector__active`} id={`${id}__selector__active`} style={selection === 'month' ? { left: '63px', width: '38px' } : { left: '106px', width: '32px' }} />
           </div>
         </div>
       ) : (

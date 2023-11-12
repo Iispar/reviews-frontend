@@ -1,0 +1,19 @@
+{
+    "res":
+        {
+            "id": 0,
+            "name": "test",
+            "username": "testUser",
+            "password": null,
+            "email": "testEmail",
+            "role": {
+                "id": 1,
+                "name": "seller"
+            },
+            "enabled": true,
+            "authorities": [],
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true
+        }
+}

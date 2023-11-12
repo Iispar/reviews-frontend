@@ -19,10 +19,23 @@ import LoadingBar from '../../components/LoadingBar';
  * @property {Function} setSearch - The function to be used on search change.
  * @property {Integer} loading - The state of loading. 0 is loaded, 1 is initial load
  *                               and 2 is loading data.
+ * @property {Bool} prevDisabled - If prev button is disabled
+ * @property {Bool} nextDisabled - If next button is disabled
  * @returns component for latest reviews
  */
 const Reviews = ({
-  reviews, className, id, setSort, nextPage, prevPage, onSubmit, setSearch, clearSearch, loading,
+  reviews,
+  className,
+  id,
+  setSort,
+  nextPage,
+  prevPage,
+  onSubmit,
+  setSearch,
+  clearSearch,
+  loading,
+  nextDisabled,
+  prevDisabled,
 }) => {
   if (loading === 1 || loading === 2 || loading === 3) {
     if (loading === 1) {
@@ -46,7 +59,7 @@ const Reviews = ({
             {loading === 2 ? (<LoadingBar />) : (<div>error ocurred, please reload</div>)}
           </div>
           <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
-            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
+            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" nextDisabled prevDisabled />
           </div>
         </div>
       </div>
@@ -69,7 +82,12 @@ const Reviews = ({
             <ReviewsList reviews={reviews} />
           </div>
           <div className={`${className}__reviews__pagination`}>
-            <Pagination next={() => nextPage()} prev={() => prevPage()} />
+            <Pagination
+              next={() => nextPage()}
+              prev={() => prevPage()}
+              nextDisabled={nextDisabled}
+              prevDisabled={prevDisabled}
+            />
           </div>
         </div>
       ) : (
@@ -90,6 +108,8 @@ Reviews.propTypes = {
   setSearch: propTypes.func,
   clearSearch: propTypes.func,
   loading: propTypes.number,
+  prevDisabled: propTypes.bool,
+  nextDisabled: propTypes.bool,
 };
 
 Reviews.defaultProps = {
@@ -103,6 +123,8 @@ Reviews.defaultProps = {
   setSearch: null,
   clearSearch: null,
   loading: 0,
+  prevDisabled: true,
+  nextDisabled: true,
 };
 
 export default Reviews;

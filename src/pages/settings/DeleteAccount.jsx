@@ -11,9 +11,9 @@ import SettingsInputField from '../../components/SettingsInputField';
  * @returns delete account form.
  */
 const DeleteAccount = ({
-  onSubmit, openForm, className, id,
+  onSubmit, openForm, className, id, view,
 }) => (
-  <div className={className} id={id}>
+  <div className={className} id={id} style={view ? { display: 'flex' } : { display: 'none' }}>
     <div className={`${className}__header`} id={`${className}__header`}>
       <div className={`${className}__header__text`}> delete account </div>
       <button className={`${className}__header__closeButton`} id={`${id}__header__closeButton`} type="submit" onClick={() => openForm('none')}> </button>
@@ -37,6 +37,7 @@ DeleteAccount.propTypes = {
   openForm: propTypes.func,
   className: propTypes.string,
   id: propTypes.string,
+  view: propTypes.bool,
 };
 
 DeleteAccount.defaultProps = {
@@ -44,6 +45,7 @@ DeleteAccount.defaultProps = {
   openForm: null,
   className: 'deleteAccount',
   id: 'deleteAccount',
+  view: true,
 };
 
 export default DeleteAccount;
