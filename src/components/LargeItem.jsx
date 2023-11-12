@@ -17,7 +17,7 @@ const LargeItem = ({
   const navigate = useNavigate();
 
   return (
-    <div className={className} id={`${className}__${id}`} onClick={() => navigate(`/item/${id}`)} onKeyDown={() => navigate(`/item/${id}`)} role="presentation">
+    <div className={className} id={`${className}__${id}`} onClick={() => navigate(`/item/${id}`)} role="presentation">
       <div className={`${className}__nameReviews`}>
         <span className={`${className}__nameReviews__name`} id={`${className}__nameReviews__name`}>
           {item}

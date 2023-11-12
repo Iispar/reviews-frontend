@@ -52,6 +52,11 @@ describe('LoginForm tests', () => {
     expect(component.getByRole('button', { name: 'login' })).toBeVisible();
     expect(component.getByRole('button', { name: 'Create new' })).toBeVisible();
   });
+  test('NewReviewForm invis render works', () => {
+    const component = render(<LoginForm id="test" view={false} />);
+
+    expect(component.container.querySelector('#test')).not.toBeVisible();
+  });
   test('LoginForm with error renders', () => {
     const component = render(<LoginForm id="test" errorMessage="test error" />);
     addStyling(component);

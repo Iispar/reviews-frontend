@@ -20,7 +20,6 @@ const SmallItem = ({
       className={className}
       id={`smallItem__${id}`}
       onClick={() => navigate(`/item/${id}`)}
-      onKeyDown={() => navigate(`/item/${id}`)}
       role="presentation"
     >
       <div className={`${className}__name`}>

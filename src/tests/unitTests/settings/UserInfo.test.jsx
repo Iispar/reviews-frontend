@@ -35,6 +35,11 @@ describe('UserInfo tests', () => {
 
       expect(component.getByText('confirm')).not.toBeVisible();
     });
+    test('NewReviewForm invis render works', () => {
+      const component = render(<UserInfo id="test" setNewPassword={jest.fn()} view={false} />);
+
+      expect(component.container.querySelector('#test')).not.toBeVisible();
+    });
     test('default values render works', () => {
       const component = render(<UserInfo
         id="test"

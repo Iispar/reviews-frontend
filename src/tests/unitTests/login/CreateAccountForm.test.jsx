@@ -56,6 +56,11 @@ describe('createAccountForm tests', () => {
     expect(component.getByRole('button', { name: 'submit' })).toBeVisible();
     expect(component.getByRole('button', { name: 'Login.' })).toBeVisible();
   });
+  test('NewReviewForm invis render works', () => {
+    const component = render(<CreateAccountForm id="test" view={false} />);
+
+    expect(component.container.querySelector('#test')).not.toBeVisible();
+  });
   test('LoginForm with load renders', () => {
     const component = render(<CreateAccountForm id="test" loading={2} />);
     const loading = component.container.querySelector('#loading__ellipsis');

@@ -76,7 +76,7 @@ export const UseUpdateAccount = (
         setLoading(0);
       }, 1000);
       // if username is updated logout.
-      if (username !== curUsername || password !== 'none') {
+      if (username !== curUsername || password !== '') {
         window.localStorage.removeItem('token');
         window.location.reload();
       }

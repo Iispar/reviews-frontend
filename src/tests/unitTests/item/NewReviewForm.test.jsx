@@ -25,6 +25,11 @@ describe('NewReviewForm tests', () => {
       expect(component.getByRole('button', { name: 'add' })).toBeVisible();
       expect(component.getByRole('button', { name: 'close' })).toBeVisible();
     });
+    test('NewReviewForm invis render works', () => {
+      const component = render(<NewReviewForm id="test" view={false} />);
+
+      expect(component.container.querySelector('#test')).not.toBeVisible();
+    });
   });
   describe('functions work', () => {
     test('close works', async () => {
