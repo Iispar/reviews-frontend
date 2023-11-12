@@ -6,7 +6,7 @@ import Pagination from '../../../components/Pagination';
 
 describe('Pagination tests', () => {
   test('Pagination renders', () => {
-    const component = render(<Pagination id="test" />);
+    const component = render(<Pagination id="test" prevDisabled />);
 
     const container = component.container.querySelector('#test');
 

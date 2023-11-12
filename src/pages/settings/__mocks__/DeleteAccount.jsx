@@ -3,9 +3,9 @@
 import React from 'react';
 
 const DeleteAccount = ({
-  onSubmit, openForm, className, id,
+  onSubmit, openForm, className, id, view,
 }) => (
-  <div id="deleteAccount">
+  <div id="deleteAccount" style={view ? { display: 'flex' } : { display: 'none' }}>
     <div id={`${className}__header`}>
       <div> delete account </div>
       <button id={`${className}__header__closeButton`} type="button" onClick={() => openForm('none')}> closeDelete </button>

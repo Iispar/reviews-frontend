@@ -9,7 +9,14 @@ jest.mock('../../../services/accountService', () => ({
   updateAccount: jest.fn(),
 }));
 
+Object.defineProperty(window, 'location', {
+  configurable: true,
+  value: { reload: jest.fn() },
+});
+
 beforeEach(() => {
+  window.localStorage.setItem('token', 'testToken');
+  window.localStorage.setItem('accountId', 'testId');
   deleteAccount.mockImplementation((id, token) => {
     mockDelete(id, token);
     return (Promise.resolve());

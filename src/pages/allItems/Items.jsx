@@ -50,7 +50,12 @@ const Items = ({
           {loading === 2 ? (<LoadingBar />) : (<div>error ocurred, please reload</div>)}
         </div>
         <div className={`${className}__reviews__pagination`}>
-          <Pagination next={() => nextPage()} prev={() => prevPage()} nextDisabled prevDisabled />
+          <Pagination
+            next={() => nextPage()}
+            prev={() => prevPage()}
+            nextDisabled={nextDisabled}
+            prevDisabled={prevDisabled}
+          />
         </div>
       </div>
     );

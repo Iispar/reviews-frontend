@@ -3,7 +3,16 @@ import React from 'react';
 import SkeletonLoad from '../../../components/SkeletonLoad';
 
 const Items = ({
-  items, onSubmit, setSort, setSearch, nextPage, prevPage, clearInput, loading,
+  items,
+  onSubmit,
+  setSort,
+  setSearch,
+  nextPage,
+  prevPage,
+  clearInput,
+  loading,
+  prevDisabled,
+  nextDisabled,
 }) => {
   if (loading === 1) {
     return (
@@ -30,8 +39,8 @@ const Items = ({
           {loading === 2 ? (<div> loadingBar </div>) : (<div>error ocurred, please reload</div>)}
         </div>
         <div id="mockItems__pagination">
-          <button type="button" onClick={() => nextPage()}> next </button>
-          <button type="button" onClick={() => prevPage()}> previous </button>
+          <button type="button" onClick={() => nextPage()} disabled={nextDisabled}> next </button>
+          <button type="button" onClick={() => prevPage()} disabled={prevDisabled}> previous </button>
         </div>
       </div>
     );
@@ -68,8 +77,8 @@ const Items = ({
       </div>
       ,
       <div id="mockItems__pagination">
-        <button id="pagination__next" type="button" onClick={() => nextPage()}> next </button>
-        <button id="pagination__prev" type="button" onClick={() => prevPage()}> previous </button>
+        <button id="pagination__next" type="button" onClick={() => nextPage()} disabled={nextDisabled}> next </button>
+        <button id="pagination__prev" type="button" onClick={() => prevPage()} disabled={prevDisabled}> previous </button>
       </div>
     </div>
   );

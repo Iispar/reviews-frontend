@@ -65,7 +65,7 @@ Words.defaultProps = {
   posWords: [],
   className: 'words',
   id: 'words',
-  view: true,
+  view: false,
 };
 
 export default Words;

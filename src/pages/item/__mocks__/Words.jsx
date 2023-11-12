@@ -3,11 +3,11 @@ import React from 'react';
 import SkeletonLoad from '../../../components/SkeletonLoad';
 
 const Words = ({
-  className, id, posWords, negWords,
+  className, id, posWords, negWords, view,
 }) => {
   if (posWords == null || negWords == null) {
     return (
-      <div id={id}>
+      <div id={id} style={view ? { display: 'none' } : { display: 'flex' }}>
         <div>
           <SkeletonLoad />
         </div>
@@ -38,7 +38,7 @@ const Words = ({
     );
   }
   return (
-    <div id={id}>
+    <div id={id} style={view ? { display: 'none' } : { display: 'flex' }}>
       <div id={`${className}__title`}>
         most common words
       </div>

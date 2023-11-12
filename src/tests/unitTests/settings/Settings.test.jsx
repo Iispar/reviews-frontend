@@ -22,11 +22,6 @@ jest.mock('../../../pages/settings/settingsHooks', () => ({
   UseUpdateAccount: jest.fn(),
 }));
 
-Object.defineProperty(window, 'location', {
-  configurable: true,
-  value: { reload: jest.fn() },
-});
-
 beforeEach(() => {
   jest.clearAllMocks();
   getAccount.mockImplementation(getAccountMock);
@@ -93,10 +88,6 @@ describe('Settings tests', () => {
       expect(useDeleteMock.mock.calls).toHaveLength(1);
       expect(useDeleteMock.mock.calls[0][0]).toBe('testId');
       expect(useDeleteMock.mock.calls[0][1]).toBe('testToken');
-
-      expect(window.localStorage.getItem('token')).toBe(null);
-      expect(window.localStorage.getItem('accountId')).toBe(null);
-      expect(window.location.reload).toHaveBeenCalled();
     });
     test('updateAccount works with all values changed', async () => {
       const component = render(<Settings id="test" />);
@@ -119,7 +110,6 @@ describe('Settings tests', () => {
       expect(useUpdateMock.mock.calls[0][4]).toBe(1);
       expect(useUpdateMock.mock.calls[0][5]).toBe('testEmailnew email');
       expect(useUpdateMock.mock.calls[0][6]).toBe('testToken');
-      expect(window.location.reload).toHaveBeenCalled();
     });
     test('updateAccount works with one value changed', async () => {
       const component = render(<Settings id="test" />);

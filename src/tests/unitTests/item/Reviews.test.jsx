@@ -97,7 +97,17 @@ describe('Reviews tests', () => {
     test.each(states)('pagination works', async (state) => {
       const mockNext = jest.fn();
       const mockPrev = jest.fn();
-      const component = render(<Reviews id="test" reviews={itemSuccess.reviews.responseList} nextPage={mockNext} prevPage={mockPrev} loading={state} />);
+      const component = render(
+        <Reviews
+          id="test"
+          reviews={itemSuccess.reviews.responseList}
+          nextPage={mockNext}
+          prevPage={mockPrev}
+          loading={state}
+          prevDisabled={false}
+          nextDisabled={false}
+        />,
+      );
 
       await userEvent.click(component.getByRole('button', { name: 'next' }));
       await userEvent.click(component.getByRole('button', { name: 'previous' }));

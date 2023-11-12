@@ -250,9 +250,8 @@ const Item = ({ className, id }) => {
 
   /**
    * Clears the search input when the X is pressed.
-   * @param {String} inputId - id of the input field.
    */
-  const clearSearch = (inputId) => {
+  const clearSearch = () => {
     setLoading(2);
     page.current = 0;
     setPrevDisabled(true);

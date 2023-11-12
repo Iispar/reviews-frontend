@@ -35,7 +35,7 @@ const LatestReviews = ({
             {loading === 2 ? (<LoadingBar />) : (<div>error ocurred, please reload</div>)}
           </div>
           <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
-            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" prevDisabled nextDisabled />
+            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" prevDisabled={prevDisabled} nextDisabled={nextDisabled} />
           </div>
         </div>
       </div>
@@ -81,8 +81,8 @@ LatestReviews.defaultProps = {
   nextPage: null,
   prevPage: null,
   loading: 0,
-  prevDisabled: true,
-  nextDisabled: true,
+  prevDisabled: false,
+  nextDisabled: false,
 };
 
 export default LatestReviews;

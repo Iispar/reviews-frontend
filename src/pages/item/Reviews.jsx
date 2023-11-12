@@ -59,7 +59,7 @@ const Reviews = ({
             {loading === 2 ? (<LoadingBar />) : (<div>error ocurred, please reload</div>)}
           </div>
           <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
-            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" nextDisabled prevDisabled />
+            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" nextDisabled={nextDisabled} prevDisabled={prevDisabled} />
           </div>
         </div>
       </div>
@@ -123,8 +123,8 @@ Reviews.defaultProps = {
   setSearch: null,
   clearSearch: null,
   loading: 0,
-  prevDisabled: true,
-  nextDisabled: true,
+  prevDisabled: false,
+  nextDisabled: false,
 };
 
 export default Reviews;

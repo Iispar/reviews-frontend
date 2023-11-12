@@ -4,7 +4,18 @@ import SkeletonLoad from '../../../components/SkeletonLoad';
 import LoadingBar from '../../../components/LoadingBar';
 
 const Reviews = ({
-  reviews, className, id, setSort, nextPage, prevPage, onSubmit, setSearch, clearSearch, loading,
+  reviews,
+  className,
+  id,
+  setSort,
+  nextPage,
+  prevPage,
+  onSubmit,
+  setSearch,
+  clearSearch,
+  loading,
+  prevDisabled,
+  nextDisabled,
 }) => {
   if (loading === 1 || loading === 2 || loading === 3) {
     if (loading === 1) {
@@ -32,8 +43,8 @@ const Reviews = ({
             {loading === 2 ? (<LoadingBar />) : (<div>error ocurred, please reload</div>)}
           </div>
           <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
-            <button id="pagination__next" type="button" onClick={() => nextPage()}> next </button>
-            <button id="pagination__prev" type="button" onClick={() => prevPage()}> previous </button>
+            <button id="pagination__next" type="button" onClick={() => nextPage()} disabled={nextDisabled}> next </button>
+            <button id="pagination__prev" type="button" onClick={() => prevPage()} disabled={prevDisabled}> previous </button>
           </div>
         </div>
       </div>
@@ -77,8 +88,8 @@ const Reviews = ({
             {revList}
           </div>
           <div>
-            <button id="pagination__next" type="button" onClick={() => nextPage()}> next </button>
-            <button id="pagination__prev" type="button" onClick={() => prevPage()}> previous </button>
+            <button id="pagination__next" type="button" onClick={() => nextPage()} disabled={nextDisabled}> next </button>
+            <button id="pagination__prev" type="button" onClick={() => prevPage()} disabled={prevDisabled}> previous </button>
           </div>
         </div>
       ) : (

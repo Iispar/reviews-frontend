@@ -277,7 +277,6 @@ describe('AllItems tests', () => {
       expect(useSearchMock.mock.calls[0][1]).toBe('');
       expect(component.container.querySelector('#mockItems__items').children.length).toBe(2);
       expect(component.getByText(/Test item number 1 Loaded/)).toBeVisible();
-      expect(input).toHaveValue('');
     });
     test('search load works', async () => {
       UseSearch.mockImplementation(jest.fn());

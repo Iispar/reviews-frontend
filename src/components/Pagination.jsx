@@ -33,8 +33,8 @@ Pagination.defaultProps = {
   prev: null,
   className: 'pagination',
   id: 'pagination',
-  prevDisabled: true,
-  nextDisabled: true,
+  prevDisabled: false,
+  nextDisabled: false,
 };
 
 export default Pagination;

@@ -4,7 +4,7 @@ import React from 'react';
 import SkeletonLoad from '../../../components/SkeletonLoad';
 
 const LatestReviews = ({
-  className, id, reviews, nextPage, prevPage, loading,
+  className, id, reviews, nextPage, prevPage, loading, prevDisabled, nextDisabled,
 }) => {
   const reviewList = [];
   // if reviews being loaded.
@@ -22,8 +22,8 @@ const LatestReviews = ({
             {loading === 2 ? (<div> loading </div>) : (<div>error ocurred, please reload</div>)}
           </div>
           <div>
-            <button id="pagination__next" type="button" onClick={() => nextPage()}> next </button>
-            <button id="pagination__prev" type="button" onClick={() => prevPage()}> previous </button>
+            <button id="pagination__next" type="button" onClick={() => nextPage()} disabled={nextDisabled}> next </button>
+            <button id="pagination__prev" type="button" onClick={() => prevPage()} disabled={prevDisabled}> previous </button>
           </div>
         </div>
       </div>
@@ -57,8 +57,8 @@ const LatestReviews = ({
             {reviewList}
           </div>
           <div>
-            <button id="pagination__next" type="button" onClick={() => nextPage()}> next </button>
-            <button id="pagination__prev" type="button" onClick={() => prevPage()}> previous </button>
+            <button id="pagination__next" type="button" onClick={() => nextPage()} disabled={nextDisabled}> next </button>
+            <button id="pagination__prev" type="button" onClick={() => prevPage()} disabled={prevDisabled}> previous </button>
           </div>
         </div>
       ) : (
