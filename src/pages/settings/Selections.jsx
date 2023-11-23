@@ -7,6 +7,14 @@ import DeleteAccount from './DeleteAccount';
  * renders the selections for the settings page.
  * @property {String} className - Custom className if wanted. Default selections.
  * @property {String} if - Custom className if wanted. Default selections.
+ * @property {Function} setPassword - set function for password
+ * @property {Function} setUsername - set function for username
+ * @property {Function} setName - set function for name
+ * @property {Function} setEmail - set function for email
+ * @property {Function} deleteAccount - function to delete account.
+ * @property {String} username - current username.
+ * @property {String} name - current name.
+ * @property {String} email - current email.
  * @returns selctions
  */
 const Selections = ({

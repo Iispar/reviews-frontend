@@ -6,6 +6,8 @@ import accountService from '../../services/accountService';
  * hook to delete an users account
  * @param {String} id
  *        the id of the account you want to delete
+ * @param {String} id
+ *        the token of the account trying to delete
  * @param {Function} setLoading
  *        Sets the state of loading for the view.
  * @returns true if successful, false otherwise.

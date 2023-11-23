@@ -1,53 +1,53 @@
 .smallItem {
-    display: flex;
-    border-radius: 6px;
-    width: calc(100% - 20px);
-    height: 50px;
-    background: $white;
-    cursor: pointer;
-    &__rating {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 4px;
-        height: 100%;
-        width: 100px;
-        font-size: 16px;
-        padding-right: 4px;
-        &__value {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 100%;
-        }
-        &__icon {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            width: 25px;
-            height: 26px;
-            background-image: url('../../data/icons/starIcon.svg');
-            background-size: 100%;
-            background-repeat: no-repeat;
-            background-position: center;
-            filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
-            margin-bottom: 4px;
-        }
-    }
-    &__name {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        height: 100%;
-        width: 100%;
-        font-size: 20px;
-        padding-left: 8px;
-        overflow: hidden;
-        &__text__hover {
-            white-space: nowrap;
-            &:hover {
-                transform: translateX(calc(210px - 100%));
-            }
-        }
-    }
+	display: flex;
+	border-radius: 6px;
+	width: calc(100% - 20px);
+	height: 50px;
+	background: $white;
+	cursor: pointer;
+	&__rating {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 4px;
+		height: 100%;
+		width: 100px;
+		font-size: 16px;
+		padding-right: 4px;
+		&__value {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			height: 100%;
+		}
+		&__icon {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			width: 25px;
+			height: 26px;
+			background-image: url('../../data/icons/starIcon.svg');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: center;
+			filter: invert(70%) sepia(12%) saturate(3493%) hue-rotate(322deg) brightness(96%) contrast(95%);
+			margin-bottom: 4px;
+		}
+	}
+	&__name {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		font-size: 20px;
+		padding-left: 8px;
+		overflow: hidden;
+		&__text__hover {
+			white-space: nowrap;
+			&:hover {
+				transform: translateX(calc(210px - 100%));
+			}
+		}
+	}
 }

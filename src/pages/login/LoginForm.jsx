@@ -10,6 +10,8 @@ import LoadingBar from '../../components/LoadingBar';
  * @property {func} onSubmit - The onSubmit function to be used with the form.
  * @property {String} errorMessage - The error meessage for login if there is.
  * @property {Integer} loading - The state of loading.
+ * @property {Boolean} view - if view is visible or not.
+ * @property {Integer} setView - function to set the view
  * @returns loginin view.
  */
 const LoginForm = ({

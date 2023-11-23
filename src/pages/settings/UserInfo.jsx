@@ -16,6 +16,7 @@ import SettingsInputField from '../../components/SettingsInputField';
  * @property {func} setUsername - the function to set the username on change.
  * @property {func} setEmail - the function to set the email on change.
  * @property {func} setNewPassword - the function to set the password on change.
+ * @property {Boolean} view - if visible.
  * @returns user info page.
  */
 const UserInfo = ({

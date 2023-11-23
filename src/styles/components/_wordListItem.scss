@@ -1,23 +1,23 @@
 .wordListItem {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    gap: 4px;
-    justify-content: space-between;
-    align-items: center;
-    &__index {
-        width: 36px;
-        height: 36px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 24px;
-    }
-    &__name {
-        display: flex;
-        font-size: 24px;
-        width: 100%;
-        height: 100%;
-        align-items: center;
-    }
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	gap: 4px;
+	justify-content: space-between;
+	align-items: center;
+	&__index {
+		width: 36px;
+		height: 36px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 24px;
+	}
+	&__name {
+		display: flex;
+		font-size: 24px;
+		width: 100%;
+		height: 100%;
+		align-items: center;
+	}
 }

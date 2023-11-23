@@ -8,6 +8,7 @@ import SettingsInputField from '../../components/SettingsInputField';
  * @property {String} id - Custom id if wanted. Default deleteAccount.
  * @property {func} onSubmit - the onSubmit function for the delete account submit.
  * @property {func} openForm - the function to use when open form is clicked.
+ * @property {Boolean} view - if view is visible or not.
  * @returns delete account form.
  */
 const DeleteAccount = ({

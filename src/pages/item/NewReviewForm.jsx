@@ -10,6 +10,7 @@ import InputField from '../../components/InputField';
  * @property {func} onClick - the function to be used when the close button is clicked.
  * @property {String} className - Custom className if wanted. Default newReviewForm.
  * @property {String} id - Custom id if wanted. Default newReviewForm.
+ * @property {Boolean} view - if form is visible or not.
  * @returns new review form component.
  */
 const NewReviewForm = ({

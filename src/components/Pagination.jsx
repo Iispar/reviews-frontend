@@ -7,7 +7,8 @@ import propTypes from 'prop-types';
  * @Property {id} id - Custom id if wanted. Default is pagination.
  * @Property {Function} next - Function to use when next button is clicked.
  * @Property {Function} prev - Function to use when previous button is clicked.
- * @Property {Bool} disabled - If prev button is disabled or not
+ * @Property {Bool} prevDisabled - If prev button is disabled or not
+ * @Property {Bool} nextDisabled - If prev button is disabled or not
  * @returns pagination buttons
  */
 const Pagination = ({

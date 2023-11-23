@@ -8,7 +8,7 @@ import { UseLogin, UseCreateAccount } from './loginHooks';
 /**
  * The login page that combines the login and create account pages.
  * @property {String} className - Custom ClassName if wanted. Default loginGrid.
- * @property {String id - Custom id if wanted. Default loginGrid.
+ * @property {String} id - Custom id if wanted. Default loginGrid.
  * @return login page.
  */
 const Login = ({ className, id }) => {

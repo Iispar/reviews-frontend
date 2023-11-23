@@ -2,29 +2,29 @@
 @import './createAccountForm';
 
 .loginGrid {
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    cursor: default;
-    font-family: 'mainFont';
-    background-color: $backgroundWhite;
-    &__msg {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 290px;
-        height: 130px;
-        border: 2px solid $orange;
-        border-radius: 20px;
-        padding: 5px;
-        margin-bottom: 10px;
-    }
+	min-height: 400px;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	align-items: center;
+	justify-content: center;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	cursor: default;
+	font-family: 'mainFont';
+	background-color: $backgroundWhite;
+	&__msg {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		width: 290px;
+		height: 130px;
+		border: 2px solid $orange;
+		border-radius: 20px;
+		padding: 5px;
+		margin-bottom: 10px;
+	}
 }

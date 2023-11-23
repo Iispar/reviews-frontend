@@ -18,8 +18,11 @@ import SkeletonLoad from '../../components/SkeletonLoad';
  * @property {Function} setSearch - the set function when search is modified.
  * @property {SFunctiontring} nextPage - the function to be called when next page is clicked.
  * @property {Function} prevPage - the function to be called when previous page is clicked.
+ * @property {Boolean} clearInput - the clear input function to be used.
  * @property {Integer} loading - the state of lodaing. 0 is loaded, 1 is inital load
  *                               and 2 is loading data.
+ * @property {Boolean} prevDisabled - if the prev button is disabled.
+ * @property {Boolean} nextDisabled - if the prev button is disabled.
  * @returns items component.
  */
 const Items = ({

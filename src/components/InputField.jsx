@@ -12,6 +12,8 @@ import { useTextWidth } from '../helpers/componentHelpers';
  * @property {String} type - Type of the input field. Default text.
  * @property {String} error - The error message for the input field.
  * @property {regex} regex - The regex that the input if being compared to for error message.
+ * @property {regex} noChange - The onChange event for input
+ * @property {regex} displayError - The error to be displayed on screen.
  * @returns custom input field.
  */
 const InputField = ({

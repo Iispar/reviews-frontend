@@ -10,6 +10,7 @@ import propTypes from 'prop-types';
  * @property {String} posReviews - Number of positive reviews for the item.
  * @property {String} negReviews - Number of negative reviews for the item.
  * @property {String} className - Custom className if wanted. Default is itemTitle.
+ * @property {String} id - Custom id if wanted. Default is itemTitle.
  * @returns title for single item
  */
 const Title = ({

@@ -5,7 +5,7 @@ import propTypes from 'prop-types';
  * renders a input field for a json file.
  * @property {string} id - Custom id if wanted. Default jsonInputField.
  * @property {string} height - Custom height if wanted. Default 200px.
- * @property {string} name - Custom name if wanted. Default jsonInputField.
+ * @property {string} className - Custom name if wanted. Default jsonInputField.
  * @returns input for json
  */
 const JsonInputField = ({ id, height, className }) => {

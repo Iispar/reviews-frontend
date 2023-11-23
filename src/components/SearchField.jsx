@@ -7,6 +7,7 @@ import propTypes from 'prop-types';
  * @property {string} className - custom className if wanted. Default searchFIeld.
  * @property {string} id - custom id if wanted. Default searchField.
  * @property {function} onChange - The function used when the input field is used.
+ * @property {function} onClear - The function used when the input field is cleared.
  * @returns a search field
  */
 const SearchField = ({

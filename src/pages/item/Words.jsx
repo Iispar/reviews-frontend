@@ -9,6 +9,7 @@ import SkeletonLoad from '../../components/SkeletonLoad';
  * @property {String} id - Custom id if wanted. Default words.
  * @property {List<String>} posWords - List of the most positive words.
  * @property {List<String>} negWords - List of the most negative words.
+ * @property {Boolean} view - if view is visible or not.
  * @returns top words component.
  */
 const Words = ({

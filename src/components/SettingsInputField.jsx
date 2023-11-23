@@ -13,6 +13,7 @@ import propTypes from 'prop-types';
  * @property {String} submitText - text used in the submit button.
  * @property {String} type - type of the input field.
  * @property {function} onChange - onchange function used for the input field.
+ * @property {function} confirmationText - the confirm text if used.
  * @returns input field for settings
  */
 const SettingsInputField = ({

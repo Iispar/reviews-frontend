@@ -12,7 +12,7 @@ import LoadingBar from '../../components/LoadingBar';
  * @property {String} id - Custom id if wanted. Default homeChart.
  * @property {string} accountId - Id of account used for chart
  * @property {String} token - Token for account
- * @property {Integer} loading - Status of loading. 0 is loaded, 1 is initial load
+ * @property {Integer} initLoading - Status of loading. 0 is loaded, 1 is initial load
  *                               and 2 is retrieving data.
  * @returns chart component
  */

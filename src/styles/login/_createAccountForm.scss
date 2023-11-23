@@ -1,130 +1,130 @@
 @import '../colorsAndFonts.scss';
 @import '../components/buttons.scss';
 .createNew {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 500px;
-    display: none;
-    &__createAccountForm {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        height: 430px;
-        width: 300px;
-        border-radius: 10px;
-        background: $white;
-        box-shadow: 0 0 20px 5px $shadow;
-        &__header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 60px;
-            padding-top: 10px;
-            font-size: 28px;
-            text-transform: uppercase;
-        }
-        &__error {
-            font-size: 14px;
-            background: $lightRed;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 60px;
-            width: 300px;
-            margin-bottom: 5px;
-            border-radius: 5px;
-            &:empty {
-                display: none;
-            }
-        }
-        &__inputs {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            height: 340px;
-            padding: 10px;
-            padding-bottom: 20px;
-            &__load {
-                display: flex;
-                height: 100%;
-                align-items: flex-end;
-                &__container {
-                    display:flex;
-                    height: 34px;
-                    width: 260px;
-                    justify-content: center;
-                    align-items: center;
-                    border: 1px solid $orange;
-                    background: $white;
-                    border-radius: 20px;
-                    padding: 0;
-                }
-            }
-            &__form {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                height: 100%;
-                gap: 10px;
-                &__password {
-                    position: relative;
-                    &__message {
-                        display: none;
-                        position: absolute;
-                        top: -24px;
-                        left: 260px;
-                        height: 80px;
-                        width: 200px;
-                        background: $white;
-                        border: 1px solid $grey;
-                        border-radius: 8px;
-                        padding: 5px;
-                        font-size: 12px;
-                    }
-                }
-                &__roleLabel {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
-                    height: 24px;
-                    gap: 10px;
-                    &__text {
-                        padding-bottom: 3px;
-                    }
-                    &__selection {
-                        color: $grey;
-                        width: 100px;
-                    }
-                }
-            }
-            &__submit {
-                @extend btn;
-                margin-top: auto;
-                width: 260px;
-                height: 40px;
-            }
-        }
-    }
-    &__login {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        font-size: 16px;
-        cursor: default;
-        &__button {
-            color: $linkBlue;
-            cursor: pointer;
-            font-size: 16px;
-            border: 0;
-            background: transparent;
-            padding: 0;
-        }
-    }
+	display: none;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 500px;
+	display: none;
+	&__createAccountForm {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 5px;
+		height: 430px;
+		width: 300px;
+		border-radius: 10px;
+		background: $white;
+		box-shadow: 0 0 20px 5px $shadow;
+		&__header {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 60px;
+			padding-top: 10px;
+			font-size: 28px;
+			text-transform: uppercase;
+		}
+		&__error {
+			font-size: 14px;
+			background: $lightRed;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 60px;
+			width: 300px;
+			margin-bottom: 5px;
+			border-radius: 5px;
+			&:empty {
+				display: none;
+			}
+		}
+		&__inputs {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			height: 340px;
+			padding: 10px;
+			padding-bottom: 20px;
+			&__load {
+				display: flex;
+				height: 100%;
+				align-items: flex-end;
+				&__container {
+					display:flex;
+					height: 34px;
+					width: 260px;
+					justify-content: center;
+					align-items: center;
+					border: 1px solid $orange;
+					background: $white;
+					border-radius: 20px;
+					padding: 0;
+				}
+			}
+			&__form {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100%;
+				gap: 10px;
+				&__password {
+					position: relative;
+					&__message {
+						display: none;
+						position: absolute;
+						top: -24px;
+						left: 260px;
+						height: 80px;
+						width: 200px;
+						background: $white;
+						border: 1px solid $grey;
+						border-radius: 8px;
+						padding: 5px;
+						font-size: 12px;
+					}
+				}
+				&__roleLabel {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					text-align: center;
+					height: 24px;
+					gap: 10px;
+					&__text {
+						padding-bottom: 3px;
+					}
+					&__selection {
+						color: $grey;
+						width: 100px;
+					}
+				}
+			}
+			&__submit {
+				@extend btn;
+				margin-top: auto;
+				width: 260px;
+				height: 40px;
+			}
+		}
+	}
+	&__login {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		font-size: 16px;
+		cursor: default;
+		&__button {
+			color: $linkBlue;
+			cursor: pointer;
+			font-size: 16px;
+			border: 0;
+			background: transparent;
+			padding: 0;
+		}
+	}
 }
