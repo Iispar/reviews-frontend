@@ -83,7 +83,16 @@ describe('LatestReviews tests', () => {
     const load = [0, 2];
     test.each(load)('next page works', async (state) => {
       const nextMock = jest.fn();
-      const component = render(<LatestReviews id="test" loading={state} nextPage={nextMock} reviews={homeWithNextPage.latestReviews.responseList} />);
+      const component = render(
+        <LatestReviews
+          id="test"
+          loading={state}
+          nextPage={nextMock}
+          reviews={homeWithNextPage.latestReviews.responseList}
+          prevDisabled={false}
+          nextDisabled={false}
+        />,
+      );
 
       const next = component.getByRole('button', { name: 'next' });
 
@@ -93,7 +102,16 @@ describe('LatestReviews tests', () => {
     });
     test.each(load)('prev page works', async (state) => {
       const prevPage = jest.fn();
-      const component = render(<LatestReviews id="test" loading={state} prevPage={prevPage} reviews={homeWithNextPage.latestReviews.responseList} />);
+      const component = render(
+        <LatestReviews
+          id="test"
+          loading={state}
+          prevPage={prevPage}
+          reviews={homeWithNextPage.latestReviews.responseList}
+          prevDisabled={false}
+          nextDisabled={false}
+        />,
+      );
 
       const prev = component.getByRole('button', { name: 'previous' });
 

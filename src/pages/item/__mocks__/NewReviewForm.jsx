@@ -3,9 +3,9 @@
 import React from 'react';
 
 const NewReviewForm = ({
-  onSubmit, onClick, className, id,
+  onSubmit, onClick, className, id, view,
 }) => (
-  <div id="newReviewForm">
+  <div id="newReviewForm" style={view ? { display: 'flex' } : { display: 'none' }}>
     <form id={`${id}__form`} onSubmit={(e) => onSubmit(e)} noValidate>
       <span> add a new comment </span>
       <input placeholder="title" />

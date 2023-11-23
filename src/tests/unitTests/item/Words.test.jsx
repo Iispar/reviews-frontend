@@ -27,6 +27,16 @@ describe('Words tests', () => {
       expect(component.getByText('pos2'));
       expect(component.getByText('neg2'));
     });
+    test('NewReviewForm invis render works', () => {
+      const component = render(<Words
+        id="test"
+        posWords={itemSuccess.topPos}
+        negWords={itemSuccess.topNeg}
+        view
+      />);
+
+      expect(component.container.querySelector('#test')).not.toBeVisible();
+    });
     test('loading render works', () => {
       const component = render(<Words
         id="test"

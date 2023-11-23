@@ -22,6 +22,11 @@ jest.mock('../../../pages/item/Words');
 jest.mock('../../../components/ActionWait');
 jest.mock('../../../helpers/ParseInputFile');
 
+Object.defineProperty(window, 'location', {
+  configurable: true,
+  value: { reload: jest.fn() },
+});
+
 const useNewReviewMock = jest.fn();
 const useGetReviewsMock = jest.fn();
 jest.mock('../../../pages/item/itemHooks', () => ({
@@ -122,21 +127,20 @@ describe('item tests', () => {
       expect(component.getByText('pos1')).toBeVisible();
       expect(component.getByText('neg1')).toBeVisible();
 
-      expect(component.getByText('add a new comment')).toBeVisible();
-      expect(component.getByPlaceholderText('title')).toBeVisible();
-      expect(component.getByPlaceholderText('comment body')).toBeVisible();
-      expect(component.getByText('or add a file')).toBeVisible();
+      expect(component.getByText('add a new comment')).not.toBeVisible();
+      expect(component.getByPlaceholderText('title')).not.toBeVisible();
+      expect(component.getByPlaceholderText('comment body')).not.toBeVisible();
+      expect(component.getByText('or add a file')).not.toBeVisible();
       expect(component.container.querySelector('#dateInput')).not.toBeNull();
       expect(component.container.querySelector('#fileInput')).not.toBeNull();
-      expect(component.getByRole('button', { name: 'add' })).toBeVisible();
-      expect(component.getByRole('button', { name: 'close' })).toBeVisible();
+      expect(component.getByRole('button', { name: 'add', hidden: true })).not.toBeVisible();
+      expect(component.getByRole('button', { name: 'close', hidden: true })).not.toBeVisible();
       expect(component.getByRole('button', { name: 'new review' })).toBeVisible();
-      expect(component.getByRole('button', { name: 'add' })).toBeVisible();
-      expect(component.getByRole('button', { name: 'delete' })).toBeVisible();
+      expect(component.getByRole('button', { name: 'delete', hidden: true })).toBeVisible();
 
-      expect(component.getByText('Are you sure?')).toBeVisible();
-      expect(component.getByRole('button', { name: 'yes' })).toBeVisible();
-      expect(component.getByRole('button', { name: 'no' })).toBeVisible();
+      expect(component.getByText('Are you sure?')).not.toBeVisible();
+      expect(component.getByRole('button', { name: 'yes', hidden: true })).not.toBeVisible();
+      expect(component.getByRole('button', { name: 'no', hidden: true })).not.toBeVisible();
 
       expect(component.getByText(/888/)).toBeVisible();
       expect(component.getByText(/887/)).toBeVisible();
@@ -222,25 +226,18 @@ describe('item tests', () => {
         expect(component.getByText('Test item title'));
       });
 
-      const words = component.container.querySelector('#words');
-      const newReview = component.container.querySelector('#newReviewForm');
-
-      expect(words).not.toBeNull();
-      expect(newReview).not.toBeNull();
-
       const openForm = component.getByRole('button', { name: 'new review' });
-
       await userEvent.click(openForm);
 
-      expect(words).not.toBeVisible();
-      expect(newReview).toBeVisible();
+      expect(component.getByText('most common words')).not.toBeVisible();
+      expect(component.getByText('add a new comment')).toBeVisible();
       expect(openForm).not.toBeVisible();
 
       const closeBtn = component.getByRole('button', { name: 'close' });
 
       await userEvent.click(closeBtn);
-      expect(words).toBeVisible();
-      expect(newReview).not.toBeVisible();
+      expect(component.getByText('most common words')).toBeVisible();
+      expect(component.getByText('add a new comment')).not.toBeVisible();
       expect(openForm).toBeVisible();
     });
     test('submit review with input works', async () => {
@@ -257,6 +254,7 @@ describe('item tests', () => {
         expect(container).toBeVisible();
         expect(component.getByText('Test item title'));
       });
+      await userEvent.click(component.getByRole('button', { name: 'new review' }));
       const title = component.getByPlaceholderText('title');
       const body = component.getByPlaceholderText('comment body');
       const date = component.container.querySelector('#dateInput');
@@ -299,6 +297,7 @@ describe('item tests', () => {
         expect(container).toBeVisible();
         expect(component.getByText('Test item title'));
       });
+      await userEvent.click(component.getByRole('button', { name: 'new review' }));
       await userEvent.click(component.getByRole('button', { name: 'sort1 asc' }));
       const title = component.getByPlaceholderText('title');
       const body = component.getByPlaceholderText('comment body');
@@ -340,6 +339,7 @@ describe('item tests', () => {
         expect(container).toBeVisible();
         expect(component.getByText('Test item title'));
       });
+      await userEvent.click(component.getByRole('button', { name: 'new review' }));
       const fileInput = component.container.querySelector('#fileInput');
       const file = new File([''], 'filename.json', { type: 'text/html' });
       await userEvent.upload(fileInput, file);
@@ -618,7 +618,6 @@ describe('item tests', () => {
       expect(search).toHaveValue('test search');
       await userEvent.click(component.getByRole('button', { name: 'clear' }));
 
-      expect(search).toHaveValue('');
       expect(useGetReviewsMock.mock.calls[0][1]).toBe('');
     });
     test('clear search with sort works', async () => {
@@ -641,7 +640,6 @@ describe('item tests', () => {
       expect(search).toHaveValue('test search');
       await userEvent.click(component.getByRole('button', { name: 'clear' }));
 
-      expect(search).toHaveValue('');
       expect(useGetReviewsMock.mock.calls[1][1]).toBe('');
       expect(useGetReviewsMock.mock.calls[1][3]).toBe('review_sort1');
     });

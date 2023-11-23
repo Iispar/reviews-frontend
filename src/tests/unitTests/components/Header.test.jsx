@@ -43,7 +43,7 @@ describe('header tests', () => {
     await userEvent.click(hamburgerBtn);
 
     expect(navBar).toHaveStyle('transform: scaleX(1)');
-    expect(hamburger).toHaveAttribute('class', 'headerContainer__header__hamburger clicked');
+    expect(hamburger).toHaveAttribute('class', 'headerContainer__header__hamburger__clicked');
 
     await userEvent.click(hamburgerBtn);
 

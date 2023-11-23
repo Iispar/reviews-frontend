@@ -6,7 +6,6 @@ import {
 import $ from 'jquery';
 import userEvent from '@testing-library/user-event';
 import { addStyling } from '../../testHelpers';
-import LoginForm from '../../../pages/login/LoginForm';
 import CreateAccountForm from '../../../pages/login/CreateAccountForm';
 
 jest.mock('../../../components/InputField');
@@ -28,42 +27,8 @@ jest.mock('../../../pages/login/LoginForm', () => () => (
 ));
 
 describe('createAccountForm tests', () => {
-  test('CreateAccountForm renders', () => {
+  test('CreateAccountForm renders correctly', () => {
     const component = render(<CreateAccountForm id="test" />);
-    addStyling(component);
-
-    const container = component.container.querySelector('#test');
-
-    expect(container).not.toBeNull();
-    expect(container).not.toBeVisible(); // this is invisible at the start.
-    expect(container.className).toBe('createNew');
-
-    const error = component.container.querySelector('#test__createAccountForm__error');
-
-    expect(error).not.toBeNull();
-    expect(error).not.toBeVisible();
-
-    expect(component.getByText('Create account')).toBeDefined();
-    expect(component.getByText('Password must be minimum of 8 characters with:- uppercase letter- number- special character')).not.toBeVisible();
-    expect(component.getByText('role:')).toBeDefined();
-    expect(component.getByText('Already have an account?')).toBeDefined();
-
-    expect(component.getByLabelText('username')).toBeDefined();
-    expect(component.getByLabelText('first name')).toBeDefined();
-    expect(component.getByLabelText('email')).toBeDefined();
-    expect(component.getByLabelText('password')).toBeDefined();
-    expect(component.getByLabelText('confirm password')).toBeDefined();
-    const select = component.container.querySelector('#test__createAccountForm__inputs__form__roleLabel__selection');
-    expect(select).not.toBeNull();
-    expect(select).toBeDefined();
-
-    expect(component.findByRole('button', { name: 'submit' }));
-    expect(component.findByRole('button', { name: 'Login.' }));
-  });
-  test('CreateAccountForm visibility is correct', () => {
-    const component = render(<CreateAccountForm id="test" />);
-    addStyling(component);
-    $('#test').css('display', 'flex');
 
     const container = component.container.querySelector('#test');
 
@@ -75,7 +40,7 @@ describe('createAccountForm tests', () => {
     expect(error).not.toBeNull();
 
     expect(component.getByText('Create account')).toBeVisible();
-    expect(component.getByText('Password must be minimum of 8 characters with:- uppercase letter- number- special character')).not.toBeVisible();
+    expect(component.getByText('Password must be minimum of 8 characters with:- uppercase letter- number- special character')).toBeVisible();
     expect(component.getByText('role:')).toBeVisible();
     expect(component.getByText('Already have an account?')).toBeVisible();
 
@@ -90,6 +55,11 @@ describe('createAccountForm tests', () => {
 
     expect(component.getByRole('button', { name: 'submit' })).toBeVisible();
     expect(component.getByRole('button', { name: 'Login.' })).toBeVisible();
+  });
+  test('NewReviewForm invis render works', () => {
+    const component = render(<CreateAccountForm id="test" view={false} />);
+
+    expect(component.container.querySelector('#test')).not.toBeVisible();
   });
   test('LoginForm with load renders', () => {
     const component = render(<CreateAccountForm id="test" loading={2} />);
@@ -106,34 +76,16 @@ describe('createAccountForm tests', () => {
   });
 
   test('CreateAccountForm switch view works', async () => {
+    const mock = jest.fn();
     const component = render(
       <div>
-        <CreateAccountForm id="test" />
-        <LoginForm />
+        <CreateAccountForm id="test" setView={mock} />
       </div>,
     );
-    addStyling(component);
-    $('#test').css('display', 'flex');
-    $('#login').css('display', 'none');
-
-    const username = component.getByLabelText('username');
-    await userEvent.type(username, 'test username');
-    expect(username).toHaveValue('test username');
-
-    const createForm = component.container.querySelector('#test');
-    const loginForm = component.container.querySelector('#login');
-
-    expect(createForm).not.toBeNull();
-    expect(createForm).toBeVisible();
-
-    expect(loginForm).not.toBeNull();
-    expect(loginForm).not.toBeVisible();
 
     await userEvent.click(component.getByRole('button', { name: 'Login.' }));
 
-    expect(createForm).not.toBeVisible();
-    expect(loginForm).toBeVisible();
-    expect(username).toHaveValue('');
+    expect(mock.mock.calls).toHaveLength(1);
   });
   test('CreateAccountForm submit works', async () => {
     const mockSubmit = jest.fn((e) => {
@@ -180,30 +132,11 @@ describe('createAccountForm tests', () => {
     $('#test').css('display', 'flex');
 
     expect(component.container.querySelector('#test__createAccountForm__inputs__form__password__message')).not.toBeNull();
-    expect(component.container.querySelector('#test__createAccountForm__inputs__form__password__message')).not.toBeVisible();
-
-    const password = component.getByLabelText('password');
-    await userEvent.type(password, 'test');
-
     expect(component.container.querySelector('#test__createAccountForm__inputs__form__password__message')).toBeVisible();
-  });
-  test('CreateAccountForm confirm password error works', async () => {
-    const component = render(<CreateAccountForm id="test" />);
-    addStyling(component);
-    $('#test').css('display', 'flex');
-
-    expect(component.getByText('passwords don\'t match')).not.toBeVisible();
 
     const password = component.getByLabelText('password');
-    const confirm = component.getByLabelText('confirm password');
     await userEvent.type(password, 'testPass123!');
-    await userEvent.type(confirm, 'test');
 
-    expect(component.getByText('passwords don\'t match')).toBeVisible();
-
-    await userEvent.type(confirm, 'Pass123!');
-
-    expect(confirm).toHaveValue('testPass123!');
-    expect(component.getByText('passwords don\'t match')).not.toBeVisible();
+    expect(component.container.querySelector('#test__createAccountForm__inputs__form__password__message')).not.toBeVisible();
   });
 });

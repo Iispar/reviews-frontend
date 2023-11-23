@@ -1,7 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import $ from 'jquery';
 
 /**
  * Renders a item in the large format.
@@ -17,16 +16,8 @@ const LargeItem = ({
 }) => {
   const navigate = useNavigate();
 
-  // wait for the page to load before setting listeners
-  $(document).ready(() => {
-    // navigate to items page when clicked.
-    $(`#${className}__${id}`).on('click', () => {
-      navigate(`/item/${id}`);
-    });
-  });
-
   return (
-    <div className={className} id={`${className}__${id}`}>
+    <div className={className} id={`${className}__${id}`} onClick={() => navigate(`/item/${id}`)} role="presentation">
       <div className={`${className}__nameReviews`}>
         <span className={`${className}__nameReviews__name`} id={`${className}__nameReviews__name`}>
           {item}

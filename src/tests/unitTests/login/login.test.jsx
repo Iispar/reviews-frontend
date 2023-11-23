@@ -209,4 +209,23 @@ describe('Login tests', () => {
 
     expect(component.queryByText('an error occurred')).not.toBeInTheDocument();
   });
+  test('view switch works', async () => {
+    const component = render(
+      <BrowserRouter>
+        <Login id="test" />
+      </BrowserRouter>,
+    );
+
+    expect(component.getByText('Login')).toBeVisible();
+    expect(component.getByText('Create new')).not.toBeVisible();
+    await userEvent.click(component.getByRole('button', { name: 'create new' }));
+
+    expect(component.getByText('Login')).not.toBeVisible();
+    expect(component.getByText('Create new')).toBeVisible();
+
+    await userEvent.click(component.getByRole('button', { name: 'login.' }));
+
+    expect(component.getByText('Login')).toBeVisible();
+    expect(component.getByText('Create new')).not.toBeVisible();
+  });
 });

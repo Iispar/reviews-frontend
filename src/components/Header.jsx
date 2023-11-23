@@ -10,20 +10,22 @@ import $ from 'jquery';
  */
 const Header = ({ className, id }) => {
   const [navState, setNavState] = useState(false);
+  const [transform, setTransform] = useState(null);
+  const [clicked, setClicked] = useState('');
 
   /**
    * Toggles the nav bar on and off when the hamburger menu is clicked.
    */
   const toggleNavBar = () => {
     if (navState) {
-      $(`#${id}__navBar`).css('transform', 'scaleX(0)');
-      $(`#${id}__header__hamburger`).removeClass('clicked');
+      setTransform('scaleX(0)');
+      setClicked('');
       $('#layout').removeClass('disableScroll');
 
       setNavState(false);
     } else {
-      $(`#${id}__navBar`).css('transform', 'scaleX(1)');
-      $(`#${id}__header__hamburger`).addClass('clicked');
+      setTransform('scaleX(1)');
+      setClicked('__clicked');
       $('#layout').addClass('disableScroll');
 
       setNavState(true);
@@ -42,11 +44,11 @@ const Header = ({ className, id }) => {
   return (
     <div className={className} id={id}>
       <div className={`${className}__header`} id={`${id}__header`}>
-        <div className={`${className}__header__hamburger`} id={`${id}__header__hamburger`}>
+        <div className={`${className}__header__hamburger${clicked}`} id={`${id}__header__hamburger`}>
           <button className={`${className}__header__hamburger__btn`} id={`${id}__header__hamburger__btn`} type="button" onClick={() => toggleNavBar()} aria-label="hamburger" />
         </div>
       </div>
-      <nav className={`${className}__navBar`} id={`${id}__navBar`}>
+      <nav className={`${className}__navBar`} id={`${id}__navBar`} style={{ transform }}>
         <a className={`${className}__navBar__list__home`} href="/home"> home </a>
         <a className={`${className}__navBar__list__allItems`} href="/all"> all items </a>
         <a className={`${className}__navBar__list__settings`} href="/settings"> settings </a>

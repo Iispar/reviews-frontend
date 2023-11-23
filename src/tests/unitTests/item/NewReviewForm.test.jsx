@@ -1,9 +1,8 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { render, waitFor, act } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NewReviewForm from '../../../pages/item/NewReviewForm';
-import { addStyling } from '../../testHelpers';
 
 jest.mock('../../../components/InputField.jsx');
 jest.mock('../../../components/LargeInputField.jsx');
@@ -26,11 +25,10 @@ describe('NewReviewForm tests', () => {
       expect(component.getByRole('button', { name: 'add' })).toBeVisible();
       expect(component.getByRole('button', { name: 'close' })).toBeVisible();
     });
-    test('NewReviewForm invisible at render', () => {
-      const component = render(<NewReviewForm id="test" />);
-      addStyling(component);
+    test('NewReviewForm invis render works', () => {
+      const component = render(<NewReviewForm id="test" view={false} />);
 
-      expect(component.getByText('add a new comment')).not.toBeVisible();
+      expect(component.container.querySelector('#test')).not.toBeVisible();
     });
   });
   describe('functions work', () => {

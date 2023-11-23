@@ -4,10 +4,8 @@ const baseUrl = `${process.env.REACT_APP_URL}/account`;
 
 /**
  * Calls the api for login
- * @param {String} username
- *        Username used for login
- * @param {String} password
- *        Password used for login
+ * @param {String} payload
+ *        The data as payload
  * @returns token if succesful
  */
 const login = async (payload) => {
@@ -17,12 +15,8 @@ const login = async (payload) => {
 
 /**
  * Calls the api to create a new account with data.
- * @param {String} username
- *        Username used for creation
  * @param {json} payload
  *        Data used for the creation. Includes the to be created account.
- * @param {String} role
- *        Role used for creation
  * @returns token
  */
 const createAccount = async (payload) => {

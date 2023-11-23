@@ -10,12 +10,13 @@ import InputField from '../../components/InputField';
  * @property {func} onClick - the function to be used when the close button is clicked.
  * @property {String} className - Custom className if wanted. Default newReviewForm.
  * @property {String} id - Custom id if wanted. Default newReviewForm.
+ * @property {Boolean} view - if form is visible or not.
  * @returns new review form component.
  */
 const NewReviewForm = ({
-  onSubmit, onClick, className, id,
+  onSubmit, onClick, className, id, view,
 }) => (
-  <div className={className} id={id}>
+  <div className={className} id={id} style={view ? { display: 'flex' } : { display: 'none' }}>
     <form className={`${className}__form`} id={`${className}__form`} onSubmit={(e) => onSubmit(e)} noValidate>
       <span className={`${className}__form__title`}> add a new comment </span>
       <InputField title="title" width="280px" />
@@ -36,6 +37,7 @@ NewReviewForm.propTypes = {
   onClick: propTypes.func,
   className: propTypes.string,
   id: propTypes.string,
+  view: propTypes.bool,
 };
 
 NewReviewForm.defaultProps = {
@@ -43,6 +45,7 @@ NewReviewForm.defaultProps = {
   onClick: null,
   className: 'newReviewForm',
   id: 'newReviewForm',
+  view: true,
 };
 
 export default NewReviewForm;

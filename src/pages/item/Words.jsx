@@ -9,10 +9,11 @@ import SkeletonLoad from '../../components/SkeletonLoad';
  * @property {String} id - Custom id if wanted. Default words.
  * @property {List<String>} posWords - List of the most positive words.
  * @property {List<String>} negWords - List of the most negative words.
+ * @property {Boolean} view - if view is visible or not.
  * @returns top words component.
  */
 const Words = ({
-  className, id, posWords, negWords,
+  className, id, posWords, negWords, view,
 }) => {
   if (posWords == null || negWords == null) {
     return (
@@ -30,7 +31,7 @@ const Words = ({
     );
   }
   return (
-    <div className={className} id={id}>
+    <div className={className} id={id} style={view ? { display: 'none' } : { display: 'flex' }}>
       <div className={`${className}__title`} id={`${className}__title`}>
         most important words
       </div>
@@ -57,6 +58,7 @@ Words.propTypes = {
   negWords: propTypes.arrayOf(propTypes.string),
   className: propTypes.string,
   id: propTypes.string,
+  view: propTypes.bool,
 };
 
 Words.defaultProps = {
@@ -64,6 +66,7 @@ Words.defaultProps = {
   posWords: [],
   className: 'words',
   id: 'words',
+  view: false,
 };
 
 export default Words;

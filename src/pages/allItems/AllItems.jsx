@@ -24,6 +24,8 @@ const AllItems = ({ className, id }) => {
   const [sortDir, setSortDir] = useState('none');
   const [isNextPage, setIsNextPage] = useState(true);
   const [loading, setLoading] = useState(1);
+  const [prevDisabled, setPrevDisabled] = useState(true);
+  const [nextDisabled, setNextDisabled] = useState(false);
   const page = useRef(0);
 
   /**
@@ -50,8 +52,8 @@ const AllItems = ({ className, id }) => {
    * UseEffect to check if page is last one with values.
    */
   useEffect(() => {
-    if (isNextPage) $('#pagination__next').prop('disabled', false);
-    else $('#pagination__next').prop('disabled', true);
+    if (isNextPage) setNextDisabled(false);
+    else setNextDisabled(true);
   }, [isNextPage]);
 
   /**
@@ -93,7 +95,7 @@ const AllItems = ({ className, id }) => {
   const searchInput = (e) => {
     setLoading(2);
     page.current = 0;
-    $('#pagination__prev').prop('disabled', true);
+    setPrevDisabled(true);
     e.preventDefault();
     UseSearch(
       accountId,
@@ -118,7 +120,7 @@ const AllItems = ({ className, id }) => {
   const searchSort = (selSort, selSortDir) => {
     setLoading(2);
     page.current = 0;
-    $('#pagination__prev').prop('disabled', true);
+    setPrevDisabled(true);
     setSort(selSort);
     setSortDir(selSortDir);
     UseSearch(
@@ -140,7 +142,7 @@ const AllItems = ({ className, id }) => {
   const nextPage = () => {
     setLoading(2);
     setItems(null);
-    $('#pagination__prev').prop('disabled', false);
+    setPrevDisabled(false);
     UseSearch(
       accountId,
       search,
@@ -174,7 +176,7 @@ const AllItems = ({ className, id }) => {
     );
     page.current -= 1;
     if (page.current === 0) {
-      $('#pagination__prev').prop('disabled', true);
+      setPrevDisabled(true);
     }
   };
 
@@ -182,12 +184,11 @@ const AllItems = ({ className, id }) => {
    * Clears the search field when the X is pressed.
    * @param {String} inputId - id of the input field.
    */
-  const clearInput = (inputId) => {
+  const clearInput = () => {
     setLoading(2);
-    $(`#${inputId}__input`).val('');
     setSearch('');
     page.current = 0;
-    $('#pagination__prev').prop('disabled', true);
+    setPrevDisabled(true);
     UseSearch(accountId, '', 0, sort, sortDir, token, setItems, setIsNextPage, setLoading);
   };
 
@@ -217,6 +218,8 @@ const AllItems = ({ className, id }) => {
             prevPage={() => prevPage()}
             clearInput={clearInput}
             loading={loading}
+            nextDisabled={nextDisabled}
+            prevDisabled={prevDisabled}
           />
         </div>
         <div className={`${className}__grid__fileInput`} id={`${id}__grid__fileInput`}>

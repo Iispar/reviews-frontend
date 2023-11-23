@@ -28,6 +28,11 @@ describe('SettingsInputField tests', () => {
       expect(component.getByText('this action cannot be undone please confirm by writing: this cannot be undone')).toBeVisible();
       expect(component.getByRole('button', { name: 'I understand. Delete account' })).toBeVisible();
     });
+    test('NewReviewForm invis render works', () => {
+      const component = render(<DeleteAccount id="test" view={false} />);
+
+      expect(component.container.querySelector('#test')).not.toBeVisible();
+    });
   });
   describe('functions work', () => {
     test('openForm works', async () => {

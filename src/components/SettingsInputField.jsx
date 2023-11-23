@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import propTypes from 'prop-types';
-import $ from 'jquery';
 
 /**
  * An input field for the settings page that is a form with a change button.
@@ -14,6 +13,7 @@ import $ from 'jquery';
  * @property {String} submitText - text used in the submit button.
  * @property {String} type - type of the input field.
  * @property {function} onChange - onchange function used for the input field.
+ * @property {function} confirmationText - the confirm text if used.
  * @returns input field for settings
  */
 const SettingsInputField = ({
@@ -30,17 +30,6 @@ const SettingsInputField = ({
   confirmationText,
 }) => {
   const [value, setValue] = useState(defaultValue);
-  /**
-   * useEffect for when value changes we show the change button
-   * if the value is different than original value.
-   */
-  useEffect(() => {
-    if (defaultValue !== null) {
-      if (value !== defaultValue) $(`#${id}__form__${button}`).css('display', 'flex');
-      else $(`#${id}__form__${button}`).css('display', 'none');
-    } else if (value === confirmationText) $(`#${id}__form__${button}`).css('display', 'flex');
-    else $(`#${id}__form__${button}`).css('display', 'none');
-  }, [value]);
 
   /**
    * When value is changed we set it to the components state and also on the
@@ -65,7 +54,7 @@ const SettingsInputField = ({
           </div>
         ) : (null)}
         <input className={`${className}__form__input`} id={`${id}__form__input`} defaultValue={value} onChange={(e) => changeValue(e.target.value)} type={type} />
-        <button className={`${className}__form__${button}`} id={`${id}__form__${button}`} type="submit">
+        <button className={`${className}__form__${button}`} id={`${id}__form__${button}`} type="submit" style={(defaultValue !== null && value !== defaultValue) || value === confirmationText ? { display: 'flex' } : { display: 'none' }}>
           {submitText}
         </button>
       </form>

@@ -6,7 +6,6 @@ import {
 import userEvent from '@testing-library/user-event';
 import { addStyling } from '../../testHelpers';
 import LoginForm from '../../../pages/login/LoginForm';
-import CreateAccountForm from '../../../pages/login/CreateAccountForm';
 
 jest.mock('../../../components/InputField');
 
@@ -52,6 +51,11 @@ describe('LoginForm tests', () => {
     expect(component.getByRole('button', { name: 'Forgot password?' })).toBeVisible();
     expect(component.getByRole('button', { name: 'login' })).toBeVisible();
     expect(component.getByRole('button', { name: 'Create new' })).toBeVisible();
+  });
+  test('NewReviewForm invis render works', () => {
+    const component = render(<LoginForm id="test" view={false} />);
+
+    expect(component.container.querySelector('#test')).not.toBeVisible();
   });
   test('LoginForm with error renders', () => {
     const component = render(<LoginForm id="test" errorMessage="test error" />);
@@ -103,32 +107,16 @@ describe('LoginForm tests', () => {
 
     expect(component.getByText(text)).not.toBeVisible();
   });
-  test('LoginForm switch view works', async () => {
+  test('CreateAccountForm switch view works', async () => {
+    const mock = jest.fn();
     const component = render(
       <div>
-        <LoginForm id="test" />
-        <CreateAccountForm />
+        <LoginForm id="test" setView={mock} />
       </div>,
     );
-    addStyling(component);
-
-    const username = component.getByLabelText('username');
-    await userEvent.type(username, 'test username');
-    expect(username).toHaveValue('test username');
-
-    const loginForm = component.container.querySelector('#test');
-    const createForm = component.container.querySelector('#createNew');
-
-    expect(loginForm).not.toBeNull();
-    expect(loginForm).toBeVisible();
-
-    expect(createForm).not.toBeNull();
-    expect(createForm).not.toBeVisible();
 
     await userEvent.click(component.getByRole('button', { name: 'Create new' }));
 
-    expect(loginForm).not.toBeVisible();
-    expect(createForm).toBeVisible();
-    expect(username).toHaveValue('');
+    expect(mock.mock.calls).toHaveLength(1);
   });
 });

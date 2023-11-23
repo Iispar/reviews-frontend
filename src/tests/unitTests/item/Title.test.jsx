@@ -16,7 +16,7 @@ describe('Title tests', () => {
       expect(container.className).toBe('itemTitle');
 
       expect(component.getByText('test name'));
-      expect(component.getByText('2.2')).toBeVisible();
+      expect(component.getByText('2.2')).not.toBeVisible();
       expect(component.container.querySelector('#test__data__rating__stars').children).toHaveLength(4);
       expect(component.getByText((content, node) => findWithSpan(node, '30reviews'))).toBeVisible();
       expect(component.getByText((content, node) => findWithSpan(node, '20positive'))).toBeVisible();

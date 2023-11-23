@@ -18,12 +18,26 @@ import SkeletonLoad from '../../components/SkeletonLoad';
  * @property {Function} setSearch - the set function when search is modified.
  * @property {SFunctiontring} nextPage - the function to be called when next page is clicked.
  * @property {Function} prevPage - the function to be called when previous page is clicked.
+ * @property {Boolean} clearInput - the clear input function to be used.
  * @property {Integer} loading - the state of lodaing. 0 is loaded, 1 is inital load
  *                               and 2 is loading data.
+ * @property {Boolean} prevDisabled - if the prev button is disabled.
+ * @property {Boolean} nextDisabled - if the prev button is disabled.
  * @returns items component.
  */
 const Items = ({
-  items, className, id, onSubmit, setSort, setSearch, nextPage, prevPage, clearInput, loading,
+  items,
+  className,
+  id,
+  onSubmit,
+  setSort,
+  setSearch,
+  nextPage,
+  prevPage,
+  clearInput,
+  loading,
+  nextDisabled,
+  prevDisabled,
 }) => {
   if (loading === 1) return (<SkeletonLoad />);
   if (loading === 2 || loading === 3) {
@@ -39,7 +53,12 @@ const Items = ({
           {loading === 2 ? (<LoadingBar />) : (<div>error ocurred, please reload</div>)}
         </div>
         <div className={`${className}__reviews__pagination`}>
-          <Pagination next={() => nextPage()} prev={() => prevPage()} />
+          <Pagination
+            next={() => nextPage()}
+            prev={() => prevPage()}
+            nextDisabled={nextDisabled}
+            prevDisabled={prevDisabled}
+          />
         </div>
       </div>
     );
@@ -62,7 +81,12 @@ const Items = ({
         <div className={`${className}__empty`}> no items </div>
       )}
       <div className={`${className}__reviews__pagination`}>
-        <Pagination next={() => nextPage()} prev={() => prevPage()} />
+        <Pagination
+          next={() => nextPage()}
+          prev={() => prevPage()}
+          nextDisabled={nextDisabled}
+          prevDisabled={prevDisabled}
+        />
       </div>
     </div>
   );
@@ -79,6 +103,8 @@ Items.propTypes = {
   prevPage: propTypes.func,
   clearInput: propTypes.func,
   loading: propTypes.number,
+  prevDisabled: propTypes.bool,
+  nextDisabled: propTypes.bool,
 };
 
 Items.defaultProps = {
@@ -92,6 +118,8 @@ Items.defaultProps = {
   prevPage: null,
   clearInput: null,
   loading: 0,
+  prevDisabled: true,
+  nextDisabled: true,
 };
 
 export default Items;

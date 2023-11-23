@@ -6,6 +6,8 @@ import accountService from '../../services/accountService';
  * hook to delete an users account
  * @param {String} id
  *        the id of the account you want to delete
+ * @param {String} id
+ *        the token of the account trying to delete
  * @param {Function} setLoading
  *        Sets the state of loading for the view.
  * @returns true if successful, false otherwise.
@@ -17,6 +19,9 @@ export const UseDeleteAccount = (id, token, setLoading) => {
       setTimeout(() => {
         setLoading(0);
       }, 1000);
+      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('accountId');
+      window.location.reload();
     })
     .catch(() => {
       setLoading(6);
@@ -55,6 +60,7 @@ export const UseUpdateAccount = (
   email,
   token,
   setLoading,
+  curUsername,
 ) => {
   const formattedPass = password.length === 0 ? 'none' : password;
 
@@ -71,6 +77,11 @@ export const UseUpdateAccount = (
       setTimeout(() => {
         setLoading(0);
       }, 1000);
+      // if username is updated logout.
+      if (username !== curUsername || password !== '') {
+        window.localStorage.removeItem('token');
+        window.location.reload();
+      }
     })
     .catch(() => {
       setLoading(6);

@@ -1,7 +1,6 @@
 import React, {
   useState, useEffect, useRef,
 } from 'react';
-import $ from 'jquery';
 import propTypes from 'prop-types';
 import LatestReviews from './LatestReviews';
 import MostPopular from './MostPopular';
@@ -31,6 +30,8 @@ const Home = ({ className, id }) => {
   const [user, setUser] = useState(null);
   const [isNextPage, setIsNextPage] = useState(true);
   const [loading, setLoading] = useState(1);
+  const [prevDisabled, setPrevDisabled] = useState(true);
+  const [nextDisabled, setNextDisabled] = useState(false);
   const page = useRef(1);
 
   /**
@@ -65,16 +66,16 @@ const Home = ({ className, id }) => {
    * Useeffect to check if page is the last one with values.
    */
   useEffect(() => {
-    if (isNextPage) $('#pagination__next').prop('disabled', false);
-    else $('#pagination__next').prop('disabled', true);
+    if (isNextPage) setNextDisabled(false);
+    else setNextDisabled(true);
   }, [isNextPage]);
 
   /**
    * UseEffect to disable prev so we dont do into negative pages.
    */
   useEffect(() => {
-    if (page.current <= 0) $('#pagination__prev').prop('disabled', true);
-    else $('#pagination__prev').prop('disabled', false);
+    if (page.current <= 0) setPrevDisabled(true);
+    else setPrevDisabled(false);
   }, [page.current]);
 
   /**
@@ -139,6 +140,8 @@ const Home = ({ className, id }) => {
             nextPage={nextPage}
             prevPage={prevPage}
             loading={loading}
+            prevDisabled={prevDisabled}
+            nextDisabled={nextDisabled}
           />
         </div>
         <div className={`${className}__grid__mostPopular`} id={`${id}__grid__mostPopular`}>

@@ -25,8 +25,8 @@ const getHome = async (accountId, token) => {
 
 /**
  * Calls the api to get item page for account.
- * @param {String} accountId
- *                 Account id that is calling for the page.
+ * @param {String} itemId
+ *                 Item id that is is being called
  * @param {String} token
  *                 Token of the logged in account.
  * @returns item page data for account

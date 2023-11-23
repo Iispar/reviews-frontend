@@ -4,7 +4,7 @@ import InputField from '../../components/InputField';
 
 /**
  * Renders the item input component.
- * @propery {Function} onSubmit - the onSubmit function to be used when form is submitted.
+ * @property {Function} onSubmit - the onSubmit function to be used when form is submitted.
  * @property {string} className - custom className if wanted. Default is fileInput.
  * @property {string} id - custom id if wanted. Default is fileInput.
  * @returns file input component

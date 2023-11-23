@@ -14,10 +14,12 @@ import LoadingBar from '../../components/LoadingBar';
  * @property {Function} prevPage - The function to be called when prev is clicked.
  * @property {integer} loading - if loading is active. 0 if no loading, 1 if initial
  *                               and 2 if retrieving data.
+ * @property {Bool} prevDisabled - If prev button is disabled
+ * @property {Bool} nextDisabled - If next button is disabled
  * @returns latest reviews component
  */
 const LatestReviews = ({
-  className, id, reviews, nextPage, prevPage, loading,
+  className, id, reviews, nextPage, prevPage, loading, prevDisabled, nextDisabled,
 }) => {
   // if page load
   if (loading === 1) return (<SkeletonLoad id="skeletonLoad" />);
@@ -33,7 +35,7 @@ const LatestReviews = ({
             {loading === 2 ? (<LoadingBar />) : (<div>error ocurred, please reload</div>)}
           </div>
           <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
-            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
+            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" prevDisabled={prevDisabled} nextDisabled={nextDisabled} />
           </div>
         </div>
       </div>
@@ -51,7 +53,7 @@ const LatestReviews = ({
             <ReviewsList reviews={reviews} />
           </div>
           <div className={`${className}__reviews__pagination`} id={`${id}__pagination`}>
-            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" />
+            <Pagination next={() => nextPage()} prev={() => prevPage()} id="pagination" prevDisabled={prevDisabled} nextDisabled={nextDisabled} />
           </div>
         </div>
       ) : (
@@ -68,6 +70,8 @@ LatestReviews.propTypes = {
   nextPage: propTypes.func,
   prevPage: propTypes.func,
   loading: propTypes.number,
+  prevDisabled: propTypes.bool,
+  nextDisabled: propTypes.bool,
 };
 
 LatestReviews.defaultProps = {
@@ -77,6 +81,8 @@ LatestReviews.defaultProps = {
   nextPage: null,
   prevPage: null,
   loading: 0,
+  prevDisabled: false,
+  nextDisabled: false,
 };
 
 export default LatestReviews;

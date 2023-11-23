@@ -38,7 +38,7 @@ describe('SmallItem tests', () => {
     const component = render(<SmallItem id={2} item="this item has a really long name to test the scroll feature." rating={4.2123} />);
 
     await waitFor(() => {
-      expect(component.getByText('this item has a really long name to test the scroll feature.').className).toBe('smallItem__name__text hover');
+      expect(component.getByText('this item has a really long name to test the scroll feature.').className).toBe('smallItem__name__text__hover');
       expect(component.getByText('this item has a really long name to test the scroll feature.')).toHaveStyle('transition: all 0.1111111111111111s linear');
       expect(component.getByText('4.2')).toBeVisible();
     });

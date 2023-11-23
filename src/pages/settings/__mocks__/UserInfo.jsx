@@ -14,8 +14,9 @@ const UserInfo = ({
   className,
   id,
   setEmail,
+  view,
 }) => (
-  <div id="userInfo">
+  <div id="userInfo" style={view ? { display: 'flex' } : { display: 'none' }}>
     <div>
       <form onSubmit={(e) => updateAccount(e)}>
         <button id={`${id}__header__closeButton`} type="button" onClick={() => openForm('none')}> closeUser </button>

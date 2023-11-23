@@ -8,85 +8,85 @@
  * Sets the grid for item page.
  */
 .item {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: default;
-    &__grid {
-        display: grid;
-        height: 100%;
-        grid-template-columns: auto 700px 320px auto;
-        grid-template-rows: 20px 90px 540px 170px 20px;
-        gap: 20px;
-        overflow: scroll;
-        &__title {
-            grid-row: 2/2;
-            grid-column: 2/4;
-        }
-        &__reviews {
-            grid-row: 3/3;
-            grid-column: 2/2;
-        }
-        &__words {
-            display: flex;
-            grid-row: 3/5;
-            grid-column: 3/3;
-            flex-direction: column;
-            justify-content: space-between;
-            &__selection {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: flex-end;
-                height: 60px;
-                &__new {
-                    @extend btn;
-                    width: 180px;
-                    height: 50px;
-                    border-radius: 25px; 
-                }
-                &__delete {
-                    @extend close-btn;
-                    border: 1px solid $red;
-                    width: 100px;
-                    height: 50px;
-                    border-radius: 25px; 
-                }
-                &__confirmDelete {
-                    display: none;
-                    height: 50px;
-                    width: 100%;
-                    justify-content: space-around;
-                    align-items: center;
-                    padding-left: 10px;
-                    padding-right: 10px;
-                    font-size: 16px;
-                    border-radius: 30px;
-                    box-shadow: 0 0 2px 1px red;
-                    background: $white;;
-                    border: 0px;
-                    &__wantedDelete {
-                        @extend btn;
-                        height: 40px;
-                        width: 60px;
-                        border-radius: 20px;
-                        justify-self: flex-end;
-                    }
-                    &__cancelDelete {
-                        @extend btn;
-                        height: 40px;
-                        width: 60px;
-                        border-radius: 20px;
-                        justify-self: flex-end;
-                    }
-                }
-            }
-        }
-        &__chart {
-            grid-row: 4/4;
-            grid-column: 2/2;
-        }
-    }
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: default;
+	&__grid {
+		display: grid;
+		height: 100%;
+		grid-template-columns: auto 700px 320px auto;
+		grid-template-rows: 20px 90px 540px 170px 20px;
+		gap: 20px;
+		overflow: scroll;
+		&__title {
+			grid-row: 2/2;
+			grid-column: 2/4;
+		}
+		&__reviews {
+			grid-row: 3/3;
+			grid-column: 2/2;
+		}
+		&__words {
+			display: flex;
+			grid-row: 3/5;
+			grid-column: 3/3;
+			flex-direction: column;
+			justify-content: space-between;
+			&__selection {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: flex-end;
+				height: 60px;
+				&__new {
+					@extend btn;
+					width: 180px;
+					height: 50px;
+					border-radius: 25px; 
+				}
+				&__delete {
+					@extend close-btn;
+					border: 1px solid $red;
+					width: 100px;
+					height: 50px;
+					border-radius: 25px; 
+				}
+				&__confirmDelete {
+					display: none;
+					height: 50px;
+					width: 100%;
+					justify-content: space-around;
+					align-items: center;
+					padding-left: 10px;
+					padding-right: 10px;
+					font-size: 16px;
+					border-radius: 30px;
+					box-shadow: 0 0 2px 1px red;
+					background: $white;;
+					border: 0px;
+					&__wantedDelete {
+						@extend btn;
+						height: 40px;
+						width: 60px;
+						border-radius: 20px;
+						justify-self: flex-end;
+					}
+					&__cancelDelete {
+						@extend btn;
+						height: 40px;
+						width: 60px;
+						border-radius: 20px;
+						justify-self: flex-end;
+					}
+				}
+			}
+		}
+		&__chart {
+			grid-row: 4/4;
+			grid-column: 2/2;
+		}
+	}
 }

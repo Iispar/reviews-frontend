@@ -2,56 +2,56 @@
  * Sets the styling for the item input on the all items page.
  */
 .itemInput {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    border-radius: 10px;
-    box-shadow: 0px 0px 40px 2px $shadow;
-    background: $containerWhite;
-    &__title {
-        display: flex;
-        height: 50px;
-        font-size: 20px;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-    &__form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        &__categoryAndSubmit {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            &__categoryLabel {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                padding: 2px;
-                padding-top: 0px;
-                height: 24px;
-                gap: 6px;
-                &__text {
-                    padding-bottom: 3px;
-                }
-                &__selection {
-                    color: $grey;
-                    width: 60px;
-                }
-            }
-            &__submitBtn {
-                @extend btn;
-                width: 100px;
-                height: 34px;
-            }
-        }
-    }
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	border-radius: 10px;
+	box-shadow: 0px 0px 40px 2px $shadow;
+	background: $containerWhite;
+	&__title {
+		display: flex;
+		height: 50px;
+		font-size: 20px;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	&__form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+		&__categoryAndSubmit {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			&__categoryLabel {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				padding: 2px;
+				padding-top: 0px;
+				height: 24px;
+				gap: 6px;
+				&__text {
+					padding-bottom: 3px;
+				}
+				&__selection {
+					color: $grey;
+					width: 60px;
+				}
+			}
+			&__submitBtn {
+				@extend btn;
+				width: 100px;
+				height: 34px;
+			}
+		}
+	}
 }
